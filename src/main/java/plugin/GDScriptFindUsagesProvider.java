@@ -19,7 +19,7 @@ import static plugin.parser.SampleLanguageParser.RULE_primary;
 import static plugin.parser.SampleLanguageParser.RULE_statement;
 import static plugin.parser.SampleLanguageParser.RULE_vardef;
 
-public class SampleFindUsagesProvider implements FindUsagesProvider {
+public class GDScriptFindUsagesProvider implements FindUsagesProvider {
 	/** Is "find usages" meaningful for a kind of definition subtree? */
 	@Override
 	public boolean canFindUsagesFor(PsiElement psiElement) {

@@ -20,7 +20,7 @@ import java.util.Map;
  *  analysis can be expensive, we don't want it in the GUI event loop. Jetbrains
  *  provides this external annotator mechanism to run these analyzers out of band.
  */
-public class SampleExternalAnnotator extends ExternalAnnotator<PsiFile, List<SampleExternalAnnotator.Issue>> {
+public class GDScriptExternalAnnotator extends ExternalAnnotator<PsiFile, List<GDScriptExternalAnnotator.Issue>> {
     // NOTE: can't use instance vars as only 1 instance
 
 	public static class Issue {

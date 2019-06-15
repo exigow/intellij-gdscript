@@ -10,13 +10,13 @@
 		</component>
 	</project-components>
 	<extensions defaultExtensionNs="com.intellij">
-		<fileTypeFactory implementation="plugin.SampleFileTypeFactory"/>
+		<fileTypeFactory implementation="plugin.GDScriptFileTypeFactory"/>
 		<lang.syntaxHighlighterFactory key="Sample" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
-		<lang.parserDefinition language="Sample" implementationClass="plugin.SampleParserDefinition"/>
-		<lang.ast.factory language="Sample" implementationClass="plugin.SampleASTFactory"/>
+		<lang.parserDefinition language="Sample" implementationClass="plugin.GDScriptParserDefinition"/>
+		<lang.ast.factory language="Sample" implementationClass="plugin.GDScriptASTFactory"/>
 		<lang.psiStructureViewFactory language="Sample" implementationClass="plugin.structview.SampleStructureViewFactory"/>
 		<colorSettingsPage implementation="plugin.SampleColorSettingsPage"/>
-		<externalAnnotator language="Sample" implementationClass="plugin.SampleExternalAnnotator"/>
-		<lang.findUsagesProvider language="Sample" implementationClass="plugin.SampleFindUsagesProvider"/>
+		<externalAnnotator language="Sample" implementationClass="plugin.GDScriptExternalAnnotator"/>
+		<lang.findUsagesProvider language="Sample" implementationClass="plugin.GDScriptFindUsagesProvider"/>
 	</extensions>
 </idea-plugin>

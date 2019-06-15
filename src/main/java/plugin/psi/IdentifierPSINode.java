@@ -9,7 +9,7 @@ import org.antlr.intellij.adaptor.lexer.RuleIElementType;
 import org.antlr.intellij.adaptor.psi.ANTLRPsiLeafNode;
 import org.antlr.intellij.adaptor.psi.Trees;
 import plugin.GDScriptLanguage;
-import plugin.SampleParserDefinition;
+import plugin.GDScriptParserDefinition;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,7 +75,7 @@ public class IdentifierPSINode extends ANTLRPsiLeafNode implements PsiNamedEleme
 		                                            GDScriptLanguage.INSTANCE,
 		                                            getContext(),
 		                                            name,
-		                                            SampleParserDefinition.ID);
+		                                            GDScriptParserDefinition.ID);
 		if ( newID!=null ) {
 			return this.replace(newID); // use replace on leaves but replaceChild on ID nodes that are part of defs/decls.
 		}

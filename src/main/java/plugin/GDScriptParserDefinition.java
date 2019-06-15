@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class SampleParserDefinition implements ParserDefinition {
+public class GDScriptParserDefinition implements ParserDefinition {
 	public static final IFileElementType FILE =
 		new IFileElementType(GDScriptLanguage.INSTANCE);
 

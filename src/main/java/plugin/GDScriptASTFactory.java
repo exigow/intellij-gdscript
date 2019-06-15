@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
  *  {@link CoreASTFactory} but with comments on the methods that you might want
  *  to override.
  */
-public class SampleASTFactory extends CoreASTFactory {
+public class GDScriptASTFactory extends CoreASTFactory {
 	/** Create an internal parse tree node. FileElement for root or a parse tree CompositeElement (not
 	 *  PSI) for the token.
 	 *  The FileElement is a parse tree node, which is converted to a PsiFile

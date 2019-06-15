@@ -4,7 +4,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.tree.TokenSet
 import com.intellij.testFramework.ParsingTestCase
 
-class GDScriptTest : ParsingTestCase("", "GDScript", SampleParserDefinition()) {
+class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
     fun `test single var definition`() {
         val tree = convertToSyntaxTree("var x = 1")
