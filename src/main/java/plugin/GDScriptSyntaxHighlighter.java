@@ -33,7 +33,7 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
  * For highlighting lexer errors, the standard TextAttributesKey
  * for bad characters HighlighterColors.BAD_CHARACTER can be used."
  */
-public class SampleSyntaxHighlighter extends SyntaxHighlighterBase {
+public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 	private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 	public static final TextAttributesKey ID =
 		createTextAttributesKey("SAMPLE_ID", DefaultLanguageHighlighterColors.IDENTIFIER);
@@ -47,7 +47,7 @@ public class SampleSyntaxHighlighter extends SyntaxHighlighterBase {
 		createTextAttributesKey("SAMPLE_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
 
 	static {
-		PSIElementTypeFactory.defineLanguageIElementTypes(SampleLanguage.INSTANCE,
+		PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage.INSTANCE,
 		                                                  SampleLanguageParser.tokenNames,
 		                                                  SampleLanguageParser.ruleNames);
 	}
@@ -56,7 +56,7 @@ public class SampleSyntaxHighlighter extends SyntaxHighlighterBase {
 	@Override
 	public Lexer getHighlightingLexer() {
 		SampleLanguageLexer lexer = new SampleLanguageLexer(null);
-		return new ANTLRLexerAdaptor(SampleLanguage.INSTANCE, lexer);
+		return new ANTLRLexerAdaptor(GDScriptLanguage.INSTANCE, lexer);
 	}
 
 	@NotNull

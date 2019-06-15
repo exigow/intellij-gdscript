@@ -9,7 +9,7 @@ import org.antlr.intellij.adaptor.SymtabUtils;
 import org.antlr.intellij.adaptor.psi.ScopeNode;
 import plugin.Icons;
 import plugin.GDScriptFileType;
-import plugin.SampleLanguage;
+import plugin.GDScriptLanguage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +17,7 @@ import javax.swing.*;
 
 public class SamplePSIFileRoot extends PsiFileBase implements ScopeNode {
     public SamplePSIFileRoot(@NotNull FileViewProvider viewProvider) {
-        super(viewProvider, SampleLanguage.INSTANCE);
+        super(viewProvider, GDScriptLanguage.INSTANCE);
     }
 
     @NotNull
@@ -51,10 +51,10 @@ public class SamplePSIFileRoot extends PsiFileBase implements ScopeNode {
 //		                   ".resolve("+element.getName()+
 //		                   " at "+Integer.toHexString(element.hashCode())+")");
 		if ( element.getParent() instanceof CallSubtree ) {
-			return SymtabUtils.resolve(this, SampleLanguage.INSTANCE,
+			return SymtabUtils.resolve(this, GDScriptLanguage.INSTANCE,
 			                           element, "/script/function/ID");
 		}
-		return SymtabUtils.resolve(this, SampleLanguage.INSTANCE,
+		return SymtabUtils.resolve(this, GDScriptLanguage.INSTANCE,
 		                           element, "/script/vardef/ID");
 	}
 }

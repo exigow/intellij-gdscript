@@ -8,7 +8,7 @@ import com.intellij.navigation.NavigationItem;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import org.antlr.intellij.adaptor.xpath.XPath;
-import plugin.SampleLanguage;
+import plugin.GDScriptLanguage;
 import plugin.psi.SamplePSIFileRoot;
 import org.jetbrains.annotations.NotNull;
 
@@ -65,7 +65,7 @@ public class SampleStructureViewElement implements StructureViewTreeElement, Sor
 	@Override
 	public TreeElement[] getChildren() {
 		if ( element instanceof SamplePSIFileRoot ) {
-			Collection<? extends PsiElement> funcs = XPath.findAll(SampleLanguage.INSTANCE, element, "/script/function/ID");
+			Collection<? extends PsiElement> funcs = XPath.findAll(GDScriptLanguage.INSTANCE, element, "/script/function/ID");
 			List<TreeElement> treeElements = new ArrayList<>(funcs.size());
 			for (PsiElement el : funcs) {
 				treeElements.add(new SampleStructureViewElement(el));

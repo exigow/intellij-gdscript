@@ -11,7 +11,7 @@
 	</project-components>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileTypeFactory implementation="plugin.SampleFileTypeFactory"/>
-		<lang.syntaxHighlighterFactory key="Sample" implementationClass="plugin.SampleSyntaxHighlighterFactory"/>
+		<lang.syntaxHighlighterFactory key="Sample" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
 		<lang.parserDefinition language="Sample" implementationClass="plugin.SampleParserDefinition"/>
 		<lang.ast.factory language="Sample" implementationClass="plugin.SampleASTFactory"/>
 		<lang.psiStructureViewFactory language="Sample" implementationClass="plugin.structview.SampleStructureViewFactory"/>

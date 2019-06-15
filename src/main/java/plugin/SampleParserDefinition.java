@@ -34,46 +34,46 @@ import java.util.List;
 
 public class SampleParserDefinition implements ParserDefinition {
 	public static final IFileElementType FILE =
-		new IFileElementType(SampleLanguage.INSTANCE);
+		new IFileElementType(GDScriptLanguage.INSTANCE);
 
 	public static TokenIElementType ID;
 
 	static {
-		PSIElementTypeFactory.defineLanguageIElementTypes(SampleLanguage.INSTANCE,
+		PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage.INSTANCE,
 		                                                  SampleLanguageParser.tokenNames,
 		                                                  SampleLanguageParser.ruleNames);
 		List<TokenIElementType> tokenIElementTypes =
-			PSIElementTypeFactory.getTokenIElementTypes(SampleLanguage.INSTANCE);
+			PSIElementTypeFactory.getTokenIElementTypes(GDScriptLanguage.INSTANCE);
 		ID = tokenIElementTypes.get(SampleLanguageLexer.ID);
 	}
 
 	public static final TokenSet COMMENTS =
 		PSIElementTypeFactory.createTokenSet(
-			SampleLanguage.INSTANCE,
+			GDScriptLanguage.INSTANCE,
 			SampleLanguageLexer.COMMENT,
 			SampleLanguageLexer.LINE_COMMENT);
 
 	public static final TokenSet WHITESPACE =
 		PSIElementTypeFactory.createTokenSet(
-			SampleLanguage.INSTANCE,
+			GDScriptLanguage.INSTANCE,
 			SampleLanguageLexer.WS);
 
 	public static final TokenSet STRING =
 		PSIElementTypeFactory.createTokenSet(
-			SampleLanguage.INSTANCE,
+			GDScriptLanguage.INSTANCE,
 			SampleLanguageLexer.STRING);
 
 	@NotNull
 	@Override
 	public Lexer createLexer(Project project) {
 		SampleLanguageLexer lexer = new SampleLanguageLexer(null);
-		return new ANTLRLexerAdaptor(SampleLanguage.INSTANCE, lexer);
+		return new ANTLRLexerAdaptor(GDScriptLanguage.INSTANCE, lexer);
 	}
 
 	@NotNull
 	public PsiParser createParser(final Project project) {
 		final SampleLanguageParser parser = new SampleLanguageParser(null);
-		return new ANTLRParserAdaptor(SampleLanguage.INSTANCE, parser) {
+		return new ANTLRParserAdaptor(GDScriptLanguage.INSTANCE, parser) {
 			@Override
 			protected ParseTree parse(Parser parser, IElementType root) {
 				// start rule depends on root passed in; sometimes we want to create an ID node etc...

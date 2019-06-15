@@ -8,7 +8,7 @@ import com.intellij.util.IncorrectOperationException;
 import org.antlr.intellij.adaptor.lexer.RuleIElementType;
 import org.antlr.intellij.adaptor.psi.ANTLRPsiLeafNode;
 import org.antlr.intellij.adaptor.psi.Trees;
-import plugin.SampleLanguage;
+import plugin.GDScriptLanguage;
 import plugin.SampleParserDefinition;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +72,7 @@ public class IdentifierPSINode extends ANTLRPsiLeafNode implements PsiNamedEleme
 			                   kind+this+" at "+Integer.toHexString(this.hashCode()));
 		*/
 		PsiElement newID = Trees.createLeafFromText(getProject(),
-		                                            SampleLanguage.INSTANCE,
+		                                            GDScriptLanguage.INSTANCE,
 		                                            getContext(),
 		                                            name,
 		                                            SampleParserDefinition.ID);

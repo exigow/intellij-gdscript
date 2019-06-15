@@ -2,7 +2,7 @@ package plugin
 
 import com.intellij.openapi.fileTypes.LanguageFileType
 
-class GDScriptFileType : LanguageFileType(SampleLanguage) {
+class GDScriptFileType : LanguageFileType(GDScriptLanguage) {
 
     override fun getName() = "name ???"
 

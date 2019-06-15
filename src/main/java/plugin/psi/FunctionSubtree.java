@@ -7,7 +7,7 @@ import com.intellij.psi.tree.IElementType;
 import org.antlr.intellij.adaptor.SymtabUtils;
 import org.antlr.intellij.adaptor.psi.IdentifierDefSubtree;
 import org.antlr.intellij.adaptor.psi.ScopeNode;
-import plugin.SampleLanguage;
+import plugin.GDScriptLanguage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,7 +25,7 @@ public class FunctionSubtree extends IdentifierDefSubtree implements ScopeNode {
 //		System.out.println(getClass().getSimpleName()+
 //			                   ".resolve("+myElement.getName()+
 //			                   " at "+Integer.toHexString(myElement.hashCode())+")");
-		return SymtabUtils.resolve(this, SampleLanguage.INSTANCE,
+		return SymtabUtils.resolve(this, GDScriptLanguage.INSTANCE,
 		                           element, "/script/function/ID");
 	}
 }

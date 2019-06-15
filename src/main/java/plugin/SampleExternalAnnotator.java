@@ -47,9 +47,9 @@ public class SampleExternalAnnotator extends ExternalAnnotator<PsiFile, List<Sam
 	@Override
 	public List<Issue> doAnnotate(final PsiFile file) {
 		Collection<? extends PsiElement> funcNameNodes =
-			XPath.findAll(SampleLanguage.INSTANCE, file, "/script/function/ID");
+			XPath.findAll(GDScriptLanguage.INSTANCE, file, "/script/function/ID");
 		Collection<? extends PsiElement> funcCallNameNodes =
-			XPath.findAll(SampleLanguage.INSTANCE, file, "//call_expr/ID");
+			XPath.findAll(GDScriptLanguage.INSTANCE, file, "//call_expr/ID");
 
 		Map<String, PsiElement> funcNames = Trees.toMap(funcNameNodes);
 		Map<String, PsiElement> funcCalls = Trees.toMap(funcCallNameNodes);
