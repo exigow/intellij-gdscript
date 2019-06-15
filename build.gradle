@@ -45,5 +45,5 @@ dependencies {
 }
 
 generateGrammarSource {
-    arguments += ["-package", "org.antlr.jetbrains.sample.parser", "-Xexact-output-dir"]
+    arguments += ["-package", "plugin.parser", "-Xexact-output-dir"]
 }

@@ -13,10 +13,10 @@ import plugin.SampleParserDefinition;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_call_expr;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_expr;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_primary;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_statement;
+import static plugin.parser.SampleLanguageParser.RULE_call_expr;
+import static plugin.parser.SampleLanguageParser.RULE_expr;
+import static plugin.parser.SampleLanguageParser.RULE_primary;
+import static plugin.parser.SampleLanguageParser.RULE_statement;
 
 /** From doc: "Every element which can be renamed or referenced
  *             needs to implement com.intellij.psi.PsiNamedElement interface."

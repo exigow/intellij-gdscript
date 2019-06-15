@@ -11,13 +11,13 @@ import plugin.psi.VardefSubtree;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_call_expr;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_expr;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_formal_arg;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_function;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_primary;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_statement;
-import static org.antlr.jetbrains.sample.parser.SampleLanguageParser.RULE_vardef;
+import static plugin.parser.SampleLanguageParser.RULE_call_expr;
+import static plugin.parser.SampleLanguageParser.RULE_expr;
+import static plugin.parser.SampleLanguageParser.RULE_formal_arg;
+import static plugin.parser.SampleLanguageParser.RULE_function;
+import static plugin.parser.SampleLanguageParser.RULE_primary;
+import static plugin.parser.SampleLanguageParser.RULE_statement;
+import static plugin.parser.SampleLanguageParser.RULE_vardef;
 
 public class SampleFindUsagesProvider implements FindUsagesProvider {
 	/** Is "find usages" meaningful for a kind of definition subtree? */

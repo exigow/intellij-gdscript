@@ -8,8 +8,8 @@ import com.intellij.psi.tree.IElementType;
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor;
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory;
 import org.antlr.intellij.adaptor.lexer.TokenIElementType;
-import org.antlr.jetbrains.sample.parser.SampleLanguageLexer;
-import org.antlr.jetbrains.sample.parser.SampleLanguageParser;
+import plugin.parser.SampleLanguageLexer;
+import plugin.parser.SampleLanguageParser;
 import org.jetbrains.annotations.NotNull;
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
