@@ -1,6 +1,6 @@
 package plugin;
 
-import plugin.utilities.ASTNodePrinter;
+import plugin.ASTNodePrinter;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.TokenSet;

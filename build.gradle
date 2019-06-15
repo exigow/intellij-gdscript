@@ -5,19 +5,18 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.2"
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.9'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'antlr'
 }
+
+group 'godot'
+version '0.1'
 
 wrapper {
     gradleVersion = '5.2.1'
 }
-
-group 'antlr'
-version pluginVersion
-
-apply plugin: 'java'
-apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'antlr'
 
 compileJava {
     sourceCompatibility = '1.8'
@@ -25,11 +24,9 @@ compileJava {
 }
 
 intellij {
-    version = ideaVersion
-
-    pluginName 'antlr4-intellij-plugin-sample'
-    downloadSources true
-    updateSinceUntilBuild false
+    version = "2018.3.2"
+    downloadSources = true
+    updateSinceUntilBuild = false
 }
 
 repositories {
@@ -37,9 +34,7 @@ repositories {
 }
 
 dependencies {
-    antlr("org.antlr:antlr4:$antlr4Version") { // use ANTLR version 4
-        exclude group:'com.ibm.icu', module:'icu4j'
-    }
+    antlr 'org.antlr:antlr4:4.7.2'
     implementation 'org.antlr:antlr4-intellij-adaptor:0.1'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
