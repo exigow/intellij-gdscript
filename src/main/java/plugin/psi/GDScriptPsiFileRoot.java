@@ -15,8 +15,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class SamplePSIFileRoot extends PsiFileBase implements ScopeNode {
-    public SamplePSIFileRoot(@NotNull FileViewProvider viewProvider) {
+public class GDScriptPsiFileRoot extends PsiFileBase implements ScopeNode {
+    public GDScriptPsiFileRoot(@NotNull FileViewProvider viewProvider) {
         super(viewProvider, GDScriptLanguage.INSTANCE);
     }
 

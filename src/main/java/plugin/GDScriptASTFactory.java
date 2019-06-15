@@ -9,7 +9,7 @@ import com.intellij.psi.impl.source.tree.PsiCoreCommentImpl;
 import com.intellij.psi.tree.IElementType;
 import org.antlr.intellij.adaptor.lexer.TokenIElementType;
 import plugin.parser.SampleLanguageLexer;
-import plugin.psi.IdentifierPSINode;
+import plugin.psi.IdentifierPsiINode;
 import org.jetbrains.annotations.NotNull;
 
 /** How to create parse tree nodes (Jetbrains calls them AST nodes). Later
@@ -47,7 +47,7 @@ public class GDScriptASTFactory extends CoreASTFactory {
 			// You can only rename, find usages, etc... on leaves implementing PsiNamedElement
 			//
 			// TODO: try not to create one for IDs under def subtree roots like vardef, function
-			return new IdentifierPSINode(type, text);
+			return new IdentifierPsiINode(type, text);
 		}
 		LeafElement leaf = super.createLeaf(type, text);
 		return leaf;

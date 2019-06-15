@@ -9,10 +9,10 @@ import org.antlr.intellij.adaptor.psi.ScopeNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class SampleElementRef extends PsiReferenceBase<IdentifierPSINode> {
-	public SampleElementRef(@NotNull IdentifierPSINode element) {
+public abstract class GDScriptElementRef extends PsiReferenceBase<IdentifierPsiINode> {
+	public GDScriptElementRef(@NotNull IdentifierPsiINode element) {
 		/** WARNING: You must send up the text range or you get this error:
-		 * "Cannot find manipulator for PsiElement(ID) in org.antlr.jetbrains.sample.SampleElementRef"...
+		 * "Cannot find manipulator for PsiElement(ID) in org.antlr.jetbrains.sample.GDScriptElementRef"...
 		 *  when you click on an identifier.  During rename you get this
 		 *  error too if you don't impl handleElementRename().
 		 *
@@ -65,7 +65,7 @@ public abstract class SampleElementRef extends PsiReferenceBase<IdentifierPSINod
 		String refName = myElement.getName();
 //		System.out.println(getClass().getSimpleName()+".isReferenceTo("+refName+"->"+def.getText()+")");
 		// sometimes def comes in pointing to ID node itself. depends on what you click on
-		if ( def instanceof IdentifierPSINode && isDefSubtree(def.getParent()) ) {
+		if ( def instanceof IdentifierPsiINode && isDefSubtree(def.getParent()) ) {
 			def = def.getParent();
 		}
 		if ( isDefSubtree(def) ) {

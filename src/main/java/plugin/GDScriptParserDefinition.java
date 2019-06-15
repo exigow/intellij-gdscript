@@ -24,7 +24,7 @@ import plugin.psi.ArgdefSubtree;
 import plugin.psi.BlockSubtree;
 import plugin.psi.CallSubtree;
 import plugin.psi.FunctionSubtree;
-import plugin.psi.SamplePSIFileRoot;
+import plugin.psi.GDScriptPsiFileRoot;
 import plugin.psi.VardefSubtree;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -127,7 +127,7 @@ public class GDScriptParserDefinition implements ParserDefinition {
 	 */
 	@Override
 	public PsiFile createFile(FileViewProvider viewProvider) {
-		return new SamplePSIFileRoot(viewProvider);
+		return new GDScriptPsiFileRoot(viewProvider);
 	}
 
 	/** Convert from *NON-LEAF* parse node (AST they call it)

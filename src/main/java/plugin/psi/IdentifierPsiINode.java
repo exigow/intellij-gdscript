@@ -36,8 +36,8 @@ import static plugin.parser.SampleLanguageParser.RULE_statement;
  *  You can click on an ID in the editor and ask for a rename for any node
  *  of this type.
  */
-public class IdentifierPSINode extends ANTLRPsiLeafNode implements PsiNamedElement {
-	public IdentifierPSINode(IElementType type, CharSequence text) {
+public class IdentifierPsiINode extends ANTLRPsiLeafNode implements PsiNamedElement {
+	public IdentifierPsiINode(IElementType type, CharSequence text) {
 		super(type, text);
 	}
 
@@ -68,7 +68,7 @@ public class IdentifierPSINode extends ANTLRPsiLeafNode implements PsiNamedEleme
 				kind = "func def ";
 			}
 		}
-		System.out.println("IdentifierPSINode.setName("+name+") on "+
+		System.out.println("IdentifierPsiINode.setName("+name+") on "+
 			                   kind+this+" at "+Integer.toHexString(this.hashCode()));
 		*/
 		PsiElement newID = Trees.createLeafFromText(getProject(),
