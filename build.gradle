@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.4.2"
+}
+
+wrapper {
+    gradleVersion = '5.2.1'
+}
+
+group 'antlr'
+version pluginVersion
+
+apply plugin: 'java'
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'antlr'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+intellij {
+    version = ideaVersion
+
+    pluginName 'antlr4-intellij-plugin-sample'
+    downloadSources true
+    updateSinceUntilBuild false
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr("org.antlr:antlr4:$antlr4Version") { // use ANTLR version 4
+        exclude group:'com.ibm.icu', module:'icu4j'
+    }
+    implementation 'org.antlr:antlr4-intellij-adaptor:0.1'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+generateGrammarSource {
+    arguments += ["-package", "org.antlr.jetbrains.sample.parser", "-Xexact-output-dir"]
+}
