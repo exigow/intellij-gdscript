@@ -19,3 +19,8 @@ func bubbleSort(v:[], c:string):[] {
 
 	return v
 }
+
+
+func a() {
+
+}

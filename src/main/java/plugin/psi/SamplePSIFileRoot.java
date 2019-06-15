@@ -8,7 +8,7 @@ import com.intellij.psi.PsiNamedElement;
 import org.antlr.intellij.adaptor.SymtabUtils;
 import org.antlr.intellij.adaptor.psi.ScopeNode;
 import plugin.Icons;
-import plugin.SampleFileType;
+import plugin.GDScriptFileType;
 import plugin.SampleLanguage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +23,7 @@ public class SamplePSIFileRoot extends PsiFileBase implements ScopeNode {
     @NotNull
     @Override
     public FileType getFileType() {
-        return SampleFileType.INSTANCE;
+        return GDScriptFileType.INSTANCE;
     }
 
     @Override

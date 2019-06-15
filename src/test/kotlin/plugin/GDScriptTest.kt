@@ -4,7 +4,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.tree.TokenSet
 import com.intellij.testFramework.ParsingTestCase
 
-class OtherTest : ParsingTestCase("", "GDScript", SampleParserDefinition()) {
+class GDScriptTest : ParsingTestCase("", "GDScript", SampleParserDefinition()) {
 
     fun `test single var definition`() {
         val tree = convertToSyntaxTree("var x = 1")
@@ -17,7 +17,7 @@ class OtherTest : ParsingTestCase("", "GDScript", SampleParserDefinition()) {
     }
 
     private fun convertToSyntaxTree(code: String): ASTNode {
-        val file = createPsiFile("a.sample", code)
+        val file = createPsiFile("script.gd", code)
         ensureParsed(file)
         return file.node.getChildren(TokenSet.ANY)[0]
     }

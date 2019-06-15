@@ -7,6 +7,6 @@ import org.jetbrains.annotations.NotNull;
 public class SampleFileTypeFactory extends FileTypeFactory {
 	@Override
 	public void createFileTypes(@NotNull FileTypeConsumer fileTypeConsumer) {
-		fileTypeConsumer.consume(SampleFileType.INSTANCE, SampleFileType.FILE_EXTENSION);
+		fileTypeConsumer.consume(GDScriptFileType.INSTANCE, GDScriptFileType.FILE_EXTENSION);
 	}
 }

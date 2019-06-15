@@ -1,3 +1,5 @@
+import org.jetbrains.intellij.tasks.RunIdeTask
+
 buildscript {
     repositories {
         mavenCentral()
@@ -41,4 +43,8 @@ dependencies {
 
 generateGrammarSource {
     arguments += ["-package", "plugin.parser", "-Xexact-output-dir"]
+}
+
+task runIdeWithDifferentJvm(type: RunIdeTask) {
+    jbreVersion 'jbrex8u152b1024.10'
 }
