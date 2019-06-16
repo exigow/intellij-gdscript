@@ -10,7 +10,7 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import plugin.parser.GDScriptLexer
 import plugin.parser.GDScriptLexer.*
 
-typealias Colors = DefaultLanguageHighlighterColors
+typealias Highlighting = DefaultLanguageHighlighterColors
 
 class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
 
@@ -25,11 +25,11 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
         if (tokenType !is TokenIElementType)
             return null
         return when (tokenType.antlrTokenType) {
-            VARIABLE, CONSTANT, WHILE, IF, ELSE, RETURN, FUNCTION -> Colors.KEYWORD
-            IDENTIFIER -> Colors.IDENTIFIER
-            NUMBER -> Colors.NUMBER
-            STRING -> Colors.STRING
-            LINE_COMMENT -> Colors.LINE_COMMENT
+            VARIABLE, CONSTANT, WHILE, IF, ELSE, RETURN, FUNCTION -> Highlighting.KEYWORD
+            IDENTIFIER -> Highlighting.IDENTIFIER
+            NUMBER -> Highlighting.NUMBER
+            STRING -> Highlighting.STRING
+            LINE_COMMENT -> Highlighting.LINE_COMMENT
             else -> null
         }
     }
