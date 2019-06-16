@@ -16,6 +16,31 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
         printTree(tree)
     }
 
+    fun `test function`() {
+        val tree = convertToSyntaxTree("func test() {}")
+        printTree(tree)
+    }
+
+    fun `test function with type`() {
+        val tree = convertToSyntaxTree("func test(): int {}")
+        printTree(tree)
+    }
+
+    fun `test function with missing block`() {
+        val tree = convertToSyntaxTree("func test()")
+        printTree(tree)
+    }
+
+    fun `test function with argument`() {
+        val tree = convertToSyntaxTree("func test(a:int) {\n}")
+        printTree(tree)
+    }
+
+    fun `test function with multiple arguments`() {
+        val tree = convertToSyntaxTree("func test(a: int, b: float) {\n}")
+        printTree(tree)
+    }
+
     private fun convertToSyntaxTree(code: String): ASTNode {
         val file = createPsiFile("script.gd", code)
         ensureParsed(file)
