@@ -8,14 +8,14 @@ import com.intellij.util.IncorrectOperationException
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiLeafNode
 import org.antlr.intellij.adaptor.psi.Trees
-import plugin.GDScriptLanguage
+import plugin.GDScript
 import plugin.GDScriptParserDefinition
 import org.jetbrains.annotations.NonNls
 
-import plugin.parser.GDScriptLanguageParser.RULE_call_expr
-import plugin.parser.GDScriptLanguageParser.RULE_expr
-import plugin.parser.GDScriptLanguageParser.RULE_primary
-import plugin.parser.GDScriptLanguageParser.RULE_statement
+import plugin.parser.GDScriptParser.RULE_call_expr
+import plugin.parser.GDScriptParser.RULE_expr
+import plugin.parser.GDScriptParser.RULE_primary
+import plugin.parser.GDScriptParser.RULE_statement
 
 /** From doc: "Every element which can be renamed or referenced
  * needs to implement com.intellij.psi.PsiNamedElement interface."
@@ -37,9 +37,7 @@ import plugin.parser.GDScriptLanguageParser.RULE_statement
  */
 class IdentifierPsiINode(type: IElementType, text: CharSequence) : ANTLRPsiLeafNode(type, text), PsiNamedElement {
 
-    override fun getName(): String? {
-        return text
-    }
+    override fun getName() = text
 
     /** Alter this node to have text specified by the argument. Do this by
      * creating a new node through parsing of an ID and then doing a
@@ -67,7 +65,7 @@ class IdentifierPsiINode(type: IElementType, text: CharSequence) : ANTLRPsiLeafN
 			                   kind+this+" at "+Integer.toHexString(this.hashCode()));
 		*/
         val newID = Trees.createLeafFromText(project,
-                GDScriptLanguage,
+                GDScript,
                 context,
                 name,
                 GDScriptParserDefinition.ID)
@@ -95,8 +93,8 @@ class IdentifierPsiINode(type: IElementType, text: CharSequence) : ANTLRPsiLeafN
         // do not return a reference for the ID nodes in a definition
         if (elType is RuleIElementType) {
             when (elType.ruleIndex) {
-                RULE_statement, RULE_expr, RULE_primary -> return VariableRef(this)
-                RULE_call_expr -> return FunctionRef(this)
+                RULE_statement, RULE_expr, RULE_primary -> return VariableReference(this)
+                RULE_call_expr -> return FunctionReference(this)
             }
         }
         return null

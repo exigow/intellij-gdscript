@@ -7,10 +7,10 @@ import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ScopeNode
 import plugin.GDScriptFileType
-import plugin.GDScriptLanguage
+import plugin.GDScript
 import plugin.Icons
 
-class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScriptLanguage), ScopeNode {
+class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScript), ScopeNode {
 
     override fun getFileType() = GDScriptFileType.INSTANCE
 
@@ -22,9 +22,9 @@ class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProv
 
     override fun resolve(element: PsiNamedElement): PsiElement? {
         return if (element.parent is CallSubtree)
-            SymtabUtils.resolve(this, GDScriptLanguage, element, "/script/function/ID")
+            SymtabUtils.resolve(this, GDScript, element, "/script/function/ID")
         else
-            SymtabUtils.resolve(this, GDScriptLanguage, element, "/script/vardef/ID")
+            SymtabUtils.resolve(this, GDScript, element, "/script/vardef/ID")
     }
 
 }

@@ -9,14 +9,14 @@ import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
-import plugin.parser.GDScriptLanguageLexer
-import plugin.parser.GDScriptLanguageParser
+import plugin.parser.GDScriptLexer
+import plugin.parser.GDScriptParser
 
 class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
 
     override fun getHighlightingLexer(): Lexer {
-        val lexer = GDScriptLanguageLexer(null)
-        return ANTLRLexerAdaptor(GDScriptLanguage, lexer)
+        val lexer = GDScriptLexer(null)
+        return ANTLRLexerAdaptor(GDScript, lexer)
     }
 
     override fun getTokenHighlights(tokenType: IElementType): Array<TextAttributesKey?> {
@@ -26,13 +26,13 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
     }
 
     private fun mapTokenToTextAttribute(tokenType: TokenIElementType): TextAttributesKey? {
-        val keywords = arrayOf(GDScriptLanguageLexer.VAR, GDScriptLanguageLexer.WHILE, GDScriptLanguageLexer.IF, GDScriptLanguageLexer.ELSE, GDScriptLanguageLexer.RETURN, GDScriptLanguageLexer.PRINT, GDScriptLanguageLexer.FUNC, GDScriptLanguageLexer.TYPEINT, GDScriptLanguageLexer.TYPEFLOAT, GDScriptLanguageLexer.TYPESTRING, GDScriptLanguageLexer.TYPEBOOLEAN, GDScriptLanguageLexer.TRUE, GDScriptLanguageLexer.FALSE)
+        val keywords = arrayOf(GDScriptLexer.VAR, GDScriptLexer.WHILE, GDScriptLexer.IF, GDScriptLexer.ELSE, GDScriptLexer.RETURN, GDScriptLexer.PRINT, GDScriptLexer.FUNC, GDScriptLexer.TYPEINT, GDScriptLexer.TYPEFLOAT, GDScriptLexer.TYPESTRING, GDScriptLexer.TYPEBOOLEAN, GDScriptLexer.TRUE, GDScriptLexer.FALSE)
         return when (tokenType.antlrTokenType) {
             in keywords -> KEYWORD
-            GDScriptLanguageLexer.ID -> ID
-            GDScriptLanguageLexer.STRING -> STRING
-            GDScriptLanguageLexer.COMMENT -> LINE_COMMENT
-            GDScriptLanguageLexer.LINE_COMMENT -> BLOCK_COMMENT
+            GDScriptLexer.ID -> ID
+            GDScriptLexer.STRING -> STRING
+            GDScriptLexer.COMMENT -> LINE_COMMENT
+            GDScriptLexer.LINE_COMMENT -> BLOCK_COMMENT
             else -> null
         }
     }
@@ -46,7 +46,7 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
         val BLOCK_COMMENT = createTextAttributesKey("GDSCRIPT_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT)
 
         init {
-            PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage, GDScriptLanguageParser.tokenNames, GDScriptLanguageParser.ruleNames)
+            PSIElementTypeFactory.defineLanguageIElementTypes(GDScript, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
         }
 
     }

@@ -18,23 +18,23 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
-import plugin.parser.GDScriptLanguageLexer
-import plugin.parser.GDScriptLanguageParser
+import plugin.parser.GDScriptLexer
+import plugin.parser.GDScriptParser
 import plugin.psi.*
 
 class GDScriptParserDefinition : ParserDefinition {
 
     override fun createLexer(project: Project): Lexer {
-        val lexer = GDScriptLanguageLexer(null)
-        return ANTLRLexerAdaptor(GDScriptLanguage, lexer)
+        val lexer = GDScriptLexer(null)
+        return ANTLRLexerAdaptor(GDScript, lexer)
     }
 
     override fun createParser(project: Project): PsiParser {
-        val parser = GDScriptLanguageParser(null)
-        return object : ANTLRParserAdaptor(GDScriptLanguage, parser) {
+        val parser = GDScriptParser(null)
+        return object : ANTLRParserAdaptor(GDScript, parser) {
 
             override fun parse(parser: Parser, root: IElementType): ParseTree {
-                require(parser is GDScriptLanguageParser)
+                require(parser is GDScriptParser)
                 return if (root is IFileElementType) parser.script() else parser.primary()
             }
 
@@ -58,29 +58,29 @@ class GDScriptParserDefinition : ParserDefinition {
 
     private fun convertRuleToPsi(node: ASTNode, rule: RuleIElementType): ANTLRPsiNode {
         return when (rule.ruleIndex) {
-            GDScriptLanguageParser.RULE_function -> FunctionSubtree(node, rule)
-            GDScriptLanguageParser.RULE_vardef -> VardefSubtree(node, rule)
-            GDScriptLanguageParser.RULE_formal_arg -> ArgdefSubtree(node, rule)
-            GDScriptLanguageParser.RULE_block -> BlockSubtree(node)
-            GDScriptLanguageParser.RULE_call_expr -> CallSubtree(node)
+            GDScriptParser.RULE_function -> FunctionSubtree(node, rule)
+            GDScriptParser.RULE_vardef -> VardefSubtree(node, rule)
+            GDScriptParser.RULE_formal_arg -> ArgdefSubtree(node, rule)
+            GDScriptParser.RULE_block -> BlockSubtree(node)
+            GDScriptParser.RULE_call_expr -> CallSubtree(node)
             else -> ANTLRPsiNode(node)
         }
     }
 
     companion object {
 
-        val FILE = IFileElementType(GDScriptLanguage)
+        val FILE = IFileElementType(GDScript)
         var ID: TokenIElementType
 
         init {
-            PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage, GDScriptLanguageParser.tokenNames, GDScriptLanguageParser.ruleNames)
-            val tokenIElementTypes = PSIElementTypeFactory.getTokenIElementTypes(GDScriptLanguage)
-            ID = tokenIElementTypes[GDScriptLanguageLexer.ID]
+            PSIElementTypeFactory.defineLanguageIElementTypes(GDScript, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
+            val tokenIElementTypes = PSIElementTypeFactory.getTokenIElementTypes(GDScript)
+            ID = tokenIElementTypes[GDScriptLexer.ID]
         }
 
-        val COMMENTS = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.COMMENT, GDScriptLanguageLexer.LINE_COMMENT)
-        val WHITESPACE = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.WS)
-        val STRING = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.STRING)
+        val COMMENTS = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.COMMENT, GDScriptLexer.LINE_COMMENT)
+        val WHITESPACE = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.WS)
+        val STRING = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.STRING)
 
     }
 

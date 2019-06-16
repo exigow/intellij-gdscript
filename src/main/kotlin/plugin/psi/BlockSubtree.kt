@@ -6,12 +6,12 @@ import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
-import plugin.GDScriptLanguage
+import plugin.GDScript
 
 class BlockSubtree(node: ASTNode) : ANTLRPsiNode(node), ScopeNode {
 
     override fun resolve(element: PsiNamedElement): PsiElement? {
-        return SymtabUtils.resolve(this, GDScriptLanguage, element, "/block/vardef/ID")
+        return SymtabUtils.resolve(this, GDScript, element, "/block/vardef/ID")
     }
 
 }

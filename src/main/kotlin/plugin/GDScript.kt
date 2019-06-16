@@ -2,4 +2,4 @@ package plugin
 
 import com.intellij.lang.Language
 
-object GDScriptLanguage: Language("GDScript")
+object GDScript: Language("GDScript")

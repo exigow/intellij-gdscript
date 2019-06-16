@@ -6,7 +6,7 @@ import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.PsiReferenceBase
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-abstract class GDScriptElementRef(element: IdentifierPsiINode) : PsiReferenceBase<IdentifierPsiINode>(element, TextRange(0, element.text.length)) {
+abstract class GDScriptElementReference(element: IdentifierPsiINode) : PsiReferenceBase<IdentifierPsiINode>(element, TextRange(0, element.text.length)) {
 
     override fun getVariants(): Array<Any?> = arrayOfNulls(0)
 
