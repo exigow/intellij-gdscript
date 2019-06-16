@@ -1,9 +1,9 @@
 package plugin
 
-import com.intellij.lexer.EmptyLexer
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
@@ -11,7 +11,6 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import plugin.parser.GDScriptLanguageLexer
 import plugin.parser.GDScriptLanguageParser
-import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 
 class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
 
@@ -27,9 +26,10 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
     }
 
     private fun mapTokenToTextAttribute(tokenType: TokenIElementType): TextAttributesKey? {
+        val keywords = arrayOf(GDScriptLanguageLexer.VAR, GDScriptLanguageLexer.WHILE, GDScriptLanguageLexer.IF, GDScriptLanguageLexer.ELSE, GDScriptLanguageLexer.RETURN, GDScriptLanguageLexer.PRINT, GDScriptLanguageLexer.FUNC, GDScriptLanguageLexer.TYPEINT, GDScriptLanguageLexer.TYPEFLOAT, GDScriptLanguageLexer.TYPESTRING, GDScriptLanguageLexer.TYPEBOOLEAN, GDScriptLanguageLexer.TRUE, GDScriptLanguageLexer.FALSE)
         return when (tokenType.antlrTokenType) {
+            in keywords -> KEYWORD
             GDScriptLanguageLexer.ID -> ID
-            GDScriptLanguageLexer.VAR, GDScriptLanguageLexer.WHILE, GDScriptLanguageLexer.IF, GDScriptLanguageLexer.ELSE, GDScriptLanguageLexer.RETURN, GDScriptLanguageLexer.PRINT, GDScriptLanguageLexer.FUNC, GDScriptLanguageLexer.TYPEINT, GDScriptLanguageLexer.TYPEFLOAT, GDScriptLanguageLexer.TYPESTRING, GDScriptLanguageLexer.TYPEBOOLEAN, GDScriptLanguageLexer.TRUE, GDScriptLanguageLexer.FALSE -> KEYWORD
             GDScriptLanguageLexer.STRING -> STRING
             GDScriptLanguageLexer.COMMENT -> LINE_COMMENT
             GDScriptLanguageLexer.LINE_COMMENT -> BLOCK_COMMENT

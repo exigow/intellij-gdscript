@@ -4,18 +4,18 @@ import com.intellij.openapi.fileTypes.LanguageFileType
 
 class GDScriptFileType : LanguageFileType(GDScriptLanguage) {
 
-    override fun getName() = "name ???"
+    override fun getName() = "getName()"
 
-    override fun getDescription() = "description ???"
+    override fun getDescription() = "getDescription()"
 
     override fun getDefaultExtension() = FILE_EXTENSION
 
-    override fun getIcon() = Icons.SAMPLE_ICON
+    override fun getIcon() = Icons.GDSCRIPT_ICON
 
     companion object {
 
-        @JvmField val FILE_EXTENSION = "gd"
-        @JvmField val INSTANCE = GDScriptFileType()
+        val FILE_EXTENSION = "gd"
+        val INSTANCE = GDScriptFileType()
 
     }
 

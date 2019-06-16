@@ -49,29 +49,13 @@ class GDScriptParserDefinition : ParserDefinition {
         }
     }
 
-    /** "Tokens of those types are automatically skipped by PsiBuilder."  */
-    override fun getWhitespaceTokens(): TokenSet {
-        return WHITESPACE
-    }
+    override fun getWhitespaceTokens() = WHITESPACE
 
-    override fun getCommentTokens(): TokenSet {
-        return COMMENTS
-    }
+    override fun getCommentTokens() = COMMENTS
 
-    override fun getStringLiteralElements(): TokenSet {
-        return STRING
-    }
+    override fun getStringLiteralElements() = STRING
 
-    override fun spaceExistanceTypeBetweenTokens(left: ASTNode?, right: ASTNode?): ParserDefinition.SpaceRequirements {
-        return ParserDefinition.SpaceRequirements.MAY
-    }
-
-    /** What is the IFileElementType of the root parse tree node? It
-     * is called from [.createFile] at least.
-     */
-    override fun getFileNodeType(): IFileElementType {
-        return FILE
-    }
+    override fun getFileNodeType() = FILE
 
     /** Create the root of your PSI tree (a PsiFile).
      *

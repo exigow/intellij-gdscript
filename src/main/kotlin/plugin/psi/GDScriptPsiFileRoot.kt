@@ -16,7 +16,7 @@ class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProv
 
     override fun toString() = "Sample Language file"
 
-    override fun getIcon(flags: Int) = Icons.SAMPLE_ICON
+    override fun getIcon(flags: Int) = Icons.GDSCRIPT_ICON
 
     override fun getContext(): ScopeNode? = null
 
