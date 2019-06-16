@@ -14,17 +14,15 @@ class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProv
 
     override fun getFileType() = GDScriptFileType.INSTANCE
 
-    override fun toString() = "GDScript Language file"
-
     override fun getIcon(flags: Int) = Icons.GDSCRIPT_ICON
 
     override fun getContext(): ScopeNode? = null
 
     override fun resolve(element: PsiNamedElement): PsiElement? {
         return if (element.parent is CallSubtree)
-            SymtabUtils.resolve(this, GDScript, element, "/script/function/ID")
+            SymtabUtils.resolve(this, GDScript, element, "/script/function/IDENTIFIER")
         else
-            SymtabUtils.resolve(this, GDScript, element, "/script/vardef/ID")
+            SymtabUtils.resolve(this, GDScript, element, "/script/vardef/IDENTIFIER")
     }
 
 }

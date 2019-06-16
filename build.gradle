@@ -43,3 +43,5 @@ generateGrammarSource {
     outputDirectory = file("build/generated-src/antlr/main/plugin/parser")
     arguments += ["-visitor", "-package", "plugin.parser"]
 }
+
+test.dependsOn generateGrammarSource

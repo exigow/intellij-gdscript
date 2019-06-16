@@ -1,55 +1,39 @@
 package plugin
 
-import com.intellij.lang.ASTNode
-import com.intellij.psi.tree.TokenSet
+import com.intellij.psi.PsiElement
 import com.intellij.testFramework.ParsingTestCase
+import org.antlr.intellij.adaptor.xpath.XPath
 
 class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test single var definition`() {
-        val tree = convertToSyntaxTree("var x = 1")
-        printTree(tree)
+    fun `test variable definition`() {
+        val psi = parse("var x = 1")
+        assertSelectionExists(psi, "script/variable_definition")
     }
 
-    fun `test multiple var definitions`() {
-        val tree = convertToSyntaxTree("var x = 1\nvar y = 2")
-        printTree(tree)
+    fun `test expression statement`() {
+        val psi = parse("a = 32")
+        assertSelectionExists(psi, "script/statement/expression")
     }
 
-    fun `test function`() {
-        val tree = convertToSyntaxTree("func test() {}")
-        printTree(tree)
+    fun `test call function expression`() {
+        val psi = parse("ping()")
+        assertSelectionExists(psi, "script/statement/call_function_expression")
     }
 
-    fun `test function with type`() {
-        val tree = convertToSyntaxTree("func test(): int {}")
-        printTree(tree)
-    }
-
-    fun `test function with missing block`() {
-        val tree = convertToSyntaxTree("func test()")
-        printTree(tree)
-    }
-
-    fun `test function with argument`() {
-        val tree = convertToSyntaxTree("func test(a:int) {\n}")
-        printTree(tree)
-    }
-
-    fun `test function with multiple arguments`() {
-        val tree = convertToSyntaxTree("func test(a: int, b: float) {\n}")
-        printTree(tree)
-    }
-
-    private fun convertToSyntaxTree(code: String): ASTNode {
+    private fun parse(code: String): PsiElement {
         val file = createPsiFile("script.gd", code)
         ensureParsed(file)
-        return file.node.getChildren(TokenSet.ANY)[0]
+        return file.node.lastChildNode.psi // skip file/root node
     }
 
-    private fun printTree(tree: ASTNode) {
-        val toShow = ASTNodePrinter.printDirectoryTree(tree)
-        println(toShow)
+    private fun assertSelectionExists(psi: PsiElement, selector: String) {
+        println("PSI tree:\n${toPrettyTreeString(psi)}")
+        val result = XPath.findAll(GDScript, psi, selector) // throws error when selection is invalid
+        if (result.isEmpty())
+            fail("Invalid selector $selector")
     }
+
+    private fun toPrettyTreeString(psi: PsiElement) = ASTNodePrinter.printDirectoryTree(psi.node)
 
 }

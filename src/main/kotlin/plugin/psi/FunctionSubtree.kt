@@ -12,7 +12,7 @@ import plugin.GDScript
 class FunctionSubtree(node: ASTNode, idElementType: IElementType) : IdentifierDefSubtree(node, idElementType), ScopeNode {
 
     override fun resolve(element: PsiNamedElement): PsiElement? {
-        return SymtabUtils.resolve(this, GDScript, element, "/script/function/ID")
+        return SymtabUtils.resolve(this, GDScript, element, "/script/function/IDENTIFIER")
     }
 
 }

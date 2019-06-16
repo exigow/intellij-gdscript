@@ -23,7 +23,7 @@ abstract class GDScriptElementReference(element: IdentifierPsiINode) : PsiRefere
         var def = def
         val refName = myElement.name
         //		System.out.println(getClass().getSimpleName()+".isReferenceTo("+refName+"->"+def.getText()+")");
-        // sometimes def comes in pointing to ID node itself. depends on what you click on
+        // sometimes def comes in pointing to IDENTIFIER node itself. depends on what you click on
         if (def is IdentifierPsiINode && isDefSubtree(def.getParent())) {
             def = def.getParent()
         }

@@ -11,7 +11,7 @@ import plugin.GDScript
 class BlockSubtree(node: ASTNode) : ANTLRPsiNode(node), ScopeNode {
 
     override fun resolve(element: PsiNamedElement): PsiElement? {
-        return SymtabUtils.resolve(this, GDScript, element, "/block/vardef/ID")
+        return SymtabUtils.resolve(this, GDScript, element, "/block/vardef/IDENTIFIER")
     }
 
 }

@@ -58,11 +58,8 @@ class GDScriptParserDefinition : ParserDefinition {
 
     private fun convertRuleToPsi(node: ASTNode, rule: RuleIElementType): ANTLRPsiNode {
         return when (rule.ruleIndex) {
-            GDScriptParser.RULE_function -> FunctionSubtree(node, rule)
-            GDScriptParser.RULE_vardef -> VardefSubtree(node, rule)
-            GDScriptParser.RULE_formal_arg -> ArgdefSubtree(node, rule)
-            GDScriptParser.RULE_block -> BlockSubtree(node)
-            GDScriptParser.RULE_call_expr -> CallSubtree(node)
+            GDScriptParser.RULE_variable_definition -> VardefSubtree(node, rule)
+            GDScriptParser.RULE_call_function_expression -> CallSubtree(node)
             else -> ANTLRPsiNode(node)
         }
     }
@@ -75,10 +72,10 @@ class GDScriptParserDefinition : ParserDefinition {
         init {
             PSIElementTypeFactory.defineLanguageIElementTypes(GDScript, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
             val tokenIElementTypes = PSIElementTypeFactory.getTokenIElementTypes(GDScript)
-            ID = tokenIElementTypes[GDScriptLexer.ID]
+            ID = tokenIElementTypes[GDScriptLexer.IDENTIFIER]
         }
 
-        val COMMENTS = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.COMMENT, GDScriptLexer.LINE_COMMENT)
+        val COMMENTS = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.LINE_COMMENT)
         val WHITESPACE = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.WS)
         val STRING = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.STRING)
 
