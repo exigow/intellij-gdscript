@@ -42,9 +42,5 @@ dependencies {
 }
 
 generateGrammarSource {
-    arguments += ["-package", "plugin.parser", "-Xexact-output-dir"]
-}
-
-task runIdeWithDifferentJvm(type: RunIdeTask) {
-    jbreVersion 'jbrex8u152b1024.10'
+    outputDirectory = file("build/generated-src/antlr/main/plugin/parser")
 }
