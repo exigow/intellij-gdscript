@@ -6,7 +6,7 @@
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileTypeFactory implementation="plugin.GDScriptFileTypeFactory"/>
-		<lang.syntaxHighlighterFactory key="Sample" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
+		<lang.syntaxHighlighterFactory language="Sample" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
 		<lang.parserDefinition language="Sample" implementationClass="plugin.GDScriptParserDefinition"/>
 	</extensions>
 </idea-plugin>
