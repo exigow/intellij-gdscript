@@ -32,13 +32,12 @@ class GDScriptParserDefinition : ParserDefinition {
     override fun createParser(project: Project): PsiParser {
         val parser = GDScriptLanguageParser(null)
         return object : ANTLRParserAdaptor(GDScriptLanguage, parser) {
+
             override fun parse(parser: Parser, root: IElementType): ParseTree {
-                // start rule depends on root passed in; sometimes we want to create an ID node etc...
-                return if (root is IFileElementType) {
-                    (parser as GDScriptLanguageParser).script()
-                } else (parser as GDScriptLanguageParser).primary()
-                // let's hope it's an ID as needed by "rename function"
+                require(parser is GDScriptLanguageParser)
+                return if (root is IFileElementType) parser.script() else parser.primary()
             }
+
         }
     }
 
@@ -69,6 +68,7 @@ class GDScriptParserDefinition : ParserDefinition {
     }
 
     companion object {
+
         val FILE = IFileElementType(GDScriptLanguage)
         var ID: TokenIElementType
 
@@ -81,5 +81,7 @@ class GDScriptParserDefinition : ParserDefinition {
         val COMMENTS = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.COMMENT, GDScriptLanguageLexer.LINE_COMMENT)
         val WHITESPACE = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.WS)
         val STRING = PSIElementTypeFactory.createTokenSet(GDScriptLanguage, GDScriptLanguageLexer.STRING)
+
     }
+
 }
