@@ -1,5 +1,3 @@
-import org.jetbrains.intellij.tasks.RunIdeTask
-
 buildscript {
     repositories {
         mavenCentral()
@@ -43,4 +41,5 @@ dependencies {
 
 generateGrammarSource {
     outputDirectory = file("build/generated-src/antlr/main/plugin/parser")
+    arguments += ["-visitor", "-package", "plugin.parser"]
 }

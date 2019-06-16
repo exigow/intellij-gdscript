@@ -9,8 +9,6 @@
  */
 grammar GDScriptLanguage;
 
-@header {package plugin.parser;}
-
 /** The start rule must be whatever you would normally use, such as script
  *  or compilationUnit, etc...
  */
