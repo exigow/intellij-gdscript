@@ -8,8 +8,8 @@ import com.intellij.psi.tree.IElementType;
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor;
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory;
 import org.antlr.intellij.adaptor.lexer.TokenIElementType;
-import plugin.parser.SampleLanguageLexer;
-import plugin.parser.SampleLanguageParser;
+import plugin.parser.GDScriptLanguageLexer;
+import plugin.parser.GDScriptLanguageParser;
 import org.jetbrains.annotations.NotNull;
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
@@ -36,26 +36,26 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 	private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 	public static final TextAttributesKey ID =
-		createTextAttributesKey("SAMPLE_ID", DefaultLanguageHighlighterColors.IDENTIFIER);
+		createTextAttributesKey("GDSCRIPT_ID", DefaultLanguageHighlighterColors.IDENTIFIER);
 	public static final TextAttributesKey KEYWORD =
-		createTextAttributesKey("SAMPLE_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
+		createTextAttributesKey("GDSCRIPT_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
 	public static final TextAttributesKey STRING =
-		createTextAttributesKey("SAMPLE_STRING", DefaultLanguageHighlighterColors.STRING);
+		createTextAttributesKey("GDSCRIPT_STRING", DefaultLanguageHighlighterColors.STRING);
 	public static final TextAttributesKey LINE_COMMENT =
-		createTextAttributesKey("SAMPLE_LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
+		createTextAttributesKey("GDSCRIPT_LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
 	public static final TextAttributesKey BLOCK_COMMENT =
-		createTextAttributesKey("SAMPLE_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
+		createTextAttributesKey("GDSCRIPT_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
 
 	static {
 		PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage.INSTANCE,
-		                                                  SampleLanguageParser.tokenNames,
-		                                                  SampleLanguageParser.ruleNames);
+		                                                  GDScriptLanguageParser.tokenNames,
+		                                                  GDScriptLanguageParser.ruleNames);
 	}
 
 	@NotNull
 	@Override
 	public Lexer getHighlightingLexer() {
-		SampleLanguageLexer lexer = new SampleLanguageLexer(null);
+		GDScriptLanguageLexer lexer = new GDScriptLanguageLexer(null);
 		return new ANTLRLexerAdaptor(GDScriptLanguage.INSTANCE, lexer);
 	}
 
@@ -67,31 +67,31 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 		int ttype = myType.getANTLRTokenType();
 		TextAttributesKey attrKey;
 		switch ( ttype ) {
-			case SampleLanguageLexer.ID :
+			case GDScriptLanguageLexer.ID :
 				attrKey = ID;
 				break;
-			case SampleLanguageLexer.VAR :
-			case SampleLanguageLexer.WHILE :
-			case SampleLanguageLexer.IF :
-			case SampleLanguageLexer.ELSE :
-			case SampleLanguageLexer.RETURN :
-			case SampleLanguageLexer.PRINT :
-			case SampleLanguageLexer.FUNC :
-			case SampleLanguageLexer.TYPEINT :
-			case SampleLanguageLexer.TYPEFLOAT :
-			case SampleLanguageLexer.TYPESTRING :
-			case SampleLanguageLexer.TYPEBOOLEAN :
-			case SampleLanguageLexer.TRUE :
-			case SampleLanguageLexer.FALSE :
+			case GDScriptLanguageLexer.VAR :
+			case GDScriptLanguageLexer.WHILE :
+			case GDScriptLanguageLexer.IF :
+			case GDScriptLanguageLexer.ELSE :
+			case GDScriptLanguageLexer.RETURN :
+			case GDScriptLanguageLexer.PRINT :
+			case GDScriptLanguageLexer.FUNC :
+			case GDScriptLanguageLexer.TYPEINT :
+			case GDScriptLanguageLexer.TYPEFLOAT :
+			case GDScriptLanguageLexer.TYPESTRING :
+			case GDScriptLanguageLexer.TYPEBOOLEAN :
+			case GDScriptLanguageLexer.TRUE :
+			case GDScriptLanguageLexer.FALSE :
 				attrKey = KEYWORD;
 				break;
-			case SampleLanguageLexer.STRING :
+			case GDScriptLanguageLexer.STRING :
 				attrKey = STRING;
 				break;
-			case SampleLanguageLexer.COMMENT :
+			case GDScriptLanguageLexer.COMMENT :
 				attrKey = LINE_COMMENT;
 				break;
-			case SampleLanguageLexer.LINE_COMMENT :
+			case GDScriptLanguageLexer.LINE_COMMENT :
 				attrKey = BLOCK_COMMENT;
 				break;
 			default :

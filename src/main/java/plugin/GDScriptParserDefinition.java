@@ -18,8 +18,8 @@ import org.antlr.intellij.adaptor.lexer.RuleIElementType;
 import org.antlr.intellij.adaptor.lexer.TokenIElementType;
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor;
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode;
-import plugin.parser.SampleLanguageLexer;
-import plugin.parser.SampleLanguageParser;
+import plugin.parser.GDScriptLanguageLexer;
+import plugin.parser.GDScriptLanguageParser;
 import plugin.psi.ArgdefSubtree;
 import plugin.psi.BlockSubtree;
 import plugin.psi.CallSubtree;
@@ -40,48 +40,48 @@ public class GDScriptParserDefinition implements ParserDefinition {
 
 	static {
 		PSIElementTypeFactory.defineLanguageIElementTypes(GDScriptLanguage.INSTANCE,
-		                                                  SampleLanguageParser.tokenNames,
-		                                                  SampleLanguageParser.ruleNames);
+		                                                  GDScriptLanguageParser.tokenNames,
+		                                                  GDScriptLanguageParser.ruleNames);
 		List<TokenIElementType> tokenIElementTypes =
 			PSIElementTypeFactory.getTokenIElementTypes(GDScriptLanguage.INSTANCE);
-		ID = tokenIElementTypes.get(SampleLanguageLexer.ID);
+		ID = tokenIElementTypes.get(GDScriptLanguageLexer.ID);
 	}
 
 	public static final TokenSet COMMENTS =
 		PSIElementTypeFactory.createTokenSet(
 			GDScriptLanguage.INSTANCE,
-			SampleLanguageLexer.COMMENT,
-			SampleLanguageLexer.LINE_COMMENT);
+			GDScriptLanguageLexer.COMMENT,
+			GDScriptLanguageLexer.LINE_COMMENT);
 
 	public static final TokenSet WHITESPACE =
 		PSIElementTypeFactory.createTokenSet(
 			GDScriptLanguage.INSTANCE,
-			SampleLanguageLexer.WS);
+			GDScriptLanguageLexer.WS);
 
 	public static final TokenSet STRING =
 		PSIElementTypeFactory.createTokenSet(
 			GDScriptLanguage.INSTANCE,
-			SampleLanguageLexer.STRING);
+			GDScriptLanguageLexer.STRING);
 
 	@NotNull
 	@Override
 	public Lexer createLexer(Project project) {
-		SampleLanguageLexer lexer = new SampleLanguageLexer(null);
+		GDScriptLanguageLexer lexer = new GDScriptLanguageLexer(null);
 		return new ANTLRLexerAdaptor(GDScriptLanguage.INSTANCE, lexer);
 	}
 
 	@NotNull
 	public PsiParser createParser(final Project project) {
-		final SampleLanguageParser parser = new SampleLanguageParser(null);
+		final GDScriptLanguageParser parser = new GDScriptLanguageParser(null);
 		return new ANTLRParserAdaptor(GDScriptLanguage.INSTANCE, parser) {
 			@Override
 			protected ParseTree parse(Parser parser, IElementType root) {
 				// start rule depends on root passed in; sometimes we want to create an ID node etc...
 				if ( root instanceof IFileElementType ) {
-					return ((SampleLanguageParser) parser).script();
+					return ((GDScriptLanguageParser) parser).script();
 				}
 				// let's hope it's an ID as needed by "rename function"
-				return ((SampleLanguageParser) parser).primary();
+				return ((GDScriptLanguageParser) parser).primary();
 			}
 		};
 	}
@@ -161,15 +161,15 @@ public class GDScriptParserDefinition implements ParserDefinition {
 		}
 		RuleIElementType ruleElType = (RuleIElementType) elType;
 		switch ( ruleElType.getRuleIndex() ) {
-			case SampleLanguageParser.RULE_function :
+			case GDScriptLanguageParser.RULE_function :
 				return new FunctionSubtree(node, elType);
-			case SampleLanguageParser.RULE_vardef :
+			case GDScriptLanguageParser.RULE_vardef :
 				return new VardefSubtree(node, elType);
-			case SampleLanguageParser.RULE_formal_arg :
+			case GDScriptLanguageParser.RULE_formal_arg :
 				return new ArgdefSubtree(node, elType);
-			case SampleLanguageParser.RULE_block :
+			case GDScriptLanguageParser.RULE_block :
 				return new BlockSubtree(node);
-			case SampleLanguageParser.RULE_call_expr :
+			case GDScriptLanguageParser.RULE_call_expr :
 				return new CallSubtree(node);
 			default :
 				return new ANTLRPsiNode(node);

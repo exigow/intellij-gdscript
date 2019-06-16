@@ -7,7 +7,7 @@
  *
  *  Generate the parser via "mvn compile" from root dir of project.
  */
-grammar SampleLanguage;
+grammar GDScriptLanguage;
 
 @header {package plugin.parser;}
 
