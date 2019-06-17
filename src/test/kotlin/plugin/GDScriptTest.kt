@@ -6,11 +6,6 @@ import org.antlr.intellij.adaptor.xpath.XPath
 
 class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test variable definition`() {
-        val psi = parse("var x = 1")
-        assertSelectionExists(psi, "script/variable_definition")
-    }
-
     fun `test expression statement`() {
         val psi = parse("a = 32")
         assertSelectionExists(psi, "script/statement/expression")
