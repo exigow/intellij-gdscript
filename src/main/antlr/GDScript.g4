@@ -1,15 +1,11 @@
 grammar GDScript;
 
-script:	variable_definition* statement* EOF;
-
-variable_definition : (VARIABLE | CONSTANT) IDENTIFIER '=' expression;
+script: statement* EOF;
 
 statement:
-    WHILE '(' expression ')' statement |
-    IF '(' expression ')' statement (ELSE statement)? |
+    IF '(' expression ')' statement |
     IDENTIFIER '=' expression |
-    call_function_expression |
-    RETURN expression;
+    call_function_expression;
 
 expression:
     expression operator expression |
@@ -20,23 +16,14 @@ expression:
 
 operator: '*' | '/' | '+' | '-' | '==';
 
-call_function_expression: IDENTIFIER '(' call_function_arguments_expression? ')';
-
-call_function_arguments_expression : expression (',' expression)*;
+call_function_expression: IDENTIFIER '(' ')';
 
 primary: IDENTIFIER | NUMBER | STRING;
 
-// keywords
 IF: 'if';
-ELSE: 'else';
-WHILE: 'while';
-VARIABLE: 'var';
-CONSTANT: 'const';
-RETURN: 'return';
-FUNCTION: 'func';
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' .*? '"';
 LINE_COMMENT: '#' .*? ('\n' | EOF) -> channel(HIDDEN);
-WHITESPACE: [ \t\n\r]+ -> channel(HIDDEN);
+WHITE_SPACE: [ \t\n\r]+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);

@@ -43,16 +43,18 @@ class GDScriptParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet = PSIElementTypeFactory.createTokenSet(GDScript, GDScriptLexer.WHITESPACE)
+    override fun getWhitespaceTokens() = createToken(GDScriptLexer.WHITE_SPACE)
 
-    override fun getCommentTokens(): TokenSet = TokenSet.EMPTY
+    override fun getCommentTokens() = createToken(GDScriptLexer.LINE_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet = TokenSet.EMPTY
+    override fun getStringLiteralElements() = createToken(GDScriptLexer.STRING)
 
     override fun getFileNodeType() = IFileElementType(GDScript)
 
     override fun createFile(viewProvider: FileViewProvider) = GDScriptPsiFileRoot(viewProvider)
 
     override fun createElement(node: ASTNode): PsiElement = ANTLRPsiNode(node)
+
+    private fun createToken(type: Int): TokenSet = PSIElementTypeFactory.createTokenSet(GDScript, type)
 
 }

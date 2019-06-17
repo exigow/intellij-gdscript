@@ -25,7 +25,7 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
         if (tokenType !is TokenIElementType)
             return null
         return when (tokenType.antlrTokenType) {
-            VARIABLE, IF -> DefaultColor.KEYWORD
+            IF -> DefaultColor.KEYWORD
             IDENTIFIER -> DefaultColor.IDENTIFIER
             NUMBER -> DefaultColor.NUMBER
             STRING -> DefaultColor.STRING
