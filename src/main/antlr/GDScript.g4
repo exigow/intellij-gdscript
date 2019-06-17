@@ -12,9 +12,9 @@ FUNCTION: 'func';
 IDENTIFIER: [a-zA-Z_] [a-zA-Z0-9_]*;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' .*? '"';
-LINE_COMMENT: '#' .*? ('\n' | EOF) -> skip;
-WS: [ \t\n\r]+ -> skip;
-ERRCHAR: . -> skip;
+LINE_COMMENT: '#' .*? ('\n' | EOF) -> channel(HIDDEN);
+WS: [ \t\n\r]+ -> channel(HIDDEN);
+ERRCHAR: . -> channel(HIDDEN);
 
 script:	variable_definition* statement* EOF;
 
