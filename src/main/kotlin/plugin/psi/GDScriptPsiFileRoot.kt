@@ -11,7 +11,7 @@ class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProv
 
     override fun getFileType() = GDScriptFileType.INSTANCE
 
-    override fun getIcon(flags: Int) = Icons.GDSCRIPT_ICON
+    override fun getIcon(flags: Int) = Icons.GODOT_ICON
 
     override fun getContext(): ScopeNode? = null
 

@@ -10,7 +10,7 @@ class GDScriptFileType : LanguageFileType(GDScript) {
 
     override fun getDefaultExtension() = FILE_EXTENSION
 
-    override fun getIcon() = Icons.GDSCRIPT_ICON
+    override fun getIcon() = Icons.GODOT_ICON
 
     companion object {
 
