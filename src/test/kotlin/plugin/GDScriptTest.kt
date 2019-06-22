@@ -9,18 +9,14 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
 
     fun `test complex`() {
         val psi = parse(
-                "hello\n" +
-                "if test:\n" +
-                "    test\n" +
-                "    while test:\n" +
-                "        olla\n" +
-                "        olla\n" +
-                "dolly\n")
+                "hello = 1\n" +
+                "if (test) abc = \"words\"\n" +
+                "function()\n")
         assertSelectionExists(psi, "script/statement/expression")
     }
 
     fun `test simple newlines`() {
-        val psi = parse("one\ntwo\n")
+        val psi = parse("one = 1")
         assertSelectionExists(psi, "script/statement/expression")
     }
 
