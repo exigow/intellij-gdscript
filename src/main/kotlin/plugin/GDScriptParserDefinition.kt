@@ -12,6 +12,7 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
+import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
@@ -37,24 +38,22 @@ class GDScriptParserDefinition : ParserDefinition {
 
             override fun parse(parser: Parser, root: IElementType): ParseTree {
                 require(parser is GDScriptParser)
-                return if (root is IFileElementType) parser.script() else parser.primary()
+                return if (root is IFileElementType) parser.script() else parser.statement()
             }
 
         }
     }
 
-    override fun getWhitespaceTokens() = createToken(GDScriptLexer.WHITE_SPACE)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.WS)
 
-    override fun getCommentTokens() = createToken(GDScriptLexer.LINE_COMMENT)
+    override fun getCommentTokens(): TokenSet = TokenSet.EMPTY
 
-    override fun getStringLiteralElements() = createToken(GDScriptLexer.STRING)
+    override fun getStringLiteralElements(): TokenSet = createTokenSet(GDScript, GDScriptLexer.STRING)
 
     override fun getFileNodeType() = IFileElementType(GDScript)
 
     override fun createFile(viewProvider: FileViewProvider) = GDScriptPsiFileRoot(viewProvider)
 
     override fun createElement(node: ASTNode): PsiElement = ANTLRPsiNode(node)
-
-    private fun createToken(type: Int): TokenSet = PSIElementTypeFactory.createTokenSet(GDScript, type)
 
 }

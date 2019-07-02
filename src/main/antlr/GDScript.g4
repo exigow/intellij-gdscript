@@ -1,29 +1,105 @@
 grammar GDScript;
 
-script: statement* EOF;
+tokens { INDENT, DEDENT }
 
-statement:
-    IF '(' expression ')' statement |
-    IDENTIFIER '=' expression |
-    call_function_expression;
+@lexer::members {
+	// Initializing `pendingDent` to true means any whitespace at the beginning
+	// of the file will trigger an INDENT, which will probably be a syntax error,
+	// as it is in Python.
+	private boolean pendingDent = true;
+	private int indentCount = 0;
+	private java.util.LinkedList<Token> tokenQueue = new java.util.LinkedList<>();
+	private java.util.Stack<Integer> indentStack = new java.util.Stack<>();
+	private Token initialIndentToken = null;
+	private int getSavedIndent() { return indentStack.isEmpty() ? 0 : indentStack.peek(); }
 
-expression:
-    expression operator expression |
-    '-' expression |
-    call_function_expression |
-    '(' expression ')' |
-    primary;
+	private CommonToken createToken(int type, String text, Token next) {
+		CommonToken token = new CommonToken(type, text);
+		if (null != initialIndentToken) {
+			token.setStartIndex(initialIndentToken.getStartIndex());
+			token.setLine(initialIndentToken.getLine());
+			token.setCharPositionInLine(initialIndentToken.getCharPositionInLine());
+			token.setStopIndex(next.getStartIndex()-1);
+		}
+		return token;
+	}
 
-operator: '*' | '/' | '+' | '-' | '==';
+	@Override
+	public Token nextToken() {
+		// Return tokens from the queue if it is not empty.
+		if (!tokenQueue.isEmpty()) { return tokenQueue.poll(); }
 
-call_function_expression: IDENTIFIER '(' ')';
+		// Grab the next token and if nothing special is needed, simply return it.
+		// Initialize `initialIndentToken` if needed.
+		Token next = super.nextToken();
+		//NOTE: This could be an appropriate spot to count whitespace or deal with
+		//NEWLINES, but it is already handled with custom actions down in the
+		//lexer rules.
+		if (pendingDent && null == initialIndentToken && NEWLINE != next.getType()) { initialIndentToken = next; }
+		if (null == next || HIDDEN == next.getChannel() || NEWLINE == next.getType()) { return next; }
+
+		// Handle EOF. In particular, handle an abrupt EOF that comes without an
+		// immediately preceding NEWLINE.
+		if (next.getType() == EOF) {
+			indentCount = 0;
+			// EOF outside of `pendingDent` state means input did not have a final
+			// NEWLINE before end of file.
+			if (!pendingDent) {
+				initialIndentToken = next;
+				tokenQueue.offer(createToken(NEWLINE, "NEWLINE", next));
+			}
+		}
+
+		// Before exiting `pendingDent` state queue up proper INDENTS and DEDENTS.
+		while (indentCount != getSavedIndent()) {
+			if (indentCount > getSavedIndent()) {
+				indentStack.push(indentCount);
+				tokenQueue.offer(createToken(GDScriptParser.INDENT, "INDENT" + indentCount, next));
+			} else {
+				indentStack.pop();
+				tokenQueue.offer(createToken(GDScriptParser.DEDENT, "DEDENT"+getSavedIndent(), next));
+			}
+		}
+		pendingDent = false;
+		tokenQueue.offer(next);
+		return tokenQueue.poll();
+	}
+
+}
+
+
+script : ( NEWLINE | statement )* EOF ;
+
+statement
+    :   simpleStatement
+    |   blockStatements
+    ;
+
+simpleStatement : primary+ NEWLINE ;
+
+blockStatements : primary+ NEWLINE INDENT statement+ DEDENT ;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
-IF: 'if';
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' .*? '"';
-LINE_COMMENT: '#' .*? ('\n' | EOF) -> channel(HIDDEN);
-WHITE_SPACE: [ \t\n\r]+ -> channel(HIDDEN);
+
+NEWLINE : ( '\r'? '\n' | '\r' ) {
+    if (pendingDent) { setChannel(HIDDEN); }
+    pendingDent = true;
+    indentCount = 0;
+    initialIndentToken = null;
+} ;
+
+WS : [ \t]+ {
+    setChannel(HIDDEN);
+    if (pendingDent) { indentCount += getText().length(); }
+} ;
+
+//BlockComment : '/*' ( BlockComment | . )*? '*/' -> channel(HIDDEN) ;   // allow nesting comments
+//LineComment : '//' ~[\r\n]* -> channel(HIDDEN) ;
+
+//LEGIT : ~[ \t\r\n]+ ~[\r\n]*;   // Replace with your language-specific rules...
+
 ERRCHAR: . -> channel(HIDDEN);

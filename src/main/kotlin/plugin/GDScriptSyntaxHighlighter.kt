@@ -19,18 +19,14 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
         return ANTLRLexerAdaptor(GDScript, lexer)
     }
 
-    override fun getTokenHighlights(type: IElementType) = arrayOf(mapToHighlight(type))
-
-    private fun mapToHighlight(tokenType: IElementType): TextAttributesKey? {
-        if (tokenType !is TokenIElementType)
-            return null
-        return when (tokenType.antlrTokenType) {
-            IF -> DefaultColor.KEYWORD
-            IDENTIFIER -> DefaultColor.IDENTIFIER
-            NUMBER -> DefaultColor.NUMBER
-            STRING -> DefaultColor.STRING
-            LINE_COMMENT -> DefaultColor.LINE_COMMENT
-            else -> null
+    override fun getTokenHighlights(type: IElementType): Array<out TextAttributesKey> {
+        if (type !is TokenIElementType)
+            return emptyArray()
+        return when (type.antlrTokenType) {
+            IDENTIFIER -> arrayOf(DefaultColor.IDENTIFIER)
+            NUMBER -> arrayOf(DefaultColor.NUMBER)
+            STRING -> arrayOf(DefaultColor.STRING)
+            else -> emptyArray()
         }
     }
 

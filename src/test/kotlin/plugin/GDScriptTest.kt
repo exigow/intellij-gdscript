@@ -7,17 +7,27 @@ import plugin.ASTNodePrinter.printDirectoryTree
 
 class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test complex`() {
-        val psi = parse(
-                "hello = 1\n" +
-                "if (test) abc = \"words\"\n" +
-                "function()\n")
-        assertSelectionExists(psi, "script/statement/expression")
+    fun `test minimal`() {
+        val psi = parse("one")
+        assertSelectionExists(psi, "script/statement/simpleStatement/primary")
     }
 
-    fun `test simple newlines`() {
-        val psi = parse("one = 1")
-        assertSelectionExists(psi, "script/statement/expression")
+    fun `test simple two newlines`() {
+        val psi = parse("one\ntwo\n")
+        assertSelectionExists(psi, "script/statement/simpleStatement/primary")
+    }
+
+    fun `test complex`() {
+        val code =
+            "hello\n" +
+            "if test \"dolly\"\n" +
+            "    17.512\n" +
+            "    while test\n" +
+            "        olla\n" +
+            "        \"str\"\n" +
+            "dolly"
+        val psi = parse(code)
+        assertSelectionExists(psi, "script/statement/simpleStatement/primary")
     }
 
     private fun parse(code: String): PsiElement {
