@@ -13,7 +13,7 @@ class SomeTest : LightPlatformCodeInsightFixtureTestCase() {
                 "hello\n" +
                 "    1234\n" +
                 "\"dolly\""
-        myFixture.configureByText(GDScriptFileType.INSTANCE, code)
+        myFixture.configureByText(GDScriptFileType, code)
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val h = myFixture.doHighlighting()
         println(h)

@@ -14,14 +14,15 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 
 public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 
-    public static final TextAttributesKey NUMBER = createTextAttributesKey("GDSCRIPT_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
-    public static final TextAttributesKey STRING = createTextAttributesKey("GDSCRIPT_STRING", DefaultLanguageHighlighterColors.STRING);
-    public static final TextAttributesKey IDENTIFIER = createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER);
-
-    private static final TextAttributesKey[] NUMBER_KEYS = new TextAttributesKey[]{NUMBER};
-    private static final TextAttributesKey[] STRING_KEYS = new TextAttributesKey[]{STRING};
-    private static final TextAttributesKey[] IDENTIFIER_KEYS = new TextAttributesKey[]{IDENTIFIER};
-
+    private static final TextAttributesKey[] NUMBER_KEYS = new TextAttributesKey[] {
+            createTextAttributesKey("GDSCRIPT_NUMBER", DefaultLanguageHighlighterColors.NUMBER)
+    };
+    private static final TextAttributesKey[] STRING_KEYS = new TextAttributesKey[] {
+            createTextAttributesKey("GDSCRIPT_STRING", DefaultLanguageHighlighterColors.STRING)
+    };
+    private static final TextAttributesKey[] IDENTIFIER_KEYS = new TextAttributesKey[] {
+            createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)
+    };
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
     @NotNull
@@ -37,13 +38,15 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
         if (!(tokenType instanceof TokenIElementType))
             return EMPTY_KEYS;
         int antlrType = ((TokenIElementType) tokenType).getANTLRTokenType();
-        if (antlrType == GDScriptLexer.NUMBER) {
-            return NUMBER_KEYS;
-        } else if (antlrType == GDScriptLexer.STRING) {
-            return STRING_KEYS;
-        } else if (antlrType == GDScriptLexer.IDENTIFIER) {
-            return IDENTIFIER_KEYS;
+        switch (antlrType) {
+            case GDScriptLexer.NUMBER:
+                return NUMBER_KEYS;
+            case GDScriptLexer.STRING:
+                return STRING_KEYS;
+            case GDScriptLexer.IDENTIFIER:
+                return IDENTIFIER_KEYS;
         }
         return EMPTY_KEYS;
     }
+
 }

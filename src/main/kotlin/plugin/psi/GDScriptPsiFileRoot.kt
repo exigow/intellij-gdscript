@@ -9,7 +9,7 @@ import plugin.Icons
 
 class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScript) {
 
-    override fun getFileType() = GDScriptFileType.INSTANCE
+    override fun getFileType() = GDScriptFileType
 
     override fun getIcon(flags: Int) = Icons.GODOT_ICON
 
