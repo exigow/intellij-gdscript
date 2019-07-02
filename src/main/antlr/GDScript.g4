@@ -1,6 +1,9 @@
 grammar GDScript;
 
-tokens { INDENT, DEDENT }
+tokens {
+    INDENT,
+    DEDENT
+}
 
 @lexer::members {
 	// Initializing `pendingDent` to true means any whitespace at the beginning
@@ -67,39 +70,35 @@ tokens { INDENT, DEDENT }
 
 }
 
+script: (NEWLINE | statement)* EOF;
 
-script : ( NEWLINE | statement )* EOF ;
+statement: simpleStatement | blockStatements;
 
-statement
-    :   simpleStatement
-    |   blockStatements
-    ;
+simpleStatement: primary+ NEWLINE;
 
-simpleStatement : primary+ NEWLINE ;
-
-blockStatements : primary+ NEWLINE INDENT statement+ DEDENT ;
+blockStatements: primary+ NEWLINE INDENT statement+ DEDENT;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
-STRING: '"' .*? '"';
+STRING: UNTERMINATED_STRING '"';
+UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
 
-NEWLINE : ( '\r'? '\n' | '\r' ) {
-    if (pendingDent) { setChannel(HIDDEN); }
-    pendingDent = true;
-    indentCount = 0;
-    initialIndentToken = null;
-} ;
-
-WS : [ \t]+ {
+NEWLINE: ( '\r'? '\n' | '\r' ) {
+if (pendingDent) {
     setChannel(HIDDEN);
-    if (pendingDent) { indentCount += getText().length(); }
-} ;
+}
+pendingDent = true;
+indentCount = 0;
+initialIndentToken = null;
+};
 
-//BlockComment : '/*' ( BlockComment | . )*? '*/' -> channel(HIDDEN) ;   // allow nesting comments
-//LineComment : '//' ~[\r\n]* -> channel(HIDDEN) ;
-
-//LEGIT : ~[ \t\r\n]+ ~[\r\n]*;   // Replace with your language-specific rules...
+WS: [ \t]+ {
+setChannel(HIDDEN);
+if (pendingDent) {
+    indentCount += getText().length();
+}
+};
 
 ERRCHAR: . -> channel(HIDDEN);
