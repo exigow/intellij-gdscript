@@ -74,16 +74,14 @@ file_input: (NEWLINE | stmt)* EOF;
 
 stmt: simple_stmt | compound_stmt;
 
-simple_stmt: primary_stmt | extends_stmt | variable_stmt;
-
+simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt;
 primary_stmt: primary NEWLINE;
 extends_stmt: EXTENDS_KEYWORD IDENTIFIER NEWLINE;
 variable_stmt: VAR_KEYWORD IDENTIFIER '=' primary NEWLINE;
+const_stmt: CONST_KEYWORD IDENTIFIER '=' primary NEWLINE;
 
 compound_stmt: if_stmt | while_stmt;
-
 if_stmt: IF_KEYWORD primary ':' suite;
-
 while_stmt: WHILE_KEYWORD primary ':' suite;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
@@ -93,6 +91,7 @@ primary: IDENTIFIER | NUMBER | STRING;
 IF_KEYWORD: 'if';
 WHILE_KEYWORD: 'while';
 EXTENDS_KEYWORD: 'extends';
+CONST_KEYWORD: 'const';
 VAR_KEYWORD: 'var';
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
