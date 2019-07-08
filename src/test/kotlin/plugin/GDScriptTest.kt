@@ -8,7 +8,8 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
 
     fun `test complex`() {
         val code =
-            "one\n" +
+            "extends BaseClass\n" +
+            "var kek = 123\n" +
             "two\n" +
             "if hello:\n" +
             "\tfirst\n" +
