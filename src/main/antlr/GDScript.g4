@@ -78,14 +78,16 @@ simple_stmt: primary NEWLINE;
 
 compound_stmt: if_stmt | while_stmt;
 
-if_stmt: 'if' primary ':' suite;
+if_stmt: IF_KEYWORD primary ':' suite;
 
-while_stmt: 'while' primary ':' suite;
+while_stmt: WHILE_KEYWORD primary ':' suite;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
+IF_KEYWORD: 'if';
+WHILE_KEYWORD: 'while';
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
