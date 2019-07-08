@@ -23,6 +23,9 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] IDENTIFIER_KEYS = new TextAttributesKey[] {
             createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)
     };
+    private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[] {
+            createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.LINE_COMMENT)
+    };
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
     @NotNull
@@ -45,6 +48,8 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
                 return STRING_KEYS;
             case GDScriptLexer.IDENTIFIER:
                 return IDENTIFIER_KEYS;
+            case GDScriptLexer.COMMENT:
+                return COMMENT_KEYS;
         }
         return EMPTY_KEYS;
     }

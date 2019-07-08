@@ -70,13 +70,19 @@ tokens {
 
 }
 
-script: (NEWLINE | statement)* EOF;
+file_input: (NEWLINE | stmt)* EOF;
 
-statement: simpleStatement | blockStatements;
+stmt: simple_stmt | compound_stmt;
 
-simpleStatement: primary+ NEWLINE;
+simple_stmt: primary NEWLINE;
 
-blockStatements: primary+ NEWLINE INDENT statement+ DEDENT;
+compound_stmt: if_stmt | while_stmt;
+
+if_stmt: 'if' primary ':' suite;
+
+while_stmt: 'while' primary ':' suite;
+
+suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
@@ -85,7 +91,7 @@ NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
 UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
 
-NEWLINE: ( '\r'? '\n' | '\r' ) {
+NEWLINE: ('\r'? '\n' | '\r') {
 if (pendingDent) {
     setChannel(HIDDEN);
 }
@@ -94,11 +100,13 @@ indentCount = 0;
 initialIndentToken = null;
 };
 
-WS: [ \t]+ {
+WS: (' ' | '\t')+ {
 setChannel(HIDDEN);
 if (pendingDent) {
     indentCount += getText().length();
 }
 };
+
+COMMENT: '#' ~[\r\n\f]*;
 
 ERRCHAR: . -> channel(HIDDEN);

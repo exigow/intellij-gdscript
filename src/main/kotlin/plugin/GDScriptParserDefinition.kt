@@ -38,7 +38,7 @@ class GDScriptParserDefinition : ParserDefinition {
 
             override fun parse(parser: Parser, root: IElementType): ParseTree {
                 require(parser is GDScriptParser)
-                return if (root is IFileElementType) parser.script() else parser.statement()
+                return if (root is IFileElementType) parser.file_input() else throw RuntimeException() // todo replace throw with non-file root
             }
 
         }
@@ -46,7 +46,7 @@ class GDScriptParserDefinition : ParserDefinition {
 
     override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.WS)
 
-    override fun getCommentTokens(): TokenSet = TokenSet.EMPTY
+    override fun getCommentTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.COMMENT)
 
     override fun getStringLiteralElements(): TokenSet = createTokenSet(GDScript, GDScriptLexer.STRING)
 
