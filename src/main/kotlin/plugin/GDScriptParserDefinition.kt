@@ -44,9 +44,9 @@ class GDScriptParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.WS)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.LINE_COMMENT)
 
     override fun getStringLiteralElements(): TokenSet = createTokenSet(GDScript, GDScriptLexer.STRING)
 

@@ -10,23 +10,12 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType;
 import org.jetbrains.annotations.NotNull;
 import plugin.parser.GDScriptLexer;
 
-import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
-
 public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 
-    private static final TextAttributesKey[] NUMBER_KEYS = new TextAttributesKey[] {
-            createTextAttributesKey("GDSCRIPT_NUMBER", DefaultLanguageHighlighterColors.NUMBER)
-    };
-    private static final TextAttributesKey[] STRING_KEYS = new TextAttributesKey[] {
-            createTextAttributesKey("GDSCRIPT_STRING", DefaultLanguageHighlighterColors.STRING)
-    };
-    private static final TextAttributesKey[] IDENTIFIER_KEYS = new TextAttributesKey[] {
-            createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)
-    };
-    private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[] {
-            createTextAttributesKey("GDSCRIPT_IDENTIFIER", DefaultLanguageHighlighterColors.LINE_COMMENT)
-    };
-    private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
+    private static final TextAttributesKey[] NUMBER = toArray(DefaultLanguageHighlighterColors.NUMBER);
+    private static final TextAttributesKey[] STRING = toArray(DefaultLanguageHighlighterColors.STRING);
+    private static final TextAttributesKey[] IDENTIFIER = toArray(DefaultLanguageHighlighterColors.IDENTIFIER);
+    private static final TextAttributesKey[] LINE_COMMENT = toArray(DefaultLanguageHighlighterColors.LINE_COMMENT);
 
     @NotNull
     @Override
@@ -39,19 +28,23 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
     @Override
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
         if (!(tokenType instanceof TokenIElementType))
-            return EMPTY_KEYS;
+            return EMPTY;
         int antlrType = ((TokenIElementType) tokenType).getANTLRTokenType();
         switch (antlrType) {
             case GDScriptLexer.NUMBER:
-                return NUMBER_KEYS;
+                return NUMBER;
             case GDScriptLexer.STRING:
-                return STRING_KEYS;
+                return STRING;
             case GDScriptLexer.IDENTIFIER:
-                return IDENTIFIER_KEYS;
-            case GDScriptLexer.COMMENT:
-                return COMMENT_KEYS;
+                return IDENTIFIER;
+            case GDScriptLexer.LINE_COMMENT:
+                return LINE_COMMENT;
         }
-        return EMPTY_KEYS;
+        return EMPTY;
+    }
+
+    private static TextAttributesKey[] toArray(TextAttributesKey key) {
+        return new TextAttributesKey[] {key};
     }
 
 }

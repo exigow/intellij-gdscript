@@ -100,13 +100,13 @@ indentCount = 0;
 initialIndentToken = null;
 };
 
-WS: (' ' | '\t')+ {
+WHITESPACE: (' ' | '\t')+ {
 setChannel(HIDDEN);
 if (pendingDent) {
     indentCount += getText().length();
 }
 };
 
-COMMENT: '#' ~[\r\n\f]*;
+LINE_COMMENT: '#' ~[\r\n\f]*;
 
 ERRCHAR: . -> channel(HIDDEN);
