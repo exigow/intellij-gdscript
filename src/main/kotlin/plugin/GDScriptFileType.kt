@@ -6,9 +6,9 @@ object GDScriptFileType : LanguageFileType(GDScript) {
 
     const val FILE_EXTENSION = "gd"
 
-    override fun getName() = "getName()"
+    override fun getName() = "GDScript"
 
-    override fun getDescription() = "getDescription()"
+    override fun getDescription() = "GDScript"
 
     override fun getDefaultExtension() = FILE_EXTENSION
 
