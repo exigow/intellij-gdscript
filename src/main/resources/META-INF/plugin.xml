@@ -8,5 +8,6 @@
 		<fileTypeFactory implementation="plugin.GDScriptFileTypeFactory"/>
 		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
 		<lang.parserDefinition language="GDScript" implementationClass="plugin.GDScriptParserDefinition"/>
+		<completion.contributor language="GDScript" implementationClass="plugin.GDScriptCompletionContributor"/>
 	</extensions>
 </idea-plugin>

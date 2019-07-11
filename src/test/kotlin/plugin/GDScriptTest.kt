@@ -32,7 +32,6 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
         println(printDirectoryTree(psi.node))
     }
 
-
     private fun parse(code: String): PsiElement {
         val file = createPsiFile("script.gd", code)
         ensureParsed(file)
