@@ -95,7 +95,7 @@ suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
-// KeywordTokens
+// Keyword tokens
 IF: 'if';
 WHILE: 'while';
 EXTENDS: 'extends';
