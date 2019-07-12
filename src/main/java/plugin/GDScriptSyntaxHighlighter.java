@@ -14,7 +14,7 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 
     private static final TextAttributesKey[] NUMBER = toArray(DefaultLanguageHighlighterColors.NUMBER);
     private static final TextAttributesKey[] STRING = toArray(DefaultLanguageHighlighterColors.STRING);
-    private static final TextAttributesKey[] IDENTIFIER = toArray(DefaultLanguageHighlighterColors.IDENTIFIER);
+    private static final TextAttributesKey[] PARAMETER = toArray(DefaultLanguageHighlighterColors.PARAMETER);
     private static final TextAttributesKey[] KEYWORD = toArray(DefaultLanguageHighlighterColors.KEYWORD);
     private static final TextAttributesKey[] LINE_COMMENT = toArray(DefaultLanguageHighlighterColors.LINE_COMMENT);
 
@@ -36,8 +36,8 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
                 return NUMBER;
             case GDScriptLexer.STRING:
                 return STRING;
-            case GDScriptLexer.IDENTIFIER:
-                return IDENTIFIER;
+            case GDScriptLexer.PARAMETER:
+                return PARAMETER;
             case GDScriptLexer.LINE_COMMENT:
                 return LINE_COMMENT;
             case GDScriptLexer.IF:

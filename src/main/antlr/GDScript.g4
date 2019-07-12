@@ -76,24 +76,24 @@ stmt: simple_stmt | compound_stmt;
 
 simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt | return_stmt;
 primary_stmt: primary NEWLINE;
-extends_stmt: EXTENDS IDENTIFIER NEWLINE;
-variable_stmt: VAR IDENTIFIER '=' primary NEWLINE;
-const_stmt: CONST IDENTIFIER '=' primary NEWLINE;
+extends_stmt: EXTENDS PARAMETER NEWLINE;
+variable_stmt: VAR PARAMETER '=' primary NEWLINE;
+const_stmt: CONST PARAMETER '=' primary NEWLINE;
 return_stmt: RETURN NEWLINE;
 
 compound_stmt: if_stmt | while_stmt | function_stmt;
 if_stmt: IF primary ':' suite;
 while_stmt: WHILE primary ':' suite;
-function_stmt: FUNC IDENTIFIER '(' argument_list? ')' ':' suite;
+function_stmt: FUNC PARAMETER '(' parameter_list? ')' ':' suite;
 
-argument_list: argument (',' argument)*;
-argument: IDENTIFIER (':' type)?;
+parameter_list: parameter (',' parameter)*;
+parameter: PARAMETER (':' type)?;
 
 type: BOOL | INT | FLOAT;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
-primary: IDENTIFIER | NUMBER | STRING;
+primary: PARAMETER | NUMBER | STRING;
 
 // Keyword tokens
 IF: 'if';
@@ -109,7 +109,7 @@ BOOL: 'bool';
 INT: 'int';
 FLOAT: 'float';
 
-IDENTIFIER: [a-zA-Z]+;
+PARAMETER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
 UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
