@@ -40,11 +40,11 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
                 return IDENTIFIER;
             case GDScriptLexer.LINE_COMMENT:
                 return LINE_COMMENT;
-            case GDScriptLexer.IF_KEYWORD:
-            case GDScriptLexer.WHILE_KEYWORD:
-            case GDScriptLexer.EXTENDS_KEYWORD:
-            case GDScriptLexer.VAR_KEYWORD:
-            case GDScriptLexer.CONST_KEYWORD:
+            case GDScriptLexer.IF:
+            case GDScriptLexer.WHILE:
+            case GDScriptLexer.EXTENDS:
+            case GDScriptLexer.VAR:
+            case GDScriptLexer.CONST:
                 return KEYWORD;
         }
         return EMPTY;

@@ -27,11 +27,11 @@ class GDScriptCompletionContributor : CompletionContributor() {
 
     private fun createKeywordLiteralLookups(): List<LookupElement> {
         val tokenValues = listOf(
-            GDScriptParser.VAR_KEYWORD,
-            GDScriptParser.CONST_KEYWORD,
-            GDScriptParser.EXTENDS_KEYWORD,
-            GDScriptParser.IF_KEYWORD,
-            GDScriptParser.WHILE_KEYWORD
+            GDScriptParser.VAR,
+            GDScriptParser.CONST,
+            GDScriptParser.EXTENDS,
+            GDScriptParser.IF,
+            GDScriptParser.WHILE
         )
         return tokenValues
             .map { GDScriptParser.VOCABULARY.getLiteralName(it) }
