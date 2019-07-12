@@ -45,6 +45,8 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
             case GDScriptLexer.EXTENDS:
             case GDScriptLexer.VAR:
             case GDScriptLexer.CONST:
+            case GDScriptLexer.FUNC:
+            case GDScriptLexer.RETURN:
                 return KEYWORD;
         }
         return EMPTY;

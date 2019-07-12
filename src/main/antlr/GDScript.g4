@@ -74,26 +74,40 @@ file_input: (NEWLINE | stmt)* EOF;
 
 stmt: simple_stmt | compound_stmt;
 
-simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt;
+simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt | return_stmt;
 primary_stmt: primary NEWLINE;
 extends_stmt: EXTENDS IDENTIFIER NEWLINE;
 variable_stmt: VAR IDENTIFIER '=' primary NEWLINE;
 const_stmt: CONST IDENTIFIER '=' primary NEWLINE;
+return_stmt: RETURN NEWLINE;
 
-compound_stmt: if_stmt | while_stmt;
+compound_stmt: if_stmt | while_stmt | function_stmt;
 if_stmt: IF primary ':' suite;
 while_stmt: WHILE primary ':' suite;
+function_stmt: FUNC IDENTIFIER '(' argument_list? ')' ':' suite;
+
+argument_list: argument (',' argument)*;
+argument: IDENTIFIER (':' type)?;
+
+type: BOOL | INT | FLOAT;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
 primary: IDENTIFIER | NUMBER | STRING;
 
-// Keywords
+// KeywordTokens
 IF: 'if';
 WHILE: 'while';
 EXTENDS: 'extends';
 CONST: 'const';
 VAR: 'var';
+FUNC: 'func';
+RETURN: 'return';
+
+// Privitive types
+BOOL: 'bool';
+INT: 'int';
+FLOAT: 'float';
 
 IDENTIFIER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;

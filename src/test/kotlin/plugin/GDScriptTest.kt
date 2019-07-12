@@ -8,32 +8,63 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
 
     fun `test complex`() {
         val code =
-            "extends BaseClass\n" +
-            "var kek = 123\n" +
-            "two\n" +
-            "if hello:\n" +
-            "\tfirst\n" +
-            "while \"dupaaa\":\n" +
-            "\tsecond\n" +
-            "\tdupa\n" +
-            "zero\n"
+                "extends BaseClass\n" +
+                        "var kek = 123\n" +
+                        "two\n" +
+                        "if hello:\n" +
+                        "\tfirst\n" +
+                        "while \"dupaaa\":\n" +
+                        "\tsecond\n" +
+                        "\tdupa\n" +
+                        "zero\n" +
+                        "func test(a: float, b, c):\n" +
+                        "\tvar k = 0"
         print(code)
         val psi = parse(code)
         println(printDirectoryTree(psi.node))
     }
 
-    fun `test comment`() {
-        val code =
-            "one\n" +
-            "two # comment\n" +
-            "zero\n"
-        print(code)
-        val psi = parse(code)
+    fun `test function declaration with empty args`() {
+        val psi = parse("""
+        func test():
+            return
+        """)
+        println(printDirectoryTree(psi.node))
+    }
+
+    fun `test function declaration with one arg`() {
+        val psi = parse("""
+        func test(a: bool):
+            return
+        """)
+        println(printDirectoryTree(psi.node))
+    }
+
+    fun `test function declaration with multiple args`() {
+        val psi = parse("""
+        func test(a: int, b: float):
+            return
+        """)
+        println(printDirectoryTree(psi.node))
+    }
+
+    fun `test single line comment after statement`() {
+        val psi = parse("""
+        return # Comment after statement
+        """)
+        println(printDirectoryTree(psi.node))
+    }
+
+    fun `test single line comment on empty line`() {
+        val psi = parse("""
+        # Comment on empty line
+        """)
         println(printDirectoryTree(psi.node))
     }
 
     private fun parse(code: String): PsiElement {
-        val file = createPsiFile("script.gd", code)
+        val trimmed = code.trimIndent()
+        val file = createPsiFile("script.gd", trimmed)
         ensureParsed(file)
         return file.node.psi
     }
