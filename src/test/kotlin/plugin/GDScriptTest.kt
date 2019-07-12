@@ -27,7 +27,7 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
     fun `test function declaration with empty args`() {
         val psi = parse("""
         func test():
-            return
+            pass
         """)
         println(printDirectoryTree(psi.node))
     }
@@ -35,7 +35,7 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
     fun `test function declaration with one arg`() {
         val psi = parse("""
         func test(a: bool):
-            return
+            pass
         """)
         println(printDirectoryTree(psi.node))
     }
@@ -43,14 +43,14 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
     fun `test function declaration with multiple args`() {
         val psi = parse("""
         func test(a: int, b: float):
-            return
+            pass
         """)
         println(printDirectoryTree(psi.node))
     }
 
     fun `test single line comment after statement`() {
         val psi = parse("""
-        return # Comment after statement
+        pass # Comment after statement
         """)
         println(printDirectoryTree(psi.node))
     }

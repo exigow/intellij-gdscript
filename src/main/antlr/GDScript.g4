@@ -74,12 +74,13 @@ file_input: (NEWLINE | stmt)* EOF;
 
 stmt: simple_stmt | compound_stmt;
 
-simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt | return_stmt;
+simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt | return_stmt | pass_stmt;
 primary_stmt: primary NEWLINE;
 extends_stmt: EXTENDS PARAMETER NEWLINE;
 variable_stmt: VAR PARAMETER '=' primary NEWLINE;
 const_stmt: CONST PARAMETER '=' primary NEWLINE;
-return_stmt: RETURN NEWLINE;
+return_stmt: RETURN primary NEWLINE;
+pass_stmt: PASS NEWLINE;
 
 compound_stmt: if_stmt | while_stmt | function_stmt;
 if_stmt: IF primary ':' suite;
@@ -103,6 +104,7 @@ CONST: 'const';
 VAR: 'var';
 FUNC: 'func';
 RETURN: 'return';
+PASS: 'pass';
 
 // Privitive types
 BOOL: 'bool';

@@ -31,7 +31,9 @@ class GDScriptCompletionContributor : CompletionContributor() {
             GDScriptParser.CONST,
             GDScriptParser.EXTENDS,
             GDScriptParser.IF,
-            GDScriptParser.WHILE
+            GDScriptParser.WHILE,
+            GDScriptParser.RETURN,
+            GDScriptParser.PASS
         )
         return tokenValues
             .map { GDScriptParser.VOCABULARY.getLiteralName(it) }
