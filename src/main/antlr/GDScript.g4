@@ -70,12 +70,11 @@ tokens {
 
 }
 
-file_input: (NEWLINE | stmt)* EOF;
+file_input: stmt* EOF;
 
-stmt: simple_stmt | compound_stmt;
+stmt: simple_stmt | compound_stmt | NEWLINE;
 
-simple_stmt: primary_stmt | extends_stmt | variable_stmt | const_stmt | return_stmt | pass_stmt;
-primary_stmt: primary NEWLINE;
+simple_stmt: extends_stmt | variable_stmt | const_stmt | return_stmt | pass_stmt;
 extends_stmt: EXTENDS PARAMETER NEWLINE;
 variable_stmt: VAR PARAMETER '=' primary NEWLINE;
 const_stmt: CONST PARAMETER '=' primary NEWLINE;
