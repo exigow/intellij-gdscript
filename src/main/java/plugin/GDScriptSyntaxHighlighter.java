@@ -35,6 +35,7 @@ public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
             case GDScriptLexer.NUMBER:
                 return NUMBER;
             case GDScriptLexer.STRING:
+            case GDScriptLexer.UNTERMINATED_STRING:
                 return STRING;
             case GDScriptLexer.PARAMETER:
                 return PARAMETER;
