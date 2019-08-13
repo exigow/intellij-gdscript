@@ -1,13 +1,15 @@
 <idea-plugin>
+	<id>org.antlr.jetbrains.sample</id>
 	<name>GDScript</name>
 	<version>0.1</version>
-	<vendor></vendor>
-	<idea-version since-build="133"/>
+	<vendor>test</vendor>
+	<idea-version since-build="183"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileTypeFactory implementation="plugin.GDScriptFileTypeFactory"/>
 		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="plugin.GDScriptSyntaxHighlighterFactory"/>
 		<lang.parserDefinition language="GDScript" implementationClass="plugin.GDScriptParserDefinition"/>
 		<completion.contributor language="GDScript" implementationClass="plugin.GDScriptCompletionContributor"/>
+		<colorSettingsPage language="GDScript" implementation="plugin.GDScriptColorSettingsPage"/>
 	</extensions>
 </idea-plugin>

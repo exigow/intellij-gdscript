@@ -12,11 +12,11 @@ import plugin.parser.GDScriptLexer;
 
 public class GDScriptSyntaxHighlighter extends SyntaxHighlighterBase {
 
-    private static final TextAttributesKey[] NUMBER = toArray(DefaultLanguageHighlighterColors.NUMBER);
-    private static final TextAttributesKey[] STRING = toArray(DefaultLanguageHighlighterColors.STRING);
-    private static final TextAttributesKey[] PARAMETER = toArray(DefaultLanguageHighlighterColors.PARAMETER);
-    private static final TextAttributesKey[] KEYWORD = toArray(DefaultLanguageHighlighterColors.KEYWORD);
-    private static final TextAttributesKey[] LINE_COMMENT = toArray(DefaultLanguageHighlighterColors.LINE_COMMENT);
+    public static final TextAttributesKey[] NUMBER = toArray(DefaultLanguageHighlighterColors.NUMBER);
+    public static final TextAttributesKey[] STRING = toArray(DefaultLanguageHighlighterColors.STRING);
+    public static final TextAttributesKey[] PARAMETER = toArray(DefaultLanguageHighlighterColors.PARAMETER);
+    public static final TextAttributesKey[] KEYWORD = toArray(DefaultLanguageHighlighterColors.KEYWORD);
+    public static final TextAttributesKey[] LINE_COMMENT = toArray(DefaultLanguageHighlighterColors.LINE_COMMENT);
 
     @NotNull
     @Override

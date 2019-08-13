@@ -13,8 +13,10 @@ import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
+import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
+import org.antlr.intellij.adaptor.psi.IdentifierDefSubtree
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 import plugin.parser.GDScriptLexer
@@ -54,6 +56,14 @@ class GDScriptParserDefinition : ParserDefinition {
 
     override fun createFile(viewProvider: FileViewProvider) = GDScriptPsiFileRoot(viewProvider)
 
-    override fun createElement(node: ASTNode): PsiElement = ANTLRPsiNode(node)
+    override fun createElement(node: ASTNode): PsiElement {
+        val type = node.elementType
+        if (type is RuleIElementType)
+            if (type.ruleIndex == GDScriptParser.RULE_variable_stmt)
+                return VariableDefinitionSubtree(node, type)
+        return ANTLRPsiNode(node)
+    }
+
+    private class VariableDefinitionSubtree(node: ASTNode, idElementTyp: IElementType) : IdentifierDefSubtree(node, idElementTyp)
 
 }

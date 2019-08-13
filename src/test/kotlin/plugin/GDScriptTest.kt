@@ -6,6 +6,11 @@ import plugin.ASTNodePrinter.printDirectoryTree
 
 class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
+    fun `test var`() {
+        val psi = parse("var z = 1")
+        println(printDirectoryTree(psi.node))
+    }
+
     fun `test function declaration with no arguments`() {
         val psi = parseMultiline("""
         func test():
