@@ -20,12 +20,13 @@ class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
         extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"))
-
-        val doc = deserializeDocument("/docs/Vector2.xml")
-        extendBasic(psiElement(), listOf(doc.name), CLASS_ICON)
-        extendBasic(psiElement(), doc.usefulMembersNames(), PROPERTY_ICON)
-        extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
-        extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
+        for (resourceName in listOf("/docs/Color.xml", "/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml")) {
+            val doc = deserializeDocument(resourceName)
+            extendBasic(psiElement(), listOf(doc.name), CLASS_ICON)
+            extendBasic(psiElement(), doc.usefulMembersNames(), METHOD_ICON)
+            extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
+            extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
+        }
     }
 
     private fun extendBasic(capture: PsiElementPattern.Capture<PsiElement>, words: List<String>, icon: Icon? = null) {

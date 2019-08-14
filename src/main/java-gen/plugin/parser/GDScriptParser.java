@@ -20,9 +20,9 @@ public class GDScriptParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, IF=6, WHILE=7, EXTENDS=8, CONST=9, 
-		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, PARAMETER=17, 
-		NUMBER=18, STRING=19, UNTERMINATED_STRING=20, NEWLINE=21, WHITESPACE=22, 
-		LINE_COMMENT=23, ERRCHAR=24, INDENT=25, DEDENT=26;
+		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, CLASS=17, 
+		PARAMETER=18, NUMBER=19, STRING=20, UNTERMINATED_STRING=21, NEWLINE=22, 
+		WHITESPACE=23, LINE_COMMENT=24, ERRCHAR=25, INDENT=26, DEDENT=27;
 	public static final int
 		RULE_file = 0, RULE_stmt = 1, RULE_simple_stmt = 2, RULE_extends_stmt = 3, 
 		RULE_variable_stmt = 4, RULE_const_stmt = 5, RULE_return_stmt = 6, RULE_pass_stmt = 7, 
@@ -49,7 +49,7 @@ public class GDScriptParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, "IF", "WHILE", "EXTENDS", "CONST", 
-			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "PARAMETER", 
+			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS", "PARAMETER", 
 			"NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", "LINE_COMMENT", 
 			"ERRCHAR", "INDENT", "DEDENT"
 		};
@@ -299,7 +299,7 @@ public class GDScriptParser extends Parser {
 
 	public static class Extends_stmtContext extends ParserRuleContext {
 		public TerminalNode EXTENDS() { return getToken(GDScriptParser.EXTENDS, 0); }
-		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
+		public TerminalNode CLASS() { return getToken(GDScriptParser.CLASS, 0); }
 		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
 		public Extends_stmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -316,7 +316,7 @@ public class GDScriptParser extends Parser {
 			setState(54);
 			match(EXTENDS);
 			setState(55);
-			match(PARAMETER);
+			match(CLASS);
 			setState(56);
 			match(NEWLINE);
 			}
@@ -783,6 +783,7 @@ public class GDScriptParser extends Parser {
 		public TerminalNode BOOL() { return getToken(GDScriptParser.BOOL, 0); }
 		public TerminalNode INT() { return getToken(GDScriptParser.INT, 0); }
 		public TerminalNode FLOAT() { return getToken(GDScriptParser.FLOAT, 0); }
+		public TerminalNode CLASS() { return getToken(GDScriptParser.CLASS, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -798,7 +799,7 @@ public class GDScriptParser extends Parser {
 			{
 			setState(115);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << CLASS))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -938,7 +939,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34\u0086\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\u0086\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\3\2\7\2&\n\2\f\2\16\2)\13\2\3\2\3\2\3\3\3\3\3\3\5\3\60\n\3\3\4\3\4\3"+
@@ -948,27 +949,27 @@ public class GDScriptParser extends Parser {
 		"\3\r\3\r\3\r\3\16\3\16\3\16\7\16l\n\16\f\16\16\16o\13\16\3\17\3\17\3\17"+
 		"\5\17t\n\17\3\20\3\20\3\21\3\21\3\21\3\21\6\21|\n\21\r\21\16\21}\3\21"+
 		"\3\21\5\21\u0082\n\21\3\22\3\22\3\22\2\2\23\2\4\6\b\n\f\16\20\22\24\26"+
-		"\30\32\34\36 \"\2\4\3\2\20\22\3\2\23\25\2\u0082\2\'\3\2\2\2\4/\3\2\2\2"+
+		"\30\32\34\36 \"\2\4\3\2\20\23\3\2\24\26\2\u0082\2\'\3\2\2\2\4/\3\2\2\2"+
 		"\6\66\3\2\2\2\b8\3\2\2\2\n<\3\2\2\2\fB\3\2\2\2\16H\3\2\2\2\20L\3\2\2\2"+
 		"\22R\3\2\2\2\24T\3\2\2\2\26Y\3\2\2\2\30^\3\2\2\2\32h\3\2\2\2\34p\3\2\2"+
 		"\2\36u\3\2\2\2 \u0081\3\2\2\2\"\u0083\3\2\2\2$&\5\4\3\2%$\3\2\2\2&)\3"+
 		"\2\2\2\'%\3\2\2\2\'(\3\2\2\2(*\3\2\2\2)\'\3\2\2\2*+\7\2\2\3+\3\3\2\2\2"+
-		",\60\5\6\4\2-\60\5\22\n\2.\60\7\27\2\2/,\3\2\2\2/-\3\2\2\2/.\3\2\2\2\60"+
+		",\60\5\6\4\2-\60\5\22\n\2.\60\7\30\2\2/,\3\2\2\2/-\3\2\2\2/.\3\2\2\2\60"+
 		"\5\3\2\2\2\61\67\5\b\5\2\62\67\5\n\6\2\63\67\5\f\7\2\64\67\5\16\b\2\65"+
 		"\67\5\20\t\2\66\61\3\2\2\2\66\62\3\2\2\2\66\63\3\2\2\2\66\64\3\2\2\2\66"+
-		"\65\3\2\2\2\67\7\3\2\2\289\7\n\2\29:\7\23\2\2:;\7\27\2\2;\t\3\2\2\2<="+
-		"\7\f\2\2=>\7\23\2\2>?\7\3\2\2?@\5\"\22\2@A\7\27\2\2A\13\3\2\2\2BC\7\13"+
-		"\2\2CD\7\23\2\2DE\7\3\2\2EF\5\"\22\2FG\7\27\2\2G\r\3\2\2\2HI\7\16\2\2"+
-		"IJ\5\"\22\2JK\7\27\2\2K\17\3\2\2\2LM\7\17\2\2MN\7\27\2\2N\21\3\2\2\2O"+
+		"\65\3\2\2\2\67\7\3\2\2\289\7\n\2\29:\7\23\2\2:;\7\30\2\2;\t\3\2\2\2<="+
+		"\7\f\2\2=>\7\24\2\2>?\7\3\2\2?@\5\"\22\2@A\7\30\2\2A\13\3\2\2\2BC\7\13"+
+		"\2\2CD\7\24\2\2DE\7\3\2\2EF\5\"\22\2FG\7\30\2\2G\r\3\2\2\2HI\7\16\2\2"+
+		"IJ\5\"\22\2JK\7\30\2\2K\17\3\2\2\2LM\7\17\2\2MN\7\30\2\2N\21\3\2\2\2O"+
 		"S\5\24\13\2PS\5\26\f\2QS\5\30\r\2RO\3\2\2\2RP\3\2\2\2RQ\3\2\2\2S\23\3"+
 		"\2\2\2TU\7\b\2\2UV\5\"\22\2VW\7\4\2\2WX\5 \21\2X\25\3\2\2\2YZ\7\t\2\2"+
-		"Z[\5\"\22\2[\\\7\4\2\2\\]\5 \21\2]\27\3\2\2\2^_\7\r\2\2_`\7\23\2\2`b\7"+
+		"Z[\5\"\22\2[\\\7\4\2\2\\]\5 \21\2]\27\3\2\2\2^_\7\r\2\2_`\7\24\2\2`b\7"+
 		"\5\2\2ac\5\32\16\2ba\3\2\2\2bc\3\2\2\2cd\3\2\2\2de\7\6\2\2ef\7\4\2\2f"+
 		"g\5 \21\2g\31\3\2\2\2hm\5\34\17\2ij\7\7\2\2jl\5\34\17\2ki\3\2\2\2lo\3"+
-		"\2\2\2mk\3\2\2\2mn\3\2\2\2n\33\3\2\2\2om\3\2\2\2ps\7\23\2\2qr\7\4\2\2"+
+		"\2\2\2mk\3\2\2\2mn\3\2\2\2n\33\3\2\2\2om\3\2\2\2ps\7\24\2\2qr\7\4\2\2"+
 		"rt\5\36\20\2sq\3\2\2\2st\3\2\2\2t\35\3\2\2\2uv\t\2\2\2v\37\3\2\2\2w\u0082"+
-		"\5\6\4\2xy\7\27\2\2y{\7\33\2\2z|\5\4\3\2{z\3\2\2\2|}\3\2\2\2}{\3\2\2\2"+
-		"}~\3\2\2\2~\177\3\2\2\2\177\u0080\7\34\2\2\u0080\u0082\3\2\2\2\u0081w"+
+		"\5\6\4\2xy\7\30\2\2y{\7\34\2\2z|\5\4\3\2{z\3\2\2\2|}\3\2\2\2}{\3\2\2\2"+
+		"}~\3\2\2\2~\177\3\2\2\2\177\u0080\7\35\2\2\u0080\u0082\3\2\2\2\u0081w"+
 		"\3\2\2\2\u0081x\3\2\2\2\u0082!\3\2\2\2\u0083\u0084\t\3\2\2\u0084#\3\2"+
 		"\2\2\13\'/\66Rbms}\u0081";
 	public static final ATN _ATN =

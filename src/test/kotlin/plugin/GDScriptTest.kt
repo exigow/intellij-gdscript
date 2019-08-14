@@ -35,6 +35,14 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
         println(printDirectoryTree(psi.node))
     }
 
+    fun `test function declaration with class-typed argument`() {
+        val psi = parseMultiline("""
+        func test(a: Vector2):
+            pass
+        """)
+        println(printDirectoryTree(psi.node))
+    }
+
     fun `test single line comment after statement`() {
         val psi = parse("return 0 # Comment after statement")
         println(printDirectoryTree(psi.node))
