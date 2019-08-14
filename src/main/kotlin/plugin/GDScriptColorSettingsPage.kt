@@ -1,5 +1,6 @@
 package plugin
 
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.options.colors.AttributesDescriptor
@@ -22,9 +23,11 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
         return GDScriptSyntaxHighlighter()
     }
 
-    override fun getDemoText(): String {
-        return "var z = \"hello\" // comment\n"
-    }
+    override fun getDemoText() = """
+        const message = "hello" # this is comment
+        func test(a: Vector2, b: float):
+            var number = 123.45
+    """.trimIndent()
 
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> {
         return DESCRIPTORS
@@ -40,9 +43,10 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
 
     companion object {
         private val DESCRIPTORS = arrayOf(
-            AttributesDescriptor("Keyword", GDScriptSyntaxHighlighter.KEYWORD[0]),
-            AttributesDescriptor("String", GDScriptSyntaxHighlighter.STRING[0]),
-            AttributesDescriptor("Line comment", GDScriptSyntaxHighlighter.LINE_COMMENT[0])
+            AttributesDescriptor("Keyword", DefaultLanguageHighlighterColors.NUMBER),
+            AttributesDescriptor("String", DefaultLanguageHighlighterColors.STRING),
+            AttributesDescriptor("Line comment", DefaultLanguageHighlighterColors.LINE_COMMENT),
+            AttributesDescriptor("Class name", DefaultLanguageHighlighterColors.CLASS_NAME)
         )
     }
 
