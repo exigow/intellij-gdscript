@@ -6,8 +6,10 @@ import com.intellij.codeInsight.completion.CompletionProvider
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
-import com.intellij.patterns.PlatformPatterns
-import com.intellij.util.PlatformIcons
+import com.intellij.patterns.PlatformPatterns.psiElement
+import com.intellij.patterns.PsiElementPattern
+import com.intellij.psi.PsiElement
+import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
 import plugin.deserialization.DocumentDeserializer
 import plugin.deserialization.models.Document
@@ -17,40 +19,30 @@ import javax.swing.Icon
 class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
-        extendEverywhere("var")
-        extendEverywhere("const")
-        extendEverywhere("if")
-        extendEverywhere("while")
-        extendEverywhere("return")
-        extendEverywhere("extend")
-        extendEverywhereCompletionWithDocumentMethods("/docs/GDScript.xml")
+        extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"))
+
+        val doc = deserializeDocument("/docs/Vector2.xml")
+        extendBasic(psiElement(), listOf(doc.name), CLASS_ICON)
+        extendBasic(psiElement(), doc.usefulMembersNames(), PROPERTY_ICON)
+        extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
+        extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
     }
 
-    private fun extendEverywhere(word: String, icon: Icon? = null) {
-        val lookup = LookupElementBuilder.create(word).withIcon(icon)
-        val completionProvider = createCompletionProvider(lookup)
-        extend(BASIC, PlatformPatterns.psiElement(), completionProvider)
-    }
+    private fun extendBasic(capture: PsiElementPattern.Capture<PsiElement>, words: List<String>, icon: Icon? = null) {
+        val completion = object : CompletionProvider<CompletionParameters>() {
 
-    private fun extendEverywhereCompletionWithDocumentMethods(documentName: String) {
-        val words = deserializeDocument(documentName).methods!!
-            .map { it.name }
-            .filter { it.isNotEmpty() }
-        for (word in words)
-            extendEverywhere(word, PlatformIcons.METHOD_ICON)
+            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
+                val lookups = words.map { LookupElementBuilder.create(it).withIcon(icon) }
+                result.addAllElements(lookups)
+            }
+
+        }
+        extend(BASIC, capture, completion)
     }
 
     private fun deserializeDocument(resourceName: String): Document {
-        val deserializer = DocumentDeserializer()
-        return deserializer.deserializeText(GDScriptCompletionContributor::class.java.getResource(resourceName).readText())
-    }
-
-    private fun createCompletionProvider(lookup: LookupElementBuilder) = object : CompletionProvider<CompletionParameters>() {
-
-        override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            result.addElement(lookup)
-        }
-
+        val text = GDScriptCompletionContributor::class.java.getResource(resourceName).readText()
+        return DocumentDeserializer().deserializeText(text)
     }
 
 }
