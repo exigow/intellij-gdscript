@@ -40,10 +40,10 @@ class DocumentDeserializerTest {
     }
 
     @Test
-    fun `nullify member setters or getters on empty values`() {
-        val member = deserializer.deserializeResource("Color.xml").findMember("r")
-        assertNull(member.setter)
-        assertNull(member.getter)
+    fun `do not nullify member setters or getters on empty strings`() {
+        val test = deserializer.deserializeText("<class name=\"\" inherits=\"\"/>")
+        assertNotNull(test.name)
+        assertNotNull(test.inherits)
     }
 
     @Test
@@ -61,7 +61,7 @@ class DocumentDeserializerTest {
     @Test
     fun `deserialize tags with whitespaces as null collections`() {
         val test = deserializer.deserializeText("""
-            <class name="Test">
+            <class name="Test2D" inherits="Test">
                 <constants>
                 </constants>
             </class>

@@ -1,13 +1,6 @@
 package plugin.deserialization
 
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.core.JsonToken
-import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.JsonDeserializer
-import com.fasterxml.jackson.databind.Module
-import com.fasterxml.jackson.databind.deser.std.StringDeserializer
-import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.intellij.lang.annotations.Language
@@ -37,22 +30,6 @@ class DocumentDeserializer {
 
     private fun configureMapper() = XmlMapper()
         .registerModule(KotlinModule())
-        .registerModule(createStringNullifyModule())
         .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-
-    private fun createStringNullifyModule(): Module {
-        val stringDeserializer = object : JsonDeserializer<String>() {
-
-            override fun deserialize(p: JsonParser, ctxt: DeserializationContext): String? {
-                if (isBlankString(p))
-                    return null
-                return StringDeserializer.instance.deserialize(p, ctxt)
-            }
-
-            private fun isBlankString(p: JsonParser) = p.currentToken == JsonToken.VALUE_STRING && p.text.isBlank()
-
-        }
-        return SimpleModule().addDeserializer(String::class.java, stringDeserializer)
-    }
 
 }

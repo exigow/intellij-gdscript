@@ -33,8 +33,11 @@ class GDScriptCompletionContributor : CompletionContributor() {
     }
 
     private fun extendEverywhereCompletionWithDocumentMethods(documentName: String) {
-        for (methodName in deserializeDocument(documentName).methods?.map { it.name }!!)
-            extendEverywhere(methodName, PlatformIcons.METHOD_ICON)
+        val words = deserializeDocument(documentName).methods!!
+            .map { it.name }
+            .filter { it.isNotEmpty() }
+        for (word in words)
+            extendEverywhere(word, PlatformIcons.METHOD_ICON)
     }
 
     private fun deserializeDocument(resourceName: String): Document {
