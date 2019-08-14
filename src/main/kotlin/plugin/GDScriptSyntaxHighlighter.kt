@@ -25,7 +25,7 @@ class GDScriptSyntaxHighlighter : SyntaxHighlighterBase() {
             FUNC,
             RETURN,
             PASS -> pack(DefaultLanguageHighlighterColors.KEYWORD)
-            CLASS -> pack(DefaultLanguageHighlighterColors.CLASS_NAME)
+            CLASS_NAME -> pack(DefaultLanguageHighlighterColors.CLASS_NAME)
             LINE_COMMENT -> pack(DefaultLanguageHighlighterColors.LINE_COMMENT)
             else -> EMPTY
         }

@@ -17,7 +17,7 @@ public class GDScriptLexer extends Lexer {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, IF=6, WHILE=7, EXTENDS=8, CONST=9, 
-		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, CLASS=17, 
+		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, CLASS_NAME=17, 
 		PARAMETER=18, NUMBER=19, STRING=20, UNTERMINATED_STRING=21, NEWLINE=22, 
 		WHITESPACE=23, LINE_COMMENT=24, ERRCHAR=25;
 	public static String[] channelNames = {
@@ -31,9 +31,9 @@ public class GDScriptLexer extends Lexer {
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"T__0", "T__1", "T__2", "T__3", "T__4", "IF", "WHILE", "EXTENDS", "CONST", 
-			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS", "PARAMETER", 
-			"NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", "LINE_COMMENT", 
-			"ERRCHAR"
+			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS_NAME", 
+			"PARAMETER", "NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", 
+			"LINE_COMMENT", "ERRCHAR"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -49,9 +49,9 @@ public class GDScriptLexer extends Lexer {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, "IF", "WHILE", "EXTENDS", "CONST", 
-			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS", "PARAMETER", 
-			"NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", "LINE_COMMENT", 
-			"ERRCHAR"
+			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS_NAME", 
+			"PARAMETER", "NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", 
+			"LINE_COMMENT", "ERRCHAR"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();

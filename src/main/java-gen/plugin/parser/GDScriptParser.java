@@ -20,7 +20,7 @@ public class GDScriptParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, IF=6, WHILE=7, EXTENDS=8, CONST=9, 
-		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, CLASS=17, 
+		VAR=10, FUNC=11, RETURN=12, PASS=13, BOOL=14, INT=15, FLOAT=16, CLASS_NAME=17, 
 		PARAMETER=18, NUMBER=19, STRING=20, UNTERMINATED_STRING=21, NEWLINE=22, 
 		WHITESPACE=23, LINE_COMMENT=24, ERRCHAR=25, INDENT=26, DEDENT=27;
 	public static final int
@@ -49,9 +49,9 @@ public class GDScriptParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, "IF", "WHILE", "EXTENDS", "CONST", 
-			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS", "PARAMETER", 
-			"NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", "LINE_COMMENT", 
-			"ERRCHAR", "INDENT", "DEDENT"
+			"VAR", "FUNC", "RETURN", "PASS", "BOOL", "INT", "FLOAT", "CLASS_NAME", 
+			"PARAMETER", "NUMBER", "STRING", "UNTERMINATED_STRING", "NEWLINE", "WHITESPACE", 
+			"LINE_COMMENT", "ERRCHAR", "INDENT", "DEDENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -299,7 +299,7 @@ public class GDScriptParser extends Parser {
 
 	public static class Extends_stmtContext extends ParserRuleContext {
 		public TerminalNode EXTENDS() { return getToken(GDScriptParser.EXTENDS, 0); }
-		public TerminalNode CLASS() { return getToken(GDScriptParser.CLASS, 0); }
+		public TerminalNode CLASS_NAME() { return getToken(GDScriptParser.CLASS_NAME, 0); }
 		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
 		public Extends_stmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -316,7 +316,7 @@ public class GDScriptParser extends Parser {
 			setState(54);
 			match(EXTENDS);
 			setState(55);
-			match(CLASS);
+			match(CLASS_NAME);
 			setState(56);
 			match(NEWLINE);
 			}
@@ -783,7 +783,7 @@ public class GDScriptParser extends Parser {
 		public TerminalNode BOOL() { return getToken(GDScriptParser.BOOL, 0); }
 		public TerminalNode INT() { return getToken(GDScriptParser.INT, 0); }
 		public TerminalNode FLOAT() { return getToken(GDScriptParser.FLOAT, 0); }
-		public TerminalNode CLASS() { return getToken(GDScriptParser.CLASS, 0); }
+		public TerminalNode CLASS_NAME() { return getToken(GDScriptParser.CLASS_NAME, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -799,7 +799,7 @@ public class GDScriptParser extends Parser {
 			{
 			setState(115);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << CLASS))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << CLASS_NAME))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {

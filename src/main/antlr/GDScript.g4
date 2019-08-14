@@ -74,7 +74,7 @@ file: stmt* EOF;
 stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt: extends_stmt | variable_stmt | const_stmt | return_stmt | pass_stmt;
-extends_stmt: EXTENDS CLASS NEWLINE;
+extends_stmt: EXTENDS CLASS_NAME NEWLINE;
 variable_stmt: VAR PARAMETER '=' primary NEWLINE;
 const_stmt: CONST PARAMETER '=' primary NEWLINE;
 return_stmt: RETURN primary NEWLINE;
@@ -88,7 +88,7 @@ function_stmt: FUNC PARAMETER '(' parameter_list? ')' ':' suite;
 parameter_list: parameter (',' parameter)*;
 parameter: PARAMETER (':' type)?;
 
-type: BOOL | INT | FLOAT | CLASS;
+type: BOOL | INT | FLOAT | CLASS_NAME;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
@@ -108,7 +108,7 @@ PASS: 'pass';
 BOOL: 'bool';
 INT: 'int';
 FLOAT: 'float';
-CLASS: [A-Z]+[a-zA-Z0-9]*;
+CLASS_NAME: [A-Z]+[a-zA-Z0-9]*;
 
 PARAMETER: [a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
