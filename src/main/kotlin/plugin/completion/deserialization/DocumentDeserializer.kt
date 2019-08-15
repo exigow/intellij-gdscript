@@ -8,7 +8,7 @@ import plugin.completion.deserialization.models.Document
 import java.io.File
 
 
-class DocumentDeserializer {
+object DocumentDeserializer {
 
     fun deserializeResource(resourceName: String): Document {
         val file = File("src/main/resources-gen/docs/$resourceName")

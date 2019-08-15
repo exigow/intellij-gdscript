@@ -7,29 +7,39 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
-import com.intellij.patterns.PsiElementPattern
+import com.intellij.patterns.PsiElementPattern.Capture
 import com.intellij.psi.PsiElement
 import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
+import plugin.completion.deserialization.ColorDeserializer
 import plugin.completion.deserialization.DocumentDeserializer
 import plugin.completion.deserialization.models.Document
+import plugin.completion.icons.ColorIconFactory
 import javax.swing.Icon
 
 
 class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
-        extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"))
-        for (resourceName in listOf("/docs/Color.xml", "/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
+        extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"), CLASS_ICON)
+        for (resourceName in listOf("/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
             val doc = deserializeDocument(resourceName)
-            extendBasic(psiElement(), listOf(doc.name), CLASS_ICON)
+            extendBasic(psiElement(), doc.name, CLASS_ICON)
             extendBasic(psiElement(), doc.usefulMembersNames(), METHOD_ICON)
             extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
             extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
         }
+        for (constant in deserializeDocument("/docs/Color.xml").constants!!) {
+            val color = ColorDeserializer.deserialize(constant.value)
+            val colorIcon = ColorIconFactory.create(color)
+            val colorName = constant.name
+            extendBasic(psiElement(), colorName, colorIcon)
+        }
     }
 
-    private fun extendBasic(capture: PsiElementPattern.Capture<PsiElement>, words: List<String>, icon: Icon? = null) {
+    private fun extendBasic(capture: Capture<PsiElement>, word: String, icon: Icon) = extendBasic(capture, listOf(word), icon)
+
+    private fun extendBasic(capture: Capture<PsiElement>, words: List<String>, icon: Icon) {
         val completion = object : CompletionProvider<CompletionParameters>() {
 
             override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
@@ -43,7 +53,7 @@ class GDScriptCompletionContributor : CompletionContributor() {
 
     private fun deserializeDocument(resourceName: String): Document {
         val text = GDScriptCompletionContributor::class.java.getResource(resourceName).readText()
-        return DocumentDeserializer().deserializeText(text)
+        return DocumentDeserializer.deserializeText(text)
     }
 
 }

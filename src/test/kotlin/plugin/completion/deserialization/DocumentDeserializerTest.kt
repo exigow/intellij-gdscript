@@ -1,6 +1,8 @@
 package plugin.completion.deserialization
 
 import org.junit.Test
+import plugin.completion.deserialization.DocumentDeserializer.deserializeResource
+import plugin.completion.deserialization.DocumentDeserializer.deserializeText
 import plugin.completion.deserialization.models.Constant
 import plugin.completion.deserialization.models.Document
 import plugin.completion.deserialization.models.Member
@@ -10,57 +12,55 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
 class DocumentDeserializerTest {
-
-    private val deserializer = DocumentDeserializer()
-
+    
     @Test
     fun `deserialize methods`() {
-        val method = deserializer.deserializeResource("Color.xml").findMethod("inverted")
+        val method = deserializeResource("Color.xml").findMethod("inverted")
         assertEquals(method, Method(name = "inverted"))
     }
 
     @Test
     fun `deserialize constants`() {
-        val constant = deserializer.deserializeResource("Color.xml").findConstant("blue")
+        val constant = deserializeResource("Color.xml").findConstant("blue")
         assertEquals(constant.name, "blue")
         assertEquals(constant.value, "Color( 0, 0, 1, 1 )")
     }
 
     @Test
     fun `deserialize members`() {
-        val member = deserializer.deserializeResource("Color.xml").findMember("r")
+        val member = deserializeResource("Color.xml").findMember("r")
         assertEquals(member.name, "r")
         assertEquals(member.type, "float")
     }
 
     @Test
     fun `deserialize inherits`() {
-        val sprite = deserializer.deserializeResource("Sprite.xml")
+        val sprite = deserializeResource("Sprite.xml")
         assertNotNull(sprite.inherits)
     }
 
     @Test
     fun `do not nullify member setters or getters on empty strings`() {
-        val test = deserializer.deserializeText("<class name=\"\" inherits=\"\"/>")
+        val test = deserializeText("<class name=\"\" inherits=\"\"/>")
         assertNotNull(test.name)
         assertNotNull(test.inherits)
     }
 
     @Test
     fun `allow null inherits`() {
-        val color = deserializer.deserializeResource("Color.xml")
+        val color = deserializeResource("Color.xml")
         assertNull(color.inherits)
     }
 
     @Test
     fun `deserialize missing members`() {
-        val doc = deserializer.deserializeResource("GDScript.xml")
+        val doc = deserializeResource("GDScript.xml")
         assertNull(doc.members)
     }
 
     @Test
     fun `deserialize tags with whitespaces as null collections`() {
-        val test = deserializer.deserializeText("""
+        val test = deserializeText("""
             <class name="Test2D" inherits="Test">
                 <constants>
                 </constants>
