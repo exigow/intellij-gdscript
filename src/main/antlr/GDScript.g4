@@ -86,7 +86,7 @@ compound_stmt:
 suite: ':' (simple_stmt | (NEWLINE INDENT stmt+ DEDENT));
 typed_primary_list: ('(' typed_primary (',' typed_primary)* ')');
 typed_primary: primary (':' primary)?;
-primary: PARAMETER | NUMBER | STRING | TRUE_FALSE | PRIMITIVE_TYPE | CLASS_NAME;
+primary: PARAMETER | NUMBER | STRING | TRUE_FALSE | PRIMITIVE_TYPE;
 
 IF: 'if';
 ELSE: 'else';
@@ -102,8 +102,7 @@ CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
 TRUE_FALSE: 'true' | 'false' | 'null';
 PRIMITIVE_TYPE: 'bool' | 'int' | 'float';
 OPERATOR: '+' | '-' | '*' | '/' | 'is';
-CLASS_NAME: [A-Z]+[a-zA-Z0-9]*;
-PARAMETER: [_a-zA-Z]+;
+PARAMETER: [_a-zA-Z0-9]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' (~["\\\r\n] | '\\' (. | EOF))* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;

@@ -9,7 +9,8 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
 
     fun `test var and const`() {
         val code = """
-            extends SomeClass
+            extends BaseClass
+            extends Vector2D
             extends "base.gd"
             export(Texture) var character_face
             export(int, "Warrior", "Magician", "Thief") var character_class
