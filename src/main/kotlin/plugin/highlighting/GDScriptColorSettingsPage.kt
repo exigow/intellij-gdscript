@@ -31,8 +31,8 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
         .split("_")
         .map { it.toLowerCase() }
         .filter { it != "default" }
-        .map { it.capitalize() }
         .joinToString(" ")
+        .capitalize()
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
