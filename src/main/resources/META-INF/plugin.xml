@@ -7,7 +7,7 @@
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileTypeFactory implementation="plugin.GDScriptFileTypeFactory"/>
-		<lang.syntaxHighlighterFactory implementationClass="plugin.highlighting.GDScriptSyntaxHighlighterFactory" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="plugin.highlighting.GDScriptHighlighterFactory" language="GDScript"/>
 		<lang.parserDefinition implementationClass="plugin.parser.GDScriptParserDefinition" language="GDScript"/>
 		<completion.contributor implementationClass="plugin.completion.GDScriptCompletionContributor" language="GDScript"/>
 		<colorSettingsPage implementation="plugin.highlighting.GDScriptColorSettingsPage"/>

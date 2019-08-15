@@ -1,28 +1,20 @@
 package plugin.highlighting
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
-import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
+import plugin.GDScript
 import plugin.Icons
-import javax.swing.Icon
 
 
 class GDScriptColorSettingsPage : ColorSettingsPage {
 
-    override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? {
-        return null
-    }
+    override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String,TextAttributesKey>()
 
-    override fun getIcon(): Icon? {
-        return Icons.GODOT_ICON
-    }
+    override fun getIcon() = Icons.GODOT_ICON
 
-    override fun getHighlighter(): SyntaxHighlighter {
-        return GDScriptSyntaxHighlighter()
-    }
+    override fun getHighlighter() = GDScriptHighlighterFactory().getSyntaxHighlighter(null, null)
 
     override fun getDemoText() = """
         const message = "hello" # this is comment
@@ -30,25 +22,20 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
             var number = 123.45
     """.trimIndent()
 
-    override fun getAttributeDescriptors(): Array<AttributesDescriptor> {
-        return DESCRIPTORS
-    }
+    override fun getAttributeDescriptors(): Array<AttributesDescriptor> = GDScriptHighlighterColors.all()
+        .map { attribute -> AttributesDescriptor(humanize(attribute), attribute) }
+        .toTypedArray()
 
-    override fun getColorDescriptors(): Array<ColorDescriptor> {
-        return ColorDescriptor.EMPTY_ARRAY
-    }
+    private fun humanize(attribute: TextAttributesKey) = attribute.externalName
+        .trim()
+        .split("_")
+        .map { it.toLowerCase() }
+        .filter { it != "default" }
+        .map { it.capitalize() }
+        .joinToString(" ")
 
-    override fun getDisplayName(): String {
-        return "GDScript"
-    }
+    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
-    companion object {
-        private val DESCRIPTORS = arrayOf(
-            AttributesDescriptor("Keyword", DefaultLanguageHighlighterColors.NUMBER),
-            AttributesDescriptor("String", DefaultLanguageHighlighterColors.STRING),
-            AttributesDescriptor("Line comment", DefaultLanguageHighlighterColors.LINE_COMMENT),
-            AttributesDescriptor("Class name", DefaultLanguageHighlighterColors.CLASS_NAME)
-        )
-    }
+    override fun getDisplayName() = GDScript.displayName
 
 }
