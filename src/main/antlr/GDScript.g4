@@ -66,25 +66,23 @@ public Token nextToken() {
 }
 }
 
-file: stmt* EOF;
+file: statement* EOF;
 
-stmt: simple_stmt | compound_stmt | NEWLINE;
+statement: simple | compound | NEWLINE;
 
-simple_stmt:
-    ((KEYWORD typed_primary_list?)? KEYWORD primary '=' primary NEWLINE) |
-    (KEYWORD primary? NEWLINE);
+simple: ((KEYWORD primary_list?)? KEYWORD primary? ('=' primary)? NEWLINE);
 
-compound_stmt: (KEYWORD primary typed_primary_list? suite);
+compound: (KEYWORD primary primary_list? ':' (simple | (NEWLINE INDENT statement+ DEDENT)));
 
-suite: ':' (simple_stmt | (NEWLINE INDENT stmt+ DEDENT));
-typed_primary_list: ('(' primary (',' primary)* ')');
+primary_list: (PARENTHESES primary (',' primary)* PARENTHESES);
 
 primary: value (':' value)?;
 
-value: PARAMETER | NUMBER | STRING | KEYWORD;
+value: NAME | NUMBER | STRING | KEYWORD;
 
 KEYWORD: 'if' | 'else' | 'while' | 'extends' | 'func' | 'export' | 'return' | 'class' | 'const' | 'var' | 'continue' | 'break' | 'pass' | 'true' | 'false' | 'null' | 'bool' | 'int' | 'float';
-PARAMETER: [_a-zA-Z0-9]+;
+PARENTHESES: '(' | ')' | '[' | ']';
+NAME: [_a-zA-Z0-9]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' (~["\\\r\n] | '\\' (. | EOF))* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;

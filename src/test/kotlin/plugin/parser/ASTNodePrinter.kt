@@ -14,13 +14,16 @@ object ASTNodePrinter {
 
     private fun build(folder: ASTNode, indent: Int, sb: StringBuilder) {
         sb.append(getIndentString(indent))
-        sb.append(folder.psi.toString())
+        sb.append(folder.elementType)
         sb.append("\n")
         for (file in folder.getChildren(TokenSet.ANY))
             if (file.getChildren(TokenSet.ANY).isNotEmpty())
                 build(file, indent + 1, sb)
-            else
-                printFile(file.toString(), indent + 1, sb)
+            else {
+                val text = file.text
+                if (!text.isBlank())
+                    printFile("${file.elementType} '$text'", indent + 1, sb)
+            }
     }
 
     private fun printFile(name: String, indent: Int, sb: StringBuilder) {
@@ -29,6 +32,6 @@ object ASTNodePrinter {
         sb.append("\n")
     }
 
-    private fun getIndentString(indent: Int) = "  ".repeat(indent)
+    private fun getIndentString(indent: Int) = "    ".repeat(indent)
 
 }

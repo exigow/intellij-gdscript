@@ -10,7 +10,8 @@ object GDScriptHighlighterColors {
     val STRING: TextAttributesKey = DefaultLanguageHighlighterColors.STRING
     val LINE_COMMENT: TextAttributesKey = DefaultLanguageHighlighterColors.LINE_COMMENT
     val PARAMETER: TextAttributesKey = DefaultLanguageHighlighterColors.PARAMETER
+    val PARENTHESES: TextAttributesKey = DefaultLanguageHighlighterColors.PARENTHESES
 
-    fun all() = listOf(KEYWORD, NUMBER, STRING, LINE_COMMENT, PARAMETER)
+    fun all() = listOf(KEYWORD, NUMBER, STRING, LINE_COMMENT, PARAMETER, PARENTHESES)
 
 }

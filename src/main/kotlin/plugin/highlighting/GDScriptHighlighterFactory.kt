@@ -21,7 +21,8 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
             return if (tokenType !is TokenIElementType) EMPTY else when (tokenType.antlrTokenType) {
                 NUMBER -> pack(DefaultColors.NUMBER)
                 STRING -> pack(DefaultColors.STRING)
-                PARAMETER -> pack(DefaultColors.PARAMETER)
+                NAME -> pack(DefaultColors.PARAMETER)
+                PARENTHESES -> pack(DefaultColors.PARENTHESES)
                 KEYWORD -> pack(DefaultColors.KEYWORD)
                 LINE_COMMENT -> pack(DefaultColors.LINE_COMMENT)
                 else -> EMPTY

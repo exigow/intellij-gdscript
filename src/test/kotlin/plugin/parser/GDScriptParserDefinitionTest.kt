@@ -7,40 +7,45 @@ import plugin.GDScript
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test var and const`() {
+    fun `test simple`() {
         val code = """
             extends BaseClass
             extends Vector2D
             extends "base.gd"
             export(Texture) var character_face
             export(int, "Warrior", "Magician", "Thief") var character_class
-            export(float, -10, 20, 0.2) var k_parameter
+            export(float, -10.0, 20.0, 0.2) var k_parameter
             var is_armed: bool = true
             var color: String = "blue"
             const MAX_AGE: int = 100
             export var damage: float = 74.9
             """
-        assertXPathMatches(code, "/file/stmt/simple_stmt/primary")
+        assertXPathMatches(code, "/file")
     }
 
-    fun `test function`() {
+    fun `test complex`() {
         val code = """
             func is_empty():
+                if angry:
+                    return false
+                if dead:
+                    var range: float = Vector2
+                    return false
                 return true
-                
+
             func attack(enemy, damage: int, vector: Vector2):
                 pass
             """
-        assertXPathMatches(code, "/file/stmt/compound_stmt/suite/stmt/simple_stmt")
+        assertXPathMatches(code, "/file")
     }
 
     fun `test comment`() {
         val code = """
             # comment"
-            return true # comment
+            return 1.23 # comment
             return true # comment # ignored comment
             """
-        assertXPathMatches(code, "/file/stmt/simple_stmt")
+        assertXPathMatches(code, "/file")
     }
 
     private fun assertXPathMatches(code: String, xpath: String) {
