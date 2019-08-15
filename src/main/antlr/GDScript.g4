@@ -71,37 +71,19 @@ file: stmt* EOF;
 stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt:
-    (EXTENDS primary NEWLINE) |
-    ((EXPORT typed_primary_list?)? VAR_CONST typed_primary '=' primary NEWLINE) |
-    (RETURN primary NEWLINE) |
-    (CONTINUE_BREAK_PASS NEWLINE);
+    ((KEYWORD typed_primary_list?)? KEYWORD primary '=' primary NEWLINE) |
+    (KEYWORD primary? NEWLINE);
 
-compound_stmt:
-    (IF primary suite (ELSE suite)?) |
-    (WHILE primary suite) |
-    (FOR primary suite) |
-    (FUNC primary typed_primary_list? suite) |
-    (CLASS primary suite);
+compound_stmt: (KEYWORD primary typed_primary_list? suite);
 
 suite: ':' (simple_stmt | (NEWLINE INDENT stmt+ DEDENT));
-typed_primary_list: ('(' typed_primary (',' typed_primary)* ')');
-typed_primary: primary (':' primary)?;
-primary: PARAMETER | NUMBER | STRING | TRUE_FALSE | PRIMITIVE_TYPE;
+typed_primary_list: ('(' primary (',' primary)* ')');
 
-IF: 'if';
-ELSE: 'else';
-FOR: 'for';
-WHILE: 'while';
-EXTENDS: 'extends';
-FUNC: 'func';
-EXPORT: 'export';
-RETURN: 'return';
-CLASS: 'class';
-VAR_CONST: 'const' | 'var';
-CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
-TRUE_FALSE: 'true' | 'false' | 'null';
-PRIMITIVE_TYPE: 'bool' | 'int' | 'float';
-OPERATOR: '+' | '-' | '*' | '/' | 'is';
+primary: value (':' value)?;
+
+value: PARAMETER | NUMBER | STRING | KEYWORD;
+
+KEYWORD: 'if' | 'else' | 'while' | 'extends' | 'func' | 'export' | 'return' | 'class' | 'const' | 'var' | 'continue' | 'break' | 'pass' | 'true' | 'false' | 'null' | 'bool' | 'int' | 'float';
 PARAMETER: [_a-zA-Z0-9]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' (~["\\\r\n] | '\\' (. | EOF))* '"';

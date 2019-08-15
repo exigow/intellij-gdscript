@@ -22,7 +22,7 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
                 NUMBER -> pack(DefaultColors.NUMBER)
                 STRING -> pack(DefaultColors.STRING)
                 PARAMETER -> pack(DefaultColors.PARAMETER)
-                IF, ELSE, WHILE, EXTENDS, VAR_CONST, EXPORT, FUNC, RETURN, TRUE_FALSE, PRIMITIVE_TYPE, CONTINUE_BREAK_PASS -> pack(DefaultColors.KEYWORD)
+                KEYWORD -> pack(DefaultColors.KEYWORD)
                 LINE_COMMENT -> pack(DefaultColors.LINE_COMMENT)
                 else -> EMPTY
             }
