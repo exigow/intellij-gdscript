@@ -54,6 +54,7 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
         val nodes = XPath.findAll(GDScript, myFile, xpath)
         if (nodes.isEmpty())
             Assert.fail("Unsatisfied selector '$xpath'\nCode:\n${myFile.text}\nTree:\n$tree")
+        print(tree)
     }
 
 }
