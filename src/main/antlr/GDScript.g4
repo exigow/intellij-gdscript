@@ -92,7 +92,7 @@ type: BOOL | INT | FLOAT | CLASS_NAME;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
-primary: PARAMETER | NUMBER | STRING;
+primary: PARAMETER | NUMBER | STRING | TRUE | FALSE;
 
 // Keyword tokens
 IF: 'if';
@@ -103,6 +103,8 @@ VAR: 'var';
 FUNC: 'func';
 RETURN: 'return';
 PASS: 'pass';
+TRUE: 'true';
+FALSE: 'false';
 
 // Privitive types
 BOOL: 'bool';
