@@ -36,7 +36,7 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
         func test(a: int, b: Vector2):
             pass
         """
-        assertXPathMatches(code, "/file/stmt/compound_stmt/parameter_list/parameter/type")
+        assertXPathMatches(code, "/file/stmt/compound_stmt/parameter/type")
     }
 
     fun `test comment after statement`() {

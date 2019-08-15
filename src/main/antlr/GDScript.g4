@@ -1,9 +1,6 @@
 grammar GDScript;
 
-tokens {
-    INDENT,
-    DEDENT
-}
+tokens { INDENT, DEDENT }
 
 @lexer::members {
 // Initializing `pendingDent` to true means any whitespace at the beginning
@@ -75,47 +72,46 @@ stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt:
     (EXTENDS CLASS_NAME NEWLINE) |
-    (VAR primary (':' type)? '=' primary NEWLINE) |
-    (CONST primary '=' primary NEWLINE) |
+    (VAR PARAMETER type? '=' primary NEWLINE) |
+    (CONST PARAMETER type? '=' primary NEWLINE) |
     (RETURN primary NEWLINE) |
-    (PASS NEWLINE);
+    (CONTINUE_BREAK_PASS NEWLINE);
 
 compound_stmt:
-    (IF primary ':' suite) |
+    (IF primary ':' suite (ELSE ':' suite)?) |
     (WHILE primary ':' suite) |
-    (FUNC primary '(' parameter_list? ')' ':' suite);
+    (FOR primary ':' suite) |
+    (FUNC primary '(' (parameter (',' parameter)*)? ')' ':' suite) |
+    (CLASS CLASS_NAME ':' suite);
 
-parameter_list: parameter (',' parameter)*;
-parameter: primary (':' type)?;
+parameter: primary type?;
 
-type: BOOL | INT | FLOAT | CLASS_NAME;
+type: ':' (PRIMITIVE_TYPE | CLASS_NAME);
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
-primary: PARAMETER | NUMBER | STRING | TRUE | FALSE;
+primary: PARAMETER | NUMBER | STRING | TRUE_FALSE;
 
-// Keyword tokens
 IF: 'if';
+ELSE: 'else';
+FOR: 'for';
 WHILE: 'while';
 EXTENDS: 'extends';
 CONST: 'const';
 VAR: 'var';
 FUNC: 'func';
 RETURN: 'return';
-PASS: 'pass';
-TRUE: 'true';
-FALSE: 'false';
-
-// Privitive types
-BOOL: 'bool';
-INT: 'int';
-FLOAT: 'float';
+OPERATOR: '+' | '-' | '*' | '/' | 'is';
+CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
+TRUE_FALSE: 'true' | 'false';
+PRIMITIVE_TYPE: 'bool' | 'int' | 'float';
+CLASS: 'class';
 CLASS_NAME: [A-Z]+[a-zA-Z0-9]*;
 
 PARAMETER: [_a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
-UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
+fragment UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
 
 NEWLINE: ('\r'? '\n' | '\r') {
 if (pendingDent) {

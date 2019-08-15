@@ -20,9 +20,9 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
         override fun getTokenHighlights(tokenType: IElementType?): Array<TextAttributesKey> {
             return if (tokenType !is TokenIElementType) EMPTY else when (tokenType.antlrTokenType) {
                 NUMBER -> pack(DefaultColors.NUMBER)
-                STRING, UNTERMINATED_STRING -> pack(DefaultColors.STRING)
+                STRING -> pack(DefaultColors.STRING)
                 PARAMETER -> pack(DefaultColors.PARAMETER)
-                IF, WHILE, EXTENDS, VAR, CONST, FUNC, RETURN, TRUE, FALSE, PASS -> pack(DefaultColors.KEYWORD)
+                IF, ELSE, WHILE, EXTENDS, VAR, CONST, FUNC, RETURN, TRUE_FALSE, CONTINUE_BREAK_PASS -> pack(DefaultColors.KEYWORD)
                 CLASS_NAME -> pack(DefaultColors.CLASS_NAME)
                 LINE_COMMENT -> pack(DefaultColors.LINE_COMMENT)
                 else -> EMPTY
