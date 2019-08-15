@@ -14,7 +14,7 @@ import com.intellij.util.ProcessingContext
 import plugin.completion.deserialization.ColorDeserializer
 import plugin.completion.deserialization.DocumentDeserializer
 import plugin.completion.deserialization.models.Document
-import plugin.completion.icons.ColorIconFactory
+import plugin.icons.GDScriptIconFactory
 import javax.swing.Icon
 
 
@@ -30,10 +30,10 @@ class GDScriptCompletionContributor : CompletionContributor() {
             extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
         }
         for (constant in deserializeDocument("/docs/Color.xml").constants!!) {
+            val name = constant.name
             val color = ColorDeserializer.deserialize(constant.value)
-            val colorIcon = ColorIconFactory.create(color)
-            val colorName = constant.name
-            extendBasic(psiElement(), colorName, colorIcon)
+            val icon = GDScriptIconFactory.createColor(color)
+            extendBasic(psiElement(), name, icon)
         }
     }
 

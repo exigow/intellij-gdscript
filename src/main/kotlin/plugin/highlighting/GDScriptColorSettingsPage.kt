@@ -5,14 +5,14 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import plugin.GDScript
-import plugin.Icons
+import plugin.icons.GDScriptIconFactory
 
 
 class GDScriptColorSettingsPage : ColorSettingsPage {
 
     override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String,TextAttributesKey>()
 
-    override fun getIcon() = Icons.GODOT_ICON
+    override fun getIcon() = GDScriptIconFactory.createLogo()
 
     override fun getHighlighter() = GDScriptHighlighterFactory().getSyntaxHighlighter(null, null)
 
