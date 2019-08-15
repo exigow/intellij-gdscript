@@ -73,17 +73,17 @@ file: stmt* EOF;
 
 stmt: simple_stmt | compound_stmt | NEWLINE;
 
-simple_stmt: extends_stmt | variable_stmt | const_stmt | return_stmt | pass_stmt;
-extends_stmt: EXTENDS CLASS_NAME NEWLINE;
-variable_stmt: VAR PARAMETER '=' primary NEWLINE;
-const_stmt: CONST PARAMETER '=' primary NEWLINE;
-return_stmt: RETURN primary NEWLINE;
-pass_stmt: PASS NEWLINE;
+simple_stmt:
+    (EXTENDS CLASS_NAME NEWLINE) |
+    (VAR PARAMETER (':' type)? '=' primary NEWLINE) |
+    (CONST PARAMETER '=' primary NEWLINE) |
+    (RETURN primary NEWLINE) |
+    (PASS NEWLINE);
 
-compound_stmt: if_stmt | while_stmt | function_stmt;
-if_stmt: IF primary ':' suite;
-while_stmt: WHILE primary ':' suite;
-function_stmt: FUNC PARAMETER '(' parameter_list? ')' ':' suite;
+compound_stmt:
+    (IF primary ':' suite) |
+    (WHILE primary ':' suite) |
+    (FUNC PARAMETER '(' parameter_list? ')' ':' suite);
 
 parameter_list: parameter (',' parameter)*;
 parameter: PARAMETER (':' type)?;

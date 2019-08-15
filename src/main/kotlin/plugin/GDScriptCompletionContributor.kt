@@ -20,7 +20,7 @@ class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
         extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"))
-        for (resourceName in listOf("/docs/Color.xml", "/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml")) {
+        for (resourceName in listOf("/docs/Color.xml", "/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
             val doc = deserializeDocument(resourceName)
             extendBasic(psiElement(), listOf(doc.name), CLASS_ICON)
             extendBasic(psiElement(), doc.usefulMembersNames(), METHOD_ICON)

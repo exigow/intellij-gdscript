@@ -5,20 +5,20 @@ import com.intellij.psi.tree.TokenSet
 
 object ASTNodePrinter {
 
-    fun printDirectoryTree(folder: ASTNode): String {
+    fun build(folder: ASTNode): String {
         val indent = 0
         val sb = StringBuilder()
-        printDirectoryTree(folder, indent, sb)
+        build(folder, indent, sb)
         return sb.toString()
     }
 
-    private fun printDirectoryTree(folder: ASTNode, indent: Int, sb: StringBuilder) {
+    private fun build(folder: ASTNode, indent: Int, sb: StringBuilder) {
         sb.append(getIndentString(indent))
         sb.append(folder.psi.toString())
         sb.append("\n")
         for (file in folder.getChildren(TokenSet.ANY))
             if (file.getChildren(TokenSet.ANY).isNotEmpty())
-                printDirectoryTree(file, indent + 1, sb)
+                build(file, indent + 1, sb)
             else
                 printFile(file.toString(), indent + 1, sb)
     }

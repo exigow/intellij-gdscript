@@ -1,64 +1,59 @@
 package plugin
 
-import com.intellij.psi.PsiElement
 import com.intellij.testFramework.ParsingTestCase
-import plugin.ASTNodePrinter.printDirectoryTree
+import org.antlr.intellij.adaptor.xpath.XPath
+import org.junit.Assert
 
 class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test var`() {
-        val psi = parse("var z = 1")
-        println(printDirectoryTree(psi.node))
-    }
+    fun `test var`() = assertXPathMatches(
+        code = "var index = 7",
+        xpath = "/file/stmt/simple_stmt/PARAMETER"
+    )
 
-    fun `test function declaration with no arguments`() {
-        val psi = parseMultiline("""
+    fun `test var primitive typed`() = assertXPathMatches(
+        code = "var damage: float = 74.9",
+        xpath = "/file/stmt/simple_stmt/type"
+    )
+
+    fun `test var class typed`() = assertXPathMatches(
+        code = "var color: String = \"blue\"",
+        xpath = ""
+    )
+
+    fun `test function declaration with no arguments`() = assertXPathMatches(
+        code = """
         func test():
             pass
-        """)
-        println(printDirectoryTree(psi.node))
-    }
+        """,
+        xpath = "/file/stmt/compound_stmt/suite/stmt/simple_stmt"
+    )
 
-    fun `test function declaration with single argument`() {
-        val psi = parseMultiline("""
-        func test(a: bool):
+    fun `test function declaration with multiple arguments`() = assertXPathMatches(
+        code = """
+        func test(a: int, b: Vector2):
             pass
-        """)
-        println(printDirectoryTree(psi.node))
-    }
+        """,
+        xpath = "/file/stmt/compound_stmt/parameter_list/parameter/type"
+    )
 
-    fun `test function declaration with multiple arguments`() {
-        val psi = parseMultiline("""
-        func test(a: int, b: float):
-            pass
-        """)
-        println(printDirectoryTree(psi.node))
-    }
+    fun `test comment after statement`() = assertXPathMatches(
+        code = "return 0 # comment",
+        xpath = "/file/stmt/simple_stmt"
+    )
 
-    fun `test function declaration with class-typed argument`() {
-        val psi = parseMultiline("""
-        func test(a: Vector2):
-            pass
-        """)
-        println(printDirectoryTree(psi.node))
-    }
+    fun `test comment`() = assertXPathMatches(
+        code = "# comment",
+        xpath = "/file"
+    )
 
-    fun `test single line comment after statement`() {
-        val psi = parse("return 0 # Comment after statement")
-        println(printDirectoryTree(psi.node))
-    }
-
-    fun `test single line comment on empty line`() {
-        val psi = parse("# Comment on empty line")
-        println(printDirectoryTree(psi.node))
-    }
-
-    private fun parseMultiline(code: String) = parse(code.trimIndent())
-
-    private fun parse(code: String): PsiElement {
-        val file = createPsiFile("script.gd", code)
-        ensureParsed(file)
-        return file.node.psi
+    private fun assertXPathMatches(code: String, xpath: String) {
+        myFile = createPsiFile("a", code.trimIndent())
+        ensureParsed(myFile)
+        val tree = ASTNodePrinter.build(myFile.node.psi.node)
+        val nodes = XPath.findAll(GDScript, myFile, xpath)
+        if (nodes.isEmpty())
+            Assert.fail("Unsatisfied selector '$xpath'\nCode:\n${myFile.text}\nTree:\n$tree")
     }
 
 }

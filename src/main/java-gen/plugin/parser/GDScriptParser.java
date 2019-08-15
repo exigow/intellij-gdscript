@@ -24,23 +24,20 @@ public class GDScriptParser extends Parser {
 		PARAMETER=18, NUMBER=19, STRING=20, UNTERMINATED_STRING=21, NEWLINE=22, 
 		WHITESPACE=23, LINE_COMMENT=24, ERRCHAR=25, INDENT=26, DEDENT=27;
 	public static final int
-		RULE_file = 0, RULE_stmt = 1, RULE_simple_stmt = 2, RULE_extends_stmt = 3, 
-		RULE_variable_stmt = 4, RULE_const_stmt = 5, RULE_return_stmt = 6, RULE_pass_stmt = 7, 
-		RULE_compound_stmt = 8, RULE_if_stmt = 9, RULE_while_stmt = 10, RULE_function_stmt = 11, 
-		RULE_parameter_list = 12, RULE_parameter = 13, RULE_type = 14, RULE_suite = 15, 
-		RULE_primary = 16;
+		RULE_file = 0, RULE_stmt = 1, RULE_simple_stmt = 2, RULE_compound_stmt = 3, 
+		RULE_parameter_list = 4, RULE_parameter = 5, RULE_type = 6, RULE_suite = 7, 
+		RULE_primary = 8;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"file", "stmt", "simple_stmt", "extends_stmt", "variable_stmt", "const_stmt", 
-			"return_stmt", "pass_stmt", "compound_stmt", "if_stmt", "while_stmt", 
-			"function_stmt", "parameter_list", "parameter", "type", "suite", "primary"
+			"file", "stmt", "simple_stmt", "compound_stmt", "parameter_list", "parameter", 
+			"type", "suite", "primary"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "':'", "'('", "')'", "','", "'if'", "'while'", "'extends'", 
+			null, "':'", "'='", "'('", "')'", "','", "'if'", "'while'", "'extends'", 
 			"'const'", "'var'", "'func'", "'return'", "'pass'", "'bool'", "'int'", 
 			"'float'"
 		};
@@ -126,21 +123,21 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37);
+			setState(21);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << EXTENDS) | (1L << CONST) | (1L << VAR) | (1L << FUNC) | (1L << RETURN) | (1L << PASS) | (1L << NEWLINE))) != 0)) {
 				{
 				{
-				setState(34);
+				setState(18);
 				stmt();
 				}
 				}
-				setState(39);
+				setState(23);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(40);
+			setState(24);
 			match(EOF);
 			}
 		}
@@ -173,7 +170,7 @@ public class GDScriptParser extends Parser {
 		StmtContext _localctx = new StmtContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_stmt);
 		try {
-			setState(45);
+			setState(29);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case EXTENDS:
@@ -183,7 +180,7 @@ public class GDScriptParser extends Parser {
 			case PASS:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(42);
+				setState(26);
 				simple_stmt();
 				}
 				break;
@@ -192,14 +189,14 @@ public class GDScriptParser extends Parser {
 			case FUNC:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(43);
+				setState(27);
 				compound_stmt();
 				}
 				break;
 			case NEWLINE:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(44);
+				setState(28);
 				match(NEWLINE);
 				}
 				break;
@@ -219,21 +216,20 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Simple_stmtContext extends ParserRuleContext {
-		public Extends_stmtContext extends_stmt() {
-			return getRuleContext(Extends_stmtContext.class,0);
+		public TerminalNode EXTENDS() { return getToken(GDScriptParser.EXTENDS, 0); }
+		public TerminalNode CLASS_NAME() { return getToken(GDScriptParser.CLASS_NAME, 0); }
+		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
+		public TerminalNode VAR() { return getToken(GDScriptParser.VAR, 0); }
+		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
+		public PrimaryContext primary() {
+			return getRuleContext(PrimaryContext.class,0);
 		}
-		public Variable_stmtContext variable_stmt() {
-			return getRuleContext(Variable_stmtContext.class,0);
+		public TypeContext type() {
+			return getRuleContext(TypeContext.class,0);
 		}
-		public Const_stmtContext const_stmt() {
-			return getRuleContext(Const_stmtContext.class,0);
-		}
-		public Return_stmtContext return_stmt() {
-			return getRuleContext(Return_stmtContext.class,0);
-		}
-		public Pass_stmtContext pass_stmt() {
-			return getRuleContext(Pass_stmtContext.class,0);
-		}
+		public TerminalNode CONST() { return getToken(GDScriptParser.CONST, 0); }
+		public TerminalNode RETURN() { return getToken(GDScriptParser.RETURN, 0); }
+		public TerminalNode PASS() { return getToken(GDScriptParser.PASS, 0); }
 		public Simple_stmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -243,235 +239,96 @@ public class GDScriptParser extends Parser {
 	public final Simple_stmtContext simple_stmt() throws RecognitionException {
 		Simple_stmtContext _localctx = new Simple_stmtContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_simple_stmt);
+		int _la;
 		try {
-			setState(52);
+			setState(56);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case EXTENDS:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(47);
-				extends_stmt();
+				{
+				setState(31);
+				match(EXTENDS);
+				setState(32);
+				match(CLASS_NAME);
+				setState(33);
+				match(NEWLINE);
+				}
 				}
 				break;
 			case VAR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(48);
-				variable_stmt();
+				{
+				setState(34);
+				match(VAR);
+				setState(35);
+				match(PARAMETER);
+				setState(38);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__0) {
+					{
+					setState(36);
+					match(T__0);
+					setState(37);
+					type();
+					}
+				}
+
+				setState(40);
+				match(T__1);
+				setState(41);
+				primary();
+				setState(42);
+				match(NEWLINE);
+				}
 				}
 				break;
 			case CONST:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(49);
-				const_stmt();
+				{
+				setState(44);
+				match(CONST);
+				setState(45);
+				match(PARAMETER);
+				setState(46);
+				match(T__1);
+				setState(47);
+				primary();
+				setState(48);
+				match(NEWLINE);
+				}
 				}
 				break;
 			case RETURN:
 				enterOuterAlt(_localctx, 4);
 				{
+				{
 				setState(50);
-				return_stmt();
+				match(RETURN);
+				setState(51);
+				primary();
+				setState(52);
+				match(NEWLINE);
+				}
 				}
 				break;
 			case PASS:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(51);
-				pass_stmt();
+				{
+				setState(54);
+				match(PASS);
+				setState(55);
+				match(NEWLINE);
+				}
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Extends_stmtContext extends ParserRuleContext {
-		public TerminalNode EXTENDS() { return getToken(GDScriptParser.EXTENDS, 0); }
-		public TerminalNode CLASS_NAME() { return getToken(GDScriptParser.CLASS_NAME, 0); }
-		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
-		public Extends_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_extends_stmt; }
-	}
-
-	public final Extends_stmtContext extends_stmt() throws RecognitionException {
-		Extends_stmtContext _localctx = new Extends_stmtContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_extends_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(54);
-			match(EXTENDS);
-			setState(55);
-			match(CLASS_NAME);
-			setState(56);
-			match(NEWLINE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Variable_stmtContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(GDScriptParser.VAR, 0); }
-		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
-		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
-		public Variable_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_variable_stmt; }
-	}
-
-	public final Variable_stmtContext variable_stmt() throws RecognitionException {
-		Variable_stmtContext _localctx = new Variable_stmtContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_variable_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(58);
-			match(VAR);
-			setState(59);
-			match(PARAMETER);
-			setState(60);
-			match(T__0);
-			setState(61);
-			primary();
-			setState(62);
-			match(NEWLINE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Const_stmtContext extends ParserRuleContext {
-		public TerminalNode CONST() { return getToken(GDScriptParser.CONST, 0); }
-		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
-		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
-		public Const_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_const_stmt; }
-	}
-
-	public final Const_stmtContext const_stmt() throws RecognitionException {
-		Const_stmtContext _localctx = new Const_stmtContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_const_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(64);
-			match(CONST);
-			setState(65);
-			match(PARAMETER);
-			setState(66);
-			match(T__0);
-			setState(67);
-			primary();
-			setState(68);
-			match(NEWLINE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Return_stmtContext extends ParserRuleContext {
-		public TerminalNode RETURN() { return getToken(GDScriptParser.RETURN, 0); }
-		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
-		public Return_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_return_stmt; }
-	}
-
-	public final Return_stmtContext return_stmt() throws RecognitionException {
-		Return_stmtContext _localctx = new Return_stmtContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_return_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(70);
-			match(RETURN);
-			setState(71);
-			primary();
-			setState(72);
-			match(NEWLINE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Pass_stmtContext extends ParserRuleContext {
-		public TerminalNode PASS() { return getToken(GDScriptParser.PASS, 0); }
-		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
-		public Pass_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_pass_stmt; }
-	}
-
-	public final Pass_stmtContext pass_stmt() throws RecognitionException {
-		Pass_stmtContext _localctx = new Pass_stmtContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_pass_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(74);
-			match(PASS);
-			setState(75);
-			match(NEWLINE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -486,14 +343,18 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Compound_stmtContext extends ParserRuleContext {
-		public If_stmtContext if_stmt() {
-			return getRuleContext(If_stmtContext.class,0);
+		public TerminalNode IF() { return getToken(GDScriptParser.IF, 0); }
+		public PrimaryContext primary() {
+			return getRuleContext(PrimaryContext.class,0);
 		}
-		public While_stmtContext while_stmt() {
-			return getRuleContext(While_stmtContext.class,0);
+		public SuiteContext suite() {
+			return getRuleContext(SuiteContext.class,0);
 		}
-		public Function_stmtContext function_stmt() {
-			return getRuleContext(Function_stmtContext.class,0);
+		public TerminalNode WHILE() { return getToken(GDScriptParser.WHILE, 0); }
+		public TerminalNode FUNC() { return getToken(GDScriptParser.FUNC, 0); }
+		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
+		public Parameter_listContext parameter_list() {
+			return getRuleContext(Parameter_listContext.class,0);
 		}
 		public Compound_stmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -503,173 +364,73 @@ public class GDScriptParser extends Parser {
 
 	public final Compound_stmtContext compound_stmt() throws RecognitionException {
 		Compound_stmtContext _localctx = new Compound_stmtContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_compound_stmt);
+		enterRule(_localctx, 6, RULE_compound_stmt);
+		int _la;
 		try {
-			setState(80);
+			setState(77);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IF:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(77);
-				if_stmt();
+				{
+				setState(58);
+				match(IF);
+				setState(59);
+				primary();
+				setState(60);
+				match(T__0);
+				setState(61);
+				suite();
+				}
 				}
 				break;
 			case WHILE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(78);
-				while_stmt();
+				{
+				setState(63);
+				match(WHILE);
+				setState(64);
+				primary();
+				setState(65);
+				match(T__0);
+				setState(66);
+				suite();
+				}
 				}
 				break;
 			case FUNC:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(79);
-				function_stmt();
+				{
+				setState(68);
+				match(FUNC);
+				setState(69);
+				match(PARAMETER);
+				setState(70);
+				match(T__2);
+				setState(72);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==PARAMETER) {
+					{
+					setState(71);
+					parameter_list();
+					}
+				}
+
+				setState(74);
+				match(T__3);
+				setState(75);
+				match(T__0);
+				setState(76);
+				suite();
+				}
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class If_stmtContext extends ParserRuleContext {
-		public TerminalNode IF() { return getToken(GDScriptParser.IF, 0); }
-		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
-		}
-		public SuiteContext suite() {
-			return getRuleContext(SuiteContext.class,0);
-		}
-		public If_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_if_stmt; }
-	}
-
-	public final If_stmtContext if_stmt() throws RecognitionException {
-		If_stmtContext _localctx = new If_stmtContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_if_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(82);
-			match(IF);
-			setState(83);
-			primary();
-			setState(84);
-			match(T__1);
-			setState(85);
-			suite();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class While_stmtContext extends ParserRuleContext {
-		public TerminalNode WHILE() { return getToken(GDScriptParser.WHILE, 0); }
-		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
-		}
-		public SuiteContext suite() {
-			return getRuleContext(SuiteContext.class,0);
-		}
-		public While_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_while_stmt; }
-	}
-
-	public final While_stmtContext while_stmt() throws RecognitionException {
-		While_stmtContext _localctx = new While_stmtContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_while_stmt);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(87);
-			match(WHILE);
-			setState(88);
-			primary();
-			setState(89);
-			match(T__1);
-			setState(90);
-			suite();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Function_stmtContext extends ParserRuleContext {
-		public TerminalNode FUNC() { return getToken(GDScriptParser.FUNC, 0); }
-		public TerminalNode PARAMETER() { return getToken(GDScriptParser.PARAMETER, 0); }
-		public SuiteContext suite() {
-			return getRuleContext(SuiteContext.class,0);
-		}
-		public Parameter_listContext parameter_list() {
-			return getRuleContext(Parameter_listContext.class,0);
-		}
-		public Function_stmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_function_stmt; }
-	}
-
-	public final Function_stmtContext function_stmt() throws RecognitionException {
-		Function_stmtContext _localctx = new Function_stmtContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_function_stmt);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(92);
-			match(FUNC);
-			setState(93);
-			match(PARAMETER);
-			setState(94);
-			match(T__2);
-			setState(96);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if (_la==PARAMETER) {
-				{
-				setState(95);
-				parameter_list();
-				}
-			}
-
-			setState(98);
-			match(T__3);
-			setState(99);
-			match(T__1);
-			setState(100);
-			suite();
 			}
 		}
 		catch (RecognitionException re) {
@@ -698,26 +459,26 @@ public class GDScriptParser extends Parser {
 
 	public final Parameter_listContext parameter_list() throws RecognitionException {
 		Parameter_listContext _localctx = new Parameter_listContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_parameter_list);
+		enterRule(_localctx, 8, RULE_parameter_list);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(79);
 			parameter();
-			setState(107);
+			setState(84);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__4) {
 				{
 				{
-				setState(103);
+				setState(80);
 				match(T__4);
-				setState(104);
+				setState(81);
 				parameter();
 				}
 				}
-				setState(109);
+				setState(86);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -747,21 +508,21 @@ public class GDScriptParser extends Parser {
 
 	public final ParameterContext parameter() throws RecognitionException {
 		ParameterContext _localctx = new ParameterContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_parameter);
+		enterRule(_localctx, 10, RULE_parameter);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(110);
+			setState(87);
 			match(PARAMETER);
-			setState(113);
+			setState(90);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==T__1) {
+			if (_la==T__0) {
 				{
-				setState(111);
-				match(T__1);
-				setState(112);
+				setState(88);
+				match(T__0);
+				setState(89);
 				type();
 				}
 			}
@@ -792,12 +553,12 @@ public class GDScriptParser extends Parser {
 
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_type);
+		enterRule(_localctx, 12, RULE_type);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(92);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << CLASS_NAME))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -841,10 +602,10 @@ public class GDScriptParser extends Parser {
 
 	public final SuiteContext suite() throws RecognitionException {
 		SuiteContext _localctx = new SuiteContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_suite);
+		enterRule(_localctx, 14, RULE_suite);
 		int _la;
 		try {
-			setState(127);
+			setState(104);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case EXTENDS:
@@ -854,32 +615,32 @@ public class GDScriptParser extends Parser {
 			case PASS:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(117);
+				setState(94);
 				simple_stmt();
 				}
 				break;
 			case NEWLINE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(118);
+				setState(95);
 				match(NEWLINE);
-				setState(119);
+				setState(96);
 				match(INDENT);
-				setState(121); 
+				setState(98); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(120);
+					setState(97);
 					stmt();
 					}
 					}
-					setState(123); 
+					setState(100); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << EXTENDS) | (1L << CONST) | (1L << VAR) | (1L << FUNC) | (1L << RETURN) | (1L << PASS) | (1L << NEWLINE))) != 0) );
-				setState(125);
+				setState(102);
 				match(DEDENT);
 				}
 				break;
@@ -910,12 +671,12 @@ public class GDScriptParser extends Parser {
 
 	public final PrimaryContext primary() throws RecognitionException {
 		PrimaryContext _localctx = new PrimaryContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_primary);
+		enterRule(_localctx, 16, RULE_primary);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(129);
+			setState(106);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PARAMETER) | (1L << NUMBER) | (1L << STRING))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -939,39 +700,33 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\u0086\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\3\2\7\2&\n\2\f\2\16\2)\13\2\3\2\3\2\3\3\3\3\3\3\5\3\60\n\3\3\4\3\4\3"+
-		"\4\3\4\3\4\5\4\67\n\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n\3\n\5\nS\n\n\3\13"+
-		"\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\5\rc\n\r\3\r"+
-		"\3\r\3\r\3\r\3\16\3\16\3\16\7\16l\n\16\f\16\16\16o\13\16\3\17\3\17\3\17"+
-		"\5\17t\n\17\3\20\3\20\3\21\3\21\3\21\3\21\6\21|\n\21\r\21\16\21}\3\21"+
-		"\3\21\5\21\u0082\n\21\3\22\3\22\3\22\2\2\23\2\4\6\b\n\f\16\20\22\24\26"+
-		"\30\32\34\36 \"\2\4\3\2\20\23\3\2\24\26\2\u0082\2\'\3\2\2\2\4/\3\2\2\2"+
-		"\6\66\3\2\2\2\b8\3\2\2\2\n<\3\2\2\2\fB\3\2\2\2\16H\3\2\2\2\20L\3\2\2\2"+
-		"\22R\3\2\2\2\24T\3\2\2\2\26Y\3\2\2\2\30^\3\2\2\2\32h\3\2\2\2\34p\3\2\2"+
-		"\2\36u\3\2\2\2 \u0081\3\2\2\2\"\u0083\3\2\2\2$&\5\4\3\2%$\3\2\2\2&)\3"+
-		"\2\2\2\'%\3\2\2\2\'(\3\2\2\2(*\3\2\2\2)\'\3\2\2\2*+\7\2\2\3+\3\3\2\2\2"+
-		",\60\5\6\4\2-\60\5\22\n\2.\60\7\30\2\2/,\3\2\2\2/-\3\2\2\2/.\3\2\2\2\60"+
-		"\5\3\2\2\2\61\67\5\b\5\2\62\67\5\n\6\2\63\67\5\f\7\2\64\67\5\16\b\2\65"+
-		"\67\5\20\t\2\66\61\3\2\2\2\66\62\3\2\2\2\66\63\3\2\2\2\66\64\3\2\2\2\66"+
-		"\65\3\2\2\2\67\7\3\2\2\289\7\n\2\29:\7\23\2\2:;\7\30\2\2;\t\3\2\2\2<="+
-		"\7\f\2\2=>\7\24\2\2>?\7\3\2\2?@\5\"\22\2@A\7\30\2\2A\13\3\2\2\2BC\7\13"+
-		"\2\2CD\7\24\2\2DE\7\3\2\2EF\5\"\22\2FG\7\30\2\2G\r\3\2\2\2HI\7\16\2\2"+
-		"IJ\5\"\22\2JK\7\30\2\2K\17\3\2\2\2LM\7\17\2\2MN\7\30\2\2N\21\3\2\2\2O"+
-		"S\5\24\13\2PS\5\26\f\2QS\5\30\r\2RO\3\2\2\2RP\3\2\2\2RQ\3\2\2\2S\23\3"+
-		"\2\2\2TU\7\b\2\2UV\5\"\22\2VW\7\4\2\2WX\5 \21\2X\25\3\2\2\2YZ\7\t\2\2"+
-		"Z[\5\"\22\2[\\\7\4\2\2\\]\5 \21\2]\27\3\2\2\2^_\7\r\2\2_`\7\24\2\2`b\7"+
-		"\5\2\2ac\5\32\16\2ba\3\2\2\2bc\3\2\2\2cd\3\2\2\2de\7\6\2\2ef\7\4\2\2f"+
-		"g\5 \21\2g\31\3\2\2\2hm\5\34\17\2ij\7\7\2\2jl\5\34\17\2ki\3\2\2\2lo\3"+
-		"\2\2\2mk\3\2\2\2mn\3\2\2\2n\33\3\2\2\2om\3\2\2\2ps\7\24\2\2qr\7\4\2\2"+
-		"rt\5\36\20\2sq\3\2\2\2st\3\2\2\2t\35\3\2\2\2uv\t\2\2\2v\37\3\2\2\2w\u0082"+
-		"\5\6\4\2xy\7\30\2\2y{\7\34\2\2z|\5\4\3\2{z\3\2\2\2|}\3\2\2\2}{\3\2\2\2"+
-		"}~\3\2\2\2~\177\3\2\2\2\177\u0080\7\35\2\2\u0080\u0082\3\2\2\2\u0081w"+
-		"\3\2\2\2\u0081x\3\2\2\2\u0082!\3\2\2\2\u0083\u0084\t\3\2\2\u0084#\3\2"+
-		"\2\2\13\'/\66Rbms}\u0081";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35o\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\7\2\26"+
+		"\n\2\f\2\16\2\31\13\2\3\2\3\2\3\3\3\3\3\3\5\3 \n\3\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\5\4)\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\5\4;\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5"+
+		"\3\5\3\5\5\5K\n\5\3\5\3\5\3\5\5\5P\n\5\3\6\3\6\3\6\7\6U\n\6\f\6\16\6X"+
+		"\13\6\3\7\3\7\3\7\5\7]\n\7\3\b\3\b\3\t\3\t\3\t\3\t\6\te\n\t\r\t\16\tf"+
+		"\3\t\3\t\5\tk\n\t\3\n\3\n\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\4\3\2\20\23"+
+		"\3\2\24\26\2t\2\27\3\2\2\2\4\37\3\2\2\2\6:\3\2\2\2\bO\3\2\2\2\nQ\3\2\2"+
+		"\2\fY\3\2\2\2\16^\3\2\2\2\20j\3\2\2\2\22l\3\2\2\2\24\26\5\4\3\2\25\24"+
+		"\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\32\3\2\2\2\31\27"+
+		"\3\2\2\2\32\33\7\2\2\3\33\3\3\2\2\2\34 \5\6\4\2\35 \5\b\5\2\36 \7\30\2"+
+		"\2\37\34\3\2\2\2\37\35\3\2\2\2\37\36\3\2\2\2 \5\3\2\2\2!\"\7\n\2\2\"#"+
+		"\7\23\2\2#;\7\30\2\2$%\7\f\2\2%(\7\24\2\2&\'\7\3\2\2\')\5\16\b\2(&\3\2"+
+		"\2\2()\3\2\2\2)*\3\2\2\2*+\7\4\2\2+,\5\22\n\2,-\7\30\2\2-;\3\2\2\2./\7"+
+		"\13\2\2/\60\7\24\2\2\60\61\7\4\2\2\61\62\5\22\n\2\62\63\7\30\2\2\63;\3"+
+		"\2\2\2\64\65\7\16\2\2\65\66\5\22\n\2\66\67\7\30\2\2\67;\3\2\2\289\7\17"+
+		"\2\29;\7\30\2\2:!\3\2\2\2:$\3\2\2\2:.\3\2\2\2:\64\3\2\2\2:8\3\2\2\2;\7"+
+		"\3\2\2\2<=\7\b\2\2=>\5\22\n\2>?\7\3\2\2?@\5\20\t\2@P\3\2\2\2AB\7\t\2\2"+
+		"BC\5\22\n\2CD\7\3\2\2DE\5\20\t\2EP\3\2\2\2FG\7\r\2\2GH\7\24\2\2HJ\7\5"+
+		"\2\2IK\5\n\6\2JI\3\2\2\2JK\3\2\2\2KL\3\2\2\2LM\7\6\2\2MN\7\3\2\2NP\5\20"+
+		"\t\2O<\3\2\2\2OA\3\2\2\2OF\3\2\2\2P\t\3\2\2\2QV\5\f\7\2RS\7\7\2\2SU\5"+
+		"\f\7\2TR\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\13\3\2\2\2XV\3\2\2\2Y"+
+		"\\\7\24\2\2Z[\7\3\2\2[]\5\16\b\2\\Z\3\2\2\2\\]\3\2\2\2]\r\3\2\2\2^_\t"+
+		"\2\2\2_\17\3\2\2\2`k\5\6\4\2ab\7\30\2\2bd\7\34\2\2ce\5\4\3\2dc\3\2\2\2"+
+		"ef\3\2\2\2fd\3\2\2\2fg\3\2\2\2gh\3\2\2\2hi\7\35\2\2ik\3\2\2\2j`\3\2\2"+
+		"\2ja\3\2\2\2k\21\3\2\2\2lm\t\3\2\2m\23\3\2\2\2\f\27\37(:JOV\\fj";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
