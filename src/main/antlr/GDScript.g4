@@ -92,9 +92,7 @@ type: BOOL | INT | FLOAT | CLASS_NAME;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
-primary: PROPERTY_INVOCATION | PARAMETER | NUMBER | STRING;
-
-PROPERTY_INVOCATION: PARAMETER '.' PARAMETER;
+primary: PARAMETER | NUMBER | STRING;
 
 // Keyword tokens
 IF: 'if';
