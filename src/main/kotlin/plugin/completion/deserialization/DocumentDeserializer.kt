@@ -11,7 +11,7 @@ import java.io.File
 class DocumentDeserializer {
 
     fun deserializeResource(resourceName: String): Document {
-        val file = File("src/main/resources-gen/docs/$resourceName")
+        val file = File("src/main/resources-gen/plugin/completion/$resourceName")
         return deserializeFile(file)
     }
 
