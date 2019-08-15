@@ -83,7 +83,7 @@ tasks.register("updateDocs") {
         def urls = contents.collect { it.download_url }
         download {
             src urls
-            dest file("$generatedResourceLocation/docs")
+            dest file("$generatedResourceLocation/plugin/completion")
         }
     }
 }
