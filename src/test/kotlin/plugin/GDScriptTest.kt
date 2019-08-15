@@ -8,7 +8,7 @@ class GDScriptTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition())
 
     fun `test var`() = assertXPathMatches(
         code = "var index = 7",
-        xpath = "/file/stmt/simple_stmt/PARAMETER"
+        xpath = "/file/stmt/simple_stmt/primary/PARAMETER"
     )
 
     fun `test var primitive typed`() = assertXPathMatches(

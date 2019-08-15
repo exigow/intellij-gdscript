@@ -75,24 +75,26 @@ stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt:
     (EXTENDS CLASS_NAME NEWLINE) |
-    (VAR PARAMETER (':' type)? '=' primary NEWLINE) |
-    (CONST PARAMETER '=' primary NEWLINE) |
+    (VAR primary (':' type)? '=' primary NEWLINE) |
+    (CONST primary '=' primary NEWLINE) |
     (RETURN primary NEWLINE) |
     (PASS NEWLINE);
 
 compound_stmt:
     (IF primary ':' suite) |
     (WHILE primary ':' suite) |
-    (FUNC PARAMETER '(' parameter_list? ')' ':' suite);
+    (FUNC primary '(' parameter_list? ')' ':' suite);
 
 parameter_list: parameter (',' parameter)*;
-parameter: PARAMETER (':' type)?;
+parameter: primary (':' type)?;
 
 type: BOOL | INT | FLOAT | CLASS_NAME;
 
 suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
 
-primary: PARAMETER | NUMBER | STRING;
+primary: PROPERTY_INVOCATION | PARAMETER | NUMBER | STRING;
+
+PROPERTY_INVOCATION: PARAMETER '.' PARAMETER;
 
 // Keyword tokens
 IF: 'if';
