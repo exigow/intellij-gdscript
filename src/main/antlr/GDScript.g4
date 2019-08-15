@@ -72,25 +72,20 @@ stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt:
     (EXTENDS primary NEWLINE) |
-    (export? VAR_CONST PARAMETER type? '=' primary NEWLINE) |
+    ((EXPORT typed_primary_list?)? VAR_CONST typed_primary '=' primary NEWLINE) |
     (RETURN primary NEWLINE) |
     (CONTINUE_BREAK_PASS NEWLINE);
-
-export: EXPORT typed_primaries?;
 
 compound_stmt:
     (IF primary suite (ELSE suite)?) |
     (WHILE primary suite) |
     (FOR primary suite) |
-    (FUNC primary typed_primaries? suite) |
+    (FUNC primary typed_primary_list? suite) |
     (CLASS primary suite);
 
-typed_primaries: ('(' primary type? (',' primary type?)*')');
-
-type: ':' primary;
-
 suite: ':' (simple_stmt | (NEWLINE INDENT stmt+ DEDENT));
-
+typed_primary_list: ('(' typed_primary (',' typed_primary)* ')');
+typed_primary: primary (':' primary)?;
 primary: PARAMETER | NUMBER | STRING | TRUE_FALSE | PRIMITIVE_TYPE | CLASS_NAME;
 
 IF: 'if';
@@ -98,21 +93,20 @@ ELSE: 'else';
 FOR: 'for';
 WHILE: 'while';
 EXTENDS: 'extends';
-VAR_CONST: 'const' | 'var';
 FUNC: 'func';
 EXPORT: 'export';
 RETURN: 'return';
-OPERATOR: '+' | '-' | '*' | '/' | 'is';
-CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
-TRUE_FALSE: 'true' | 'false';
-PRIMITIVE_TYPE: 'bool' | 'int' | 'float';
 CLASS: 'class';
+VAR_CONST: 'const' | 'var';
+CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
+TRUE_FALSE: 'true' | 'false' | 'null';
+PRIMITIVE_TYPE: 'bool' | 'int' | 'float';
+OPERATOR: '+' | '-' | '*' | '/' | 'is';
 CLASS_NAME: [A-Z]+[a-zA-Z0-9]*;
-
 PARAMETER: [_a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
-STRING: UNTERMINATED_STRING '"';
-fragment UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
+STRING: '"' (~["\\\r\n] | '\\' (. | EOF))* '"';
+LINE_COMMENT: '#' ~[\r\n\f]*;
 
 NEWLINE: ('\r'? '\n' | '\r') {
 if (pendingDent) {
@@ -129,7 +123,5 @@ if (pendingDent) {
     indentCount += getText().length();
 }
 };
-
-LINE_COMMENT: '#' ~[\r\n\f]*;
 
 ERRCHAR: . -> channel(HIDDEN);
