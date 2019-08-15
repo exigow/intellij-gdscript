@@ -7,46 +7,39 @@ import plugin.GDScript
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test var`() {
-        val code = "var index = 7"
-        assertXPathMatches(code, "/file/stmt/simple_stmt/primary/PARAMETER")
-    }
-
-    fun `test var primitive typed`() {
-        val code = "var damage: float = 74.9"
-        assertXPathMatches(code, "/file/stmt/simple_stmt/type")
-    }
-
-    fun `test var class typed`() {
-        val code = "var color: String = \"blue\""
-        assertXPathMatches(code, "/file/stmt/simple_stmt/primary")
-        assertXPathMatches(code, "/file/stmt/simple_stmt/type")
-    }
-
-    fun `test function declaration with no arguments`() {
+    fun `test var and const`() {
         val code = """
-        func test():
-            pass
-        """
+            extends SomeClass
+            extends "base.gd"
+            export(Texture) var character_face
+            export(int, "Warrior", "Magician", "Thief") var character_class
+            export(float, -10, 20, 0.2) var k_parameter
+            var is_armed: bool = true
+            var color: String = "blue"
+            const MAX_AGE: int = 100
+            export var damage: float = 74.9
+            """
+        assertXPathMatches(code, "/file/stmt/simple_stmt/primary")
+    }
+
+    fun `test function`() {
+        val code = """
+            func is_empty():
+                return true
+                
+            func attack(enemy, damage: int, vector: Vector2):
+                pass
+            """
         assertXPathMatches(code, "/file/stmt/compound_stmt/suite/stmt/simple_stmt")
     }
 
-    fun `test function declaration with multiple arguments`() {
-        val code = """
-        func test(a: int, b: Vector2):
-            pass
-        """
-        assertXPathMatches(code, "/file/stmt/compound_stmt/parameter/type")
-    }
-
-    fun `test comment after statement`() {
-        val code = "return 0 # comment"
-        assertXPathMatches(code, "/file/stmt/simple_stmt")
-    }
-
     fun `test comment`() {
-        val code = "# comment"
-        assertXPathMatches(code, "/file")
+        val code = """
+            # comment"
+            return true # comment
+            return true # comment # ignored comment
+            """
+        assertXPathMatches(code, "/file/stmt/simple_stmt")
     }
 
     private fun assertXPathMatches(code: String, xpath: String) {

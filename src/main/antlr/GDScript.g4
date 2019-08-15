@@ -71,35 +71,36 @@ file: stmt* EOF;
 stmt: simple_stmt | compound_stmt | NEWLINE;
 
 simple_stmt:
-    (EXTENDS CLASS_NAME NEWLINE) |
-    (VAR PARAMETER type? '=' primary NEWLINE) |
-    (CONST PARAMETER type? '=' primary NEWLINE) |
+    (EXTENDS primary NEWLINE) |
+    (export? VAR_CONST PARAMETER type? '=' primary NEWLINE) |
     (RETURN primary NEWLINE) |
     (CONTINUE_BREAK_PASS NEWLINE);
 
+export: EXPORT typed_primaries?;
+
 compound_stmt:
-    (IF primary ':' suite (ELSE ':' suite)?) |
-    (WHILE primary ':' suite) |
-    (FOR primary ':' suite) |
-    (FUNC primary '(' (parameter (',' parameter)*)? ')' ':' suite) |
-    (CLASS CLASS_NAME ':' suite);
+    (IF primary suite (ELSE suite)?) |
+    (WHILE primary suite) |
+    (FOR primary suite) |
+    (FUNC primary typed_primaries? suite) |
+    (CLASS primary suite);
 
-parameter: primary type?;
+typed_primaries: ('(' primary type? (',' primary type?)*')');
 
-type: ':' (PRIMITIVE_TYPE | CLASS_NAME);
+type: ':' primary;
 
-suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT;
+suite: ':' (simple_stmt | (NEWLINE INDENT stmt+ DEDENT));
 
-primary: PARAMETER | NUMBER | STRING | TRUE_FALSE;
+primary: PARAMETER | NUMBER | STRING | TRUE_FALSE | PRIMITIVE_TYPE | CLASS_NAME;
 
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
 WHILE: 'while';
 EXTENDS: 'extends';
-CONST: 'const';
-VAR: 'var';
+VAR_CONST: 'const' | 'var';
 FUNC: 'func';
+EXPORT: 'export';
 RETURN: 'return';
 OPERATOR: '+' | '-' | '*' | '/' | 'is';
 CONTINUE_BREAK_PASS: 'continue' | 'break' | 'pass';
