@@ -1,4 +1,4 @@
-package plugin.deserialization.models
+package plugin.completion.deserialization.models
 
 data class Member(
     val name: String,

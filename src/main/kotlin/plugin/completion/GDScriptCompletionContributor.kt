@@ -1,4 +1,4 @@
-package plugin
+package plugin.completion
 
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
@@ -11,8 +11,8 @@ import com.intellij.patterns.PsiElementPattern
 import com.intellij.psi.PsiElement
 import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
-import plugin.deserialization.DocumentDeserializer
-import plugin.deserialization.models.Document
+import plugin.completion.deserialization.DocumentDeserializer
+import plugin.completion.deserialization.models.Document
 import javax.swing.Icon
 
 

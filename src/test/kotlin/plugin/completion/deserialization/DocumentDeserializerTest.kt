@@ -1,10 +1,10 @@
-package plugin.deserialization
+package plugin.completion.deserialization
 
 import org.junit.Test
-import plugin.deserialization.models.Constant
-import plugin.deserialization.models.Document
-import plugin.deserialization.models.Member
-import plugin.deserialization.models.Method
+import plugin.completion.deserialization.models.Constant
+import plugin.completion.deserialization.models.Document
+import plugin.completion.deserialization.models.Member
+import plugin.completion.deserialization.models.Method
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull

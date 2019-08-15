@@ -56,9 +56,10 @@ sourceSets {
 compileKotlin.dependsOn generateGrammarSource
 
 generateGrammarSource {
-    outputDirectory = file("$generatedJavaLocation/plugin/parser")
+    def pckg = "plugin/parser/grammar"
+    outputDirectory = file("$generatedJavaLocation/$pckg")
     arguments += [
-        "-package", "plugin.parser",
+        "-package", pckg.replace("/", "."),
         "-no-listener",
         "-no-visitor"
     ]

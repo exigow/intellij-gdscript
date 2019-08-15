@@ -1,4 +1,4 @@
-package plugin
+package plugin.parser
 
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
@@ -17,9 +17,10 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
-import plugin.parser.GDScriptLexer
-import plugin.parser.GDScriptParser
-import plugin.psi.GDScriptPsiFileRoot
+import plugin.GDScript
+import plugin.parser.grammar.GDScriptLexer
+import plugin.parser.grammar.GDScriptParser
+import plugin.psi.GDScriptPsiFile
 
 class GDScriptParserDefinition : ParserDefinition {
 
@@ -52,7 +53,7 @@ class GDScriptParserDefinition : ParserDefinition {
 
     override fun getFileNodeType() = IFileElementType(GDScript)
 
-    override fun createFile(viewProvider: FileViewProvider) = GDScriptPsiFileRoot(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = GDScriptPsiFile(viewProvider)
 
     override fun createElement(node: ASTNode): PsiElement {
         return ANTLRPsiNode(node)

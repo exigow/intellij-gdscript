@@ -1,12 +1,13 @@
-package plugin
+package plugin.highlighting
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
-import plugin.parser.GDScriptLexer
-import plugin.parser.GDScriptLexer.*
+import plugin.GDScript
+import plugin.parser.grammar.GDScriptLexer
+import plugin.parser.grammar.GDScriptLexer.*
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColor
 
 

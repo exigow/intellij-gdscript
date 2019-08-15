@@ -1,10 +1,10 @@
-package plugin.deserialization
+package plugin.completion.deserialization
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.intellij.lang.annotations.Language
-import plugin.deserialization.models.Document
+import plugin.completion.deserialization.models.Document
 import java.io.File
 
 

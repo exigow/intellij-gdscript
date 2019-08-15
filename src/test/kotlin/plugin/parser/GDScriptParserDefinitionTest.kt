@@ -1,10 +1,11 @@
-package plugin
+package plugin.parser
 
 import com.intellij.testFramework.ParsingTestCase
 import org.antlr.intellij.adaptor.xpath.XPath
 import org.junit.Assert
+import plugin.GDScript
 
-class GDScriptParserTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
+class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
     fun `test var`() {
         val code = "var index = 7"

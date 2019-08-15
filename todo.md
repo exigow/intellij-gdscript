@@ -1,0 +1,1 @@
+rename: idea-godot-plugin -> godot-idea-plugin

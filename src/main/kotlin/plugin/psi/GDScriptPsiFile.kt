@@ -7,7 +7,7 @@ import plugin.GDScript
 import plugin.GDScriptFileType
 import plugin.Icons
 
-class GDScriptPsiFileRoot(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScript) {
+class GDScriptPsiFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScript) {
 
     override fun getFileType() = GDScriptFileType
 

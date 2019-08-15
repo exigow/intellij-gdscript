@@ -1,4 +1,4 @@
-package plugin
+package plugin.parser
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.tree.TokenSet

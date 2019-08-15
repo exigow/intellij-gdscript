@@ -1,4 +1,4 @@
-package plugin
+package plugin.highlighting
 
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
@@ -6,6 +6,7 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
+import plugin.Icons
 import javax.swing.Icon
 
 
@@ -38,7 +39,7 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
     }
 
     override fun getDisplayName(): String {
-        return "Sample"
+        return "GDScript"
     }
 
     companion object {

@@ -1,5 +1,5 @@
 // Generated from GDScript.g4 by ANTLR 4.7.2
-package plugin.parser;
+package plugin.parser.grammar;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATN;
