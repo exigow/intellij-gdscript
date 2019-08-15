@@ -112,7 +112,7 @@ INT: 'int';
 FLOAT: 'float';
 CLASS_NAME: [A-Z]+[a-zA-Z0-9]*;
 
-PARAMETER: [a-zA-Z]+;
+PARAMETER: [_a-zA-Z]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
 UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
