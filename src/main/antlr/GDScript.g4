@@ -70,24 +70,76 @@ file: statement* EOF;
 
 statement: expr* (expr_block | NEWLINE);
 
-expr:
-    KEYWORD |
-    NUMBER |
-    STRING |
-    COMMA_SEPARATOR |
-    expr '*' expr |
-    expr '/' expr |
-    expr '+' expr |
-    expr '-' expr |
-    expr '=' expr |
-    list |
-    IDENTIFIER;
+expr
+    : KEYWORD
+    | NUMBER
+    | STRING
+    | COMMA_SEPARATOR
+    | expr '.' expr // attribute reference
+    | expr 'is' expr // type check
+    | '-' expr // negate
+    | expr '*' expr // mul
+    | expr '/' expr // div
+    | expr '%' expr // remainder
+    | expr '+' expr // add
+    | expr '-' expr // sub
+    | expr ('<<' | '>>') expr // bit shift
+    | expr '&' expr // bit and
+    | expr '^' expr // bit xor
+    | expr '|' expr // bit or
+    | expr ('<' | '>' | '==' | '!=' | '>=' | '<=') expr // compare
+    | expr 'in' expr // content test
+    | expr ('!' | 'not') expr // boolean not
+    | expr ('and' | '&&') expr // boolean and
+    | expr ('or' | '||') expr // boolean or
+    | expr ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr // assign
+    | list
+    | IDENTIFIER
+    ;
 
 expr_block: ('->' expr)? ':' NEWLINE INDENT statement+ DEDENT;
 
 list: IDENTIFIER? (BRACKET expr? (COMMA_SEPARATOR expr)* BRACKET);
 
-KEYWORD: 'extends' | 'func' | 'return' | 'class' | 'onready' | 'export' | 'const' | 'var' | 'true' | 'false' | 'null' | 'enum' | 'in' | 'bool' | 'int' | 'float' | 'continue' | 'break' | 'pass' | 'if' | 'else' | 'elif'| 'for' | 'while' | 'setget' | 'signal';
+KEYWORD
+    : 'if'
+    | 'elif'
+    | 'else'
+    | 'for'
+    | 'while'
+    | 'match'
+    | 'break'
+    | 'continue'
+    | 'pass'
+    | 'return'
+    | 'class'
+    | 'extends'
+    | 'is'
+    | 'as'
+    | 'self'
+    | 'tool'
+    | 'signal'
+    | 'func'
+    | 'static'
+    | 'const'
+    | 'enum'
+    | 'var'
+    | 'onready'
+    | 'export'
+    | 'setget'
+    | 'breakpoint'
+    | 'preload'
+    | 'yield'
+    | 'assert'
+    | 'remote'
+    | 'master'
+    | 'puppet'
+    | 'remotesync'
+    | 'mastersync'
+    | 'puppetsync'
+    | 'class_name'
+    ;
+
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: UNTERMINATED_STRING '"';
 fragment UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;

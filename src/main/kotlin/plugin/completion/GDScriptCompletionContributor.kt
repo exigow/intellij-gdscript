@@ -21,7 +21,8 @@ import javax.swing.Icon
 class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
-        extendBasic(psiElement(), listOf("var", "const", "if", "while", "return", "extend"), CLASS_ICON)
+        val keywords = listOf("if", "elif", "else", "for", "while", "match", "break", "continue", "pass", "return", "class", "extends", "is", "as", "self", "tool", "signal", "func", "static", "const", "enum", "var", "onready", "export", "setget", "breakpoint", "preload", "yield", "assert", "remote", "master", "puppet", "remotesync", "mastersync", "puppetsync")
+        extendBasic(psiElement(), keywords, CLASS_ICON)
         for (resourceName in listOf("/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
             val doc = deserializeDocument(resourceName)
             extendBasic(psiElement(), doc.name, CLASS_ICON)

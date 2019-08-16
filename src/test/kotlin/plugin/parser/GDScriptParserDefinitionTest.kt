@@ -77,7 +77,7 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     }
 
     fun `test complex operator expression`() {
-        assertXPathMatches("var damage = level + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14")
+        assertXPathMatches("var damage = level.current + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14")
     }
 
     fun `test comment`() {
