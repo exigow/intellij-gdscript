@@ -46,11 +46,11 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
         val code = """
             var declaration_only
             var declaration_and_initialisation = 1.0
-            onready var x = y
+            onready var x = Vector2(1, 2)
             export(int) var volume
             export(int, "Warrior", "Magician", "Thief") var character_class
             export(float, -10.0, PATH = "hello") var parameter = 0.72
-        """
+            """
         assertXPathMatches(code)
     }
 
@@ -62,7 +62,7 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
             var health = 5 setget set_health
             # only getter (see: comma)
             var my_var = 5 setget ,get_health
-        """
+            """
         assertXPathMatches(code)
     }
 
@@ -72,12 +72,19 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
             array[0] = "Godot"
             array[-1] = MIN_HEALTH
             array[1 + 2] = SomeValue
-        """
+            """
         assertXPathMatches(code)
     }
 
     fun `test complex operator expression`() {
-        assertXPathMatches("var damage = level.current + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14")
+        val code = """
+            var damage = level.current + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14
+            var a = Vector2(2, 4)
+            var m = sqrt(a.x * a.x + a.y * a.y)
+            a.x /= m
+            a.y /= m
+            """
+        assertXPathMatches(code)
     }
 
     fun `test comment`() {
