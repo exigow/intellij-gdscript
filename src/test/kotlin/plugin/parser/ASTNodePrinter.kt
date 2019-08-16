@@ -1,6 +1,7 @@
 package plugin.parser
 
 import com.intellij.lang.ASTNode
+import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.tree.TokenSet
 
 object ASTNodePrinter {
@@ -14,7 +15,11 @@ object ASTNodePrinter {
 
     private fun build(folder: ASTNode, indent: Int, sb: StringBuilder) {
         sb.append(getIndentString(indent))
-        sb.append(folder.elementType)
+        val type = folder.elementType
+        if (type.toString() == "ERROR_ELEMENT")
+            sb.append("!!! ERROR_ELEMENT !!! '" + (folder as PsiErrorElement).errorDescription.trim() + "'")
+        else
+            sb.append(type)
         sb.append("\n")
         for (file in folder.getChildren(TokenSet.ANY))
             if (file.getChildren(TokenSet.ANY).isNotEmpty())

@@ -66,25 +66,32 @@ public Token nextToken() {
 }
 }
 
-file: statement* EOF;
+file: stmt* EOF;
 
-statement: simple | compound | NEWLINE;
+stmt: expr* NEWLINE;
 
-simple: ((KEYWORD primary_list?)? KEYWORD primary? ('=' primary)? NEWLINE);
+expr:
+    KEYWORD |
+    NUMBER |
+    STRING |
+    COMMA_SEPARATOR |
+    expr '*' expr |
+    expr '/' expr |
+    expr '+' expr |
+    expr '-' expr |
+    expr '=' expr |
+    list |
+    IDENTIFIER;
 
-compound: (KEYWORD primary primary_list? ':' (simple | (NEWLINE INDENT statement+ DEDENT)));
+list: IDENTIFIER? (BRACKET expr? (COMMA_SEPARATOR expr)* BRACKET);
 
-primary_list: (PARENTHESES primary (',' primary)* PARENTHESES);
-
-primary: value (':' value)?;
-
-value: NAME | NUMBER | STRING | KEYWORD;
-
-KEYWORD: 'if' | 'else' | 'while' | 'extends' | 'func' | 'export' | 'return' | 'class' | 'const' | 'var' | 'continue' | 'break' | 'pass' | 'true' | 'false' | 'null' | 'bool' | 'int' | 'float';
-PARENTHESES: '(' | ')' | '[' | ']';
-NAME: [_a-zA-Z0-9]+;
+KEYWORD: 'extends' | 'func' | 'return' | 'class' | 'onready' | 'export' | 'const' | 'var' | 'true' | 'false' | 'null' | 'enum' | 'in' | 'bool' | 'int' | 'float' | 'continue' | 'break' | 'pass' | 'if' | 'else' | 'elif'| 'for' | 'while' | 'setget' | 'signal';
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
-STRING: '"' (~["\\\r\n] | '\\' (. | EOF))* '"';
+STRING: UNTERMINATED_STRING '"';
+fragment UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
+IDENTIFIER: [_a-zA-Z0-9]+;
+BRACKET: '(' | ')' | '{' | '}' | '[' | ']';
+COMMA_SEPARATOR: ',';
 LINE_COMMENT: '#' ~[\r\n\f]*;
 
 NEWLINE: ('\r'? '\n' | '\r') {

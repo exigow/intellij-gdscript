@@ -7,48 +7,78 @@ import plugin.GDScript
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test simple`() {
+    fun `test function`() {
         val code = """
-            extends BaseClass
-            extends Vector2D
-            extends "base.gd"
-            export(Texture) var character_face
-            export(int, "Warrior", "Magician", "Thief") var character_class
-            export(float, -10.0, 20.0, 0.2) var k_parameter
-            var is_armed: bool = true
-            var color: String = "blue"
-            const MAX_AGE: int = 100
-            export var damage: float = 74.9
+            func asd(param1, param2)
             """
-        assertXPathMatches(code, "/file")
+        assertXPathMatches(code)
     }
 
-    fun `test complex`() {
+    fun `test extends`() {
         val code = """
-            func is_empty():
-                if angry:
-                    return false
-                if dead:
-                    var range: float = Vector2
-                    return false
-                return true
-
-            func attack(enemy, damage: int, vector: Vector2):
-                pass
+            # comment
+            extends BaseClass # comment after statement
+            extends Vector2
+            extends "base.gd"
             """
-        assertXPathMatches(code, "/file")
+        assertXPathMatches(code)
+    }
+
+    fun `test enum`() {
+        val code = """
+            enum {UNIT_ENEMY, UNIT_ALLY}
+            enum Color {RED, GREEN = "message", UNKNOWN = -1}
+            """
+        assertXPathMatches(code)
+    }
+
+    fun `test var export`() {
+        val code = """
+            var declaration_only
+            var declaration_and_initialisation = 1.0
+            onready var x = y
+            export(int) var volume
+            export(int, "Warrior", "Magician", "Thief") var character_class
+            export(float, -10.0, PATH = "hello") var parameter = 0.72
+        """
+        assertXPathMatches(code)
+    }
+
+    fun `test var setget`() {
+        val code = """
+            # setter and getter
+            var health = 100 setget set_health, get_health
+            # only setter
+            var health = 5 setget set_health
+            # only getter (see: comma)
+            var my_var = 5 setget ,get_health
+        """
+        assertXPathMatches(code)
+    }
+
+    fun `test array init`() {
+        val code = """
+            var array = ["Hello" + "World", Vector2, MAX_HEALTH]
+            array[0] = "Godot"
+            array[-1] = MIN_HEALTH
+            array[1 + 2] = SomeValue
+        """
+        assertXPathMatches(code)
+    }
+
+    fun `test complex operator expression`() {
+        assertXPathMatches("var damage = level + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14")
     }
 
     fun `test comment`() {
         val code = """
-            # comment"
-            return 1.23 # comment
-            return true # comment # ignored comment
+            # comment
+            return null # comment after statement
             """
-        assertXPathMatches(code, "/file")
+        assertXPathMatches(code)
     }
 
-    private fun assertXPathMatches(code: String, xpath: String) {
+    private fun assertXPathMatches(code: String, xpath: String = "/file") {
         myFile = createPsiFile("a", code.trimIndent())
         ensureParsed(myFile)
         val tree = ASTNodePrinter.build(myFile.node)
