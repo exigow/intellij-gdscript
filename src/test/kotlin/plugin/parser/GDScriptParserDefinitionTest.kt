@@ -7,18 +7,28 @@ import plugin.GDScript
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test function`() {
+    fun `test blocks`() {
         val code = """
-            func asd(param1, param2)
+            func add_items(item_type, amount):
+                if item_type:
+                    return null
+                else:
+                    return amount * 2
+                break
+
+            func _init() -> void:
+                pass
+
+            func create_vector() -> Vector2:
+                return null
             """
         assertXPathMatches(code)
     }
 
     fun `test extends`() {
         val code = """
-            # comment
-            extends BaseClass # comment after statement
-            extends Vector2
+            extends BaseClass
+            extends Vector2, "vector2.gd"
             extends "base.gd"
             """
         assertXPathMatches(code)

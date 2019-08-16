@@ -19,30 +19,31 @@ public class GDScriptParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, KEYWORD=6, NUMBER=7, STRING=8, 
-		IDENTIFIER=9, BRACKET=10, COMMA_SEPARATOR=11, LINE_COMMENT=12, NEWLINE=13, 
-		WHITESPACE=14, ERRCHAR=15, INDENT=16, DEDENT=17;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, KEYWORD=8, NUMBER=9, 
+		STRING=10, IDENTIFIER=11, BRACKET=12, COMMA_SEPARATOR=13, LINE_COMMENT=14, 
+		NEWLINE=15, WHITESPACE=16, ERRCHAR=17, INDENT=18, DEDENT=19;
 	public static final int
-		RULE_file = 0, RULE_stmt = 1, RULE_expr = 2, RULE_list = 3;
+		RULE_file = 0, RULE_statement = 1, RULE_expr = 2, RULE_expr_block = 3, 
+		RULE_list = 4;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"file", "stmt", "expr", "list"
+			"file", "statement", "expr", "expr_block", "list"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'*'", "'/'", "'+'", "'-'", "'='", null, null, null, null, null, 
-			"','"
+			null, "'*'", "'/'", "'+'", "'-'", "'='", "'->'", "':'", null, null, null, 
+			null, null, "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, "KEYWORD", "NUMBER", "STRING", "IDENTIFIER", 
-			"BRACKET", "COMMA_SEPARATOR", "LINE_COMMENT", "NEWLINE", "WHITESPACE", 
-			"ERRCHAR", "INDENT", "DEDENT"
+			null, null, null, null, null, null, null, null, "KEYWORD", "NUMBER", 
+			"STRING", "IDENTIFIER", "BRACKET", "COMMA_SEPARATOR", "LINE_COMMENT", 
+			"NEWLINE", "WHITESPACE", "ERRCHAR", "INDENT", "DEDENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -98,11 +99,11 @@ public class GDScriptParser extends Parser {
 
 	public static class FileContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(GDScriptParser.EOF, 0); }
-		public List<StmtContext> stmt() {
-			return getRuleContexts(StmtContext.class);
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
 		}
-		public StmtContext stmt(int i) {
-			return getRuleContext(StmtContext.class,i);
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
 		}
 		public FileContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -117,21 +118,21 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(11);
+			setState(13);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << KEYWORD) | (1L << NUMBER) | (1L << STRING) | (1L << IDENTIFIER) | (1L << BRACKET) | (1L << COMMA_SEPARATOR) | (1L << NEWLINE))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << KEYWORD) | (1L << NUMBER) | (1L << STRING) | (1L << IDENTIFIER) | (1L << BRACKET) | (1L << COMMA_SEPARATOR) | (1L << NEWLINE))) != 0)) {
 				{
 				{
-				setState(8);
-				stmt();
+				setState(10);
+				statement();
 				}
 				}
-				setState(13);
+				setState(15);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(14);
+			setState(16);
 			match(EOF);
 			}
 		}
@@ -146,7 +147,10 @@ public class GDScriptParser extends Parser {
 		return _localctx;
 	}
 
-	public static class StmtContext extends ParserRuleContext {
+	public static class StatementContext extends ParserRuleContext {
+		public Expr_blockContext expr_block() {
+			return getRuleContext(Expr_blockContext.class,0);
+		}
 		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -154,35 +158,52 @@ public class GDScriptParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public StmtContext(ParserRuleContext parent, int invokingState) {
+		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_stmt; }
+		@Override public int getRuleIndex() { return RULE_statement; }
 	}
 
-	public final StmtContext stmt() throws RecognitionException {
-		StmtContext _localctx = new StmtContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_stmt);
+	public final StatementContext statement() throws RecognitionException {
+		StatementContext _localctx = new StatementContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_statement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(19);
+			setState(21);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << KEYWORD) | (1L << NUMBER) | (1L << STRING) | (1L << IDENTIFIER) | (1L << BRACKET) | (1L << COMMA_SEPARATOR))) != 0)) {
 				{
 				{
-				setState(16);
+				setState(18);
 				expr(0);
 				}
 				}
-				setState(21);
+				setState(23);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(22);
-			match(NEWLINE);
+			setState(26);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case T__5:
+			case T__6:
+				{
+				setState(24);
+				expr_block();
+				}
+				break;
+			case NEWLINE:
+				{
+				setState(25);
+				match(NEWLINE);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -232,67 +253,67 @@ public class GDScriptParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31);
+			setState(35);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
-				setState(25);
+				setState(29);
 				match(KEYWORD);
 				}
 				break;
 			case 2:
 				{
-				setState(26);
+				setState(30);
 				match(NUMBER);
 				}
 				break;
 			case 3:
 				{
-				setState(27);
+				setState(31);
 				match(STRING);
 				}
 				break;
 			case 4:
 				{
-				setState(28);
+				setState(32);
 				match(COMMA_SEPARATOR);
 				}
 				break;
 			case 5:
 				{
-				setState(29);
+				setState(33);
 				list();
 				}
 				break;
 			case 6:
 				{
-				setState(30);
+				setState(34);
 				match(IDENTIFIER);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(50);
+			setState(54);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(48);
+					setState(52);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(33);
+						setState(37);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(34);
+						setState(38);
 						match(T__0);
-						setState(35);
+						setState(39);
 						expr(8);
 						}
 						break;
@@ -300,11 +321,11 @@ public class GDScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(36);
+						setState(40);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(37);
+						setState(41);
 						match(T__1);
-						setState(38);
+						setState(42);
 						expr(7);
 						}
 						break;
@@ -312,11 +333,11 @@ public class GDScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(39);
+						setState(43);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(40);
+						setState(44);
 						match(T__2);
-						setState(41);
+						setState(45);
 						expr(6);
 						}
 						break;
@@ -324,11 +345,11 @@ public class GDScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(42);
+						setState(46);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(43);
+						setState(47);
 						match(T__3);
-						setState(44);
+						setState(48);
 						expr(5);
 						}
 						break;
@@ -336,20 +357,20 @@ public class GDScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(45);
+						setState(49);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(46);
+						setState(50);
 						match(T__4);
-						setState(47);
+						setState(51);
 						expr(4);
 						}
 						break;
 					}
 					} 
 				}
-				setState(52);
+				setState(56);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			}
 			}
 		}
@@ -360,6 +381,79 @@ public class GDScriptParser extends Parser {
 		}
 		finally {
 			unrollRecursionContexts(_parentctx);
+		}
+		return _localctx;
+	}
+
+	public static class Expr_blockContext extends ParserRuleContext {
+		public TerminalNode NEWLINE() { return getToken(GDScriptParser.NEWLINE, 0); }
+		public TerminalNode INDENT() { return getToken(GDScriptParser.INDENT, 0); }
+		public TerminalNode DEDENT() { return getToken(GDScriptParser.DEDENT, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
+		}
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
+		}
+		public Expr_blockContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expr_block; }
+	}
+
+	public final Expr_blockContext expr_block() throws RecognitionException {
+		Expr_blockContext _localctx = new Expr_blockContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_expr_block);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(59);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==T__5) {
+				{
+				setState(57);
+				match(T__5);
+				setState(58);
+				expr(0);
+				}
+			}
+
+			setState(61);
+			match(T__6);
+			setState(62);
+			match(NEWLINE);
+			setState(63);
+			match(INDENT);
+			setState(65); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(64);
+				statement();
+				}
+				}
+				setState(67); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << KEYWORD) | (1L << NUMBER) | (1L << STRING) | (1L << IDENTIFIER) | (1L << BRACKET) | (1L << COMMA_SEPARATOR) | (1L << NEWLINE))) != 0) );
+			setState(69);
+			match(DEDENT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
 		}
 		return _localctx;
 	}
@@ -388,51 +482,51 @@ public class GDScriptParser extends Parser {
 
 	public final ListContext list() throws RecognitionException {
 		ListContext _localctx = new ListContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_list);
+		enterRule(_localctx, 8, RULE_list);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(72);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==IDENTIFIER) {
 				{
-				setState(53);
+				setState(71);
 				match(IDENTIFIER);
 				}
 			}
 
 			{
-			setState(56);
+			setState(74);
 			match(BRACKET);
-			setState(58);
+			setState(76);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				{
-				setState(57);
+				setState(75);
 				expr(0);
 				}
 				break;
 			}
-			setState(64);
+			setState(82);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA_SEPARATOR) {
 				{
 				{
-				setState(60);
+				setState(78);
 				match(COMMA_SEPARATOR);
-				setState(61);
+				setState(79);
 				expr(0);
 				}
 				}
-				setState(66);
+				setState(84);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(67);
+			setState(85);
 			match(BRACKET);
 			}
 			}
@@ -472,26 +566,30 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\23H\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\2\3\2\3\3\7\3\24\n"+
-		"\3\f\3\16\3\27\13\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\"\n\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\63\n\4\f"+
-		"\4\16\4\66\13\4\3\5\5\59\n\5\3\5\3\5\5\5=\n\5\3\5\3\5\7\5A\n\5\f\5\16"+
-		"\5D\13\5\3\5\3\5\3\5\2\3\6\6\2\4\6\b\2\2\2R\2\r\3\2\2\2\4\25\3\2\2\2\6"+
-		"!\3\2\2\2\b8\3\2\2\2\n\f\5\4\3\2\13\n\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2"+
-		"\2\r\16\3\2\2\2\16\20\3\2\2\2\17\r\3\2\2\2\20\21\7\2\2\3\21\3\3\2\2\2"+
-		"\22\24\5\6\4\2\23\22\3\2\2\2\24\27\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2"+
-		"\26\30\3\2\2\2\27\25\3\2\2\2\30\31\7\17\2\2\31\5\3\2\2\2\32\33\b\4\1\2"+
-		"\33\"\7\b\2\2\34\"\7\t\2\2\35\"\7\n\2\2\36\"\7\r\2\2\37\"\5\b\5\2 \"\7"+
-		"\13\2\2!\32\3\2\2\2!\34\3\2\2\2!\35\3\2\2\2!\36\3\2\2\2!\37\3\2\2\2! "+
-		"\3\2\2\2\"\64\3\2\2\2#$\f\t\2\2$%\7\3\2\2%\63\5\6\4\n&\'\f\b\2\2\'(\7"+
-		"\4\2\2(\63\5\6\4\t)*\f\7\2\2*+\7\5\2\2+\63\5\6\4\b,-\f\6\2\2-.\7\6\2\2"+
-		".\63\5\6\4\7/\60\f\5\2\2\60\61\7\7\2\2\61\63\5\6\4\6\62#\3\2\2\2\62&\3"+
-		"\2\2\2\62)\3\2\2\2\62,\3\2\2\2\62/\3\2\2\2\63\66\3\2\2\2\64\62\3\2\2\2"+
-		"\64\65\3\2\2\2\65\7\3\2\2\2\66\64\3\2\2\2\679\7\13\2\28\67\3\2\2\289\3"+
-		"\2\2\29:\3\2\2\2:<\7\f\2\2;=\5\6\4\2<;\3\2\2\2<=\3\2\2\2=B\3\2\2\2>?\7"+
-		"\r\2\2?A\5\6\4\2@>\3\2\2\2AD\3\2\2\2B@\3\2\2\2BC\3\2\2\2CE\3\2\2\2DB\3"+
-		"\2\2\2EF\7\f\2\2F\t\3\2\2\2\n\r\25!\62\648<B";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25Z\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\7\2\16\n\2\f\2\16\2\21\13\2\3\2\3\2\3\3"+
+		"\7\3\26\n\3\f\3\16\3\31\13\3\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\5\4&\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\7\4\67\n\4\f\4\16\4:\13\4\3\5\3\5\5\5>\n\5\3\5\3\5\3\5\3\5\6\5"+
+		"D\n\5\r\5\16\5E\3\5\3\5\3\6\5\6K\n\6\3\6\3\6\5\6O\n\6\3\6\3\6\7\6S\n\6"+
+		"\f\6\16\6V\13\6\3\6\3\6\3\6\2\3\6\7\2\4\6\b\n\2\2\2f\2\17\3\2\2\2\4\27"+
+		"\3\2\2\2\6%\3\2\2\2\b=\3\2\2\2\nJ\3\2\2\2\f\16\5\4\3\2\r\f\3\2\2\2\16"+
+		"\21\3\2\2\2\17\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2\2\21\17\3\2\2\2\22"+
+		"\23\7\2\2\3\23\3\3\2\2\2\24\26\5\6\4\2\25\24\3\2\2\2\26\31\3\2\2\2\27"+
+		"\25\3\2\2\2\27\30\3\2\2\2\30\34\3\2\2\2\31\27\3\2\2\2\32\35\5\b\5\2\33"+
+		"\35\7\21\2\2\34\32\3\2\2\2\34\33\3\2\2\2\35\5\3\2\2\2\36\37\b\4\1\2\37"+
+		"&\7\n\2\2 &\7\13\2\2!&\7\f\2\2\"&\7\17\2\2#&\5\n\6\2$&\7\r\2\2%\36\3\2"+
+		"\2\2% \3\2\2\2%!\3\2\2\2%\"\3\2\2\2%#\3\2\2\2%$\3\2\2\2&8\3\2\2\2\'(\f"+
+		"\t\2\2()\7\3\2\2)\67\5\6\4\n*+\f\b\2\2+,\7\4\2\2,\67\5\6\4\t-.\f\7\2\2"+
+		"./\7\5\2\2/\67\5\6\4\b\60\61\f\6\2\2\61\62\7\6\2\2\62\67\5\6\4\7\63\64"+
+		"\f\5\2\2\64\65\7\7\2\2\65\67\5\6\4\6\66\'\3\2\2\2\66*\3\2\2\2\66-\3\2"+
+		"\2\2\66\60\3\2\2\2\66\63\3\2\2\2\67:\3\2\2\28\66\3\2\2\289\3\2\2\29\7"+
+		"\3\2\2\2:8\3\2\2\2;<\7\b\2\2<>\5\6\4\2=;\3\2\2\2=>\3\2\2\2>?\3\2\2\2?"+
+		"@\7\t\2\2@A\7\21\2\2AC\7\24\2\2BD\5\4\3\2CB\3\2\2\2DE\3\2\2\2EC\3\2\2"+
+		"\2EF\3\2\2\2FG\3\2\2\2GH\7\25\2\2H\t\3\2\2\2IK\7\r\2\2JI\3\2\2\2JK\3\2"+
+		"\2\2KL\3\2\2\2LN\7\16\2\2MO\5\6\4\2NM\3\2\2\2NO\3\2\2\2OT\3\2\2\2PQ\7"+
+		"\17\2\2QS\5\6\4\2RP\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3\2\2\2UW\3\2\2\2VT"+
+		"\3\2\2\2WX\7\16\2\2X\13\3\2\2\2\r\17\27\34%\668=EJNT";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

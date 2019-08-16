@@ -66,9 +66,9 @@ public Token nextToken() {
 }
 }
 
-file: stmt* EOF;
+file: statement* EOF;
 
-stmt: expr* NEWLINE;
+statement: expr* (expr_block | NEWLINE);
 
 expr:
     KEYWORD |
@@ -82,6 +82,8 @@ expr:
     expr '=' expr |
     list |
     IDENTIFIER;
+
+expr_block: ('->' expr)? ':' NEWLINE INDENT statement+ DEDENT;
 
 list: IDENTIFIER? (BRACKET expr? (COMMA_SEPARATOR expr)* BRACKET);
 
