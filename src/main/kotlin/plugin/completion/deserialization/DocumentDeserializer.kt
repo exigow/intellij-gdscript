@@ -20,13 +20,13 @@ object DocumentDeserializer {
     }
 
     fun deserializeText(@Language("xml") xml: String): Document {
-        val fixedXml = fixTagsWithWhitespaces(xml)
+        val fixedXml = fixTagsWithOnlyWhitespaces(xml)
         return configureMapper().readValue(fixedXml, Document::class.java)
     }
 
     fun deserializeFile(xml: File) = deserializeText(xml.readText())
 
-    private fun fixTagsWithWhitespaces(content: String): String {
+    private fun fixTagsWithOnlyWhitespaces(content: String): String {
         // empty <constants> tag may contain newline whitespaces
         // which cause deserializer to recognize them as a VALUE_STRING
         return content.replace("<constants>\\s+</constants>".toRegex(), "<constants></constants>")
