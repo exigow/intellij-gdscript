@@ -1,6 +1,10 @@
 package plugin.completion.deserialization
 
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.deser.std.StdScalarDeserializer
+import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.intellij.lang.annotations.Language
@@ -30,6 +34,20 @@ object DocumentDeserializer {
 
     private fun configureMapper() = XmlMapper()
         .registerModule(KotlinModule())
+        .registerModule(StringTrimModule())
         .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+
+    private class StringTrimModule : SimpleModule() {
+
+        init {
+            val trimDeserializer = object : StdScalarDeserializer<String>(String::class.java) {
+
+                override fun deserialize(parser: JsonParser?, context: DeserializationContext?)
+                    = parser?.valueAsString?.trim().orEmpty()
+
+            }
+            addDeserializer(String::class.java, trimDeserializer)
+        }
+    }
 
 }

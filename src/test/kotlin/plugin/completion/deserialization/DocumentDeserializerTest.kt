@@ -3,10 +3,7 @@ package plugin.completion.deserialization
 import org.junit.Test
 import plugin.completion.deserialization.DocumentDeserializer.deserializeResource
 import plugin.completion.deserialization.DocumentDeserializer.deserializeText
-import plugin.completion.deserialization.models.Constant
-import plugin.completion.deserialization.models.Document
-import plugin.completion.deserialization.models.Member
-import plugin.completion.deserialization.models.Method
+import plugin.completion.deserialization.models.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
@@ -15,8 +12,13 @@ class DocumentDeserializerTest {
     
     @Test
     fun `deserialize methods`() {
-        val method = deserializeResource("Color.xml").findMethod("inverted")
-        assertEquals(method, Method(name = "inverted"))
+        val method = deserializeResource("Vector2.xml").findMethod("angle_to")
+        val expected = Method(
+            name = "angle_to",
+            returnType = Return("float"),
+            description = "Returns the angle in radians between the two vectors."
+        )
+        assertEquals(method, expected)
     }
 
     @Test
