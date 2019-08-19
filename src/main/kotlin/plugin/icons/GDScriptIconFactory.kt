@@ -12,9 +12,9 @@ object GDScriptIconFactory {
 
     fun createColor(color: Color) = object : Icon {
 
-        override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
-            g.color = color
-            g.fillRect(x, y, iconWidth, iconHeight)
+        override fun paintIcon(component: Component, graphics: Graphics, x: Int, y: Int) {
+            graphics.color = color
+            graphics.fillRect(x, y, iconWidth, iconHeight)
         }
 
         override fun getIconWidth() = 16
