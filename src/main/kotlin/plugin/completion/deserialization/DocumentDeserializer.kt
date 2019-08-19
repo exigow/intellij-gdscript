@@ -42,8 +42,8 @@ object DocumentDeserializer {
         init {
             val trimDeserializer = object : StdScalarDeserializer<String>(String::class.java) {
 
-                override fun deserialize(parser: JsonParser?, context: DeserializationContext?)
-                    = parser?.valueAsString?.trim().orEmpty()
+                override fun deserialize(parser: JsonParser, context: DeserializationContext)
+                    = parser.valueAsString.trim()
 
             }
             addDeserializer(String::class.java, trimDeserializer)
