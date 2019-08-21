@@ -25,8 +25,8 @@ object CodeGenerator {
     private fun Member.format() = "var $name: $type = $default"
 
     private fun Method.format() = """
-        # ${sanitize(description.trim().split("\n")[0])}
-        func $name(param1, param2) -> ${returnType.type}:
+        # ${sanitize(description.orEmpty().trim().split("\n")[0])}
+        func $name(param1, param2) -> ${returnType?.type}:
             pass
         """.trimIndent()
 
