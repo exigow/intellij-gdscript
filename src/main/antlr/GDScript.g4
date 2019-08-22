@@ -38,7 +38,7 @@ ELSE: 'else';
 return_line: RETURN expr;
 RETURN: 'return';
 
-expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | WHITESPACE | func_invoke_expr | dictionary_expr;
+expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | func_invoke_expr | dictionary_expr;
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
