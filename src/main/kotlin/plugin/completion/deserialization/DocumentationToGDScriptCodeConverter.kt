@@ -1,13 +1,13 @@
 package plugin.completion.deserialization
 
 import plugin.completion.deserialization.models.Constant
-import plugin.completion.deserialization.models.Document
+import plugin.completion.deserialization.models.Documentation
 import plugin.completion.deserialization.models.Member
 import plugin.completion.deserialization.models.Method
 
-object CodeGenerator {
+object DocumentationToGDScriptCodeConverter {
 
-    fun generate(doc: Document): String {
+    fun generate(doc: Documentation): String {
         val headers = doc.formatHeaders()
         val constants = doc.constants?.joinToString("\n") { it.format() }
         val members = doc.members?.joinToString("\n") { it.format() }
@@ -15,7 +15,7 @@ object CodeGenerator {
         return listOf(headers, constants, members, methods).joinToString("\n\n")
     }
 
-    private fun Document.formatHeaders() = """
+    private fun Documentation.formatHeaders() = """
         extends $inherits
         class_name $name
         """.trimIndent()

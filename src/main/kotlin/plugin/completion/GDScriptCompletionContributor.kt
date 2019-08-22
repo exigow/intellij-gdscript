@@ -11,9 +11,9 @@ import com.intellij.patterns.PsiElementPattern.Capture
 import com.intellij.psi.PsiElement
 import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
-import plugin.completion.deserialization.ColorDeserializer
-import plugin.completion.deserialization.DocumentDeserializer
-import plugin.completion.deserialization.models.Document
+import plugin.completion.deserialization.DocumentationDeserializer
+import plugin.completion.deserialization.models.Documentation
+import plugin.completion.deserialization.utilities.ColorDeserializer
 import plugin.icons.GDScriptIconFactory
 import javax.swing.Icon
 
@@ -21,8 +21,17 @@ import javax.swing.Icon
 class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
+        extendKeywords()
+        extendDocumentation()
+        extendColor()
+    }
+
+    private fun extendKeywords() {
         val keywords = listOf("if", "elif", "else", "for", "while", "match", "break", "continue", "pass", "return", "class", "extends", "is", "as", "self", "tool", "signal", "func", "static", "const", "enum", "var", "onready", "export", "setget", "breakpoint", "preload", "yield", "assert", "remote", "master", "puppet", "remotesync", "mastersync", "puppetsync")
         extendBasic(psiElement(), keywords, CLASS_ICON)
+    }
+
+    private fun extendDocumentation() {
         for (resourceName in listOf("/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
             val doc = deserializeDocument(resourceName)
             extendBasic(psiElement(), doc.name, CLASS_ICON)
@@ -30,6 +39,9 @@ class GDScriptCompletionContributor : CompletionContributor() {
             extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
             extendBasic(psiElement(), doc.usefulConstantsNames(), VARIABLE_READ_ACCESS)
         }
+    }
+
+    private fun extendColor() {
         for (constant in deserializeDocument("/docs/Color.xml").constants!!) {
             val name = constant.name
             val color = ColorDeserializer.deserialize(constant.value)
@@ -52,9 +64,9 @@ class GDScriptCompletionContributor : CompletionContributor() {
         extend(BASIC, capture, completion)
     }
 
-    private fun deserializeDocument(resourceName: String): Document {
+    private fun deserializeDocument(resourceName: String): Documentation {
         val text = GDScriptCompletionContributor::class.java.getResource(resourceName).readText()
-        return DocumentDeserializer.deserializeText(text)
+        return DocumentationDeserializer.deserializeText(text)
     }
 
 }

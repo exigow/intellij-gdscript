@@ -1,4 +1,4 @@
-package plugin.completion.deserialization
+package plugin.completion.deserialization.utilities
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

@@ -8,20 +8,20 @@ import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.intellij.lang.annotations.Language
-import plugin.completion.deserialization.models.Document
+import plugin.completion.deserialization.models.Documentation
 import java.io.File
 
 
-object DocumentDeserializer {
+object DocumentationDeserializer {
 
-    fun deserializeResource(resourceName: String): Document {
+    fun deserializeResource(resourceName: String): Documentation {
         val file = File("src/main/resources-gen/docs/$resourceName")
         return deserializeFile(file)
     }
 
-    fun deserializeText(@Language("xml") xml: String): Document {
+    fun deserializeText(@Language("xml") xml: String): Documentation {
         val fixedXml = fixTagsWithOnlyWhitespaces(xml)
-        return configureMapper().readValue(fixedXml, Document::class.java)
+        return configureMapper().readValue(fixedXml, Documentation::class.java)
     }
 
     fun deserializeFile(xml: File) = deserializeText(xml.readText())

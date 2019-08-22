@@ -1,14 +1,14 @@
 package plugin.completion.deserialization
 
 import org.junit.Test
-import plugin.completion.deserialization.DocumentDeserializer.deserializeResource
-import plugin.completion.deserialization.DocumentDeserializer.deserializeText
+import plugin.completion.deserialization.DocumentationDeserializer.deserializeResource
+import plugin.completion.deserialization.DocumentationDeserializer.deserializeText
 import plugin.completion.deserialization.models.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-class DocumentDeserializerTest {
+class DocumentationDeserializerTest {
     
     @Test
     fun `deserialize methods`() {
@@ -71,10 +71,10 @@ class DocumentDeserializerTest {
         assertNull(test.constants)
     }
 
-    private fun Document.findMember(name: String): Member = members?.find { it.name == name }!!
+    private fun Documentation.findMember(name: String): Member = members?.find { it.name == name }!!
 
-    private fun Document.findConstant(name: String): Constant = constants?.find { it.name == name }!!
+    private fun Documentation.findConstant(name: String): Constant = constants?.find { it.name == name }!!
 
-    private fun Document.findMethod(name: String): Method = methods?.find { it.name == name }!!
+    private fun Documentation.findMethod(name: String): Method = methods?.find { it.name == name }!!
 
 }

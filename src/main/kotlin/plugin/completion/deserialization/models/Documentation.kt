@@ -2,7 +2,7 @@ package plugin.completion.deserialization.models
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class Document(
+data class Documentation(
     val name: String,
     val inherits: String?,
     val members: List<Member>?,

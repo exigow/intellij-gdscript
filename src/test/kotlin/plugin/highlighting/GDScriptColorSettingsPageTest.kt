@@ -5,7 +5,7 @@ import org.junit.Test
 class GDScriptColorSettingsPageTest {
 
     @Test
-    fun `attribute names should be humanized from code`() {
+    fun `color option names are humanized programmatically from attributes`() {
         val displayNames = GDScriptColorSettingsPage().attributeDescriptors
             .map { it.displayName }
         assertContains("Parameter", displayNames)
