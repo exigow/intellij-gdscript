@@ -33,6 +33,7 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
                 ELSE,
                 RETURN -> pack(DefaultColors.KEYWORD)
                 LINE_COMMENT -> pack(DefaultColors.LINE_COMMENT)
+                BLOCK_COMMENT -> pack(DefaultColors.BLOCK_COMMENT)
                 else -> EMPTY
             }
         }

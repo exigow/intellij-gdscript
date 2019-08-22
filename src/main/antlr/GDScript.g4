@@ -38,7 +38,7 @@ ELSE: 'else';
 return_line: RETURN expr;
 RETURN: 'return';
 
-expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | func_invoke_expr | dictionary_expr;
+expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | BLOCK_COMMENT | func_invoke_expr | dictionary_expr;
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
@@ -48,6 +48,7 @@ IDENTIFIER: [_a-zA-Z0-9]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' (~["\n])* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;
+BLOCK_COMMENT: '"""' .*? '"""';
 NL: '\n';
 WHITESPACE: ' '+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);
