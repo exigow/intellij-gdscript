@@ -6,11 +6,11 @@ import java.awt.Component
 import java.awt.Graphics
 import javax.swing.Icon
 
-object GDScriptIconFactory {
+object IconFactory {
 
-    fun createLogo() = IconLoader.getIcon("META-INF/pluginIcon.svg")
+    fun fromPluginIconFile() = IconLoader.getIcon("META-INF/pluginIcon.svg")
 
-    fun createColor(color: Color) = object : Icon {
+    fun fromColor(color: Color) = object : Icon {
 
         override fun paintIcon(component: Component, graphics: Graphics, x: Int, y: Int) {
             graphics.color = color

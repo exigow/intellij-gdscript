@@ -167,7 +167,7 @@ public class GDScriptParser extends Parser {
 				setState(35); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << EXPORT) | (1L << ONREADY) | (1L << VAR) | (1L << STATIC) | (1L << FUNC) | (1L << CLASS) | (1L << EXTENDS) | (1L << CLASS_NAME) | (1L << ENUM) | (1L << IF) | (1L << ELIF) | (1L << ELSE) | (1L << RETURN) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << NL) | (1L << WHITESPACE))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << EXPORT) | (1L << ONREADY) | (1L << VAR) | (1L << STATIC) | (1L << FUNC) | (1L << CLASS) | (1L << EXTENDS) | (1L << CLASS_NAME) | (1L << ENUM) | (1L << IF) | (1L << ELIF) | (1L << ELSE) | (1L << RETURN) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << NL))) != 0) );
 			setState(37);
 			match(EOF);
 			}
@@ -380,7 +380,7 @@ public class GDScriptParser extends Parser {
 					setState(56);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << WHITESPACE))) != 0)) {
+					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT))) != 0)) {
 						{
 						setState(55);
 						expr();
@@ -539,7 +539,7 @@ public class GDScriptParser extends Parser {
 			setState(100);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << WHITESPACE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT))) != 0)) {
 				{
 				setState(99);
 				expr();
@@ -901,7 +901,6 @@ public class GDScriptParser extends Parser {
 		public TerminalNode NUMBER() { return getToken(GDScriptParser.NUMBER, 0); }
 		public TerminalNode STRING() { return getToken(GDScriptParser.STRING, 0); }
 		public TerminalNode LINE_COMMENT() { return getToken(GDScriptParser.LINE_COMMENT, 0); }
-		public TerminalNode WHITESPACE() { return getToken(GDScriptParser.WHITESPACE, 0); }
 		public Func_invoke_exprContext func_invoke_expr() {
 			return getRuleContext(Func_invoke_exprContext.class,0);
 		}
@@ -918,7 +917,7 @@ public class GDScriptParser extends Parser {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_expr);
 		try {
-			setState(156);
+			setState(155);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,19,_ctx) ) {
 			case 1:
@@ -953,20 +952,13 @@ public class GDScriptParser extends Parser {
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(153);
-				match(WHITESPACE);
+				func_invoke_expr();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(154);
-				func_invoke_expr();
-				}
-				break;
-			case 7:
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(155);
 				dictionary_expr();
 				}
 				break;
@@ -1004,37 +996,37 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(158);
+			setState(157);
 			match(IDENTIFIER);
-			setState(159);
+			setState(158);
 			match(T__0);
-			setState(161);
+			setState(160);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << WHITESPACE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT))) != 0)) {
 				{
-				setState(160);
+				setState(159);
 				expr();
 				}
 			}
 
-			setState(167);
+			setState(166);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1) {
 				{
 				{
-				setState(163);
+				setState(162);
 				match(T__1);
-				setState(164);
+				setState(163);
 				expr();
 				}
 				}
-				setState(169);
+				setState(168);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(170);
+			setState(169);
 			match(T__2);
 			}
 		}
@@ -1069,35 +1061,35 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(172);
+			setState(171);
 			match(T__6);
-			setState(174);
+			setState(173);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT) | (1L << WHITESPACE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING) | (1L << LINE_COMMENT))) != 0)) {
 				{
-				setState(173);
+				setState(172);
 				expr();
 				}
 			}
 
-			setState(180);
+			setState(179);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1) {
 				{
 				{
-				setState(176);
+				setState(175);
 				match(T__1);
-				setState(177);
+				setState(176);
 				expr();
 				}
 				}
-				setState(182);
+				setState(181);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(183);
+			setState(182);
 			match(T__7);
 			}
 		}
@@ -1113,7 +1105,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37\u00bc\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37\u00bb\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\3\2\3\2\6\2$\n"+
 		"\2\r\2\16\2%\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5"+
@@ -1123,33 +1115,33 @@ public class GDScriptParser extends Parser {
 		"\3\5\5\5g\n\5\3\5\3\5\7\5k\n\5\f\5\16\5n\13\5\3\5\3\5\3\5\5\5s\n\5\3\5"+
 		"\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\5\b\u0082\n\b\3\t\3\t"+
 		"\5\t\u0086\n\t\3\t\3\t\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\f\3\f\3\f"+
-		"\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u009f\n\16\3\17\3"+
-		"\17\3\17\5\17\u00a4\n\17\3\17\3\17\7\17\u00a8\n\17\f\17\16\17\u00ab\13"+
-		"\17\3\17\3\17\3\20\3\20\5\20\u00b1\n\20\3\20\3\20\7\20\u00b5\n\20\f\20"+
-		"\16\20\u00b8\13\20\3\20\3\20\3\20\2\2\21\2\4\6\b\n\f\16\20\22\24\26\30"+
-		"\32\34\36\2\3\4\2\31\31\33\33\2\u00d4\2#\3\2\2\2\4\65\3\2\2\2\6F\3\2\2"+
-		"\2\b`\3\2\2\2\nv\3\2\2\2\fz\3\2\2\2\16}\3\2\2\2\20\u0083\3\2\2\2\22\u0089"+
-		"\3\2\2\2\24\u008d\3\2\2\2\26\u0091\3\2\2\2\30\u0094\3\2\2\2\32\u009e\3"+
-		"\2\2\2\34\u00a0\3\2\2\2\36\u00ae\3\2\2\2 $\5\4\3\2!$\5\32\16\2\"$\7\35"+
-		"\2\2# \3\2\2\2#!\3\2\2\2#\"\3\2\2\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\'\3"+
-		"\2\2\2\'(\7\2\2\3(\3\3\2\2\2)\66\5\6\4\2*\66\5\b\5\2+\66\5\n\6\2,\66\5"+
-		"\f\7\2-\66\5\16\b\2.\66\5\20\t\2/\66\5\22\n\2\60\66\5\24\13\2\61\66\5"+
-		"\26\f\2\62\66\5\30\r\2\63\66\5\34\17\2\64\66\5\36\20\2\65)\3\2\2\2\65"+
-		"*\3\2\2\2\65+\3\2\2\2\65,\3\2\2\2\65-\3\2\2\2\65.\3\2\2\2\65/\3\2\2\2"+
-		"\65\60\3\2\2\2\65\61\3\2\2\2\65\62\3\2\2\2\65\63\3\2\2\2\65\64\3\2\2\2"+
-		"\66\5\3\2\2\2\67D\7\13\2\28:\7\3\2\29;\5\32\16\2:9\3\2\2\2:;\3\2\2\2;"+
-		"@\3\2\2\2<=\7\4\2\2=?\5\32\16\2><\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2"+
-		"\2AC\3\2\2\2B@\3\2\2\2CE\7\5\2\2D8\3\2\2\2DE\3\2\2\2EG\3\2\2\2F\67\3\2"+
-		"\2\2FG\3\2\2\2GI\3\2\2\2HJ\7\f\2\2IH\3\2\2\2IJ\3\2\2\2JK\3\2\2\2KL\7\r"+
-		"\2\2LO\7\31\2\2MN\7\6\2\2NP\7\31\2\2OM\3\2\2\2OP\3\2\2\2PS\3\2\2\2QR\7"+
-		"\7\2\2RT\5\32\16\2SQ\3\2\2\2ST\3\2\2\2T]\3\2\2\2UW\7\16\2\2VX\7\31\2\2"+
-		"WV\3\2\2\2WX\3\2\2\2X[\3\2\2\2YZ\7\4\2\2Z\\\7\31\2\2[Y\3\2\2\2[\\\3\2"+
-		"\2\2\\^\3\2\2\2]U\3\2\2\2]^\3\2\2\2^\7\3\2\2\2_a\7\17\2\2`_\3\2\2\2`a"+
-		"\3\2\2\2ab\3\2\2\2bc\7\20\2\2cd\7\31\2\2df\7\3\2\2eg\5\32\16\2fe\3\2\2"+
-		"\2fg\3\2\2\2gl\3\2\2\2hi\7\4\2\2ik\5\32\16\2jh\3\2\2\2kn\3\2\2\2lj\3\2"+
-		"\2\2lm\3\2\2\2mo\3\2\2\2nl\3\2\2\2or\7\5\2\2pq\7\b\2\2qs\7\31\2\2rp\3"+
-		"\2\2\2rs\3\2\2\2st\3\2\2\2tu\7\6\2\2u\t\3\2\2\2vw\7\21\2\2wx\7\31\2\2"+
-		"xy\7\6\2\2y\13\3\2\2\2z{\7\22\2\2{|\t\2\2\2|\r\3\2\2\2}~\7\23\2\2~\u0081"+
+		"\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u009e\n\16\3\17\3\17\3"+
+		"\17\5\17\u00a3\n\17\3\17\3\17\7\17\u00a7\n\17\f\17\16\17\u00aa\13\17\3"+
+		"\17\3\17\3\20\3\20\5\20\u00b0\n\20\3\20\3\20\7\20\u00b4\n\20\f\20\16\20"+
+		"\u00b7\13\20\3\20\3\20\3\20\2\2\21\2\4\6\b\n\f\16\20\22\24\26\30\32\34"+
+		"\36\2\3\4\2\31\31\33\33\2\u00d2\2#\3\2\2\2\4\65\3\2\2\2\6F\3\2\2\2\b`"+
+		"\3\2\2\2\nv\3\2\2\2\fz\3\2\2\2\16}\3\2\2\2\20\u0083\3\2\2\2\22\u0089\3"+
+		"\2\2\2\24\u008d\3\2\2\2\26\u0091\3\2\2\2\30\u0094\3\2\2\2\32\u009d\3\2"+
+		"\2\2\34\u009f\3\2\2\2\36\u00ad\3\2\2\2 $\5\4\3\2!$\5\32\16\2\"$\7\35\2"+
+		"\2# \3\2\2\2#!\3\2\2\2#\"\3\2\2\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\'\3\2"+
+		"\2\2\'(\7\2\2\3(\3\3\2\2\2)\66\5\6\4\2*\66\5\b\5\2+\66\5\n\6\2,\66\5\f"+
+		"\7\2-\66\5\16\b\2.\66\5\20\t\2/\66\5\22\n\2\60\66\5\24\13\2\61\66\5\26"+
+		"\f\2\62\66\5\30\r\2\63\66\5\34\17\2\64\66\5\36\20\2\65)\3\2\2\2\65*\3"+
+		"\2\2\2\65+\3\2\2\2\65,\3\2\2\2\65-\3\2\2\2\65.\3\2\2\2\65/\3\2\2\2\65"+
+		"\60\3\2\2\2\65\61\3\2\2\2\65\62\3\2\2\2\65\63\3\2\2\2\65\64\3\2\2\2\66"+
+		"\5\3\2\2\2\67D\7\13\2\28:\7\3\2\29;\5\32\16\2:9\3\2\2\2:;\3\2\2\2;@\3"+
+		"\2\2\2<=\7\4\2\2=?\5\32\16\2><\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2\2A"+
+		"C\3\2\2\2B@\3\2\2\2CE\7\5\2\2D8\3\2\2\2DE\3\2\2\2EG\3\2\2\2F\67\3\2\2"+
+		"\2FG\3\2\2\2GI\3\2\2\2HJ\7\f\2\2IH\3\2\2\2IJ\3\2\2\2JK\3\2\2\2KL\7\r\2"+
+		"\2LO\7\31\2\2MN\7\6\2\2NP\7\31\2\2OM\3\2\2\2OP\3\2\2\2PS\3\2\2\2QR\7\7"+
+		"\2\2RT\5\32\16\2SQ\3\2\2\2ST\3\2\2\2T]\3\2\2\2UW\7\16\2\2VX\7\31\2\2W"+
+		"V\3\2\2\2WX\3\2\2\2X[\3\2\2\2YZ\7\4\2\2Z\\\7\31\2\2[Y\3\2\2\2[\\\3\2\2"+
+		"\2\\^\3\2\2\2]U\3\2\2\2]^\3\2\2\2^\7\3\2\2\2_a\7\17\2\2`_\3\2\2\2`a\3"+
+		"\2\2\2ab\3\2\2\2bc\7\20\2\2cd\7\31\2\2df\7\3\2\2eg\5\32\16\2fe\3\2\2\2"+
+		"fg\3\2\2\2gl\3\2\2\2hi\7\4\2\2ik\5\32\16\2jh\3\2\2\2kn\3\2\2\2lj\3\2\2"+
+		"\2lm\3\2\2\2mo\3\2\2\2nl\3\2\2\2or\7\5\2\2pq\7\b\2\2qs\7\31\2\2rp\3\2"+
+		"\2\2rs\3\2\2\2st\3\2\2\2tu\7\6\2\2u\t\3\2\2\2vw\7\21\2\2wx\7\31\2\2xy"+
+		"\7\6\2\2y\13\3\2\2\2z{\7\22\2\2{|\t\2\2\2|\r\3\2\2\2}~\7\23\2\2~\u0081"+
 		"\7\31\2\2\177\u0080\7\4\2\2\u0080\u0082\7\33\2\2\u0081\177\3\2\2\2\u0081"+
 		"\u0082\3\2\2\2\u0082\17\3\2\2\2\u0083\u0085\7\24\2\2\u0084\u0086\7\31"+
 		"\2\2\u0085\u0084\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0087\3\2\2\2\u0087"+
@@ -1157,21 +1149,20 @@ public class GDScriptParser extends Parser {
 		"\16\2\u008b\u008c\7\6\2\2\u008c\23\3\2\2\2\u008d\u008e\7\26\2\2\u008e"+
 		"\u008f\5\32\16\2\u008f\u0090\7\6\2\2\u0090\25\3\2\2\2\u0091\u0092\7\27"+
 		"\2\2\u0092\u0093\7\6\2\2\u0093\27\3\2\2\2\u0094\u0095\7\30\2\2\u0095\u0096"+
-		"\5\32\16\2\u0096\31\3\2\2\2\u0097\u009f\7\31\2\2\u0098\u009f\7\32\2\2"+
-		"\u0099\u009f\7\33\2\2\u009a\u009f\7\34\2\2\u009b\u009f\7\36\2\2\u009c"+
-		"\u009f\5\34\17\2\u009d\u009f\5\36\20\2\u009e\u0097\3\2\2\2\u009e\u0098"+
-		"\3\2\2\2\u009e\u0099\3\2\2\2\u009e\u009a\3\2\2\2\u009e\u009b\3\2\2\2\u009e"+
-		"\u009c\3\2\2\2\u009e\u009d\3\2\2\2\u009f\33\3\2\2\2\u00a0\u00a1\7\31\2"+
-		"\2\u00a1\u00a3\7\3\2\2\u00a2\u00a4\5\32\16\2\u00a3\u00a2\3\2\2\2\u00a3"+
-		"\u00a4\3\2\2\2\u00a4\u00a9\3\2\2\2\u00a5\u00a6\7\4\2\2\u00a6\u00a8\5\32"+
-		"\16\2\u00a7\u00a5\3\2\2\2\u00a8\u00ab\3\2\2\2\u00a9\u00a7\3\2\2\2\u00a9"+
-		"\u00aa\3\2\2\2\u00aa\u00ac\3\2\2\2\u00ab\u00a9\3\2\2\2\u00ac\u00ad\7\5"+
-		"\2\2\u00ad\35\3\2\2\2\u00ae\u00b0\7\t\2\2\u00af\u00b1\5\32\16\2\u00b0"+
-		"\u00af\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1\u00b6\3\2\2\2\u00b2\u00b3\7\4"+
-		"\2\2\u00b3\u00b5\5\32\16\2\u00b4\u00b2\3\2\2\2\u00b5\u00b8\3\2\2\2\u00b6"+
-		"\u00b4\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7\u00b9\3\2\2\2\u00b8\u00b6\3\2"+
-		"\2\2\u00b9\u00ba\7\n\2\2\u00ba\37\3\2\2\2\32#%\65:@DFIOSW[]`flr\u0081"+
-		"\u0085\u009e\u00a3\u00a9\u00b0\u00b6";
+		"\5\32\16\2\u0096\31\3\2\2\2\u0097\u009e\7\31\2\2\u0098\u009e\7\32\2\2"+
+		"\u0099\u009e\7\33\2\2\u009a\u009e\7\34\2\2\u009b\u009e\5\34\17\2\u009c"+
+		"\u009e\5\36\20\2\u009d\u0097\3\2\2\2\u009d\u0098\3\2\2\2\u009d\u0099\3"+
+		"\2\2\2\u009d\u009a\3\2\2\2\u009d\u009b\3\2\2\2\u009d\u009c\3\2\2\2\u009e"+
+		"\33\3\2\2\2\u009f\u00a0\7\31\2\2\u00a0\u00a2\7\3\2\2\u00a1\u00a3\5\32"+
+		"\16\2\u00a2\u00a1\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a8\3\2\2\2\u00a4"+
+		"\u00a5\7\4\2\2\u00a5\u00a7\5\32\16\2\u00a6\u00a4\3\2\2\2\u00a7\u00aa\3"+
+		"\2\2\2\u00a8\u00a6\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00ab\3\2\2\2\u00aa"+
+		"\u00a8\3\2\2\2\u00ab\u00ac\7\5\2\2\u00ac\35\3\2\2\2\u00ad\u00af\7\t\2"+
+		"\2\u00ae\u00b0\5\32\16\2\u00af\u00ae\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0"+
+		"\u00b5\3\2\2\2\u00b1\u00b2\7\4\2\2\u00b2\u00b4\5\32\16\2\u00b3\u00b1\3"+
+		"\2\2\2\u00b4\u00b7\3\2\2\2\u00b5\u00b3\3\2\2\2\u00b5\u00b6\3\2\2\2\u00b6"+
+		"\u00b8\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b8\u00b9\7\n\2\2\u00b9\37\3\2\2"+
+		"\2\32#%\65:@DFIOSW[]`flr\u0081\u0085\u009d\u00a2\u00a8\u00af\u00b5";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

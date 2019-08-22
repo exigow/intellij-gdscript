@@ -1,7 +1,7 @@
 package plugin
 
 import com.intellij.openapi.fileTypes.LanguageFileType
-import plugin.icons.GDScriptIconFactory
+import plugin.icons.IconFactory
 
 object GDScriptFileType : LanguageFileType(GDScript) {
 
@@ -11,6 +11,6 @@ object GDScriptFileType : LanguageFileType(GDScript) {
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getIcon() = GDScriptIconFactory.createLogo()
+    override fun getIcon() = IconFactory.fromPluginIconFile()
 
 }

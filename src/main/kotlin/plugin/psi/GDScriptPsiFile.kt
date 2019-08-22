@@ -5,13 +5,13 @@ import com.intellij.psi.FileViewProvider
 import org.antlr.intellij.adaptor.psi.ScopeNode
 import plugin.GDScript
 import plugin.GDScriptFileType
-import plugin.icons.GDScriptIconFactory
+import plugin.icons.IconFactory
 
 class GDScriptPsiFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, GDScript) {
 
     override fun getFileType() = GDScriptFileType
 
-    override fun getIcon(flags: Int) = GDScriptIconFactory.createLogo()
+    override fun getIcon(flags: Int) = IconFactory.fromPluginIconFile()
 
     override fun getContext(): ScopeNode? = null
 

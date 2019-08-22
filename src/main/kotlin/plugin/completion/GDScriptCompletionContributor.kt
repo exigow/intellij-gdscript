@@ -14,26 +14,29 @@ import com.intellij.util.ProcessingContext
 import plugin.completion.deserialization.DocumentationDeserializer
 import plugin.completion.deserialization.models.Documentation
 import plugin.completion.deserialization.utilities.ColorParser
-import plugin.icons.GDScriptIconFactory
+import plugin.icons.IconFactory
 import javax.swing.Icon
 
 
 class GDScriptCompletionContributor : CompletionContributor() {
 
     init {
-        extendKeywords()
         extendDocumentation()
         extendColor()
-    }
+        extendKeyword()
 
-    private fun extendKeywords() {
-        val keywords = listOf("if", "elif", "else", "for", "while", "match", "break", "continue", "pass", "return", "class", "extends", "is", "as", "self", "tool", "signal", "func", "static", "const", "enum", "var", "onready", "export", "setget", "breakpoint", "preload", "yield", "assert", "remote", "master", "puppet", "remotesync", "mastersync", "puppetsync")
-        extendBasic(psiElement(), keywords, CLASS_ICON)
+        extendBasic(psiElement(), "test", CLASS_ICON)
     }
 
     private fun extendDocumentation() {
-        for (resourceName in listOf("/docs/GDScript.xml", "/docs/Sprite.xml", "/docs/Vector2.xml", "/docs/String.xml")) {
-            val doc = deserializeDocument(resourceName)
+        val paths = listOf(
+            "/docs/GDScript.xml",
+            "/docs/Sprite.xml",
+            "/docs/Vector2.xml",
+            "/docs/String.xml"
+        )
+        for (path in paths) {
+            val doc = deserializeDocument(path)
             extendBasic(psiElement(), doc.name, CLASS_ICON)
             extendBasic(psiElement(), doc.usefulMembersNames(), METHOD_ICON)
             extendBasic(psiElement(), doc.usefulMethodsNames(), METHOD_ICON)
@@ -42,12 +45,54 @@ class GDScriptCompletionContributor : CompletionContributor() {
     }
 
     private fun extendColor() {
-        for (constant in deserializeDocument("/docs/Color.xml").constants!!) {
+        val doc = deserializeDocument("/docs/Color.xml")
+        for (constant in doc.constants!!) {
             val name = constant.name
             val color = ColorParser.parse(constant.value)
-            val icon = GDScriptIconFactory.createColor(color)
+            val icon = IconFactory.fromColor(color)
             extendBasic(psiElement(), name, icon)
         }
+    }
+
+    private fun extendKeyword() {
+        val keywords = listOf(
+            "if",
+            "elif",
+            "else",
+            "for",
+            "while",
+            "match",
+            "break",
+            "continue",
+            "pass",
+            "return",
+            "class",
+            "extends",
+            "is",
+            "as",
+            "self",
+            "tool",
+            "signal",
+            "func",
+            "static",
+            "const",
+            "enum",
+            "var",
+            "onready",
+            "export",
+            "setget",
+            "breakpoint",
+            "preload",
+            "yield",
+            "assert",
+            "remote",
+            "master",
+            "puppet",
+            "remotesync",
+            "mastersync",
+            "puppetsync"
+        )
+        extendBasic(psiElement(), keywords, CLASS_ICON)
     }
 
     private fun extendBasic(capture: Capture<PsiElement>, word: String, icon: Icon) = extendBasic(capture, listOf(word), icon)
