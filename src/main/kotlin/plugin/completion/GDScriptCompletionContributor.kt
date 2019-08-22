@@ -13,7 +13,7 @@ import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
 import plugin.completion.deserialization.DocumentationDeserializer
 import plugin.completion.deserialization.models.Documentation
-import plugin.completion.deserialization.utilities.ColorDeserializer
+import plugin.completion.deserialization.utilities.ColorParser
 import plugin.icons.GDScriptIconFactory
 import javax.swing.Icon
 
@@ -44,7 +44,7 @@ class GDScriptCompletionContributor : CompletionContributor() {
     private fun extendColor() {
         for (constant in deserializeDocument("/docs/Color.xml").constants!!) {
             val name = constant.name
-            val color = ColorDeserializer.deserialize(constant.value)
+            val color = ColorParser.parse(constant.value)
             val icon = GDScriptIconFactory.createColor(color)
             extendBasic(psiElement(), name, icon)
         }
