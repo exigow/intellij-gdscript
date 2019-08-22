@@ -1,167 +1,53 @@
 grammar GDScript;
 
-tokens { INDENT, DEDENT }
+file: (line | expr | NL)+ EOF;
 
-@lexer::members {
-// Initializing `pendingDent` to true means any whitespace at the beginning
-// of the file will trigger an INDENT, which will probably be a syntax error,
-// as it is in Python.
-private boolean pendingDent = true;
-private int indentCount = 0;
-private java.util.LinkedList<Token> tokenQueue = new java.util.LinkedList<>();
-private java.util.Stack<Integer> indentStack = new java.util.Stack<>();
-private Token initialIndentToken = null;
-private int getSavedIndent() { return indentStack.isEmpty() ? 0 : indentStack.peek(); }
+line: var_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr | dictionary_expr;
 
-private CommonToken createToken(int type, String text, Token next) {
-    CommonToken token = new CommonToken(type, text);
-    if (null != initialIndentToken) {
-        token.setStartIndex(initialIndentToken.getStartIndex());
-        token.setLine(initialIndentToken.getLine());
-        token.setCharPositionInLine(initialIndentToken.getCharPositionInLine());
-        token.setStopIndex(next.getStartIndex()-1);
-    }
-    return token;
-}
+var_line: (EXPORT ('(' expr? (',' expr)* ')')?)? ONREADY? VAR IDENTIFIER (':' IDENTIFIER)? ('=' expr)? (SETGET IDENTIFIER? (',' IDENTIFIER)?)?;
+EXPORT: 'export';
+ONREADY: 'onready';
+VAR: 'var';
+SETGET: 'setget';
 
-@Override
-public Token nextToken() {
-    // Return tokens from the queue if it is not empty.
-    if (!tokenQueue.isEmpty()) { return tokenQueue.poll(); }
+func_line: STATIC? FUNC IDENTIFIER '(' expr? (',' expr)* ')' ('->' IDENTIFIER)? ':';
+STATIC: 'static';
+FUNC: 'func';
 
-    // Grab the next token and if nothing special is needed, simply return it.
-    // Initialize `initialIndentToken` if needed.
-    Token next = super.nextToken();
-    //NOTE: This could be an appropriate spot to count whitespace or deal with
-    //NEWLINES, but it is already handled with custom actions down in the
-    //lexer rules.
-    if (pendingDent && null == initialIndentToken && NEWLINE != next.getType()) { initialIndentToken = next; }
-    if (null == next || HIDDEN == next.getChannel() || NEWLINE == next.getType()) { return next; }
+class_line: CLASS IDENTIFIER ':';
+CLASS: 'class';
 
-    // Handle EOF. In particular, handle an abrupt EOF that comes without an
-    // immediately preceding NEWLINE.
-    if (next.getType() == EOF) {
-        indentCount = 0;
-        // EOF outside of `pendingDent` state means input did not have a final
-        // NEWLINE before end of file.
-        if (!pendingDent) {
-            initialIndentToken = next;
-            tokenQueue.offer(createToken(NEWLINE, "NEWLINE", next));
-        }
-    }
+extends_line: EXTENDS (IDENTIFIER | STRING);
+EXTENDS: 'extends';
 
-    // Before exiting `pendingDent` state queue up proper INDENTS and DEDENTS.
-    while (indentCount != getSavedIndent()) {
-        if (indentCount > getSavedIndent()) {
-            indentStack.push(indentCount);
-            tokenQueue.offer(createToken(GDScriptParser.INDENT, "INDENT" + indentCount, next));
-        } else {
-            indentStack.pop();
-            tokenQueue.offer(createToken(GDScriptParser.DEDENT, "DEDENT"+getSavedIndent(), next));
-        }
-    }
-    pendingDent = false;
-    tokenQueue.offer(next);
-    return tokenQueue.poll();
-}
-}
+class_name_line: CLASS_NAME IDENTIFIER (',' STRING)?;
+CLASS_NAME: 'class_name';
 
-file: statement* EOF;
+enum_line: ENUM IDENTIFIER? dictionary_expr;
+ENUM: 'enum';
 
-statement: expr* (expr_block | NEWLINE);
+if_line: IF expr ':';
+IF: 'if';
 
-expr
-    : KEYWORD
-    | NUMBER
-    | STRING
-    | COMMA_SEPARATOR
-    | expr '.' expr // attribute reference
-    | expr 'is' expr // type check
-    | '-' expr // negate
-    | expr '*' expr // mul
-    | expr '/' expr // div
-    | expr '%' expr // remainder
-    | expr '+' expr // add
-    | expr '-' expr // sub
-    | expr ('<<' | '>>') expr // bit shift
-    | expr '&' expr // bit and
-    | expr '^' expr // bit xor
-    | expr '|' expr // bit or
-    | expr ('<' | '>' | '==' | '!=' | '>=' | '<=') expr // compare
-    | expr 'in' expr // content test
-    | expr ('!' | 'not') expr // boolean not
-    | expr ('and' | '&&') expr // boolean and
-    | expr ('or' | '||') expr // boolean or
-    | expr ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr // assign
-    | list
-    | IDENTIFIER
-    ;
+elif_line: ELIF expr ':';
+ELIF: 'elif';
 
-expr_block: ('->' expr)? ':' NEWLINE INDENT statement+ DEDENT;
+else_line: ELSE ':';
+ELSE: 'else';
 
-list: IDENTIFIER? (BRACKET expr? (COMMA_SEPARATOR expr)* BRACKET);
+return_line: RETURN expr;
+RETURN: 'return';
 
-KEYWORD
-    : 'if'
-    | 'elif'
-    | 'else'
-    | 'for'
-    | 'while'
-    | 'match'
-    | 'break'
-    | 'continue'
-    | 'pass'
-    | 'return'
-    | 'class'
-    | 'extends'
-    | 'is'
-    | 'as'
-    | 'self'
-    | 'tool'
-    | 'signal'
-    | 'func'
-    | 'static'
-    | 'const'
-    | 'enum'
-    | 'var'
-    | 'onready'
-    | 'export'
-    | 'setget'
-    | 'breakpoint'
-    | 'preload'
-    | 'yield'
-    | 'assert'
-    | 'remote'
-    | 'master'
-    | 'puppet'
-    | 'remotesync'
-    | 'mastersync'
-    | 'puppetsync'
-    | 'class_name'
-    ;
+expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | WHITESPACE | func_invoke_expr | dictionary_expr;
 
-NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
-STRING: UNTERMINATED_STRING '"';
-fragment UNTERMINATED_STRING: '"' (~["\\\r\n] | '\\' (. | EOF))*;
+func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
+
+dictionary_expr: '{' expr? (',' expr)* '}';
+
 IDENTIFIER: [_a-zA-Z0-9]+;
-BRACKET: '(' | ')' | '{' | '}' | '[' | ']';
-COMMA_SEPARATOR: ',';
+NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
+STRING: '"' (~["\n])* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;
-
-NEWLINE: ('\r'? '\n' | '\r') {
-if (pendingDent) {
-    setChannel(HIDDEN);
-}
-pendingDent = true;
-indentCount = 0;
-initialIndentToken = null;
-};
-
-WHITESPACE: (' ' | '\t')+ {
-setChannel(HIDDEN);
-if (pendingDent) {
-    indentCount += getText().length();
-}
-};
-
+NL: '\n';
+WHITESPACE: ' '+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);

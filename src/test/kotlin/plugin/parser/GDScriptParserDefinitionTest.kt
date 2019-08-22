@@ -7,93 +7,109 @@ import plugin.GDScript
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
-    fun `test blocks`() {
-        val code = """
-            func add_items(item_type, amount):
-                if item_type:
-                    return null
-                else:
-                    return amount * 2
-                break
+    fun `test var`() = assertXPathMatches(
+        "var item")
 
-            func _init() -> void:
-                pass
+    fun `test var assign`() = assertXPathMatches(
+        "var health = 100")
 
-            func create_vector() -> Vector2:
-                return null
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var export`() = assertXPathMatches(
+        "export(Texture) var character_face")
 
-    fun `test extends`() {
-        val code = """
-            extends BaseClass
-            extends Vector2, "vector2.gd"
-            extends "base.gd"
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var export steps`() = assertXPathMatches(
+        "export(float, -10, 20, 0.2) var k")
 
-    fun `test enum`() {
-        val code = """
-            enum {UNIT_ENEMY, UNIT_ALLY}
-            enum Color {RED, GREEN = "message", UNKNOWN = -1}
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var export file`() = assertXPathMatches(
+        "export(String, FILE, GLOBAL, \"*.png\") var tool_image")
 
-    fun `test var export`() {
-        val code = """
-            var declaration_only
-            var declaration_and_initialisation = 1.0
-            onready var x = Vector2(1, 2)
-            export(int) var volume
-            export(int, "Warrior", "Magician", "Thief") var character_class
-            export(float, -10.0, PATH = "hello") var parameter = 0.72
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var onready`() = assertXPathMatches(
+        "onready var my_label = get_node")
 
-    fun `test var setget`() {
-        val code = """
-            # setter and getter
-            var health = 100 setget set_health, get_health
-            # only setter
-            var health = 5 setget set_health
-            # only getter (see: comma)
-            var my_var = 5 setget ,get_health
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var setget`() = assertXPathMatches(
+        "var health = 100 setget set_health, get_health")
 
-    fun `test array init`() {
-        val code = """
-            var array = ["Hello" + "World", Vector2, MAX_HEALTH]
-            array[0] = "Godot"
-            array[-1] = MIN_HEALTH
-            array[1 + 2] = SomeValue
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var setget only getter`() = assertXPathMatches(
+        "var health = 100 setget ,get_health")
 
-    fun `test complex operator expression`() {
-        val code = """
-            var damage = level.current + get_weapon_attack(Axe) * skill[STR_INDEX] / 3.14
-            var a = Vector2(2, 4)
-            var m = sqrt(a.x * a.x + a.y * a.y)
-            a.x /= m
-            a.y /= m
-            """
-        assertXPathMatches(code)
-    }
+    fun `test var setget only setter`() = assertXPathMatches(
+        "var health = 100 setget set_health")
 
-    fun `test comment`() {
-        val code = """
-            # comment
-            return null # comment after statement
-            """
-        assertXPathMatches(code)
-    }
+    fun `test func`() = assertXPathMatches(
+        "func init():")
+
+    fun `test func typed`() = assertXPathMatches(
+        "func size() -> Vector2:")
+
+    fun `test func static`() = assertXPathMatches(
+        "static func setup():")
+
+    fun `test func arguments`() = assertXPathMatches(
+        "func add(a, b):")
+
+    fun `test array`() = assertXPathMatches(
+        "var array = [1, 2, 3]")
+
+    fun `test array empty`() = assertXPathMatches(
+        "var empty = []")
+
+    fun `test array subscription`() = assertXPathMatches(
+        "array[1] = new_value")
+
+    fun `test array subscription negative index`() = assertXPathMatches(
+        "array[-3] = new_value")
+
+    fun `test comment`() = assertXPathMatches(
+        "# this is comment")
+
+    fun `test comment after statement`() = assertXPathMatches(
+        "var hp # Health points")
+
+    fun `test comment ignored keywords`() = assertXPathMatches(
+        "# what if class var dict = {}")
+
+    fun `test comment ignored inner comment`() = assertXPathMatches(
+        "# comment # just hash char")
+
+    fun `test dictionary `() = assertXPathMatches(
+        "var prices = {SWORD: 32, AXE: 24, POTION: 4}")
+
+    fun `test dictionary empty`() = assertXPathMatches(
+        "var empty = {}")
+
+    fun `test dictionary multiline`() = assertXPathMatches("""
+        val shades = {
+            "white": 255,
+            "gray": 128,
+            "black": 0,
+        }""")
+
+    fun `test enum unnamed`() = assertXPathMatches(
+        "enum { ENEMY, ALLY }")
+
+    fun `test enum named`() = assertXPathMatches(
+        "enum Color { RED, GREEN, BLUE }")
+
+    fun `test enum multiline`() = assertXPathMatches("""
+        enum Color {
+            RED, 
+            GREEN,
+            BLUE 
+        }""")
+
+    fun `test class`() = assertXPathMatches(
+        "class Node:")
+
+    fun `test class name`() = assertXPathMatches(
+        "class_name Hero")
+
+    fun `test class name with icon`() = assertXPathMatches(
+        "class_name Item, \"res://interface/icons/item.png\"")
+
+    fun `test extends classname`() = assertXPathMatches(
+        "extends BaseClass")
+
+    fun `test extends path `() = assertXPathMatches(
+        "extends res://path/to/character.gd")
 
     private fun assertXPathMatches(code: String, xpath: String = "/file") {
         myFile = createPsiFile("a", code.trimIndent())
@@ -102,6 +118,8 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
         val nodes = XPath.findAll(GDScript, myFile, xpath)
         if (nodes.isEmpty())
             Assert.fail("Unsatisfied selector '$xpath'\nCode:\n${myFile.text}\nTree:\n$tree")
+        if (tree.contains("extraneous"))
+            Assert.fail("Error: \n$tree")
         print(tree)
     }
 
