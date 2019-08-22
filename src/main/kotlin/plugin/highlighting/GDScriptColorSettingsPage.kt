@@ -16,11 +16,7 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
 
     override fun getHighlighter() = GDScriptHighlighterFactory().getSyntaxHighlighter(null, null)
 
-    override fun getDemoText() = """
-        const message = "hello" # this is comment
-        func test(a: Vector2, b: float):
-            var number = 123.45
-    """.trimIndent()
+    override fun getDemoText() = GDScriptColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> = GDScriptHighlighterColors.all()
         .map { attribute -> AttributesDescriptor(humanize(attribute), attribute) }
