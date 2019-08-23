@@ -34,6 +34,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test var setget only setter`() = assertXPathMatches(
         "var health = 100 setget set_health")
 
+    fun `test const`() = assertXPathMatches(
+        "const MAX_SIZE = 30")
+
     fun `test func`() = assertXPathMatches(
         "func init():")
 

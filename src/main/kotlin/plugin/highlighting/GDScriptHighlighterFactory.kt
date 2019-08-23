@@ -23,6 +23,7 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
                 STRING -> pack(DefaultColors.STRING)
                 IDENTIFIER -> pack(DefaultColors.PARAMETER)
                 EXPORT, ONREADY, VAR, SETGET,
+                CONST,
                 STATIC, FUNC,
                 CLASS,
                 EXTENDS,

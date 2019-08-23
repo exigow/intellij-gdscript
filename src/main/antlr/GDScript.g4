@@ -2,13 +2,16 @@ grammar GDScript;
 
 file: (line | expr | NL)+ EOF;
 
-line: var_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr | dictionary_expr;
+line: var_line | const_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr | dictionary_expr;
 
 var_line: (EXPORT ('(' expr? (',' expr)* ')')?)? ONREADY? VAR IDENTIFIER (':' IDENTIFIER)? ('=' expr)? (SETGET IDENTIFIER? (',' IDENTIFIER)?)?;
 EXPORT: 'export';
 ONREADY: 'onready';
 VAR: 'var';
 SETGET: 'setget';
+
+const_line: CONST IDENTIFIER '=' expr;
+CONST: 'const';
 
 func_line: STATIC? FUNC IDENTIFIER '(' expr? (',' expr)* ')' ('->' IDENTIFIER)? ':';
 STATIC: 'static';
