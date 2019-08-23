@@ -55,18 +55,6 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test func arguments`() = assertXPathMatches(
         "func add(a, b):")
 
-    fun `test array`() = assertXPathMatches(
-        "var array = [1, 2, 3]")
-
-    fun `test array empty`() = assertXPathMatches(
-        "var empty = []")
-
-    fun `test array subscription`() = assertXPathMatches(
-        "array[1] = new_value")
-
-    fun `test array subscription negative index`() = assertXPathMatches(
-        "array[-3] = new_value")
-
     fun `test line comment`() = assertXPathMatches(
         "# this is comment")
 
@@ -79,37 +67,17 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test line comment ignored inner comment`() = assertXPathMatches(
         "# comment # just hash char")
 
-    fun `test block comment multi line`() = assertXPathMatches(
+    fun `test block comment`() = assertXPathMatches(
         "\"\"\" comment \"\"\"")
 
-    fun `test block comment single line`() = assertXPathMatches(
+    fun `test block comment multiline`() = assertXPathMatches(
         "\"\"\"\ncomment\n\"\"\"")
-
-    fun `test dictionary `() = assertXPathMatches(
-        "var prices = {SWORD: 32, AXE: 24, POTION: 4}")
-
-    fun `test dictionary empty`() = assertXPathMatches(
-        "var empty = {}")
-
-    fun `test dictionary multiline`() = assertXPathMatches("""
-        val shades = {
-            "white": 255,
-            "gray": 128,
-            "black": 0,
-        }""")
 
     fun `test enum unnamed`() = assertXPathMatches(
         "enum { ENEMY, ALLY }")
 
     fun `test enum named`() = assertXPathMatches(
         "enum Color { RED, GREEN, BLUE }")
-
-    fun `test enum multiline`() = assertXPathMatches("""
-        enum Color {
-            RED, 
-            GREEN,
-            BLUE 
-        }""")
 
     fun `test class`() = assertXPathMatches(
         "class Node:")
@@ -122,9 +90,6 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
 
     fun `test extends classname`() = assertXPathMatches(
         "extends BaseClass")
-
-    fun `test extends path `() = assertXPathMatches(
-        "extends res://path/to/character.gd")
 
     private fun assertXPathMatches(code: String, xpath: String = "/file") {
         myFile = createPsiFile("a", code.trimIndent())

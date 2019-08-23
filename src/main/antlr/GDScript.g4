@@ -2,7 +2,7 @@ grammar GDScript;
 
 file: (line | LINE_COMMENT | BLOCK_COMMENT | NL)+ EOF;
 
-line: var_line | const_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr | dictionary_expr;
+line: var_line | const_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr;
 
 var_line: (EXPORT ('(' expr? (',' expr)* ')')?)? ONREADY? VAR IDENTIFIER (':' IDENTIFIER)? ('=' expr)? (SETGET IDENTIFIER? (',' IDENTIFIER)?)?;
 EXPORT: 'export';
@@ -20,13 +20,13 @@ FUNC: 'func';
 class_line: CLASS IDENTIFIER ':';
 CLASS: 'class';
 
-extends_line: EXTENDS (IDENTIFIER | STRING);
+extends_line: EXTENDS (IDENTIFIER);
 EXTENDS: 'extends';
 
 class_name_line: CLASS_NAME IDENTIFIER (',' STRING)?;
 CLASS_NAME: 'class_name';
 
-enum_line: ENUM IDENTIFIER? dictionary_expr;
+enum_line: ENUM IDENTIFIER? '{' expr? (',' expr)* '}';
 ENUM: 'enum';
 
 if_line: IF expr ':';
@@ -41,11 +41,9 @@ ELSE: 'else';
 return_line: RETURN expr;
 RETURN: 'return';
 
-expr: IDENTIFIER | NUMBER | STRING | func_invoke_expr | dictionary_expr;
+expr: IDENTIFIER | NUMBER | STRING | func_invoke_expr;
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
-
-dictionary_expr: '{' expr? (',' expr)* '}';
 
 IDENTIFIER: [_a-zA-Z0-9]+;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
