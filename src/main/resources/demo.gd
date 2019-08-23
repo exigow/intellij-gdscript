@@ -8,6 +8,6 @@ enum Class {ROGUE, KNIGHT, WIZARD}
 Roses are red
 Violets are blue
 """
-val color = blueviolet
+var color = blueviolet
 func get_damage():
     return 0
