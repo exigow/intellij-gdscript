@@ -58,17 +58,23 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test array subscription negative index`() = assertXPathMatches(
         "array[-3] = new_value")
 
-    fun `test comment`() = assertXPathMatches(
+    fun `test line comment`() = assertXPathMatches(
         "# this is comment")
 
-    fun `test comment after statement`() = assertXPathMatches(
+    fun `test line comment after statement`() = assertXPathMatches(
         "var hp # Health points")
 
-    fun `test comment ignored keywords`() = assertXPathMatches(
+    fun `test line comment ignored keywords`() = assertXPathMatches(
         "# what if class var dict = {}")
 
-    fun `test comment ignored inner comment`() = assertXPathMatches(
+    fun `test line comment ignored inner comment`() = assertXPathMatches(
         "# comment # just hash char")
+
+    fun `test block comment multi line`() = assertXPathMatches(
+        "\"\"\" comment \"\"\"")
+
+    fun `test block comment single line`() = assertXPathMatches(
+        "\"\"\"\ncomment\n\"\"\"")
 
     fun `test dictionary `() = assertXPathMatches(
         "var prices = {SWORD: 32, AXE: 24, POTION: 4}")
