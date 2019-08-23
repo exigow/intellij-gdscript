@@ -13,6 +13,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test var assign`() = assertXPathMatches(
         "var health = 100")
 
+    fun `test var typed`() = assertXPathMatches(
+        "var position: Vector2")
+
     fun `test var export`() = assertXPathMatches(
         "export(Texture) var character_face")
 
@@ -36,6 +39,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
 
     fun `test const`() = assertXPathMatches(
         "const MAX_SIZE = 30")
+
+    fun `test const typed`() = assertXPathMatches(
+        "const ALLY_COLOR: Color = green")
 
     fun `test func`() = assertXPathMatches(
         "func init():")

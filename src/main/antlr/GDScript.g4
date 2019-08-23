@@ -1,6 +1,6 @@
 grammar GDScript;
 
-file: (line | expr | NL)+ EOF;
+file: (line | LINE_COMMENT | BLOCK_COMMENT | NL)+ EOF;
 
 line: var_line | const_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr | dictionary_expr;
 
@@ -10,7 +10,7 @@ ONREADY: 'onready';
 VAR: 'var';
 SETGET: 'setget';
 
-const_line: CONST IDENTIFIER '=' expr;
+const_line: CONST IDENTIFIER (':' IDENTIFIER)? '=' expr;
 CONST: 'const';
 
 func_line: STATIC? FUNC IDENTIFIER '(' expr? (',' expr)* ')' ('->' IDENTIFIER)? ':';
@@ -41,7 +41,7 @@ ELSE: 'else';
 return_line: RETURN expr;
 RETURN: 'return';
 
-expr: IDENTIFIER | NUMBER | STRING | LINE_COMMENT | BLOCK_COMMENT | func_invoke_expr | dictionary_expr;
+expr: IDENTIFIER | NUMBER | STRING | func_invoke_expr | dictionary_expr;
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
