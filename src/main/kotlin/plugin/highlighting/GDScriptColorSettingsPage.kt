@@ -12,7 +12,7 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
 
     override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String,TextAttributesKey>()
 
-    override fun getIcon() = IconFactory.fromPluginIconFile()
+    override fun getIcon() = IconFactory.createPluginIcon()
 
     override fun getHighlighter() = GDScriptHighlighterFactory().getSyntaxHighlighter(null, null)
 

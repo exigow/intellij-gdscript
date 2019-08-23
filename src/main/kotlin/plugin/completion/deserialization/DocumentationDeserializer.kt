@@ -19,6 +19,11 @@ object DocumentationDeserializer {
         return deserializeFile(file)
     }
 
+    fun deserializeResourceResource(resourceName: String): Documentation {
+        val text = DocumentationDeserializer::class.java.getResource(resourceName).readText()
+        return deserializeText(text)
+    }
+
     fun deserializeText(@Language("xml") xml: String): Documentation {
         val fixedXml = fixTagsWithOnlyWhitespaces(xml)
         return configureMapper().readValue(fixedXml, Documentation::class.java)

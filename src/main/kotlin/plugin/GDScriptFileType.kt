@@ -11,6 +11,6 @@ object GDScriptFileType : LanguageFileType(GDScript) {
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getIcon() = IconFactory.fromPluginIconFile()
+    override fun getIcon() = IconFactory.createPluginIcon()
 
 }

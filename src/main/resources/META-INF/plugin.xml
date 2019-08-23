@@ -10,7 +10,11 @@
 		<lang.syntaxHighlighterFactory implementationClass="plugin.highlighting.GDScriptHighlighterFactory" language="GDScript"/>
 		<lang.parserDefinition implementationClass="plugin.parser.GDScriptParserDefinition" language="GDScript"/>
 		<lang.commenter implementationClass="plugin.GDScriptCommenter" language="GDScript"/>
-		<completion.contributor implementationClass="plugin.completion.GDScriptCompletionContributor" language="GDScript"/>
+
+		<completion.contributor implementationClass="plugin.completion.DocumentationCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="plugin.completion.KeywordCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="plugin.completion.ColorCompletionContributor" language="GDScript"/>
+
 		<colorSettingsPage implementation="plugin.highlighting.GDScriptColorSettingsPage"/>
 	</extensions>
 </idea-plugin>

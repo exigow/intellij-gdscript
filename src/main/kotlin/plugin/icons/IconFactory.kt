@@ -8,9 +8,9 @@ import javax.swing.Icon
 
 object IconFactory {
 
-    fun fromPluginIconFile() = IconLoader.getIcon("META-INF/pluginIcon.svg")
+    fun createPluginIcon() = IconLoader.getIcon("META-INF/pluginIcon.svg")
 
-    fun fromColor(color: Color) = object : Icon {
+    fun createColorIcon(color: Color) = object : Icon {
 
         override fun paintIcon(component: Component, graphics: Graphics, x: Int, y: Int) {
             graphics.color = color
