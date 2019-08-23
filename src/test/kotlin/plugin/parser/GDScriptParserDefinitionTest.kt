@@ -127,7 +127,7 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
         val nodes = XPath.findAll(GDScript, myFile, xpath)
         if (nodes.isEmpty())
             Assert.fail("Unsatisfied selector '$xpath'\nCode:\n${myFile.text}\nTree:\n$tree")
-        if (tree.contains("extraneous"))
+        if (tree.contains("extraneous") || tree.contains("mismatched") || tree.contains("ERROR_ELEMENT"))
             Assert.fail("Error: \n$tree")
         print(tree)
     }
