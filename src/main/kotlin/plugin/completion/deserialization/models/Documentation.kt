@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Documentation(
     val name: String,
-    val inherits: String?,
+    val inherits: String?, // todo: rename to extends (override name with jsonprop)
     val members: List<Member>?,
     val methods: List<Method>?,
     val constants: List<Constant>?,
