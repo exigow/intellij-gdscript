@@ -2,15 +2,17 @@ package plugin
 
 import com.intellij.lang.Commenter
 
-class GDScriptCommenter : Commenter {
+object GDScriptCommenter : Commenter {
 
-    override fun getCommentedBlockCommentPrefix() = ""
+    private const val BLOCK_COMMENT: String = "\"\"\""
 
-    override fun getCommentedBlockCommentSuffix() = ""
+    override fun getCommentedBlockCommentPrefix(): String? = null
 
-    override fun getBlockCommentPrefix() = "\"\"\""
+    override fun getCommentedBlockCommentSuffix(): String? = null
 
-    override fun getBlockCommentSuffix() = "\"\"\""
+    override fun getBlockCommentPrefix() = BLOCK_COMMENT
+
+    override fun getBlockCommentSuffix() = BLOCK_COMMENT
 
     override fun getLineCommentPrefix() = "#"
 
