@@ -5,24 +5,31 @@ import plugin.completion.deserialization.models.Documentation
 import plugin.completion.deserialization.models.Member
 import plugin.completion.deserialization.models.Method
 
+// todo: refactor
+// todo: remove extension methods
 object DocumentationToCodeConverter {
 
     fun generate(doc: Documentation): String {
-        val headers = doc.formatHeaders()
+        val extends = doc.formatExtends()
+        val name = doc.formatName()
         val constants = doc.constants?.joinToString("\n") { it.format() }
         val members = doc.members?.joinToString("\n") { it.format() }
         val methods = doc.methods?.joinToString("\n\n") { it.format() }
-        return listOf(headers, constants, members, methods).joinToString("\n\n")
+        return listOfNotNull(extends, name, constants, members, methods).joinToString("\n\n").trim()
     }
 
-    private fun Documentation.formatHeaders() = """
-        extends $inherits
-        class_name $name
-        """.trimIndent()
+    private fun Documentation.formatExtends() = if (inherits != null) "extends $inherits" else null
+
+    private fun Documentation.formatName() = "class_name $name"
 
     private fun Constant.format() = "const $name = $value"
 
-    private fun Member.format() = "var $name: $type = $default"
+    // todo: refactor
+    private fun Member.format(): String {
+        if (default == null)
+            return "var $name: $type"
+        return "var $name: $type = $default"
+    }
 
     private fun Method.format() = """
         # ${sanitize(description.orEmpty().trim().split("\n")[0])}
