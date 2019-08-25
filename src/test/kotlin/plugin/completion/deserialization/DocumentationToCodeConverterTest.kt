@@ -2,12 +2,12 @@ package plugin.completion.deserialization
 
 import org.junit.Test
 
-class DocumentationToGDScriptCodeConverterTest {
+class DocumentationToCodeConverterTest {
 
     @Test
     fun asd() {
         val document = DocumentationDeserializer.deserializeResource("Vector2.xml")
-        print(DocumentationToGDScriptCodeConverter.generate(document))
+        print(DocumentationToCodeConverter.generate(document))
     }
 
 }

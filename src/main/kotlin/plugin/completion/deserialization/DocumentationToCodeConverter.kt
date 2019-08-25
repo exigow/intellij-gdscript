@@ -5,7 +5,7 @@ import plugin.completion.deserialization.models.Documentation
 import plugin.completion.deserialization.models.Member
 import plugin.completion.deserialization.models.Method
 
-object DocumentationToGDScriptCodeConverter {
+object DocumentationToCodeConverter {
 
     fun generate(doc: Documentation): String {
         val headers = doc.formatHeaders()
