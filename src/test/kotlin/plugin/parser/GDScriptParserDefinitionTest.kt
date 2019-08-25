@@ -98,6 +98,12 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test extends classname`() = assertValid(
         "extends BaseClass")
 
+    fun `test assign`() = assertValid(
+        "a = b")
+
+    fun `test assign and add`() = assertValid(
+        "a += b")
+
     private fun assertValid(code: String) {
         myFile = createPsiFile("a", code.trimIndent())
         ensureParsed(myFile)

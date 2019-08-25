@@ -19,43 +19,44 @@ public class GDScriptParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, EXPORT=9, 
-		ONREADY=10, VAR=11, SETGET=12, CONST=13, STATIC=14, FUNC=15, FOR=16, IN=17, 
-		WHILE=18, CLASS=19, EXTENDS=20, CLASS_NAME=21, ENUM=22, IF=23, ELIF=24, 
-		ELSE=25, RETURN=26, IDENTIFIER=27, NUMBER=28, STRING=29, LINE_COMMENT=30, 
-		BLOCK_COMMENT=31, NL=32, WHITESPACE=33, ERRCHAR=34;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, EXPORT=16, 
+		ONREADY=17, VAR=18, SETGET=19, CONST=20, STATIC=21, FUNC=22, FOR=23, IN=24, 
+		WHILE=25, CLASS=26, EXTENDS=27, CLASS_NAME=28, ENUM=29, IF=30, ELIF=31, 
+		ELSE=32, RETURN=33, IDENTIFIER=34, NUMBER=35, STRING=36, LINE_COMMENT=37, 
+		BLOCK_COMMENT=38, NL=39, WHITESPACE=40, ERRCHAR=41;
 	public static final int
 		RULE_file = 0, RULE_line = 1, RULE_var_line = 2, RULE_const_line = 3, 
 		RULE_func_line = 4, RULE_for_line = 5, RULE_while_line = 6, RULE_class_line = 7, 
 		RULE_extends_line = 8, RULE_class_name_line = 9, RULE_enum_line = 10, 
 		RULE_if_line = 11, RULE_elif_line = 12, RULE_else_line = 13, RULE_return_line = 14, 
-		RULE_expr = 15, RULE_func_invoke_expr = 16;
+		RULE_assign_line = 15, RULE_expr = 16, RULE_func_invoke_expr = 17;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"file", "line", "var_line", "const_line", "func_line", "for_line", "while_line", 
 			"class_line", "extends_line", "class_name_line", "enum_line", "if_line", 
-			"elif_line", "else_line", "return_line", "expr", "func_invoke_expr"
+			"elif_line", "else_line", "return_line", "assign_line", "expr", "func_invoke_expr"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'('", "','", "')'", "':'", "'='", "'->'", "'{'", "'}'", "'export'", 
-			"'onready'", "'var'", "'setget'", "'const'", "'static'", "'func'", "'for'", 
-			"'in'", "'while'", "'class'", "'extends'", "'class_name'", "'enum'", 
-			"'if'", "'elif'", "'else'", "'return'", null, null, null, null, null, 
-			"'\n'"
+			null, "'('", "','", "')'", "':'", "'='", "'->'", "'{'", "'}'", "'+='", 
+			"'-='", "'*='", "'/='", "'%='", "'&='", "'|='", "'export'", "'onready'", 
+			"'var'", "'setget'", "'const'", "'static'", "'func'", "'for'", "'in'", 
+			"'while'", "'class'", "'extends'", "'class_name'", "'enum'", "'if'", 
+			"'elif'", "'else'", "'return'", null, null, null, null, null, "'\n'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, "EXPORT", "ONREADY", 
-			"VAR", "SETGET", "CONST", "STATIC", "FUNC", "FOR", "IN", "WHILE", "CLASS", 
-			"EXTENDS", "CLASS_NAME", "ENUM", "IF", "ELIF", "ELSE", "RETURN", "IDENTIFIER", 
-			"NUMBER", "STRING", "LINE_COMMENT", "BLOCK_COMMENT", "NL", "WHITESPACE", 
-			"ERRCHAR"
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, "EXPORT", "ONREADY", "VAR", "SETGET", "CONST", 
+			"STATIC", "FUNC", "FOR", "IN", "WHILE", "CLASS", "EXTENDS", "CLASS_NAME", 
+			"ENUM", "IF", "ELIF", "ELSE", "RETURN", "IDENTIFIER", "NUMBER", "STRING", 
+			"LINE_COMMENT", "BLOCK_COMMENT", "NL", "WHITESPACE", "ERRCHAR"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -142,12 +143,12 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38); 
+			setState(40); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				setState(38);
+				setState(40);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case EXPORT:
@@ -168,25 +169,25 @@ public class GDScriptParser extends Parser {
 				case RETURN:
 				case IDENTIFIER:
 					{
-					setState(34);
+					setState(36);
 					line();
 					}
 					break;
 				case LINE_COMMENT:
 					{
-					setState(35);
+					setState(37);
 					match(LINE_COMMENT);
 					}
 					break;
 				case BLOCK_COMMENT:
 					{
-					setState(36);
+					setState(38);
 					match(BLOCK_COMMENT);
 					}
 					break;
 				case NL:
 					{
-					setState(37);
+					setState(39);
 					match(NL);
 					}
 					break;
@@ -194,11 +195,11 @@ public class GDScriptParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(40); 
+				setState(42); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EXPORT) | (1L << ONREADY) | (1L << VAR) | (1L << CONST) | (1L << STATIC) | (1L << FUNC) | (1L << FOR) | (1L << WHILE) | (1L << CLASS) | (1L << EXTENDS) | (1L << CLASS_NAME) | (1L << ENUM) | (1L << IF) | (1L << ELIF) | (1L << ELSE) | (1L << RETURN) | (1L << IDENTIFIER) | (1L << LINE_COMMENT) | (1L << BLOCK_COMMENT) | (1L << NL))) != 0) );
-			setState(42);
+			setState(44);
 			match(EOF);
 			}
 		}
@@ -253,6 +254,9 @@ public class GDScriptParser extends Parser {
 		public Return_lineContext return_line() {
 			return getRuleContext(Return_lineContext.class,0);
 		}
+		public Assign_lineContext assign_line() {
+			return getRuleContext(Assign_lineContext.class,0);
+		}
 		public Func_invoke_exprContext func_invoke_expr() {
 			return getRuleContext(Func_invoke_exprContext.class,0);
 		}
@@ -266,112 +270,114 @@ public class GDScriptParser extends Parser {
 		LineContext _localctx = new LineContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_line);
 		try {
-			setState(58);
+			setState(61);
 			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case EXPORT:
-			case ONREADY:
-			case VAR:
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(44);
+				setState(46);
 				var_line();
 				}
 				break;
-			case CONST:
+			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(45);
+				setState(47);
 				const_line();
 				}
 				break;
-			case STATIC:
-			case FUNC:
+			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(46);
+				setState(48);
 				func_line();
 				}
 				break;
-			case FOR:
+			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(47);
+				setState(49);
 				for_line();
 				}
 				break;
-			case WHILE:
+			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(48);
+				setState(50);
 				while_line();
 				}
 				break;
-			case CLASS:
+			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(49);
+				setState(51);
 				class_line();
 				}
 				break;
-			case EXTENDS:
+			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(50);
+				setState(52);
 				extends_line();
 				}
 				break;
-			case CLASS_NAME:
+			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(51);
+				setState(53);
 				class_name_line();
 				}
 				break;
-			case ENUM:
+			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(52);
+				setState(54);
 				enum_line();
 				}
 				break;
-			case IF:
+			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(53);
+				setState(55);
 				if_line();
 				}
 				break;
-			case ELIF:
+			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(54);
+				setState(56);
 				elif_line();
 				}
 				break;
-			case ELSE:
+			case 12:
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(55);
+				setState(57);
 				else_line();
 				}
 				break;
-			case RETURN:
+			case 13:
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(56);
+				setState(58);
 				return_line();
 				}
 				break;
-			case IDENTIFIER:
+			case 14:
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(57);
+				setState(59);
+				assign_line();
+				}
+				break;
+			case 15:
+				enterOuterAlt(_localctx, 15);
+				{
+				setState(60);
 				func_invoke_expr();
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -413,47 +419,47 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(75);
+			setState(78);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==EXPORT) {
 				{
-				setState(60);
+				setState(63);
 				match(EXPORT);
-				setState(73);
+				setState(76);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__0) {
 					{
-					setState(61);
+					setState(64);
 					match(T__0);
-					setState(63);
+					setState(66);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING))) != 0)) {
 						{
-						setState(62);
+						setState(65);
 						expr();
 						}
 					}
 
-					setState(69);
+					setState(72);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					while (_la==T__1) {
 						{
 						{
-						setState(65);
+						setState(68);
 						match(T__1);
-						setState(66);
+						setState(69);
 						expr();
 						}
 						}
-						setState(71);
+						setState(74);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					}
-					setState(72);
+					setState(75);
 					match(T__2);
 					}
 				}
@@ -461,69 +467,69 @@ public class GDScriptParser extends Parser {
 				}
 			}
 
-			setState(78);
+			setState(81);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ONREADY) {
 				{
-				setState(77);
+				setState(80);
 				match(ONREADY);
 				}
 			}
 
-			setState(80);
+			setState(83);
 			match(VAR);
-			setState(81);
-			match(IDENTIFIER);
 			setState(84);
+			match(IDENTIFIER);
+			setState(87);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__3) {
 				{
-				setState(82);
+				setState(85);
 				match(T__3);
-				setState(83);
+				setState(86);
 				match(IDENTIFIER);
 				}
 			}
 
-			setState(88);
+			setState(91);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__4) {
 				{
-				setState(86);
+				setState(89);
 				match(T__4);
-				setState(87);
+				setState(90);
 				expr();
 				}
 			}
 
-			setState(98);
+			setState(101);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SETGET) {
 				{
-				setState(90);
+				setState(93);
 				match(SETGET);
-				setState(92);
+				setState(95);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 				case 1:
 					{
-					setState(91);
+					setState(94);
 					match(IDENTIFIER);
 					}
 					break;
 				}
-				setState(96);
+				setState(99);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__1) {
 					{
-					setState(94);
+					setState(97);
 					match(T__1);
-					setState(95);
+					setState(98);
 					match(IDENTIFIER);
 					}
 				}
@@ -566,25 +572,25 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(100);
+			setState(103);
 			match(CONST);
-			setState(101);
-			match(IDENTIFIER);
 			setState(104);
+			match(IDENTIFIER);
+			setState(107);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__3) {
 				{
-				setState(102);
+				setState(105);
 				match(T__3);
-				setState(103);
+				setState(106);
 				match(IDENTIFIER);
 				}
 			}
 
-			setState(106);
+			setState(109);
 			match(T__4);
-			setState(107);
+			setState(110);
 			expr();
 			}
 		}
@@ -625,63 +631,63 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(110);
+			setState(113);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==STATIC) {
 				{
-				setState(109);
+				setState(112);
 				match(STATIC);
 				}
 			}
 
-			setState(112);
+			setState(115);
 			match(FUNC);
-			setState(113);
-			match(IDENTIFIER);
-			setState(114);
-			match(T__0);
 			setState(116);
+			match(IDENTIFIER);
+			setState(117);
+			match(T__0);
+			setState(119);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING))) != 0)) {
 				{
-				setState(115);
+				setState(118);
 				expr();
 				}
 			}
 
-			setState(122);
+			setState(125);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1) {
 				{
 				{
-				setState(118);
+				setState(121);
 				match(T__1);
-				setState(119);
+				setState(122);
 				expr();
 				}
 				}
-				setState(124);
+				setState(127);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(125);
-			match(T__2);
 			setState(128);
+			match(T__2);
+			setState(131);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__5) {
 				{
-				setState(126);
+				setState(129);
 				match(T__5);
-				setState(127);
+				setState(130);
 				match(IDENTIFIER);
 				}
 			}
 
-			setState(130);
+			setState(133);
 			match(T__3);
 			}
 		}
@@ -715,15 +721,15 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(132);
-			match(FOR);
-			setState(133);
-			match(IDENTIFIER);
-			setState(134);
-			match(IN);
 			setState(135);
-			expr();
+			match(FOR);
 			setState(136);
+			match(IDENTIFIER);
+			setState(137);
+			match(IN);
+			setState(138);
+			expr();
+			setState(139);
 			match(T__3);
 			}
 		}
@@ -755,11 +761,11 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(138);
+			setState(141);
 			match(WHILE);
-			setState(139);
+			setState(142);
 			expr();
-			setState(140);
+			setState(143);
 			match(T__3);
 			}
 		}
@@ -789,11 +795,11 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(142);
+			setState(145);
 			match(CLASS);
-			setState(143);
+			setState(146);
 			match(IDENTIFIER);
-			setState(144);
+			setState(147);
 			match(T__3);
 			}
 		}
@@ -823,10 +829,10 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(146);
+			setState(149);
 			match(EXTENDS);
 			{
-			setState(147);
+			setState(150);
 			match(IDENTIFIER);
 			}
 			}
@@ -859,18 +865,18 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(149);
+			setState(152);
 			match(CLASS_NAME);
-			setState(150);
-			match(IDENTIFIER);
 			setState(153);
+			match(IDENTIFIER);
+			setState(156);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__1) {
 				{
-				setState(151);
+				setState(154);
 				match(T__1);
-				setState(152);
+				setState(155);
 				match(STRING);
 				}
 			}
@@ -910,47 +916,47 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(155);
+			setState(158);
 			match(ENUM);
-			setState(157);
+			setState(160);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==IDENTIFIER) {
 				{
-				setState(156);
+				setState(159);
 				match(IDENTIFIER);
 				}
 			}
 
-			setState(159);
+			setState(162);
 			match(T__6);
-			setState(161);
+			setState(164);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING))) != 0)) {
 				{
-				setState(160);
+				setState(163);
 				expr();
 				}
 			}
 
-			setState(167);
+			setState(170);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1) {
 				{
 				{
-				setState(163);
+				setState(166);
 				match(T__1);
-				setState(164);
+				setState(167);
 				expr();
 				}
 				}
-				setState(169);
+				setState(172);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(170);
+			setState(173);
 			match(T__7);
 			}
 		}
@@ -982,11 +988,11 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(172);
+			setState(175);
 			match(IF);
-			setState(173);
+			setState(176);
 			expr();
-			setState(174);
+			setState(177);
 			match(T__3);
 			}
 		}
@@ -1018,11 +1024,11 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(176);
+			setState(179);
 			match(ELIF);
-			setState(177);
+			setState(180);
 			expr();
-			setState(178);
+			setState(181);
 			match(T__3);
 			}
 		}
@@ -1051,9 +1057,9 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(180);
+			setState(183);
 			match(ELSE);
-			setState(181);
+			setState(184);
 			match(T__3);
 			}
 		}
@@ -1085,9 +1091,54 @@ public class GDScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
+			setState(186);
 			match(RETURN);
-			setState(184);
+			setState(187);
+			expr();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Assign_lineContext extends ParserRuleContext {
+		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Assign_lineContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_assign_line; }
+	}
+
+	public final Assign_lineContext assign_line() throws RecognitionException {
+		Assign_lineContext _localctx = new Assign_lineContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_assign_line);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(189);
+			match(IDENTIFIER);
+			setState(190);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__4) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
+			setState(191);
 			expr();
 			}
 		}
@@ -1117,36 +1168,36 @@ public class GDScriptParser extends Parser {
 
 	public final ExprContext expr() throws RecognitionException {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_expr);
+		enterRule(_localctx, 32, RULE_expr);
 		try {
-			setState(190);
+			setState(197);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(186);
+				setState(193);
 				match(IDENTIFIER);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(187);
+				setState(194);
 				match(NUMBER);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(188);
+				setState(195);
 				match(STRING);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(189);
+				setState(196);
 				func_invoke_expr();
 				}
 				break;
@@ -1179,42 +1230,42 @@ public class GDScriptParser extends Parser {
 
 	public final Func_invoke_exprContext func_invoke_expr() throws RecognitionException {
 		Func_invoke_exprContext _localctx = new Func_invoke_exprContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_func_invoke_expr);
+		enterRule(_localctx, 34, RULE_func_invoke_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(192);
+			setState(199);
 			match(IDENTIFIER);
-			setState(193);
+			setState(200);
 			match(T__0);
-			setState(195);
+			setState(202);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << NUMBER) | (1L << STRING))) != 0)) {
 				{
-				setState(194);
+				setState(201);
 				expr();
 				}
 			}
 
-			setState(201);
+			setState(208);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1) {
 				{
 				{
-				setState(197);
+				setState(204);
 				match(T__1);
-				setState(198);
+				setState(205);
 				expr();
 				}
 				}
-				setState(203);
+				setState(210);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(204);
+			setState(211);
 			match(T__2);
 			}
 		}
@@ -1230,71 +1281,73 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$\u00d1\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3+\u00d8\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\3\2\3\2\3\2\3\2\6\2)\n\2\r\2\16\2*\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3=\n\3\3\4\3\4\3\4\5\4B\n\4\3\4\3\4\7"+
-		"\4F\n\4\f\4\16\4I\13\4\3\4\5\4L\n\4\5\4N\n\4\3\4\5\4Q\n\4\3\4\3\4\3\4"+
-		"\3\4\5\4W\n\4\3\4\3\4\5\4[\n\4\3\4\3\4\5\4_\n\4\3\4\3\4\5\4c\n\4\5\4e"+
-		"\n\4\3\5\3\5\3\5\3\5\5\5k\n\5\3\5\3\5\3\5\3\6\5\6q\n\6\3\6\3\6\3\6\3\6"+
-		"\5\6w\n\6\3\6\3\6\7\6{\n\6\f\6\16\6~\13\6\3\6\3\6\3\6\5\6\u0083\n\6\3"+
-		"\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n"+
-		"\3\n\3\13\3\13\3\13\3\13\5\13\u009c\n\13\3\f\3\f\5\f\u00a0\n\f\3\f\3\f"+
-		"\5\f\u00a4\n\f\3\f\3\f\7\f\u00a8\n\f\f\f\16\f\u00ab\13\f\3\f\3\f\3\r\3"+
-		"\r\3\r\3\r\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\20\3\20\3\20\3\21\3\21"+
-		"\3\21\3\21\5\21\u00c1\n\21\3\22\3\22\3\22\5\22\u00c6\n\22\3\22\3\22\7"+
-		"\22\u00ca\n\22\f\22\16\22\u00cd\13\22\3\22\3\22\3\22\2\2\23\2\4\6\b\n"+
-		"\f\16\20\22\24\26\30\32\34\36 \"\2\2\2\u00e8\2(\3\2\2\2\4<\3\2\2\2\6M"+
-		"\3\2\2\2\bf\3\2\2\2\np\3\2\2\2\f\u0086\3\2\2\2\16\u008c\3\2\2\2\20\u0090"+
-		"\3\2\2\2\22\u0094\3\2\2\2\24\u0097\3\2\2\2\26\u009d\3\2\2\2\30\u00ae\3"+
-		"\2\2\2\32\u00b2\3\2\2\2\34\u00b6\3\2\2\2\36\u00b9\3\2\2\2 \u00c0\3\2\2"+
-		"\2\"\u00c2\3\2\2\2$)\5\4\3\2%)\7 \2\2&)\7!\2\2\')\7\"\2\2($\3\2\2\2(%"+
-		"\3\2\2\2(&\3\2\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+,\3\2\2\2"+
-		",-\7\2\2\3-\3\3\2\2\2.=\5\6\4\2/=\5\b\5\2\60=\5\n\6\2\61=\5\f\7\2\62="+
-		"\5\16\b\2\63=\5\20\t\2\64=\5\22\n\2\65=\5\24\13\2\66=\5\26\f\2\67=\5\30"+
-		"\r\28=\5\32\16\29=\5\34\17\2:=\5\36\20\2;=\5\"\22\2<.\3\2\2\2</\3\2\2"+
-		"\2<\60\3\2\2\2<\61\3\2\2\2<\62\3\2\2\2<\63\3\2\2\2<\64\3\2\2\2<\65\3\2"+
-		"\2\2<\66\3\2\2\2<\67\3\2\2\2<8\3\2\2\2<9\3\2\2\2<:\3\2\2\2<;\3\2\2\2="+
-		"\5\3\2\2\2>K\7\13\2\2?A\7\3\2\2@B\5 \21\2A@\3\2\2\2AB\3\2\2\2BG\3\2\2"+
-		"\2CD\7\4\2\2DF\5 \21\2EC\3\2\2\2FI\3\2\2\2GE\3\2\2\2GH\3\2\2\2HJ\3\2\2"+
-		"\2IG\3\2\2\2JL\7\5\2\2K?\3\2\2\2KL\3\2\2\2LN\3\2\2\2M>\3\2\2\2MN\3\2\2"+
-		"\2NP\3\2\2\2OQ\7\f\2\2PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7\r\2\2SV\7\35"+
-		"\2\2TU\7\6\2\2UW\7\35\2\2VT\3\2\2\2VW\3\2\2\2WZ\3\2\2\2XY\7\7\2\2Y[\5"+
-		" \21\2ZX\3\2\2\2Z[\3\2\2\2[d\3\2\2\2\\^\7\16\2\2]_\7\35\2\2^]\3\2\2\2"+
-		"^_\3\2\2\2_b\3\2\2\2`a\7\4\2\2ac\7\35\2\2b`\3\2\2\2bc\3\2\2\2ce\3\2\2"+
-		"\2d\\\3\2\2\2de\3\2\2\2e\7\3\2\2\2fg\7\17\2\2gj\7\35\2\2hi\7\6\2\2ik\7"+
-		"\35\2\2jh\3\2\2\2jk\3\2\2\2kl\3\2\2\2lm\7\7\2\2mn\5 \21\2n\t\3\2\2\2o"+
-		"q\7\20\2\2po\3\2\2\2pq\3\2\2\2qr\3\2\2\2rs\7\21\2\2st\7\35\2\2tv\7\3\2"+
-		"\2uw\5 \21\2vu\3\2\2\2vw\3\2\2\2w|\3\2\2\2xy\7\4\2\2y{\5 \21\2zx\3\2\2"+
-		"\2{~\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\177\3\2\2\2~|\3\2\2\2\177\u0082\7\5"+
-		"\2\2\u0080\u0081\7\b\2\2\u0081\u0083\7\35\2\2\u0082\u0080\3\2\2\2\u0082"+
-		"\u0083\3\2\2\2\u0083\u0084\3\2\2\2\u0084\u0085\7\6\2\2\u0085\13\3\2\2"+
-		"\2\u0086\u0087\7\22\2\2\u0087\u0088\7\35\2\2\u0088\u0089\7\23\2\2\u0089"+
-		"\u008a\5 \21\2\u008a\u008b\7\6\2\2\u008b\r\3\2\2\2\u008c\u008d\7\24\2"+
-		"\2\u008d\u008e\5 \21\2\u008e\u008f\7\6\2\2\u008f\17\3\2\2\2\u0090\u0091"+
-		"\7\25\2\2\u0091\u0092\7\35\2\2\u0092\u0093\7\6\2\2\u0093\21\3\2\2\2\u0094"+
-		"\u0095\7\26\2\2\u0095\u0096\7\35\2\2\u0096\23\3\2\2\2\u0097\u0098\7\27"+
-		"\2\2\u0098\u009b\7\35\2\2\u0099\u009a\7\4\2\2\u009a\u009c\7\37\2\2\u009b"+
-		"\u0099\3\2\2\2\u009b\u009c\3\2\2\2\u009c\25\3\2\2\2\u009d\u009f\7\30\2"+
-		"\2\u009e\u00a0\7\35\2\2\u009f\u009e\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0"+
-		"\u00a1\3\2\2\2\u00a1\u00a3\7\t\2\2\u00a2\u00a4\5 \21\2\u00a3\u00a2\3\2"+
-		"\2\2\u00a3\u00a4\3\2\2\2\u00a4\u00a9\3\2\2\2\u00a5\u00a6\7\4\2\2\u00a6"+
-		"\u00a8\5 \21\2\u00a7\u00a5\3\2\2\2\u00a8\u00ab\3\2\2\2\u00a9\u00a7\3\2"+
-		"\2\2\u00a9\u00aa\3\2\2\2\u00aa\u00ac\3\2\2\2\u00ab\u00a9\3\2\2\2\u00ac"+
-		"\u00ad\7\n\2\2\u00ad\27\3\2\2\2\u00ae\u00af\7\31\2\2\u00af\u00b0\5 \21"+
-		"\2\u00b0\u00b1\7\6\2\2\u00b1\31\3\2\2\2\u00b2\u00b3\7\32\2\2\u00b3\u00b4"+
-		"\5 \21\2\u00b4\u00b5\7\6\2\2\u00b5\33\3\2\2\2\u00b6\u00b7\7\33\2\2\u00b7"+
-		"\u00b8\7\6\2\2\u00b8\35\3\2\2\2\u00b9\u00ba\7\34\2\2\u00ba\u00bb\5 \21"+
-		"\2\u00bb\37\3\2\2\2\u00bc\u00c1\7\35\2\2\u00bd\u00c1\7\36\2\2\u00be\u00c1"+
-		"\7\37\2\2\u00bf\u00c1\5\"\22\2\u00c0\u00bc\3\2\2\2\u00c0\u00bd\3\2\2\2"+
-		"\u00c0\u00be\3\2\2\2\u00c0\u00bf\3\2\2\2\u00c1!\3\2\2\2\u00c2\u00c3\7"+
-		"\35\2\2\u00c3\u00c5\7\3\2\2\u00c4\u00c6\5 \21\2\u00c5\u00c4\3\2\2\2\u00c5"+
-		"\u00c6\3\2\2\2\u00c6\u00cb\3\2\2\2\u00c7\u00c8\7\4\2\2\u00c8\u00ca\5 "+
-		"\21\2\u00c9\u00c7\3\2\2\2\u00ca\u00cd\3\2\2\2\u00cb\u00c9\3\2\2\2\u00cb"+
-		"\u00cc\3\2\2\2\u00cc\u00ce\3\2\2\2\u00cd\u00cb\3\2\2\2\u00ce\u00cf\7\5"+
-		"\2\2\u00cf#\3\2\2\2\33(*<AGKMPVZ^bdjpv|\u0082\u009b\u009f\u00a3\u00a9"+
-		"\u00c0\u00c5\u00cb";
+		"\4\23\t\23\3\2\3\2\3\2\3\2\6\2+\n\2\r\2\16\2,\3\2\3\2\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3@\n\3\3\4\3\4\3\4\5\4"+
+		"E\n\4\3\4\3\4\7\4I\n\4\f\4\16\4L\13\4\3\4\5\4O\n\4\5\4Q\n\4\3\4\5\4T\n"+
+		"\4\3\4\3\4\3\4\3\4\5\4Z\n\4\3\4\3\4\5\4^\n\4\3\4\3\4\5\4b\n\4\3\4\3\4"+
+		"\5\4f\n\4\5\4h\n\4\3\5\3\5\3\5\3\5\5\5n\n\5\3\5\3\5\3\5\3\6\5\6t\n\6\3"+
+		"\6\3\6\3\6\3\6\5\6z\n\6\3\6\3\6\7\6~\n\6\f\6\16\6\u0081\13\6\3\6\3\6\3"+
+		"\6\5\6\u0086\n\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3"+
+		"\t\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\13\5\13\u009f\n\13\3\f\3\f\5\f"+
+		"\u00a3\n\f\3\f\3\f\5\f\u00a7\n\f\3\f\3\f\7\f\u00ab\n\f\f\f\16\f\u00ae"+
+		"\13\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\20"+
+		"\3\20\3\20\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22\5\22\u00c8\n\22\3\23"+
+		"\3\23\3\23\5\23\u00cd\n\23\3\23\3\23\7\23\u00d1\n\23\f\23\16\23\u00d4"+
+		"\13\23\3\23\3\23\3\23\2\2\24\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \""+
+		"$\2\3\4\2\7\7\13\21\2\u00ef\2*\3\2\2\2\4?\3\2\2\2\6P\3\2\2\2\bi\3\2\2"+
+		"\2\ns\3\2\2\2\f\u0089\3\2\2\2\16\u008f\3\2\2\2\20\u0093\3\2\2\2\22\u0097"+
+		"\3\2\2\2\24\u009a\3\2\2\2\26\u00a0\3\2\2\2\30\u00b1\3\2\2\2\32\u00b5\3"+
+		"\2\2\2\34\u00b9\3\2\2\2\36\u00bc\3\2\2\2 \u00bf\3\2\2\2\"\u00c7\3\2\2"+
+		"\2$\u00c9\3\2\2\2&+\5\4\3\2\'+\7\'\2\2(+\7(\2\2)+\7)\2\2*&\3\2\2\2*\'"+
+		"\3\2\2\2*(\3\2\2\2*)\3\2\2\2+,\3\2\2\2,*\3\2\2\2,-\3\2\2\2-.\3\2\2\2."+
+		"/\7\2\2\3/\3\3\2\2\2\60@\5\6\4\2\61@\5\b\5\2\62@\5\n\6\2\63@\5\f\7\2\64"+
+		"@\5\16\b\2\65@\5\20\t\2\66@\5\22\n\2\67@\5\24\13\28@\5\26\f\29@\5\30\r"+
+		"\2:@\5\32\16\2;@\5\34\17\2<@\5\36\20\2=@\5 \21\2>@\5$\23\2?\60\3\2\2\2"+
+		"?\61\3\2\2\2?\62\3\2\2\2?\63\3\2\2\2?\64\3\2\2\2?\65\3\2\2\2?\66\3\2\2"+
+		"\2?\67\3\2\2\2?8\3\2\2\2?9\3\2\2\2?:\3\2\2\2?;\3\2\2\2?<\3\2\2\2?=\3\2"+
+		"\2\2?>\3\2\2\2@\5\3\2\2\2AN\7\22\2\2BD\7\3\2\2CE\5\"\22\2DC\3\2\2\2DE"+
+		"\3\2\2\2EJ\3\2\2\2FG\7\4\2\2GI\5\"\22\2HF\3\2\2\2IL\3\2\2\2JH\3\2\2\2"+
+		"JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MO\7\5\2\2NB\3\2\2\2NO\3\2\2\2OQ\3\2\2\2"+
+		"PA\3\2\2\2PQ\3\2\2\2QS\3\2\2\2RT\7\23\2\2SR\3\2\2\2ST\3\2\2\2TU\3\2\2"+
+		"\2UV\7\24\2\2VY\7$\2\2WX\7\6\2\2XZ\7$\2\2YW\3\2\2\2YZ\3\2\2\2Z]\3\2\2"+
+		"\2[\\\7\7\2\2\\^\5\"\22\2][\3\2\2\2]^\3\2\2\2^g\3\2\2\2_a\7\25\2\2`b\7"+
+		"$\2\2a`\3\2\2\2ab\3\2\2\2be\3\2\2\2cd\7\4\2\2df\7$\2\2ec\3\2\2\2ef\3\2"+
+		"\2\2fh\3\2\2\2g_\3\2\2\2gh\3\2\2\2h\7\3\2\2\2ij\7\26\2\2jm\7$\2\2kl\7"+
+		"\6\2\2ln\7$\2\2mk\3\2\2\2mn\3\2\2\2no\3\2\2\2op\7\7\2\2pq\5\"\22\2q\t"+
+		"\3\2\2\2rt\7\27\2\2sr\3\2\2\2st\3\2\2\2tu\3\2\2\2uv\7\30\2\2vw\7$\2\2"+
+		"wy\7\3\2\2xz\5\"\22\2yx\3\2\2\2yz\3\2\2\2z\177\3\2\2\2{|\7\4\2\2|~\5\""+
+		"\22\2}{\3\2\2\2~\u0081\3\2\2\2\177}\3\2\2\2\177\u0080\3\2\2\2\u0080\u0082"+
+		"\3\2\2\2\u0081\177\3\2\2\2\u0082\u0085\7\5\2\2\u0083\u0084\7\b\2\2\u0084"+
+		"\u0086\7$\2\2\u0085\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0087\3\2"+
+		"\2\2\u0087\u0088\7\6\2\2\u0088\13\3\2\2\2\u0089\u008a\7\31\2\2\u008a\u008b"+
+		"\7$\2\2\u008b\u008c\7\32\2\2\u008c\u008d\5\"\22\2\u008d\u008e\7\6\2\2"+
+		"\u008e\r\3\2\2\2\u008f\u0090\7\33\2\2\u0090\u0091\5\"\22\2\u0091\u0092"+
+		"\7\6\2\2\u0092\17\3\2\2\2\u0093\u0094\7\34\2\2\u0094\u0095\7$\2\2\u0095"+
+		"\u0096\7\6\2\2\u0096\21\3\2\2\2\u0097\u0098\7\35\2\2\u0098\u0099\7$\2"+
+		"\2\u0099\23\3\2\2\2\u009a\u009b\7\36\2\2\u009b\u009e\7$\2\2\u009c\u009d"+
+		"\7\4\2\2\u009d\u009f\7&\2\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f"+
+		"\25\3\2\2\2\u00a0\u00a2\7\37\2\2\u00a1\u00a3\7$\2\2\u00a2\u00a1\3\2\2"+
+		"\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4\u00a6\7\t\2\2\u00a5\u00a7"+
+		"\5\"\22\2\u00a6\u00a5\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7\u00ac\3\2\2\2"+
+		"\u00a8\u00a9\7\4\2\2\u00a9\u00ab\5\"\22\2\u00aa\u00a8\3\2\2\2\u00ab\u00ae"+
+		"\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad\u00af\3\2\2\2\u00ae"+
+		"\u00ac\3\2\2\2\u00af\u00b0\7\n\2\2\u00b0\27\3\2\2\2\u00b1\u00b2\7 \2\2"+
+		"\u00b2\u00b3\5\"\22\2\u00b3\u00b4\7\6\2\2\u00b4\31\3\2\2\2\u00b5\u00b6"+
+		"\7!\2\2\u00b6\u00b7\5\"\22\2\u00b7\u00b8\7\6\2\2\u00b8\33\3\2\2\2\u00b9"+
+		"\u00ba\7\"\2\2\u00ba\u00bb\7\6\2\2\u00bb\35\3\2\2\2\u00bc\u00bd\7#\2\2"+
+		"\u00bd\u00be\5\"\22\2\u00be\37\3\2\2\2\u00bf\u00c0\7$\2\2\u00c0\u00c1"+
+		"\t\2\2\2\u00c1\u00c2\5\"\22\2\u00c2!\3\2\2\2\u00c3\u00c8\7$\2\2\u00c4"+
+		"\u00c8\7%\2\2\u00c5\u00c8\7&\2\2\u00c6\u00c8\5$\23\2\u00c7\u00c3\3\2\2"+
+		"\2\u00c7\u00c4\3\2\2\2\u00c7\u00c5\3\2\2\2\u00c7\u00c6\3\2\2\2\u00c8#"+
+		"\3\2\2\2\u00c9\u00ca\7$\2\2\u00ca\u00cc\7\3\2\2\u00cb\u00cd\5\"\22\2\u00cc"+
+		"\u00cb\3\2\2\2\u00cc\u00cd\3\2\2\2\u00cd\u00d2\3\2\2\2\u00ce\u00cf\7\4"+
+		"\2\2\u00cf\u00d1\5\"\22\2\u00d0\u00ce\3\2\2\2\u00d1\u00d4\3\2\2\2\u00d2"+
+		"\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d5\3\2\2\2\u00d4\u00d2\3\2"+
+		"\2\2\u00d5\u00d6\7\5\2\2\u00d6%\3\2\2\2\33*,?DJNPSY]aegmsy\177\u0085\u009e"+
+		"\u00a2\u00a6\u00ac\u00c7\u00cc\u00d2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

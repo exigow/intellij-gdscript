@@ -15,6 +15,7 @@ line: var_line
     | elif_line
     | else_line
     | return_line
+    | assign_line
     | func_invoke_expr;
 
 var_line: (EXPORT ('(' expr? (',' expr)* ')')?)? ONREADY? VAR IDENTIFIER (':' IDENTIFIER)? ('=' expr)? (SETGET IDENTIFIER? (',' IDENTIFIER)?)?;
@@ -60,6 +61,8 @@ ELSE: 'else';
 
 return_line: RETURN expr;
 RETURN: 'return';
+
+assign_line: IDENTIFIER ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr;
 
 expr: IDENTIFIER | NUMBER | STRING | func_invoke_expr;
 
