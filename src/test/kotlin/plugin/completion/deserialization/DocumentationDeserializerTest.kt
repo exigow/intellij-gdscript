@@ -1,12 +1,10 @@
 package plugin.completion.deserialization
 
+import org.junit.Assert.*
 import org.junit.Test
 import plugin.completion.deserialization.DocumentationDeserializer.deserializeResource
 import plugin.completion.deserialization.DocumentationDeserializer.deserializeText
 import plugin.completion.deserialization.models.*
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 
 class DocumentationDeserializerTest {
     
