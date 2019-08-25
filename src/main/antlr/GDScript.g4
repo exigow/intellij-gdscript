@@ -2,7 +2,20 @@ grammar GDScript;
 
 file: (line | LINE_COMMENT | BLOCK_COMMENT | NL)+ EOF;
 
-line: var_line | const_line | func_line | class_line | extends_line | class_name_line | enum_line | if_line | elif_line | else_line | return_line | func_invoke_expr;
+line: var_line 
+    | const_line
+    | func_line
+    | for_line
+    | while_line
+    | class_line
+    | extends_line
+    | class_name_line
+    | enum_line
+    | if_line
+    | elif_line
+    | else_line
+    | return_line
+    | func_invoke_expr;
 
 var_line: (EXPORT ('(' expr? (',' expr)* ')')?)? ONREADY? VAR IDENTIFIER (':' IDENTIFIER)? ('=' expr)? (SETGET IDENTIFIER? (',' IDENTIFIER)?)?;
 EXPORT: 'export';
@@ -16,6 +29,13 @@ CONST: 'const';
 func_line: STATIC? FUNC IDENTIFIER '(' expr? (',' expr)* ')' ('->' IDENTIFIER)? ':';
 STATIC: 'static';
 FUNC: 'func';
+
+for_line: FOR IDENTIFIER IN expr ':';
+FOR: 'for';
+IN: 'in';
+
+while_line: WHILE expr ':';
+WHILE: 'while';
 
 class_line: CLASS IDENTIFIER ':';
 CLASS: 'class';

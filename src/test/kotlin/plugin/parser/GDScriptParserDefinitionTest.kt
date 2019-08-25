@@ -53,6 +53,15 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test func arguments`() = assertValid(
         "func add(a, b):")
 
+    fun `test for`() = assertValid(
+        "for e in elements:")
+
+    fun `test for with expression`() = assertValid(
+        "for i in range(2, 10):")
+
+    fun `test while`() = assertValid(
+        "while true:")
+
     fun `test line comment`() = assertValid(
         "# this is comment")
 

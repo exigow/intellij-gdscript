@@ -25,6 +25,8 @@ class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
                 EXPORT, ONREADY, VAR, SETGET,
                 CONST,
                 STATIC, FUNC,
+                FOR, IN,
+                WHILE,
                 CLASS,
                 EXTENDS,
                 CLASS_NAME,
