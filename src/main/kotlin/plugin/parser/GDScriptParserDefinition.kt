@@ -19,6 +19,7 @@ import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 import plugin.GDScript
 import plugin.parser.grammar.GDScriptLexer
+import plugin.parser.grammar.GDScriptLexer.*
 import plugin.parser.grammar.GDScriptParser
 import plugin.psi.GDScriptPsiFile
 
@@ -45,11 +46,11 @@ class GDScriptParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.WHITESPACE)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GDScript, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(GDScript, GDScriptLexer.LINE_COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(GDScript, LINE_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet = createTokenSet(GDScript, GDScriptLexer.STRING)
+    override fun getStringLiteralElements(): TokenSet = createTokenSet(GDScript, STRING)
 
     override fun getFileNodeType() = IFileElementType(GDScript)
 
