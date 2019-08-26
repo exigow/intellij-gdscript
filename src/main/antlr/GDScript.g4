@@ -27,7 +27,7 @@ SETGET: 'setget';
 const_line: CONST IDENTIFIER (':' IDENTIFIER)? '=' expr;
 CONST: 'const';
 
-func_line: STATIC? FUNC IDENTIFIER '(' expr? (',' expr)* ')' ('->' IDENTIFIER)? ':';
+func_line: STATIC? FUNC IDENTIFIER '(' (IDENTIFIER (':' IDENTIFIER)?)? (',' (IDENTIFIER (':' IDENTIFIER)?))* ')' ('->' IDENTIFIER)? ':';
 STATIC: 'static';
 FUNC: 'func';
 

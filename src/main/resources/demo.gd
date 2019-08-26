@@ -10,7 +10,7 @@ Roses are red
 Violets are blue
 """
 var cloth_color: Color = blueviolet
-func get_damage():
+func get_damage(is_critical: bool, multiplier: int) -> float:
     w = weapon.damage
     s = skill.get_one_handed_bonus()
     return s * w + 0x8F51

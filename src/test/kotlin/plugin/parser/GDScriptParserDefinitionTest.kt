@@ -56,14 +56,17 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test func`() = assertValid(
         "func init():")
 
-    fun `test func typed`() = assertValid(
+    fun `test func arguments`() = assertValid(
+        "func add(a, b):")
+
+    fun `test func typed result`() = assertValid(
         "func size() -> Vector2:")
 
     fun `test func static`() = assertValid(
         "static func setup():")
 
-    fun `test func arguments`() = assertValid(
-        "func add(a, b):")
+    fun `test func typed arguments`() = assertValid(
+        "func get_damage(is_critical: bool):")
 
     fun `test for`() = assertValid(
         "for e in elements:")
