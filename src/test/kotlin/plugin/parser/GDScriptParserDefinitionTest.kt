@@ -11,6 +11,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test literal get node shorthand`() = assertValid(
         "node = \$NodePath")
 
+    fun `test literal number`() = assertValid(
+        "chance = 0.0917")
+
     fun `test var`() = assertValid(
         "var item")
 
