@@ -5,6 +5,12 @@ import org.junit.Assert
 
 class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptParserDefinition()) {
 
+    fun `test literal string`() = assertValid(
+        "name = \"Skeleton\"")
+
+    fun `test literal get node shorthand`() = assertValid(
+        "node = \$NodePath")
+
     fun `test var`() = assertValid(
         "var item")
 
@@ -130,9 +136,6 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
 
     fun `test operator content`() = assertValid(
         "has_potion = potion in items")
-
-    fun `test string`() = assertValid(
-        "name = \"Skeleton\"")
 
     private fun assertValid(code: String) {
         myFile = createPsiFile("a", code.trimIndent())

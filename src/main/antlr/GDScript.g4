@@ -73,7 +73,7 @@ expr: IDENTIFIER
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
-IDENTIFIER: [_a-zA-Z][_a-zA-Z0-9]*;
+IDENTIFIER: '$'? [_a-zA-Z][_a-zA-Z0-9]*;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 STRING: '"' (~["\n])* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;
