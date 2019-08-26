@@ -69,10 +69,16 @@ expr: IDENTIFIER
     | HEX
     | STRING
     | func_invoke_expr
+    | array_subscription_expr
+    | array_expr
     | expr ('.' | 'is' | 'as' | '~' | '*' | '/' | '%' | '+' | '-' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | 'in' | '!' | '&&' | '||' | 'not' | 'and' | 'or') expr
     | '(' expr ')';
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
+
+array_subscription_expr: IDENTIFIER '[' expr ']';
+
+array_expr: '[' expr? (',' expr)* ']';
 
 IDENTIFIER: '$'? [_a-zA-Z][_a-zA-Z0-9]*;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;

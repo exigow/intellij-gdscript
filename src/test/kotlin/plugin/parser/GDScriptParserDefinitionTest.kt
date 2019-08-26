@@ -53,6 +53,18 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test operator content`() = assertValid(
         "has_potion = potion in items")
 
+    fun `test array empty`() = assertValid(
+        "empty = []")
+
+    fun `test array with values`() = assertValid(
+        "array = [1, 2, 3]")
+
+    fun `test array subscription`() = assertValid(
+        "array[0] = 1")
+
+    fun `test array subscription with negated index`() = assertValid(
+        "array[-1] = 1")
+
     fun `test var`() = assertValid(
         "var item")
 
