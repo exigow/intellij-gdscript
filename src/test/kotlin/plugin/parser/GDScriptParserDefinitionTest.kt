@@ -32,6 +32,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test operator instance type check`() = assertValid(
         "is_circle = shape is Circle")
 
+    fun `test operator cast`() = assertValid(
+        "my_int = \"123\" as int")
+
     fun `test operator method`() = assertValid(
         "max = list.size()")
 
