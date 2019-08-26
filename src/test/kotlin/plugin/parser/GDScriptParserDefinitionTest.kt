@@ -17,6 +17,39 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test literal hex`() = assertValid(
         "hex = 0x8F51")
 
+    fun `test assign`() = assertValid(
+        "a = b")
+
+    fun `test operator arithmetic`() = assertValid(
+        "t = x * y / z + w - h")
+
+    fun `test operator brackets`() = assertValid(
+        "i = (j + (i) + (j + i))")
+
+    fun `test operator attribute reference`() = assertValid(
+        "size = array.length")
+
+    fun `test operator instance type check`() = assertValid(
+        "is_circle = shape is Circle")
+
+    fun `test operator method`() = assertValid(
+        "max = list.size()")
+
+    fun `test operator boolean keyword`() = assertValid(
+        "yes = y not n and y or n")
+
+    fun `test operator boolean symbol`() = assertValid(
+        "yes = y ! n && y || n")
+
+    fun `test operator bitwise`() = assertValid(
+        "b = e ~ f & g ^ h | i")
+
+    fun `test operator comparision`() = assertValid(
+        "q = a < b > c == d != e >= f <= g")
+
+    fun `test operator content`() = assertValid(
+        "has_potion = potion in items")
+
     fun `test var`() = assertValid(
         "var item")
 
@@ -112,39 +145,6 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
 
     fun `test extends classname`() = assertValid(
         "extends BaseClass")
-
-    fun `test assign`() = assertValid(
-        "a = b")
-
-    fun `test operator arithmetic`() = assertValid(
-        "t = x * y / z + w - h")
-
-    fun `test operator brackets`() = assertValid(
-        "i = (j + (i) + (j + i))")
-
-    fun `test operator attribute reference`() = assertValid(
-        "size = array.length")
-
-    fun `test operator instance type check`() = assertValid(
-        "is_circle = shape is Circle")
-
-    fun `test operator method`() = assertValid(
-        "max = list.size()")
-
-    fun `test operator boolean keyword`() = assertValid(
-        "yes = y not n and y or n")
-
-    fun `test operator boolean symbol`() = assertValid(
-        "yes = y ! n && y || n")
-
-    fun `test operator bitwise`() = assertValid(
-        "b = e ~ f & g ^ h | i")
-
-    fun `test operator comparision`() = assertValid(
-        "q = a < b > c == d != e >= f <= g")
-
-    fun `test operator content`() = assertValid(
-        "has_potion = potion in items")
 
     private fun assertValid(code: String) {
         myFile = createPsiFile("a", code.trimIndent())
