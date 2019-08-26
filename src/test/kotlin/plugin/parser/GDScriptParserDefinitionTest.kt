@@ -14,6 +14,9 @@ class GDScriptParserDefinitionTest : ParsingTestCase("", "GDScript", GDScriptPar
     fun `test literal number`() = assertValid(
         "chance = 0.0917")
 
+    fun `test literal hex`() = assertValid(
+        "hex = 0x8F51")
+
     fun `test var`() = assertValid(
         "var item")
 

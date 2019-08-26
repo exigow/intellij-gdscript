@@ -66,6 +66,7 @@ assign_line: expr ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr;
 
 expr: IDENTIFIER
     | NUMBER
+    | HEX
     | STRING
     | func_invoke_expr
     | expr ('.' | 'is' | '~' | '*' | '/' | '%' | '+' | '-' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | 'in' | '!' | '&&' | '||' | 'not' | 'and' | 'or') expr
@@ -75,6 +76,7 @@ func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
 IDENTIFIER: '$'? [_a-zA-Z][_a-zA-Z0-9]*;
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
+HEX: '0' 'x' [0-9A-F]+;
 STRING: '"' (~["\n])* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;
 BLOCK_COMMENT: '"""' .*? '"""';
