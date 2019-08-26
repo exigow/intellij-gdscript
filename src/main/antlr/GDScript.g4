@@ -62,9 +62,14 @@ ELSE: 'else';
 return_line: RETURN expr;
 RETURN: 'return';
 
-assign_line: IDENTIFIER ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr;
+assign_line: expr ('=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=') expr;
 
-expr: IDENTIFIER | NUMBER | STRING | func_invoke_expr;
+expr: IDENTIFIER
+    | NUMBER
+    | STRING
+    | func_invoke_expr
+    | expr ('.' | 'is' | '~' | '*' | '/' | '%' | '+' | '-' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | 'in' | '!' | '&&' | '||' | 'not' | 'and' | 'or') expr
+    | '(' expr ')';
 
 func_invoke_expr: IDENTIFIER '(' expr? (',' expr)* ')';
 
