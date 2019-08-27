@@ -11,6 +11,8 @@ Violets are blue
 """
 var cloth_color: Color = blueviolet
 func get_damage(is_critical: bool, multiplier: int) -> float:
-    w = weapon.damage
-    s = skill.get_one_handed_bonus()
-    return s * w + 0x8F51
+    var dmg = weapon.damage + skill.get_one_handed_bonus()
+    var array = [1, 2, 3]
+    for i in array:
+        dmg += i % array[-1]
+    return dkg * 0x8F51
