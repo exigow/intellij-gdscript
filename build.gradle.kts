@@ -15,10 +15,6 @@ dependencies {
     testCompile("junit:junit:4.11")
 }
 
-val generatedJavaLocation = "src/main/java-gen"
-
-sourceSets["main"].java.srcDir(generatedJavaLocation)
-
 intellij {
     version = "2018.3"
     downloadSources = true
@@ -36,7 +32,7 @@ tasks {
     }
     generateGrammarSource {
         val path = "plugin/parser/grammar"
-        outputDirectory = file("$generatedJavaLocation/$path")
+        outputDirectory = file("src/main/java/$path")
         val pack = path.replace("/", ".")
         arguments = listOf("-package", pack, "-no-listener", "-no-visitor")
     }
