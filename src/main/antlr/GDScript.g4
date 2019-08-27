@@ -87,5 +87,5 @@ STRING: '"' (~["\n])* '"';
 LINE_COMMENT: '#' ~[\r\n\f]*;
 BLOCK_COMMENT: '"""' .*? '"""';
 NL: '\n';
-WHITESPACE: ' '+ -> channel(HIDDEN);
+WHITESPACE: (' ' | [\t])+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);
