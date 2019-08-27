@@ -9,8 +9,8 @@ import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import plugin.GDScript
-import plugin.parser.grammar.GDScriptLexer
-import plugin.parser.grammar.GDScriptLexer.*
+import gdscript.grammar.GDScriptLexer
+import gdscript.grammar.GDScriptLexer.*
 import plugin.highlighting.GDScriptHighlighterColors as DefaultColors
 
 class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {

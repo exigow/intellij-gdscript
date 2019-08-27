@@ -18,9 +18,9 @@ import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 import plugin.GDScript
-import plugin.parser.grammar.GDScriptLexer
-import plugin.parser.grammar.GDScriptLexer.*
-import plugin.parser.grammar.GDScriptParser
+import gdscript.grammar.GDScriptLexer
+import gdscript.grammar.GDScriptLexer.*
+import gdscript.grammar.GDScriptParser
 import plugin.psi.GDScriptPsiFile
 
 class GDScriptParserDefinition : ParserDefinition {
