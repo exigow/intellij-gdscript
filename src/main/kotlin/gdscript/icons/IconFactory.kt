@@ -8,7 +8,7 @@ import javax.swing.Icon
 
 object IconFactory {
 
-    fun createPluginIcon() = IconLoader.getIcon("META-INF/pluginIcon.svg")
+    fun createPluginIcon() = IconLoader.getIcon("/icons/gd_file_icon.png")
 
     fun createColorIcon(color: Color) = object : Icon {
 

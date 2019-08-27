@@ -3,15 +3,15 @@
 	<name>GDScript</name>
 	<version>0.1</version>
 	<vendor>test</vendor>
-	<idea-version since-build="183"/>
+	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlighting.GDScriptHighlighterFactory" language="GDScript"/>
-		<lang.parserDefinition implementationClass="gdscript.parser.GDScriptParserDefinition" language="GDScript"/>
-		<lang.commenter implementationClass="gdscript.GDScriptCommenter" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.DocumentationCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.ColorCompletionContributor" language="GDScript"/>
+		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlighting.GDScriptHighlighterFactory"/>
+		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.GDScriptParserDefinition"/>
+		<lang.commenter language="GDScript" implementationClass="gdscript.GDScriptCommenter"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.DocumentationCompletionContributor"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.KeywordCompletionContributor"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.ColorCompletionContributor"/>
 		<fileTypeFactory implementation="gdscript.GDScriptFileTypeFactory"/>
 		<colorSettingsPage implementation="gdscript.highlighting.GDScriptColorSettingsPage"/>
 	</extensions>
