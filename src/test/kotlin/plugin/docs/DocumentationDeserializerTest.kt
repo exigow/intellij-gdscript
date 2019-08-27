@@ -1,10 +1,10 @@
-package plugin.completion.deserialization
+package plugin.docs
 
 import org.junit.Assert.*
 import org.junit.Test
-import plugin.completion.deserialization.DocumentationDeserializer.deserializeResource
-import plugin.completion.deserialization.DocumentationDeserializer.deserializeText
-import plugin.completion.deserialization.models.*
+import plugin.docs.DocumentationDeserializer.deserializeResource
+import plugin.docs.DocumentationDeserializer.deserializeText
+import plugin.docs.models.*
 
 class DocumentationDeserializerTest {
     

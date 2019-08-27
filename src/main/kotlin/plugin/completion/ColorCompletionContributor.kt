@@ -4,8 +4,8 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
-import plugin.completion.deserialization.DocumentationDeserializer.deserializeResourceResource
-import plugin.completion.deserialization.models.Constant
+import plugin.docs.DocumentationDeserializer.deserializeResourceResource
+import plugin.docs.models.Constant
 import plugin.completion.utilities.LookupCompletionProvider
 import plugin.icons.IconFactory
 import java.awt.Color

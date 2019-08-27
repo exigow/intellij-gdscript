@@ -1,4 +1,4 @@
-package plugin.completion.deserialization.models
+package plugin.docs.models
 
 data class Constant(
     val name: String,

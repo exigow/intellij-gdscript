@@ -5,7 +5,7 @@ import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.*
-import plugin.completion.deserialization.DocumentationDeserializer.deserializeResourceResource
+import plugin.docs.DocumentationDeserializer.deserializeResourceResource
 import plugin.completion.utilities.LookupCompletionProvider
 
 
