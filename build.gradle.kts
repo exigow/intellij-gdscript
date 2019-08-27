@@ -31,7 +31,7 @@ tasks {
         targetCompatibility = "1.8"
     }
     generateGrammarSource {
-        val path = "plugin/parser/grammar"
+        val path = "gdscript/grammar"
         outputDirectory = file("src/main/java/$path")
         val pack = path.replace("/", ".")
         arguments = listOf("-package", pack, "-no-listener", "-no-visitor")
