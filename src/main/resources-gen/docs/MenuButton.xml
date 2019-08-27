@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="MenuButton" inherits="Button" category="Core" version="3.2">
+	<brief_description>
+		Special button that brings up a [PopupMenu] when clicked.
+	</brief_description>
+	<description>
+		Special button that brings up a [PopupMenu] when clicked. That's pretty much all it does, as it's just a helper class when building GUIs.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_popup" qualifiers="const">
+			<return type="PopupMenu">
+			</return>
+			<description>
+				Returns the [PopupMenu] contained in this button.
+			</description>
+		</method>
+		<method name="set_disable_shortcuts">
+			<return type="void">
+			</return>
+			<argument index="0" name="disabled" type="bool">
+			</argument>
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="switch_on_hover" type="bool" setter="set_switch_on_hover" getter="is_switch_on_hover" default="false">
+			If [code]true[/code], when the cursor hovers above another MenuButton within the same parent which also has [code]switch_on_hover[/code] enabled, it will close the current MenuButton and open the other one.
+		</member>
+	</members>
+	<signals>
+		<signal name="about_to_show">
+			<description>
+				Emitted when [PopupMenu] of this MenuButton is about to show.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+	</constants>
+	<theme_items>
+		<theme_item name="disabled" type="StyleBox">
+		</theme_item>
+		<theme_item name="focus" type="StyleBox">
+		</theme_item>
+		<theme_item name="font" type="Font">
+		</theme_item>
+		<theme_item name="font_color" type="Color" default="Color( 0.88, 0.88, 0.88, 1 )">
+		</theme_item>
+		<theme_item name="font_color_disabled" type="Color" default="Color( 1, 1, 1, 0.3 )">
+		</theme_item>
+		<theme_item name="font_color_hover" type="Color" default="Color( 0.94, 0.94, 0.94, 1 )">
+		</theme_item>
+		<theme_item name="font_color_pressed" type="Color" default="Color( 1, 1, 1, 1 )">
+		</theme_item>
+		<theme_item name="hover" type="StyleBox">
+		</theme_item>
+		<theme_item name="hseparation" type="int" default="3">
+		</theme_item>
+		<theme_item name="normal" type="StyleBox">
+		</theme_item>
+		<theme_item name="pressed" type="StyleBox">
+		</theme_item>
+	</theme_items>
+</class>
