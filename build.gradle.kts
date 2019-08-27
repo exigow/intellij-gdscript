@@ -16,10 +16,8 @@ dependencies {
 }
 
 val generatedJavaLocation = "src/main/java-gen"
-val generatedResourceLocation = "src/main/resources-gen"
 
 sourceSets["main"].java.srcDir(generatedJavaLocation)
-sourceSets["main"].resources.srcDir(generatedResourceLocation)
 
 intellij {
     version = "2018.3"
