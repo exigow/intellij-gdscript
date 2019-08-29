@@ -15,11 +15,6 @@ import java.io.File
 object BuiltInClassDeserializer {
 
     fun deserializeResource(resourceName: String): Documentation {
-        val file = File("src/main/resources/docs/$resourceName")
-        return deserializeFile(file)
-    }
-
-    fun deserializeResourceResource(resourceName: String): Documentation {
         val text = BuiltInClassDeserializer::class.java.getResource(resourceName).readText()
         return deserializeText(text)
     }
@@ -29,13 +24,8 @@ object BuiltInClassDeserializer {
         return configureMapper().readValue(fixedXml, Documentation::class.java)
     }
 
-    fun deserializeFile(xml: File) = deserializeText(xml.readText())
-
-    private fun fixTagsWithOnlyWhitespaces(content: String): String {
-        // empty <constants> tag may contain newline whitespaces
-        // which cause deserializer to recognize them as a VALUE_STRING
-        return content.replace("<constants>\\s+</constants>".toRegex(), "<constants></constants>")
-    }
+    private fun fixTagsWithOnlyWhitespaces(content: String) =
+        content.replace("<constants>\\s+</constants>".toRegex(), "<constants></constants>")
 
     private fun configureMapper() = XmlMapper()
         .registerModule(KotlinModule())

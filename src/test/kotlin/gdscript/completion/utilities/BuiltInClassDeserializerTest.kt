@@ -1,16 +1,16 @@
 package gdscript.completion.utilities
 
-import org.junit.Assert.*
-import org.junit.Test
 import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
 import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeText
 import gdscript.completion.utilities.models.*
+import org.junit.Assert.*
+import org.junit.Test
 
 class BuiltInClassDeserializerTest {
     
     @Test
     fun `deserialize methods`() {
-        val method = deserializeResource("Vector2.xml").findMethod("angle_to")
+        val method = deserializeResource("/docs/Vector2.xml").findMethod("angle_to")
         val expected = Method(
             name = "angle_to",
             returnType = Return("float"),
@@ -21,21 +21,21 @@ class BuiltInClassDeserializerTest {
 
     @Test
     fun `deserialize constants`() {
-        val constant = deserializeResource("Color.xml").findConstant("blue")
+        val constant = deserializeResource("/docs/Color.xml").findConstant("blue")
         assertEquals(constant.name, "blue")
         assertEquals(constant.value, "Color( 0, 0, 1, 1 )")
     }
 
     @Test
     fun `deserialize members`() {
-        val member = deserializeResource("Color.xml").findMember("r")
+        val member = deserializeResource("/docs/Color.xml").findMember("r")
         assertEquals(member.name, "r")
         assertEquals(member.type, "float")
     }
 
     @Test
     fun `deserialize inherits`() {
-        val sprite = deserializeResource("Sprite.xml")
+        val sprite = deserializeResource("/docs/Sprite.xml")
         assertNotNull(sprite.inherits)
     }
 
@@ -48,13 +48,13 @@ class BuiltInClassDeserializerTest {
 
     @Test
     fun `allow null inherits`() {
-        val color = deserializeResource("Color.xml")
+        val color = deserializeResource("/docs/Color.xml")
         assertNull(color.inherits)
     }
 
     @Test
     fun `deserialize missing members`() {
-        val doc = deserializeResource("GDScript.xml")
+        val doc = deserializeResource("/docs/GDScript.xml")
         assertNull(doc.members)
     }
 
@@ -69,10 +69,13 @@ class BuiltInClassDeserializerTest {
         assertNull(test.constants)
     }
 
-    private fun Documentation.findMember(name: String): Member = members?.find { it.name == name }!!
+    private fun Documentation.findMember(name: String): Member =
+        members?.find { it.name == name }!!
 
-    private fun Documentation.findConstant(name: String): Constant = constants?.find { it.name == name }!!
+    private fun Documentation.findConstant(name: String): Constant =
+        constants?.find { it.name == name }!!
 
-    private fun Documentation.findMethod(name: String): Method = methods?.find { it.name == name }!!
+    private fun Documentation.findMethod(name: String): Method =
+        methods?.find { it.name == name }!!
 
 }

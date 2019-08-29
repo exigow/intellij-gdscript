@@ -11,7 +11,7 @@ class GdPsiFileBase(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, 
 
     override fun getFileType() = GdLanguageFileType
 
-    override fun getIcon(flags: Int) = GdIcons.createPluginIcon()
+    override fun getIcon(flags: Int) = GdIcons.FILE_ICON
 
     override fun getContext(): ScopeNode? = null
 

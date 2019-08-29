@@ -5,7 +5,7 @@ import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.*
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResourceResource
+import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
 import gdscript.completion.utilities.LookupCompletionProvider
 
 
@@ -19,7 +19,7 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
             "/docs/String.xml"
         )
         for (path in paths) {
-            val doc = deserializeResourceResource(path)
+            val doc = deserializeResource(path)
 
             val classNameLookup = LookupElementBuilder.create(doc.name).withIcon(CLASS_ICON)
             val variableLookups = doc.usefulMembersNames().map { LookupElementBuilder.create(it).withIcon(VARIABLE_ICON) }

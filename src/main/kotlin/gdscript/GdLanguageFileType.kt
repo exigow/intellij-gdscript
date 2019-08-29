@@ -11,6 +11,6 @@ object GdLanguageFileType : LanguageFileType(GdLanguage) {
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getIcon() = GdIcons.createPluginIcon()
+    override fun getIcon() = GdIcons.FILE_ICON
 
 }

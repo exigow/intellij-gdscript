@@ -11,24 +11,32 @@ import gdscript.icons.GdIcons
 
 class GdColorSettingsPage : ColorSettingsPage {
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String,TextAttributesKey>()
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        emptyMap<String,TextAttributesKey>()
 
-    override fun getIcon() = GdIcons.createPluginIcon()
+    override fun getIcon() =
+        GdIcons.FILE_ICON
 
-    override fun getHighlighter() = GdSyntaxHighlighterFactory().getSyntaxHighlighter(null, null)
+    override fun getHighlighter() =
+        GdSyntaxHighlighterFactory().getSyntaxHighlighter(null, null)
 
-    override fun getDemoText() = GdColorSettingsPage::class.java.getResource("/demo.gd").readText()
+    override fun getDemoText() =
+        GdColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
-    override fun getAttributeDescriptors(): Array<AttributesDescriptor> = GdColor.values()
+    override fun getAttributeDescriptors(): Array<AttributesDescriptor> =
+        GdColor.values()
         .map { it.textAttributesKey }
         .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
 
-    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
+    override fun getColorDescriptors() =
+        emptyArray<ColorDescriptor>()
 
-    override fun getDisplayName() = GdLanguage.displayName
+    override fun getDisplayName() =
+        GdLanguage.displayName
 
-    private fun humanize(attribute: TextAttributesKey) = attribute.externalName
+    private fun humanize(attribute: TextAttributesKey) =
+        attribute.externalName
         .trim()
         .split("_")
         .map { it.toLowerCase() }

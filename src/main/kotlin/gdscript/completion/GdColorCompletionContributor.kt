@@ -4,16 +4,16 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResourceResource
-import gdscript.completion.utilities.models.Constant
+import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
 import gdscript.completion.utilities.LookupCompletionProvider
-import gdscript.icons.GdIcons
+import gdscript.completion.utilities.models.Constant
+import gdscript.icons.ColorIcon
 import java.awt.Color
 
 class GdColorCompletionContributor : CompletionContributor() {
 
     init {
-        val doc = deserializeResourceResource("/docs/Color.xml")
+        val doc = deserializeResource("/docs/Color.xml")
         for (colorConstant in doc.constants!!) {
             val lookup = createLookupFromConstant(colorConstant)
             extend(BASIC, psiElement(), LookupCompletionProvider(lookup))
@@ -22,7 +22,7 @@ class GdColorCompletionContributor : CompletionContributor() {
 
     private fun createLookupFromConstant(constant: Constant): LookupElementBuilder {
         val color = parseColor(constant.value)
-        val icon = createIcon(color)
+        val icon = ColorIcon(color)
         val typeText = createTypeText(color)
         return LookupElementBuilder.create(constant.name)
             .withIcon(icon)
@@ -40,8 +40,6 @@ class GdColorCompletionContributor : CompletionContributor() {
         .split(",")
         .map { it.trim() }
         .map { it.toFloat() }
-
-    private fun createIcon(color: Color) = GdIcons.createColorIcon(color)
 
     private fun createTypeText(color: Color) = "Color(${color.red}, ${color.green}, ${color.blue})"
 
