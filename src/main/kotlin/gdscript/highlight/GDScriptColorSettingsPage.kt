@@ -1,4 +1,4 @@
-package gdscript.highlighting
+package gdscript.highlight
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
@@ -22,6 +22,10 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
         .map { attribute -> AttributesDescriptor(humanize(attribute), attribute) }
         .toTypedArray()
 
+    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
+
+    override fun getDisplayName() = GDScript.displayName
+
     private fun humanize(attribute: TextAttributesKey) = attribute.externalName
         .trim()
         .split("_")
@@ -29,9 +33,5 @@ class GDScriptColorSettingsPage : ColorSettingsPage {
         .filter { it != "default" }
         .joinToString(" ")
         .capitalize()
-
-    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
-
-    override fun getDisplayName() = GDScript.displayName
 
 }

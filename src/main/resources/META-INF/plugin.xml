@@ -6,13 +6,13 @@
 	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlighting.GDScriptHighlighterFactory"/>
+		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlight.GDScriptHighlighterFactory"/>
 		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.GDScriptParserDefinition"/>
-		<lang.commenter language="GDScript" implementationClass="gdscript.GDScriptCommenter"/>
-		<completion.contributor language="GDScript" implementationClass="gdscript.completion.DocumentationCompletionContributor"/>
+		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.Commenter"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.LibraryCompletionContributor"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.KeywordCompletionContributor"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.ColorCompletionContributor"/>
 		<fileTypeFactory implementation="gdscript.GDScriptFileTypeFactory"/>
-		<colorSettingsPage implementation="gdscript.highlighting.GDScriptColorSettingsPage"/>
+		<colorSettingsPage implementation="gdscript.highlight.GDScriptColorSettingsPage"/>
 	</extensions>
 </idea-plugin>

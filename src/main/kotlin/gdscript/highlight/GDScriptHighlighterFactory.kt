@@ -1,4 +1,4 @@
-package gdscript.highlighting
+package gdscript.highlight
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
@@ -11,7 +11,7 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import gdscript.GDScript
 import gdscript.grammar.GDScriptLexer
 import gdscript.grammar.GDScriptLexer.*
-import gdscript.highlighting.GDScriptHighlighterColors as DefaultColors
+import gdscript.highlight.GDScriptHighlighterColors as DefaultColors
 
 class GDScriptHighlighterFactory : SyntaxHighlighterFactory() {
 

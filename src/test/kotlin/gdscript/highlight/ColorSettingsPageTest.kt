@@ -1,8 +1,8 @@
-package gdscript.highlighting
+package gdscript.highlight
 
 import org.junit.Test
 
-class GDScriptColorSettingsPageTest {
+class ColorSettingsPageTest {
 
     @Test
     fun `color option names are humanized programmatically from attributes`() {

@@ -9,7 +9,7 @@ import gdscript.docs.DocumentationDeserializer.deserializeResourceResource
 import gdscript.completion.utilities.LookupCompletionProvider
 
 
-class DocumentationCompletionContributor : CompletionContributor() {
+class LibraryCompletionContributor : CompletionContributor() {
 
     init {
         val paths = listOf(
