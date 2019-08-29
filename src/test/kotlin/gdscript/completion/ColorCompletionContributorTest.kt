@@ -1,8 +1,8 @@
 package gdscript.completion
 
-import gdscript.GdBaseTest
+import gdscript.BaseTest
 
-class GdColorCompletionContributorTest : GdBaseTest() {
+class ColorCompletionContributorTest : BaseTest() {
 
     fun `test color completion`() =
         assertCompletionContains("var color = re<caret>", "red")

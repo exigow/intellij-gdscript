@@ -2,7 +2,7 @@ package gdscript.colors
 
 import org.junit.Test
 
-class GdColorSettingsPageTest {
+class ColorSettingsPageTest {
 
     @Test
     fun `color option names are humanized programmatically from attributes`() {

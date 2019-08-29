@@ -5,7 +5,7 @@ import com.intellij.codeInsight.generation.actions.CommentByLineCommentAction
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.GdLanguageFileType
 
-abstract class GdBaseTest : BasePlatformTestCase() {
+abstract class BaseTest : BasePlatformTestCase() {
 
     fun assertCompletionContains(code: String, expectedLookup: String) {
         myFixture.configureByText(GdLanguageFileType, code)
