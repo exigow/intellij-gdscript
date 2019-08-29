@@ -1,8 +1,6 @@
 package gdscript.commenter
 
-import com.intellij.lang.Commenter
-
-class GdCommenter : Commenter {
+class Commenter : com.intellij.lang.Commenter {
 
     private val blockComment: String = "\"\"\""
 

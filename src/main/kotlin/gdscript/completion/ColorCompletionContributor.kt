@@ -10,7 +10,7 @@ import gdscript.completion.utilities.models.Constant
 import gdscript.icons.ColorIcon
 import java.awt.Color
 
-class GdColorCompletionContributor : CompletionContributor() {
+class ColorCompletionContributor : CompletionContributor() {
 
     init {
         val doc = deserializeResource("/docs/Color.xml")

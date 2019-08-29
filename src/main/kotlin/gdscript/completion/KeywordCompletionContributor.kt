@@ -6,7 +6,7 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import gdscript.completion.utilities.LookupCompletionProvider
 
-class GdKeywordCompletionContributor : CompletionContributor() {
+class KeywordCompletionContributor : CompletionContributor() {
 
     init {
         for (keyword in getKeywords()) {

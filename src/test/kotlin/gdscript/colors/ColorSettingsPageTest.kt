@@ -6,7 +6,7 @@ class ColorSettingsPageTest {
 
     @Test
     fun `color option names are humanized programmatically from attributes`() {
-        val displayNames = GdColorSettingsPage().attributeDescriptors
+        val displayNames = ColorSettingsPage().attributeDescriptors
             .map { it.displayName }
         assertContains("Parameter", displayNames)
         assertContains("Keyword", displayNames)

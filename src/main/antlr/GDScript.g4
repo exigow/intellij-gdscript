@@ -1,4 +1,4 @@
-grammar Gd;
+grammar GDScript;
 
 file: (line | LINE_COMMENT | BLOCK_COMMENT | NL)+ EOF;
 
