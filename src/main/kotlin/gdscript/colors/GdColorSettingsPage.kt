@@ -19,8 +19,9 @@ class GdColorSettingsPage : ColorSettingsPage {
 
     override fun getDemoText() = GdColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
-    override fun getAttributeDescriptors(): Array<AttributesDescriptor> = GdColors.all()
-        .map { attribute -> AttributesDescriptor(humanize(attribute), attribute) }
+    override fun getAttributeDescriptors(): Array<AttributesDescriptor> = GdColor.values()
+        .map { it.textAttributesKey }
+        .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
