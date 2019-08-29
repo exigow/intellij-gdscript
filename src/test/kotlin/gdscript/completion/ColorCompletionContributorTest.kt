@@ -5,6 +5,6 @@ import gdscript.BaseTest
 class ColorCompletionContributorTest : BaseTest() {
 
     fun `test color completion`() =
-        assertCompletionContains("var color = re<caret>", "red")
+        assertCodeCompletionContains("var color = re<caret>", listOf("red"))
 
 }
