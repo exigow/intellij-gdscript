@@ -132,7 +132,7 @@ class ValidCodeTestCase : BasePlatformTestCase() {
         assertValid("var hp # Health points")
 
     fun `test line comment ignored keywords`() =
-        assertValid("# what if class var dict = {}")
+        assertValid("# if class var%&={}[]")
 
     fun `test line comment ignored inner comment`() =
         assertValid("# comment # just hash char")
