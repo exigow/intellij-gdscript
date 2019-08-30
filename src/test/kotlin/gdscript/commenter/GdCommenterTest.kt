@@ -1,8 +1,8 @@
 package gdscript.commenter
 
-import gdscript.BaseTest
+import gdscript.GdTestBase
 
-class CommenterTest : BaseTest() {
+class GdCommenterTest : GdTestBase() {
 
     fun `test comment`() =
         assertCodeChangesAfterAction("<caret>var x", "#var x")

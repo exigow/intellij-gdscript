@@ -2,11 +2,11 @@ package gdscript.colors
 
 import org.junit.Test
 
-class ColorSettingsPageTest {
+class GdColorSettingsPageTest {
 
     @Test
     fun `color option names are humanized programmatically from attributes`() {
-        val displayNames = ColorSettingsPage().attributeDescriptors
+        val displayNames = GdColorSettingsPage().attributeDescriptors
             .map { it.displayName }
         assertContains("Parameter", displayNames)
         assertContains("Keyword", displayNames)

@@ -1,12 +1,12 @@
 package gdscript.completion.utilities
 
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeText
+import gdscript.completion.utilities.ClassDeserializer.deserializeResource
+import gdscript.completion.utilities.ClassDeserializer.deserializeText
 import gdscript.completion.utilities.models.*
 import org.junit.Assert.*
 import org.junit.Test
 
-class BuiltInClassDeserializerTest {
+class ClassDeserializerTest {
     
     @Test
     fun `deserialize methods`() {
@@ -69,13 +69,13 @@ class BuiltInClassDeserializerTest {
         assertNull(test.constants)
     }
 
-    private fun Documentation.findMember(name: String): Member =
+    private fun Class.findMember(name: String): Member =
         members?.find { it.name == name }!!
 
-    private fun Documentation.findConstant(name: String): Constant =
+    private fun Class.findConstant(name: String): Constant =
         constants?.find { it.name == name }!!
 
-    private fun Documentation.findMethod(name: String): Method =
+    private fun Class.findMethod(name: String): Method =
         methods?.find { it.name == name }!!
 
 }

@@ -2,7 +2,7 @@ package gdscript.completion.utilities.models
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class Documentation(
+data class Class(
     val name: String,
     val inherits: String?, // todo: rename to extends (override name with jsonprop)
     val members: List<Member>?,

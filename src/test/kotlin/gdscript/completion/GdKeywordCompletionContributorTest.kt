@@ -1,8 +1,8 @@
 package gdscript.completion
 
-import gdscript.BaseTest
+import gdscript.GdTestBase
 
-class KeywordCompletionContributorTest : BaseTest() {
+class GdKeywordCompletionContributorTest : GdTestBase() {
 
     fun `test keyword var`() =
         assertCodeCompletionContains("va<caret>", listOf("var"))
@@ -12,8 +12,5 @@ class KeywordCompletionContributorTest : BaseTest() {
 
     fun `test keyword const`() =
         assertCodeCompletionContains("co<caret>", listOf("const"))
-
-    fun `test keyword continue`() =
-        assertCodeCompletionContains("cont<caret>", listOf("continue"))
 
 }

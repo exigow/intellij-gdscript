@@ -1,8 +1,8 @@
 package gdscript.completion
 
-import gdscript.BaseTest
+import gdscript.GdTestBase
 
-class BuiltInFunctionsCompletionContributorTest : BaseTest() {
+class GdBuiltInFunctionsCompletionContributorTest : GdTestBase() {
 
     fun `test cos`() =
         assertCodeCompletionContains("co<caret>", listOf("cos"))

@@ -4,13 +4,13 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
+import gdscript.completion.utilities.ClassDeserializer.deserializeResource
 import gdscript.completion.utilities.LookupCompletionProvider
 import gdscript.completion.utilities.models.Constant
 import gdscript.icons.ColorIcon
 import java.awt.Color
 
-class ColorCompletionContributor : CompletionContributor() {
+class GdColorCompletionContributor : CompletionContributor() {
 
     init {
         val doc = deserializeResource("/docs/Color.xml")

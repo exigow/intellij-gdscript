@@ -5,11 +5,11 @@ import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.*
-import gdscript.completion.utilities.BuiltInClassDeserializer.deserializeResource
+import gdscript.completion.utilities.ClassDeserializer.deserializeResource
 import gdscript.completion.utilities.LookupCompletionProvider
 
 
-class BuiltInFunctionsCompletionContributor : CompletionContributor() {
+class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
 
     init {
         val paths = listOf(

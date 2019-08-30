@@ -3,7 +3,7 @@ package gdscript.colors
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 
-enum class Color(val textAttributesKey: TextAttributesKey) {
+enum class GdColor(val textAttributesKey: TextAttributesKey) {
 
     KEYWORD(DefaultLanguageHighlighterColors.KEYWORD),
     NUMBER(DefaultLanguageHighlighterColors.NUMBER),
