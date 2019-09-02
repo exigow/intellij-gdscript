@@ -1,7 +1,6 @@
 package gdscript
 
 import com.intellij.codeInsight.completion.CompletionType
-import com.intellij.codeInsight.generation.actions.CommentByLineCommentAction
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 abstract class GdTestBase : BasePlatformTestCase() {
@@ -14,12 +13,6 @@ abstract class GdTestBase : BasePlatformTestCase() {
             if (!lookups.contains(testedLookup))
                 fail("Missing completion $testedLookup in $lookups")
         }
-    }
-
-    fun assertCodeChangesAfterAction(before: String, after: String) {
-        myFixture.configureByText(GdFileType, before)
-        CommentByLineCommentAction().actionPerformedImpl(project, myFixture.editor)
-        myFixture.checkResult(after)
     }
 
     companion object {
