@@ -5,9 +5,9 @@ import gdscript.GdTestBase
 class GdCommenterTest : GdTestBase() {
 
     fun `test comment`() =
-        assertCodeChangesAfterAction("<caret>var x", "#var x")
+        assertCodeChangesAfterAction("${CARET_MARKER}var x", "#var x")
 
     fun `test undo comment`() =
-        assertCodeChangesAfterAction("<caret>#var x", "var x")
+        assertCodeChangesAfterAction("$CARET_MARKER#var x", "var x")
 
 }

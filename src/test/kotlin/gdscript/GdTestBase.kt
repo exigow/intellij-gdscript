@@ -19,7 +19,13 @@ abstract class GdTestBase : BasePlatformTestCase() {
     fun assertCodeChangesAfterAction(before: String, after: String) {
         myFixture.configureByText(GdFileType, before)
         CommentByLineCommentAction().actionPerformedImpl(project, myFixture.editor)
-        myFixture.checkResult(after);
+        myFixture.checkResult(after)
+    }
+
+    companion object {
+
+        const val CARET_MARKER = "<caret>"
+
     }
 
 }

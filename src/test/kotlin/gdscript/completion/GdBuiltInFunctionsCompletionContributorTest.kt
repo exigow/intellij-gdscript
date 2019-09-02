@@ -5,6 +5,6 @@ import gdscript.GdTestBase
 class GdBuiltInFunctionsCompletionContributorTest : GdTestBase() {
 
     fun `test cos`() =
-        assertCodeCompletionContains("co<caret>", listOf("cos"))
+        assertCodeCompletionContains("co$CARET_MARKER", listOf("cos"))
 
 }

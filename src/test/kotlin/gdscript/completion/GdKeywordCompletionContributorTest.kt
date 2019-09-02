@@ -5,12 +5,12 @@ import gdscript.GdTestBase
 class GdKeywordCompletionContributorTest : GdTestBase() {
 
     fun `test keyword var`() =
-        assertCodeCompletionContains("va<caret>", listOf("var"))
+        assertCodeCompletionContains("va$CARET_MARKER", listOf("var"))
 
     fun `test keyword validate_json function`() =
-        assertCodeCompletionContains("va<caret>", listOf("validate_json"))
+        assertCodeCompletionContains("va$CARET_MARKER", listOf("validate_json"))
 
     fun `test keyword const`() =
-        assertCodeCompletionContains("co<caret>", listOf("const"))
+        assertCodeCompletionContains("co$CARET_MARKER", listOf("const"))
 
 }

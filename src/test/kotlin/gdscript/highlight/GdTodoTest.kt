@@ -12,15 +12,22 @@ class GdTodoTest : TodoItemsTestCase() {
     override fun getFileExtension() = GdFileType.defaultExtension
 
     fun `test single line comment todo`() = testTodos("""
-        # [todo first line]
+        # ${START_MARKER}TODO: do this$END_MARKER
         var a = 1
-        # [todo second line line]
+        # ${START_MARKER}TODO: do that$END_MARKER
         var b = 2
     """)
 
     fun `test multi line block comment todo`() = testTodos(
         "\"\"\"\n" +
-        "[todo test]\n" +
+        "${START_MARKER}TODO: do multiline$END_MARKER\n" +
         "\"\"\"\n")
+
+    private companion object {
+
+        private const val START_MARKER = "["
+        private const val END_MARKER = "]"
+
+    }
 
 }
