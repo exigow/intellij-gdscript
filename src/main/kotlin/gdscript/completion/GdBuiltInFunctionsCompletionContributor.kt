@@ -6,7 +6,11 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.*
 import gdscript.completion.utilities.ClassDeserializer.deserializeResource
-import gdscript.completion.utilities.LookupCompletionProvider
+import gdscript.completion.utilities.PrioritizedLookupCompletionProvider
+import gdscript.completion.utilities.models.Class
+import gdscript.completion.utilities.models.Constant
+import gdscript.completion.utilities.models.Member
+import gdscript.completion.utilities.models.Method
 
 
 class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
@@ -19,18 +23,37 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
             "/docs/String.xml"
         )
         for (path in paths) {
-            val doc = deserializeResource(path)
+            val native: Class = deserializeResource(path)
+            val name = native.toNameLookup()
+            val variable = native.members?.map { it.toLookup() }.orEmpty()
+            val constant = native.constants?.map { it.toLookup() }.orEmpty()
+            val method = native.methods?.map { it.toLookup() }.orEmpty()
 
-            val classNameLookup = LookupElementBuilder.create(doc.name).withIcon(CLASS_ICON)
-            val variableLookups = doc.usefulMembersNames().map { LookupElementBuilder.create(it).withIcon(VARIABLE_ICON) }
-            val constantsLookups = doc.usefulConstantsNames().map { LookupElementBuilder.create(it).withIcon(VARIABLE_READ_ACCESS) }
-            val methodLookups = doc.usefulMethodsNames().map { LookupElementBuilder.create(it).withIcon(METHOD_ICON) }
-
-            extend(BASIC, psiElement(), LookupCompletionProvider(classNameLookup))
-            extend(BASIC, psiElement(), LookupCompletionProvider(variableLookups))
-            extend(BASIC, psiElement(), LookupCompletionProvider(constantsLookups))
-            extend(BASIC, psiElement(), LookupCompletionProvider(methodLookups))
+            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(name)))
+            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(variable))
+            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(constant))
+            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(method))
         }
     }
 
+    private fun Class.toNameLookup() =
+        LookupElementBuilder.create(name)
+            .withIcon(CLASS_ICON)
+            .withTailText(" (native)")
+
+    private fun Member.toLookup() =
+        LookupElementBuilder.create(name)
+            .withIcon(VARIABLE_ICON)
+            .withTypeText(type)
+
+    private fun Constant.toLookup() =
+        LookupElementBuilder.create(name)
+            .withIcon(FIELD_ICON)
+            .withTailText(" = $value")
+
+    private fun Method.toLookup() =
+        LookupElementBuilder.create(name)
+            .withIcon(METHOD_ICON)
+            .withTailText("()") // todo: show argument types
+            .withTypeText(returnType?.type)
 }
