@@ -4,7 +4,7 @@ Work in progress.
 
 # Installation & Usage
 
-`gradle runIde` to execute IntelliJ IDEA instance with GDScript plugin.
+`gradle runIde` to execute IntelliJ IDEA instance with installed GDScript plugin.
 
 NOTE: the first start may take a while.
 
