@@ -3,6 +3,9 @@ export var ball_dir = 1
 
 const MOVE_SPEED = 100
 
+"""
+    TODO: refactor
+"""
 func _process(delta):
 	var which = get_name()
 

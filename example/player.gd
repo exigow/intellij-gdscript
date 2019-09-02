@@ -6,7 +6,7 @@ extends KinematicBody2D
 const GRAVITY = 500.0 # pixels/second/second
 
 # Angle in degrees towards either side that the player can consider "floor"
-const FLOOR_ANGLE_TOLERANCE = 40
+const FLOOR_ANGLE_TOLERANCE = 40 # TODO: increase tolerance
 const WALK_FORCE = 600
 const WALK_MIN_SPEED = 10
 const WALK_MAX_SPEED = 200
