@@ -2,13 +2,13 @@
 
 Work in progress.
 
-# Installation & Usage
+## Installation & Usage
 
 `gradle runIde` to execute IntelliJ IDEA instance with installed GDScript plugin.
 
 NOTE: the first start may take a while.
 
-# Features (strikethrough = TODO)
+## Features (strikethrough = TODO)
 
 * `.gd` file recognition
 * Syntax highlighting
