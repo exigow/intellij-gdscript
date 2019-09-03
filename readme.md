@@ -1,5 +1,7 @@
 # GDScript plugin for the IntelliJ Platform
 
+[![Build Status](https://travis-ci.com/exigow/intellij-gdscript.svg)](https://travis-ci.com/exigow/intellij-gdscript)
+
 Work in progress.
 
 ## Installation & Usage
