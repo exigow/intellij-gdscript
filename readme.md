@@ -22,6 +22,5 @@ NOTE: the first start may take a while.
   * Built-In constants with value lookups
   * Return type lookups
   * ~~Context-aware completion~~
-  * ~~~~
 * Comment shortcuts (<kbd>ctrl</kbd> + <kbd>/</kbd> or <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>/</kbd>)
 * ~~Recognize `.import` file~~
