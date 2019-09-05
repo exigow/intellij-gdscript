@@ -23,7 +23,6 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
     private fun Library.Class.toNameLookup() =
         LookupElementBuilder.create(name)
             .withIcon(CLASS_ICON)
-            .withTailText(" (native)")
 
     private fun Library.Class.Field.toLookup() =
         LookupElementBuilder.create(name)
