@@ -6,8 +6,8 @@ Work in progress.
 
 ## Installation & Usage
 
-`./gradlew runIde` to execute IntelliJ IDEA instance with installed GDScript plugin.
-`./gradlew run` to download and upgrade built-in Godot classes (required for completion).
+`./gradlew :plugin:runIde` to execute IntelliJ IDEA instance with installed GDScript plugin.
+`./gradlew :tools:run` to download and upgrade built-in Godot classes (required for completion).
 
 NOTE: the first start may take a while.
 
