@@ -21,25 +21,23 @@ class GdColorCompletionContributor : CompletionContributor() {
     private fun createLookupFromConstant(constant: Library.Class.Constant): LookupElementBuilder {
         val color = parseColor(constant.value)
         val icon = ColorIcon(color)
-        val tail = createTypeText(color)
+        val tail = constant.value
         return LookupElementBuilder.create(constant.name)
             .withIcon(icon)
             .withTailText(tail)
             .withTypeText("Color")
     }
 
-    private fun parseColor(code: String): Color {
-        val channels = readColorChannels(code)
+    private fun parseColor(script: String): Color {
+        val channels = readColorChannels(script)
         return Color(channels[0], channels[1], channels[2], channels[3])
     }
 
-    private fun readColorChannels(constructorInvocationCode: String) = constructorInvocationCode
+    private fun readColorChannels(script: String) = script
         .replace("Color", "")
         .removeSurrounding("(", ")")
         .split(",")
         .map { it.trim() }
         .map { it.toFloat() }
-
-    private fun createTypeText(color: Color) = " = (${color.red}, ${color.green}, ${color.blue})"
 
 }
