@@ -32,6 +32,6 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
     private fun Library.Class.Method.toLookup() =
         LookupElementBuilder.create(name)
             .withIcon(METHOD_ICON)
-            .withTailText("()")
+            .withTailText(arguments.joinToString(", ", "(", ")") { it.type })
             .withTypeText(type)
 }
