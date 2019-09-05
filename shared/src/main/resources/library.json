@@ -77518,6 +77518,1063 @@
         }
       ],
       "constants": []
+    },
+    {
+      "name": "@GDScript",
+      "extends": "",
+      "description": "Built-in GDScript functions.",
+      "fields": [],
+      "methods": [
+        {
+          "name": "Color8",
+          "type": "Color",
+          "arguments": [
+            {
+              "name": "r8",
+              "type": "int"
+            },
+            {
+              "name": "g8",
+              "type": "int"
+            },
+            {
+              "name": "b8",
+              "type": "int"
+            },
+            {
+              "name": "a8",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "ColorN",
+          "type": "Color",
+          "arguments": [
+            {
+              "name": "name",
+              "type": "String"
+            },
+            {
+              "name": "alpha",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "abs",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "acos",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "asin",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "assert",
+          "type": "void",
+          "arguments": [
+            {
+              "name": "condition",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "atan",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "atan2",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "y",
+              "type": "float"
+            },
+            {
+              "name": "x",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "bytes2var",
+          "type": "Variant",
+          "arguments": [
+            {
+              "name": "bytes",
+              "type": "PoolByteArray"
+            },
+            {
+              "name": "allow_objects",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "cartesian2polar",
+          "type": "Vector2",
+          "arguments": [
+            {
+              "name": "x",
+              "type": "float"
+            },
+            {
+              "name": "y",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "ceil",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "char",
+          "type": "String",
+          "arguments": [
+            {
+              "name": "ascii",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "clamp",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "float"
+            },
+            {
+              "name": "min",
+              "type": "float"
+            },
+            {
+              "name": "max",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "convert",
+          "type": "Variant",
+          "arguments": [
+            {
+              "name": "what",
+              "type": "Variant"
+            },
+            {
+              "name": "type",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "cos",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "cosh",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "db2linear",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "db",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "decimals",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "step",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "dectime",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "float"
+            },
+            {
+              "name": "amount",
+              "type": "float"
+            },
+            {
+              "name": "step",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "deg2rad",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "deg",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "dict2inst",
+          "type": "Object",
+          "arguments": [
+            {
+              "name": "dict",
+              "type": "Dictionary"
+            }
+          ]
+        },
+        {
+          "name": "ease",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            },
+            {
+              "name": "curve",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "exp",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "floor",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "fmod",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "float"
+            },
+            {
+              "name": "b",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "fposmod",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "float"
+            },
+            {
+              "name": "b",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "funcref",
+          "type": "FuncRef",
+          "arguments": [
+            {
+              "name": "instance",
+              "type": "Object"
+            },
+            {
+              "name": "funcname",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "get_stack",
+          "type": "Array",
+          "arguments": []
+        },
+        {
+          "name": "hash",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "var",
+              "type": "Variant"
+            }
+          ]
+        },
+        {
+          "name": "inst2dict",
+          "type": "Dictionary",
+          "arguments": [
+            {
+              "name": "inst",
+              "type": "Object"
+            }
+          ]
+        },
+        {
+          "name": "instance_from_id",
+          "type": "Object",
+          "arguments": [
+            {
+              "name": "instance_id",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "inverse_lerp",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            },
+            {
+              "name": "to",
+              "type": "float"
+            },
+            {
+              "name": "weight",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "is_equal_approx",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "float"
+            },
+            {
+              "name": "b",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "is_inf",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "is_instance_valid",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "instance",
+              "type": "Object"
+            }
+          ]
+        },
+        {
+          "name": "is_nan",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "is_zero_approx",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "len",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "var",
+              "type": "Variant"
+            }
+          ]
+        },
+        {
+          "name": "lerp",
+          "type": "Variant",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "Variant"
+            },
+            {
+              "name": "to",
+              "type": "Variant"
+            },
+            {
+              "name": "weight",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "lerp_angle",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            },
+            {
+              "name": "to",
+              "type": "float"
+            },
+            {
+              "name": "weight",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "linear2db",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "nrg",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "load",
+          "type": "Resource",
+          "arguments": [
+            {
+              "name": "path",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "log",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "max",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "float"
+            },
+            {
+              "name": "b",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "min",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "float"
+            },
+            {
+              "name": "b",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "move_toward",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            },
+            {
+              "name": "to",
+              "type": "float"
+            },
+            {
+              "name": "delta",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "nearest_po2",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "parse_json",
+          "type": "Variant",
+          "arguments": [
+            {
+              "name": "json",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "polar2cartesian",
+          "type": "Vector2",
+          "arguments": [
+            {
+              "name": "r",
+              "type": "float"
+            },
+            {
+              "name": "th",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "posmod",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "int"
+            },
+            {
+              "name": "b",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "pow",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "base",
+              "type": "float"
+            },
+            {
+              "name": "exp",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "preload",
+          "type": "Resource",
+          "arguments": [
+            {
+              "name": "path",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "print",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "print_debug",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "print_stack",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "printerr",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "printraw",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "prints",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "printt",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "push_error",
+          "type": "void",
+          "arguments": [
+            {
+              "name": "message",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "push_warning",
+          "type": "void",
+          "arguments": [
+            {
+              "name": "message",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "rad2deg",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "rad",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "rand_range",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            },
+            {
+              "name": "to",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "rand_seed",
+          "type": "Array",
+          "arguments": [
+            {
+              "name": "seed",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "randf",
+          "type": "float",
+          "arguments": []
+        },
+        {
+          "name": "randi",
+          "type": "int",
+          "arguments": []
+        },
+        {
+          "name": "randomize",
+          "type": "void",
+          "arguments": []
+        },
+        {
+          "name": "range",
+          "type": "Array",
+          "arguments": []
+        },
+        {
+          "name": "range_lerp",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "float"
+            },
+            {
+              "name": "istart",
+              "type": "float"
+            },
+            {
+              "name": "istop",
+              "type": "float"
+            },
+            {
+              "name": "ostart",
+              "type": "float"
+            },
+            {
+              "name": "ostop",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "round",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "seed",
+          "type": "void",
+          "arguments": [
+            {
+              "name": "seed",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "sign",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "sin",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "sinh",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "smoothstep",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            },
+            {
+              "name": "to",
+              "type": "float"
+            },
+            {
+              "name": "weight",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "sqrt",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "step_decimals",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "step",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "stepify",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            },
+            {
+              "name": "step",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "str",
+          "type": "String",
+          "arguments": []
+        },
+        {
+          "name": "str2var",
+          "type": "Variant",
+          "arguments": [
+            {
+              "name": "string",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "tan",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "tanh",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "s",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "to_json",
+          "type": "String",
+          "arguments": [
+            {
+              "name": "var",
+              "type": "Variant"
+            }
+          ]
+        },
+        {
+          "name": "type_exists",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "type",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "typeof",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "what",
+              "type": "Variant"
+            }
+          ]
+        },
+        {
+          "name": "validate_json",
+          "type": "String",
+          "arguments": [
+            {
+              "name": "json",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "var2bytes",
+          "type": "PoolByteArray",
+          "arguments": [
+            {
+              "name": "var",
+              "type": "Variant"
+            },
+            {
+              "name": "full_objects",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "var2str",
+          "type": "String",
+          "arguments": [
+            {
+              "name": "var",
+              "type": "Variant"
+            }
+          ]
+        },
+        {
+          "name": "weakref",
+          "type": "WeakRef",
+          "arguments": [
+            {
+              "name": "obj",
+              "type": "Object"
+            }
+          ]
+        },
+        {
+          "name": "wrapf",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "float"
+            },
+            {
+              "name": "min",
+              "type": "float"
+            },
+            {
+              "name": "max",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "wrapi",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "int"
+            },
+            {
+              "name": "min",
+              "type": "int"
+            },
+            {
+              "name": "max",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "yield",
+          "type": "GDScriptFunctionState",
+          "arguments": [
+            {
+              "name": "object",
+              "type": "Object"
+            },
+            {
+              "name": "signal",
+              "type": "String"
+            }
+          ]
+        }
+      ],
+      "constants": [
+        {
+          "name": "PI",
+          "value": "3.141593"
+        },
+        {
+          "name": "TAU",
+          "value": "6.283185"
+        },
+        {
+          "name": "INF",
+          "value": "inf"
+        },
+        {
+          "name": "NAN",
+          "value": "nan"
+        }
+      ]
     }
   ]
 }

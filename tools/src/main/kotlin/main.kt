@@ -15,14 +15,14 @@ suspend fun main() {
     val links = collectLinks(listPage)
     val counter = AtomicInteger()
     val sdk = Library(classes = coroutineScope {
-        links.map {
+        val languageLevelLink = "https://github.com/godotengine/godot/raw/master/modules/gdscript/doc_classes/@GDScript.xml"
+        (links + languageLevelLink).sorted().map {
             async {
                 println("${counter.incrementAndGet()}/${links.size} $it")
                 process(it)
             }
         }.awaitAll()
         }.toList()
-        .sortedBy { it.name }
     )
     serialize(sdk)
 }
