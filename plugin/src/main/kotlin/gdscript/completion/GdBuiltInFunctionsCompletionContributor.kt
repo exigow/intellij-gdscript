@@ -13,10 +13,11 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
 
     init {
         val library = Library.load()
-        for (clazz in library.classes) {
+        for (clazz in library.classes.filter { it.name != "Color" }) {
             extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(clazz.toNameLookup())))
             extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(clazz.fields.map { it.toLookup() }))
             extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(clazz.methods.map { it.toLookup() }))
+            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(clazz.constants.map { it.toLookup() }))
         }
     }
 
@@ -34,4 +35,10 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
             .withIcon(METHOD_ICON)
             .withTailText(arguments.joinToString(", ", "(", ")") { it.type })
             .withTypeText(type)
+
+    private fun Library.Class.Constant.toLookup() =
+        LookupElementBuilder.create(name)
+            .withTailText("= $value")
+            .withIcon(FIELD_ICON)
+
 }

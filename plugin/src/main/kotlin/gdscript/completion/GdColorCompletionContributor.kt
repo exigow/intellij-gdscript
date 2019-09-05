@@ -21,10 +21,10 @@ class GdColorCompletionContributor : CompletionContributor() {
     private fun createLookupFromConstant(constant: Library.Class.Constant): LookupElementBuilder {
         val color = parseColor(constant.value)
         val icon = ColorIcon(color)
-        val typeText = createTypeText(color)
+        val tail = createTypeText(color)
         return LookupElementBuilder.create(constant.name)
             .withIcon(icon)
-            .withTailText(typeText)
+            .withTailText(tail)
             .withTypeText("Color")
     }
 
