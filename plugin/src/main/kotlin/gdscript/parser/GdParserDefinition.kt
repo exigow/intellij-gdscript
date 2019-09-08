@@ -40,7 +40,8 @@ class GdParserDefinition : ParserDefinition {
 
             override fun parse(parser: Parser, root: IElementType): ParseTree {
                 require(parser is GDScriptParser)
-                return if (root is IFileElementType) parser.file() else TODO("Unsupported non-file root!")
+                require(root is IFileElementType)
+                return parser.file()
             }
 
         }
