@@ -11,7 +11,6 @@
 		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.GdCommenter"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdBuiltInFunctionsCompletionContributor"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdKeywordCompletionContributor"/>
-		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdColorCompletionContributor"/>
 		<fileTypeFactory implementation="gdscript.GdFileTypeFactory"/>
 		<colorSettingsPage implementation="gdscript.colors.GdColorSettingsPage"/>
 	</extensions>

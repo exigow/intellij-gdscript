@@ -1,4 +1,4 @@
-package gdscript.icons
+package gdscript
 
 import com.intellij.openapi.util.IconLoader
 

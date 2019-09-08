@@ -13,11 +13,19 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
 
     init {
         val library = Library.load()
-        for (clazz in library.classes.filter { it.name != "Color" }) {
-            extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(clazz.toNameLookup())))
-            extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.fields.map { it.toLookup() }))
-            extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.methods.map { it.toLookup() }))
-            extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.constants.map { it.toLookup() }))
+        for (clazz in library.classes) {
+            when (clazz.name) {
+                "@GDScript" -> {
+                    extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(clazz.methods.map { it.toLookup() }))
+                    extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(clazz.constants.map { it.toLookup() }))
+                }
+                else -> {
+                    extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(clazz.toNameLookup())))
+                    extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.fields.map { it.toLookup() }))
+                    extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.methods.map { it.toLookup() }))
+                    extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(clazz.constants.map { it.toLookup() }))
+                }
+            }
         }
     }
 

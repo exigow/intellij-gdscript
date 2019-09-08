@@ -1,7 +1,6 @@
 package gdscript
 
 import com.intellij.openapi.fileTypes.LanguageFileType
-import gdscript.icons.GdIcons
 
 object GdFileType : LanguageFileType(GdLanguage) {
 

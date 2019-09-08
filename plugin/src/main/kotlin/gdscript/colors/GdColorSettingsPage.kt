@@ -5,7 +5,7 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import gdscript.GdLanguage
 import gdscript.highlight.GdHighlighterFactory
-import gdscript.icons.GdIcons
+import gdscript.GdIcons
 
 
 class GdColorSettingsPage : com.intellij.openapi.options.colors.ColorSettingsPage {
