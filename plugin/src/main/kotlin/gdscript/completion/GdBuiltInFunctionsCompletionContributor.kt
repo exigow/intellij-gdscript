@@ -46,7 +46,7 @@ class GdBuiltInFunctionsCompletionContributor : CompletionContributor() {
 
     private fun Library.Class.Constant.toLookup() =
         LookupElementBuilder.create(name)
-            .withTailText("= $value")
+            .withTailText(" = $value")
             .withIcon(FIELD_ICON)
 
 }
