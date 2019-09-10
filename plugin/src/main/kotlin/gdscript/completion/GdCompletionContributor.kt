@@ -3,14 +3,11 @@ package gdscript.completion
 import Library
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
-import com.intellij.codeInsight.lookup.LookupElement
-import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.*
 import gdscript.completion.utilities.PrioritizedLookupCompletionProvider
 import gdscript.completion.utilities.Priority
-import javax.swing.Icon
 
 
 class GdCompletionContributor : CompletionContributor() {
@@ -20,27 +17,29 @@ class GdCompletionContributor : CompletionContributor() {
         for (clazz in library.classes) {
             when (clazz.name) {
                 "@GDScript" -> {
-                    val constants = clazz.constants.map { it.toLookup() }
-                    val methods = clazz.methods.map { it.toLookup() }
+                    val constants = clazz.constants.map { create(it.name).withIcon(FIELD_ICON).withTailText(it.lookupText()) }
+                    val methods = clazz.methods.map { create(it.name).withIcon(FUNCTION_ICON).withTailText(it.arguments.joined()).withTypeText(it.type) }
                     extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(constants + methods))
                 }
                 else -> {
                     extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(create(clazz.name).withIcon(CLASS_ICON))))
                     val fields = clazz.fields.map { create(it.name).withIcon(VARIABLE_ICON).withTypeText(it.type).bold() }
-                    val methods = clazz.methods.map { it.toLookup() }
-                    val constants = clazz.constants.map { it.toLookup() }
-                    extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(fields + methods + constants))
+                    val getters = clazz.fields.map { create(it.getter).withIcon(METHOD_ICON).withTypeText(it.type)}
+                    val setters = clazz.fields.map { create(it.setter).withIcon(METHOD_ICON).withTailText("(value: ${it.type})") }
+                    val methods = clazz.methods.map { create(it.name).withIcon(METHOD_ICON).withTailText(it.arguments.joined()).withTypeText(it.type) }
+                    val constants = clazz.constants.map { create(it.name).withIcon(FIELD_ICON).withTailText(it.lookupText()) }
+                    extend(BASIC, psiElement().afterLeaf("."), PrioritizedLookupCompletionProvider(fields + getters + setters + methods + constants))
                 }
             }
         }
         extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(KEYWORDS.map { create(it).bold() }, Priority.KEYWORD))
     }
 
-    private fun Library.Class.Method.toLookup() =
-        create(name).withIcon(METHOD_ICON).withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }).withTypeText(type)
+    private fun Library.Class.Constant.lookupText() =
+        " = $value"
 
-    private fun Library.Class.Constant.toLookup() =
-        create(name).withTailText(" = $value").withIcon(FIELD_ICON)
+    private fun List<Library.Class.Method.Argument>.joined() =
+        joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
 
     companion object {
         val KEYWORDS = arrayOf(
