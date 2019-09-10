@@ -17,7 +17,7 @@
 		<internalFileTemplate name="GDScript File"/>
 	</extensions>
 	<actions>
-		<action id="GDScript.NewFile" class="gdscript.GdCreateFileAction">
+		<action id="GDScript.NewFile" class="gdscript.actions.GdCreateFileAction">
 			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
 		</action>
 	</actions>

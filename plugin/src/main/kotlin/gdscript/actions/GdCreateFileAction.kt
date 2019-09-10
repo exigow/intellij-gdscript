@@ -1,9 +1,10 @@
-package gdscript
+package gdscript.actions
 
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
+import gdscript.GdIcons
 
 class GdCreateFileAction : CreateFileFromTemplateAction("GDScript", "", GdIcons.FILE_ICON) {
 
