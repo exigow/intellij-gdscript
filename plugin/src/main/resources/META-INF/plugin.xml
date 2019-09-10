@@ -1,5 +1,5 @@
 <idea-plugin>
-	<id>org.antlr.jetbrains.sample</id>
+	<id>gdscript</id>
 	<name>GDScript</name>
 	<version>0.1</version>
 	<vendor>test</vendor>
@@ -13,5 +13,12 @@
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdKeywordCompletionContributor"/>
 		<fileTypeFactory implementation="gdscript.GdFileTypeFactory"/>
 		<colorSettingsPage implementation="gdscript.colors.GdColorSettingsPage"/>
+		<internalFileTemplate name="GDScript Class"/>
+		<internalFileTemplate name="GDScript File"/>
 	</extensions>
+	<actions>
+		<action id="GDScript.NewFile" class="gdscript.GdCreateFileAction">
+			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+		</action>
+	</actions>
 </idea-plugin>
