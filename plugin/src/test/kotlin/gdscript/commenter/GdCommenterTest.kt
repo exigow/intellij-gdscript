@@ -8,10 +8,13 @@ import gdscript.GdTestBase
 class GdCommenterTest : GdTestBase() {
 
     fun `test comment`() =
-        assertCodeChangesAfterCommentAction("${CARET_MARKER}var x", "#var x")
+        assertCodeChangesAfterCommentAction("const M${CARET}AX = 100", "#const MAX = 100")
 
-    fun `test undo comment`() =
-        assertCodeChangesAfterCommentAction("$CARET_MARKER#var x", "var x")
+    fun `test uncomment`() =
+        assertCodeChangesAfterCommentAction("#size += 1${CARET}", "size += 1")
+
+    fun `test override existing comment with new comment`() =
+        assertCodeChangesAfterCommentAction("var size#: Vector2${CARET}", "#var size#: Vector2")
 
     private fun assertCodeChangesAfterCommentAction(before: String, after: String) {
         myFixture.configureByText(GdFileType, before)
