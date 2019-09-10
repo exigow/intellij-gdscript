@@ -1,20 +1,19 @@
-package gdscript.commenter
+package gdscript
 
 import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
-import gdscript.GdFileType
-import gdscript.GdTestBase
+import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class GdCommenterTest : GdTestBase() {
+class CommentingTestCase : BasePlatformTestCase() {
 
     fun `test comment`() =
-        assertCodeChangesAfterCommentAction("const M${CARET}AX = 100", "#const MAX = 100")
+        assertCodeChangesAfterCommentAction("const M<caret>AX = 100", "#const MAX = 100")
 
     fun `test uncomment`() =
-        assertCodeChangesAfterCommentAction("#size += 1${CARET}", "size += 1")
+        assertCodeChangesAfterCommentAction("#size += 1<caret>", "size += 1")
 
     fun `test override existing comment with new comment`() =
-        assertCodeChangesAfterCommentAction("var size#: Vector2${CARET}", "#var size#: Vector2")
+        assertCodeChangesAfterCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
 
     private fun assertCodeChangesAfterCommentAction(before: String, after: String) {
         myFixture.configureByText(GdFileType, before)
