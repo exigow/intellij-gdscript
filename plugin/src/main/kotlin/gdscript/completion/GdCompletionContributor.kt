@@ -18,8 +18,8 @@ class GdCompletionContributor : CompletionContributor() {
             when (clazz.name) {
                 "@GDScript" -> {
                     val constants = clazz.constants.map { create(it.name).withIcon(FIELD_ICON).withTailText(it.lookupText()) }
-                    val methods = clazz.methods.map { create(it.name).withIcon(FUNCTION_ICON).withTailText(it.arguments.joined()).withTypeText(it.type) }
-                    extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(constants + methods))
+                    val functions = clazz.methods.map { create(it.name).withIcon(FUNCTION_ICON).withTailText(it.arguments.joined()).withTypeText(it.type) }
+                    extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(constants + functions))
                 }
                 else -> {
                     extend(BASIC, psiElement(), PrioritizedLookupCompletionProvider(listOf(create(clazz.name).withIcon(CLASS_ICON))))
