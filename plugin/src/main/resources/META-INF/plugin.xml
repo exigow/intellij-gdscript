@@ -9,8 +9,7 @@
 		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlight.GdHighlighterFactory"/>
 		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.GdParserDefinition"/>
 		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.GdCommenter"/>
-		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdBuiltInFunctionsCompletionContributor"/>
-		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdKeywordCompletionContributor"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdCompletionContributor"/>
 		<fileTypeFactory implementation="gdscript.GdFileTypeFactory"/>
 		<colorSettingsPage implementation="gdscript.colors.GdColorSettingsPage"/>
 		<internalFileTemplate name="GDScript Class"/>
