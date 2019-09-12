@@ -20,7 +20,7 @@ class GdCompletionContributor : CompletionContributor() {
     init {
         val languageClass = library.classes.find { it.name == "@GDScript" }!!
         val languageFunctionLookups = languageClass.methods
-            .map { create(it.name).bold().withIcon(FUNCTION_ICON).withTailText(it.arguments.joined()).withTypeText(it.type).withInvocationSuffix() }
+            .map { create(it.name).bold().withIcon(FUNCTION_ICON).withArgumentsTailText(it.arguments).withTypeText(it.type).withInvocationSuffix() }
         extend(psiElement(), languageFunctionLookups)
         val languageConstantLookups = languageClass.constants
             .map { create(it.name).bold().withIcon(FIELD_ICON).withValueTailText(it.value) }
@@ -36,7 +36,7 @@ class GdCompletionContributor : CompletionContributor() {
         val setterLookups = otherClasses.flatMap { it.fields.map { f -> create(f.setter).italics().withIcon(METHOD_ICON).withTailText("(value: ${f.type})") } }
         val getterLookups = otherClasses.flatMap { it.fields.map { f -> create(f.getter).italics().withIcon(METHOD_ICON).withInvocationTailText().withTypeText(f.type).withInvocationSuffix() } }
         extend(psiElement().afterLeaf("."), setterLookups + getterLookups)
-        val methodLookups = otherClasses.flatMap { it.methods.map { m -> create(m.name).withIcon(METHOD_ICON).withTailText(m.arguments.joined()).withTypeText(m.type).withInvocationSuffix() } }
+        val methodLookups = otherClasses.flatMap { it.methods.map { m -> create(m.name).withIcon(METHOD_ICON).withArgumentsTailText(m.arguments).withTypeText(m.type).withInvocationSuffix() } }
         extend(psiElement().afterLeaf("."), methodLookups)
         val constantLookups = otherClasses.flatMap { it.constants.map { c -> create(c.name).withIcon(FIELD_ICON).withValueTailText(c.value) } }
         extend(psiElement().afterLeaf("."), constantLookups)
@@ -92,13 +92,16 @@ class GdCompletionContributor : CompletionContributor() {
     }
 
     private fun LookupElementBuilder.withInvocationTailText() =
-        withTailText(" (...)")
+        withTailText("()")
 
     private fun LookupElementBuilder.withStatementTailText() =
         withTailText(" ...:")
 
     private fun LookupElementBuilder.withValueTailText(value: String) =
         withTailText(" = $value")
+
+    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<Library.Class.Method.Argument>) =
+        withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
 
     private fun LookupElementBuilder.withInvocationSuffix() =
         withSuffix("()", move = 1)
@@ -117,8 +120,5 @@ class GdCompletionContributor : CompletionContributor() {
         ctx.document.insertString(ctx.selectionEndOffset, suffix)
         EditorModificationUtil.moveCaretRelatively(ctx.editor, move)
     }
-
-    private fun List<Library.Class.Method.Argument>.joined() =
-        joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
 
 }
