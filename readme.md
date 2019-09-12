@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/exigow/intellij-gdscript.svg)](https://travis-ci.com/exigow/intellij-gdscript)
 
-## Installation & Usage
+## Usage
 
 * `./gradlew :plugin:runIde` - execute IntelliJ IDEA instance with installed plugin.
 * `./gradlew :tools:run` - upgrade language built-in classes (required for completion).
