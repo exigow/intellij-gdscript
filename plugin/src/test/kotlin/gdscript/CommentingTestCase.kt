@@ -7,15 +7,15 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 class CommentingTestCase : BasePlatformTestCase() {
 
     fun `test comment`() =
-        assertCodeChangesAfterCommentAction("const M<caret>AX = 100", "#const MAX = 100")
+        assertCommentAction("const M<caret>AX = 100", "#const MAX = 100")
 
     fun `test uncomment`() =
-        assertCodeChangesAfterCommentAction("#size += 1<caret>", "size += 1")
+        assertCommentAction("#size += 1<caret>", "size += 1")
 
     fun `test override existing comment with new comment`() =
-        assertCodeChangesAfterCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
+        assertCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
 
-    private fun assertCodeChangesAfterCommentAction(before: String, after: String) {
+    private fun assertCommentAction(before: String, after: String) {
         myFixture.configureByText(GdFileType, before)
         invokeNamedAction(ACTION_COMMENT_LINE)
         myFixture.checkResult(after)
