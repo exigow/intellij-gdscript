@@ -53,6 +53,7 @@ class GdCompletionContributor : CompletionContributor() {
             create("pass").bold(),
             create("return").bold().withSpaceSuffix(),
             create("class").bold().withSpaceSuffix(),
+            create("class_name").bold().withSpaceSuffix(),
             create("extends").bold().withSpaceSuffix(),
             create("is").bold().withSpaceSuffix(),
             create("as").bold().withSpaceSuffix(),
