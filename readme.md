@@ -1,6 +1,6 @@
 # GDScript plugin for the IntelliJ Platform
 
-[![Build Status](https://travis-ci.com/exigow/intellij-gdscript.svg)](https://travis-ci.com/exigow/intellij-gdscript)
+![Travis (.org)](https://img.shields.io/travis/exigow/intellij-gdscript)
 ![GitHub](https://img.shields.io/github/license/exigow/intellij-gdscript)
 
 ## Usage
