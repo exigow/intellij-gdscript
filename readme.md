@@ -5,8 +5,8 @@
 
 ## Usage
 
-* `./gradlew :plugin:runIde` - execute IntelliJ IDEA instance with installed plugin.
-* `./gradlew :tools:run` - upgrade language built-in classes (required for completion).
+* `./gradlew :plugin:runIde` - run IntelliJ IDEA with installed plugin.
+* `./gradlew :tools:run` - upgrade completion data from Godot [sources](https://github.com/godotengine/godot/tree/master/doc/classes).
 
 ## Features
 
