@@ -7,10 +7,16 @@
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlight.ScriptHighlighterFactory"/>
+		<lang.syntaxHighlighterFactory language="Config" implementationClass="gdscript.highlight.ConfigHighlighterFactory"/>
 		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.ScriptParserDefinition"/>
+		<lang.parserDefinition language="Config" implementationClass="gdscript.parser.ConfigParserDefinition"/>
 		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.ScriptCommenter"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.ScriptCompletionContributor"/>
-		<fileType name="GDScript file" implementationClass="gdscript.ScriptFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
+		<fileType name="Godot GDScript file" implementationClass="gdscript.files.ScriptFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
+		<fileType name="Godot cfg file" implementationClass="gdscript.files.ConfigFileType" fieldName="INSTANCE" language="Config" extensions="cfg"/>
+		<fileType name="Godot import file" implementationClass="gdscript.files.ConfigFileType" fieldName="INSTANCE" language="Config" extensions="import"/>
+		<fileType name="Godot tres file" implementationClass="gdscript.files.ConfigFileType" fieldName="INSTANCE" language="Config" extensions="tres"/>
+		<fileType name="Godot project file" implementationClass="gdscript.files.ConfigFileType" fieldName="INSTANCE" language="Config" extensions="godot"/>
 		<colorSettingsPage implementation="gdscript.colors.ScriptColorSettingsPage"/>
 		<internalFileTemplate name="GDScript Class"/>
 		<internalFileTemplate name="GDScript File"/>

@@ -1,6 +1,7 @@
 package gdscript
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import gdscript.files.ScriptFileType
 
 class ScriptCompletionTestCase : BasePlatformTestCase() {
 

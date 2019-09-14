@@ -4,7 +4,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.ScriptFileType
+import gdscript.files.ScriptFileType
 import gdscript.ScriptLanguage
 import gdscript.highlight.ScriptHighlighterFactory
 

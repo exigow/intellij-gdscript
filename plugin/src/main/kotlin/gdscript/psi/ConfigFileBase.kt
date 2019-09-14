@@ -2,15 +2,17 @@ package gdscript.psi
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.psi.FileViewProvider
+import gdscript.ConfigLanguage
 import gdscript.files.ScriptFileType
 import gdscript.ScriptLanguage
+import gdscript.files.ConfigFileType
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class ScriptFileBase(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ScriptLanguage) {
+class ConfigFileBase(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ConfigLanguage) {
 
-    override fun getFileType() = ScriptFileType
+    override fun getFileType() = ConfigFileType
 
-    override fun getIcon(flags: Int) = ScriptFileType.icon
+    override fun getIcon(flags: Int) = ConfigFileType.icon
 
     override fun getContext(): ScopeNode? = null
 

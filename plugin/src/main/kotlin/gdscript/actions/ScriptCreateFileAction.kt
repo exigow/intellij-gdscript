@@ -4,7 +4,7 @@ import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
-import gdscript.ScriptFileType
+import gdscript.files.ScriptFileType
 
 class ScriptCreateFileAction : CreateFileFromTemplateAction("GDScript", "", ScriptFileType.icon) {
 

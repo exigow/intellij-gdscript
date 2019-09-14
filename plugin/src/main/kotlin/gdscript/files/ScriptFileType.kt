@@ -1,13 +1,14 @@
-package gdscript
+package gdscript.files
 
 import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.util.IconLoader
+import gdscript.ScriptLanguage
 
 object ScriptFileType : LanguageFileType(ScriptLanguage) {
 
     override fun getName() = "GDScript"
 
-    override fun getDescription() = "GDScript Files"
+    override fun getDescription() = "Godot GDScript file"
 
     override fun getDefaultExtension() = "gd"
 
