@@ -10,11 +10,11 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import gdscript.GdLanguage
-import gdscript.grammar.GDScriptLexer
-import gdscript.grammar.GDScriptLexer.*
-import gdscript.grammar.GDScriptParser
-import gdscript.psi.GdFileBase
+import gdscript.ScriptLanguage
+import gdscript.grammar.ScriptLexer
+import gdscript.grammar.ScriptLexer.*
+import gdscript.grammar.ScriptParser
+import gdscript.psi.ScriptFileBase
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
@@ -23,23 +23,23 @@ import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 
-class GdParserDefinition : ParserDefinition {
+class ScriptParserDefinition : ParserDefinition {
 
     init {
-        PSIElementTypeFactory.defineLanguageIElementTypes(GdLanguage, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
+        PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
     }
 
     override fun createLexer(project: Project): Lexer {
-        val lexer = GDScriptLexer(null)
-        return ANTLRLexerAdaptor(GdLanguage, lexer)
+        val lexer = ScriptLexer(null)
+        return ANTLRLexerAdaptor(ScriptLanguage, lexer)
     }
 
     override fun createParser(project: Project): PsiParser {
-        val parser = GDScriptParser(null)
-        return object : ANTLRParserAdaptor(GdLanguage, parser) {
+        val parser = ScriptParser(null)
+        return object : ANTLRParserAdaptor(ScriptLanguage, parser) {
 
             override fun parse(parser: Parser, root: IElementType): ParseTree {
-                require(parser is GDScriptParser)
+                require(parser is ScriptParser)
                 require(root is IFileElementType)
                 return parser.file()
             }
@@ -47,15 +47,15 @@ class GdParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet = createTokenSet(GdLanguage, WHITESPACE)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(ScriptLanguage, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(GdLanguage, LINE_COMMENT, BLOCK_COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(ScriptLanguage, LINE_COMMENT, BLOCK_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet = createTokenSet(GdLanguage, STRING)
+    override fun getStringLiteralElements(): TokenSet = createTokenSet(ScriptLanguage, STRING)
 
-    override fun getFileNodeType() = IFileElementType(GdLanguage)
+    override fun getFileNodeType() = IFileElementType(ScriptLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) = GdFileBase(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = ScriptFileBase(viewProvider)
 
     override fun createElement(node: ASTNode): PsiElement {
         return ANTLRPsiNode(node)

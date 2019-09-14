@@ -1,4 +1,4 @@
-// Generated from GDScript.g4 by ANTLR 4.7.2
+// Generated from Script.g4 by ANTLR 4.7.2
 package gdscript.grammar;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class GDScriptParser extends Parser {
+public class ScriptParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -104,7 +104,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "GDScript.g4"; }
+	public String getGrammarFileName() { return "Script.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -115,30 +115,30 @@ public class GDScriptParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public GDScriptParser(TokenStream input) {
+	public ScriptParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	public static class FileContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(GDScriptParser.EOF, 0); }
+		public TerminalNode EOF() { return getToken(ScriptParser.EOF, 0); }
 		public List<LineContext> line() {
 			return getRuleContexts(LineContext.class);
 		}
 		public LineContext line(int i) {
 			return getRuleContext(LineContext.class,i);
 		}
-		public List<TerminalNode> LINE_COMMENT() { return getTokens(GDScriptParser.LINE_COMMENT); }
+		public List<TerminalNode> LINE_COMMENT() { return getTokens(ScriptParser.LINE_COMMENT); }
 		public TerminalNode LINE_COMMENT(int i) {
-			return getToken(GDScriptParser.LINE_COMMENT, i);
+			return getToken(ScriptParser.LINE_COMMENT, i);
 		}
-		public List<TerminalNode> BLOCK_COMMENT() { return getTokens(GDScriptParser.BLOCK_COMMENT); }
+		public List<TerminalNode> BLOCK_COMMENT() { return getTokens(ScriptParser.BLOCK_COMMENT); }
 		public TerminalNode BLOCK_COMMENT(int i) {
-			return getToken(GDScriptParser.BLOCK_COMMENT, i);
+			return getToken(ScriptParser.BLOCK_COMMENT, i);
 		}
-		public List<TerminalNode> NL() { return getTokens(GDScriptParser.NL); }
+		public List<TerminalNode> NL() { return getTokens(ScriptParser.NL); }
 		public TerminalNode NL(int i) {
-			return getToken(GDScriptParser.NL, i);
+			return getToken(ScriptParser.NL, i);
 		}
 		public FileContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -407,20 +407,20 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Var_lineContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(GDScriptParser.VAR, 0); }
-		public List<TerminalNode> IDENTIFIER() { return getTokens(GDScriptParser.IDENTIFIER); }
+		public TerminalNode VAR() { return getToken(ScriptParser.VAR, 0); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(ScriptParser.IDENTIFIER); }
 		public TerminalNode IDENTIFIER(int i) {
-			return getToken(GDScriptParser.IDENTIFIER, i);
+			return getToken(ScriptParser.IDENTIFIER, i);
 		}
-		public TerminalNode EXPORT() { return getToken(GDScriptParser.EXPORT, 0); }
-		public TerminalNode ONREADY() { return getToken(GDScriptParser.ONREADY, 0); }
+		public TerminalNode EXPORT() { return getToken(ScriptParser.EXPORT, 0); }
+		public TerminalNode ONREADY() { return getToken(ScriptParser.ONREADY, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode SETGET() { return getToken(GDScriptParser.SETGET, 0); }
+		public TerminalNode SETGET() { return getToken(ScriptParser.SETGET, 0); }
 		public Var_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -566,10 +566,10 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Const_lineContext extends ParserRuleContext {
-		public TerminalNode CONST() { return getToken(GDScriptParser.CONST, 0); }
-		public List<TerminalNode> IDENTIFIER() { return getTokens(GDScriptParser.IDENTIFIER); }
+		public TerminalNode CONST() { return getToken(ScriptParser.CONST, 0); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(ScriptParser.IDENTIFIER); }
 		public TerminalNode IDENTIFIER(int i) {
-			return getToken(GDScriptParser.IDENTIFIER, i);
+			return getToken(ScriptParser.IDENTIFIER, i);
 		}
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -621,12 +621,12 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Func_lineContext extends ParserRuleContext {
-		public TerminalNode FUNC() { return getToken(GDScriptParser.FUNC, 0); }
-		public List<TerminalNode> IDENTIFIER() { return getTokens(GDScriptParser.IDENTIFIER); }
+		public TerminalNode FUNC() { return getToken(ScriptParser.FUNC, 0); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(ScriptParser.IDENTIFIER); }
 		public TerminalNode IDENTIFIER(int i) {
-			return getToken(GDScriptParser.IDENTIFIER, i);
+			return getToken(ScriptParser.IDENTIFIER, i);
 		}
-		public TerminalNode STATIC() { return getToken(GDScriptParser.STATIC, 0); }
+		public TerminalNode STATIC() { return getToken(ScriptParser.STATIC, 0); }
 		public Func_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -738,9 +738,9 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class For_lineContext extends ParserRuleContext {
-		public TerminalNode FOR() { return getToken(GDScriptParser.FOR, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
-		public TerminalNode IN() { return getToken(GDScriptParser.IN, 0); }
+		public TerminalNode FOR() { return getToken(ScriptParser.FOR, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
+		public TerminalNode IN() { return getToken(ScriptParser.IN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -780,7 +780,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class While_lineContext extends ParserRuleContext {
-		public TerminalNode WHILE() { return getToken(GDScriptParser.WHILE, 0); }
+		public TerminalNode WHILE() { return getToken(ScriptParser.WHILE, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -816,8 +816,8 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Class_lineContext extends ParserRuleContext {
-		public TerminalNode CLASS() { return getToken(GDScriptParser.CLASS, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public TerminalNode CLASS() { return getToken(ScriptParser.CLASS, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
 		public Class_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -850,8 +850,8 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Extends_lineContext extends ParserRuleContext {
-		public TerminalNode EXTENDS() { return getToken(GDScriptParser.EXTENDS, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public TerminalNode EXTENDS() { return getToken(ScriptParser.EXTENDS, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
 		public Extends_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -884,9 +884,9 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Class_name_lineContext extends ParserRuleContext {
-		public TerminalNode CLASS_NAME() { return getToken(GDScriptParser.CLASS_NAME, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
-		public TerminalNode STRING() { return getToken(GDScriptParser.STRING, 0); }
+		public TerminalNode CLASS_NAME() { return getToken(ScriptParser.CLASS_NAME, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
+		public TerminalNode STRING() { return getToken(ScriptParser.STRING, 0); }
 		public Class_name_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -930,8 +930,8 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Enum_lineContext extends ParserRuleContext {
-		public TerminalNode ENUM() { return getToken(GDScriptParser.ENUM, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public TerminalNode ENUM() { return getToken(ScriptParser.ENUM, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
@@ -1007,7 +1007,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class If_lineContext extends ParserRuleContext {
-		public TerminalNode IF() { return getToken(GDScriptParser.IF, 0); }
+		public TerminalNode IF() { return getToken(ScriptParser.IF, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -1043,7 +1043,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Elif_lineContext extends ParserRuleContext {
-		public TerminalNode ELIF() { return getToken(GDScriptParser.ELIF, 0); }
+		public TerminalNode ELIF() { return getToken(ScriptParser.ELIF, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -1079,7 +1079,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Else_lineContext extends ParserRuleContext {
-		public TerminalNode ELSE() { return getToken(GDScriptParser.ELSE, 0); }
+		public TerminalNode ELSE() { return getToken(ScriptParser.ELSE, 0); }
 		public Else_lineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1110,7 +1110,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Return_lineContext extends ParserRuleContext {
-		public TerminalNode RETURN() { return getToken(GDScriptParser.RETURN, 0); }
+		public TerminalNode RETURN() { return getToken(ScriptParser.RETURN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -1191,10 +1191,10 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
-		public TerminalNode NUMBER() { return getToken(GDScriptParser.NUMBER, 0); }
-		public TerminalNode HEX() { return getToken(GDScriptParser.HEX, 0); }
-		public TerminalNode STRING() { return getToken(GDScriptParser.STRING, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
+		public TerminalNode NUMBER() { return getToken(ScriptParser.NUMBER, 0); }
+		public TerminalNode HEX() { return getToken(ScriptParser.HEX, 0); }
+		public TerminalNode STRING() { return getToken(ScriptParser.STRING, 0); }
 		public Func_invoke_exprContext func_invoke_expr() {
 			return getRuleContext(Func_invoke_exprContext.class,0);
 		}
@@ -1210,7 +1210,7 @@ public class GDScriptParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode IN() { return getToken(GDScriptParser.IN, 0); }
+		public TerminalNode IN() { return getToken(ScriptParser.IN, 0); }
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1336,7 +1336,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Func_invoke_exprContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
@@ -1402,7 +1402,7 @@ public class GDScriptParser extends Parser {
 	}
 
 	public static class Array_subscription_exprContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GDScriptParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ScriptParser.IDENTIFIER, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}

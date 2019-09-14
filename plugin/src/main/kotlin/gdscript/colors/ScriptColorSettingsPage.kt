@@ -3,27 +3,28 @@ package gdscript.colors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
-import gdscript.GdLanguage
-import gdscript.highlight.GdHighlighterFactory
-import gdscript.GdIcons
+import com.intellij.openapi.options.colors.ColorSettingsPage
+import gdscript.ScriptFileType
+import gdscript.ScriptLanguage
+import gdscript.highlight.ScriptHighlighterFactory
 
 
-class GdColorSettingsPage : com.intellij.openapi.options.colors.ColorSettingsPage {
+class ScriptColorSettingsPage : ColorSettingsPage {
 
     override fun getAdditionalHighlightingTagToDescriptorMap() =
         emptyMap<String,TextAttributesKey>()
 
     override fun getIcon() =
-        GdIcons.FILE_ICON
+        ScriptFileType.icon
 
     override fun getHighlighter() =
-        GdHighlighterFactory().getSyntaxHighlighter(null, null)
+        ScriptHighlighterFactory().getSyntaxHighlighter(null, null)
 
     override fun getDemoText() =
-        GdColorSettingsPage::class.java.getResource("/demo.gd").readText()
+        ScriptColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> =
-        GdColor.values()
+        ScriptColor.values()
         .map { it.textAttributesKey }
         .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
@@ -32,7 +33,7 @@ class GdColorSettingsPage : com.intellij.openapi.options.colors.ColorSettingsPag
         emptyArray<ColorDescriptor>()
 
     override fun getDisplayName() =
-        GdLanguage.displayName
+        ScriptLanguage.displayName
 
     private fun humanize(attribute: TextAttributesKey) =
         attribute.externalName

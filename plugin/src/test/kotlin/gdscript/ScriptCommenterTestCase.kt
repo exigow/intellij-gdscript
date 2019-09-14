@@ -4,7 +4,7 @@ import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class CommentingTestCase : BasePlatformTestCase() {
+class ScriptCommenterTestCase : BasePlatformTestCase() {
 
     fun `test comment`() =
         assertCommentAction("const M<caret>AX = 100", "#const MAX = 100")
@@ -16,7 +16,7 @@ class CommentingTestCase : BasePlatformTestCase() {
         assertCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
 
     private fun assertCommentAction(before: String, after: String) {
-        myFixture.configureByText(GdFileType, before)
+        myFixture.configureByText(ScriptFileType, before)
         invokeNamedAction(ACTION_COMMENT_LINE)
         myFixture.checkResult(after)
     }

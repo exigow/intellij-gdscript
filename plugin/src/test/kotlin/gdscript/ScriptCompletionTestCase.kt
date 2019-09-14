@@ -2,7 +2,7 @@ package gdscript
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class CompletionTestCase : BasePlatformTestCase() {
+class ScriptCompletionTestCase : BasePlatformTestCase() {
 
     fun `test variable keyword`() =
         assertCompletion("va$CARET", "var")
@@ -44,7 +44,7 @@ class CompletionTestCase : BasePlatformTestCase() {
         assertCompletion("compressor.get_back$CARET()", "get_background")
 
     private fun assertCompletion(code: String, expectedLookup: String) {
-        myFixture.configureByText(GdFileType, code)
+        myFixture.configureByText(ScriptFileType, code)
         myFixture.completeBasic()
         assertTrue(myFixture.lookupElementStrings!!.contains(expectedLookup))
     }

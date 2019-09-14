@@ -2,7 +2,7 @@ package gdscript
 
 import com.intellij.editor.TodoItemsTestCase
 
-class TodoHighlightingTestCase : TodoItemsTestCase() {
+class ScriptTodoTestCase : TodoItemsTestCase() {
 
     override fun supportsCStyleMultiLineComments() = false
 

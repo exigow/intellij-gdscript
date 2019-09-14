@@ -6,17 +6,17 @@
 	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlight.GdHighlighterFactory"/>
-		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.GdParserDefinition"/>
-		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.GdCommenter"/>
-		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdCompletionContributor"/>
-		<fileType name="GDScript file" implementationClass="gdscript.GdFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
-		<colorSettingsPage implementation="gdscript.colors.GdColorSettingsPage"/>
+		<lang.syntaxHighlighterFactory language="GDScript" implementationClass="gdscript.highlight.ScriptHighlighterFactory"/>
+		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.ScriptParserDefinition"/>
+		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.ScriptCommenter"/>
+		<completion.contributor language="GDScript" implementationClass="gdscript.completion.ScriptCompletionContributor"/>
+		<fileType name="GDScript file" implementationClass="gdscript.ScriptFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
+		<colorSettingsPage implementation="gdscript.colors.ScriptColorSettingsPage"/>
 		<internalFileTemplate name="GDScript Class"/>
 		<internalFileTemplate name="GDScript File"/>
 	</extensions>
 	<actions>
-		<action id="GDScript.NewFile" class="gdscript.actions.GdCreateFileAction">
+		<action id="GDScript.NewFile" class="gdscript.actions.ScriptCreateFileAction">
 			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
 		</action>
 	</actions>

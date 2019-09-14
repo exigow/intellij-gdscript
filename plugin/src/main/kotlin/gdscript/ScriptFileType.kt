@@ -1,8 +1,9 @@
 package gdscript
 
 import com.intellij.openapi.fileTypes.LanguageFileType
+import com.intellij.openapi.util.IconLoader
 
-object GdFileType : LanguageFileType(GdLanguage) {
+object ScriptFileType : LanguageFileType(ScriptLanguage) {
 
     override fun getName() = "GDScript"
 
@@ -10,6 +11,6 @@ object GdFileType : LanguageFileType(GdLanguage) {
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getIcon() = GdIcons.FILE_ICON
+    override fun getIcon() = IconLoader.getIcon("/file_icon.png")
 
 }

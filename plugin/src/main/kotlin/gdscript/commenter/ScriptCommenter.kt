@@ -1,6 +1,6 @@
 package gdscript.commenter
 
-class GdCommenter : com.intellij.lang.Commenter {
+class ScriptCommenter : com.intellij.lang.Commenter {
 
     override fun getLineCommentPrefix() = "#"
 

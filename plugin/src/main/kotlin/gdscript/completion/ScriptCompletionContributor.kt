@@ -13,7 +13,7 @@ import com.intellij.util.PlatformIcons.*
 import com.intellij.util.ProcessingContext
 
 
-class GdCompletionContributor : CompletionContributor() {
+class ScriptCompletionContributor : CompletionContributor() {
 
     private val library = Library.load()
 

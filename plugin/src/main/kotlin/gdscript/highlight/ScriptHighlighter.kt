@@ -3,14 +3,14 @@ package gdscript.highlight
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import gdscript.GdLanguage
-import gdscript.colors.GdColor
-import gdscript.grammar.GDScriptLexer
-import gdscript.grammar.GDScriptLexer.*
+import gdscript.ScriptLanguage
+import gdscript.colors.ScriptColor
+import gdscript.grammar.ScriptLexer
+import gdscript.grammar.ScriptLexer.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
-class GdHighlighter : SyntaxHighlighterBase() {
+class ScriptHighlighter : SyntaxHighlighterBase() {
 
     override fun getTokenHighlights(tokenType: IElementType?): Array<TextAttributesKey> =
         if (tokenType !is TokenIElementType)
@@ -19,13 +19,13 @@ class GdHighlighter : SyntaxHighlighterBase() {
             pack(mapToColor(tokenType.antlrTokenType)?.textAttributesKey)
 
     override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(GdLanguage, GDScriptLexer(null))
+        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
-    private fun mapToColor(tokenType: Int): GdColor? =
+    private fun mapToColor(tokenType: Int): ScriptColor? =
         when (tokenType) {
-            NUMBER, HEX -> GdColor.NUMBER
-            STRING -> GdColor.STRING
-            IDENTIFIER -> GdColor.PARAMETER
+            NUMBER, HEX -> ScriptColor.NUMBER
+            STRING -> ScriptColor.STRING
+            IDENTIFIER -> ScriptColor.PARAMETER
             EXPORT, ONREADY, VAR, SETGET,
             CONST,
             STATIC, FUNC,
@@ -38,9 +38,9 @@ class GdHighlighter : SyntaxHighlighterBase() {
             IF,
             ELIF,
             ELSE,
-            RETURN -> GdColor.KEYWORD
-            LINE_COMMENT -> GdColor.LINE_COMMENT
-            BLOCK_COMMENT -> GdColor.BLOCK_COMMENT
+            RETURN -> ScriptColor.KEYWORD
+            LINE_COMMENT -> ScriptColor.LINE_COMMENT
+            BLOCK_COMMENT -> ScriptColor.BLOCK_COMMENT
             else -> null
         }
 

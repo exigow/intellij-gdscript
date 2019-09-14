@@ -3,7 +3,7 @@ package gdscript
 import com.intellij.lang.Language
 
 
-object GdLanguage: Language("GDScript") {
+object ScriptLanguage: Language("GDScript") {
 
     override fun isCaseSensitive() = true
 
