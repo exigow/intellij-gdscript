@@ -10,7 +10,7 @@
 		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.GdParserDefinition"/>
 		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.GdCommenter"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.GdCompletionContributor"/>
-		<fileTypeFactory implementation="gdscript.GdFileTypeFactory"/>
+		<fileType name="GDScript file" implementationClass="gdscript.GdFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
 		<colorSettingsPage implementation="gdscript.colors.GdColorSettingsPage"/>
 		<internalFileTemplate name="GDScript Class"/>
 		<internalFileTemplate name="GDScript File"/>
