@@ -30,9 +30,6 @@ tasks {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
-    /*compileKotlin {
-        dependsOn(generateGrammarSource)
-    }*/
     generateGrammarSource {
         outputDirectory = file("src/main/java/gdscript/grammar")
         arguments = listOf("-package", "gdscript.grammar", "-no-listener", "-no-visitor")
