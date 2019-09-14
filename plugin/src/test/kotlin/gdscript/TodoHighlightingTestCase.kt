@@ -8,7 +8,7 @@ class TodoHighlightingTestCase : TodoItemsTestCase() {
 
     override fun supportsCStyleSingleLineComments() = false
 
-    override fun getFileExtension() = GdFileType.defaultExtension
+    override fun getFileExtension() = "gd"
 
     fun `test single line comment todo`() = testTodos("""
         # [TODO: do this]

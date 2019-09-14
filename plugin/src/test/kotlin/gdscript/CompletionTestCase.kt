@@ -1,6 +1,5 @@
 package gdscript
 
-import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class CompletionTestCase : BasePlatformTestCase() {
