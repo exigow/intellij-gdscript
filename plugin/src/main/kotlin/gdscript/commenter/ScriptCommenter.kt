@@ -1,17 +1,9 @@
 package gdscript.commenter
 
-import com.intellij.lang.Commenter
+import gdscript.commenter.adaptors.CommenterAdaptor
 
-class ScriptCommenter : Commenter {
-
-    override fun getLineCommentPrefix() = "#"
-
-    override fun getBlockCommentPrefix() = "\"\"\""
-
-    override fun getBlockCommentSuffix() = "\"\"\""
-
-    override fun getCommentedBlockCommentPrefix(): String? = null
-
-    override fun getCommentedBlockCommentSuffix(): String? = null
-
-}
+class ScriptCommenter : CommenterAdaptor(
+    linePrefix = "#",
+    blockPrefix = "\"\"\"",
+    blockPostfix = "\"\"\""
+)
