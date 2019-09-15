@@ -4,7 +4,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.languages.ScriptLanguage
+import gdscript.adaptors.utilities.TextAttributesKeyHumanizer
 import javax.swing.Icon
 
 
@@ -29,7 +29,7 @@ open class ColorSettingsPageAdaptor(
 
     override fun getAttributeDescriptors() =
         highlighterFactoryAdaptor.highlighting.keys
-        .map { attr -> AttributesDescriptor(humanize(attr), attr) }
+        .map { attr -> AttributesDescriptor(TextAttributesKeyHumanizer.humanize(attr), attr) }
         .toTypedArray()
 
     override fun getColorDescriptors() =
@@ -37,14 +37,5 @@ open class ColorSettingsPageAdaptor(
 
     override fun getDisplayName() =
         name
-
-    private fun humanize(attribute: TextAttributesKey) =
-        attribute.externalName
-        .trim()
-        .split("_")
-        .map { it.toLowerCase() }
-        .filter { it != "default" }
-        .joinToString(" ")
-        .capitalize()
 
 }
