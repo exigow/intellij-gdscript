@@ -15,20 +15,16 @@ import com.intellij.util.ProcessingContext
 
 class ScriptCompletionContributor : CompletionContributor() {
 
-    private val library = Library.load()
-
     init {
-        val language = library.classes.find { it.name == "@GDScript" }!!
-        extend(psiElement(), language.methods.map { createLanguageFunctionLookup(it) })
-        extend(psiElement(), language.constants.map { createLanguageConstantLookup(it) })
-        val otherClasses = library.classes - language
-        extend(psiElement().afterLeaf("->"), otherClasses.map { createClassLookup(it) })
-        extend(psiElement().afterLeaf("extends"), otherClasses.map { createClassLookup(it) })
-        extend(psiElement().afterLeaf(":"), otherClasses.map { createClassLookup(it) })
-        extend(psiElement().afterLeaf("."), otherClasses.flatMap { c -> c.fields.map { createFieldLookups(it) } })
-        extend(psiElement().afterLeaf("."), otherClasses.flatMap { c -> c.fields.flatMap { listOf(createSetterLookups(it), createGetterLookups(it)) } })
-        extend(psiElement().afterLeaf("."), otherClasses.flatMap { c -> c.methods.map { createMethodLookups(it) } })
-        extend(psiElement().afterLeaf("."), otherClasses.flatMap { c -> c.constants.map { createConstantLookups(it) } })
+        extend(psiElement(), LANGUAGE_CLASS.methods.map { createLanguageFunctionLookup(it) })
+        extend(psiElement(), LANGUAGE_CLASS.constants.map { createLanguageConstantLookup(it) })
+        extend(psiElement().afterLeaf("->"), COMMON_CLASS.map { createClassLookup(it) })
+        extend(psiElement().afterLeaf("extends"), COMMON_CLASS.map { createClassLookup(it) })
+        extend(psiElement().afterLeaf(":"), COMMON_CLASS.map { createClassLookup(it) })
+        extend(psiElement().afterLeaf("."), COMMON_CLASS.flatMap { c -> c.fields.map { createFieldLookups(it) } })
+        extend(psiElement().afterLeaf("."), COMMON_CLASS.flatMap { c -> c.fields.flatMap { listOf(createSetterLookups(it), createGetterLookups(it)) } })
+        extend(psiElement().afterLeaf("."), COMMON_CLASS.flatMap { c -> c.methods.map { createMethodLookups(it) } })
+        extend(psiElement().afterLeaf("."), COMMON_CLASS.flatMap { c -> c.constants.map { createConstantLookups(it) } })
         extend(psiElement(), createKeywordLookups())
     }
 
@@ -153,6 +149,14 @@ class ScriptCompletionContributor : CompletionContributor() {
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
             result.addAllElements(lookups)
         }
+
+    }
+
+    companion object {
+
+        private val LIBRARY = Library.load()
+        val LANGUAGE_CLASS = LIBRARY.classes.find { it.name == "@GDScript" }!!
+        val COMMON_CLASS = LIBRARY.classes - LANGUAGE_CLASS
 
     }
 
