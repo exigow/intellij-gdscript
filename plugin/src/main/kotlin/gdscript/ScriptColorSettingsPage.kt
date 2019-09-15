@@ -10,7 +10,7 @@ class ScriptColorSettingsPage : ColorSettingsPageAdaptor(
     name = ScriptLanguage.displayName,
     icon = ScriptFileType.icon,
     syntaxHighlighter = ScriptHighlighterFactory().getSyntaxHighlighter(null, null),
-    descriptors = ScriptHighlighterFactory().highlighting.keys.map { attr -> AttributesDescriptor(humanize(attr), attr) }.toTypedArray(),
+    descriptors = ScriptHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray(),
     demoText = """
         extends Node
         class_name Hero, "res://interface/icons/hero.png"

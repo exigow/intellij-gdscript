@@ -10,7 +10,7 @@ class ConfigColorSettingsPage : ColorSettingsPageAdaptor(
     name = ConfigLanguage.displayName,
     icon = ConfigFileType.icon,
     syntaxHighlighter = ConfigHighlighterFactory().getSyntaxHighlighter(null, null),
-    descriptors = ConfigHighlighterFactory().highlighting.keys.map { attr -> AttributesDescriptor(humanize(attr), attr) }.toTypedArray(),
+    descriptors = ConfigHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray(),
     demoText = """
         config_version=4
         name=\"Linux/X11\"
