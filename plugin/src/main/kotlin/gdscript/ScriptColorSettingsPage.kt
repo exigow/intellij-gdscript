@@ -22,7 +22,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         ScriptColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
     override fun getAttributeDescriptors() =
-        ScriptHighlighterFactory().MAP.keys
+        ScriptHighlighterFactory().highlighting.keys
         .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
 
