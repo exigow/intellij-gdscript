@@ -1,15 +1,15 @@
-package gdscript.adaptors
+package gdscript.utilities
 
 import com.intellij.lang.Language
-import org.antlr.v4.runtime.Lexer
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
+import org.antlr.v4.runtime.Lexer
 
-open class SyntaxHighlighterFactoryAdaptor(
+open class BaseSyntaxHighlighterFactory(
     private val language: Language,
     private val lexer: Lexer,
     val highlighting: Map<TextAttributesKey, List<Int>>

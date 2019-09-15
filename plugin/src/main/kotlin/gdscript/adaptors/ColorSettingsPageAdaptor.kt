@@ -1,41 +1,40 @@
 package gdscript.adaptors
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.adaptors.utilities.TextAttributesKeyHumanizer
 import javax.swing.Icon
 
 
 open class ColorSettingsPageAdaptor(
     private val name: String,
     private val icon: Icon,
-    private val demoText: String,
-    private val highlighterFactoryAdaptor: SyntaxHighlighterFactoryAdaptor
+    private val syntaxHighlighter: SyntaxHighlighter,
+    private val descriptors: Array<AttributesDescriptor>,
+    private val demoText: String
 ) : ColorSettingsPage {
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() =
-        emptyMap<String,TextAttributesKey>()
+    override fun getDisplayName() =
+        name
 
     override fun getIcon() =
         icon
 
     override fun getHighlighter() =
-        highlighterFactoryAdaptor.getSyntaxHighlighter(null, null)
+        syntaxHighlighter
+
+    override fun getAttributeDescriptors() =
+        descriptors
 
     override fun getDemoText() =
         demoText
 
-    override fun getAttributeDescriptors() =
-        highlighterFactoryAdaptor.highlighting.keys
-        .map { attr -> AttributesDescriptor(TextAttributesKeyHumanizer.humanize(attr), attr) }
-        .toTypedArray()
-
     override fun getColorDescriptors() =
         emptyArray<ColorDescriptor>()
 
-    override fun getDisplayName() =
-        name
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        emptyMap<String, TextAttributesKey>()
 
 }

@@ -1,12 +1,12 @@
 package gdscript
 
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
-import gdscript.adaptors.SyntaxHighlighterFactoryAdaptor
+import gdscript.utilities.BaseSyntaxHighlighterFactory
 import gdscript.grammar.ConfigLexer
 import gdscript.grammar.ConfigLexer.*
 import gdscript.languages.ConfigLanguage
 
-class ConfigHighlighterFactory : SyntaxHighlighterFactoryAdaptor(
+class ConfigHighlighterFactory : BaseSyntaxHighlighterFactory(
     language = ConfigLanguage,
     lexer = ConfigLexer(null),
     highlighting = mapOf(

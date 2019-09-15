@@ -5,7 +5,9 @@ import gdscript.adaptors.LanguageFileTypeAdaptor
 import gdscript.languages.ScriptLanguage
 
 object ScriptFileType : LanguageFileTypeAdaptor(
-    adaptedLanguage = ScriptLanguage,
+    language = ScriptLanguage,
+    name = ScriptLanguage.displayName,
+    description = "${ScriptLanguage.displayName} file",
     extension = "gd",
-    adaptedIcon = IconLoader.getIcon("/file_icon.png")
+    icon = IconLoader.getIcon("/file_icon.png")
 )

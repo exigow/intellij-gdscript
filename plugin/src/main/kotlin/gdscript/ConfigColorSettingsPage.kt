@@ -1,13 +1,16 @@
 package gdscript
 
+import com.intellij.openapi.options.colors.AttributesDescriptor
 import gdscript.adaptors.ColorSettingsPageAdaptor
 import gdscript.languages.ConfigLanguage
+import gdscript.utilities.TextAttributesKeyHumanizer
 
 
 class ConfigColorSettingsPage : ColorSettingsPageAdaptor(
     name = ConfigLanguage.displayName,
     icon = ConfigFileType.icon,
-    highlighterFactoryAdaptor = ConfigHighlighterFactory(),
+    syntaxHighlighter = ConfigHighlighterFactory().getSyntaxHighlighter(null, null),
+    descriptors = ConfigHighlighterFactory().highlighting.keys.map { attr -> AttributesDescriptor(TextAttributesKeyHumanizer.humanize(attr), attr) }.toTypedArray(),
     demoText = """
         config_version=4
         name=\"Linux/X11\"

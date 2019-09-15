@@ -1,4 +1,4 @@
-package gdscript.adaptors.utilities
+package gdscript.utilities
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 

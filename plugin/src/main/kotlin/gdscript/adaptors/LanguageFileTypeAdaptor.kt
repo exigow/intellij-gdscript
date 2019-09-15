@@ -5,17 +5,23 @@ import com.intellij.openapi.fileTypes.LanguageFileType
 import javax.swing.Icon
 
 open class LanguageFileTypeAdaptor(
-    private val adaptedLanguage: Language,
+    language: Language,
+    private val name: String,
+    private val description: String,
     private val extension: String,
-    private val adaptedIcon: Icon
-) : LanguageFileType(adaptedLanguage) {
+    private val icon: Icon
+) : LanguageFileType(language) {
 
-    override fun getName() = adaptedLanguage.id
+    override fun getName() =
+        name
 
-    override fun getDescription() = "${adaptedLanguage.id} file"
+    override fun getDescription() =
+        description
 
-    override fun getDefaultExtension() = extension
+    override fun getDefaultExtension() =
+        extension
 
-    override fun getIcon() = adaptedIcon
+    override fun getIcon() =
+        icon
 
 }
