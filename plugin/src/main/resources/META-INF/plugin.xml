@@ -7,19 +7,20 @@
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- config files -->
-		<lang.commenter implementationClass="gdscript.ConfigCommenter" language="Config"/>
-		<fileType implementationClass="gdscript.ConfigFileType" extensions="cfg" name="Godot CFG file" language="Config"/>
-		<fileType implementationClass="gdscript.ConfigFileType" extensions="import" name="Godot IMPORT file" language="Config"/>
-		<fileType implementationClass="gdscript.ConfigFileType" extensions="tres" name="Godot TRES file" language="Config"/>
-		<fileType implementationClass="gdscript.ConfigFileType" extensions="godot" name="Godot PROJECT file" language="Config"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.ConfigHighlighterFactory" language="Config"/>
-		<lang.parserDefinition implementationClass="gdscript.ConfigParserDefinition" language="Config"/>
+		<colorSettingsPage implementation="gdscript.ConfigColorSettingsPage"/>
+		<lang.commenter implementationClass="gdscript.ConfigCommenter" language="Godot Config"/>
+		<fileType implementationClass="gdscript.ConfigFileType" extensions="cfg" name="Godot CFG file" language="Godot Config"/>
+		<fileType implementationClass="gdscript.ConfigFileType" extensions="import" name="Godot IMPORT file" language="Godot Config"/>
+		<fileType implementationClass="gdscript.ConfigFileType" extensions="tres" name="Godot TRES file" language="Godot Config"/>
+		<fileType implementationClass="gdscript.ConfigFileType" extensions="godot" name="Godot PROJECT file" language="Godot Config"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.ConfigHighlighterFactory" language="Godot Config"/>
+		<lang.parserDefinition implementationClass="gdscript.ConfigParserDefinition" language="Godot Config"/>
 		<!-- gdscript files -->
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
-		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.ScriptCompletionContributor" language="GDScript"/>
-		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
+		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="Godot GDScript"/>
+		<completion.contributor implementationClass="gdscript.ScriptCompletionContributor" language="Godot GDScript"/>
+		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="Godot GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="Godot GDScript"/>
 	</extensions>
 </idea-plugin>
