@@ -32,16 +32,16 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(CompletionType.BASIC, pattern, LookupCompletionProvider(lookups))
 
     private fun createLanguageFunctionLookup(it: Library.Class.Method) = create(it.name)
-        .bold()
         .withIcon(FUNCTION_ICON)
         .withArgumentsTailText(it.arguments)
         .withTypeText(it.type)
         .withInvocationSuffix()
+        .bold()
 
     private fun createLanguageConstantLookup(it: Library.Class.Constant) = create(it.name)
-        .bold()
         .withIcon(FIELD_ICON)
         .withValueTailText(it.value)
+        .bold()
 
     private fun createClassLookup(clazz: Library.Class) = create(clazz.name)
         .withIcon(CLASS_ICON)
@@ -52,16 +52,16 @@ class ScriptCompletionContributor : CompletionContributor() {
         .bold()
 
     private fun createSetterLookups(field: Library.Class.Field) = create(field.setter)
-        .italics()
         .withIcon(METHOD_ICON)
         .withTailText("(value: ${field.type})")
+        .italics()
 
     private fun createGetterLookups(field: Library.Class.Field) = create(field.getter)
-        .italics()
         .withIcon(METHOD_ICON)
         .withInvocationTailText()
         .withTypeText(field.type)
         .withInvocationSuffix()
+        .italics()
 
     private fun createMethodLookups(method: Library.Class.Method) = create(method.name)
         .withIcon(METHOD_ICON)
@@ -72,37 +72,6 @@ class ScriptCompletionContributor : CompletionContributor() {
     private fun createConstantLookups(constant: Library.Class.Constant) = create(constant.name)
         .withIcon(FIELD_ICON)
         .withValueTailText(constant.value)
-
-
-    private fun LookupElementBuilder.withInvocationTailText() =
-        withTailText("()")
-
-    private fun LookupElementBuilder.withStatementTailText() =
-        withTailText(" ...:")
-
-    private fun LookupElementBuilder.withValueTailText(value: String) =
-        withTailText(" = $value")
-
-    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<Library.Class.Method.Argument>) =
-        withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
-
-    private fun LookupElementBuilder.withInvocationSuffix() =
-        withSuffix("()", move = 1)
-
-    private fun LookupElementBuilder.withStatementSuffix() =
-        withSuffix(" :", move = 1)
-
-    private fun LookupElementBuilder.withSpaceSuffix() =
-        withSuffix(" ", move = 1)
-
-    private fun LookupElementBuilder.italics() =
-        withItemTextItalic(true)
-
-    private fun LookupElementBuilder.withSuffix(suffix: String, move: Int) =
-        withInsertHandler { ctx, _ ->
-        ctx.document.insertString(ctx.selectionEndOffset, suffix)
-        EditorModificationUtil.moveCaretRelatively(ctx.editor, move)
-    }
 
     private fun createKeywordLookups() = listOf(
         create("if").bold().withStatementTailText().withStatementSuffix(),
@@ -143,6 +112,36 @@ class ScriptCompletionContributor : CompletionContributor() {
         create("mastersync").bold(),
         create("puppetsync").bold()
     )
+
+    private fun LookupElementBuilder.withInvocationTailText() =
+        withTailText("()")
+
+    private fun LookupElementBuilder.withStatementTailText() =
+        withTailText(" ...:")
+
+    private fun LookupElementBuilder.withValueTailText(value: String) =
+        withTailText(" = $value")
+
+    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<Library.Class.Method.Argument>) =
+        withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
+
+    private fun LookupElementBuilder.withInvocationSuffix() =
+        withSuffix("()", move = 1)
+
+    private fun LookupElementBuilder.withStatementSuffix() =
+        withSuffix(" :", move = 1)
+
+    private fun LookupElementBuilder.withSpaceSuffix() =
+        withSuffix(" ", move = 1)
+
+    private fun LookupElementBuilder.italics() =
+        withItemTextItalic(true)
+
+    private fun LookupElementBuilder.withSuffix(suffix: String, move: Int) =
+        withInsertHandler { ctx, _ ->
+        ctx.document.insertString(ctx.selectionEndOffset, suffix)
+        EditorModificationUtil.moveCaretRelatively(ctx.editor, move)
+    }
 
     private class LookupCompletionProvider(private val lookups: List<LookupElement>) : CompletionProvider<CompletionParameters>() {
 
