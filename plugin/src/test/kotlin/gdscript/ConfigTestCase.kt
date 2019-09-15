@@ -1,7 +1,6 @@
 package gdscript
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ConfigFileType
 
 class ConfigTestCase : BasePlatformTestCase() {
 

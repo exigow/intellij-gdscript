@@ -1,8 +1,8 @@
-package gdscript.files
+package gdscript
 
 import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.util.IconLoader
-import gdscript.ScriptLanguage
+import gdscript.languages.ScriptLanguage
 
 object ScriptFileType : LanguageFileType(ScriptLanguage) {
 

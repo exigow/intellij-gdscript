@@ -1,4 +1,4 @@
-package gdscript.completion
+package gdscript
 
 import Library
 import com.intellij.codeInsight.completion.*

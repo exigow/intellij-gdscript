@@ -1,4 +1,4 @@
-package gdscript.highlight
+package gdscript.adaptors
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase

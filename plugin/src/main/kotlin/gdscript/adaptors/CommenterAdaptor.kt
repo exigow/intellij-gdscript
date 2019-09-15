@@ -1,4 +1,4 @@
-package gdscript.commenter.adaptors
+package gdscript.adaptors
 
 import com.intellij.lang.Commenter
 

@@ -1,12 +1,10 @@
-package gdscript.colors
+package gdscript
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.ScriptLanguage
-import gdscript.files.ScriptFileType
-import gdscript.highlight.ScriptHighlighterFactory
+import gdscript.languages.ScriptLanguage
 
 
 class ScriptColorSettingsPage : ColorSettingsPage {
@@ -24,7 +22,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         ScriptColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
     override fun getAttributeDescriptors() =
-        ScriptHighlighterFactory.MAP.keys
+        ScriptHighlighterFactory().MAP.keys
         .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
 

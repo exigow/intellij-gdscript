@@ -1,6 +1,6 @@
-package gdscript.commenter
+package gdscript
 
-import gdscript.commenter.adaptors.CommenterAdaptor
+import gdscript.adaptors.CommenterAdaptor
 
 class ScriptCommenter : CommenterAdaptor(
     linePrefix = "#",

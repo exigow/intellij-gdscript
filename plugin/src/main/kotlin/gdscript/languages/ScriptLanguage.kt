@@ -1,4 +1,4 @@
-package gdscript
+package gdscript.languages
 
 import com.intellij.lang.Language
 

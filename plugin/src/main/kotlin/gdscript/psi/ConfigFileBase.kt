@@ -2,8 +2,8 @@ package gdscript.psi
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.psi.FileViewProvider
-import gdscript.ConfigLanguage
-import gdscript.files.ConfigFileType
+import gdscript.languages.ConfigLanguage
+import gdscript.ConfigFileType
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
 class ConfigFileBase(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ConfigLanguage) {
