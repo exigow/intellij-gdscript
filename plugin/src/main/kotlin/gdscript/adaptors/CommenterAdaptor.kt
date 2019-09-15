@@ -8,14 +8,19 @@ open class CommenterAdaptor(
     private val blockPostfix: String? = null
 ) : Commenter {
 
-    override fun getLineCommentPrefix() = linePrefix
+    override fun getLineCommentPrefix() =
+        linePrefix
 
-    override fun getBlockCommentPrefix() = blockPrefix
+    override fun getBlockCommentPrefix() =
+        blockPrefix
 
-    override fun getBlockCommentSuffix() = blockPostfix
+    override fun getBlockCommentSuffix() =
+        blockPostfix
 
-    override fun getCommentedBlockCommentPrefix(): String? = null
+    override fun getCommentedBlockCommentPrefix(): String? =
+        null
 
-    override fun getCommentedBlockCommentSuffix(): String? = null
+    override fun getCommentedBlockCommentSuffix(): String? =
+        null
 
 }
