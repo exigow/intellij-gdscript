@@ -11,6 +11,7 @@
 		<lang.parserDefinition language="GDScript" implementationClass="gdscript.parser.ScriptParserDefinition"/>
 		<lang.parserDefinition language="Config" implementationClass="gdscript.parser.ConfigParserDefinition"/>
 		<lang.commenter language="GDScript" implementationClass="gdscript.commenter.ScriptCommenter"/>
+		<lang.commenter language="Config" implementationClass="gdscript.commenter.ConfigCommenter"/>
 		<completion.contributor language="GDScript" implementationClass="gdscript.completion.ScriptCompletionContributor"/>
 		<fileType name="Godot GDScript file" implementationClass="gdscript.files.ScriptFileType" fieldName="INSTANCE" language="GDScript" extensions="gd"/>
 		<fileType name="Godot cfg file" implementationClass="gdscript.files.ConfigFileType" fieldName="INSTANCE" language="Config" extensions="cfg"/>
