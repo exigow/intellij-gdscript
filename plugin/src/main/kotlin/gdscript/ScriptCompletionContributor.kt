@@ -148,7 +148,7 @@ class ScriptCompletionContributor : CompletionContributor() {
         create("puppetsync").bold()
     )
 
-    private inner class LookupCompletionProvider(private val lookups: List<LookupElement>) : CompletionProvider<CompletionParameters>() {
+    private class LookupCompletionProvider(private val lookups: List<LookupElement>) : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
             result.addAllElements(lookups)
