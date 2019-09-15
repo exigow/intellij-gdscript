@@ -23,6 +23,7 @@ class ConfigHighlighter : SyntaxHighlighterBase() {
 
     private fun mapToColor(tokenType: Int): ScriptColor? =
         when (tokenType) {
+            KEYWORD -> ScriptColor.KEYWORD
             NUMBER -> ScriptColor.NUMBER
             STRING -> ScriptColor.STRING
             COMMENT -> ScriptColor.LINE_COMMENT
