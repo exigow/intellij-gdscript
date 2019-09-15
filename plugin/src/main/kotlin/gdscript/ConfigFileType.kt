@@ -8,6 +8,6 @@ object ConfigFileType : LanguageFileTypeAdaptor(
     language = ConfigLanguage,
     name = ConfigLanguage.displayName,
     description = "${ConfigLanguage.displayName} file",
-    extension = "import",
+    extension = "cfg",
     icon = IconLoader.getIcon("/file_icon.png")
 )
