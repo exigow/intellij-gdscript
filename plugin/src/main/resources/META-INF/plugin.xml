@@ -2,7 +2,7 @@
 	<id>gdscript</id>
 	<name>GDScript</name>
 	<version>0.1</version>
-	<vendor>test</vendor>
+	<vendor>Jakub Błach</vendor>
 	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
