@@ -57,8 +57,7 @@ class ScriptParserDefinition : ParserDefinition {
 
     override fun createFile(viewProvider: FileViewProvider) = ScriptFileBase(viewProvider)
 
-    override fun createElement(node: ASTNode): PsiElement {
-        return ANTLRPsiNode(node)
-    }
+    override fun createElement(node: ASTNode) =
+        ANTLRPsiNode(node)
 
 }

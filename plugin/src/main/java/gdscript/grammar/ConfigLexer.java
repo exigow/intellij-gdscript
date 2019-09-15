@@ -18,7 +18,7 @@ public class ConfigLexer extends Lexer {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, COMMENT=14, WHITESPACE=15;
+		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, LINE_COMMENT=14, WHITESPACE=15;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -30,7 +30,7 @@ public class ConfigLexer extends Lexer {
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
-			"KEYWORD", "IDENTIFIER", "STRING", "NUMBER", "COMMENT", "WHITESPACE"
+			"KEYWORD", "IDENTIFIER", "STRING", "NUMBER", "LINE_COMMENT", "WHITESPACE"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -44,7 +44,7 @@ public class ConfigLexer extends Lexer {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, "KEYWORD", 
-			"IDENTIFIER", "STRING", "NUMBER", "COMMENT", "WHITESPACE"
+			"IDENTIFIER", "STRING", "NUMBER", "LINE_COMMENT", "WHITESPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();

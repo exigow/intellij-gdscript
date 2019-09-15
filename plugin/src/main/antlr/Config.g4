@@ -1,6 +1,6 @@
 grammar Config;
 
-file: (section | entry | COMMENT)*;
+file: (section | entry | LINE_COMMENT)*;
 
 section: '[' (IDENTIFIER | entry)+ ']';
 entry: IDENTIFIER '=' value;
@@ -14,5 +14,5 @@ KEYWORD: 'true' | 'false';
 IDENTIFIER: [_a-zA-Z] [._/a-zA-Z0-9]*;
 STRING: '"' .*? '"';
 NUMBER: [-.0-9]+;
-COMMENT: ';' .*? '\n';
+LINE_COMMENT: ';' .*? '\n';
 WHITESPACE: ('\n' | ' '+) -> channel(HIDDEN);

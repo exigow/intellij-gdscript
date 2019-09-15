@@ -4,8 +4,8 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.files.ScriptFileType
 import gdscript.ScriptLanguage
+import gdscript.files.ScriptFileType
 import gdscript.highlight.ScriptHighlighterFactory
 
 
@@ -23,9 +23,8 @@ class ScriptColorSettingsPage : ColorSettingsPage {
     override fun getDemoText() =
         ScriptColorSettingsPage::class.java.getResource("/demo.gd").readText()
 
-    override fun getAttributeDescriptors(): Array<AttributesDescriptor> =
-        ScriptColor.values()
-        .map { it.textAttributesKey }
+    override fun getAttributeDescriptors() =
+        ScriptHighlighterFactory.MAP.keys
         .map { attr -> AttributesDescriptor(humanize(attr), attr) }
         .toTypedArray()
 

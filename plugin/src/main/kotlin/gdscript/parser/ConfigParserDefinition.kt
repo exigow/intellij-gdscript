@@ -49,7 +49,7 @@ class ConfigParserDefinition : ParserDefinition {
 
     override fun getWhitespaceTokens(): TokenSet = createTokenSet(ConfigLanguage, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(ConfigLanguage, COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(ConfigLanguage, LINE_COMMENT)
 
     override fun getStringLiteralElements(): TokenSet = createTokenSet(ConfigLanguage, STRING)
 
@@ -57,8 +57,7 @@ class ConfigParserDefinition : ParserDefinition {
 
     override fun createFile(viewProvider: FileViewProvider) = ConfigFileBase(viewProvider)
 
-    override fun createElement(node: ASTNode): PsiElement {
-        return ANTLRPsiNode(node)
-    }
+    override fun createElement(node: ASTNode) =
+        ANTLRPsiNode(node)
 
 }

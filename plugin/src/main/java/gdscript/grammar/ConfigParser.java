@@ -18,7 +18,7 @@ public class ConfigParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, COMMENT=14, WHITESPACE=15;
+		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, LINE_COMMENT=14, WHITESPACE=15;
 	public static final int
 		RULE_file = 0, RULE_section = 1, RULE_entry = 2, RULE_value = 3, RULE_constructor = 4, 
 		RULE_list = 5, RULE_dictionary = 6, RULE_dictionary_entry = 7;
@@ -39,7 +39,7 @@ public class ConfigParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, "KEYWORD", 
-			"IDENTIFIER", "STRING", "NUMBER", "COMMENT", "WHITESPACE"
+			"IDENTIFIER", "STRING", "NUMBER", "LINE_COMMENT", "WHITESPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -106,9 +106,9 @@ public class ConfigParser extends Parser {
 		public EntryContext entry(int i) {
 			return getRuleContext(EntryContext.class,i);
 		}
-		public List<TerminalNode> COMMENT() { return getTokens(ConfigParser.COMMENT); }
-		public TerminalNode COMMENT(int i) {
-			return getToken(ConfigParser.COMMENT, i);
+		public List<TerminalNode> LINE_COMMENT() { return getTokens(ConfigParser.LINE_COMMENT); }
+		public TerminalNode LINE_COMMENT(int i) {
+			return getToken(ConfigParser.LINE_COMMENT, i);
 		}
 		public FileContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -126,7 +126,7 @@ public class ConfigParser extends Parser {
 			setState(21);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << IDENTIFIER) | (1L << COMMENT))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << IDENTIFIER) | (1L << LINE_COMMENT))) != 0)) {
 				{
 				setState(19);
 				_errHandler.sync(this);
@@ -143,10 +143,10 @@ public class ConfigParser extends Parser {
 					entry();
 					}
 					break;
-				case COMMENT:
+				case LINE_COMMENT:
 					{
 					setState(18);
-					match(COMMENT);
+					match(LINE_COMMENT);
 					}
 					break;
 				default:
