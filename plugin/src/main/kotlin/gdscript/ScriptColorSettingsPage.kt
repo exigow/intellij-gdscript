@@ -3,14 +3,14 @@ package gdscript
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import gdscript.adaptors.ColorSettingsPageAdaptor
 import gdscript.languages.ScriptLanguage
-import gdscript.utilities.TextAttributesKeyHumanizer
+import gdscript.utilities.DefaultTextAttributesKeyHumanizer.humanize
 
 
 class ScriptColorSettingsPage : ColorSettingsPageAdaptor(
     name = ScriptLanguage.displayName,
     icon = ScriptFileType.icon,
     syntaxHighlighter = ScriptHighlighterFactory().getSyntaxHighlighter(null, null),
-    descriptors = ScriptHighlighterFactory().highlighting.keys.map { attr -> AttributesDescriptor(TextAttributesKeyHumanizer.humanize(attr), attr) }.toTypedArray(),
+    descriptors = ScriptHighlighterFactory().highlighting.keys.map { attr -> AttributesDescriptor(humanize(attr), attr) }.toTypedArray(),
     demoText = """
         extends Node
         class_name Hero, "res://interface/icons/hero.png"
