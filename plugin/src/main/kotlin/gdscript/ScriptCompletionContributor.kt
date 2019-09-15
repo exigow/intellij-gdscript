@@ -32,14 +32,8 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(psiElement(), createKeywordLookups())
     }
 
-    private fun extend(pattern: PsiElementPattern.Capture<PsiElement>, lookups: List<LookupElement>) {
-        val provider = object : CompletionProvider<CompletionParameters>() {
-            override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-                result.addAllElements(lookups)
-            }
-        }
-        return extend(CompletionType.BASIC, pattern, provider)
-    }
+    private fun extend(pattern: PsiElementPattern.Capture<PsiElement>, lookups: List<LookupElement>) =
+        extend(CompletionType.BASIC, pattern, LookupCompletionProvider(lookups))
 
     private fun createLanguageFunctionLookup(it: Library.Class.Method) = create(it.name)
         .bold()
@@ -153,5 +147,13 @@ class ScriptCompletionContributor : CompletionContributor() {
         create("mastersync").bold(),
         create("puppetsync").bold()
     )
+
+    private inner class LookupCompletionProvider(private val lookups: List<LookupElement>) : CompletionProvider<CompletionParameters>() {
+
+        override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
+            result.addAllElements(lookups)
+        }
+
+    }
 
 }
