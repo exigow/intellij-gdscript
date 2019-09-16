@@ -1,17 +1,33 @@
 package gdscript
 
+import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
-import gdscript.adaptors.ColorSettingsPageAdaptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.openapi.options.colors.ColorSettingsPage
 import gdscript.languages.ConfigLanguage
 import gdscript.utilities.DefaultTextAttributesKeyHumanizer.humanize
 
+class ConfigColorSettingsPage : ColorSettingsPage {
 
-class ConfigColorSettingsPage : ColorSettingsPageAdaptor(
-    name = ConfigLanguage.displayName,
-    icon = ConfigFileType.icon,
-    syntaxHighlighter = ConfigHighlighterFactory().getSyntaxHighlighter(null, null),
-    descriptors = ConfigHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray(),
-    demoText = """
+    override fun getDisplayName() =
+        ConfigLanguage.displayName
+
+    override fun getIcon() =
+        ConfigFileType.icon
+
+    override fun getHighlighter() =
+        ConfigHighlighterFactory().getSyntaxHighlighter(null, null)
+
+    override fun getAttributeDescriptors() =
+        ConfigHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray()
+
+    override fun getColorDescriptors() =
+        emptyArray<ColorDescriptor>()
+
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        emptyMap<String, TextAttributesKey>()
+
+    override fun getDemoText() = """
         config_version=4
         name=\"Linux/X11\"
         [input.0]
@@ -19,4 +35,4 @@ class ConfigColorSettingsPage : ColorSettingsPageAdaptor(
         sprite/is_opaque=true
         """.trimIndent()
 
-)
+}

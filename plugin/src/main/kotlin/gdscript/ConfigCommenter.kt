@@ -1,7 +1,10 @@
 package gdscript
 
-import gdscript.adaptors.CommenterAdaptor
+import gdscript.utilities.AbstractCommenter
 
-class ConfigCommenter : CommenterAdaptor(
-    linePrefix = ";"
-)
+class ConfigCommenter : AbstractCommenter() {
+
+    override fun getLineCommentPrefix() =
+        ";"
+
+}

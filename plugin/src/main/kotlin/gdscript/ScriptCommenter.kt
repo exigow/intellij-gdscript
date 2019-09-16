@@ -1,13 +1,21 @@
 package gdscript
 
-import gdscript.adaptors.CommenterAdaptor
+import gdscript.utilities.AbstractCommenter
 
-class ScriptCommenter : CommenterAdaptor(
-    linePrefix = "#",
-    blockPrefix = MULTILINE_STRING_MARKER,
-    blockPostfix = MULTILINE_STRING_MARKER
-) {
+class ScriptCommenter : AbstractCommenter() {
+
+    override fun getLineCommentPrefix() =
+        "#"
+
+    override fun getBlockCommentPrefix() =
+        MULTILINE_STRING_MARKER
+
+    override fun getBlockCommentSuffix() =
+        MULTILINE_STRING_MARKER
+
     companion object {
+
         const val MULTILINE_STRING_MARKER = "\"\"\""
     }
+
 }

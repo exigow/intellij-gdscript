@@ -1,13 +1,20 @@
 package gdscript
 
+import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.util.IconLoader
-import gdscript.adaptors.LanguageFileTypeAdaptor
 import gdscript.languages.ConfigLanguage
 
-object ConfigFileType : LanguageFileTypeAdaptor(
-    language = ConfigLanguage,
-    name = ConfigLanguage.displayName,
-    description = "${ConfigLanguage.displayName} file",
-    extension = "cfg",
-    icon = IconLoader.getIcon("/file_icon.png")
-)
+object ConfigFileType : LanguageFileType(ConfigLanguage) {
+
+    override fun getIcon() =
+        IconLoader.getIcon("/file_icon.png")
+
+    override fun getName() =
+        ConfigLanguage.displayName
+
+    override fun getDefaultExtension() =
+        "cfg"
+
+    override fun getDescription() =
+        "${ConfigLanguage.displayName} file"
+}

@@ -1,17 +1,33 @@
 package gdscript
 
+import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
-import gdscript.adaptors.ColorSettingsPageAdaptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.openapi.options.colors.ColorSettingsPage
 import gdscript.languages.ScriptLanguage
 import gdscript.utilities.DefaultTextAttributesKeyHumanizer.humanize
 
+class ScriptColorSettingsPage : ColorSettingsPage {
 
-class ScriptColorSettingsPage : ColorSettingsPageAdaptor(
-    name = ScriptLanguage.displayName,
-    icon = ScriptFileType.icon,
-    syntaxHighlighter = ScriptHighlighterFactory().getSyntaxHighlighter(null, null),
-    descriptors = ScriptHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray(),
-    demoText = """
+    override fun getDisplayName() =
+        ScriptLanguage.displayName
+
+    override fun getIcon() =
+        ScriptFileType.icon
+
+    override fun getHighlighter() =
+        ScriptHighlighterFactory().getSyntaxHighlighter(null, null)
+
+    override fun getAttributeDescriptors() =
+        ScriptHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray()
+
+    override fun getColorDescriptors() =
+        emptyArray<ColorDescriptor>()
+
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        emptyMap<String, TextAttributesKey>()
+
+    override fun getDemoText() = """
         extends Node
         class_name Hero, "res://interface/icons/hero.png"
         export(Texture) var face
@@ -27,4 +43,4 @@ class ScriptColorSettingsPage : ColorSettingsPageAdaptor(
                 dmg += i % array[-1]
             return dkg * 0x8F51""".trimIndent()
 
-)
+}
