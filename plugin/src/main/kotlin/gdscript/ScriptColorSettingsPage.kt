@@ -4,6 +4,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
+import gdscript.highlight.ScriptHighlighter
 import gdscript.languages.ScriptLanguage
 import gdscript.utilities.DefaultTextAttributesKeyHumanizer.humanize
 
@@ -16,10 +17,10 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         ScriptFileType.icon
 
     override fun getHighlighter() =
-        ScriptHighlighterFactory().getSyntaxHighlighter(null, null)
+        ScriptHighlighter()
 
     override fun getAttributeDescriptors() =
-        ScriptHighlighterFactory().highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray()
+        ScriptHighlighter.highlighting.keys.map { AttributesDescriptor(humanize(it), it) }.toTypedArray()
 
     override fun getColorDescriptors() =
         emptyArray<ColorDescriptor>()
