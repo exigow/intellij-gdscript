@@ -18,7 +18,8 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         else
             pack(mapToColor(tokenType.antlrTokenType))
 
-    override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
+    override fun getHighlightingLexer() =
+        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun mapToColor(tokenType: Int) =
         highlighting.entries

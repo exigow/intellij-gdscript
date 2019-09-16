@@ -18,7 +18,8 @@ class ConfigHighlighter : SyntaxHighlighterBase() {
         else
             pack(mapToColor(tokenType.antlrTokenType))
 
-    override fun getHighlightingLexer() = ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
+    override fun getHighlightingLexer() =
+        ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
 
     private fun mapToColor(tokenType: Int) =
         highlighting.entries
