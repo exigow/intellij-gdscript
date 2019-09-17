@@ -23,5 +23,6 @@
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="Godot GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="Godot GDScript"/>
+		<annotator implementationClass="gdscript.ScriptAnnotator" language="Godot GDScript"/>
 	</extensions>
 </idea-plugin>
