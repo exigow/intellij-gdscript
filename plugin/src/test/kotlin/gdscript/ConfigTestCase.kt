@@ -28,13 +28,16 @@ class ConfigTestCase : BasePlatformTestCase() {
     fun `test entry boolean false`() =
         assertValid("force/mono = false")
 
-    fun `test entry object`() =
+    fun `test entry object argument`() =
+        assertValid("bus/1/effect/0/effect = SubResource(1)")
+
+    fun `test entry object multiple arguments`() =
         assertValid("viewport/default_clear_color = Color(0, 0, 0, 1)")
 
     fun `test entry array empty`() =
         assertValid("singletons = []")
 
-    fun `test entry array resource path`() =
+    fun `test entry array path`() =
         assertValid("dest_files = [\"res://.import/sound_shoot.wav-f0f26619cba21d411b53ad23b8788116.sample\"]")
 
     fun `test entry dictionary empty`() =
@@ -42,6 +45,9 @@ class ConfigTestCase : BasePlatformTestCase() {
 
     fun `test entry dictionary single value`() =
         assertValid("player = {\"hp\": 100.0}")
+
+    fun `test entry dictionary multiple values`() =
+        assertValid("a = {\"b\": 1, \"c\": 2}")
 
     fun `test entry dictionary multiline`() =
         assertValid("""
