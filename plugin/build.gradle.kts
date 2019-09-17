@@ -25,13 +25,17 @@ repositories {
     mavenCentral()
 }
 
+sourceSets["main"].java.srcDir("build/generated-src/antlr/main")
+
 tasks {
+    compileKotlin {
+        dependsOn(generateGrammarSource)
+    }
     compileJava {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
     generateGrammarSource {
-        outputDirectory = file("src/main/java/gdscript/grammar")
         arguments = listOf("-package", "gdscript.grammar", "-no-listener", "-no-visitor")
     }
 }
