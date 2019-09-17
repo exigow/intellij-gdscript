@@ -16,3 +16,4 @@ STRING: '"' .*? '"';
 NUMBER: [-.0-9]+;
 LINE_COMMENT: ';' .*? '\n';
 WHITESPACE: ('\n' | ' '+) -> channel(HIDDEN);
+ERRCHAR: . -> channel(HIDDEN);

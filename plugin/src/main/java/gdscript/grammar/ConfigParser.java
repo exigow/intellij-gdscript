@@ -18,7 +18,8 @@ public class ConfigParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, LINE_COMMENT=14, WHITESPACE=15;
+		KEYWORD=10, IDENTIFIER=11, STRING=12, NUMBER=13, LINE_COMMENT=14, WHITESPACE=15, 
+		ERRCHAR=16;
 	public static final int
 		RULE_file = 0, RULE_section = 1, RULE_entry = 2, RULE_value = 3, RULE_constructor = 4, 
 		RULE_list = 5, RULE_dictionary = 6, RULE_dictionary_entry = 7;
@@ -39,7 +40,7 @@ public class ConfigParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, "KEYWORD", 
-			"IDENTIFIER", "STRING", "NUMBER", "LINE_COMMENT", "WHITESPACE"
+			"IDENTIFIER", "STRING", "NUMBER", "LINE_COMMENT", "WHITESPACE", "ERRCHAR"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -585,7 +586,7 @@ public class ConfigParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21\\\4\2\t\2\4\3"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\22\\\4\2\t\2\4\3"+
 		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\7\2\26"+
 		"\n\2\f\2\16\2\31\13\2\3\3\3\3\3\3\6\3\36\n\3\r\3\16\3\37\3\3\3\3\3\4\3"+
 		"\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\5\5.\n\5\3\6\3\6\3\6\5\6\63\n\6\3\6"+
