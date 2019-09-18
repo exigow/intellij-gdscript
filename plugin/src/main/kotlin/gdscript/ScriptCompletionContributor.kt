@@ -151,7 +151,7 @@ class ScriptCompletionContributor : CompletionContributor() {
 
     }
 
-    companion object {
+    private companion object {
 
         private val LIBRARY = Library.load()
         val LANGUAGE_CLASS = LIBRARY.classes.find { it.name == "@GDScript" }!!

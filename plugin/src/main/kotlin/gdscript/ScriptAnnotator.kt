@@ -1,5 +1,6 @@
 package gdscript
 
+import Library
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
@@ -14,6 +15,7 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 class ScriptAnnotator : Annotator {
 
     private val classNames = Library.load().classes.map { it.name }
+    private val languageMethods = Library.load().classes.find { it.name == "@GDScript" }!!.methods.map { it.name }
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.isLeaf(IDENTIFIER)) {
@@ -23,6 +25,8 @@ class ScriptAnnotator : Annotator {
                 holder.createAnnotationAttribute(element, CONSTANT)
             if (element.afterLeaf("class") || element.afterLeaf("extends") || element.afterLeaf("class_name") || classNames.any { it == element.text })
                 holder.createAnnotationAttribute(element, INTERFACE_NAME)
+            if (languageMethods.any { it == element.text })
+                holder.createAnnotationAttribute(element, STATIC_METHOD)
         }
     }
 
