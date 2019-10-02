@@ -44,22 +44,16 @@ class ScriptParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet =
-        createTokenSet(ScriptLanguage, WHITESPACE)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(ScriptLanguage, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet =
-        createTokenSet(ScriptLanguage, LINE_COMMENT, BLOCK_COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(ScriptLanguage, LINE_COMMENT, BLOCK_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet =
-        createTokenSet(ScriptLanguage, STRING)
+    override fun getStringLiteralElements(): TokenSet = createTokenSet(ScriptLanguage, STRING)
 
-    override fun getFileNodeType() =
-        IFileElementType(ScriptLanguage)
+    override fun getFileNodeType() = IFileElementType(ScriptLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) =
-        ScriptFileBase(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = ScriptFileBase(viewProvider)
 
-    override fun createElement(node: ASTNode) =
-        ANTLRPsiNode(node)
+    override fun createElement(node: ASTNode) = ANTLRPsiNode(node)
 
 }

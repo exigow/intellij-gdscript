@@ -1,10 +1,9 @@
 package config
 
-import utilities.AbstractCommenter
+import utilities.NullCommenter
 
-class ConfigCommenter : AbstractCommenter() {
+class ConfigCommenter : NullCommenter() {
 
-    override fun getLineCommentPrefix() =
-        ";"
+    override fun getLineCommentPrefix() = ";"
 
 }

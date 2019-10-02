@@ -5,15 +5,11 @@ import com.intellij.openapi.util.IconLoader
 
 object ConfigFileType : LanguageFileType(ConfigLanguage) {
 
-    override fun getIcon() =
-        IconLoader.getIcon("/file_icon.png")
+    override fun getIcon() = IconLoader.getIcon("/file_icon.png")
 
-    override fun getName() =
-        ConfigLanguage.displayName
+    override fun getName() = ConfigLanguage.displayName
 
-    override fun getDefaultExtension() =
-        "cfg"
+    override fun getDefaultExtension() = "cfg"
 
-    override fun getDescription() =
-        "${ConfigLanguage.displayName} file"
+    override fun getDescription() = "${ConfigLanguage.displayName} file"
 }

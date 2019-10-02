@@ -4,7 +4,6 @@ import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 
 class ConfigHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
 
-    override fun createHighlighter() =
-        ConfigHighlighter()
+    override fun createHighlighter() = ConfigHighlighter()
 
 }

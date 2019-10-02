@@ -44,22 +44,16 @@ class ConfigParserDefinition : ParserDefinition {
         }
     }
 
-    override fun getWhitespaceTokens(): TokenSet =
-        createTokenSet(ConfigLanguage, WHITESPACE)
+    override fun getWhitespaceTokens(): TokenSet = createTokenSet(ConfigLanguage, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet =
-        createTokenSet(ConfigLanguage, LINE_COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(ConfigLanguage, LINE_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet =
-        createTokenSet(ConfigLanguage, STRING)
+    override fun getStringLiteralElements(): TokenSet = createTokenSet(ConfigLanguage, STRING)
 
-    override fun getFileNodeType() =
-        IFileElementType(ConfigLanguage)
+    override fun getFileNodeType() = IFileElementType(ConfigLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) =
-        ConfigFileBase(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = ConfigFileBase(viewProvider)
 
-    override fun createElement(node: ASTNode) =
-        ANTLRPsiNode(node)
+    override fun createElement(node: ASTNode) = ANTLRPsiNode(node)
 
 }

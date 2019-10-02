@@ -1,20 +1,16 @@
 package script
 
-import utilities.AbstractCommenter
+import utilities.NullCommenter
 
-class ScriptCommenter : AbstractCommenter() {
+class ScriptCommenter : NullCommenter() {
 
-    override fun getLineCommentPrefix() =
-        "#"
+    override fun getLineCommentPrefix() = "#"
 
-    override fun getBlockCommentPrefix() =
-        MULTILINE_STRING_MARKER
+    override fun getBlockCommentPrefix() = MULTILINE_STRING_MARKER
 
-    override fun getBlockCommentSuffix() =
-        MULTILINE_STRING_MARKER
+    override fun getBlockCommentSuffix() = MULTILINE_STRING_MARKER
 
     companion object {
-
         const val MULTILINE_STRING_MARKER = "\"\"\""
     }
 

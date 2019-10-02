@@ -15,8 +15,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
             pack(null)
         else pack(getColor(element.antlrTokenType))
 
-    override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
+    override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun getColor(tokenType: Int) = when (tokenType) {
         NUMBER -> ScriptHighlighterColors.NUMBER

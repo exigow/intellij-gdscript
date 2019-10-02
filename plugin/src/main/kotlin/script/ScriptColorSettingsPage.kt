@@ -7,14 +7,11 @@ import com.intellij.openapi.options.colors.ColorSettingsPage
 
 class ScriptColorSettingsPage : ColorSettingsPage {
 
-    override fun getDisplayName() =
-        ScriptLanguage.displayName
+    override fun getDisplayName() = ScriptLanguage.displayName
 
-    override fun getIcon() =
-        ScriptFileType.icon
+    override fun getIcon() = ScriptFileType.icon
 
-    override fun getHighlighter() =
-        ScriptHighlighter()
+    override fun getHighlighter() = ScriptHighlighter()
 
     override fun getAttributeDescriptors() = arrayOf(
         AttributesDescriptor("Number", ScriptHighlighterColors.NUMBER),
@@ -32,11 +29,9 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         AttributesDescriptor("Block comment", ScriptHighlighterColors.BLOCK_COMMENT)
     )
 
-    override fun getColorDescriptors() =
-        emptyArray<ColorDescriptor>()
+    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() =
-        emptyMap<String, TextAttributesKey>()
+    override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String, TextAttributesKey>()
 
     override fun getDemoText() = """
         extends Node

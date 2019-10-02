@@ -7,14 +7,11 @@ import com.intellij.openapi.options.colors.ColorSettingsPage
 
 class ConfigColorSettingsPage : ColorSettingsPage {
 
-    override fun getDisplayName() =
-        ConfigLanguage.displayName
+    override fun getDisplayName() = ConfigLanguage.displayName
 
-    override fun getIcon() =
-        ConfigFileType.icon
+    override fun getIcon() = ConfigFileType.icon
 
-    override fun getHighlighter() =
-        ConfigHighlighter()
+    override fun getHighlighter() = ConfigHighlighter()
 
     override fun getAttributeDescriptors() = arrayOf(
         AttributesDescriptor("Keyword", ConfigHighlighterColors.KEYWORD),
@@ -24,11 +21,9 @@ class ConfigColorSettingsPage : ColorSettingsPage {
         AttributesDescriptor("Line comment", ConfigHighlighterColors.LINE_COMMENT)
     )
 
-    override fun getColorDescriptors() =
-        emptyArray<ColorDescriptor>()
+    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() =
-        emptyMap<String, TextAttributesKey>()
+    override fun getAdditionalHighlightingTagToDescriptorMap() = emptyMap<String, TextAttributesKey>()
 
     override fun getDemoText() = """
         config_version=4

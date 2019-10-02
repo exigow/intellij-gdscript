@@ -15,8 +15,7 @@ class ConfigHighlighter : SyntaxHighlighterBase() {
             pack(null)
         else pack(getColor(element.antlrTokenType))
 
-    override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
+    override fun getHighlightingLexer() = ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
 
     private fun getColor(tokenType: Int) = when (tokenType) {
         KEYWORD -> ConfigHighlighterColors.KEYWORD
