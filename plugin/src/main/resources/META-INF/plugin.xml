@@ -5,6 +5,15 @@
 	<vendor>Jakub Błach</vendor>
 	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
+	<description><![CDATA[
+		<p>Godot Engine GDScript language support</p>
+ 		<p>Features:</p>
+		<ul>
+			<li>Syntax highlighting</li>
+			<li>Code completion</li>
+		</ul>
+		<p>Source code: <a href="https://github.com/exigow/intellij-gdscript">github.com/exigow/intellij-gdscript</a></p>
+    ]]></description>
 	<extensions defaultExtensionNs="com.intellij">
 		<colorSettingsPage implementation="config.ConfigColorSettingsPage"/>
 		<lang.commenter implementationClass="config.ConfigCommenter" language="Godot Config"/>
