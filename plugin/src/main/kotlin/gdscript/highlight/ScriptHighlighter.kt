@@ -12,28 +12,29 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
-    override fun getTokenHighlights(tokenType: IElementType?): Array<TextAttributesKey> =
-        if (tokenType !is TokenIElementType)
+    override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
+        if (element !is TokenIElementType)
             pack(null)
-        else
-            pack(mapToColor(tokenType.antlrTokenType))
+        else pack(getColor(element.antlrTokenType))
 
     override fun getHighlightingLexer() =
         ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
-    private fun mapToColor(tokenType: Int) =
-        highlighting.entries
-            .find { (_, tokens) -> tokens.contains(tokenType) }
-            ?.key
-
-    companion object {
-        val highlighting = mapOf(
-            DefaultLanguageHighlighterColors.NUMBER to listOf(NUMBER, HEX),
-            DefaultLanguageHighlighterColors.STRING to listOf(STRING),
-            DefaultLanguageHighlighterColors.PARAMETER to listOf(IDENTIFIER),
-            DefaultLanguageHighlighterColors.KEYWORD to listOf(EXPORT, ONREADY, VAR, SETGET, CONST, STATIC, FUNC, FOR, IN, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF, ELSE, RETURN),
-            DefaultLanguageHighlighterColors.LINE_COMMENT to listOf(LINE_COMMENT),
-            DefaultLanguageHighlighterColors.BLOCK_COMMENT to listOf(BLOCK_COMMENT)
-        )
+    private fun getColor(tokenType: Int) = when (tokenType) {
+        NUMBER -> DefaultLanguageHighlighterColors.NUMBER
+        STRING -> DefaultLanguageHighlighterColors.STRING
+        KEYWORD -> DefaultLanguageHighlighterColors.KEYWORD
+        NODE -> DefaultLanguageHighlighterColors.METADATA
+        IDENTIFIER -> DefaultLanguageHighlighterColors.IDENTIFIER
+        OPERATOR_SIGN -> DefaultLanguageHighlighterColors.OPERATION_SIGN
+        COMMA -> DefaultLanguageHighlighterColors.COMMA
+        DOT -> DefaultLanguageHighlighterColors.DOT
+        BRACES -> DefaultLanguageHighlighterColors.BRACES
+        PARENTHESES -> DefaultLanguageHighlighterColors.PARENTHESES
+        BRACKETS -> DefaultLanguageHighlighterColors.BRACKETS
+        LINE_COMMENT -> DefaultLanguageHighlighterColors.LINE_COMMENT
+        BLOCK_COMMENT -> DefaultLanguageHighlighterColors.BLOCK_COMMENT
+        else -> null
     }
+
 }

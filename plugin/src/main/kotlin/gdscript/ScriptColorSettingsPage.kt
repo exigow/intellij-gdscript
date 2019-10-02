@@ -1,6 +1,8 @@
 package gdscript
 
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import gdscript.highlight.ScriptHighlighter
@@ -18,8 +20,12 @@ class ScriptColorSettingsPage : ColorSettingsPage {
     override fun getHighlighter() =
         ScriptHighlighter()
 
-    override fun getAttributeDescriptors() =
-        HumanizedAttributeDescriptorsFactory.create(ScriptHighlighter.highlighting.keys)
+    override fun getAttributeDescriptors() = arrayOf(
+        AttributesDescriptor("String", DefaultLanguageHighlighterColors.STRING),
+        AttributesDescriptor("Number", DefaultLanguageHighlighterColors.NUMBER),
+        AttributesDescriptor("Constant", DefaultLanguageHighlighterColors.CONSTANT)
+        // todo add missing
+    )
 
     override fun getColorDescriptors() =
         emptyArray<ColorDescriptor>()
