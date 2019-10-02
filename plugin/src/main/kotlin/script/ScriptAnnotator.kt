@@ -22,7 +22,7 @@ class ScriptAnnotator : Annotator {
                 element.prevSibling?.text == "const" -> holder.createColorized(element, CONSTANT)
                 element.text in languageMethods -> holder.createColorized(element, FUNCTION_CALL)
                 element.text in classNames -> holder.createColorized(element, CLASS_NAME)
-                element.text.length > 3 && element.text.isUpperCase() -> holder.createColorized(element, CONSTANT)
+                element.text.length > 2 && element.text.isUnderscoreCase() -> holder.createColorized(element, CONSTANT)
             }
         }
     }
@@ -30,6 +30,6 @@ class ScriptAnnotator : Annotator {
     private fun AnnotationHolder.createColorized(element: LeafPsiElement, attributesKey: TextAttributesKey) =
         createAnnotation(INFORMATION, element.textRange, null).also { it.textAttributes = attributesKey }
 
-    private fun String.isUpperCase() = this == this.toUpperCase()
+    private fun String.isUnderscoreCase() = all { (it.isLetter() && it.isUpperCase()) || it == '_' }
 
 }
