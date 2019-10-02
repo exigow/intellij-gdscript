@@ -6,7 +6,7 @@
 ## Usage
 
 * `./gradlew :plugin:runIde` - run IntelliJ IDEA with installed plugin.
-* `./gradlew :tools:run` - upgrade completion data from Godot [sources](https://github.com/godotengine/godot/tree/master/doc/classes).
+* `./gradlew :shared:run` - upgrade completion data from Godot [sources](https://github.com/godotengine/godot/tree/master/doc/classes).
 
 ## Features
 

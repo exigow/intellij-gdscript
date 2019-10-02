@@ -16,8 +16,8 @@ suspend fun main() {
         links.sorted()
             .map { async { parse(fetch(it)) } }
             .awaitAll()
-        }
-    serializeToFile(Library(classes))
+        }.toTypedArray()
+    serializeToFile(classes)
 }
 
 private fun fetch(url: String): Document {
@@ -30,8 +30,8 @@ private fun collectLinks(listPage: Document) =
         .map { it.absUrl("href") }
         .map { it.replace("blob", "raw") }
 
-private fun serializeToFile(library: Library) {
-    val writer = File("shared/src/main/resources/library.json").writer()
+private fun serializeToFile(library: Array<Library.Class>) {
+    val writer = File("src/main/resources/library.json").writer()
     GsonBuilder()
         .setPrettyPrinting()
         .create()
