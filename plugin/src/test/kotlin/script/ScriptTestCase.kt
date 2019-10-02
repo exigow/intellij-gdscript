@@ -10,6 +10,12 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test const`() =
         assertValid("const MAX_HP = 100")
 
+    fun `test local variable`() =
+        assertValid("position.x = 1")
+
+    fun `test function declaration`() =
+        assertValid("func bake():")
+
     private fun assertValid(code: String) {
         myFixture.configureByText(ScriptFileType, code)
         myFixture.checkHighlighting()
