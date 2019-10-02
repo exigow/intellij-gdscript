@@ -30,8 +30,8 @@ private fun collectLinks(listPage: Document) =
         .map { it.absUrl("href") }
         .map { it.replace("blob", "raw") }
 
-private fun serializeToFile(library: Array<Library.Class>) {
-    val writer = File("src/main/resources/library.json").writer()
+private fun serializeToFile(library: Array<GodotApi.Class>) {
+    val writer = File("src/main/resources/api.json").writer()
     GsonBuilder()
         .setPrettyPrinting()
         .create()

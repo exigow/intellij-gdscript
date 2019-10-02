@@ -1,7 +1,7 @@
 import org.jsoup.nodes.Element
 
 
-fun parse(xml: Element) = Library.Class(
+fun parse(xml: Element) = GodotApi.Class(
     name = xml.select("class").attr("name"),
     extends = xml.select("class").attr("inherits"),
     description = xml.select("brief_description").text().trimIndent().trim(),
@@ -11,13 +11,13 @@ fun parse(xml: Element) = Library.Class(
 )
 
 private fun parseMethod(method: Element) =
-    Library.Class.Method(
+    GodotApi.Class.Method(
         name = method.attr("name"),
         type = method.select("return").attr("type"),
         arguments = method.select("argument")
             .sortedBy { it.attr("index") }
             .map { argument ->
-                Library.Class.Method.Argument(
+                GodotApi.Class.Method.Argument(
                     name = argument.attr("name"),
                     type = argument.attr("type")
                 )
@@ -25,13 +25,13 @@ private fun parseMethod(method: Element) =
     )
 
 private fun parseConstant(constant: Element) =
-    Library.Class.Constant(
+    GodotApi.Class.Constant(
         name = constant.attr("name"),
         value = constant.attr("value")
     )
 
 private fun parseField(field: Element) =
-    Library.Class.Field(
+    GodotApi.Class.Field(
         name = field.attr("name"),
         type = field.attr("type"),
         setter = field.attr("setter"),

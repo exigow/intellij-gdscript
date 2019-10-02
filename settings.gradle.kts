@@ -1,1 +1,1 @@
-include("plugin", "shared")
+include("plugin", "api")

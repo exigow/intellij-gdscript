@@ -1,6 +1,6 @@
 import com.google.gson.Gson
 
-object Library {
+object GodotApi {
 
     val CLASSES = load()
 

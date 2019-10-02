@@ -1,6 +1,6 @@
 package script
 
-import Library
+import GodotApi
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
@@ -31,45 +31,45 @@ class ScriptCompletionContributor : CompletionContributor() {
     private fun extend(pattern: PsiElementPattern.Capture<PsiElement>, lookups: List<LookupElement>) =
         extend(CompletionType.BASIC, pattern, LookupCompletionProvider(lookups))
 
-    private fun createLanguageFunctionLookup(it: Library.Class.Method) = create(it.name)
+    private fun createLanguageFunctionLookup(it: GodotApi.Class.Method) = create(it.name)
         .withIcon(FUNCTION_ICON)
         .withArgumentsTailText(it.arguments)
         .withTypeText(it.type)
         .withInvocationSuffix()
         .bold()
 
-    private fun createLanguageConstantLookup(it: Library.Class.Constant) = create(it.name)
+    private fun createLanguageConstantLookup(it: GodotApi.Class.Constant) = create(it.name)
         .withIcon(FIELD_ICON)
         .withValueTailText(it.value)
         .bold()
 
-    private fun createClassLookup(clazz: Library.Class) = create(clazz.name)
+    private fun createClassLookup(clazz: GodotApi.Class) = create(clazz.name)
         .withIcon(CLASS_ICON)
 
-    private fun createFieldLookups(field: Library.Class.Field) = create(field.name)
+    private fun createFieldLookups(field: GodotApi.Class.Field) = create(field.name)
         .withIcon(VARIABLE_ICON)
         .withTypeText(field.type)
         .bold()
 
-    private fun createSetterLookups(field: Library.Class.Field) = create(field.setter)
+    private fun createSetterLookups(field: GodotApi.Class.Field) = create(field.setter)
         .withIcon(METHOD_ICON)
         .withTailText("(value: ${field.type})")
         .italics()
 
-    private fun createGetterLookups(field: Library.Class.Field) = create(field.getter)
+    private fun createGetterLookups(field: GodotApi.Class.Field) = create(field.getter)
         .withIcon(METHOD_ICON)
         .withInvocationTailText()
         .withTypeText(field.type)
         .withInvocationSuffix()
         .italics()
 
-    private fun createMethodLookups(method: Library.Class.Method) = create(method.name)
+    private fun createMethodLookups(method: GodotApi.Class.Method) = create(method.name)
         .withIcon(METHOD_ICON)
         .withArgumentsTailText(method.arguments)
         .withTypeText(method.type)
         .withInvocationSuffix()
 
-    private fun createConstantLookups(constant: Library.Class.Constant) = create(constant.name)
+    private fun createConstantLookups(constant: GodotApi.Class.Constant) = create(constant.name)
         .withIcon(FIELD_ICON)
         .withValueTailText(constant.value)
 
@@ -122,7 +122,7 @@ class ScriptCompletionContributor : CompletionContributor() {
     private fun LookupElementBuilder.withValueTailText(value: String) =
         withTailText(" = $value")
 
-    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<Library.Class.Method.Argument>) =
+    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<GodotApi.Class.Method.Argument>) =
         withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
 
     private fun LookupElementBuilder.withInvocationSuffix() =
@@ -153,8 +153,8 @@ class ScriptCompletionContributor : CompletionContributor() {
 
     private companion object {
 
-        val LANGUAGE_CLASS = Library.CLASSES.find { it.name == "@GDScript" }!!
-        val COMMON_CLASS = Library.CLASSES.asList() - LANGUAGE_CLASS
+        val LANGUAGE_CLASS = GodotApi.CLASSES.find { it.name == "@GDScript" }!!
+        val COMMON_CLASS = GodotApi.CLASSES.asList() - LANGUAGE_CLASS
 
     }
 
