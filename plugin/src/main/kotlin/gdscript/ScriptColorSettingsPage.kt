@@ -1,13 +1,12 @@
 package gdscript
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
+import gdscript.colors.ScriptHighlighterColors
 import gdscript.highlight.ScriptHighlighter
 import gdscript.languages.ScriptLanguage
-import gdscript.utilities.HumanizedAttributeDescriptorsFactory
 
 class ScriptColorSettingsPage : ColorSettingsPage {
 
@@ -21,10 +20,19 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         ScriptHighlighter()
 
     override fun getAttributeDescriptors() = arrayOf(
-        AttributesDescriptor("String", DefaultLanguageHighlighterColors.STRING),
-        AttributesDescriptor("Number", DefaultLanguageHighlighterColors.NUMBER),
-        AttributesDescriptor("Constant", DefaultLanguageHighlighterColors.CONSTANT)
-        // todo add missing
+        AttributesDescriptor("Number", ScriptHighlighterColors.NUMBER),
+        AttributesDescriptor("String", ScriptHighlighterColors.STRING),
+        AttributesDescriptor("Keyword", ScriptHighlighterColors.KEYWORD),
+        AttributesDescriptor("Metadata", ScriptHighlighterColors.METADATA),
+        AttributesDescriptor("Identifier", ScriptHighlighterColors.IDENTIFIER),
+        AttributesDescriptor("Operator", ScriptHighlighterColors.OPERATION_SIGN),
+        AttributesDescriptor("Comma", ScriptHighlighterColors.COMMA),
+        AttributesDescriptor("Dot", ScriptHighlighterColors.DOT),
+        AttributesDescriptor("Braces", ScriptHighlighterColors.BRACES),
+        AttributesDescriptor("Parentheses", ScriptHighlighterColors.PARENTHESES),
+        AttributesDescriptor("Brackets", ScriptHighlighterColors.BRACKETS),
+        AttributesDescriptor("Line comment", ScriptHighlighterColors.LINE_COMMENT),
+        AttributesDescriptor("Block comment", ScriptHighlighterColors.BLOCK_COMMENT)
     )
 
     override fun getColorDescriptors() =
