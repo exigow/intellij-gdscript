@@ -17,8 +17,6 @@ dependencies {
 
 intellij {
     version = "2019.2"
-    downloadSources = true
-    updateSinceUntilBuild = false
 }
 
 repositories {
