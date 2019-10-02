@@ -36,6 +36,6 @@ tasks {
         targetCompatibility = "1.8"
     }
     generateGrammarSource {
-        arguments = listOf("-package", "gdscript.grammar", "-no-listener", "-no-visitor")
+        arguments = listOf("-no-listener", "-no-visitor")
     }
 }
