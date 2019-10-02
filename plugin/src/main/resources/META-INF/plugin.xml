@@ -15,7 +15,6 @@
 		<fileType implementationClass="gdscript.ConfigFileType" extensions="godot" name="Godot PROJECT file" language="Godot Config"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ConfigHighlighterFactory" language="Godot Config"/>
 		<lang.parserDefinition implementationClass="gdscript.ConfigParserDefinition" language="Godot Config"/>
-		<annotator implementationClass="gdscript.ConfigAnnotator" language="Godot Config"/>
 		<!-- gdscript files -->
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="Godot GDScript"/>
