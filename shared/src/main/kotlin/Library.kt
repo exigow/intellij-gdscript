@@ -1,8 +1,14 @@
 import com.google.gson.Gson
 
-data class Library(
-    val classes: List<Class>
-) {
+object Library {
+
+    val CLASSES = load()
+
+    private fun load(): Array<Class> {
+        val inputStream = this::class.java.classLoader.getResourceAsStream("library.json")!!.reader()
+        return Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
+    }
+
     data class Class(
         val name: String,
         val extends: String,
@@ -34,11 +40,4 @@ data class Library(
         )
     }
 
-    companion object {
-
-        fun load(): Library {
-            val inputStream = this::class.java.classLoader.getResourceAsStream("library.json")!!.reader()
-            return Gson().fromJson<Library>(inputStream, Library::class.java)
-        }
-    }
 }

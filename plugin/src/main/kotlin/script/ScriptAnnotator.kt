@@ -11,8 +11,8 @@ import com.intellij.psi.impl.source.tree.LeafPsiElement
 
 class ScriptAnnotator : Annotator {
 
-    private val classNames = Library.load().classes.map { it.name }.filter { it !in listOf("bool", "int", "float") }
-    private val languageMethods = Library.load().classes.find { it.name == "@GDScript" }!!.methods.map { it.name }
+    private val classNames = Library.CLASSES.map { it.name }.filter { it !in listOf("bool", "int", "float") }
+    private val languageMethods = Library.CLASSES.find { it.name == "@GDScript" }!!.methods.map { it.name }
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element is LeafPsiElement) {
