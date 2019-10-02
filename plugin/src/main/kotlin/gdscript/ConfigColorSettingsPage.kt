@@ -1,11 +1,12 @@
 package gdscript
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
+import gdscript.colors.ConfigHighlighterColors
 import gdscript.highlight.ConfigHighlighter
 import gdscript.languages.ConfigLanguage
-import gdscript.utilities.HumanizedAttributeDescriptorsFactory
 
 class ConfigColorSettingsPage : ColorSettingsPage {
 
@@ -18,8 +19,13 @@ class ConfigColorSettingsPage : ColorSettingsPage {
     override fun getHighlighter() =
         ConfigHighlighter()
 
-    override fun getAttributeDescriptors() =
-        HumanizedAttributeDescriptorsFactory.create(ConfigHighlighter.highlighting.keys)
+    override fun getAttributeDescriptors() = arrayOf(
+        AttributesDescriptor("Keyword", ConfigHighlighterColors.KEYWORD),
+        AttributesDescriptor("Identifier", ConfigHighlighterColors.IDENTIFIER),
+        AttributesDescriptor("Number", ConfigHighlighterColors.NUMBER),
+        AttributesDescriptor("String", ConfigHighlighterColors.STRING),
+        AttributesDescriptor("Line comment", ConfigHighlighterColors.LINE_COMMENT)
+    )
 
     override fun getColorDescriptors() =
         emptyArray<ColorDescriptor>()
