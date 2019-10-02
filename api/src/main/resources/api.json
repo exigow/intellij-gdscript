@@ -3002,6 +3002,10 @@
           {
             "name": "to_position",
             "type": "Vector3"
+          },
+          {
+            "name": "include_disabled",
+            "type": "bool"
           }
         ]
       },
@@ -3260,6 +3264,10 @@
           {
             "name": "to_position",
             "type": "Vector2"
+          },
+          {
+            "name": "include_disabled",
+            "type": "bool"
           }
         ]
       },
@@ -3456,6 +3464,13 @@
         "setter": "set_text",
         "getter": "get_text",
         "default": "\"\""
+      },
+      {
+        "name": "window_title",
+        "type": "String",
+        "setter": "set_title",
+        "getter": "get_title",
+        "default": "\"Alert!\""
       }
     ],
     "methods": [
@@ -3670,6 +3685,13 @@
     "extends": "Texture",
     "description": "Proxy texture for simple frame-based animations.",
     "fields": [
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
+      },
       {
         "name": "fps",
         "type": "float",
@@ -5825,7 +5847,15 @@
     "name": "AnimationNodeStateMachinePlayback",
     "extends": "Resource",
     "description": "Playback control for AnimationNodeStateMachine.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "resource_local_to_scene",
+        "type": "bool",
+        "setter": "set_local_to_scene",
+        "getter": "is_local_to_scene",
+        "default": "true"
+      }
+    ],
     "methods": [
       {
         "name": "get_current_node",
@@ -8454,6 +8484,28 @@
         "arguments": []
       },
       {
+        "name": "slice",
+        "type": "Array",
+        "arguments": [
+          {
+            "name": "begin",
+            "type": "int"
+          },
+          {
+            "name": "end",
+            "type": "int"
+          },
+          {
+            "name": "step",
+            "type": "int"
+          },
+          {
+            "name": "deep",
+            "type": "bool"
+          }
+        ]
+      },
+      {
         "name": "sort",
         "type": "",
         "arguments": []
@@ -8775,6 +8827,13 @@
         "setter": "set_filter_clip",
         "getter": "has_filter_clip",
         "default": "false"
+      },
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
       },
       {
         "name": "margin",
@@ -11427,6 +11486,13 @@
         "default": "2"
       },
       {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
+      },
+      {
         "name": "group",
         "type": "ButtonGroup",
         "setter": "set_button_group",
@@ -12094,6 +12160,13 @@
         "setter": "set_alignment",
         "getter": "get_alignment",
         "default": "0"
+      },
+      {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
+        "default": "1"
       }
     ],
     "methods": [
@@ -12207,7 +12280,15 @@
     "name": "ButtonGroup",
     "extends": "Resource",
     "description": "Group of Buttons.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "resource_local_to_scene",
+        "type": "bool",
+        "setter": "set_local_to_scene",
+        "getter": "is_local_to_scene",
+        "default": "true"
+      }
+    ],
     "methods": [
       {
         "name": "get_buttons",
@@ -14300,6 +14381,13 @@
         "default": "false"
       },
       {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
+      },
+      {
         "name": "which_feed",
         "type": "int",
         "setter": "set_which_feed",
@@ -15321,10 +15409,105 @@
     "constants": []
   },
   {
+    "name": "CharFXTransform",
+    "extends": "Reference",
+    "description": "",
+    "fields": [
+      {
+        "name": "absolute_index",
+        "type": "int",
+        "setter": "set_absolute_index",
+        "getter": "get_absolute_index",
+        "default": "0"
+      },
+      {
+        "name": "character",
+        "type": "int",
+        "setter": "set_character",
+        "getter": "get_character",
+        "default": "0"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "setter": "set_color",
+        "getter": "get_color",
+        "default": "Color( 0, 0, 0, 1 )"
+      },
+      {
+        "name": "elapsed_time",
+        "type": "float",
+        "setter": "set_elapsed_time",
+        "getter": "get_elapsed_time",
+        "default": "0.0"
+      },
+      {
+        "name": "env",
+        "type": "Dictionary",
+        "setter": "set_environment",
+        "getter": "get_environment",
+        "default": "{}"
+      },
+      {
+        "name": "offset",
+        "type": "Vector2",
+        "setter": "set_offset",
+        "getter": "get_offset",
+        "default": "Vector2( 0, 0 )"
+      },
+      {
+        "name": "relative_index",
+        "type": "int",
+        "setter": "set_relative_index",
+        "getter": "get_relative_index",
+        "default": "0"
+      },
+      {
+        "name": "visible",
+        "type": "bool",
+        "setter": "set_visibility",
+        "getter": "is_visible",
+        "default": "true"
+      }
+    ],
+    "methods": [
+      {
+        "name": "get_value_or",
+        "type": "Variant",
+        "arguments": [
+          {
+            "name": "key",
+            "type": "String"
+          },
+          {
+            "name": "default_value",
+            "type": "Variant"
+          }
+        ]
+      }
+    ],
+    "constants": []
+  },
+  {
     "name": "CheckBox",
     "extends": "Button",
     "description": "Binary choice user interface widget.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "align",
+        "type": "int",
+        "setter": "set_text_align",
+        "getter": "get_text_align",
+        "default": "0"
+      },
+      {
+        "name": "toggle_mode",
+        "type": "bool",
+        "setter": "set_toggle_mode",
+        "getter": "is_toggle_mode",
+        "default": "true"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -15332,7 +15515,22 @@
     "name": "CheckButton",
     "extends": "Button",
     "description": "Checkable button.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "align",
+        "type": "int",
+        "setter": "set_text_align",
+        "getter": "get_text_align",
+        "default": "0"
+      },
+      {
+        "name": "toggle_mode",
+        "type": "bool",
+        "setter": "set_toggle_mode",
+        "getter": "is_toggle_mode",
+        "default": "true"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -17335,6 +17533,13 @@
         "setter": "set_edit_alpha",
         "getter": "is_editing_alpha",
         "default": "true"
+      },
+      {
+        "name": "toggle_mode",
+        "type": "bool",
+        "setter": "set_toggle_mode",
+        "getter": "is_toggle_mode",
+        "default": "true"
       }
     ],
     "methods": [
@@ -17675,7 +17880,22 @@
     "name": "ConfirmationDialog",
     "extends": "AcceptDialog",
     "description": "Dialog for confirmation of actions.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "rect_min_size",
+        "type": "Vector2",
+        "setter": "set_custom_minimum_size",
+        "getter": "get_custom_minimum_size",
+        "default": "Vector2( 200, 70 )"
+      },
+      {
+        "name": "window_title",
+        "type": "String",
+        "setter": "set_title",
+        "getter": "get_title",
+        "default": "\"Please Confirm...\""
+      }
+    ],
     "methods": [
       {
         "name": "get_cancel",
@@ -18987,7 +19207,7 @@
   {
     "name": "Crypto",
     "extends": "Reference",
-    "description": "",
+    "description": "Access to advanced cryptographic functionalities.",
     "fields": [],
     "methods": [
       {
@@ -19038,7 +19258,7 @@
   {
     "name": "CryptoKey",
     "extends": "Resource",
-    "description": "",
+    "description": "A cryptographic key (RSA).",
     "fields": [],
     "methods": [
       {
@@ -20241,6 +20461,13 @@
         "setter": "set_param",
         "getter": "get_param",
         "default": "0.5"
+      },
+      {
+        "name": "shadow_bias",
+        "type": "float",
+        "setter": "set_param",
+        "getter": "get_param",
+        "default": "0.1"
       }
     ],
     "methods": [],
@@ -20832,7 +21059,7 @@
             "type": "String"
           },
           {
-            "name": "arg1",
+            "name": "property",
             "type": "String"
           }
         ]
@@ -20908,7 +21135,7 @@
             "type": "String"
           },
           {
-            "name": "arg2",
+            "name": "disable",
             "type": "bool"
           }
         ]
@@ -20997,6 +21224,13 @@
         "default": "\"res://\""
       },
       {
+        "name": "dialog_hide_on_ok",
+        "type": "bool",
+        "setter": "set_hide_on_ok",
+        "getter": "get_hide_on_ok",
+        "default": "false"
+      },
+      {
         "name": "disable_overwrite_warning",
         "type": "bool",
         "setter": "set_disable_overwrite_warning",
@@ -21018,11 +21252,25 @@
         "default": "4"
       },
       {
+        "name": "resizable",
+        "type": "bool",
+        "setter": "set_resizable",
+        "getter": "get_resizable",
+        "default": "true"
+      },
+      {
         "name": "show_hidden_files",
         "type": "bool",
         "setter": "set_show_hidden_files",
         "getter": "is_showing_hidden_files",
         "default": "false"
+      },
+      {
+        "name": "window_title",
+        "type": "String",
+        "setter": "set_title",
+        "getter": "get_title",
+        "default": "\"Save a File\""
       }
     ],
     "methods": [
@@ -21401,7 +21649,15 @@
     "name": "EditorInspector",
     "extends": "ScrollContainer",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "scroll_horizontal_enabled",
+        "type": "bool",
+        "setter": "set_enable_h_scroll",
+        "getter": "is_h_scroll_enabled",
+        "default": "false"
+      }
+    ],
     "methods": [
       {
         "name": "refresh",
@@ -21550,6 +21806,11 @@
       {
         "name": "get_base_control",
         "type": "Control",
+        "arguments": []
+      },
+      {
+        "name": "get_current_path",
+        "type": "String",
         "arguments": []
       },
       {
@@ -23127,7 +23388,7 @@
           },
           {
             "name": "skeleton",
-            "type": "RID"
+            "type": "SkinReference"
           },
           {
             "name": "material",
@@ -24966,6 +25227,13 @@
         "default": "\"res://\""
       },
       {
+        "name": "dialog_hide_on_ok",
+        "type": "bool",
+        "setter": "set_hide_on_ok",
+        "getter": "get_hide_on_ok",
+        "default": "false"
+      },
+      {
         "name": "filters",
         "type": "PoolStringArray",
         "setter": "set_filters",
@@ -24992,6 +25260,13 @@
         "setter": "set_show_hidden_files",
         "getter": "is_showing_hidden_files",
         "default": "false"
+      },
+      {
+        "name": "window_title",
+        "type": "String",
+        "setter": "set_title",
+        "getter": "get_title",
+        "default": "\"Save a File\""
       }
     ],
     "methods": [
@@ -25166,7 +25441,7 @@
             "type": "String"
           },
           {
-            "name": "p_width",
+            "name": "width",
             "type": "float"
           }
         ]
@@ -27223,6 +27498,20 @@
     "description": "GraphEdit is an area capable of showing various GraphNodes. It manages connection events between them.",
     "fields": [
       {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
+      },
+      {
+        "name": "rect_clip_content",
+        "type": "bool",
+        "setter": "set_clip_contents",
+        "getter": "is_clipping_contents",
+        "default": "true"
+      },
+      {
         "name": "right_disconnects",
         "type": "bool",
         "setter": "set_right_disconnects",
@@ -27730,6 +28019,13 @@
         "type": "int",
         "setter": "set_columns",
         "getter": "get_columns",
+        "default": "1"
+      },
+      {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
         "default": "1"
       }
     ],
@@ -28431,7 +28727,7 @@
   {
     "name": "HashingContext",
     "extends": "Reference",
-    "description": "",
+    "description": "Context to compute cryptographic hashes over multiple iterations.",
     "fields": [],
     "methods": [
       {
@@ -29563,6 +29859,13 @@
     "extends": "Texture",
     "description": "A [Texture] based on an [Image].",
     "fields": [
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "7"
+      },
       {
         "name": "lossy_quality",
         "type": "float",
@@ -31110,6 +31413,13 @@
         "default": "Vector2( 0, 0 )"
       },
       {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
+      },
+      {
         "name": "icon_mode",
         "type": "int",
         "setter": "set_icon_mode",
@@ -31136,6 +31446,13 @@
         "setter": "set_max_text_lines",
         "getter": "get_max_text_lines",
         "default": "1"
+      },
+      {
+        "name": "rect_clip_content",
+        "type": "bool",
+        "setter": "set_clip_contents",
+        "getter": "is_clipping_contents",
+        "default": "true"
       },
       {
         "name": "same_column_width",
@@ -31790,23 +32107,23 @@
     ],
     "constants": [
       {
-        "name": "ParseError",
+        "name": "PARSE_ERROR",
         "value": "-32700"
       },
       {
-        "name": "InvalidRequest",
+        "name": "INVALID_REQUEST",
         "value": "-32600"
       },
       {
-        "name": "MethodNotFound",
+        "name": "METHOD_NOT_FOUND",
         "value": "-32601"
       },
       {
-        "name": "InvalidParams",
+        "name": "INVALID_PARAMS",
         "value": "-32602"
       },
       {
-        "name": "InternalError",
+        "name": "INTERNAL_ERROR",
         "value": "-32603"
       }
     ]
@@ -32485,11 +32802,25 @@
         "default": "-1"
       },
       {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
+        "default": "2"
+      },
+      {
         "name": "percent_visible",
         "type": "float",
         "setter": "set_percent_visible",
         "getter": "get_percent_visible",
         "default": "1.0"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "4"
       },
       {
         "name": "text",
@@ -32581,7 +32912,15 @@
     "name": "LargeTexture",
     "extends": "Texture",
     "description": "A [Texture] capable of storing many smaller textures with offsets.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
+      }
+    ],
     "methods": [
       {
         "name": "add_piece",
@@ -33355,6 +33694,13 @@
         "default": "0"
       },
       {
+        "name": "mouse_default_cursor_shape",
+        "type": "int",
+        "setter": "set_default_cursor_shape",
+        "getter": "get_default_cursor_shape",
+        "default": "1"
+      },
+      {
         "name": "placeholder_alpha",
         "type": "float",
         "setter": "set_placeholder_alpha",
@@ -33369,6 +33715,13 @@
         "default": "\"\""
       },
       {
+        "name": "right_icon",
+        "type": "Texture",
+        "setter": "set_right_icon",
+        "getter": "get_right_icon",
+        "default": ""
+      },
+      {
         "name": "secret",
         "type": "bool",
         "setter": "set_secret",
@@ -33381,6 +33734,20 @@
         "setter": "set_secret_character",
         "getter": "get_secret_character",
         "default": "\"*\""
+      },
+      {
+        "name": "selecting_enabled",
+        "type": "bool",
+        "setter": "set_selecting_enabled",
+        "getter": "is_selecting_enabled",
+        "default": "true"
+      },
+      {
+        "name": "shortcut_keys_enabled",
+        "type": "bool",
+        "setter": "set_shortcut_keys_enabled",
+        "getter": "is_shortcut_keys_enabled",
+        "default": "true"
       },
       {
         "name": "text",
@@ -33525,6 +33892,27 @@
     "extends": "BaseButton",
     "description": "Simple button used to represent a link to some resource.",
     "fields": [
+      {
+        "name": "enabled_focus_mode",
+        "type": "int",
+        "setter": "set_enabled_focus_mode",
+        "getter": "get_enabled_focus_mode",
+        "default": "0"
+      },
+      {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "0"
+      },
+      {
+        "name": "mouse_default_cursor_shape",
+        "type": "int",
+        "setter": "set_default_cursor_shape",
+        "getter": "get_default_cursor_shape",
+        "default": "2"
+      },
       {
         "name": "text",
         "type": "String",
@@ -33768,6 +34156,14 @@
       {
         "name": "NOTIFICATION_OS_IME_UPDATE",
         "value": "1013"
+      },
+      {
+        "name": "NOTIFICATION_APP_RESUMED",
+        "value": "1014"
+      },
+      {
+        "name": "NOTIFICATION_APP_PAUSED",
+        "value": "1015"
       }
     ]
   },
@@ -33894,11 +34290,46 @@
     "description": "Special button that brings up a [PopupMenu] when clicked.",
     "fields": [
       {
+        "name": "action_mode",
+        "type": "int",
+        "setter": "set_action_mode",
+        "getter": "get_action_mode",
+        "default": "0"
+      },
+      {
+        "name": "enabled_focus_mode",
+        "type": "int",
+        "setter": "set_enabled_focus_mode",
+        "getter": "get_enabled_focus_mode",
+        "default": "0"
+      },
+      {
+        "name": "flat",
+        "type": "bool",
+        "setter": "set_flat",
+        "getter": "is_flat",
+        "default": "true"
+      },
+      {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "0"
+      },
+      {
         "name": "switch_on_hover",
         "type": "bool",
         "setter": "set_switch_on_hover",
         "getter": "is_switch_on_hover",
         "default": "false"
+      },
+      {
+        "name": "toggle_mode",
+        "type": "bool",
+        "setter": "set_toggle_mode",
+        "getter": "is_toggle_mode",
+        "default": "true"
       }
     ],
     "methods": [
@@ -34618,6 +35049,13 @@
         "setter": "set_skeleton_path",
         "getter": "get_skeleton_path",
         "default": "NodePath(\"..\")"
+      },
+      {
+        "name": "skin",
+        "type": "Skin",
+        "setter": "set_skin",
+        "getter": "get_skin",
+        "default": ""
       }
     ],
     "methods": [
@@ -34907,6 +35345,13 @@
         "setter": "set_base_texture",
         "getter": "get_base_texture",
         "default": ""
+      },
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
       },
       {
         "name": "image_size",
@@ -36340,6 +36785,13 @@
         "default": "true"
       },
       {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
+        "default": "2"
+      },
+      {
         "name": "patch_margin_bottom",
         "type": "int",
         "setter": "set_patch_margin",
@@ -37324,6 +37776,14 @@
       {
         "name": "NOTIFICATION_OS_IME_UPDATE",
         "value": "1013"
+      },
+      {
+        "name": "NOTIFICATION_APP_RESUMED",
+        "value": "1014"
+      },
+      {
+        "name": "NOTIFICATION_APP_PAUSED",
+        "value": "1015"
       },
       {
         "name": "PAUSE_MODE_INHERIT",
@@ -39249,11 +39709,32 @@
     "description": "Button control that provides selectable options when pressed.",
     "fields": [
       {
+        "name": "action_mode",
+        "type": "int",
+        "setter": "set_action_mode",
+        "getter": "get_action_mode",
+        "default": "0"
+      },
+      {
+        "name": "align",
+        "type": "int",
+        "setter": "set_text_align",
+        "getter": "get_text_align",
+        "default": "0"
+      },
+      {
         "name": "selected",
         "type": "int",
         "setter": "_select_int",
         "getter": "get_selected",
         "default": "-1"
+      },
+      {
+        "name": "toggle_mode",
+        "type": "bool",
+        "setter": "set_toggle_mode",
+        "getter": "is_toggle_mode",
+        "default": "true"
       }
     ],
     "methods": [
@@ -39871,6 +40352,13 @@
     "extends": "CanvasLayer",
     "description": "A node used to create a parallax scrolling background.",
     "fields": [
+      {
+        "name": "layer",
+        "type": "int",
+        "setter": "set_layer",
+        "getter": "get_layer",
+        "default": "-100"
+      },
       {
         "name": "scroll_base_offset",
         "type": "Vector2",
@@ -40889,6 +41377,13 @@
         "setter": "set_curve",
         "getter": "get_curve",
         "default": ""
+      },
+      {
+        "name": "self_modulate",
+        "type": "Color",
+        "setter": "set_self_modulate",
+        "getter": "get_self_modulate",
+        "default": "Color( 0.5, 0.6, 1, 0.7 )"
       }
     ],
     "methods": [],
@@ -43663,6 +44158,13 @@
         "setter": "set_collision_mask",
         "getter": "get_collision_mask",
         "default": "1"
+      },
+      {
+        "name": "input_pickable",
+        "type": "bool",
+        "setter": "set_pickable",
+        "getter": "is_pickable",
+        "default": "false"
       },
       {
         "name": "layers",
@@ -47876,6 +48378,13 @@
         "setter": "set_exclusive",
         "getter": "is_exclusive",
         "default": "false"
+      },
+      {
+        "name": "visible",
+        "type": "bool",
+        "setter": "set_visible",
+        "getter": "is_visible",
+        "default": "false"
       }
     ],
     "methods": [
@@ -47969,6 +48478,13 @@
         "setter": "set_allow_search",
         "getter": "get_allow_search",
         "default": "false"
+      },
+      {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
       },
       {
         "name": "hide_on_checkable_item_selection",
@@ -48907,6 +49423,20 @@
         "setter": "set_percent_visible",
         "getter": "is_percent_visible",
         "default": "true"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "0"
+      },
+      {
+        "name": "step",
+        "type": "float",
+        "setter": "set_step",
+        "getter": "get_step",
+        "default": "0.01"
       }
     ],
     "methods": [],
@@ -50918,6 +51448,10 @@
           {
             "name": "pack",
             "type": "String"
+          },
+          {
+            "name": "replace_files",
+            "type": "bool"
           }
         ]
       },
@@ -51076,6 +51610,13 @@
         "setter": "set_base",
         "getter": "get_base",
         "default": ""
+      },
+      {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
       }
     ],
     "methods": [],
@@ -52810,6 +53351,25 @@
     ]
   },
   {
+    "name": "RichTextEffect",
+    "extends": "Resource",
+    "description": "",
+    "fields": [],
+    "methods": [
+      {
+        "name": "_process_custom_fx",
+        "type": "bool",
+        "arguments": [
+          {
+            "name": "char_fx",
+            "type": "CharFXTransform"
+          }
+        ]
+      }
+    ],
+    "constants": []
+  },
+  {
     "name": "RichTextLabel",
     "extends": "Control",
     "description": "Label that displays rich text.",
@@ -52827,6 +53387,13 @@
         "setter": "set_bbcode",
         "getter": "get_bbcode",
         "default": "\"\""
+      },
+      {
+        "name": "custom_effects",
+        "type": "Array",
+        "setter": "set_effects",
+        "getter": "get_effects",
+        "default": "[  ]"
       },
       {
         "name": "meta_underlined",
@@ -52848,6 +53415,13 @@
         "setter": "set_percent_visible",
         "getter": "get_percent_visible",
         "default": "1.0"
+      },
+      {
+        "name": "rect_clip_content",
+        "type": "bool",
+        "setter": "set_clip_contents",
+        "getter": "is_clipping_contents",
+        "default": "true"
       },
       {
         "name": "scroll_active",
@@ -52954,6 +53528,16 @@
         "arguments": []
       },
       {
+        "name": "install_effect",
+        "type": "void",
+        "arguments": [
+          {
+            "name": "effect",
+            "type": "Variant"
+          }
+        ]
+      },
+      {
         "name": "newline",
         "type": "void",
         "arguments": []
@@ -52965,6 +53549,16 @@
           {
             "name": "bbcode",
             "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "parse_expressions_for_values",
+        "type": "Dictionary",
+        "arguments": [
+          {
+            "name": "expressions",
+            "type": "PoolStringArray"
           }
         ]
       },
@@ -53175,8 +53769,32 @@
         "value": "11"
       },
       {
-        "name": "ITEM_META",
+        "name": "ITEM_FADE",
         "value": "12"
+      },
+      {
+        "name": "ITEM_SHAKE",
+        "value": "13"
+      },
+      {
+        "name": "ITEM_WAVE",
+        "value": "14"
+      },
+      {
+        "name": "ITEM_TORNADO",
+        "value": "15"
+      },
+      {
+        "name": "ITEM_RAINBOW",
+        "value": "16"
+      },
+      {
+        "name": "ITEM_CUSTOMFX",
+        "value": "18"
+      },
+      {
+        "name": "ITEM_META",
+        "value": "17"
       }
     ]
   },
@@ -54494,6 +55112,36 @@
         "arguments": []
       },
       {
+        "name": "get_property_default_value",
+        "type": "Variant",
+        "arguments": [
+          {
+            "name": "property",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "get_script_constant_map",
+        "type": "Dictionary",
+        "arguments": []
+      },
+      {
+        "name": "get_script_method_list",
+        "type": "Array",
+        "arguments": []
+      },
+      {
+        "name": "get_script_property_list",
+        "type": "Array",
+        "arguments": []
+      },
+      {
+        "name": "get_script_signal_list",
+        "type": "Array",
+        "arguments": []
+      },
+      {
         "name": "has_script_signal",
         "type": "bool",
         "arguments": [
@@ -54540,7 +55188,43 @@
     "name": "ScriptCreateDialog",
     "extends": "ConfirmationDialog",
     "description": "The Editor\u0027s popup dialog for creating new [Script] files.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "dialog_hide_on_ok",
+        "type": "bool",
+        "setter": "set_hide_on_ok",
+        "getter": "get_hide_on_ok",
+        "default": "false"
+      },
+      {
+        "name": "margin_bottom",
+        "type": "float",
+        "setter": "set_margin",
+        "getter": "get_margin",
+        "default": "76.0"
+      },
+      {
+        "name": "margin_right",
+        "type": "float",
+        "setter": "set_margin",
+        "getter": "get_margin",
+        "default": "200.0"
+      },
+      {
+        "name": "rect_size",
+        "type": "Vector2",
+        "setter": "_set_size",
+        "getter": "get_size",
+        "default": "Vector2( 200, 76 )"
+      },
+      {
+        "name": "window_title",
+        "type": "String",
+        "setter": "set_title",
+        "getter": "get_title",
+        "default": "\"Attach Node Script\""
+      }
+    ],
     "methods": [
       {
         "name": "config",
@@ -54667,6 +55351,20 @@
         "setter": "set_custom_step",
         "getter": "get_custom_step",
         "default": "-1.0"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "0"
+      },
+      {
+        "name": "step",
+        "type": "float",
+        "setter": "set_step",
+        "getter": "get_step",
+        "default": "0.0"
       }
     ],
     "methods": [],
@@ -54677,6 +55375,13 @@
     "extends": "Container",
     "description": "A helper node for displaying scrollable elements such as lists.",
     "fields": [
+      {
+        "name": "rect_clip_content",
+        "type": "bool",
+        "setter": "set_clip_contents",
+        "getter": "is_clipping_contents",
+        "default": "true"
+      },
       {
         "name": "scroll_deadzone",
         "type": "int",
@@ -55069,15 +55774,7 @@
     "name": "Skeleton",
     "extends": "Spatial",
     "description": "Skeleton for characters and animated objects.",
-    "fields": [
-      {
-        "name": "bones_in_world_transform",
-        "type": "bool",
-        "setter": "set_use_bones_in_world_transform",
-        "getter": "is_using_bones_in_world_transform",
-        "default": "false"
-      }
-    ],
+    "fields": [],
     "methods": [
       {
         "name": "add_bone",
@@ -55184,16 +55881,6 @@
         ]
       },
       {
-        "name": "get_bone_transform",
-        "type": "Transform",
-        "arguments": [
-          {
-            "name": "bone_idx",
-            "type": "int"
-          }
-        ]
-      },
-      {
         "name": "get_bound_child_nodes_to_bone",
         "type": "Array",
         "arguments": [
@@ -55254,6 +55941,16 @@
         "arguments": []
       },
       {
+        "name": "register_skin",
+        "type": "SkinReference",
+        "arguments": [
+          {
+            "name": "skin",
+            "type": "Skin"
+          }
+        ]
+      },
+      {
         "name": "set_bone_custom_pose",
         "type": "void",
         "arguments": [
@@ -55282,7 +55979,7 @@
         ]
       },
       {
-        "name": "set_bone_global_pose",
+        "name": "set_bone_global_pose_override",
         "type": "void",
         "arguments": [
           {
@@ -55292,19 +55989,13 @@
           {
             "name": "pose",
             "type": "Transform"
-          }
-        ]
-      },
-      {
-        "name": "set_bone_ignore_animation",
-        "type": "void",
-        "arguments": [
-          {
-            "name": "bone",
-            "type": "int"
           },
           {
-            "name": "ignore",
+            "name": "amount",
+            "type": "float"
+          },
+          {
+            "name": "persistent",
             "type": "bool"
           }
         ]
@@ -55518,6 +56209,116 @@
     "constants": []
   },
   {
+    "name": "Skin",
+    "extends": "Resource",
+    "description": "",
+    "fields": [],
+    "methods": [
+      {
+        "name": "add_bind",
+        "type": "void",
+        "arguments": [
+          {
+            "name": "bone",
+            "type": "int"
+          },
+          {
+            "name": "pose",
+            "type": "Transform"
+          }
+        ]
+      },
+      {
+        "name": "clear_binds",
+        "type": "void",
+        "arguments": []
+      },
+      {
+        "name": "get_bind_bone",
+        "type": "int",
+        "arguments": [
+          {
+            "name": "bind_index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "get_bind_count",
+        "type": "int",
+        "arguments": []
+      },
+      {
+        "name": "get_bind_pose",
+        "type": "Transform",
+        "arguments": [
+          {
+            "name": "bind_index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "set_bind_bone",
+        "type": "void",
+        "arguments": [
+          {
+            "name": "bind_index",
+            "type": "int"
+          },
+          {
+            "name": "bone",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "set_bind_count",
+        "type": "void",
+        "arguments": [
+          {
+            "name": "bind_count",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "set_bind_pose",
+        "type": "void",
+        "arguments": [
+          {
+            "name": "bind_index",
+            "type": "int"
+          },
+          {
+            "name": "pose",
+            "type": "Transform"
+          }
+        ]
+      }
+    ],
+    "constants": []
+  },
+  {
+    "name": "SkinReference",
+    "extends": "Reference",
+    "description": "",
+    "fields": [],
+    "methods": [
+      {
+        "name": "get_skeleton",
+        "type": "RID",
+        "arguments": []
+      },
+      {
+        "name": "get_skin",
+        "type": "Skin",
+        "arguments": []
+      }
+    ],
+    "constants": []
+  },
+  {
     "name": "Sky",
     "extends": "Resource",
     "description": "The base class for [PanoramaSky] and [ProceduralSky].",
@@ -55591,6 +56392,13 @@
         "setter": "set_scrollable",
         "getter": "is_scrollable",
         "default": "true"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "0"
       },
       {
         "name": "tick_count",
@@ -59034,6 +59842,13 @@
     "description": "A [code].stex[/code] texture.",
     "fields": [
       {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
+      },
+      {
         "name": "load_path",
         "type": "String",
         "setter": "load",
@@ -59704,6 +60519,16 @@
           {
             "name": "file",
             "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "type": "String",
+        "arguments": [
+          {
+            "name": "count",
+            "type": "int"
           }
         ]
       },
@@ -60987,6 +61812,13 @@
         "setter": "set_tabs_visible",
         "getter": "are_tabs_visible",
         "default": "true"
+      },
+      {
+        "name": "use_hidden_tabs_for_min_size",
+        "type": "bool",
+        "setter": "set_use_hidden_tabs_for_min_size",
+        "getter": "get_use_hidden_tabs_for_min_size",
+        "default": "false"
       }
     ],
     "methods": [
@@ -61448,6 +62280,13 @@
         "default": "false"
       },
       {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
+      },
+      {
         "name": "fold_gutter",
         "type": "bool",
         "setter": "set_draw_fold_gutter",
@@ -61490,6 +62329,13 @@
         "default": "80"
       },
       {
+        "name": "mouse_default_cursor_shape",
+        "type": "int",
+        "setter": "set_default_cursor_shape",
+        "getter": "get_default_cursor_shape",
+        "default": "1"
+      },
+      {
         "name": "override_selected_font_color",
         "type": "bool",
         "setter": "set_override_selected_font_color",
@@ -61502,6 +62348,20 @@
         "setter": "set_readonly",
         "getter": "is_readonly",
         "default": "false"
+      },
+      {
+        "name": "selecting_enabled",
+        "type": "bool",
+        "setter": "set_selecting_enabled",
+        "getter": "is_selecting_enabled",
+        "default": "true"
+      },
+      {
+        "name": "shortcut_keys_enabled",
+        "type": "bool",
+        "setter": "set_shortcut_keys_enabled",
+        "getter": "is_shortcut_keys_enabled",
+        "default": "true"
       },
       {
         "name": "show_line_numbers",
@@ -62137,7 +62997,15 @@
     "name": "Texture3D",
     "extends": "TextureLayered",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "data",
+        "type": "Dictionary",
+        "setter": "_set_data",
+        "getter": "_get_data",
+        "default": "{\"depth\": 0,\"flags\": 4,\"format\": 37,\"height\": 0,\"layers\": [  ],\"width\": 0}"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -62393,6 +63261,13 @@
         "default": "0"
       },
       {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
+        "default": "1"
+      },
+      {
         "name": "nine_patch_stretch",
         "type": "bool",
         "setter": "set_nine_patch_stretch",
@@ -62581,6 +63456,13 @@
         "setter": "set_flip_v",
         "getter": "is_flipped_v",
         "default": "false"
+      },
+      {
+        "name": "mouse_filter",
+        "type": "int",
+        "setter": "set_mouse_filter",
+        "getter": "get_mouse_filter",
+        "default": "1"
       },
       {
         "name": "stretch_mode",
@@ -63111,7 +63993,7 @@
         "type": "Transform2D",
         "setter": "set_custom_transform",
         "getter": "get_custom_transform",
-        "default": "Transform2D( 1, 0, 0, 1, 0, 0 )"
+        "default": "Transform2D( 64, 0, 0, 64, 0, 0 )"
       },
       {
         "name": "cell_half_offset",
@@ -64598,7 +65480,15 @@
     "name": "ToolButton",
     "extends": "Button",
     "description": "Flat button helper class.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "flat",
+        "type": "bool",
+        "setter": "set_flat",
+        "getter": "is_flat",
+        "default": "true"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -65262,6 +66152,13 @@
         "default": "0"
       },
       {
+        "name": "focus_mode",
+        "type": "int",
+        "setter": "set_focus_mode",
+        "getter": "get_focus_mode",
+        "default": "2"
+      },
+      {
         "name": "hide_folding",
         "type": "bool",
         "setter": "set_hide_folding",
@@ -65274,6 +66171,13 @@
         "setter": "set_hide_root",
         "getter": "is_root_hidden",
         "default": "false"
+      },
+      {
+        "name": "rect_clip_content",
+        "type": "bool",
+        "setter": "set_clip_contents",
+        "getter": "is_clipping_contents",
+        "default": "true"
       },
       {
         "name": "select_mode",
@@ -65625,6 +66529,20 @@
         "arguments": [
           {
             "name": "column",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "get_button_tooltip",
+        "type": "String",
+        "arguments": [
+          {
+            "name": "column",
+            "type": "int"
+          },
+          {
+            "name": "button_idx",
             "type": "int"
           }
         ]
@@ -66977,7 +67895,22 @@
     "name": "VScrollBar",
     "extends": "ScrollBar",
     "description": "Vertical version of [ScrollBar], which goes from left (min) to right (max).",
-    "fields": [],
+    "fields": [
+      {
+        "name": "size_flags_horizontal",
+        "type": "int",
+        "setter": "set_h_size_flags",
+        "getter": "get_h_size_flags",
+        "default": "0"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "1"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -66993,7 +67926,22 @@
     "name": "VSlider",
     "extends": "Slider",
     "description": "Vertical slider.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "size_flags_horizontal",
+        "type": "int",
+        "setter": "set_h_size_flags",
+        "getter": "get_h_size_flags",
+        "default": "0"
+      },
+      {
+        "name": "size_flags_vertical",
+        "type": "int",
+        "setter": "set_v_size_flags",
+        "getter": "get_v_size_flags",
+        "default": "1"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -67773,11 +68721,25 @@
         "default": "0.0"
       },
       {
+        "name": "mass",
+        "type": "float",
+        "setter": "set_mass",
+        "getter": "get_mass",
+        "default": "40.0"
+      },
+      {
         "name": "steering",
         "type": "float",
         "setter": "set_steering",
         "getter": "get_steering",
         "default": "0.0"
+      },
+      {
+        "name": "weight",
+        "type": "float",
+        "setter": "set_weight",
+        "getter": "get_weight",
+        "default": "392.0"
       }
     ],
     "methods": [],
@@ -68586,6 +69548,20 @@
     "description": "Texture which displays the content of a [Viewport].",
     "fields": [
       {
+        "name": "flags",
+        "type": "int",
+        "setter": "set_flags",
+        "getter": "get_flags",
+        "default": "0"
+      },
+      {
+        "name": "resource_local_to_scene",
+        "type": "bool",
+        "setter": "set_local_to_scene",
+        "getter": "is_local_to_scene",
+        "default": "true"
+      },
+      {
         "name": "viewport_path",
         "type": "NodePath",
         "setter": "set_viewport_path_in_scene",
@@ -69142,19 +70118,19 @@
             "type": "RID"
           },
           {
-            "name": "texture",
+            "name": "transform",
             "type": "Transform2D"
           },
           {
-            "name": "normal_map",
+            "name": "modulate",
             "type": "Color"
           },
           {
-            "name": "arg4",
+            "name": "texture",
             "type": "RID"
           },
           {
-            "name": "arg5",
+            "name": "normal_map",
             "type": "RID"
           }
         ]
@@ -75032,6 +76008,13 @@
     "description": "",
     "fields": [
       {
+        "name": "code",
+        "type": "String",
+        "setter": "set_code",
+        "getter": "get_code",
+        "default": "\"shader_type spatial;void vertex() {// Output:0}void fragment() {// Output:0}void light() {// Output:0}\""
+      },
+      {
         "name": "graph_offset",
         "type": "Vector2",
         "setter": "set_graph_offset",
@@ -75389,8 +76372,12 @@
         "value": "3"
       },
       {
-        "name": "PORT_TYPE_ICON_COLOR",
+        "name": "PORT_TYPE_SAMPLER",
         "value": "4"
+      },
+      {
+        "name": "PORT_TYPE_MAX",
+        "value": "5"
       }
     ]
   },
@@ -75405,6 +76392,13 @@
         "setter": "set_constant",
         "getter": "get_constant",
         "default": "false"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
       }
     ],
     "methods": [],
@@ -75429,6 +76423,13 @@
         "setter": "set_constant",
         "getter": "get_constant",
         "default": "Color( 1, 1, 1, 1 )"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
       }
     ],
     "methods": [],
@@ -75464,6 +76465,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      },
       {
         "name": "operator",
         "type": "int",
@@ -75531,6 +76539,13 @@
         "setter": "set_condition",
         "getter": "get_condition",
         "default": "0"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, 1e-05 ]"
       },
       {
         "name": "function",
@@ -75612,6 +76627,13 @@
         "default": ""
       },
       {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      },
+      {
         "name": "texture_type",
         "type": "int",
         "setter": "set_texture_type",
@@ -75639,7 +76661,15 @@
     "name": "VisualShaderNodeCubeMapUniform",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75647,7 +76677,15 @@
     "name": "VisualShaderNodeCustom",
     "extends": "VisualShaderNode",
     "description": "Virtual class to define custom [VisualShaderNode]s for use in the Visual Shader Editor.",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      }
+    ],
     "methods": [
       {
         "name": "_get_category",
@@ -75763,7 +76801,15 @@
     "name": "VisualShaderNodeDeterminant",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75771,7 +76817,15 @@
     "name": "VisualShaderNodeDotProduct",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75780,6 +76834,13 @@
     "extends": "VisualShaderNodeGroupBase",
     "description": "",
     "fields": [
+      {
+        "name": "editable",
+        "type": "bool",
+        "setter": "set_editable",
+        "getter": "is_editable",
+        "default": "true"
+      },
       {
         "name": "expression",
         "type": "String",
@@ -75801,7 +76862,15 @@
     "name": "VisualShaderNodeFaceForward",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75809,7 +76878,15 @@
     "name": "VisualShaderNodeFresnel",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, false, 3, 1.0 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75817,7 +76894,15 @@
     "name": "VisualShaderNodeGlobalExpression",
     "extends": "VisualShaderNodeExpression",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "editable",
+        "type": "bool",
+        "setter": "set_editable",
+        "getter": "is_editable",
+        "default": "false"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -75826,6 +76911,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      },
       {
         "name": "editable",
         "type": "bool",
@@ -75995,11 +77087,11 @@
         "type": "void",
         "arguments": [
           {
-            "name": "arg0",
+            "name": "id",
             "type": "int"
           },
           {
-            "name": "arg1",
+            "name": "name",
             "type": "String"
           }
         ]
@@ -76009,11 +77101,11 @@
         "type": "void",
         "arguments": [
           {
-            "name": "arg0",
+            "name": "id",
             "type": "int"
           },
           {
-            "name": "arg1",
+            "name": "type",
             "type": "int"
           }
         ]
@@ -76033,11 +77125,11 @@
         "type": "void",
         "arguments": [
           {
-            "name": "arg0",
+            "name": "id",
             "type": "int"
           },
           {
-            "name": "arg1",
+            "name": "name",
             "type": "String"
           }
         ]
@@ -76047,11 +77139,11 @@
         "type": "void",
         "arguments": [
           {
-            "name": "arg0",
+            "name": "id",
             "type": "int"
           },
           {
-            "name": "arg1",
+            "name": "type",
             "type": "int"
           }
         ]
@@ -76083,7 +77175,15 @@
     "name": "VisualShaderNodeIf",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, 1e-05, 3, Vector3( 0, 0, 0 ), 4, Vector3( 0, 0, 0 ), 5, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76092,6 +77192,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      },
       {
         "name": "input_name",
         "type": "String",
@@ -76108,6 +77215,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0 ]"
+      },
       {
         "name": "function",
         "type": "int",
@@ -76132,7 +77246,15 @@
     "name": "VisualShaderNodeOuterProduct",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76148,7 +77270,15 @@
     "name": "VisualShaderNodeScalarClamp",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, 1.0 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76163,6 +77293,13 @@
         "setter": "set_constant",
         "getter": "get_constant",
         "default": "0.0"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
       }
     ],
     "methods": [],
@@ -76173,6 +77310,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0 ]"
+      },
       {
         "name": "function",
         "type": "int",
@@ -76202,6 +77346,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0 ]"
+      },
       {
         "name": "function",
         "type": "int",
@@ -76346,7 +77497,15 @@
     "name": "VisualShaderNodeScalarInterp",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 1.0, 2, 0.5 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76355,6 +77514,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0 ]"
+      },
       {
         "name": "operator",
         "type": "int",
@@ -76411,7 +77577,31 @@
     "name": "VisualShaderNodeScalarSmoothStep",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, 0.0 ]"
+      }
+    ],
+    "methods": [],
+    "constants": []
+  },
+  {
+    "name": "VisualShaderNodeScalarSwitch",
+    "extends": "VisualShaderNodeSwitch",
+    "description": "",
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, false, 1, 1.0, 2, 0.0 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76427,7 +77617,15 @@
     "name": "VisualShaderNodeSwitch",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, false, 1, Vector3( 1, 1, 1 ), 2, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76436,6 +77634,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      },
       {
         "name": "source",
         "type": "int",
@@ -76554,7 +77759,15 @@
     "name": "VisualShaderNodeTransformCompose",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, Vector3( 0, 0, 0 ), 3, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76569,6 +77782,13 @@
         "setter": "set_constant",
         "getter": "get_constant",
         "default": "Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
       }
     ],
     "methods": [],
@@ -76578,7 +77798,15 @@
     "name": "VisualShaderNodeTransformDecompose",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76587,6 +77815,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]"
+      },
       {
         "name": "function",
         "type": "int",
@@ -76612,6 +77847,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]"
+      },
       {
         "name": "operator",
         "type": "int",
@@ -76654,6 +77896,13 @@
     "description": "",
     "fields": [
       {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      },
+      {
         "name": "operator",
         "type": "int",
         "setter": "set_operator",
@@ -76687,6 +77936,13 @@
     "description": "",
     "fields": [
       {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
+      },
+      {
         "name": "uniform_name",
         "type": "String",
         "setter": "set_uniform_name",
@@ -76708,6 +77964,13 @@
         "setter": "set_constant",
         "getter": "get_constant",
         "default": "Vector3( 0, 0, 0 )"
+      },
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[  ]"
       }
     ],
     "methods": [],
@@ -76725,7 +77988,15 @@
     "name": "VisualShaderNodeVectorClamp",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, Vector3( 1, 1, 1 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76733,7 +78004,15 @@
     "name": "VisualShaderNodeVectorCompose",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, 0.0 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76778,7 +78057,15 @@
     "name": "VisualShaderNodeVectorDistance",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76943,7 +78230,15 @@
     "name": "VisualShaderNodeVectorInterp",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ), 2, Vector3( 0.5, 0.5, 0.5 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -76960,6 +78255,13 @@
     "extends": "VisualShaderNode",
     "description": "",
     "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ) ]"
+      },
       {
         "name": "operator",
         "type": "int",
@@ -77024,7 +78326,15 @@
     "name": "VisualShaderNodeVectorRefract",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, 0.0 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -77032,7 +78342,15 @@
     "name": "VisualShaderNodeVectorScalarMix",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ), 2, 0.5 ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -77040,7 +78358,15 @@
     "name": "VisualShaderNodeVectorScalarSmoothStep",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, 0.0, 2, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -77048,7 +78374,15 @@
     "name": "VisualShaderNodeVectorScalarStep",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, 0.0, 1, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -77056,7 +78390,15 @@
     "name": "VisualShaderNodeVectorSmoothStep",
     "extends": "VisualShaderNode",
     "description": "",
-    "fields": [],
+    "fields": [
+      {
+        "name": "default_input_values",
+        "type": "Array",
+        "setter": "_set_default_input_values",
+        "getter": "_get_default_input_values",
+        "default": "[ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, Vector3( 0, 0, 0 ) ]"
+      }
+    ],
     "methods": [],
     "constants": []
   },
@@ -77196,7 +78538,7 @@
   {
     "name": "X509Certificate",
     "extends": "Resource",
-    "description": "",
+    "description": "An X509 certificate (e.g. for SSL).",
     "fields": [],
     "methods": [
       {
@@ -78094,6 +79436,16 @@
           {
             "name": "value",
             "type": "int"
+          }
+        ]
+      },
+      {
+        "name": "ord",
+        "type": "int",
+        "arguments": [
+          {
+            "name": "char",
+            "type": "String"
           }
         ]
       },
