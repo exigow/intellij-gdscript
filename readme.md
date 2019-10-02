@@ -7,5 +7,5 @@
 
 * `./gradlew :plugin:runIde` - run sandbox with installed plugin.
 * `./gradlew :plugin:buildPlugin` - create plugin archive `plugin/build/distributions/plugin.zip` (required for [manual installation](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk).
-* `./gradlew :api:run` - upgrade completion data using [Godot API sources](https://github.com/godotengine/godot/tree/master/doc/classes).
+* `./gradlew :api:run` - upgrade completion JSON using [Godot API sources](https://github.com/godotengine/godot/tree/master/doc/classes).
 
