@@ -2,11 +2,11 @@ import com.google.gson.Gson
 
 object GodotApi {
 
-    val CLASSES = load()
+    val CLASSES: Array<Class>
 
-    private fun load(): Array<Class> {
-        val inputStream = this::class.java.classLoader.getResourceAsStream("library.json")!!.reader()
-        return Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
+    init {
+        val inputStream = this::class.java.classLoader.getResourceAsStream("api.json")!!.reader()
+        CLASSES = Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
     }
 
     data class Class(
