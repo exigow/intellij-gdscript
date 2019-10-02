@@ -9,6 +9,3 @@
 * `./gradlew :plugin:buildPlugin` - create plugin archive `plugin/build/distributions/plugin.zip` (required for [manual installation](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk).
 * `./gradlew :api:run` - upgrade completion data using [Godot API sources](https://github.com/godotengine/godot/tree/master/doc/classes).
 
-## Features
-
-Working **code completion** and **syntax highlighting** (WIP).
