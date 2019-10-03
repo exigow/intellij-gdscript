@@ -10,6 +10,9 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test const`() =
         assertValid("const MAX_HP = 100")
 
+    fun `test const lowercase warning`() =
+        assertValid("const max_hp = 100")
+
     fun `test local variable`() =
         assertValid("position.x = 1")
 
