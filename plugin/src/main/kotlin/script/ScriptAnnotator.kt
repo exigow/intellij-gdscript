@@ -31,7 +31,7 @@ class ScriptAnnotator : Annotator {
                 holder.colorize(current, FUNCTION_CALL)
             if (current.text in CLASS_NAMES)
                 holder.colorize(current, CLASS_NAME)
-            if (current.text.length > 2 && current.text.isUnderscoreCase())
+            if (current.text.length >= 2 && current.text.isUnderscoreCase())
                 holder.colorize(current, CONSTANT)
         }
     }
