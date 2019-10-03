@@ -17,6 +17,5 @@ object ScriptHighlighterColors {
     val PARENTHESES = createTextAttributesKey("GODOT_SCRIPT.PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES)
     val BRACKETS = createTextAttributesKey("GODOT_SCRIPT.BRACKETS", DefaultLanguageHighlighterColors.BRACKETS)
     val LINE_COMMENT = createTextAttributesKey("GODOT_SCRIPT.LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
-    val BLOCK_COMMENT = createTextAttributesKey("GODOT_SCRIPT.BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT)
 
 }

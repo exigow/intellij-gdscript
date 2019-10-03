@@ -25,8 +25,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         AttributesDescriptor("Braces", ScriptHighlighterColors.BRACES),
         AttributesDescriptor("Parentheses", ScriptHighlighterColors.PARENTHESES),
         AttributesDescriptor("Brackets", ScriptHighlighterColors.BRACKETS),
-        AttributesDescriptor("Line comment", ScriptHighlighterColors.LINE_COMMENT),
-        AttributesDescriptor("Block comment", ScriptHighlighterColors.BLOCK_COMMENT)
+        AttributesDescriptor("Line comment", ScriptHighlighterColors.LINE_COMMENT)
     )
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()

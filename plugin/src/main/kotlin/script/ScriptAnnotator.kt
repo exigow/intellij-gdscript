@@ -38,11 +38,7 @@ class ScriptAnnotator : Annotator {
 
     private fun String.canBeUpperCased() = this != this.toUpperCase()
 
-    private tailrec fun PsiElement.previous(): PsiElement? =
-        when (prevSibling) {
-            is PsiWhiteSpace -> prevSibling.previous()
-            else -> prevSibling
-        }
+    private fun PsiElement.previous(): PsiElement? = parent?.prevSibling?.prevSibling?.firstChild
 
     private fun AnnotationHolder.colorize(element: LeafPsiElement, attributesKey: TextAttributesKey) =
         createAnnotation(INFORMATION, element.textRange, null).also { it.textAttributes = attributesKey }

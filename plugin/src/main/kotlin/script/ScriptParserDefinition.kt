@@ -46,7 +46,7 @@ class ScriptParserDefinition : ParserDefinition {
 
     override fun getWhitespaceTokens(): TokenSet = createTokenSet(ScriptLanguage, WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(ScriptLanguage, LINE_COMMENT, BLOCK_COMMENT)
+    override fun getCommentTokens(): TokenSet = createTokenSet(ScriptLanguage, LINE_COMMENT)
 
     override fun getStringLiteralElements(): TokenSet = createTokenSet(ScriptLanguage, STRING)
 
