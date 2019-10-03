@@ -31,16 +31,16 @@ class ScriptCompletionContributor : CompletionContributor() {
     private fun extend(pattern: PsiElementPattern.Capture<PsiElement>, lookups: List<LookupElement>) =
         extend(CompletionType.BASIC, pattern, LookupCompletionProvider(lookups))
 
-    private fun createLanguageFunctionLookup(it: GodotApi.Class.Method) = create(it.name)
+    private fun createLanguageFunctionLookup(method: GodotApi.Class.Method) = create(method.name)
         .withIcon(FUNCTION_ICON)
-        .withArgumentsTailText(it.arguments)
-        .withTypeText(it.type)
-        .withInvocationSuffix()
+        .withTailText(joinArguments(method.arguments))
+        .withTypeText(method.type)
         .bold()
+        .withAutoTyping("(", ")")
 
-    private fun createLanguageConstantLookup(it: GodotApi.Class.Constant) = create(it.name)
+    private fun createLanguageConstantLookup(constant: GodotApi.Class.Constant) = create(constant.name)
         .withIcon(FIELD_ICON)
-        .withValueTailText(it.value)
+        .withTailText(" = ${constant.value}")
         .bold()
 
     private fun createClassLookup(clazz: GodotApi.Class) = create(clazz.name)
@@ -54,90 +54,82 @@ class ScriptCompletionContributor : CompletionContributor() {
     private fun createSetterLookups(field: GodotApi.Class.Field) = create(field.setter)
         .withIcon(METHOD_ICON)
         .withTailText("(value: ${field.type})")
-        .italics()
+        .withAutoTyping("(", ")")
+        .withItemTextItalic(true)
 
     private fun createGetterLookups(field: GodotApi.Class.Field) = create(field.getter)
         .withIcon(METHOD_ICON)
-        .withInvocationTailText()
         .withTypeText(field.type)
-        .withInvocationSuffix()
-        .italics()
+        .withItemTextItalic(true)
+        .withTailText("()")
+        .withAutoTyping("()")
 
     private fun createMethodLookups(method: GodotApi.Class.Method) = create(method.name)
         .withIcon(METHOD_ICON)
-        .withArgumentsTailText(method.arguments)
+        .withTailText(joinArguments(method.arguments))
         .withTypeText(method.type)
-        .withInvocationSuffix()
+        .withAutoTyping("(", ")")
 
     private fun createConstantLookups(constant: GodotApi.Class.Constant) = create(constant.name)
         .withIcon(FIELD_ICON)
-        .withValueTailText(constant.value)
+        .withTailText(" = ${constant.value}")
 
     private fun createKeywordLookups() = listOf(
-        create("if").bold().withStatementTailText().withStatementSuffix(),
-        create("elif").bold().withStatementTailText().withStatementSuffix(),
-        create("else").bold().withTailText(":").withSuffix(":", move =  1),
-        create("for").bold().withStatementTailText().withStatementSuffix(),
-        create("while").bold().withStatementTailText().withStatementSuffix(),
-        create("match").bold().withStatementTailText().withStatementSuffix(),
-        create("break").bold(),
-        create("continue").bold(),
-        create("pass").bold(),
-        create("return").bold().withSpaceSuffix(),
-        create("class").bold().withSpaceSuffix(),
-        create("class_name").bold().withSpaceSuffix(),
-        create("extends").bold().withSpaceSuffix(),
-        create("is").bold().withSpaceSuffix(),
-        create("as").bold().withSpaceSuffix(),
-        create("self").bold(),
-        create("tool").bold(),
-        create("signal").bold().withSpaceSuffix(),
-        create("func").bold().withSpaceSuffix(),
-        create("static").bold().withSpaceSuffix(),
-        create("const").bold().withSpaceSuffix(),
-        create("enum").bold().withTailText(" {...}").withSuffix(" {}", move = 2),
-        create("var").bold().withSpaceSuffix(),
-        create("onready").bold().withSpaceSuffix(),
-        create("export").bold().withSpaceSuffix(),
-        create("setget").bold().withSpaceSuffix(),
-        create("breakpoint").bold(),
-        create("remote").bold().withSpaceSuffix(),
-        create("master").bold().withSpaceSuffix(),
-        create("puppet").bold().withSpaceSuffix(),
-        create("remotesync").bold(),
-        create("mastersync").bold(),
-        create("puppetsync").bold()
+        createKeyword("if", SPACE, ":"),
+        createKeyword("elif", SPACE, ":"),
+        createKeyword("else", ":"),
+        createKeyword("for", SPACE, ":"),
+        createKeyword("while", SPACE, ":"),
+        createKeyword("match", SPACE, ":"),
+        createKeyword("break"),
+        createKeyword("continue"),
+        createKeyword("pass"),
+        createKeyword("return", SPACE),
+        createKeyword("class", SPACE),
+        createKeyword("class_name", SPACE),
+        createKeyword("extends", SPACE),
+        createKeyword("is", SPACE),
+        createKeyword("as", SPACE),
+        createKeyword("self"),
+        createKeyword("tool"),
+        createKeyword("signal", SPACE),
+        createKeyword("func", SPACE),
+        createKeyword("static", SPACE),
+        createKeyword("const", SPACE),
+        createKeyword("enum", " {", "}"),
+        createKeyword("var", SPACE),
+        createKeyword("onready", SPACE),
+        createKeyword("export", SPACE),
+        createKeyword("setget", SPACE),
+        createKeyword("breakpoint"),
+        createKeyword("remote", SPACE),
+        createKeyword("master", SPACE),
+        createKeyword("puppet", SPACE),
+        createKeyword("remotesync"),
+        createKeyword("mastersync"),
+        createKeyword("puppetsync")
     )
 
-    private fun LookupElementBuilder.withInvocationTailText() =
-        withTailText("()")
+    private fun createKeyword(name: String, typing: String = "", postfix: String = "") =
+        create(name)
+        .withTailText(joinKeyword(typing, postfix))
+        .bold()
+        .withAutoTyping(typing, postfix)
 
-    private fun LookupElementBuilder.withStatementTailText() =
-        withTailText(" ...:")
+    private fun joinKeyword(typing: String, postfix: String): String =
+        if (typing.isBlank())
+            ""
+        else
+            "$typing...$postfix"
 
-    private fun LookupElementBuilder.withValueTailText(value: String) =
-        withTailText(" = $value")
-
-    private fun LookupElementBuilder.withArgumentsTailText(arguments: List<GodotApi.Class.Method.Argument>) =
-        withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
-
-    private fun LookupElementBuilder.withInvocationSuffix() =
-        withSuffix("()", move = 1)
-
-    private fun LookupElementBuilder.withStatementSuffix() =
-        withSuffix(" :", move = 1)
-
-    private fun LookupElementBuilder.withSpaceSuffix() =
-        withSuffix(" ", move = 1)
-
-    private fun LookupElementBuilder.italics() =
-        withItemTextItalic(true)
-
-    private fun LookupElementBuilder.withSuffix(suffix: String, move: Int) =
+    private fun LookupElementBuilder.withAutoTyping(typing: String, postfix: String = "") =
         withInsertHandler { ctx, _ ->
-        ctx.document.insertString(ctx.selectionEndOffset, suffix)
-        EditorModificationUtil.moveCaretRelatively(ctx.editor, move)
-    }
+            ctx.document.insertString(ctx.selectionEndOffset, typing + postfix)
+            EditorModificationUtil.moveCaretRelatively(ctx.editor, typing.length)
+        }
+
+    private fun joinArguments(arguments: List<GodotApi.Class.Method.Argument>) =
+        arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
 
     private class LookupCompletionProvider(private val lookups: List<LookupElement>) : CompletionProvider<CompletionParameters>() {
 
@@ -149,6 +141,7 @@ class ScriptCompletionContributor : CompletionContributor() {
 
     private companion object {
 
+        const val SPACE = " "
         val LANGUAGE_CLASS = GodotApi.CLASSES.find { it.name == "@GDScript" }!!
         val COMMON_CLASS = GodotApi.CLASSES.asList() - LANGUAGE_CLASS
 
