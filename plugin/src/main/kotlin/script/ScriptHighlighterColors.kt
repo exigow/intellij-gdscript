@@ -1,21 +1,24 @@
 package script
 
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 
 object ScriptHighlighterColors {
 
-    val NUMBER = createTextAttributesKey("GODOT_SCRIPT.NUMBER", DefaultLanguageHighlighterColors.NUMBER)
-    val STRING = createTextAttributesKey("GODOT_SCRIPT.STRING", DefaultLanguageHighlighterColors.STRING)
-    val KEYWORD = createTextAttributesKey("GODOT_SCRIPT.KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)
-    val METADATA = createTextAttributesKey("GODOT_SCRIPT.METADATA", DefaultLanguageHighlighterColors.METADATA)
-    val IDENTIFIER = createTextAttributesKey("GODOT_SCRIPT.IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)
-    val OPERATION_SIGN = createTextAttributesKey("GODOT_SCRIPT._OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN)
-    val COMMA = createTextAttributesKey("GODOT_SCRIPT.COMMA", DefaultLanguageHighlighterColors.COMMA)
-    val DOT = createTextAttributesKey("GODOT_SCRIPT.DOT", DefaultLanguageHighlighterColors.DOT)
-    val BRACES = createTextAttributesKey("GODOT_SCRIPT.BRACES", DefaultLanguageHighlighterColors.BRACES)
-    val PARENTHESES = createTextAttributesKey("GODOT_SCRIPT.PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES)
-    val BRACKETS = createTextAttributesKey("GODOT_SCRIPT.BRACKETS", DefaultLanguageHighlighterColors.BRACKETS)
-    val LINE_COMMENT = createTextAttributesKey("GODOT_SCRIPT.LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
+    val NUMBER = DefaultLanguageHighlighterColors.NUMBER.wrap()
+    val STRING = DefaultLanguageHighlighterColors.STRING.wrap()
+    val KEYWORD = DefaultLanguageHighlighterColors.KEYWORD.wrap()
+    val METADATA = DefaultLanguageHighlighterColors.METADATA.wrap()
+    val IDENTIFIER = DefaultLanguageHighlighterColors.IDENTIFIER.wrap()
+    val OPERATION_SIGN = DefaultLanguageHighlighterColors.OPERATION_SIGN.wrap()
+    val COMMA = DefaultLanguageHighlighterColors.COMMA.wrap()
+    val DOT = DefaultLanguageHighlighterColors.DOT.wrap()
+    val BRACES = DefaultLanguageHighlighterColors.BRACES.wrap()
+    val PARENTHESES = DefaultLanguageHighlighterColors.PARENTHESES.wrap()
+    val BRACKETS = DefaultLanguageHighlighterColors.BRACKETS.wrap()
+    val LINE_COMMENT = DefaultLanguageHighlighterColors.LINE_COMMENT.wrap()
+
+    private fun TextAttributesKey.wrap() = createTextAttributesKey("GODOT_SCRIPT.${this.externalName}", this)
 
 }
