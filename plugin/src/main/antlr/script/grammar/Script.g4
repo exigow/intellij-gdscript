@@ -5,7 +5,7 @@ grammar Script;
 file: statement* EOF;
 statement: new_var | new_const | assignment | invoke | function_declaration | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif_statement | else_statement | return_values | values;
 
-new_var: (EXPORT list?)? ONREADY? VAR typed_id ASSIGN_SIGN values (SETGET IDENTIFIER COMMA IDENTIFIER)?;
+new_var: (EXPORT list?)? ONREADY? VAR typed_id (ASSIGN_SIGN values)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
 new_const: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN values;
 function_declaration: STATIC? FUNC IDENTIFIER list (ARROW type)? COLON;
 for_statement: FOR values COLON;
@@ -28,7 +28,7 @@ array: BRACKET_LEFT values? (COMMA values)* BRACKET_RIGHT;
 dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
 dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) values)?;
 values: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
-value: (MINUS | NOT_KEYWORD)? (invoke | subscribe | subscribe | list | array | dictionary | IDENTIFIER | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
+value: (MINUS | NOT_KEYWORD)? (typed_id | invoke | subscribe | subscribe | list | array | dictionary | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
 
 EXPORT: 'export';
 ONREADY: 'onready';

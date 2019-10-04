@@ -5,15 +5,27 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 class ScriptTestCase : BasePlatformTestCase() {
 
     fun `test var`() =
+        assertValid("var hp")
+
+    fun `test var with assignment`() =
         assertValid("var hp = 73")
 
-    fun `test assign`() =
-        assertValid("hp -= 10")
+    fun `test var typed`() =
+        assertValid("var hp: int = 73")
 
-    fun `test negated number`() =
+    fun `test var setget`() =
+        assertValid("var hp setget set_hp, get_hp")
+
+    fun `test var setget with getter only`() =
+        assertValid("var hp setget ,get_hp")
+
+    fun `test increment`() =
+        assertValid("hp += 10")
+
+    fun `test negate number`() =
         assertValid("negated = -1")
 
-    fun `test negate reference`() =
+    fun `test negate`() =
         assertValid("negated = -value")
 
     fun `test get_node`() =
@@ -30,59 +42,68 @@ class ScriptTestCase : BasePlatformTestCase() {
 
     fun `test dictionary assignment entries`() =
         assertValid("""
-        const CORNER = {
-            W = 0,
-            NW = 1,
-            NE = 2,
-            E = 3,
-            SE = 4,
-            SW = 5
-        }
+            const CORNER = {
+                W = 0,
+                NW = 1,
+                NE = 2,
+                E = 3,
+                SE = 4,
+                SW = 5
+            }
         """)
 
-    fun `test dictionary colon entries`() =
+    fun `test constant dictionary with string keys`() =
         assertValid("""
-        const HEROES = {
-            "Warrior": 0,
-            "Magician": 1,
-            "Thief": 2
-        }
+            const HEROES = {
+                "Warrior": 0,
+                "Magician": 1,
+                "Thief": 2
+            }
         """)
 
-    fun `test dictionary number`() =
+    fun `test assigned dictionary with number keys`() =
         assertValid("""
-        d = {
-            22: "value",
-        }
+            dict = {
+                100: "INFO",
+                400: "WARN",
+            }
         """)
 
-    fun `test enum named`() =
+    fun `test named enum`() =
         assertValid("""
-        enum Color {
-            RED, GREEN, BLUE
-        }
+            enum Color {
+                RED, GREEN, BLUE
+            }
         """)
 
     fun `test enum`() =
         assertValid("enum { A, B, C }")
 
-    fun `test dictionary single line`() =
-        assertValid("""var d = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
+    fun `test single line dictionary`() =
+        assertValid("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
 
     fun `test const`() =
         assertValid("const MAX_HP = 100")
 
     fun `test array subscription`() =
-        assertValid("""d[4] = "hello"""")
+        assertValid("""table[4] = "hello"""")
 
     fun `test dictionary subscription`() =
-        assertValid("""d["Hi!"] = 0""")
+        assertValid("""dict["Hi!"] = 0""")
 
-    fun `test local variable`() =
+    fun `test local variable assignment`() =
         assertValid("position.x = 1")
 
-    fun `test function declaration`() =
-        assertValid("static func create() -> Node:")
+    fun `test typed function with non-typed argument`() =
+        assertValid("""
+            func hit(damage) -> bool:
+                health_points -= damage
+                return health_points <= 0
+        """)
+
+
+    fun `test static typed function with typed arguments`() =
+        assertValid("static func max(a: float, b: float) -> float:")
 
     private fun assertValid(code: String) {
         myFixture.configureByText(ScriptFileType, code.trimIndent())

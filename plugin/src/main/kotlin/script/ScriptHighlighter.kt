@@ -45,6 +45,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         METADATA -> ScriptHighlighterColors.METADATA
         IDENTIFIER -> ScriptHighlighterColors.IDENTIFIER
         ARROW,
+        MINUS,
         ASSIGN_SIGN,
         OPERATION_SIGN -> ScriptHighlighterColors.OPERATION_SIGN
         COMMA -> ScriptHighlighterColors.COMMA
