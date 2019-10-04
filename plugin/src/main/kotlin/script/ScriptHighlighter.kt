@@ -40,6 +40,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         RETURN,
         OPERATION_KEYWORD,
         TYPE_KEYWORD,
+        NOT_KEYWORD,
         VALUE_KEYWORD -> ScriptHighlighterColors.KEYWORD
         METADATA -> ScriptHighlighterColors.METADATA
         IDENTIFIER -> ScriptHighlighterColors.IDENTIFIER

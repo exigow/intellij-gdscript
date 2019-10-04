@@ -3,7 +3,7 @@ grammar Script;
 @header {package script.grammar;}
 
 file: statement* EOF;
-statement: new_var | new_const | assignment | invoke | function_declaration | for_statement | while_statement | class_statement | extends_statement | if_statement | elif_statement | else_statement | return_values | values;
+statement: new_var | new_const | assignment | invoke | function_declaration | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif_statement | else_statement | return_values | values;
 
 new_var: (EXPORT list?)? ONREADY? VAR typed_id ASSIGN_SIGN values (SETGET IDENTIFIER COMMA IDENTIFIER)?;
 new_const: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN values;
@@ -12,6 +12,8 @@ for_statement: FOR values COLON;
 while_statement: WHILE values COLON;
 class_statement: CLASS IDENTIFIER COLON;
 extends_statement: EXTENDS IDENTIFIER;
+class_name: CLASS_NAME IDENTIFIER;
+enum_statement: ENUM IDENTIFIER? dictionary;
 if_statement: IF values COLON;
 elif_statement: ELIF values COLON;
 else_statement: ELSE COLON;
@@ -23,10 +25,10 @@ type: IDENTIFIER | TYPE_KEYWORD;
 subscribe: IDENTIFIER array;
 list: BRACE_LEFT values? (COMMA values)* BRACE_RIGHT;
 array: BRACKET_LEFT values? (COMMA values)* BRACKET_RIGHT;
-dictionary: PARENTHES_LEFT entry? (COMMA entry)* PARENTHES_RIGHT;
-entry: (STRING | NUMBER | IDENTIFIER) (COLON | ASSIGN_SIGN) values;
+dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
+dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) values)?;
 values: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
-value: MINUS? (invoke | subscribe | subscribe | list | array | dictionary | (IDENTIFIER) | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
+value: (MINUS | NOT_KEYWORD)? (invoke | subscribe | subscribe | list | array | dictionary | IDENTIFIER | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
 
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -48,7 +50,8 @@ RETURN: 'return';
 ASSIGN_SIGN: '=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '!' | '&&' | '||';
-OPERATION_KEYWORD: 'not' | 'and' | 'or' | 'in' | 'is' | 'as';
+OPERATION_KEYWORD: 'and' | 'or' | 'in' | 'is' | 'as';
+NOT_KEYWORD: 'not';
 TYPE_KEYWORD: 'bool' | 'int' | 'float';
 VALUE_KEYWORD: 'self' | 'null' | 'true' | 'false';
 

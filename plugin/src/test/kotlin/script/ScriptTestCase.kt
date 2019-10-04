@@ -19,6 +19,9 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test get_node`() =
         assertValid("""get_node("C/Gamma/One")""")
 
+    fun `test self keyword`() =
+        assertValid("self.get_position().x = 1")
+
     fun `test get_node $ sugar`() =
         assertValid("var node = \$C/Gamma/One")
 
@@ -52,6 +55,16 @@ class ScriptTestCase : BasePlatformTestCase() {
             22: "value",
         }
         """)
+
+    fun `test enum named`() =
+        assertValid("""
+        enum Color {
+            RED, GREEN, BLUE
+        }
+        """)
+
+    fun `test enum`() =
+        assertValid("enum { A, B, C }")
 
     fun `test dictionary single line`() =
         assertValid("""var d = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
