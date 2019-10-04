@@ -28,6 +28,9 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test export multiple arguments`() =
         assertValid("""export(int, "Warrior", "Magician", "Thief") var character_class""")
 
+    fun `test export FILE with path`() =
+        assertValid("""export(String, FILE, "*.txt") var f""")
+
     fun `test multiline string comment-like`() =
         assertValid("\"\"\"Inventory.gd\"\"\"")
 
@@ -89,7 +92,7 @@ class ScriptTestCase : BasePlatformTestCase() {
         """)
 
     fun `test enum`() =
-        assertValid("enum { A, B, C }")
+        assertValid("enum {THING_1, THING_2, ANOTHER_THING = -1}")
 
     fun `test single line dictionary`() =
         assertValid("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
