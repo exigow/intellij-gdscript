@@ -22,14 +22,17 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test export`() =
         assertValid("export var number = 5")
 
-    fun `test export arguments`() =
+    fun `test export int`() =
         assertValid("export(int) var number")
 
-    fun `test export multiple arguments`() =
+    fun `test export strings`() =
         assertValid("""export(int, "Warrior", "Magician", "Thief") var character_class""")
 
-    fun `test export FILE with path`() =
+    fun `test export FILE`() =
         assertValid("""export(String, FILE, "*.txt") var f""")
+
+    fun `test export numbers`() =
+        assertValid("""export(float, -10, 20, 0.2) var k""")
 
     fun `test multiline string comment-like`() =
         assertValid("\"\"\"Inventory.gd\"\"\"")
