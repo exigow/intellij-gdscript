@@ -28,7 +28,7 @@ array: BRACKET_LEFT values? (COMMA values)* BRACKET_RIGHT;
 dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
 dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) values)?;
 values: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
-value: (MINUS | NOT_KEYWORD)? (typed_id | invoke | subscribe | subscribe | list | array | dictionary | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
+value: (MINUS | NOT_KEYWORD)? (subscribe | invoke | list | array | dictionary | typed_id | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
 
 EXPORT: 'export';
 ONREADY: 'onready';
