@@ -18,6 +18,8 @@ class ScriptAnnotator : Annotator {
                 holder.colorize(current, FUNCTION_CALL)
             if (current.text in CLASS_NAMES)
                 holder.colorize(current, CLASS_NAME)
+            if (current.text in PRIMITIVE_TYPES)
+                holder.colorize(current, KEYWORD)
             if (current.text.length >= 2 && current.text.isUnderscoreCase())
                 holder.colorize(current, CONSTANT)
         }
@@ -31,6 +33,7 @@ class ScriptAnnotator : Annotator {
     companion object {
 
         private val CLASS_NAMES = GodotApi.CLASSES.map { it.name }.filter { it !in listOf("bool", "int", "float") }
+        private val PRIMITIVE_TYPES = listOf("bool", "int", "float")
         private val LANGUAGE_METHODS = GodotApi.CLASSES.find { it.name == "@GDScript" }!!.methods.map { it.name }
 
     }

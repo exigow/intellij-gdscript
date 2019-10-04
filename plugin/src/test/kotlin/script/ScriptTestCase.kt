@@ -19,6 +19,18 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test var setget with getter only`() =
         assertValid("var hp setget ,get_hp")
 
+    fun `test export`() =
+        assertValid("export var number = 5")
+
+    fun `test export arguments`() =
+        assertValid("export(int) var number")
+
+    fun `test export multiple arguments`() =
+        assertValid("""export(int, "Warrior", "Magician", "Thief") var character_class""")
+
+    fun `test multiline string comment-like`() =
+        assertValid("\"\"\"Inventory.gd\"\"\"")
+
     fun `test increment`() =
         assertValid("hp += 10")
 
@@ -99,6 +111,12 @@ class ScriptTestCase : BasePlatformTestCase() {
             func hit(damage) -> bool:
                 health_points -= damage
                 return health_points <= 0
+        """)
+
+    fun `test function with pass statement`() =
+        assertValid("""
+            func _on_area_entered(area : CollisionObject2D) -> void:
+                pass
         """)
 
 

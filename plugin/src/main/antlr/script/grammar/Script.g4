@@ -3,32 +3,33 @@ grammar Script;
 @header {package script.grammar;}
 
 file: statement* EOF;
-statement: new_var | new_const | assignment | invoke | function_declaration | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif_statement | else_statement | return_values | values;
+statement: var_statement | const_statement | assign_statement | function_statement | invoke_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | pass_statement | value_with_operators_statement;
 
-new_var: (EXPORT list?)? ONREADY? VAR typed_id (ASSIGN_SIGN values)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
-new_const: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN values;
-function_declaration: STATIC? FUNC IDENTIFIER list (ARROW type)? COLON;
-for_statement: FOR values COLON;
-while_statement: WHILE values COLON;
+var_statement: EXPORT? list? ONREADY? VAR typed_id (ASSIGN_SIGN value_with_operators_statement)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
+const_statement: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN value_with_operators_statement;
+assign_statement: value_with_operators_statement ASSIGN_SIGN value_with_operators_statement;
+function_statement: STATIC? FUNC invoke_statement (ARROW IDENTIFIER)? COLON;
+invoke_statement: IDENTIFIER list;
+for_statement: FOR value_with_operators_statement COLON;
+while_statement: WHILE value_with_operators_statement COLON;
 class_statement: CLASS IDENTIFIER COLON;
 extends_statement: EXTENDS IDENTIFIER;
-class_name: CLASS_NAME IDENTIFIER;
+class_name_statement: CLASS_NAME IDENTIFIER;
 enum_statement: ENUM IDENTIFIER? dictionary;
-if_statement: IF values COLON;
-elif_statement: ELIF values COLON;
+if_statement: IF value_with_operators_statement COLON;
+elif_statement: ELIF value_with_operators_statement COLON;
 else_statement: ELSE COLON;
-assignment: values ASSIGN_SIGN values;
-return_values: RETURN values;
-invoke: IDENTIFIER list;
-typed_id: IDENTIFIER (COLON type)?;
-type: IDENTIFIER | TYPE_KEYWORD;
+return_statement: RETURN value_with_operators_statement;
+pass_statement: PASS;
+value_with_operators_statement: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
+
+typed_id: IDENTIFIER (COLON IDENTIFIER)?;
 subscribe: IDENTIFIER array;
-list: BRACE_LEFT values? (COMMA values)* BRACE_RIGHT;
-array: BRACKET_LEFT values? (COMMA values)* BRACKET_RIGHT;
+list: BRACE_LEFT value_with_operators_statement? (COMMA value_with_operators_statement)* BRACE_RIGHT;
+array: BRACKET_LEFT value_with_operators_statement? (COMMA value_with_operators_statement)* BRACKET_RIGHT;
 dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
-dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) values)?;
-values: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
-value: (MINUS | NOT_KEYWORD)? (subscribe | invoke | list | array | dictionary | typed_id | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
+dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) value_with_operators_statement)?;
+value: (MINUS | NOT_KEYWORD)? (subscribe | invoke_statement | list | array | dictionary | typed_id | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
 
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -47,12 +48,12 @@ IF: 'if';
 ELIF: 'elif';
 ELSE: 'else';
 RETURN: 'return';
+PASS: 'pass';
 ASSIGN_SIGN: '=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '!' | '&&' | '||';
 OPERATION_KEYWORD: 'and' | 'or' | 'in' | 'is' | 'as';
 NOT_KEYWORD: 'not';
-TYPE_KEYWORD: 'bool' | 'int' | 'float';
 VALUE_KEYWORD: 'self' | 'null' | 'true' | 'false';
 
 COMMA: ',';
