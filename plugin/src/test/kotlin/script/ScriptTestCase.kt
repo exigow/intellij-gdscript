@@ -7,11 +7,48 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test var`() =
         assertValid("var hp = 73")
 
+    fun `test dictionary assignment entries`() =
+        assertValid("""
+        const CORNER = {
+            W = 0,
+            NW = 1,
+            NE = 2,
+            E = 3,
+            SE = 4,
+            SW = 5
+        }
+        """)
+
+    fun `test dictionary colon entries`() =
+        assertValid("""
+        const HEROES = {
+            "Warrior": 0,
+            "Magician": 1,
+            "Thief": 2
+        }
+        """)
+
+    fun `test dictionary number`() =
+        assertValid("""
+        d = {
+            22: "value",
+        }
+        """)
+
+    fun `test dictionary single line`() =
+        assertValid("""var d = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
+
     fun `test const`() =
         assertValid("const MAX_HP = 100")
 
     fun `test const lowercase warning`() =
-        assertValid("const <weak_warning descr=\"Constant should have an upper case name such as `MAX_HP`\">max_hp</weak_warning> = 100")
+        assertValid("""const <weak_warning descr="Constant should have an upper case name such as `MAX_HP`">max_hp</weak_warning> = 100""")
+
+    fun `test array subscription`() =
+        assertValid("""d[4] = "hello"""")
+
+    fun `test dictionary subscription`() =
+        assertValid("""d["Hi!"] = 0""")
 
     fun `test local variable`() =
         assertValid("position.x = 1")
@@ -20,7 +57,7 @@ class ScriptTestCase : BasePlatformTestCase() {
         assertValid("func bake():")
 
     private fun assertValid(code: String) {
-        myFixture.configureByText(ScriptFileType, code)
+        myFixture.configureByText(ScriptFileType, code.trimIndent())
         myFixture.checkHighlighting()
     }
 
