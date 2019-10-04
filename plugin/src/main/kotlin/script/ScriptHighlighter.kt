@@ -19,16 +19,41 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
 
     private fun getColor(tokenType: Int) = when (tokenType) {
         NUMBER -> ScriptHighlighterColors.NUMBER
-        STRING, MULTILINE_STRING -> ScriptHighlighterColors.STRING
-        KEYWORD -> ScriptHighlighterColors.KEYWORD
+        STRING,
+        MULTILINE_STRING -> ScriptHighlighterColors.STRING
+        EXPORT,
+        ONREADY,
+        VAR,
+        SETGET,
+        CONST,
+        STATIC,
+        FUNC,
+        FOR,
+        WHILE,
+        CLASS,
+        EXTENDS,
+        CLASS_NAME,
+        ENUM,
+        IF,
+        ELIF,
+        ELSE,
+        RETURN,
+        OPERATION_KEYWORD,
+        TYPE_KEYWORD,
+        VALUE_KEYWORD -> ScriptHighlighterColors.KEYWORD
         METADATA -> ScriptHighlighterColors.METADATA
         IDENTIFIER -> ScriptHighlighterColors.IDENTIFIER
+        ARROW,
+        ASSIGN_SIGN,
         OPERATION_SIGN -> ScriptHighlighterColors.OPERATION_SIGN
         COMMA -> ScriptHighlighterColors.COMMA
         DOT -> ScriptHighlighterColors.DOT
-        BRACE_LEFT, BRACE_RIGHT -> ScriptHighlighterColors.BRACES
-        PARENTHES_LEFT, PARENTHES_RIGHT -> ScriptHighlighterColors.PARENTHESES
-        BRACKET_LEFT, BRACKET_RIGHT -> ScriptHighlighterColors.BRACKETS
+        BRACE_LEFT,
+        BRACE_RIGHT -> ScriptHighlighterColors.BRACES
+        PARENTHES_LEFT,
+        PARENTHES_RIGHT -> ScriptHighlighterColors.PARENTHESES
+        BRACKET_LEFT,
+        BRACKET_RIGHT -> ScriptHighlighterColors.BRACKETS
         LINE_COMMENT -> ScriptHighlighterColors.LINE_COMMENT
         else -> null
     }

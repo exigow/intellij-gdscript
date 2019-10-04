@@ -7,6 +7,24 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test var`() =
         assertValid("var hp = 73")
 
+    fun `test assign`() =
+        assertValid("hp -= 10")
+
+    fun `test negated number`() =
+        assertValid("negated = -1")
+
+    fun `test negate reference`() =
+        assertValid("negated = -value")
+
+    fun `test get_node`() =
+        assertValid("""get_node("C/Gamma/One")""")
+
+    fun `test get_node $ sugar`() =
+        assertValid("var node = \$C/Gamma/One")
+
+    fun `test get_node local variable assignment`() =
+        assertValid("\$C/Gamma/One.text = \"New Text\"")
+
     fun `test dictionary assignment entries`() =
         assertValid("""
         const CORNER = {
@@ -41,9 +59,6 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test const`() =
         assertValid("const MAX_HP = 100")
 
-    fun `test const lowercase warning`() =
-        assertValid("""const <weak_warning descr="Constant should have an upper case name such as `MAX_HP`">max_hp</weak_warning> = 100""")
-
     fun `test array subscription`() =
         assertValid("""d[4] = "hello"""")
 
@@ -54,7 +69,7 @@ class ScriptTestCase : BasePlatformTestCase() {
         assertValid("position.x = 1")
 
     fun `test function declaration`() =
-        assertValid("func bake():")
+        assertValid("static func create() -> Node:")
 
     private fun assertValid(code: String) {
         myFixture.configureByText(ScriptFileType, code.trimIndent())
