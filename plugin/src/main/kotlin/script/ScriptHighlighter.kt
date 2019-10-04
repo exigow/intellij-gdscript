@@ -39,6 +39,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         ELSE,
         RETURN,
         PASS,
+        SIGNAL,
         OPERATION_KEYWORD,
         NOT_KEYWORD,
         VALUE_KEYWORD -> ScriptHighlighterColors.KEYWORD

@@ -3,7 +3,7 @@ grammar Script;
 @header {package script.grammar;}
 
 file: statement* EOF;
-statement: var_statement | const_statement | assign_statement | function_statement | invoke_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | pass_statement | value_with_operators_statement;
+statement: var_statement | const_statement | assign_statement | function_statement | invoke_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | pass_statement | signal_statement | value_with_operators_statement;
 
 var_statement: EXPORT? list? ONREADY? VAR typed_id (ASSIGN_SIGN value_with_operators_statement)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
 const_statement: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN value_with_operators_statement;
@@ -21,6 +21,7 @@ elif_statement: ELIF value_with_operators_statement COLON;
 else_statement: ELSE COLON;
 return_statement: RETURN value_with_operators_statement;
 pass_statement: PASS;
+signal_statement: SIGNAL IDENTIFIER;
 value_with_operators_statement: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
 
 typed_id: IDENTIFIER (COLON IDENTIFIER)?;
@@ -49,6 +50,7 @@ ELIF: 'elif';
 ELSE: 'else';
 RETURN: 'return';
 PASS: 'pass';
+SIGNAL: 'signal';
 ASSIGN_SIGN: '=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '!' | '&&' | '||';

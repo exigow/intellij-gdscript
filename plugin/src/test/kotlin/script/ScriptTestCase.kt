@@ -34,6 +34,12 @@ class ScriptTestCase : BasePlatformTestCase() {
     fun `test export numbers`() =
         assertValid("""export(float, -10, 20, 0.2) var k""")
 
+    fun `test export 2D array`() =
+        assertValid("""export(Array, Array, float) var two_dimensional = [[1.0, 2.0], [3.0, 4.0]]""")
+
+    fun `test signal`() =
+        assertValid("""signal health_depleted""")
+
     fun `test multiline string comment-like`() =
         assertValid("\"\"\"Inventory.gd\"\"\"")
 
