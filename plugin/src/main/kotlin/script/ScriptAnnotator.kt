@@ -20,8 +20,6 @@ class ScriptAnnotator : Annotator {
                 holder.colorize(current, CLASS_NAME)
             if (current.text.length >= 2 && current.text.isUnderscoreCase())
                 holder.colorize(current, CONSTANT)
-            if (current.text == "self")
-                holder.colorize(current, KEYWORD)
         }
     }
 
