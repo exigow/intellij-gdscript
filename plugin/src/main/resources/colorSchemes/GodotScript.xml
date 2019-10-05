@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<list>
+    <option name="GODOT_SCRIPT.BUILT_IN_FUNCTION">
+        <value>
+            <option name="FONT_TYPE" value="2"/> <!-- italics -->
+        </value>
+    </option>
+    <option name="GODOT_SCRIPT.CLASS_TYPE">
+        <value>
+            <option name="FONT_TYPE" value="2"/>
+        </value>
+    </option>
+</list>

@@ -3,10 +3,11 @@ package script
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import script.grammar.ScriptLexer
-import script.grammar.ScriptLexer.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
+import script.colors.ScriptColor
+import script.grammar.ScriptLexer
+import script.grammar.ScriptLexer.*
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
@@ -18,9 +19,9 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
     override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun getColor(tokenType: Int) = when (tokenType) {
-        NUMBER -> ScriptHighlighterColors.NUMBER
+        NUMBER -> ScriptColor.NUMBER.key
         STRING,
-        MULTILINE_STRING -> ScriptHighlighterColors.STRING
+        MULTILINE_STRING -> ScriptColor.STRING.key
         EXPORT,
         ONREADY,
         VAR,
@@ -42,22 +43,22 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         SIGNAL,
         OPERATION_KEYWORD,
         NOT_KEYWORD,
-        VALUE_KEYWORD -> ScriptHighlighterColors.KEYWORD
-        METADATA -> ScriptHighlighterColors.METADATA
-        IDENTIFIER -> ScriptHighlighterColors.IDENTIFIER
+        VALUE_KEYWORD -> ScriptColor.KEYWORD.key
+        METADATA -> ScriptColor.NODE_PATH.key
+        IDENTIFIER -> ScriptColor.IDENTIFIER.key
         ARROW,
         MINUS,
         ASSIGN_SIGN,
-        OPERATION_SIGN -> ScriptHighlighterColors.OPERATION_SIGN
-        COMMA -> ScriptHighlighterColors.COMMA
-        DOT -> ScriptHighlighterColors.DOT
+        OPERATION_SIGN -> ScriptColor.OPERATION_SIGN.key
+        COMMA -> ScriptColor.COMMA.key
+        DOT -> ScriptColor.DOT.key
         BRACE_LEFT,
-        BRACE_RIGHT -> ScriptHighlighterColors.BRACES
+        BRACE_RIGHT -> ScriptColor.BRACES.key
         PARENTHES_LEFT,
-        PARENTHES_RIGHT -> ScriptHighlighterColors.PARENTHESES
+        PARENTHES_RIGHT -> ScriptColor.PARENTHESES.key
         BRACKET_LEFT,
-        BRACKET_RIGHT -> ScriptHighlighterColors.BRACKETS
-        LINE_COMMENT -> ScriptHighlighterColors.LINE_COMMENT
+        BRACKET_RIGHT -> ScriptColor.BRACKETS.key
+        LINE_COMMENT -> ScriptColor.LINE_COMMENT.key
         else -> null
     }
 
