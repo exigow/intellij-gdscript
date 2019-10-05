@@ -4,7 +4,7 @@ import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class ScriptCommenterTestCase : BasePlatformTestCase() {
+class ScriptCommenterTest : BasePlatformTestCase() {
 
     fun `test comment`() =
         assertCommentAction("const M<caret>AX = 100", "#const MAX = 100")

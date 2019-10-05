@@ -10,7 +10,7 @@ import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
 
 
-class LiteralValueCompletion : CompletionContributor() {
+class LiteralCompletionContributor : CompletionContributor() {
 
     init {
         extend(BASIC, psiElement(), LiteralProvider)

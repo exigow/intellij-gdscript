@@ -12,7 +12,7 @@ import com.intellij.util.PlatformIcons.CLASS_ICON
 import com.intellij.util.ProcessingContext
 
 
-class TypeCompletion : CompletionContributor() {
+class TypeCompletionContributor : CompletionContributor() {
 
     init {
         extend(BASIC, psiElement().afterLeaf("->"), TypeProvider)

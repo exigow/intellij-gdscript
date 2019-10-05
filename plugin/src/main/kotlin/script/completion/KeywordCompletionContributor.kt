@@ -13,7 +13,7 @@ import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
 
 
-class KeywordCompletion : CompletionContributor() {
+class KeywordCompletionContributor : CompletionContributor() {
 
     init {
         extend(BASIC, psiElement(), BasicLookupProvider(create("if").withStatementCompletion()))

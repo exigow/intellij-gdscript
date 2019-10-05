@@ -1,6 +1,6 @@
 package script.completion
 
-class TypeCompletionTest : CompletionTest() {
+class TypeCompletionContributorTest : CompletionContributorTest() {
 
     fun `test var Vector2 type`() =
         assertCompletionEquals("var position: Vec<caret>", "Vector2")

@@ -2,70 +2,70 @@ package script
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class ScriptTestCase : BasePlatformTestCase() {
+class ErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test var`() =
-        assertValid("var hp")
+        assertNoErrors("var hp")
 
     fun `test var with assignment`() =
-        assertValid("var hp = 73")
+        assertNoErrors("var hp = 73")
 
     fun `test var typed`() =
-        assertValid("var hp: int = 73")
+        assertNoErrors("var hp: int = 73")
 
     fun `test var setget`() =
-        assertValid("var hp setget set_hp, get_hp")
+        assertNoErrors("var hp setget set_hp, get_hp")
 
     fun `test var setget with getter only`() =
-        assertValid("var hp setget ,get_hp")
+        assertNoErrors("var hp setget ,get_hp")
 
     fun `test export`() =
-        assertValid("export var number = 5")
+        assertNoErrors("export var number = 5")
 
     fun `test export int`() =
-        assertValid("export(int) var number")
+        assertNoErrors("export(int) var number")
 
     fun `test export strings`() =
-        assertValid("""export(int, "Warrior", "Magician", "Thief") var character_class""")
+        assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
 
     fun `test export FILE`() =
-        assertValid("""export(String, FILE, "*.txt") var f""")
+        assertNoErrors("""export(String, FILE, "*.txt") var f""")
 
     fun `test export numbers`() =
-        assertValid("""export(float, -10, 20, 0.2) var k""")
+        assertNoErrors("""export(float, -10, 20, 0.2) var k""")
 
     fun `test export 2D array`() =
-        assertValid("""export(Array, Array, float) var two_dimensional = [[1.0, 2.0], [3.0, 4.0]]""")
+        assertNoErrors("""export(Array, Array, float) var two_dimensional = [[1.0, 2.0], [3.0, 4.0]]""")
 
     fun `test signal`() =
-        assertValid("""signal health_depleted""")
+        assertNoErrors("""signal health_depleted""")
 
     fun `test multiline string comment-like`() =
-        assertValid("\"\"\"Inventory.gd\"\"\"")
+        assertNoErrors("\"\"\"Inventory.gd\"\"\"")
 
     fun `test increment`() =
-        assertValid("hp += 10")
+        assertNoErrors("hp += 10")
 
     fun `test negate number`() =
-        assertValid("negated = -1")
+        assertNoErrors("negated = -1")
 
     fun `test negate`() =
-        assertValid("negated = -value")
+        assertNoErrors("negated = -value")
 
     fun `test get_node`() =
-        assertValid("""get_node("C/Gamma/One")""")
+        assertNoErrors("""get_node("C/Gamma/One")""")
 
     fun `test self keyword`() =
-        assertValid("self.get_position().x = 1")
+        assertNoErrors("self.get_position().x = 1")
 
     fun `test get_node $ sugar`() =
-        assertValid("var node = \$C/Gamma/One")
+        assertNoErrors("var node = \$C/Gamma/One")
 
     fun `test get_node local variable assignment`() =
-        assertValid("\$C/Gamma/One.text = \"New Text\"")
+        assertNoErrors("\$C/Gamma/One.text = \"New Text\"")
 
     fun `test dictionary assignment entries`() =
-        assertValid("""
+        assertNoErrors("""
             const CORNER = {
                 W = 0,
                 NW = 1,
@@ -77,7 +77,7 @@ class ScriptTestCase : BasePlatformTestCase() {
         """)
 
     fun `test constant dictionary with string keys`() =
-        assertValid("""
+        assertNoErrors("""
             const HEROES = {
                 "Warrior": 0,
                 "Magician": 1,
@@ -86,7 +86,7 @@ class ScriptTestCase : BasePlatformTestCase() {
         """)
 
     fun `test assigned dictionary with number keys`() =
-        assertValid("""
+        assertNoErrors("""
             dict = {
                 100: "INFO",
                 400: "WARN",
@@ -94,48 +94,48 @@ class ScriptTestCase : BasePlatformTestCase() {
         """)
 
     fun `test named enum`() =
-        assertValid("""
+        assertNoErrors("""
             enum Color {
                 RED, GREEN, BLUE
             }
         """)
 
     fun `test enum`() =
-        assertValid("enum {THING_1, THING_2, ANOTHER_THING = -1}")
+        assertNoErrors("enum {THING_1, THING_2, ANOTHER_THING = -1}")
 
     fun `test single line dictionary`() =
-        assertValid("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
+        assertNoErrors("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
 
     fun `test const`() =
-        assertValid("const MAX_HP = 100")
+        assertNoErrors("const MAX_HP = 100")
 
     fun `test array subscription`() =
-        assertValid("""table[4] = "hello"""")
+        assertNoErrors("""table[4] = "hello"""")
 
     fun `test dictionary subscription`() =
-        assertValid("""dict["Hi!"] = 0""")
+        assertNoErrors("""dict["Hi!"] = 0""")
 
     fun `test local variable assignment`() =
-        assertValid("position.x = 1")
+        assertNoErrors("position.x = 1")
 
     fun `test typed function with non-typed argument`() =
-        assertValid("""
+        assertNoErrors("""
             func hit(damage) -> bool:
                 health_points -= damage
                 return health_points <= 0
         """)
 
     fun `test function with pass statement`() =
-        assertValid("""
+        assertNoErrors("""
             func _on_area_entered(area : CollisionObject2D) -> void:
                 pass
         """)
 
 
     fun `test static typed function with typed arguments`() =
-        assertValid("static func max(a: float, b: float) -> float:")
+        assertNoErrors("static func max(a: float, b: float) -> float:")
 
-    private fun assertValid(code: String) {
+    private fun assertNoErrors(code: String) {
         myFixture.configureByText(ScriptFileType, code.trimIndent())
         myFixture.checkHighlighting()
     }

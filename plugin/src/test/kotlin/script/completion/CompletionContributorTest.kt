@@ -3,7 +3,7 @@ package script.completion
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import script.ScriptFileType
 
-abstract class CompletionTest : BasePlatformTestCase() {
+abstract class CompletionContributorTest : BasePlatformTestCase() {
 
     fun assertCompletionEquals(code: String, expectedLookup: String) {
         myFixture.configureByText(ScriptFileType, code)
