@@ -5,10 +5,10 @@ grammar Script;
 file: statement* EOF;
 statement: var_statement | const_statement | assign_statement | function_statement | invoke_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | pass_statement | signal_statement | chain;
 
-var_statement: EXPORT? list? ONREADY? VAR typed_id (ASSIGN_SIGN chain)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
-const_statement: CONST typed_id (COLON IDENTIFIER)? ASSIGN_SIGN chain;
+var_statement: EXPORT? list? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN_SIGN chain)? SETGET? IDENTIFIER? COMMA? IDENTIFIER?;
+const_statement: CONST IDENTIFIER (COLON type)? ASSIGN_SIGN chain;
 assign_statement: chain ASSIGN_SIGN chain;
-function_statement: STATIC? FUNC invoke_statement (ARROW IDENTIFIER)? COLON;
+function_statement: STATIC? FUNC IDENTIFIER list (ARROW type)? COLON;
 invoke_statement: IDENTIFIER list;
 for_statement: FOR chain COLON;
 while_statement: WHILE chain COLON;
@@ -24,13 +24,14 @@ pass_statement: PASS;
 signal_statement: SIGNAL IDENTIFIER;
 chain: value ((OPERATION_SIGN | OPERATION_KEYWORD | MINUS | DOT) value)*;
 
-typed_id: IDENTIFIER (COLON IDENTIFIER)?;
 subscribe: IDENTIFIER array;
 list: BRACE_LEFT chain? (COMMA chain)* BRACE_RIGHT;
 array: BRACKET_LEFT chain? (COMMA chain)* BRACKET_RIGHT;
 dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
 dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN_SIGN) chain)?;
-value: (MINUS | NOT_KEYWORD)? (subscribe | invoke_statement | list | array | dictionary | typed_id | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
+typed_argument: IDENTIFIER (COLON type);
+type: IDENTIFIER | PRIMITIVE_KEYWORD;
+value: (MINUS | NOT_KEYWORD)? (subscribe | invoke_statement | list | array | dictionary | typed_argument | type | METADATA | NUMBER | STRING | VALUE_KEYWORD | MULTILINE_STRING | LINE_COMMENT);
 
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -57,6 +58,7 @@ OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<
 OPERATION_KEYWORD: 'and' | 'or' | 'in' | 'is' | 'as';
 NOT_KEYWORD: 'not';
 VALUE_KEYWORD: 'self' | 'null' | 'true' | 'false';
+PRIMITIVE_KEYWORD: 'bool' | 'int' | 'float' | 'void';
 
 COMMA: ',';
 DOT: '.';

@@ -13,12 +13,9 @@ import script.colors.ScriptColor
 class TypeAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element is LeafPsiElement && element !is PsiWhiteSpace) {
-            if (element.text in PRIMITIVE_TYPES)
-                holder.colorize(element, ScriptColor.PRIMITIVE_TYPE.key)
+        if (element is LeafPsiElement && element !is PsiWhiteSpace)
             if (element.text in CLASS_TYPES)
                 holder.colorize(element, ScriptColor.CLASS_TYPE.key)
-        }
     }
 
     private fun AnnotationHolder.colorize(element: LeafPsiElement, attributesKey: TextAttributesKey) =
@@ -27,10 +24,7 @@ class TypeAnnotator : Annotator {
 
     companion object {
 
-        private val PRIMITIVE_TYPES = arrayOf("bool", "int", "float")
-        private val CLASS_TYPES = GodotApi.CLASSES
-            .map { it.name }
-            .filter { it !in PRIMITIVE_TYPES }
+        private val CLASS_TYPES = GodotApi.CLASSES.map { it.name }
 
     }
 

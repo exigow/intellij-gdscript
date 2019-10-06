@@ -43,7 +43,8 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         SIGNAL,
         OPERATION_KEYWORD,
         NOT_KEYWORD,
-        VALUE_KEYWORD -> ScriptColor.KEYWORD
+        VALUE_KEYWORD,
+        PRIMITIVE_KEYWORD-> ScriptColor.KEYWORD
         METADATA -> ScriptColor.NODE_PATH
         IDENTIFIER -> ScriptColor.IDENTIFIER
         ARROW,
