@@ -21,7 +21,6 @@ enum class ScriptColor(val displayName: String, val key: TextAttributesKey, val 
     LINE_COMMENT("Comment line", createTextAttributesKey("GODOT_SCRIPT.LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)),
     BUILT_IN_FUNCTION("Built-in function", createTextAttributesKey("GODOT_SCRIPT.BUILT_IN_FUNCTION", DefaultLanguageHighlighterColors.IDENTIFIER), hidden = true),
     FUNCTION_DECLARATION("Function declaration", createTextAttributesKey("GODOT_SCRIPT.FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION), hidden = true),
-    CLASS_TYPE("Class type", createTextAttributesKey("GODOT_SCRIPT.CLASS_TYPE", DefaultLanguageHighlighterColors.CLASS_NAME), hidden = true),
-    PRIMITIVE_TYPE("Primitive type", createTextAttributesKey("GODOT_SCRIPT.PRIMITIVE_TYPE", DefaultLanguageHighlighterColors.KEYWORD), hidden = true),
+    CLASS_TYPE("Class type", createTextAttributesKey("GODOT_SCRIPT.CLASS_TYPE", DefaultLanguageHighlighterColors.CLASS_NAME), hidden = true)
 
 }
