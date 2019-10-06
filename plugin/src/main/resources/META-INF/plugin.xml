@@ -32,9 +32,12 @@
 		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="script.ScriptHighlighterFactory" language="Godot GDScript"/>
 		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
+
 		<annotator implementationClass="script.annotator.BuiltInFunctionAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.ConstantAnnotator" language="Godot GDScript"/>
+		<annotator implementationClass="script.annotator.FunctionAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.TypeAnnotator" language="Godot GDScript"/>
+
 		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
 		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
 	</extensions>
