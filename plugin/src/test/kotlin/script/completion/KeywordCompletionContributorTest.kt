@@ -1,6 +1,6 @@
 package script.completion
 
-class KeywordCompletionContributorTest : CompletionContributorTest() {
+class KeywordCompletionContributorTest : BaseCompletionContributorTest() {
 
     fun `test export`() =
         assertCompletionEquals("ex<caret>", "export")

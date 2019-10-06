@@ -1,6 +1,6 @@
 package script.completion
 
-class BuiltInFunctionCompletionContributorTest : CompletionContributorTest() {
+class BuiltInFunctionCompletionContributorTest : BaseCompletionContributorTest() {
 
     fun `test sin`() =
         assertCompletionEquals("x = si<caret>", "sin")
