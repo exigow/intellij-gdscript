@@ -40,5 +40,6 @@
 		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
 		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
 		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
+		<lang.braceMatcher implementationClass="script.typing.BraceMatcher" language="Godot GDScript"/>
 	</extensions>
 </idea-plugin>
