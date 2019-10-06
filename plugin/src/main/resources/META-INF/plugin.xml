@@ -15,6 +15,7 @@
 		<p>Source code: <a href="https://github.com/exigow/intellij-gdscript">github.com/exigow/intellij-gdscript</a></p>
     ]]></description>
 	<extensions defaultExtensionNs="com.intellij">
+		<!-- config files -->
 		<colorSettingsPage implementation="config.ConfigColorSettingsPage"/>
 		<lang.commenter implementationClass="config.ConfigCommenter" language="Godot Config"/>
 		<fileType implementationClass="config.ConfigFileType" extensions="cfg" name="Godot CFG file" language="Godot Config"/>
@@ -23,21 +24,20 @@
 		<fileType implementationClass="config.ConfigFileType" extensions="godot" name="Godot PROJECT file" language="Godot Config"/>
 		<lang.syntaxHighlighterFactory implementationClass="config.ConfigHighlighterFactory" language="Godot Config"/>
 		<lang.parserDefinition implementationClass="config.ConfigParserDefinition" language="Godot Config"/>
-		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
-		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.BuiltInFunctionCompletionContributor" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.KeywordCompletionContributor" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.LiteralCompletionContributor" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.TypeCompletionContributor" language="Godot GDScript"/>
-		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="script.ScriptHighlighterFactory" language="Godot GDScript"/>
-		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
-
+		<!-- script files -->
 		<annotator implementationClass="script.annotator.BuiltInFunctionAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.ConstantAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.FunctionAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.TypeAnnotator" language="Godot GDScript"/>
-
+		<completion.contributor implementationClass="script.completion.BuiltInFunctionCompletionContributor" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.KeywordCompletionContributor" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.LiteralCompletionContributor" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.TypeCompletionContributor" language="Godot GDScript"/>
+		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
+		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
+		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="script.ScriptHighlighterFactory" language="Godot GDScript"/>
+		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
 		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
 		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
 	</extensions>
