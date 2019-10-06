@@ -25,6 +25,7 @@
 		<lang.parserDefinition implementationClass="config.ConfigParserDefinition" language="Godot Config"/>
 		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
 		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.BuiltInFunctionCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.KeywordCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.LiteralCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.TypeCompletionContributor" language="Godot GDScript"/>
