@@ -1,18 +1,13 @@
 <idea-plugin>
 	<id>gdscript</id>
-	<name>GDScript</name>
+	<name>Godot GDScript</name>
 	<version>0.11</version>
 	<vendor>Jakub Błach</vendor>
 	<idea-version since-build="192"/> <!-- version 2019.2 -->
 	<depends>com.intellij.modules.lang</depends>
 	<description><![CDATA[
-		<p>Godot Engine GDScript language support</p>
- 		<p>Features:</p>
-		<ul>
-			<li>Syntax highlighting</li>
-			<li>Code completion</li>
-		</ul>
-		<p>Source code: <a href="https://github.com/exigow/intellij-gdscript">github.com/exigow/intellij-gdscript</a></p>
+		<p>Add support for the Godot GDScript language.</p>
+		<p><a href="https://github.com/exigow/intellij-gdscript">GitHub source</a></p>
     ]]></description>
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- config files -->
