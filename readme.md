@@ -6,6 +6,7 @@
 
 * `./gradlew :plugin:runIde` - run sandbox with installed plugin.
 * `./gradlew :plugin:generateGrammarSource` - generate lexer/parser from ANTLR grammar sources.
+* `./gradlew :plugin:test` - run plugin tests.
 * `./gradlew :api:run` - generate completion data using [Godot API sources](https://github.com/godotengine/godot/tree/master/doc/classes).
 
 ## Manual installation
