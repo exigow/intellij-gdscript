@@ -10,7 +10,7 @@ class ConstantAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element is LeafPsiElement && isConstantCase(element.text))
-            holder.createColorInformation(element, ScriptColor.CONSTANT)
+            holder.createColorAnnotation(element, ScriptColor.CONSTANT)
     }
 
     private fun isConstantCase(text: String) = text.length >= 2 && text.all { it.isUnderscoreCase() }

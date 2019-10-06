@@ -14,7 +14,7 @@ class FunctionAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.isToken(IDENTIFIER) && element.parent.isRule(RULE_function_statement))
-            holder.createColorInformation(element, FUNCTION_DECLARATION)
+            holder.createColorAnnotation(element, FUNCTION_DECLARATION)
     }
 
     private fun PsiElement.isToken(expectedToken: Int): Boolean {

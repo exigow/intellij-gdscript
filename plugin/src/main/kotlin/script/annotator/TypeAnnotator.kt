@@ -12,7 +12,7 @@ class TypeAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element is LeafPsiElement && element !is PsiWhiteSpace && element.text in CLASS_TYPES)
-            holder.createColorInformation(element, ScriptColor.CLASS_TYPE)
+            holder.createColorAnnotation(element, ScriptColor.CLASS_TYPE)
     }
 
     companion object {

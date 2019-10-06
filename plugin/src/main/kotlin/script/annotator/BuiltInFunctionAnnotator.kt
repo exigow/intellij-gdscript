@@ -10,7 +10,7 @@ class BuiltInFunctionAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.text in LANGUAGE_METHODS)
-            holder.createColorInformation(element, ScriptColor.BUILT_IN_FUNCTION)
+            holder.createColorAnnotation(element, ScriptColor.BUILT_IN_FUNCTION)
     }
 
     companion object {
