@@ -11,7 +11,7 @@ class BuiltInFunctionAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.text in LANGUAGE_METHODS)
-            holder.createAnnotation(INFORMATION, element.textRange, null)
+            holder.createAnnotation(INFORMATION, element.textRange, "Built-in function")
                 .also { it.textAttributes = ScriptColor.BUILT_IN_FUNCTION.key }
     }
 

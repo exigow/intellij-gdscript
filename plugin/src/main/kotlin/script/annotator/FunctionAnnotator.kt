@@ -16,7 +16,7 @@ class FunctionAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.isToken(IDENTIFIER)) {
             if (element.parent.isRule(RULE_function_statement))
-                holder.createAnnotation(INFORMATION, element.textRange, null)
+                holder.createAnnotation(INFORMATION, element.textRange, "Function")
                     .also { it.textAttributes = FUNCTION_DECLARATION.key }
         }
     }

@@ -19,7 +19,7 @@ class TypeAnnotator : Annotator {
     }
 
     private fun AnnotationHolder.colorize(element: LeafPsiElement, attributesKey: TextAttributesKey) =
-        createAnnotation(INFORMATION, element.textRange, null)
+        createAnnotation(INFORMATION, element.textRange, "Type")
             .also { it.textAttributes = attributesKey }
 
     companion object {
