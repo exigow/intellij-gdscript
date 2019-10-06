@@ -14,14 +14,14 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
     override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
         if (element !is TokenIElementType)
             pack(null)
-        else pack(getColor(element.antlrTokenType))
+        else pack(getColor(element.antlrTokenType)?.key)
 
     override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun getColor(tokenType: Int) = when (tokenType) {
-        NUMBER -> ScriptColor.NUMBER.key
+        NUMBER -> ScriptColor.NUMBER
         STRING,
-        MULTILINE_STRING -> ScriptColor.STRING.key
+        MULTILINE_STRING -> ScriptColor.STRING
         EXPORT,
         ONREADY,
         VAR,
@@ -43,22 +43,22 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         SIGNAL,
         OPERATION_KEYWORD,
         NOT_KEYWORD,
-        VALUE_KEYWORD -> ScriptColor.KEYWORD.key
-        METADATA -> ScriptColor.NODE_PATH.key
-        IDENTIFIER -> ScriptColor.IDENTIFIER.key
+        VALUE_KEYWORD -> ScriptColor.KEYWORD
+        METADATA -> ScriptColor.NODE_PATH
+        IDENTIFIER -> ScriptColor.IDENTIFIER
         ARROW,
         MINUS,
         ASSIGN_SIGN,
-        OPERATION_SIGN -> ScriptColor.OPERATION_SIGN.key
-        COMMA -> ScriptColor.COMMA.key
-        DOT -> ScriptColor.DOT.key
+        OPERATION_SIGN -> ScriptColor.OPERATION_SIGN
+        COMMA -> ScriptColor.COMMA
+        DOT -> ScriptColor.DOT
         BRACE_LEFT,
-        BRACE_RIGHT -> ScriptColor.BRACES.key
+        BRACE_RIGHT -> ScriptColor.BRACES
         PARENTHES_LEFT,
-        PARENTHES_RIGHT -> ScriptColor.PARENTHESES.key
+        PARENTHES_RIGHT -> ScriptColor.PARENTHESES
         BRACKET_LEFT,
-        BRACKET_RIGHT -> ScriptColor.BRACKETS.key
-        LINE_COMMENT -> ScriptColor.LINE_COMMENT.key
+        BRACKET_RIGHT -> ScriptColor.BRACKETS
+        LINE_COMMENT -> ScriptColor.LINE_COMMENT
         else -> null
     }
 
