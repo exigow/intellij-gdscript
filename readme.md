@@ -12,6 +12,6 @@
 ## Manual installation
 
 1. Run `./gradlew :plugin:buildPlugin` to create `plugin.zip` archive.
-2. Start IntelliJ, open `Preferences`, section `Plugins`, :gear: icon, choose `Install plugin from disk...`.
+2. Start IntelliJ, open `Preferences`, section `Plugins`, click :gear: icon, choose `Install plugin from disk...`.
 4. Open `<PROJECT>/plugin/build/distributions/plugin.zip` archive.
 3. Restart IntelliJ.
