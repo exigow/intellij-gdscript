@@ -8,6 +8,7 @@ import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.FUNCTION_ICON
 import com.intellij.util.ProcessingContext
+import kotlin.math.min
 
 
 class BuiltInFunctionCompletionContributor : CompletionContributor() {
@@ -42,7 +43,7 @@ class BuiltInFunctionCompletionContributor : CompletionContributor() {
             }
 
         private fun InsertionContext.hasNoOpenBraceAfterCaret() =
-            file.text[tailOffset] != '('
+            file.text[min(tailOffset, file.text.length - 1)] != '('
 
         private fun InsertionContext.insert(text: String) =
             document.insertString(selectionEndOffset, text)
