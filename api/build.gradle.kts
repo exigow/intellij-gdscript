@@ -15,3 +15,9 @@ dependencies {
 application {
     mainClassName = "main"
 }
+
+tasks {
+    register("updateCompletion") {
+        dependsOn(run)
+    }
+}
