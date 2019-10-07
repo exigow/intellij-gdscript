@@ -13,7 +13,7 @@ Plugin is compatible with **any** product developed by JetBrains based on the In
 
 ## Manual installation
 
-1. Run `./gradlew :plugin:buildPlugin` to create `plugin.zip` archive.
+1. Run `./gradlew buildPlugin` to create `plugin.zip` archive.
 2. Start IntelliJ, open `Preferences`, section `Plugins`, find :gear: icon, option `Install plugin from disk...`.
 4. Open `<PROJECT>/plugin/build/distributions/plugin.zip` archive.
 3. Restart IntelliJ.
