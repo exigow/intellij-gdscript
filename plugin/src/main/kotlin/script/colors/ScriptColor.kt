@@ -10,7 +10,7 @@ enum class ScriptColor(val displayName: String, val key: TextAttributesKey, val 
     STRING("String", createTextAttributesKey("GODOT_SCRIPT.STRING", DefaultLanguageHighlighterColors.STRING)),
     KEYWORD("Keyword", createTextAttributesKey("GODOT_SCRIPT.KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)),
     IDENTIFIER("Identifier", createTextAttributesKey("GODOT_SCRIPT.IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)),
-    NODE_PATH("Node", createTextAttributesKey("GODOT_SCRIPT.NODE_PATH", DefaultLanguageHighlighterColors.METADATA)),
+    NODE("Node path", createTextAttributesKey("GODOT_SCRIPT.NODE_PATH", DefaultLanguageHighlighterColors.METADATA)),
     CONSTANT("Constant", createTextAttributesKey("GODOT_SCRIPT.CONSTANT", DefaultLanguageHighlighterColors.CONSTANT), hidden = true),
     OPERATION_SIGN("Operator sign", createTextAttributesKey("GODOT_SCRIPT.OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN)),
     COMMA("Comma", createTextAttributesKey("GODOT_SCRIPT.COMMA", DefaultLanguageHighlighterColors.COMMA)),

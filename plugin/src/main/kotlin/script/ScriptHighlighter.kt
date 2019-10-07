@@ -41,15 +41,25 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         RETURN,
         PASS,
         SIGNAL,
-        OPERATION_KEYWORD,
-        NOT_KEYWORD,
-        VALUE_KEYWORD,
-        PRIMITIVE_KEYWORD-> ScriptColor.KEYWORD
-        METADATA -> ScriptColor.NODE_PATH
+        AND,
+        OR,
+        IN,
+        IS,
+        AS,
+        NOT,
+        TRUE,
+        FALSE,
+        SELF,
+        BOOL,
+        INT,
+        FLOAT,
+        VOID -> ScriptColor.KEYWORD
+        NODE -> ScriptColor.NODE
         IDENTIFIER -> ScriptColor.IDENTIFIER
         ARROW,
         MINUS,
-        ASSIGN_SIGN,
+        ASSIGN,
+        ASSIGN_SPECIAL,
         OPERATION_SIGN -> ScriptColor.OPERATION_SIGN
         COMMA -> ScriptColor.COMMA
         DOT -> ScriptColor.DOT
