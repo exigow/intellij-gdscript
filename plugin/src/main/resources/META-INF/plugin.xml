@@ -24,7 +24,6 @@
 		<annotator implementationClass="script.annotator.FunctionAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.TypeAnnotator" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.BuiltInFunctionCompletionContributor" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.KeywordCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.LiteralCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.TypeCompletionContributor" language="Godot GDScript"/>
 		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>

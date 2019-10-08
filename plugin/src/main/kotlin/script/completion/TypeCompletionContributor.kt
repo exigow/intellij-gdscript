@@ -10,17 +10,16 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.CLASS_ICON
 import com.intellij.util.ProcessingContext
+import script.psi.TypeNode
 
 
 class TypeCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().afterLeaf("->"), TypeProvider)
-        extend(BASIC, psiElement().afterLeaf(":"), TypeProvider)
-        extend(BASIC, psiElement().afterLeaf("extends"), TypeProvider)
+        extend(BASIC, psiElement().inside(TypeNode::class.java), TypeProvider)
     }
 
-    object TypeProvider : CompletionProvider<CompletionParameters>() {
+    private object TypeProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
             val names = GodotApi.CLASSES.map { it.name }

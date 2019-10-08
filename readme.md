@@ -2,6 +2,8 @@
 
 ![Travis (.org)](https://img.shields.io/travis/exigow/intellij-gdscript) ![GitHub](https://img.shields.io/github/license/exigow/intellij-gdscript)
 
+TODO fix build link (should point to build status page, not svg image file)
+
 Plugin is compatible with **any** product developed by JetBrains based on the IntelliJ Platform (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion*, and so on).
 
 ## Usage & Development

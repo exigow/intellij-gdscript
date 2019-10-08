@@ -2,8 +2,9 @@ grammar Script;
 
 @header {package script.grammar;}
 
-file: (variable | constant | assign | function | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif | else_statement | return_statement | PASS | signal | expression)* EOF;
-variable: (EXPORT list?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+file: (variable | constant | assign | function | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif | else_statement | return_statement | PASS | signal | expression)+ EOF;
+variable: (EXPORT (BRACE_LEFT export_argument? (COMMA export_argument)* BRACE_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+export_argument: IDENTIFIER | NUMBER | STRING | type;
 constant: CONST IDENTIFIER (COLON type)? ASSIGN expression;
 assign: expression (ASSIGN | ASSIGN_SPECIAL) expression;
 function: STATIC? FUNC IDENTIFIER BRACE_LEFT argument? (COMMA argument)* BRACE_RIGHT (ARROW type)? COLON;
@@ -12,7 +13,7 @@ invoke: IDENTIFIER list;
 for_statement: FOR expression COLON;
 while_statement: WHILE expression COLON;
 class_statement: CLASS IDENTIFIER COLON;
-extends_statement: EXTENDS IDENTIFIER;
+extends_statement: EXTENDS type;
 class_name: CLASS_NAME IDENTIFIER;
 enum_statement: ENUM IDENTIFIER? PARENTHES_LEFT enum_entry (COMMA enum_entry)* PARENTHES_RIGHT;
 enum_entry: IDENTIFIER (ASSIGN NUMBER)?;
@@ -25,9 +26,11 @@ subscribe: IDENTIFIER BRACKET_LEFT expression BRACKET_RIGHT;
 list: BRACE_LEFT expression? (COMMA expression)* BRACE_RIGHT;
 array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
 dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
-dictionary_entry: (STRING | NUMBER | IDENTIFIER) ((COLON | ASSIGN) expression)?;
+dictionary_entry: (STRING | NUMBER) COLON expression;
+dictionary_lua_style: PARENTHES_LEFT dictionary_lua_style_entry? (COMMA dictionary_lua_style_entry)* PARENTHES_RIGHT;
+dictionary_lua_style_entry: IDENTIFIER ASSIGN expression;
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT) value)*;
-value: (MINUS | NOT)? (subscribe | invoke | list | array | dictionary | type | NODE | NUMBER | STRING | SELF | TRUE | FALSE | MULTILINE_STRING | LINE_COMMENT);
+value: (MINUS | NOT)? (invoke | subscribe | list | array | dictionary | dictionary_lua_style | IDENTIFIER | NODE | NUMBER | STRING | SELF | TRUE | FALSE | MULTILINE_STRING | LINE_COMMENT);
 type: IDENTIFIER | BOOL | INT | FLOAT | VOID;
 
 EXPORT: 'export';

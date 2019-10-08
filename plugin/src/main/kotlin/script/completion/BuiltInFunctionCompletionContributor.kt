@@ -8,13 +8,14 @@ import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.FUNCTION_ICON
 import com.intellij.util.ProcessingContext
+import script.psi.ValueNode
 import kotlin.math.min
 
 
 class BuiltInFunctionCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement(), LiteralProvider)
+        extend(BASIC, psiElement().inside(ValueNode::class.java), LiteralProvider)
     }
 
     private object LiteralProvider : CompletionProvider<CompletionParameters>() {
@@ -42,6 +43,9 @@ class BuiltInFunctionCompletionContributor : CompletionContributor() {
                 }
             }
 
+        private fun GodotApi.Class.Method.joinedArguments() =
+            arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
+
         private fun InsertionContext.hasNoOpenBraceAfterCaret() =
             file.text[min(tailOffset, file.text.length - 1)] != '('
 
@@ -50,9 +54,6 @@ class BuiltInFunctionCompletionContributor : CompletionContributor() {
 
         private fun InsertionContext.moveCaret(steps: Int) =
             EditorModificationUtil.moveCaretRelatively(editor, steps)
-
-        private fun GodotApi.Class.Method.joinedArguments() =
-            arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
 
     }
 

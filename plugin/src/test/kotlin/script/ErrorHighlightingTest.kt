@@ -4,136 +4,128 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class ErrorHighlightingTest : BasePlatformTestCase() {
 
-    fun `test var`() =
-        assertNoErrors("var hp")
+    fun `test const`() =
+        assertNoErrors("const MAX_HP = 100")
 
-    fun `test var with assignment`() =
-        assertNoErrors("var hp = 73")
+    fun `test const typed`() =
+        assertNoErrors("const MAX_HP: int = 100")
 
-    fun `test var typed`() =
-        assertNoErrors("var hp: int = 73")
+    fun `test dictionary`() =
+        assertNoErrors("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
 
-    fun `test var setget`() =
-        assertNoErrors("var hp setget set_hp, get_hp")
-
-    fun `test var setget with getter only`() =
-        assertNoErrors("var hp setget ,get_hp")
-
-    fun `test export`() =
-        assertNoErrors("export var number = 5")
-
-    fun `test export int`() =
-        assertNoErrors("export(int) var number")
-
-    fun `test export strings`() =
-        assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
-
-    fun `test export FILE`() =
-        assertNoErrors("""export(String, FILE, "*.txt") var f""")
-
-    fun `test export numbers`() =
-        assertNoErrors("""export(float, -10, 20, 0.2) var k""")
-
-    fun `test export 2D array`() =
-        assertNoErrors("""export(Array, Array, float) var two_dimensional = [[1.0, 2.0], [3.0, 4.0]]""")
-
-    fun `test signal`() =
-        assertNoErrors("""signal health_depleted""")
-
-    fun `test multiline string comment-like`() =
-        assertNoErrors("\"\"\"Inventory.gd\"\"\"")
-
-    fun `test increment`() =
-        assertNoErrors("hp += 10")
-
-    fun `test negate number`() =
-        assertNoErrors("negated = -1")
-
-    fun `test negate`() =
-        assertNoErrors("negated = -value")
-
-    fun `test get_node`() =
-        assertNoErrors("""get_node("C/Gamma/One")""")
-
-    fun `test self keyword`() =
-        assertNoErrors("self.get_position().x = 1")
-
-    fun `test get_node $ sugar`() =
-        assertNoErrors("var node = \$C/Gamma/One")
-
-    fun `test get_node local variable assignment`() =
-        assertNoErrors("\$C/Gamma/One.text = \"New Text\"")
-
-    fun `test dictionary assignment entries`() =
-        assertNoErrors("""
-            const CORNER = {
-                W = 0,
-                NW = 1,
-                NE = 2,
-                E = 3,
-                SE = 4,
-                SW = 5
-            }
-        """)
-
-    fun `test constant dictionary with string keys`() =
-        assertNoErrors("""
-            const HEROES = {
-                "Warrior": 0,
-                "Magician": 1,
-                "Thief": 2
-            }
-        """)
-
-    fun `test assigned dictionary with number keys`() =
+    fun `test dictionary Lua style multiline`() =
         assertNoErrors("""
             dict = {
-                100: "INFO",
-                400: "WARN",
+                test22 = "value",
+                some_key = 2,
+                other_key = [2, 3, 4],
+                more_key = "Hello"
             }
         """)
 
-    fun `test named enum`() =
+    fun `test dictionary multiline`() =
         assertNoErrors("""
-            enum Color {
-                RED, GREEN, BLUE
+             dict = {
+                "key": "value",
+                123: 456
             }
         """)
 
     fun `test enum`() =
-        assertNoErrors("enum {THING_1, THING_2, ANOTHER_THING = -1}")
+        assertNoErrors("enum {RED, GREEN, BLUE}")
 
-    fun `test single line dictionary`() =
-        assertNoErrors("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
+    fun `test enum multiline`() =
+        assertNoErrors("""
+            enum {
+                RED, 
+                GREEN, 
+                BLUE
+            }
+        """)
 
-    fun `test const`() =
-        assertNoErrors("const MAX_HP = 100")
+    fun `test enum custom values`() =
+        assertNoErrors("enum {RED = 1, GREEN = 2, BLUE = 3}")
 
-    fun `test array subscription`() =
-        assertNoErrors("""table[4] = "hello"""")
+    fun `test enum named`() =
+        assertNoErrors("enum Color {RED, GREEN, BLUE}")
 
-    fun `test dictionary subscription`() =
+    fun `test export`() =
+        assertNoErrors("export var number")
+
+    fun `test export FILE`() =
+        assertNoErrors("""export(String, FILE, "*.txt") var f""")
+
+    fun `test export number`() =
+        assertNoErrors("""export(float, -10, 20, 0.2) var k""")
+
+    fun `test export strings`() =
+        assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
+
+    fun `test export 2D array`() =
+        assertNoErrors("""export(Array, Array, float) var two_dimensional = [[1.0, 2.0], [3.0, 4.0]]""")
+
+    fun `test function`() =
+        assertNoErrors("func hit():")
+
+    fun `test function argument`() =
+        assertNoErrors("func hit(damage):")
+
+    fun `test function argument type`() =
+        assertNoErrors("func hit(damage: int):")
+
+    fun `test function return type`() =
+        assertNoErrors("func hit() -> float:")
+
+    fun `test function static`() =
+        assertNoErrors("static func max(a, b):")
+
+    fun `test literal value self`() =
+        assertNoErrors("self")
+
+    fun `test literal value true`() =
+        assertNoErrors("condition = true")
+
+    fun `test literal value false`() =
+        assertNoErrors("condition = false")
+
+    fun `test node path`() =
+        assertNoErrors("node = \$C/Gamma/One")
+
+    fun `test signal`() =
+        assertNoErrors("signal health_depleted")
+
+    fun `test multiline string`() =
+        assertNoErrors("message = \"\"\"Hello!\"\"\"")
+
+    fun `test multiline string comment-like`() =
+        assertNoErrors("\"\"\"this is comment\"\"\"")
+
+    fun `test negate`() =
+        assertNoErrors("negated = -value")
+
+    fun `test subscribe array`() =
+        assertNoErrors("items[7] = 0")
+
+    fun `test subscribe dictionary`() =
         assertNoErrors("""dict["Hi!"] = 0""")
 
-    fun `test local variable assignment`() =
-        assertNoErrors("position.x = 1")
+    fun `test var`() =
+        assertNoErrors("var hp")
 
-    fun `test typed function with non-typed argument`() =
-        assertNoErrors("""
-            func hit(damage) -> bool:
-                health_points -= damage
-                return health_points <= 0
-        """)
+    fun `test var assignment`() =
+        assertNoErrors("var hp = 73")
 
-    fun `test function with pass statement`() =
-        assertNoErrors("""
-            func _on_area_entered(area : CollisionObject2D) -> void:
-                pass
-        """)
+    fun `test var setget`() =
+        assertNoErrors("var hp setget set_hp, get_hp")
 
+    fun `test var setget only getter`() =
+        assertNoErrors("var hp setget ,get_hp")
 
-    fun `test static typed function with typed arguments`() =
-        assertNoErrors("static func max(a: float, b: float) -> float:")
+    fun `test var type`() =
+        assertNoErrors("var hp: int")
+
+    fun `test var type assignment`() =
+        assertNoErrors("var hp: int = 73")
 
     private fun assertNoErrors(code: String) {
         myFixture.configureByText(ScriptFileType, code.trimIndent())

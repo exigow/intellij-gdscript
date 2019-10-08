@@ -8,12 +8,13 @@ import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
+import script.psi.ValueNode
 
 
 class LiteralCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement(), LiteralProvider)
+        extend(BASIC, psiElement().inside(ValueNode::class.java), LiteralProvider)
     }
 
     private object LiteralProvider : CompletionProvider<CompletionParameters>() {
