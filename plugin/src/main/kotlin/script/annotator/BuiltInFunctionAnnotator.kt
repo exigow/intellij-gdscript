@@ -4,12 +4,13 @@ import GodotApi
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
+import com.intellij.psi.impl.source.tree.LeafPsiElement
 import script.colors.ScriptColor.BUILT_IN_FUNCTION
 
 class BuiltInFunctionAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.text in LANGUAGE_METHODS)
+        if (element is LeafPsiElement && element.text in LANGUAGE_METHODS)
             holder.createColorAnnotation(element, BUILT_IN_FUNCTION)
     }
 

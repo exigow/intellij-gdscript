@@ -100,6 +100,9 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test multiline string comment-like`() =
         assertNoErrors("\"\"\"this is comment\"\"\"")
 
+    fun `test comment`() =
+        assertNoErrors("var x = 1 # initialize")
+
     fun `test negate`() =
         assertNoErrors("negated = -value")
 
@@ -127,8 +130,14 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test var type assignment`() =
         assertNoErrors("var hp: int = 73")
 
+    fun `test as primitive type operator`() =
+        assertNoErrors("x = number as int")
+
+    fun `test as type operator`() =
+        assertNoErrors("my_sprite = sprite as Sprite")
+
     private fun assertNoErrors(code: String) {
-        myFixture.configureByText(ScriptFileType, code.trimIndent())
+        myFixture.configureByText(ScriptFileType, code.trimIndent() + "\n")
         myFixture.checkHighlighting()
     }
 

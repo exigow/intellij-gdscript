@@ -8,12 +8,12 @@ import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import script.colors.ScriptColor.FUNCTION_DECLARATION
 import script.grammar.ScriptParser.IDENTIFIER
-import script.grammar.ScriptParser.RULE_function
+import script.grammar.ScriptParser.RULE_func_statement
 
 class FunctionAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.isToken(IDENTIFIER) && element.parent.isRule(RULE_function))
+        if (element.isToken(IDENTIFIER) && element.parent.isRule(RULE_func_statement))
             holder.createColorAnnotation(element, FUNCTION_DECLARATION)
     }
 

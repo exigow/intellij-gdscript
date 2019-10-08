@@ -2,35 +2,39 @@ grammar Script;
 
 @header {package script.grammar;}
 
-file: (variable | constant | assign | function | for_statement | while_statement | class_statement | extends_statement | class_name | enum_statement | if_statement | elif | else_statement | return_statement | PASS | signal | expression)+ EOF;
-variable: (EXPORT (BRACE_LEFT export_argument? (COMMA export_argument)* BRACE_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+file: (statement NL*)* EOF;
+
+statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | expression | PASS | LINE_COMMENT;
+var_statement: (EXPORT (BRACE_LEFT export_argument? (COMMA export_argument)* BRACE_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 export_argument: IDENTIFIER | NUMBER | STRING | type;
-constant: CONST IDENTIFIER (COLON type)? ASSIGN expression;
-assign: expression (ASSIGN | ASSIGN_SPECIAL) expression;
-function: STATIC? FUNC IDENTIFIER BRACE_LEFT argument? (COMMA argument)* BRACE_RIGHT (ARROW type)? COLON;
-argument: IDENTIFIER (COLON type)?;
-invoke: IDENTIFIER list;
+const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
+func_statement: STATIC? FUNC IDENTIFIER BRACE_LEFT func_argument? (COMMA func_argument)* BRACE_RIGHT (ARROW type)? COLON;
+func_argument: IDENTIFIER (COLON type)?;
 for_statement: FOR expression COLON;
 while_statement: WHILE expression COLON;
 class_statement: CLASS IDENTIFIER COLON;
 extends_statement: EXTENDS type;
-class_name: CLASS_NAME IDENTIFIER;
-enum_statement: ENUM IDENTIFIER? PARENTHES_LEFT enum_entry (COMMA enum_entry)* PARENTHES_RIGHT;
-enum_entry: IDENTIFIER (ASSIGN NUMBER)?;
+class_name_statement: CLASS_NAME IDENTIFIER;
+enum_statement: ENUM IDENTIFIER? PARENTHES_LEFT NL* enum_entry (COMMA NL* enum_entry)* PARENTHES_RIGHT;
+enum_entry: IDENTIFIER (ASSIGN NUMBER)? NL*;
 if_statement: IF expression COLON;
-elif: ELIF expression COLON;
+elif_statement: ELIF expression COLON;
 else_statement: ELSE COLON;
 return_statement: RETURN expression;
-signal: SIGNAL IDENTIFIER;
-subscribe: IDENTIFIER BRACKET_LEFT expression BRACKET_RIGHT;
-list: BRACE_LEFT expression? (COMMA expression)* BRACE_RIGHT;
-array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
-dictionary: PARENTHES_LEFT dictionary_entry? (COMMA dictionary_entry)* PARENTHES_RIGHT;
-dictionary_entry: (STRING | NUMBER) COLON expression;
-dictionary_lua_style: PARENTHES_LEFT dictionary_lua_style_entry? (COMMA dictionary_lua_style_entry)* PARENTHES_RIGHT;
-dictionary_lua_style_entry: IDENTIFIER ASSIGN expression;
+signal_statement: SIGNAL IDENTIFIER;
+assign_statement: expression (ASSIGN | ASSIGN_SPECIAL) expression;
+
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT) value)*;
-value: (MINUS | NOT)? (invoke | subscribe | list | array | dictionary | dictionary_lua_style | IDENTIFIER | NODE | NUMBER | STRING | SELF | TRUE | FALSE | MULTILINE_STRING | LINE_COMMENT);
+value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
+
+array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
+dictionary: PARENTHES_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* PARENTHES_RIGHT;
+dictionary_entry: (STRING | NUMBER) COLON expression NL*;
+dictionary_lua: PARENTHES_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* PARENTHES_RIGHT;
+dictionary_lua_entry: IDENTIFIER ASSIGN expression NL*;
+invoke: IDENTIFIER BRACE_LEFT expression? (COMMA expression)* BRACE_RIGHT;
+subscribe: IDENTIFIER BRACKET_LEFT expression BRACKET_RIGHT;
+in_braces: BRACE_LEFT expression BRACE_RIGHT;
 type: IDENTIFIER | BOOL | INT | FLOAT | VOID;
 
 EXPORT: 'export';
@@ -90,5 +94,6 @@ fragment LOWER_CASE: 'a'..'z';
 fragment UPPER_CASE: 'A'..'Z';
 fragment DIGIT: '0'..'9';
 
-WHITESPACE: (' ' | [\t\n])+ -> channel(HIDDEN);
+NL: '\n';
+WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);
