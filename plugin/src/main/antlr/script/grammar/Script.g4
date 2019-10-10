@@ -2,7 +2,7 @@ grammar Script;
 
 @header {package script.grammar;}
 
-file: (statement NL*)* EOF;
+file: (statement NL+)* EOF;
 
 statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | expression | PASS | LINE_COMMENT;
 var_statement: (EXPORT (BRACE_LEFT export_argument? (COMMA export_argument)* BRACE_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
