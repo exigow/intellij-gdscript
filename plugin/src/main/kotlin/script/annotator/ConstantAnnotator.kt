@@ -15,8 +15,8 @@ class ConstantAnnotator : Annotator {
 
     private fun isConstantCase(text: String) = text.length >= 2 && text.all { it.isUnderscoreCase() }
 
-    private fun Char.isUnderscoreCase() = this.isUpperCaseLetter() || this == '_'
+    private fun Char.isUnderscoreCase() = isUpperCaseLetter() || this == '_'
 
-    private fun Char.isUpperCaseLetter() = this.isLetter() && this.isUpperCase()
+    private fun Char.isUpperCaseLetter() = isLetter() && isUpperCase()
 
 }
