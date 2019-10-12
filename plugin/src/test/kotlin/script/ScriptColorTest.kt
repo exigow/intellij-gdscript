@@ -1,7 +1,6 @@
-package script.color
+package script
 
 import junit.framework.TestCase
-import script.colors.ScriptColor
 
 class ScriptColorTest : TestCase() {
 

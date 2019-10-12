@@ -4,7 +4,7 @@ import GodotApi
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import script.colors.ScriptColor.FUNCTION_CALL
+import script.ScriptColor.FUNCTION_CALL
 import script.psi.elements.InvokePsiElement
 
 class FunctionCallAnnotator : Annotator {

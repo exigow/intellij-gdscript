@@ -4,7 +4,7 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
-import script.colors.ScriptColor
+import script.ScriptColor
 import script.grammar.ScriptLexer
 
 internal fun AnnotationHolder.createColorAnnotation(element: PsiElement, color: ScriptColor) =

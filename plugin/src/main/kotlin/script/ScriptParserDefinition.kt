@@ -9,9 +9,9 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import script.Token.LINE_COMMENT
-import script.Token.STRING
-import script.Token.WHITESPACE
+import script.ScriptTokenSets.LINE_COMMENT
+import script.ScriptTokenSets.STRING
+import script.ScriptTokenSets.WHITESPACE
 import script.adaptors.ScriptLexerAdaptor
 import script.adaptors.ScriptParserAdaptor
 import script.grammar.ScriptParser

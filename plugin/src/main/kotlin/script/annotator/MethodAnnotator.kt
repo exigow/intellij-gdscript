@@ -3,8 +3,8 @@ package script.annotator
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import script.colors.ScriptColor.INSTANCE_METHOD
-import script.colors.ScriptColor.STATIC_METHOD
+import script.ScriptColor.INSTANCE_METHOD
+import script.ScriptColor.STATIC_METHOD
 import script.psi.elements.FunctionPsiElement
 
 class MethodAnnotator : Annotator {

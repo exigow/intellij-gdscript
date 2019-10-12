@@ -3,7 +3,7 @@ package script.annotator
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import script.colors.ScriptColor.CLASS_NAME
+import script.ScriptColor.CLASS_NAME
 import script.psi.elements.TypePsiElement
 
 class ClassNameAnnotator : Annotator {

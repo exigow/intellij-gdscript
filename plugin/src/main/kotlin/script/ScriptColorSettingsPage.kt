@@ -3,7 +3,7 @@ package script
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import script.colors.ScriptColor.*
+import script.ScriptColor.*
 
 class ScriptColorSettingsPage : ColorSettingsPage {
 

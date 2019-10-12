@@ -4,7 +4,7 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 import script.grammar.ScriptLexer
 import script.grammar.ScriptLexer.*
 
-object Token {
+object ScriptTokenSets {
 
     val WHITESPACE = createTokenSet(ScriptLanguage, ScriptLexer.WHITESPACE)!!
     val LINE_COMMENT = createTokenSet(ScriptLanguage, ScriptLexer.LINE_COMMENT)!!

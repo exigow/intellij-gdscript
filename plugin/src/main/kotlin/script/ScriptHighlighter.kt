@@ -3,8 +3,8 @@ package script
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
+import script.ScriptColor.*
 import script.adaptors.ScriptLexerAdaptor
-import script.colors.ScriptColor.*
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
@@ -14,18 +14,18 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
     override fun getHighlightingLexer() = ScriptLexerAdaptor()
 
     private fun matchingToColor(element: IElementType?) = when (element) {
-        in Token.LINE_COMMENT.types -> LINE_COMMENT
-        in Token.STRING.types -> STRING
-        in Token.NUMBER.types -> NUMBER
-        in Token.KEYWORD.types -> KEYWORD
-        in Token.NODE.types -> NODE
-        in Token.IDENTIFIER.types -> IDENTIFIER
-        in Token.OPERATION_SIGN.types -> OPERATION_SIGN
-        in Token.COMMA.types -> COMMA
-        in Token.DOT.types -> DOT
-        in Token.BRACES.types -> BRACES
-        in Token.PARENTHESES.types -> PARENTHESES
-        in Token.BRACKETS.types -> BRACKETS
+        in ScriptTokenSets.LINE_COMMENT.types -> LINE_COMMENT
+        in ScriptTokenSets.STRING.types -> STRING
+        in ScriptTokenSets.NUMBER.types -> NUMBER
+        in ScriptTokenSets.KEYWORD.types -> KEYWORD
+        in ScriptTokenSets.NODE.types -> NODE
+        in ScriptTokenSets.IDENTIFIER.types -> IDENTIFIER
+        in ScriptTokenSets.OPERATION_SIGN.types -> OPERATION_SIGN
+        in ScriptTokenSets.COMMA.types -> COMMA
+        in ScriptTokenSets.DOT.types -> DOT
+        in ScriptTokenSets.BRACES.types -> BRACES
+        in ScriptTokenSets.PARENTHESES.types -> PARENTHESES
+        in ScriptTokenSets.BRACKETS.types -> BRACKETS
         else -> null
     }
 

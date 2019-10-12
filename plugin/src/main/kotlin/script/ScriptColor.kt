@@ -1,4 +1,4 @@
-package script.colors
+package script
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
