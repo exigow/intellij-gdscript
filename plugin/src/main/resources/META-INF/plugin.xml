@@ -19,10 +19,7 @@
 		<lang.syntaxHighlighterFactory implementationClass="config.ConfigHighlighterFactory" language="Godot Config"/>
 		<lang.parserDefinition implementationClass="config.ConfigParserDefinition" language="Godot Config"/>
 		<!-- script files -->
-		<annotator implementationClass="script.annotator.FunctionCallAnnotator" language="Godot GDScript"/>
-		<annotator implementationClass="script.annotator.ConstantAnnotator" language="Godot GDScript"/>
-		<annotator implementationClass="script.annotator.MethodAnnotator" language="Godot GDScript"/>
-		<annotator implementationClass="script.annotator.ClassNameAnnotator" language="Godot GDScript"/>
+		<annotator implementationClass="script.annotator.Annotator" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.CompletionContributor" language="Godot GDScript"/>
 		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
 		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
