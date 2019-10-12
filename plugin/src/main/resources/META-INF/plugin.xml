@@ -23,6 +23,7 @@
 		<annotator implementationClass="script.annotator.ConstantAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.MethodAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.ClassNameAnnotator" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.ConstructorCallCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.FunctionCallCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.ValueCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.TypeCompletionContributor" language="Godot GDScript"/>

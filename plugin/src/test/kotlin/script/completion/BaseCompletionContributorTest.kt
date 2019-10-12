@@ -5,16 +5,25 @@ import script.ScriptFileType
 
 abstract class BaseCompletionContributorTest : BasePlatformTestCase() {
 
-    fun assertCompletionEquals(code: String, expectedLookup: String) {
-        myFixture.configureByText(ScriptFileType, code)
-        myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings.orEmpty(), expectedLookup)
+    fun assertLookupsContains(code: String, expectedLookup: String) {
+        configureEditor(code)
+        val lookups = getEditorLookups()
+        if (!lookups.contains<String>(expectedLookup))
+            fail("Expected element `$expectedLookup` not found, list: $lookups")
     }
 
-    private fun assertContains(list: Iterable<String>, expected: String) {
-        val found = list.findLast { it == expected }
-        if (found == null)
-            fail("Expected element `$expected` not found, list: $list")
+    fun assertLookupsNotContains(code: String, unwantedLookup: String) {
+        configureEditor(code)
+        val list = getEditorLookups()
+        if (list.contains<String>(unwantedLookup))
+            fail("Unwanted element `$unwantedLookup` found in list: $list")
     }
+
+    private fun configureEditor(code: String) {
+        myFixture.configureByText(ScriptFileType, code)
+        myFixture.completeBasic()
+    }
+
+    private fun getEditorLookups() = myFixture.lookupElementStrings.orEmpty()
 
 }

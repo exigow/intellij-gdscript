@@ -32,7 +32,7 @@ dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE
 dictionary_entry: (STRING | NUMBER) COLON expression NL*;
 dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
 dictionary_lua_entry: IDENTIFIER ASSIGN expression NL*;
-invoke: IDENTIFIER PARENTHES_LEFT expression? (COMMA expression)* PARENTHES_RIGHT;
+invoke: (IDENTIFIER | primitive) PARENTHES_LEFT expression? (COMMA expression)* PARENTHES_RIGHT;
 subscribe: IDENTIFIER BRACKET_LEFT expression BRACKET_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 type: IDENTIFIER | primitive;

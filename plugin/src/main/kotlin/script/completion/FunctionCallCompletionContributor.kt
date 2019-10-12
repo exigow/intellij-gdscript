@@ -4,13 +4,11 @@ import GodotApi
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
-import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.FUNCTION_ICON
 import com.intellij.util.ProcessingContext
 import script.psi.elements.InvokePsiElement
 import script.psi.elements.ValuePsiElement
-import kotlin.math.min
 
 
 class FunctionCallCompletionContributor : CompletionContributor() {
@@ -24,7 +22,7 @@ class FunctionCallCompletionContributor : CompletionContributor() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
             for (method in GodotApi.LANGUAGE_CLASS.methods)
-                result.addElement(createBuiltInMethodLookup(method))
+                result.addElement(PrioritizedLookupElement.withPriority(createBuiltInMethodLookup(method), CompletionPriority.FUNCTION_CALL))
         }
 
         private fun createBuiltInMethodLookup(method: GodotApi.Class.Method) = create(method.name)
@@ -44,15 +42,6 @@ class FunctionCallCompletionContributor : CompletionContributor() {
 
         private fun GodotApi.Class.Method.joinedArguments() =
             arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" }
-
-        private fun InsertionContext.hasNoOpenBraceAfterCaret() =
-            file.text[min(tailOffset, file.text.length - 1)] != '('
-
-        private fun InsertionContext.insert(text: String) =
-            document.insertString(selectionEndOffset, text)
-
-        private fun InsertionContext.moveCaret(steps: Int) =
-            EditorModificationUtil.moveCaretRelatively(editor, steps)
 
     }
 
