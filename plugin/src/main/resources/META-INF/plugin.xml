@@ -24,10 +24,11 @@
 		<annotator implementationClass="script.annotator.MethodAnnotator" language="Godot GDScript"/>
 		<annotator implementationClass="script.annotator.ClassNameAnnotator" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.ClassNameCompletionContributor" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.ConstantCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.ConstructorCallCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.FunctionCallCompletionContributor" language="Godot GDScript"/>
 		<completion.contributor implementationClass="script.completion.PrimitiveCompletionContributor" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.ValueCompletionContributor" language="Godot GDScript"/>
+		<completion.contributor implementationClass="script.completion.SelfTrueFalseCompletionContributor" language="Godot GDScript"/>
 		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
 		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
 		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>

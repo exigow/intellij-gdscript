@@ -1,5 +1,6 @@
 package script.completion
 
+import GodotApi
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionProvider
@@ -13,22 +14,17 @@ import com.intellij.util.ProcessingContext
 import script.psi.elements.ValuePsiElement
 
 
-class ValueCompletionContributor : CompletionContributor() {
+class ConstantCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().inside(ValuePsiElement::class.java), LiteralProvider)
+        extend(BASIC, psiElement().inside(ValuePsiElement::class.java), ConstantProvider)
     }
 
-    private object LiteralProvider : CompletionProvider<CompletionParameters>() {
-
-        private const val PRIORITY = CompletionPriority.VALUE
+    private object ConstantProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            result.addElement(withPriority(create("self").bold(), PRIORITY))
-            result.addElement(withPriority(create("true").bold(), PRIORITY))
-            result.addElement(withPriority(create("false").bold(), PRIORITY))
-            result.addElement(withPriority(create("PI").withItemTextItalic(true).withIcon(VARIABLE_ICON).bold(), PRIORITY))
-            result.addElement(withPriority(create("TAU").withItemTextItalic(true).withIcon(VARIABLE_ICON).bold(), PRIORITY))
+            for (constant in GodotApi.LANGUAGE_CLASS.constants)
+                result.addElement(withPriority(create(constant.name).withItemTextItalic(true).withTailText(" = ${constant.value}").withIcon(VARIABLE_ICON).bold(), CompletionPriority.CONSTANT))
         }
 
     }
