@@ -1,4 +1,4 @@
-package script.completion
+package script.completion.provider
 
 import com.intellij.codeInsight.completion.InsertionContext
 import com.intellij.openapi.editor.EditorModificationUtil

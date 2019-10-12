@@ -1,6 +1,6 @@
 package script.completion
 
-object CompletionPriority {
+object Priority {
 
     const val SELF_TRUE_FALSE = 0.0
     const val CONSTANT = 1.0
