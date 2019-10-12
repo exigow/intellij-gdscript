@@ -24,7 +24,6 @@ private fun createClass(it: GodotApi.Class) = create(it.name)
     .withIcon(CLASS_ICON)
 
 private fun createConstant(it: GodotApi.Class.Constant) = create(it.name)
-    .notCaseSensitive()
     .withIcon(VARIABLE_ICON)
     .withTailText(" = ${it.value}")
     .italics()
