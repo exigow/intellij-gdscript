@@ -1,26 +1,27 @@
 package script.colors
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
 
-enum class ScriptColor(val displayName: String, val key: TextAttributesKey, val hidden: Boolean = false) {
+enum class ScriptColor(val key: TextAttributesKey) {
 
-    NUMBER("Number", createTextAttributesKey("GODOT_SCRIPT.NUMBER", DefaultLanguageHighlighterColors.NUMBER)),
-    STRING("String", createTextAttributesKey("GODOT_SCRIPT.STRING", DefaultLanguageHighlighterColors.STRING)),
-    KEYWORD("Keyword", createTextAttributesKey("GODOT_SCRIPT.KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)),
-    IDENTIFIER("Identifier", createTextAttributesKey("GODOT_SCRIPT.IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)),
-    NODE("Node path", createTextAttributesKey("GODOT_SCRIPT.NODE_PATH", DefaultLanguageHighlighterColors.METADATA)),
-    CONSTANT("Constant", createTextAttributesKey("GODOT_SCRIPT.CONSTANT", DefaultLanguageHighlighterColors.CONSTANT), hidden = true),
-    OPERATION_SIGN("Operator sign", createTextAttributesKey("GODOT_SCRIPT.OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN)),
-    COMMA("Comma", createTextAttributesKey("GODOT_SCRIPT.COMMA", DefaultLanguageHighlighterColors.COMMA)),
-    DOT("Dot", createTextAttributesKey("GODOT_SCRIPT.DOT", DefaultLanguageHighlighterColors.DOT)),
-    BRACES("Braces", createTextAttributesKey("GODOT_SCRIPT.BRACES", DefaultLanguageHighlighterColors.BRACES)),
-    PARENTHESES("Parentheses", createTextAttributesKey("GODOT_SCRIPT.PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES)),
-    BRACKETS("Brackets", createTextAttributesKey("GODOT_SCRIPT.BRACKETS", DefaultLanguageHighlighterColors.BRACKETS)),
-    LINE_COMMENT("Comment line", createTextAttributesKey("GODOT_SCRIPT.LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)),
-    BUILT_IN_FUNCTION("Built-in function", createTextAttributesKey("GODOT_SCRIPT.BUILT_IN_FUNCTION", DefaultLanguageHighlighterColors.IDENTIFIER), hidden = true),
-    FUNCTION_DECLARATION("Function declaration", createTextAttributesKey("GODOT_SCRIPT.FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION), hidden = true),
-    CLASS_TYPE("Class type", createTextAttributesKey("GODOT_SCRIPT.CLASS_TYPE", DefaultLanguageHighlighterColors.CLASS_NAME), hidden = true)
+    LINE_COMMENT(createTextAttributesKey("GODOT_SCRIPT_LINE_COMMENT", Default.LINE_COMMENT)),
+    STRING(createTextAttributesKey("GODOT_SCRIPT_STRING", Default.STRING)),
+    NUMBER(createTextAttributesKey("GODOT_SCRIPT_NUMBER", Default.NUMBER)),
+    KEYWORD(createTextAttributesKey("GODOT_SCRIPT_KEYWORD", Default.KEYWORD)),
+    IDENTIFIER(createTextAttributesKey("GODOT_SCRIPT_IDENTIFIER", Default.IDENTIFIER)),
+    NODE(createTextAttributesKey("GODOT_SCRIPT_METADATA", Default.METADATA)),
+    OPERATION_SIGN(createTextAttributesKey("GODOT_SCRIPT_OPERATION_SIGN", Default.OPERATION_SIGN)),
+    COMMA(createTextAttributesKey("GODOT_SCRIPT_COMMA", Default.COMMA)),
+    DOT(createTextAttributesKey("GODOT_SCRIPT_DOT", Default.DOT)),
+    BRACES(createTextAttributesKey("GODOT_SCRIPT_BRACES", Default.BRACES)),
+    PARENTHESES(createTextAttributesKey("GODOT_SCRIPT_PARENTHESES", Default.PARENTHESES)),
+    BRACKETS(createTextAttributesKey("GODOT_SCRIPT_BRACKETS", Default.BRACKETS)),
+    FUNCTION_CALL(createTextAttributesKey("GODOT_SCRIPT_FUNCTION_CALL", Default.FUNCTION_CALL)),
+    STATIC_METHOD(createTextAttributesKey("GODOT_SCRIPT_STATIC_METHOD", Default.STATIC_METHOD)),
+    INSTANCE_METHOD(createTextAttributesKey("GODOT_SCRIPT_INSTANCE_METHOD", Default.INSTANCE_METHOD)),
+    CLASS_NAME(createTextAttributesKey("GODOT_SCRIPT_CLASS_NAME", Default.CLASS_NAME)),
+    CONSTANT(createTextAttributesKey("GODOT_SCRIPT_CONSTANT", Default.CONSTANT)),
 
 }

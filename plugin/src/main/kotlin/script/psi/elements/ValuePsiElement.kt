@@ -1,6 +1,6 @@
-package script.psi
+package script.psi.elements
 
 import com.intellij.lang.ASTNode
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
-class TypeNode(node: ASTNode) : ANTLRPsiNode(node)
+class ValuePsiElement(node: ASTNode) : ANTLRPsiNode(node)

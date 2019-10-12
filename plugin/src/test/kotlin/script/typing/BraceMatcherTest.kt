@@ -11,10 +11,4 @@ class BraceMatcherTest : BasePlatformTestCase() {
         myFixture.checkResult("var dict = {<caret>}")
     }
 
-    fun `test square brackets auto completion`() {
-        myFixture.configureByText(ScriptFileType, "var array = <caret>")
-        myFixture.type('[')
-        myFixture.checkResult("var array = [<caret>]")
-    }
-
 }

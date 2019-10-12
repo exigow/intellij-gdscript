@@ -8,23 +8,22 @@ import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.FUNCTION_ICON
 import com.intellij.util.ProcessingContext
-import script.psi.ValueNode
+import script.psi.elements.InvokePsiElement
+import script.psi.elements.ValuePsiElement
 import kotlin.math.min
 
 
-class BuiltInFunctionCompletionContributor : CompletionContributor() {
+class FunctionCallCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().inside(ValueNode::class.java), LiteralProvider)
+        extend(BASIC, psiElement().inside(ValuePsiElement::class.java), FunctionProvider)
+        extend(BASIC, psiElement().inside(InvokePsiElement::class.java), FunctionProvider)
     }
 
-    private object LiteralProvider : CompletionProvider<CompletionParameters>() {
-
-        private val LANGUAGE_CLASS = GodotApi.CLASSES
-            .find { it.name == "@GDScript" }!!
+    private object FunctionProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            for (method in LANGUAGE_CLASS.methods)
+            for (method in GodotApi.LANGUAGE_CLASS.methods)
                 result.addElement(createBuiltInMethodLookup(method))
         }
 

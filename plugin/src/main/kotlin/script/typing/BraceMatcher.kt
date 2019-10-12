@@ -16,7 +16,7 @@ class BraceMatcher : PairedBraceMatcherAdapter(BasePairedBraceMatcher(), ScriptL
     override fun findPair(left: Boolean, iterator: HighlighterIterator, fileText: CharSequence, fileType: FileType): BracePair? {
         for (pair in pairs) {
             val tokenType = (iterator.tokenType as TokenIElementType).antlrTokenType
-            if (tokenType == PARENTHES_LEFT || tokenType == BRACKET_LEFT)
+            if (tokenType == BRACE_LEFT)
                 return pair
         }
         return null
@@ -31,11 +31,12 @@ class BraceMatcher : PairedBraceMatcherAdapter(BasePairedBraceMatcher(), ScriptL
         override fun getCodeConstructStart(file: PsiFile, openingOffset: Int): Int = openingOffset
 
         companion object {
-            val PAIRS = mapOf(PARENTHES_LEFT to PARENTHES_RIGHT, BRACKET_LEFT to BRACKET_RIGHT)
-                .map { (k, v) -> BracePair(createType(k), createType(v), false) }
-                .toTypedArray()
 
-            private fun createType(token: Int) = IElementType(VOCABULARY.getDisplayName(token), ScriptLanguage)
+            val PAIRS = arrayOf(BracePair(createType(BRACE_LEFT), createType(BRACE_RIGHT), false))
+
+            private fun createType(token: Int) =
+                IElementType(VOCABULARY.getDisplayName(token), ScriptLanguage)
+
         }
 
     }

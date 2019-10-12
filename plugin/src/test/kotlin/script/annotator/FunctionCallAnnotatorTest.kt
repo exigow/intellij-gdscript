@@ -1,6 +1,6 @@
 package script.annotator
 
-class BuiltInFunctionAnnotatorTest : BaseAnnotatorTest() {
+class FunctionCallAnnotatorTest : BaseAnnotatorTest() {
 
     fun `test deg2rad function`() =
         assertInfo("""radians = <info descr="null">deg2rad</info>(147)""")

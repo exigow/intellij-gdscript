@@ -6,70 +6,39 @@ import com.intellij.lang.PsiParser
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
-import com.intellij.psi.PsiElement
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
-import org.antlr.intellij.adaptor.lexer.RuleIElementType
-import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
-import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
-import org.antlr.v4.runtime.Parser
-import org.antlr.v4.runtime.tree.ParseTree
-import script.grammar.ScriptLexer
-import script.grammar.ScriptLexer.*
+import script.Token.LINE_COMMENT
+import script.Token.STRING
+import script.Token.WHITESPACE
+import script.adaptors.ScriptLexerAdaptor
+import script.adaptors.ScriptParserAdaptor
 import script.grammar.ScriptParser
-import script.grammar.ScriptParser.RULE_type
-import script.grammar.ScriptParser.RULE_value
-import script.psi.TypeNode
-import script.psi.ValueNode
+import script.psi.PsiElementFactory
+import script.psi.PsiFile
 
 class ScriptParserDefinition : ParserDefinition {
 
     init {
+        @Suppress("DEPRECATION")
         PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
     }
 
-    override fun createLexer(project: Project): Lexer {
-        val lexer = ScriptLexer(null)
-        return ANTLRLexerAdaptor(ScriptLanguage, lexer)
-    }
+    override fun createLexer(project: Project): Lexer = ScriptLexerAdaptor()
 
-    override fun createParser(project: Project): PsiParser {
-        val parser = ScriptParser(null)
-        return object : ANTLRParserAdaptor(ScriptLanguage, parser) {
+    override fun createParser(project: Project): PsiParser = ScriptParserAdaptor()
 
-            override fun parse(parser: Parser, root: IElementType): ParseTree {
-                require(parser is ScriptParser)
-                require(root is IFileElementType)
-                return parser.file()
-            }
+    override fun getWhitespaceTokens(): TokenSet = WHITESPACE
 
-        }
-    }
+    override fun getCommentTokens(): TokenSet = LINE_COMMENT
 
-    override fun getWhitespaceTokens(): TokenSet = createTokenSet(ScriptLanguage, WHITESPACE)
-
-    override fun getCommentTokens(): TokenSet = createTokenSet(ScriptLanguage, LINE_COMMENT)
-
-    override fun getStringLiteralElements(): TokenSet = createTokenSet(ScriptLanguage, STRING)
+    override fun getStringLiteralElements(): TokenSet = STRING
 
     override fun getFileNodeType() = IFileElementType(ScriptLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) = ScriptFileBase(viewProvider)
+    override fun createFile(view: FileViewProvider) = PsiFile(view)
 
-    override fun createElement(node: ASTNode): PsiElement {
-        val nodeType = node.elementType
-        if (nodeType is RuleIElementType) {
-            return when(nodeType.ruleIndex) {
-                RULE_type -> TypeNode(node)
-                RULE_value -> ValueNode(node)
-                else -> ANTLRPsiNode(node)
-            }
-        }
-        return ANTLRPsiNode(node)
-    }
+    override fun createElement(node: ASTNode) = PsiElementFactory.createPsiElement(node)
 
 }

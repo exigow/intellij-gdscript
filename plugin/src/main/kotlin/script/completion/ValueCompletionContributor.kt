@@ -7,21 +7,25 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
+import com.intellij.util.PlatformIcons.VARIABLE_ICON
 import com.intellij.util.ProcessingContext
-import script.psi.ValueNode
+import script.psi.elements.ValuePsiElement
 
 
-class LiteralCompletionContributor : CompletionContributor() {
+class ValueCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().inside(ValueNode::class.java), LiteralProvider)
+        extend(BASIC, psiElement().inside(ValuePsiElement::class.java), LiteralProvider)
     }
 
     private object LiteralProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            for (keyword in listOf("self", "true", "false"))
-                result.addElement(create(keyword).bold())
+            result.addElement(create("self").bold())
+            result.addElement(create("true").bold())
+            result.addElement(create("false").bold())
+            result.addElement(create("PI").withItemTextItalic(true).withIcon(VARIABLE_ICON).bold())
+            result.addElement(create("TAU").withItemTextItalic(true).withIcon(VARIABLE_ICON).bold())
         }
 
     }

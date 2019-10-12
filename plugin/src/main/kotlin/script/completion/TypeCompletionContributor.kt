@@ -10,13 +10,13 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.PlatformIcons.CLASS_ICON
 import com.intellij.util.ProcessingContext
-import script.psi.TypeNode
+import script.psi.elements.TypePsiElement
 
 
 class TypeCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().inside(TypeNode::class.java), TypeProvider)
+        extend(BASIC, psiElement().inside(TypePsiElement::class.java), TypeProvider)
     }
 
     private object TypeProvider : CompletionProvider<CompletionParameters>() {

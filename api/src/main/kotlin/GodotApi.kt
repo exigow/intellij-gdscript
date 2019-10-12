@@ -3,10 +3,12 @@ import com.google.gson.Gson
 object GodotApi {
 
     val CLASSES: Array<Class>
+    val LANGUAGE_CLASS: Class
 
     init {
         val inputStream = this::class.java.classLoader.getResourceAsStream("api.json")!!.reader()
         CLASSES = Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
+        LANGUAGE_CLASS = CLASSES.find { it.name == "@GDScript" }!!
     }
 
     data class Class(

@@ -1,6 +1,6 @@
 package script.annotator
 
-class FunctionAnnotatorTest : BaseAnnotatorTest() {
+class MethodAnnotatorTest : BaseAnnotatorTest() {
 
     fun `test function declaration`() =
         assertInfo("""func <info descr="null">_init</info>():""")
