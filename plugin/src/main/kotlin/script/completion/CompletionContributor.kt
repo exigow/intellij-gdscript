@@ -16,20 +16,20 @@ import script.psi.elements.ValuePsiElement
 class CompletionContributor : com.intellij.codeInsight.completion.CompletionContributor() {
 
     init {
-        extend(BASIC, INSIDE_TYPE, providePrioritized(PRIMITIVE_LOOKUPS, 1.0))
-        extend(BASIC, INSIDE_TYPE, providePrioritized(CLASS_LOOKUPS, 0.0))
-        extend(BASIC, INSIDE_INVOKE, providePrioritized(FUNCTION_CALL_LOOKUPS, 1.0))
-        extend(BASIC, INSIDE_INVOKE, providePrioritized(CONSTRUCTOR_CALL_LOOKUPS, 0.0))
-        extend(BASIC, INSIDE_VALUE, providePrioritized(SELF_TRUE_FALSE_LOOKUPS, 4.0))
-        extend(BASIC, INSIDE_VALUE, providePrioritized(CONSTANT_LOOKUPS, 3.0))
-        extend(BASIC, INSIDE_VALUE, providePrioritized(FUNCTION_CALL_LOOKUPS, 2.0))
-        extend(BASIC, INSIDE_VALUE, providePrioritized(CONSTRUCTOR_CALL_LOOKUPS, 1.0))
+        extend(BASIC, INSIDE_TYPE, prioritized(PRIMITIVE_LOOKUPS, 1))
+        extend(BASIC, INSIDE_TYPE, prioritized(CLASS_LOOKUPS, 0))
+        extend(BASIC, INSIDE_INVOKE, prioritized(FUNCTION_CALL_LOOKUPS, 1))
+        extend(BASIC, INSIDE_INVOKE, prioritized(CONSTRUCTOR_CALL_LOOKUPS, 0))
+        extend(BASIC, INSIDE_VALUE, prioritized(SELF_TRUE_FALSE_LOOKUPS, 2))
+        extend(BASIC, INSIDE_VALUE, prioritized(FUNCTION_CALL_LOOKUPS, 1))
+        extend(BASIC, INSIDE_VALUE, prioritized(CONSTANT_LOOKUPS, 1))
+        extend(BASIC, INSIDE_VALUE, prioritized(CONSTRUCTOR_CALL_LOOKUPS, 0))
     }
 
-    private fun providePrioritized(lookups: List<LookupElement>, priority: Double) = object : CompletionProvider<CompletionParameters>() {
+    private fun prioritized(lookups: List<LookupElement>, priority: Int) = object : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            val prioritized = lookups.map { withPriority(it, priority) }
+            val prioritized = lookups.map { withPriority(it, priority.toDouble()) }
             result.addAllElements(prioritized)
         }
 
