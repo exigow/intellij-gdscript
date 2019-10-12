@@ -68,7 +68,6 @@ class CompletionContributorTest : BasePlatformTestCase() {
     fun `test constructor call is case-sensitive`() =
         assertLookupsNotContains("position = vec<caret>()", "Vector2")
 
-
     private fun assertLookupsContains(code: String, expectedLookup: String) {
         configureEditor(code)
         val lookups = getEditorLookups()
