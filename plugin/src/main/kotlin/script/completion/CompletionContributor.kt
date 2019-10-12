@@ -24,7 +24,11 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
         extend(BASIC, INSIDE_VALUE, prioritized(FUNCTION_CALL_LOOKUPS, 1))
         extend(BASIC, INSIDE_VALUE, prioritized(CONSTANT_LOOKUPS, 1))
         extend(BASIC, INSIDE_VALUE, prioritized(CONSTRUCTOR_CALL_LOOKUPS, 0))
+        extend(BASIC, AFTER_EXPORT_LEAF, simple(VAR_LOOKUP))
+        extend(BASIC, AFTER_STATIC_LEAF, simple(FUNC_LOOKUP))
     }
+
+    private fun simple(lookup: LookupElement) = prioritized(listOf(lookup), 0)
 
     private fun prioritized(lookups: List<LookupElement>, priority: Int) = object : CompletionProvider<CompletionParameters>() {
 
@@ -40,6 +44,8 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
         private val INSIDE_TYPE = psiElement().inside(TypePsiElement::class.java)
         private val INSIDE_INVOKE = psiElement().inside(InvokePsiElement::class.java)
         private val INSIDE_VALUE = psiElement().inside(ValuePsiElement::class.java)
+        private val AFTER_EXPORT_LEAF = psiElement().afterLeaf("export")
+        private val AFTER_STATIC_LEAF = psiElement().afterLeaf("static")
 
     }
 

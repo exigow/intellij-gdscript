@@ -18,6 +18,8 @@ val CONSTRUCTOR_CALL_LOOKUPS = (OBJECT_CLASSES + PRIMITIVE_CLASSES).map { create
 val SELF_TRUE_FALSE_LOOKUPS = listOf("self", "true", "false").map { create(it).bold() }
 val FUNCTION_CALL_LOOKUPS = LANGUAGE_CLASS.methods.map { createFunctionCall(it) }
 val PRIMITIVE_LOOKUPS = PRIMITIVE_CLASSES.map { createPrimitive(it) }
+val VAR_LOOKUP = create("var").bold()!!
+val FUNC_LOOKUP = create("func").bold()!!
 
 private fun createClass(it: GodotApi.Class) = create(it.name)
     .notCaseSensitive()
