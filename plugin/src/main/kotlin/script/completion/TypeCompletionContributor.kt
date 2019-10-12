@@ -22,16 +22,18 @@ class TypeCompletionContributor : CompletionContributor() {
     private object TypeProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            val names = GodotApi.CLASSES.map { it.name }
-            for (name in names)
-                if (isPrimitive(name))
-                    result.addElement(create(name).bold().withCaseSensitivity(false))
-                else
-                    result.addElement(create(name).withIcon(CLASS_ICON).withCaseSensitivity(false))
-
+            for (name in CLASS_NAMES)
+                result.addElement(create(name).withIcon(CLASS_ICON).withCaseSensitivity(false))
+            for (name in PRIMITIVE_CLASS_NAMES)
+                result.addElement(create(name).bold().withCaseSensitivity(false))
         }
 
-        private fun isPrimitive(name: String) = name in listOf("float", "int", "bool")
+    }
+
+    companion object {
+
+        val CLASS_NAMES = GodotApi.OBJECT_CLASSES.map { it.name }
+        val PRIMITIVE_CLASS_NAMES = GodotApi.PRIMITIVE_CLASSES.map { it.name }
 
     }
 

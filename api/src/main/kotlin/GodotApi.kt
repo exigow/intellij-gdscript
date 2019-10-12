@@ -2,13 +2,20 @@ import com.google.gson.Gson
 
 object GodotApi {
 
-    val CLASSES: Array<Class>
+    val OBJECT_CLASSES: List<Class>
+    val PRIMITIVE_CLASSES: List<Class>
     val LANGUAGE_CLASS: Class
 
     init {
+        val (primitive, nonPrimitive) = deserialize().partition { it.name in listOf("float", "int", "bool") }
+        PRIMITIVE_CLASSES = primitive
+        OBJECT_CLASSES = nonPrimitive
+        LANGUAGE_CLASS = OBJECT_CLASSES.find { it.name == "@GDScript" }!!
+    }
+
+    private fun deserialize(): Array<Class> {
         val inputStream = this::class.java.classLoader.getResourceAsStream("api.json")!!.reader()
-        CLASSES = Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
-        LANGUAGE_CLASS = CLASSES.find { it.name == "@GDScript" }!!
+        return Gson().fromJson<Array<Class>>(inputStream, Array<Class>::class.java)
     }
 
     data class Class(
