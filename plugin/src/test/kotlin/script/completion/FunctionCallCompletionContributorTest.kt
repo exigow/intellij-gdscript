@@ -17,4 +17,7 @@ class FunctionCallCompletionContributorTest : BaseCompletionContributorTest() {
     fun `test function is case-sensitive`() =
         assertLookupsNotContains("x = Si<caret>()", "sin")
 
+    fun `test range function`() =
+        assertLookupsContains("for i in rang<caret>(3):", "range")
+
 }
