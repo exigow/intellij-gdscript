@@ -13,9 +13,7 @@ class ConstantAnnotator : Annotator {
             holder.createColorAnnotation(element, CONSTANT)
     }
 
-    private fun isConstantCase(text: String) = text.length >= 2 && text.all { it.isUnderscoreCase() }
-
-    private fun Char.isUnderscoreCase() = isUpperCaseLetter() || this == '_'
+    private fun isConstantCase(text: String) = text.length >= 2 && text.all { it.isUpperCaseLetter() || it == '_' }
 
     private fun Char.isUpperCaseLetter() = isLetter() && isUpperCase()
 
