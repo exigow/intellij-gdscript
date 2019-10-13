@@ -17,14 +17,14 @@ extends_statement: EXTENDS type;
 class_name_statement: CLASS_NAME IDENTIFIER;
 enum_statement: ENUM IDENTIFIER? BRACE_LEFT NL* enum_entry (COMMA NL* enum_entry)* BRACE_RIGHT;
 enum_entry: IDENTIFIER (ASSIGN NUMBER)? NL*;
-if_statement: IF expression COLON;
-elif_statement: ELIF expression COLON;
-else_statement: ELSE COLON;
+if_statement: IF expression COLON statement?;
+elif_statement: ELIF expression COLON statement?;
+else_statement: ELSE COLON statement?;
 return_statement: RETURN expression;
 signal_statement: SIGNAL IDENTIFIER;
 assign_statement: expression (ASSIGN | ASSIGN_SPECIAL) expression;
 
-expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT) value)*;
+expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT | IF | ELSE) value)*;
 value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 
 array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
