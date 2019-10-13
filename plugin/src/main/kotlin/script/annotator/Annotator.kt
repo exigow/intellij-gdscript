@@ -1,6 +1,6 @@
 package script.annotator
 
-import GodotApi
+import GodotApi.GLOBAL_SCOPE_CLASSES
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
@@ -45,7 +45,9 @@ class Annotator : com.intellij.lang.annotation.Annotator {
 
     companion object {
 
-        private val LANGUAGE_METHOD_NAMES = GodotApi.LANGUAGE_CLASS.methods.map { it.name }
+        private val LANGUAGE_METHOD_NAMES = GLOBAL_SCOPE_CLASSES
+            .flatMap { it.methods }
+            .map { it.name }
 
     }
 
