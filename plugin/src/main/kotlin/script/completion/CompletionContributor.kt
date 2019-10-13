@@ -15,18 +15,18 @@ import script.psi.elements.ValuePsiElement
 class CompletionContributor : com.intellij.codeInsight.completion.CompletionContributor() {
 
     init {
-        extend(BASIC, INSIDE_TYPE, provide(PRIMITIVE_TYPES))
-        extend(BASIC, INSIDE_TYPE, provide(OBJECT_TYPES))
-        extend(BASIC, INSIDE_INVOKE, provide(FUNCTION_CALLS))
-        extend(BASIC, INSIDE_INVOKE, provide(CONSTRUCTOR_CALLS))
+        extend(BASIC, INSIDE_TYPE, provideAll(PRIMITIVE_TYPES))
+        extend(BASIC, INSIDE_TYPE, provideAll(OBJECT_TYPES))
+        extend(BASIC, INSIDE_INVOKE, provideAll(FUNCTION_CALLS))
+        extend(BASIC, INSIDE_INVOKE, provideAll(CONSTRUCTOR_CALLS))
         extend(BASIC, INSIDE_VALUE, provide(SELF))
         extend(BASIC, INSIDE_VALUE, provide(TRUE))
         extend(BASIC, INSIDE_VALUE, provide(FALSE))
         extend(BASIC, INSIDE_VALUE, provide(NULL))
-        extend(BASIC, INSIDE_VALUE, provide(SINGLETONS))
-        extend(BASIC, INSIDE_VALUE, provide(CONSTANTS))
-        extend(BASIC, INSIDE_VALUE, provide(FUNCTION_CALLS))
-        extend(BASIC, INSIDE_VALUE, provide(CONSTRUCTOR_CALLS))
+        extend(BASIC, INSIDE_VALUE, provideAll(SINGLETONS))
+        extend(BASIC, INSIDE_VALUE, provideAll(CONSTANTS))
+        extend(BASIC, INSIDE_VALUE, provideAll(FUNCTION_CALLS))
+        extend(BASIC, INSIDE_VALUE, provideAll(CONSTRUCTOR_CALLS))
         extend(BASIC, AFTER_NEWLINE, provide(VAR))
         extend(BASIC, AFTER_NEWLINE, provide(CONST))
         extend(BASIC, AFTER_NEWLINE, provide(FOR))
@@ -51,9 +51,9 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
     }
 
     private fun provide(lookup: LookupElement) =
-        provide(listOf(lookup))
+        provideAll(listOf(lookup))
 
-    private fun provide(lookups: List<LookupElement>) =
+    private fun provideAll(lookups: List<LookupElement>) =
         object : CompletionProvider<CompletionParameters>() {
             override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
                 result.addAllElements(lookups)
