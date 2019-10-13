@@ -19,4 +19,4 @@ Plugin is compatible with **any** product developed by JetBrains based on the In
 3. Restart IntelliJ.
 
 [travis-build-status]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
-[travis-build-status-svg]: https://travis-ci.org/exigow/intellij-gdscriptsvg?branch=master
+[travis-build-status-svg]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
