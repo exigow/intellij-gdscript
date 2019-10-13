@@ -29,5 +29,6 @@
 		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
 		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
 		<lang.braceMatcher implementationClass="script.typing.BraceMatcher" language="Godot GDScript"/>
+		<lang.quoteHandler implementationClass="script.typing.QuoteHandler" language="Godot GDScript"/>
 	</extensions>
 </idea-plugin>
