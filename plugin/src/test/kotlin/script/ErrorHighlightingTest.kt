@@ -192,6 +192,18 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test as type operator`() =
         assertNoErrors("my_sprite = sprite as Sprite")
 
+    fun `test extends class`() =
+        assertNoErrors("extends SomeClass")
+
+    fun `test extends resource class`() =
+        assertNoErrors("extends \"somefile.gd\"")
+
+    fun `test extends resource inner class `() =
+        assertNoErrors("extends \"somefile.gd\".SomeInnerClass")
+
+    fun `test extends resource inner-inner class `() =
+        assertNoErrors("extends \"somefile.gd\".First.Second")
+
     fun `test error on two statements in one line`() {
         myFixture.configureByText(ScriptFileType, "var x var")
         val high = myFixture.doHighlighting()

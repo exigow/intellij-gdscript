@@ -13,7 +13,7 @@ func_argument: IDENTIFIER (COLON type)?;
 for_statement: FOR expression COLON;
 while_statement: WHILE expression COLON;
 class_statement: CLASS IDENTIFIER COLON;
-extends_statement: EXTENDS type;
+extends_statement: EXTENDS (type | STRING) (DOT type)*;
 class_name_statement: CLASS_NAME IDENTIFIER;
 enum_statement: ENUM IDENTIFIER? BRACE_LEFT NL* enum_entry (COMMA NL* enum_entry)* BRACE_RIGHT;
 enum_entry: IDENTIFIER (ASSIGN NUMBER)? NL*;
