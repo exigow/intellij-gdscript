@@ -3,15 +3,15 @@ package script.completion
 import GodotApi
 import GodotApi.GLOBAL_SCOPE_CLASSES
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
-import com.intellij.util.PlatformIcons
+import com.intellij.util.PlatformIcons.FUNCTION_ICON
 
 val FUNCTION_CALLS = GLOBAL_SCOPE_CLASSES
     .flatMap { it.methods }
-    .map { createFunctionCall(it) }
+    .map { it.toLookup() }
 
-private fun createFunctionCall(it: GodotApi.Class.Method) = create(it.name)
-    .withIcon(PlatformIcons.FUNCTION_ICON)
-    .withTypeText(it.type)
-    .withArgumentsTail(it.arguments)
-    .withParenthesesInsertHandler(hasArguments = it.arguments.isNotEmpty())
+private fun GodotApi.Class.Method.toLookup() = create(name)
+    .withIcon(FUNCTION_ICON)
+    .withTypeText(type)
+    .withArgumentsTail(arguments)
+    .withParenthesesInsertHandler(hasArguments = arguments.isNotEmpty())
     .italics()

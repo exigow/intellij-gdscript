@@ -7,10 +7,10 @@ import com.intellij.util.PlatformIcons.VARIABLE_ICON
 
 val CONSTANTS = GLOBAL_SCOPE_CLASSES
     .flatMap { it.constants }
-    .map { createConstant(it) }
+    .map { it.toLookup() }
 
-private fun createConstant(it: GodotApi.Class.Constant) = create(it.name)
+private fun GodotApi.Class.Constant.toLookup() = create(name)
     .withIcon(VARIABLE_ICON)
-    .withTailText(" = ${it.value}")
+    .withTailText(" = $value")
     .italics()
     .bold()

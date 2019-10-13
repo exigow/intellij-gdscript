@@ -8,10 +8,10 @@ import com.intellij.util.PlatformIcons.CLASS_ICON
 
 val CONSTRUCTOR_CALLS = (OBJECT_CLASSES + PRIMITIVE_CLASSES)
     .flatMap { clazz -> clazz.methods.filter { it.name == clazz.name } }
-    .map { createConstructorMethodCall(it) }
+    .map { it.toLookup() }
 
-private fun createConstructorMethodCall(it: GodotApi.Class.Method) = create(it.name)
+private fun GodotApi.Class.Method.toLookup() = create(name)
     .withIcon(CLASS_ICON)
-    .withTypeText(it.type)
-    .withArgumentsTail(it.arguments)
-    .withParenthesesInsertHandler(hasArguments = it.arguments.isNotEmpty())
+    .withTypeText(type)
+    .withArgumentsTail(arguments)
+    .withParenthesesInsertHandler(hasArguments = arguments.isNotEmpty())

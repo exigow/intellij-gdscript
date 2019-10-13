@@ -2,13 +2,13 @@ package script.completion
 
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
-import com.intellij.util.PlatformIcons
+import com.intellij.util.PlatformIcons.FIELD_ICON
 
-val SELF = createValueLookup("self")
-val TRUE = createValueLookup("true")
-val FALSE = createValueLookup("false")
+val SELF = createLookup("self")
+val TRUE = createLookup("true")
+val FALSE = createLookup("false")
 
-private fun createValueLookup(name: String): LookupElement = LookupElementBuilder.create(name)
-    .withIcon(PlatformIcons.FIELD_ICON)
+private fun createLookup(name: String): LookupElement = LookupElementBuilder.create(name)
+    .withIcon(FIELD_ICON)
     .bold()
 
