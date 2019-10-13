@@ -41,6 +41,8 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
         extend(BASIC, AFTER_NEWLINE, provide(EXTENDS))
         extend(BASIC, AFTER_NEWLINE, provide(CLASS_NAME))
         extend(BASIC, AFTER_NEWLINE, provide(MATCH))
+        extend(BASIC, AFTER_NEWLINE, provide(TOOL))
+        extend(BASIC, AFTER_NEWLINE, provide(PASS))
         extend(BASIC, AFTER_EXPORT_KEYWORD, provide(VAR))
         extend(BASIC, AFTER_STATIC_KEYWORD, provide(FUNC))
     }
