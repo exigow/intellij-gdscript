@@ -16,34 +16,34 @@ import script.psi.elements.ValuePsiElement
 class CompletionContributor : com.intellij.codeInsight.completion.CompletionContributor() {
 
     init {
-        extend(BASIC, INSIDE_TYPE, provide(PRIMITIVES, LANGUAGE_LEVEL_VALUE_PRIORITY))
-        extend(BASIC, INSIDE_TYPE, provide(CLASSES, CLASS_PRIORITY))
-        extend(BASIC, INSIDE_INVOKE, provide(FUNCTION_CALLS, FUNCTION_PRIORITY))
-        extend(BASIC, INSIDE_INVOKE, provide(CONSTRUCTOR_CALLS, CLASS_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(SELF, LANGUAGE_LEVEL_VALUE_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(TRUE, LANGUAGE_LEVEL_VALUE_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(FALSE, LANGUAGE_LEVEL_VALUE_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(FUNCTION_CALLS, FUNCTION_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(CONSTANTS, LANGUAGE_LEVEL_VALUE_PRIORITY))
-        extend(BASIC, INSIDE_VALUE, provide(CONSTRUCTOR_CALLS, CLASS_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(VAR, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(CONST, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(FUNC, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(FOR, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(WHILE, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(CLASS, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(EXTENDS, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(CLASS_NAME, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(ENUM, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(IF, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(ELIF, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(ELSE, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(RETURN, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(SIGNAL, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(EXPORT, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_NEWLINE, provide(STATIC, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_EXPORT_KEYWORD, provide(VAR, KEYWORD_PRIORITY))
-        extend(BASIC, AFTER_STATIC_KEYWORD, provide(FUNC, KEYWORD_PRIORITY))
+        extend(BASIC, INSIDE_TYPE, provide(PRIMITIVE_CLASS, VALUE_PRIORITY))
+        extend(BASIC, INSIDE_TYPE, provide(OBJECT_CLASS, CLASS_PRIORITY))
+        extend(BASIC, INSIDE_INVOKE, provide(FUNCTION_CALL, FUNCTION_PRIORITY))
+        extend(BASIC, INSIDE_INVOKE, provide(CONSTRUCTOR_CALL, CLASS_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(SELF, VALUE_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(TRUE, VALUE_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(FALSE, VALUE_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(FUNCTION_CALL, FUNCTION_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(CONSTANT, VALUE_PRIORITY))
+        extend(BASIC, INSIDE_VALUE, provide(CONSTRUCTOR_CALL, CLASS_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(VAR, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(CONST, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(FUNC, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(FOR, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(WHILE, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(CLASS, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(EXTENDS, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(CLASS_NAME, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(ENUM, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(IF, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(ELIF, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(ELSE, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(RETURN, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(SIGNAL, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(EXPORT, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_NEWLINE, provide(STATIC, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_EXPORT_KEYWORD, provide(VAR, STATEMENT_PRIORITY))
+        extend(BASIC, AFTER_STATIC_KEYWORD, provide(FUNC, STATEMENT_PRIORITY))
     }
 
     private fun provide(lookups: List<LookupElement>, priority: Int = 0) = object : CompletionProvider<CompletionParameters>() {
@@ -57,9 +57,9 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
 
     private companion object {
 
-        const val KEYWORD_PRIORITY = 100
-        const val LANGUAGE_LEVEL_VALUE_PRIORITY = 70
-        const val FUNCTION_PRIORITY = 30
+        const val STATEMENT_PRIORITY = 100
+        const val VALUE_PRIORITY = 70
+        const val FUNCTION_PRIORITY = 50
         const val CLASS_PRIORITY = 10
 
         private val INSIDE_TYPE = psiElement().inside(TypePsiElement::class.java)

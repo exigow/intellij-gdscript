@@ -12,11 +12,11 @@ import com.intellij.util.PlatformIcons.*
 import kotlin.math.min
 
 
-val CLASSES = OBJECT_CLASSES.map { createClass(it) }
-val CONSTANTS = LANGUAGE_CLASS.constants.map { createConstant(it) }
-val CONSTRUCTOR_CALLS = (OBJECT_CLASSES + PRIMITIVE_CLASSES).map { createConstructorCall(it) }
-val FUNCTION_CALLS = LANGUAGE_CLASS.methods.map { createFunctionCall(it) }
-val PRIMITIVES = PRIMITIVE_CLASSES.map { createPrimitive(it) }
+val OBJECT_CLASS = OBJECT_CLASSES.map { createClass(it) }
+val PRIMITIVE_CLASS = PRIMITIVE_CLASSES.map { createPrimitive(it) }
+val CONSTRUCTOR_CALL = (OBJECT_CLASSES + PRIMITIVE_CLASSES).map { createConstructorCall(it) }
+val FUNCTION_CALL = LANGUAGE_CLASS.methods.map { createFunctionCall(it) }
+val CONSTANT = LANGUAGE_CLASS.constants.map { createConstant(it) }
 val VAR = listOf(create("var").withSpaceHandler().bold())
 val CONST = listOf(create("const").withSpaceHandler().bold())
 val FUNC = listOf(create("func").withSpaceHandler().bold())
