@@ -4,6 +4,9 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class ErrorHighlightingTest : BasePlatformTestCase() {
 
+    fun `test allow newlines before first statement`() =
+        assertNoErrors("\n\nclass_name Test")
+
     fun `test const`() =
         assertNoErrors("const MAX_HP = 100")
 
