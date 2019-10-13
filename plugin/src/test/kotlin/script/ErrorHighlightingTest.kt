@@ -135,8 +135,17 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function static`() =
         assertNoErrors("static func max(a, b):")
 
-    fun `test literal value self`() =
+    fun `test self`() =
         assertNoErrors("self")
+
+    fun `test null`() =
+        assertNoErrors("null")
+
+    fun `test variable null`() =
+        assertNoErrors("var entity = null")
+
+    fun `test pass`() =
+        assertNoErrors("pass")
 
     fun `test literal value true`() =
         assertNoErrors("condition = true")

@@ -10,7 +10,7 @@ object ScriptTokenSets {
     val LINE_COMMENT = createTokenSet(ScriptLanguage, ScriptLexer.LINE_COMMENT)!!
     val STRING = createTokenSet(ScriptLanguage, ScriptLexer.STRING, MULTILINE_STRING)!!
     val NUMBER = createTokenSet(ScriptLanguage, ScriptLexer.NUMBER)!!
-    val KEYWORD = createTokenSet(ScriptLanguage, MATCH, EXPORT, ONREADY, VAR, SETGET, CONST, STATIC, FUNC, FOR, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF, ELSE, RETURN, PASS, SIGNAL, AND, OR, IN, IS, AS, NOT, TRUE, FALSE, SELF, BOOL, INT, FLOAT, VOID)!!
+    val KEYWORD = createTokenSet(ScriptLanguage, MATCH, EXPORT, ONREADY, VAR, SETGET, CONST, STATIC, FUNC, FOR, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF, ELSE, RETURN, PASS, SIGNAL, AND, OR, IN, IS, AS, NOT, TRUE, FALSE, SELF, NULL, BOOL, INT, FLOAT, VOID)!!
     val IDENTIFIER = createTokenSet(ScriptLanguage, ScriptLexer.IDENTIFIER)!!
     val NODE = createTokenSet(ScriptLanguage, ScriptLexer.NODE)!!
     val OPERATION_SIGN = createTokenSet(ScriptLanguage, ARROW, MINUS, ASSIGN, ASSIGN_SPECIAL, ScriptLexer.OPERATION_SIGN)!!

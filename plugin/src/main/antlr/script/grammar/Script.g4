@@ -27,7 +27,7 @@ match_statement: MATCH expression COLON;
 match_entry_statement: (IDENTIFIER | NUMBER | STRING) COLON;
 
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT | IF | ELSE) value)*;
-value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
+value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | NULL | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 
 array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
@@ -71,6 +71,7 @@ IN: 'in';
 IS: 'is';
 AS: 'as';
 SELF: 'self';
+NULL: 'null';
 TRUE: 'true';
 FALSE: 'false';
 BOOL: 'bool';

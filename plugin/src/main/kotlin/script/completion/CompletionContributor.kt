@@ -19,7 +19,7 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
         extend(BASIC, INSIDE_TYPE, provide(OBJECT_TYPES))
         extend(BASIC, INSIDE_INVOKE, provide(FUNCTION_CALLS))
         extend(BASIC, INSIDE_INVOKE, provide(CONSTRUCTOR_CALLS))
-        extend(BASIC, INSIDE_VALUE, provide(SELF_TRUE_FALSE))
+        extend(BASIC, INSIDE_VALUE, provide(VALUES))
         extend(BASIC, INSIDE_VALUE, provide(SINGLETONS))
         extend(BASIC, INSIDE_VALUE, provide(CONSTANTS))
         extend(BASIC, INSIDE_VALUE, provide(FUNCTION_CALLS))
