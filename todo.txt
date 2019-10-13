@@ -1,3 +1,0 @@
-fix getAdditionalHighlightingTagToDescriptorMap / use text attr keys
-
-add Lua-like dictionary coloring
