@@ -1,6 +1,6 @@
 # Godot GDScript plugin for the IntelliJ Platform
 
-![Travis (.org)](https://img.shields.io/travis/exigow/intellij-gdscript) ![GitHub](https://img.shields.io/github/license/exigow/intellij-gdscript)
+[![Travis Build Status][travis-build-status-svg]][travis-build-status]
 
 Plugin is compatible with **any** product developed by JetBrains based on the IntelliJ Platform (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion*, and so on).
 
@@ -17,3 +17,6 @@ Plugin is compatible with **any** product developed by JetBrains based on the In
 2. Start IntelliJ, open `Preferences`, section `Plugins`, find :gear: icon, option `Install plugin from disk...`.
 4. Open `<PROJECT>/plugin/build/distributions/plugin.zip` archive.
 3. Restart IntelliJ.
+
+[travis-build-status]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
+[travis-build-status-svg]: https://travis-ci.org/exigow/intellij-gdscriptsvg?branch=master
