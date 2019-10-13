@@ -14,13 +14,13 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
                 print()
         """)
 
-    fun `test if short statement then second statement in same line`() =
+    fun `test if-short with statement on the same line`() =
         assertNoErrors("if 1 + 1 == 2: return 2 + 2")
 
-    fun `test ternary if with variable definition statement`() =
+    fun `test ternary-if with variable definition statement`() =
         assertNoErrors("var x = value if expression else value")
 
-    fun `test ternary if with assign and add statement`() =
+    fun `test ternary-if with assign and add statement`() =
         assertNoErrors("y += 3 if y < 10 else -1")
 
     fun `test allow newlines before first statement`() =
