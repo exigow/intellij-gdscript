@@ -14,6 +14,39 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
                 print()
         """)
 
+    fun `test match constant pattern`() =
+        assertNoErrors("""
+            match x:
+                1:
+                    print("We are number one!")
+                2:
+                    print("Two are better than one!")
+                "test":
+                    print("Oh snap! It's a string!")
+        """)
+
+    fun `test match variable pattern`() =
+        assertNoErrors("""
+            match typeof(x):
+                TYPE_REAL:
+                    print("float")
+                TYPE_STRING:
+                    print("text")
+                TYPE_ARRAY:
+                    print("array")
+        """)
+
+    fun `test match wildcard pattern`() =
+        assertNoErrors("""
+            match x:
+                1:
+                    print("It's one!")
+                2:
+                    print("It's one times two!")
+                _:
+                    print("It's not 1 or 2. I don't care tbh.")
+        """)
+
     fun `test if-short with statement on the same line`() =
         assertNoErrors("if 1 + 1 == 2: return 2 + 2")
 

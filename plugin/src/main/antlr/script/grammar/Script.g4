@@ -4,7 +4,7 @@ grammar Script;
 
 file: NL* (statement NL+)* EOF;
 
-statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | expression | PASS | LINE_COMMENT;
+statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | LINE_COMMENT;
 var_statement: (EXPORT (PARENTHES_LEFT export_argument? (COMMA export_argument)* PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 export_argument: IDENTIFIER | NUMBER | STRING | type;
 const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
@@ -23,6 +23,8 @@ else_statement: ELSE COLON statement?;
 return_statement: RETURN expression;
 signal_statement: SIGNAL IDENTIFIER;
 assign_statement: expression (ASSIGN | ASSIGN_SPECIAL) expression;
+match_statement: MATCH expression COLON;
+match_entry_statement: (IDENTIFIER | NUMBER | STRING) COLON;
 
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT | IF | ELSE) value)*;
 value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
@@ -38,6 +40,7 @@ in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 type: IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
 
+MATCH: 'match';
 EXPORT: 'export';
 ONREADY: 'onready';
 VAR: 'var';

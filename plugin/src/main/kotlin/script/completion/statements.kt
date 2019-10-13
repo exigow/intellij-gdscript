@@ -19,6 +19,7 @@ val RETURN = createLookup("return")
 val SIGNAL = createLookup("signal")
 val EXPORT = createLookup("export")
 val STATIC = createLookup("static")
+val MATCH = createLookup("match")
 
 private fun createLookup(name: String): LookupElement = create(name)
     .bold()
