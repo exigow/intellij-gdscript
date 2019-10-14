@@ -5,10 +5,23 @@ import script.ScriptFileType
 
 class BraceMatcherTest : BasePlatformTestCase() {
 
-    fun `test curly braces auto completion`() {
-        myFixture.configureByText(ScriptFileType, "var dict = <caret>")
+    fun `test curly braces`() {
+        myFixture.configureByText(ScriptFileType, "x = <caret>")
         myFixture.type('{')
-        myFixture.checkResult("var dict = {<caret>}")
+        myFixture.checkResult("x = {<caret>}")
+    }
+
+    fun `test square braces`() {
+        myFixture.configureByText(ScriptFileType, "x = <caret>")
+        myFixture.type('[')
+        myFixture.checkResult("x = [<caret>]"
+        )
+    }
+
+    fun `test round braces`() {
+        myFixture.configureByText(ScriptFileType, "x = <caret>")
+        myFixture.type('(')
+        myFixture.checkResult("x = (<caret>)")
     }
 
 }
