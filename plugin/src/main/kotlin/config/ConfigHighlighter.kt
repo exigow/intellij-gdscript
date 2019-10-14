@@ -1,5 +1,6 @@
 package config
 
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors.*
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
@@ -15,11 +16,11 @@ class ConfigHighlighter : SyntaxHighlighterBase() {
     override fun getHighlightingLexer() = ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
 
     private fun matchingToColor(element: IElementType) = when (element) {
-        in TokenSet.KEYWORD -> ConfigColor.KEYWORD
-        in TokenSet.IDENTIFIER -> ConfigColor.IDENTIFIER
-        in TokenSet.NUMBER -> ConfigColor.NUMBER
-        in TokenSet.STRING -> ConfigColor.STRING
-        in TokenSet.LINE_COMMENT -> ConfigColor.LINE_COMMENT
+        in TokenSet.KEYWORD -> KEYWORD
+        in TokenSet.IDENTIFIER -> IDENTIFIER
+        in TokenSet.NUMBER -> NUMBER
+        in TokenSet.STRING -> STRING
+        in TokenSet.LINE_COMMENT -> LINE_COMMENT
         else -> null
     }
 

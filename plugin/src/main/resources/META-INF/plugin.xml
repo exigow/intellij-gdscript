@@ -10,8 +10,6 @@
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- config files -->
-		<colorSettingsPage implementation="config.ConfigColorSettingsPage"/>
-		<lang.commenter implementationClass="config.ConfigCommenter" language="Godot Config"/>
 		<fileType implementationClass="config.ConfigFileType" extensions="cfg" name="Godot CFG file" language="Godot Config"/>
 		<fileType implementationClass="config.ConfigFileType" extensions="import" name="Godot IMPORT file" language="Godot Config"/>
 		<fileType implementationClass="config.ConfigFileType" extensions="tres" name="Godot TRES file" language="Godot Config"/>
