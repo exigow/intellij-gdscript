@@ -55,7 +55,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
             return 1.0
         static func <STATIC_METHOD>static_method</STATIC_METHOD>(parameter1: int, parameter2: <CLASS_NAME>SomeClass</CLASS_NAME>) -> bool:
             ${'$'}Path/To/Node
-            if condition == false:
+            if !condition == false:
                 var dict = {1: 2, "key": "Hello World"}
             elif true:
                 var lua_dict = {key1 = 1, key2 = 2}

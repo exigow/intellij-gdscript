@@ -27,7 +27,7 @@ match_statement: MATCH expression COLON;
 match_entry_statement: expression COLON;
 
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT | IF | ELSE) value)*;
-value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | NULL | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
+value: (MINUS | NOT | NEGATE)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | NULL | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 
 array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
@@ -64,7 +64,8 @@ SIGNAL: 'signal';
 ASSIGN_SPECIAL: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ASSIGN: '=';
 ARROW: '->';
-OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '!' | '&&' | '||';
+OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '&&' | '||';
+NEGATE: '!';
 NOT: 'not';
 AND: 'and';
 OR: 'or';

@@ -138,6 +138,9 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function void`() =
         assertNoErrors("func some() -> void:")
 
+    fun `test negated condition`() =
+        assertNoErrors("if !list.empty():")
+
     fun `test tool`() =
         assertNoErrors("tool")
 
