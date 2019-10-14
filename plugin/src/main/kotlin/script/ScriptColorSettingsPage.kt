@@ -14,7 +14,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
     override fun getHighlighter() = ScriptHighlighter()
 
     override fun getAttributeDescriptors() = mapOf(
-        LINE_COMMENT to "Comment line",
+        LINE_COMMENT to "Line comment",
         STRING to "String text",
         NUMBER to "Number",
         KEYWORD to "Keyword",
@@ -23,9 +23,9 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         OPERATION_SIGN to group(OPERATORS, "Operation sign"),
         COMMA to group(OPERATORS, "Comma"),
         DOT to group(OPERATORS, "Dot"),
-        BRACES to group(OPERATORS, "Parentheses / Soft braces"),
-        PARENTHESES to group(OPERATORS, "Braces / Curly braces"),
-        BRACKETS to group(OPERATORS, "Brackets / Square braces"),
+        BRACES to group(OPERATORS, "Braces"),
+        PARENTHESES to group(OPERATORS, "Parentheses"),
+        BRACKETS to group(OPERATORS, "Brackets"),
         FUNCTION_CALL to group(IDENTIFIERS, "Function call"),
         STATIC_METHOD to group(CLASSES, "Static method"),
         INSTANCE_METHOD to group(CLASSES, "Instance method"),
