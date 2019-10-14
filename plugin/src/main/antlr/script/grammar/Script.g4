@@ -24,7 +24,7 @@ return_statement: RETURN expression;
 signal_statement: SIGNAL IDENTIFIER;
 assign_statement: expression (ASSIGN | ASSIGN_SPECIAL) expression;
 match_statement: MATCH expression COLON;
-match_entry_statement: (IDENTIFIER | NUMBER | STRING) COLON;
+match_entry_statement: expression COLON;
 
 expression: value ((OPERATION_SIGN | AND | OR | IN | IS | AS | MINUS | DOT | IF | ELSE) value)*;
 value: (MINUS | NOT)? (IDENTIFIER | NODE | NUMBER | TRUE | FALSE | SELF | NULL | STRING | MULTILINE_STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);

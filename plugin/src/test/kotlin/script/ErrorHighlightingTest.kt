@@ -135,6 +135,9 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function static`() =
         assertNoErrors("static func max(a, b):")
 
+    fun `test function void`() =
+        assertNoErrors("func some() -> void:")
+
     fun `test tool`() =
         assertNoErrors("tool")
 
