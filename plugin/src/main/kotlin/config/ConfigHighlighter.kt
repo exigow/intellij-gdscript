@@ -17,7 +17,7 @@ class ConfigHighlighter : SyntaxHighlighterBase() {
 
     private fun matchingToColor(element: IElementType) = when (element) {
         in TokenSet.KEYWORD -> KEYWORD
-        in TokenSet.IDENTIFIER -> IDENTIFIER
+        in TokenSet.IDENTIFIER -> INSTANCE_FIELD
         in TokenSet.NUMBER -> NUMBER
         in TokenSet.STRING -> STRING
         in TokenSet.LINE_COMMENT -> LINE_COMMENT
