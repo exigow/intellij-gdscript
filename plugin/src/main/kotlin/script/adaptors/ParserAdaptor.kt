@@ -9,9 +9,7 @@ import script.grammar.ScriptParser
 
 class ParserAdaptor(parser: ScriptParser = ScriptParser(null)) : ANTLRParserAdaptor(ScriptLanguage, parser) {
 
-    override fun parse(parser: Parser, root: IElementType): ParseTree {
-        require(parser is ScriptParser)
-        return parser.file()
-    }
+    override fun parse(parser: Parser, root: IElementType): ParseTree =
+        (parser as ScriptParser).file()
 
 }

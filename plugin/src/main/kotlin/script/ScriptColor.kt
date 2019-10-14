@@ -4,6 +4,8 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
 
+
+// todo remove enum, create object, remove LINE_COMMENT.key
 enum class ScriptColor(val key: TextAttributesKey) {
 
     LINE_COMMENT(createTextAttributesKey("GODOT_SCRIPT_LINE_COMMENT", Default.LINE_COMMENT)),

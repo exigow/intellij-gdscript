@@ -9,14 +9,14 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import script.ScriptTokenSets.LINE_COMMENT
-import script.ScriptTokenSets.STRING
-import script.ScriptTokenSets.WHITESPACE
 import script.adaptors.LexerAdaptor
 import script.adaptors.ParserAdaptor
 import script.grammar.ScriptParser
 import script.psi.PsiFactory
 import script.psi.PsiFile
+import script.psi.TokenSet.LINE_COMMENT
+import script.psi.TokenSet.STRING
+import script.psi.TokenSet.WHITESPACE
 
 class ScriptParserDefinition : ParserDefinition {
 

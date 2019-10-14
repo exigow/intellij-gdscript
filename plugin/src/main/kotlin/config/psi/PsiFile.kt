@@ -1,10 +1,12 @@
-package config
+package config.psi
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.psi.FileViewProvider
+import config.ConfigFileType
+import config.ConfigLanguage
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class ConfigFileBase(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ConfigLanguage) {
+class PsiFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ConfigLanguage) {
 
     override fun getFileType() = ConfigFileType
 

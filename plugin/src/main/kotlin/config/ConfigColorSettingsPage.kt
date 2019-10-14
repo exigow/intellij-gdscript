@@ -14,11 +14,11 @@ class ConfigColorSettingsPage : ColorSettingsPage {
     override fun getHighlighter() = ConfigHighlighter()
 
     override fun getAttributeDescriptors() = arrayOf(
-        AttributesDescriptor("Keyword", ConfigHighlighterColors.KEYWORD),
-        AttributesDescriptor("Identifier", ConfigHighlighterColors.IDENTIFIER),
-        AttributesDescriptor("Number", ConfigHighlighterColors.NUMBER),
-        AttributesDescriptor("String", ConfigHighlighterColors.STRING),
-        AttributesDescriptor("Line comment", ConfigHighlighterColors.LINE_COMMENT)
+        AttributesDescriptor("Keyword", ConfigColor.KEYWORD),
+        AttributesDescriptor("Identifier", ConfigColor.IDENTIFIER),
+        AttributesDescriptor("Number", ConfigColor.NUMBER),
+        AttributesDescriptor("String", ConfigColor.STRING),
+        AttributesDescriptor("Line comment", ConfigColor.LINE_COMMENT)
     )
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()

@@ -8,13 +8,14 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
-import com.intellij.psi.tree.TokenSet
 import config.grammar.ConfigLexer
-import config.grammar.ConfigLexer.*
 import config.grammar.ConfigParser
+import config.psi.PsiFile
+import config.psi.TokenSet.LINE_COMMENT
+import config.psi.TokenSet.STRING
+import config.psi.TokenSet.WHITESPACE
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
@@ -23,36 +24,28 @@ import org.antlr.v4.runtime.tree.ParseTree
 class ConfigParserDefinition : ParserDefinition {
 
     init {
+        @Suppress("DEPRECATION")
         PSIElementTypeFactory.defineLanguageIElementTypes(ConfigLanguage, ConfigParser.tokenNames, ConfigParser.ruleNames)
     }
 
-    override fun createLexer(project: Project): Lexer {
-        val lexer = ConfigLexer(null)
-        return ANTLRLexerAdaptor(ConfigLanguage, lexer)
-    }
+    override fun createLexer(project: Project): Lexer =
+        ANTLRLexerAdaptor(ConfigLanguage, ConfigLexer(null))
 
-    override fun createParser(project: Project): PsiParser {
-        val parser = ConfigParser(null)
-        return object : ANTLRParserAdaptor(ConfigLanguage, parser) {
-
-            override fun parse(parser: Parser, root: IElementType): ParseTree {
-                require(parser is ConfigParser)
-                require(root is IFileElementType)
-                return parser.file()
-            }
-
+    override fun createParser(project: Project): PsiParser =
+        object : ANTLRParserAdaptor(ConfigLanguage, ConfigParser(null)) {
+            override fun parse(parser: Parser, root: IElementType): ParseTree =
+                (parser as ConfigParser).file()
         }
-    }
 
-    override fun getWhitespaceTokens(): TokenSet = createTokenSet(ConfigLanguage, WHITESPACE)
+    override fun getWhitespaceTokens() = WHITESPACE
 
-    override fun getCommentTokens(): TokenSet = createTokenSet(ConfigLanguage, LINE_COMMENT)
+    override fun getCommentTokens() = LINE_COMMENT
 
-    override fun getStringLiteralElements(): TokenSet = createTokenSet(ConfigLanguage, STRING)
+    override fun getStringLiteralElements() = STRING
 
     override fun getFileNodeType() = IFileElementType(ConfigLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) = ConfigFileBase(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = PsiFile(viewProvider)
 
     override fun createElement(node: ASTNode) = ANTLRPsiNode(node)
 

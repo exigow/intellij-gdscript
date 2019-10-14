@@ -4,9 +4,9 @@ import com.intellij.lang.BracePair
 import com.intellij.lang.PairedBraceMatcher
 import com.intellij.psi.PsiFile
 import com.intellij.psi.tree.IElementType
-import script.ScriptTokenSets.BRACES
-import script.ScriptTokenSets.BRACKETS
-import script.ScriptTokenSets.PARENTHESES
+import script.psi.TokenSet.BRACES
+import script.psi.TokenSet.BRACKETS
+import script.psi.TokenSet.PARENTHESES
 
 class BraceMatcher : PairedBraceMatcher {
 

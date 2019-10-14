@@ -5,27 +5,28 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import script.ScriptColor.*
 import script.adaptors.LexerAdaptor
+import script.psi.TokenSet
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
     override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
-        pack(matchingToColor(element)?.key)
+        pack(matchingToColor(element))
 
     override fun getHighlightingLexer() = LexerAdaptor()
 
     private fun matchingToColor(element: IElementType?) = when (element) {
-        in ScriptTokenSets.LINE_COMMENT.types -> LINE_COMMENT
-        in ScriptTokenSets.STRING.types -> STRING
-        in ScriptTokenSets.NUMBER.types -> NUMBER
-        in ScriptTokenSets.KEYWORD.types -> KEYWORD
-        in ScriptTokenSets.NODE.types -> NODE
-        in ScriptTokenSets.IDENTIFIER.types -> IDENTIFIER
-        in ScriptTokenSets.OPERATION_SIGN.types -> OPERATION_SIGN
-        in ScriptTokenSets.COMMA.types -> COMMA
-        in ScriptTokenSets.DOT.types -> DOT
-        in ScriptTokenSets.BRACES.types -> BRACES
-        in ScriptTokenSets.PARENTHESES.types -> PARENTHESES
-        in ScriptTokenSets.BRACKETS.types -> BRACKETS
+        in TokenSet.LINE_COMMENT -> LINE_COMMENT.key
+        in TokenSet.STRING -> STRING.key
+        in TokenSet.NUMBER -> NUMBER.key
+        in TokenSet.KEYWORD -> KEYWORD.key
+        in TokenSet.NODE -> NODE.key
+        in TokenSet.IDENTIFIER -> IDENTIFIER.key
+        in TokenSet.OPERATION_SIGN -> OPERATION_SIGN.key
+        in TokenSet.COMMA -> COMMA.key
+        in TokenSet.DOT -> DOT.key
+        in TokenSet.BRACES -> BRACES.key
+        in TokenSet.PARENTHESES -> PARENTHESES.key
+        in TokenSet.BRACKETS -> BRACKETS.key
         else -> null
     }
 
