@@ -4,14 +4,14 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import script.ScriptColor.*
-import script.adaptors.ScriptLexerAdaptor
+import script.adaptors.LexerAdaptor
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
     override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
         pack(matchingToColor(element)?.key)
 
-    override fun getHighlightingLexer() = ScriptLexerAdaptor()
+    override fun getHighlightingLexer() = LexerAdaptor()
 
     private fun matchingToColor(element: IElementType?) = when (element) {
         in ScriptTokenSets.LINE_COMMENT.types -> LINE_COMMENT

@@ -5,12 +5,12 @@ import com.intellij.psi.PsiElement
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import script.grammar.ScriptParser.*
-import script.psi.elements.FunctionPsiElement
-import script.psi.elements.InvokePsiElement
-import script.psi.elements.TypePsiElement
-import script.psi.elements.ValuePsiElement
+import script.psi.elements.PsiFunction
+import script.psi.elements.PsiInvoke
+import script.psi.elements.PsiType
+import script.psi.elements.PsiValue
 
-object PsiElementFactory {
+object PsiFactory {
 
     fun createPsiElement(node: ASTNode): PsiElement {
         val nodeType = node.elementType
@@ -20,10 +20,10 @@ object PsiElementFactory {
     }
 
     private fun convertRuleIndexToPsi(index: Int, node: ASTNode) = when(index) {
-        RULE_type -> TypePsiElement(node)
-        RULE_value -> ValuePsiElement(node)
-        RULE_invoke -> InvokePsiElement(node)
-        RULE_func_statement -> FunctionPsiElement(node)
+        RULE_type -> PsiType(node)
+        RULE_value -> PsiValue(node)
+        RULE_invoke -> PsiInvoke(node)
+        RULE_func_statement -> PsiFunction(node)
         else -> ANTLRPsiNode(node)
     }
 

@@ -5,9 +5,9 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import script.ScriptColor.*
-import script.psi.elements.FunctionPsiElement
-import script.psi.elements.InvokePsiElement
-import script.psi.elements.TypePsiElement
+import script.psi.elements.PsiFunction
+import script.psi.elements.PsiInvoke
+import script.psi.elements.PsiType
 
 class Annotator : com.intellij.lang.annotation.Annotator {
 
@@ -20,7 +20,7 @@ class Annotator : com.intellij.lang.annotation.Annotator {
 
     private fun annotateMethod(element: PsiElement, holder: AnnotationHolder) {
         val parent = element.parent
-        if (element.isIdentifier() && parent is FunctionPsiElement)
+        if (element.isIdentifier() && parent is PsiFunction)
             if (parent.isStatic())
                 holder.createColorAnnotation(element, STATIC_METHOD)
             else
@@ -32,12 +32,12 @@ class Annotator : com.intellij.lang.annotation.Annotator {
             holder.createColorAnnotation(element, CONSTANT)
     }
     private fun annotateFunctionCall(element: PsiElement, holder: AnnotationHolder) {
-        if (element.parent is InvokePsiElement && element.isIdentifier() && element.text in LANGUAGE_METHOD_NAMES)
+        if (element.parent is PsiInvoke && element.isIdentifier() && element.text in LANGUAGE_METHOD_NAMES)
             holder.createColorAnnotation(element, FUNCTION_CALL)
     }
 
     private fun annotateClass(element: PsiElement, holder: AnnotationHolder) {
-        if (element is TypePsiElement && element.isNotPrimitive())
+        if (element is PsiType && element.isNotPrimitive())
             holder.createColorAnnotation(element, CLASS_NAME)
     }
 

@@ -7,9 +7,9 @@ import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
-import script.psi.elements.InvokePsiElement
-import script.psi.elements.TypePsiElement
-import script.psi.elements.ValuePsiElement
+import script.psi.elements.PsiInvoke
+import script.psi.elements.PsiType
+import script.psi.elements.PsiValue
 
 
 class CompletionContributor : com.intellij.codeInsight.completion.CompletionContributor() {
@@ -62,9 +62,9 @@ class CompletionContributor : com.intellij.codeInsight.completion.CompletionCont
 
     private companion object {
 
-        private val INSIDE_TYPE = psiElement().inside(TypePsiElement::class.java)
-        private val INSIDE_INVOKE = psiElement().inside(InvokePsiElement::class.java)
-        private val INSIDE_VALUE = psiElement().inside(ValuePsiElement::class.java)
+        private val INSIDE_TYPE = psiElement().inside(PsiType::class.java)
+        private val INSIDE_INVOKE = psiElement().inside(PsiInvoke::class.java)
+        private val INSIDE_VALUE = psiElement().inside(PsiValue::class.java)
         private val AFTER_NEWLINE = psiElement().afterLeaf("\n")
         private val AFTER_EXPORT_KEYWORD = psiElement().afterLeaf("export")
         private val AFTER_STATIC_KEYWORD = psiElement().afterLeaf("static")

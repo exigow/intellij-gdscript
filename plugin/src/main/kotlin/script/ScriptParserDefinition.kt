@@ -12,10 +12,10 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import script.ScriptTokenSets.LINE_COMMENT
 import script.ScriptTokenSets.STRING
 import script.ScriptTokenSets.WHITESPACE
-import script.adaptors.ScriptLexerAdaptor
-import script.adaptors.ScriptParserAdaptor
+import script.adaptors.LexerAdaptor
+import script.adaptors.ParserAdaptor
 import script.grammar.ScriptParser
-import script.psi.PsiElementFactory
+import script.psi.PsiFactory
 import script.psi.PsiFile
 
 class ScriptParserDefinition : ParserDefinition {
@@ -25,9 +25,9 @@ class ScriptParserDefinition : ParserDefinition {
         PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
     }
 
-    override fun createLexer(project: Project): Lexer = ScriptLexerAdaptor()
+    override fun createLexer(project: Project): Lexer = LexerAdaptor()
 
-    override fun createParser(project: Project): PsiParser = ScriptParserAdaptor()
+    override fun createParser(project: Project): PsiParser = ParserAdaptor()
 
     override fun getWhitespaceTokens(): TokenSet = WHITESPACE
 
@@ -39,6 +39,6 @@ class ScriptParserDefinition : ParserDefinition {
 
     override fun createFile(view: FileViewProvider) = PsiFile(view)
 
-    override fun createElement(node: ASTNode) = PsiElementFactory.createPsiElement(node)
+    override fun createElement(node: ASTNode) = PsiFactory.createPsiElement(node)
 
 }
