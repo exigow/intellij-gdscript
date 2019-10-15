@@ -17,7 +17,7 @@ application {
 }
 
 tasks {
-    register("updateCompletion") {
+    register("generateCompletion") {
         dependsOn(run)
     }
 }
