@@ -5,6 +5,12 @@ import gdscript.files.ScriptFileType
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
+    fun `test continue`() =
+        assertNoErrors("continue")
+
+    fun `test break`() =
+        assertNoErrors("break")
+
     fun `test if-elif-else statements`() =
         assertNoErrors("""
             if condition:

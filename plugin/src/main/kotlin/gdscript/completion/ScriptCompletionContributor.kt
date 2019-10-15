@@ -48,6 +48,8 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(BASIC, AFTER_NEWLINE, provide(MATCH))
         extend(BASIC, AFTER_NEWLINE, provide(TOOL))
         extend(BASIC, AFTER_NEWLINE, provide(PASS))
+        extend(BASIC, AFTER_NEWLINE, provide(BREAK))
+        extend(BASIC, AFTER_NEWLINE, provide(CONTINUE))
         extend(BASIC, AFTER_EXPORT_KEYWORD, provide(VAR))
         extend(BASIC, AFTER_STATIC_KEYWORD, provide(FUNC))
     }

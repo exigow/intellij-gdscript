@@ -4,7 +4,7 @@ grammar GDScript;
 
 file: NL* (statement NL+)* EOF;
 
-statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | TOOL | LINE_COMMENT;
+statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT;
 var_statement: (EXPORT (PARENTHES_LEFT export_argument? (COMMA export_argument)* PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 export_argument: IDENTIFIER | NUMBER | STRING | type;
 const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
@@ -61,6 +61,8 @@ RETURN: 'return';
 PASS: 'pass';
 TOOL: 'tool';
 SIGNAL: 'signal';
+BREAK: 'break';
+CONTINUE: 'continue';
 ASSIGN_SPECIAL: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ASSIGN: '=';
 ARROW: '->';

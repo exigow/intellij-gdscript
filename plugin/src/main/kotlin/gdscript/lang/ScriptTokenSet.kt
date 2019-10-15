@@ -10,7 +10,7 @@ object ScriptTokenSet {
     val LINE_COMMENT = createTokenSet(ScriptLanguage, GDScriptLexer.LINE_COMMENT)!!
     val STRING = createTokenSet(ScriptLanguage, GDScriptLexer.STRING, MULTILINE_STRING)!!
     val NUMBER = createTokenSet(ScriptLanguage, GDScriptLexer.NUMBER)!!
-    val KEYWORD = createTokenSet(ScriptLanguage, MATCH, EXPORT, ONREADY, VAR, SETGET, CONST, STATIC, FUNC, FOR, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF, ELSE, RETURN, PASS, SIGNAL, AND, OR, IN, IS, AS, NOT, TRUE, FALSE, SELF, NULL, BOOL, INT, FLOAT, VOID, TOOL)!!
+    val KEYWORD = createTokenSet(ScriptLanguage, CONTINUE, BREAK, MATCH, EXPORT, ONREADY, VAR, SETGET, CONST, STATIC, FUNC, FOR, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF, ELSE, RETURN, PASS, SIGNAL, AND, OR, IN, IS, AS, NOT, TRUE, FALSE, SELF, NULL, BOOL, INT, FLOAT, VOID, TOOL)!!
     val IDENTIFIER = createTokenSet(ScriptLanguage, GDScriptLexer.IDENTIFIER)!!
     val NODE = createTokenSet(ScriptLanguage, GDScriptLexer.NODE)!!
     val OPERATION_SIGN = createTokenSet(ScriptLanguage, NEGATE, ARROW, MINUS, ASSIGN, ASSIGN_SPECIAL, GDScriptLexer.OPERATION_SIGN)!!
