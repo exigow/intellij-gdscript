@@ -3,7 +3,7 @@ package gdscript.typing
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.files.ScriptFileType
 
-class BraceMatcherTest : BasePlatformTestCase() {
+class ScriptBraceMatcherTest : BasePlatformTestCase() {
 
     fun `test curly braces`() {
         myFixture.configureByText(ScriptFileType, "x = <caret>")

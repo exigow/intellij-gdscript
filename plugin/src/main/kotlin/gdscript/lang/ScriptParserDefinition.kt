@@ -10,9 +10,9 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import gdscript.GDScriptLexer
 import gdscript.GDScriptParser
-import gdscript.lang.TokenSet.LINE_COMMENT
-import gdscript.lang.TokenSet.STRING
-import gdscript.lang.TokenSet.WHITESPACE
+import gdscript.lang.ScriptTokenSet.LINE_COMMENT
+import gdscript.lang.ScriptTokenSet.STRING
+import gdscript.lang.ScriptTokenSet.WHITESPACE
 import gdscript.lang.psi.file.ScriptPsiFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory

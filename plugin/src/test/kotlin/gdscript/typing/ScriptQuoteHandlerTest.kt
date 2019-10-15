@@ -3,7 +3,7 @@ package gdscript.typing
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.files.ScriptFileType
 
-class QuoteHandlerTest : BasePlatformTestCase() {
+class ScriptQuoteHandlerTest : BasePlatformTestCase() {
 
     fun `test add double-quotes on new string and move caret inside`() {
         myFixture.configureByText(ScriptFileType, "x = <caret>")

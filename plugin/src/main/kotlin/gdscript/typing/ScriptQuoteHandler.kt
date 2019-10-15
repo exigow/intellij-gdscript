@@ -6,7 +6,7 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
 
 
-class QuoteHandler : MultiCharQuoteHandler {
+class ScriptQuoteHandler : MultiCharQuoteHandler {
 
     override fun isClosingQuote(iter: HighlighterIterator, offset: Int) = false
 

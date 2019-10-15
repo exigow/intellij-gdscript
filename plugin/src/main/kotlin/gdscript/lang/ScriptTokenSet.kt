@@ -4,7 +4,7 @@ import gdscript.GDScriptLexer
 import gdscript.GDScriptLexer.*
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
-object TokenSet {
+object ScriptTokenSet {
 
     val WHITESPACE = createTokenSet(ScriptLanguage, GDScriptLexer.WHITESPACE)!!
     val LINE_COMMENT = createTokenSet(ScriptLanguage, GDScriptLexer.LINE_COMMENT)!!

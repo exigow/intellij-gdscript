@@ -15,8 +15,8 @@
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.files.ResourceHighlighterFactory" language="GDScript resource"/>
 		<completion.contributor implementationClass="gdscript.completion.ScriptCompletionContributor" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ScriptAnnotator" language="GDScript"/>
-		<lang.braceMatcher implementationClass="gdscript.typing.BraceMatcher" language="GDScript"/>
-		<lang.quoteHandler implementationClass="gdscript.typing.QuoteHandler" language="GDScript"/>
+		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
+		<lang.quoteHandler implementationClass="gdscript.typing.ScriptQuoteHandler" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.options.ColorSettingsPage"/>
 		<fileType implementationClass="gdscript.files.ScriptFileType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
