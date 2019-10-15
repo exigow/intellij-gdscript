@@ -24,7 +24,8 @@
 		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="script.ScriptHighlighterFactory" language="Godot GDScript"/>
 		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
-		<additionalTextAttributes scheme="Default" file="colorSchemes/GDScript.xml"/>
+		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
+		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
 		<lang.braceMatcher implementationClass="script.typing.BraceMatcher" language="Godot GDScript"/>
 		<lang.quoteHandler implementationClass="script.typing.QuoteHandler" language="Godot GDScript"/>
 	</extensions>
