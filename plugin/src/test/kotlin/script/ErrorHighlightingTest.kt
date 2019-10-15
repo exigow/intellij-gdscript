@@ -165,6 +165,9 @@ class ErrorHighlightingTest : BasePlatformTestCase() {
     fun `test node path`() =
         assertNoErrors("node = \$C/Gamma/One")
 
+    fun `test node path with digit`() =
+        assertNoErrors("node = \$CollisionShape2D")
+
     fun `test signal`() =
         assertNoErrors("signal health_depleted")
 
