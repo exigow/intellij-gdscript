@@ -19,12 +19,13 @@ object ScriptPsiFactory {
         return ANTLRPsiNode(node)
     }
 
-    private fun convertRuleIndexToPsi(index: Int, node: ASTNode) = when(index) {
-        RULE_type -> PsiType(node)
-        RULE_value -> PsiValue(node)
-        RULE_invoke -> PsiInvoke(node)
-        RULE_func_statement -> PsiFunction(node)
-        else -> ANTLRPsiNode(node)
-    }
+    private fun convertRuleIndexToPsi(index: Int, node: ASTNode) =
+        when(index) {
+            RULE_type -> PsiType(node)
+            RULE_value -> PsiValue(node)
+            RULE_invoke -> PsiInvoke(node)
+            RULE_func_statement -> PsiFunction(node)
+            else -> ANTLRPsiNode(node)
+        }
 
 }

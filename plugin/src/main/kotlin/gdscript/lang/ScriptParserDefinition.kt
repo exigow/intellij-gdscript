@@ -28,7 +28,8 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
         PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
     }
 
-    override fun createLexer(project: Project): Lexer = ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
+    override fun createLexer(project: Project): Lexer =
+        ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
 
     override fun createParser(project: Project): PsiParser =
         object : ANTLRParserAdaptor(ScriptLanguage, GDScriptParser(null)) {
