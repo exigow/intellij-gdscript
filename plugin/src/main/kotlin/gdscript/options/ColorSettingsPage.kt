@@ -29,7 +29,7 @@ class ColorSettingsPage : ColorSettingsPage {
         BRACES to group(OPERATORS, "Braces"),
         PARENTHESES to group(OPERATORS, "Parentheses"),
         BRACKETS to group(OPERATORS, "Brackets"),
-        FUNCTION_CALL to group(IDENTIFIERS, "Function call"),
+        KEYWORD_FUNCTION_CALL to group(IDENTIFIERS, "Keyword function call"),
         STATIC_METHOD to group(CLASSES, "Static method"),
         INSTANCE_METHOD to group(CLASSES, "Instance method"),
         CLASS_NAME to group(CLASSES, "Class name"),
@@ -40,7 +40,7 @@ class ColorSettingsPage : ColorSettingsPage {
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
     override fun getAdditionalHighlightingTagToDescriptorMap() = mapOf(
-        "FUNCTION_CALL" to FUNCTION_CALL,
+        "KEYWORD_FUNCTION_CALL" to KEYWORD_FUNCTION_CALL,
         "STATIC_METHOD" to STATIC_METHOD,
         "FUNCTION_DECLARATION" to INSTANCE_METHOD,
         "CLASS_NAME" to CLASS_NAME,
@@ -50,7 +50,7 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getDemoText() = """
         extends <CLASS_NAME>BaseClass</CLASS_NAME>
-        const MyScript = <FUNCTION_CALL>preload</FUNCTION_CALL>("res://my_script.gd")
+        const MyScript = <KEYWORD_FUNCTION_CALL>preload</KEYWORD_FUNCTION_CALL>("res://my_script.gd")
         export(<CLASS_NAME>String</CLASS_NAME>, FILE, "*.txt") var file
         const <CONSTANT>CONSTANT</CONSTANT> = 42 # line comment
         enum Named {<CONSTANT>ONE</CONSTANT> = 1, <CONSTANT>ONE</CONSTANT> = 2}
@@ -64,7 +64,7 @@ class ColorSettingsPage : ColorSettingsPage {
                 var lua_dict = {key1 = 1, key2 = 2}
             else:
                 var array = [1.0, true, "text", [1, 2, 3]]
-            <FUNCTION_CALL>print</FUNCTION_CALL>(dict["key"])
+            <KEYWORD_FUNCTION_CALL>print</KEYWORD_FUNCTION_CALL>(dict["key"])
             return false
         """.trimIndent()
 

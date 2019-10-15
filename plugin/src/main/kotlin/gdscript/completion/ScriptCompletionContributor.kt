@@ -19,7 +19,7 @@ class ScriptCompletionContributor : CompletionContributor() {
     init {
         extend(BASIC, INSIDE_TYPE, provideAll(PRIMITIVE_TYPES))
         extend(BASIC, INSIDE_TYPE, provideAll(OBJECT_TYPES))
-        extend(BASIC, INSIDE_INVOKE, provideAll(FUNCTION_CALLS))
+        extend(BASIC, INSIDE_INVOKE, provideAll(KEYWORD_FUNCTION_CALLS))
         extend(BASIC, INSIDE_INVOKE, provideAll(CONSTRUCTOR_CALLS))
         extend(BASIC, INSIDE_VALUE, provide(SELF))
         extend(BASIC, INSIDE_VALUE, provide(TRUE))
@@ -27,7 +27,7 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(BASIC, INSIDE_VALUE, provide(NULL))
         extend(BASIC, INSIDE_VALUE, provideAll(SINGLETONS))
         extend(BASIC, INSIDE_VALUE, provideAll(CONSTANTS))
-        extend(BASIC, INSIDE_VALUE, provideAll(FUNCTION_CALLS))
+        extend(BASIC, INSIDE_VALUE, provideAll(KEYWORD_FUNCTION_CALLS))
         extend(BASIC, INSIDE_VALUE, provideAll(CONSTRUCTOR_CALLS))
         extend(BASIC, AFTER_NEWLINE, provide(VAR))
         extend(BASIC, AFTER_NEWLINE, provide(CONST))

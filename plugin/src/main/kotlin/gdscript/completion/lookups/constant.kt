@@ -12,5 +12,3 @@ val CONSTANTS = GLOBAL_SCOPE_CLASSES
 private fun GodotApi.Class.Constant.toLookup() = create(name)
     .withIcon(VARIABLE_ICON)
     .withTailText(" = $value")
-    .italics()
-    .bold()

@@ -25,7 +25,5 @@
 		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
 		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tres" name="Text resource file" language="GDScript resource"/>
 		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tscn" name="Text scene file" language="GDScript resource"/>
-		<additionalTextAttributes scheme="Default" file="colorSchemes/GDScript.xml"/>
-		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GDScript.xml"/>
 	</extensions>
 </idea-plugin>

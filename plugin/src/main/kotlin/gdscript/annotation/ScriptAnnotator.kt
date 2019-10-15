@@ -33,8 +33,8 @@ class ScriptAnnotator : Annotator {
             holder.createColorAnnotation(element, CONSTANT)
     }
     private fun annotateFunctionCall(element: PsiElement, holder: AnnotationHolder) {
-        if (element.parent is PsiInvoke && element.isIdentifier() && element.text in LANGUAGE_METHOD_NAMES)
-            holder.createColorAnnotation(element, FUNCTION_CALL)
+        if (element.parent is PsiInvoke && element.isIdentifier() && element.text in LANGUAGE_FUNCTION_NAMES)
+            holder.createColorAnnotation(element, KEYWORD_FUNCTION_CALL)
     }
 
     private fun annotateClass(element: PsiElement, holder: AnnotationHolder) {
@@ -46,7 +46,7 @@ class ScriptAnnotator : Annotator {
 
     companion object {
 
-        private val LANGUAGE_METHOD_NAMES = GLOBAL_SCOPE_CLASSES
+        private val LANGUAGE_FUNCTION_NAMES = GLOBAL_SCOPE_CLASSES
             .flatMap { it.methods }
             .map { it.name }
 

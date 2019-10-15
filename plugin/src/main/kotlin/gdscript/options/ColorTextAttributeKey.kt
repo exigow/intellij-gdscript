@@ -20,7 +20,7 @@ enum class ColorTextAttributeKey(val key: TextAttributesKey) {
     BRACES(createTextAttributesKey("GODOT_SCRIPT_BRACES", Default.BRACES)),
     PARENTHESES(createTextAttributesKey("GODOT_SCRIPT_PARENTHESES", Default.PARENTHESES)),
     BRACKETS(createTextAttributesKey("GODOT_SCRIPT_BRACKETS", Default.BRACKETS)),
-    FUNCTION_CALL(createTextAttributesKey("GODOT_SCRIPT_FUNCTION_CALL", Default.FUNCTION_CALL)),
+    KEYWORD_FUNCTION_CALL(createTextAttributesKey("GODOT_SCRIPT_KEYWORD_FUNCTION_CALL", Default.KEYWORD)),
     STATIC_METHOD(createTextAttributesKey("GODOT_SCRIPT_STATIC_METHOD", Default.STATIC_METHOD)),
     INSTANCE_METHOD(createTextAttributesKey("GODOT_SCRIPT_INSTANCE_METHOD", Default.INSTANCE_METHOD)),
     CLASS_NAME(createTextAttributesKey("GODOT_SCRIPT_CLASS_NAME", Default.CLASS_NAME)),
