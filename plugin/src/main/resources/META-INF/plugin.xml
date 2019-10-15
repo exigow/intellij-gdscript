@@ -5,28 +5,27 @@
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for the Godot GDScript language.</p>
-		<p><a href="https://github.com/exigow/intellij-gdscript">GitHub source</a></p>
+		<p><a href="https://github.com/exigow/intellij-gdscript">GitHub</a></p>
     ]]></description>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<!-- config files -->
-		<fileType implementationClass="config.ConfigFileType" extensions="cfg" name="Godot CFG file" language="Godot Config"/>
-		<fileType implementationClass="config.ConfigFileType" extensions="import" name="Godot IMPORT file" language="Godot Config"/>
-		<fileType implementationClass="config.ConfigFileType" extensions="tres" name="Godot TRES file" language="Godot Config"/>
-		<fileType implementationClass="config.ConfigFileType" extensions="godot" name="Godot PROJECT file" language="Godot Config"/>
-		<lang.syntaxHighlighterFactory implementationClass="config.ConfigHighlighterFactory" language="Godot Config"/>
-		<lang.parserDefinition implementationClass="config.ConfigParserDefinition" language="Godot Config"/>
-		<!-- script files -->
-		<annotator implementationClass="script.annotator.Annotator" language="Godot GDScript"/>
-		<completion.contributor implementationClass="script.completion.CompletionContributor" language="Godot GDScript"/>
-		<colorSettingsPage implementation="script.ScriptColorSettingsPage"/>
-		<lang.commenter implementationClass="script.ScriptCommenter" language="Godot GDScript"/>
-		<fileType implementationClass="script.ScriptFileType" extensions="gd" name="Godot GDScript file" language="Godot GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="script.ScriptHighlighterFactory" language="Godot GDScript"/>
-		<lang.parserDefinition implementationClass="script.ScriptParserDefinition" language="Godot GDScript"/>
-		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GodotScript.xml"/>
-		<additionalTextAttributes scheme="Default" file="colorSchemes/GodotScript.xml"/>
-		<lang.braceMatcher implementationClass="script.typing.BraceMatcher" language="Godot GDScript"/>
-		<lang.quoteHandler implementationClass="script.typing.QuoteHandler" language="Godot GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.lang.ScriptParserDefinition" language="GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.lang.ResourceParserDefinition" language="GDScript resource"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.files.ScriptHighlighterFactory" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.files.ResourceHighlighterFactory" language="GDScript resource"/>
+		<completion.contributor implementationClass="gdscript.completion.ScriptCompletionContributor" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ScriptAnnotator" language="GDScript"/>
+		<lang.braceMatcher implementationClass="gdscript.typing.BraceMatcher" language="GDScript"/>
+		<lang.quoteHandler implementationClass="gdscript.typing.QuoteHandler" language="GDScript"/>
+		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
+		<colorSettingsPage implementation="gdscript.options.ColorSettingsPage"/>
+		<fileType implementationClass="gdscript.files.ScriptFileType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
+		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="godot" name="Project file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="import" name="Import file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tres" name="Text resource file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tscn" name="Text scene file" language="GDScript resource"/>
+		<additionalTextAttributes scheme="Default" file="colorSchemes/GDScript.xml"/>
+		<additionalTextAttributes scheme="Darcula" file="colorSchemes/GDScript.xml"/>
 	</extensions>
 </idea-plugin>
