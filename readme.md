@@ -2,7 +2,7 @@
 
 [![Travis Build Status][travis-build-badge]][travis-build-link] [![GitHub License][github-license-badge]][github-license-link]
 
-Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion* and so on).
+Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion*, ...).
 
 ## Usage & Development
 
