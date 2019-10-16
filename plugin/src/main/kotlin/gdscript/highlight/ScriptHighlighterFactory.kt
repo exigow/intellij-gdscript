@@ -5,9 +5,9 @@ import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import gdscript.GDScriptLexer
+import gdscript.options.ColorTextAttributeKey.*
 import gdscript.parser.ScriptLanguage
 import gdscript.token.ScriptTokenSet
-import gdscript.options.ColorTextAttributeKey.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 
 class ScriptHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
@@ -19,7 +19,8 @@ class ScriptHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
         override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
             pack(matchingToColor(element)?.key)
 
-        override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
+        override fun getHighlightingLexer() =
+            ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
 
         private fun matchingToColor(element: IElementType?) = when (element) {
             in ScriptTokenSet.LINE_COMMENTS -> LINE_COMMENT
