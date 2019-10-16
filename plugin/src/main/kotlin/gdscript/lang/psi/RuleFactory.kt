@@ -1,16 +1,12 @@
-package gdscript.lang
+package gdscript.lang.psi
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import gdscript.GDScriptParser.*
-import gdscript.lang.psi.PsiFunction
-import gdscript.lang.psi.PsiInvoke
-import gdscript.lang.psi.PsiType
-import gdscript.lang.psi.PsiValue
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
-object ScriptPsiFactory {
+object RuleFactory {
 
     fun createPsiElement(node: ASTNode): PsiElement {
         val nodeType = node.elementType
@@ -21,10 +17,10 @@ object ScriptPsiFactory {
 
     private fun convertRuleIndexToPsi(index: Int, node: ASTNode) =
         when(index) {
-            RULE_type -> PsiType(node)
-            RULE_value -> PsiValue(node)
-            RULE_invoke -> PsiInvoke(node)
-            RULE_func_statement -> PsiFunction(node)
+            RULE_type -> TypeRule(node)
+            RULE_value -> ValueRule(node)
+            RULE_invoke -> InvokeRule(node)
+            RULE_func_statement -> FunctionRule(node)
             else -> ANTLRPsiNode(node)
         }
 

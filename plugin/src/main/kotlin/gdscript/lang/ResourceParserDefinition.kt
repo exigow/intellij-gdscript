@@ -10,9 +10,9 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import gdscript.GDScriptResourceLexer
 import gdscript.GDScriptResourceParser
-import gdscript.lang.ResourceTokenSet.LINE_COMMENT
-import gdscript.lang.ResourceTokenSet.STRING
-import gdscript.lang.ResourceTokenSet.WHITESPACE
+import gdscript.lang.token.ResourceTokenSet.LINE_COMMENTS
+import gdscript.lang.token.ResourceTokenSet.STRINGS
+import gdscript.lang.token.ResourceTokenSet.WHITESPACES
 import gdscript.lang.psi.file.ResourcePsiFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
@@ -37,11 +37,11 @@ class ResourceParserDefinition : ParserDefinition {
                 (parser as GDScriptResourceParser).file()
         }
 
-    override fun getWhitespaceTokens() = WHITESPACE
+    override fun getWhitespaceTokens() = WHITESPACES
 
-    override fun getCommentTokens() = LINE_COMMENT
+    override fun getCommentTokens() = LINE_COMMENTS
 
-    override fun getStringLiteralElements() = STRING
+    override fun getStringLiteralElements() = STRINGS
 
     override fun getFileNodeType() = IFileElementType(ResourceLanguage)
 

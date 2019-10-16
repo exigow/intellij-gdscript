@@ -6,7 +6,7 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import gdscript.GDScriptLexer
 import gdscript.lang.ScriptLanguage
-import gdscript.lang.ScriptTokenSet
+import gdscript.lang.token.ScriptTokenSet
 import gdscript.options.ColorTextAttributeKey.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 

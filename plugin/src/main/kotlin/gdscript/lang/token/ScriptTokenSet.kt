@@ -1,23 +1,22 @@
-package gdscript.lang
+package gdscript.lang.token
 
 import gdscript.GDScriptLexer.*
+import gdscript.lang.ScriptLanguage
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ScriptTokenSet {
 
-    val WHITESPACES = create(
-        WHITESPACE
-    )
-    val LINE_COMMENTS = create(
-        LINE_COMMENT
-    )
+    val WHITESPACES = create(WHITESPACE)
+    val LINE_COMMENTS = create(LINE_COMMENT)
+    val NUMBERS = create(NUMBER)
+    val IDENTIFIERS = create(IDENTIFIER)
+    val NODES = create(NODE)
+    val COMMAS = create(COMMA)
+    val DOTS = create(DOT)
     val STRINGS = create(
         STRING,
         STRING_APHOSTROPHE,
         STRING_MULTILINE
-    )
-    val NUMBERS = create(
-        NUMBER
     )
     val KEYWORDS = create(
         CONTINUE,
@@ -58,12 +57,6 @@ object ScriptTokenSet {
         VOID,
         TOOL
     )
-    val IDENTIFIERS = create(
-        IDENTIFIER
-    )
-    val NODES = create(
-        NODE
-    )
     val OPERATION_SIGNS = create(
         NEGATE,
         ARROW,
@@ -71,12 +64,6 @@ object ScriptTokenSet {
         ASSIGN,
         ASSIGN_SPECIAL,
         OPERATION_SIGN
-    )
-    val COMMAS = create(
-        COMMA
-    )
-    val DOTS = create(
-        DOT
     )
     val BRACES = create(
         BRACE_LEFT,

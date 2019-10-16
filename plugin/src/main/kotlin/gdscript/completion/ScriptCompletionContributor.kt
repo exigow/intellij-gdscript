@@ -9,9 +9,9 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
 import gdscript.completion.lookups.*
-import gdscript.lang.psi.PsiInvoke
-import gdscript.lang.psi.PsiType
-import gdscript.lang.psi.PsiValue
+import gdscript.lang.psi.InvokeRule
+import gdscript.lang.psi.TypeRule
+import gdscript.lang.psi.ValueRule
 
 
 class ScriptCompletionContributor : CompletionContributor() {
@@ -66,9 +66,9 @@ class ScriptCompletionContributor : CompletionContributor() {
 
     private companion object {
 
-        private val INSIDE_TYPE = psiElement().inside(PsiType::class.java)
-        private val INSIDE_INVOKE = psiElement().inside(PsiInvoke::class.java)
-        private val INSIDE_VALUE = psiElement().inside(PsiValue::class.java)
+        private val INSIDE_TYPE = psiElement().inside(TypeRule::class.java)
+        private val INSIDE_INVOKE = psiElement().inside(InvokeRule::class.java)
+        private val INSIDE_VALUE = psiElement().inside(ValueRule::class.java)
         private val AFTER_NEWLINE = psiElement().afterLeaf("\n")
         private val AFTER_EXPORT_KEYWORD = psiElement().afterLeaf("export")
         private val AFTER_STATIC_KEYWORD = psiElement().afterLeaf("static")
