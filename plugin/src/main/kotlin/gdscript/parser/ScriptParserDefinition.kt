@@ -1,4 +1,4 @@
-package gdscript.lang
+package gdscript.parser
 
 import com.intellij.lang.ASTNode
 import com.intellij.lang.PsiParser
@@ -10,11 +10,11 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import gdscript.GDScriptLexer
 import gdscript.GDScriptParser
-import gdscript.lang.token.ScriptTokenSet.LINE_COMMENTS
-import gdscript.lang.token.ScriptTokenSet.STRINGS
-import gdscript.lang.token.ScriptTokenSet.WHITESPACES
-import gdscript.lang.psi.RuleFactory
-import gdscript.lang.psi.file.ScriptPsiFile
+import gdscript.token.ScriptTokenSet.LINE_COMMENTS
+import gdscript.token.ScriptTokenSet.STRINGS
+import gdscript.token.ScriptTokenSet.WHITESPACES
+import gdscript.psi.RuleFactory
+import gdscript.file.ScriptFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
@@ -46,7 +46,7 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
 
     override fun getFileNodeType() = IFileElementType(ScriptLanguage)
 
-    override fun createFile(view: FileViewProvider) = ScriptPsiFile(view)
+    override fun createFile(view: FileViewProvider) = ScriptFile(view)
 
     override fun createElement(node: ASTNode) = RuleFactory.createPsiElement(node)
 

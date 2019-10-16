@@ -3,7 +3,7 @@ package gdscript.commenter
 import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ScriptFileType
+import gdscript.file.ScriptType
 
 class ScriptCommenterTest : BasePlatformTestCase() {
 
@@ -17,7 +17,7 @@ class ScriptCommenterTest : BasePlatformTestCase() {
         assertCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
 
     private fun assertCommentAction(before: String, after: String) {
-        myFixture.configureByText(ScriptFileType, before)
+        myFixture.configureByText(ScriptType, before)
         invokeNamedAction(ACTION_COMMENT_LINE)
         myFixture.checkResult(after)
     }

@@ -1,12 +1,12 @@
-package gdscript.files
+package gdscript.highlight
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import gdscript.GDScriptLexer
-import gdscript.lang.ScriptLanguage
-import gdscript.lang.token.ScriptTokenSet
+import gdscript.parser.ScriptLanguage
+import gdscript.token.ScriptTokenSet
 import gdscript.options.ColorTextAttributeKey.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 

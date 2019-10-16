@@ -1,7 +1,7 @@
 package gdscript
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ScriptFileType
+import gdscript.file.ScriptType
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
@@ -242,13 +242,13 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("extends \"somefile.gd\".First.Second")
 
     fun `test error on two statements in one line`() {
-        myFixture.configureByText(ScriptFileType, "var x var")
+        myFixture.configureByText(ScriptType, "var x var")
         val high = myFixture.doHighlighting()
         assertTrue(high[0].description.contains("mismatched input 'var'"))
     }
 
     private fun assertNoErrors(code: String) {
-        myFixture.configureByText(ScriptFileType, code.trimIndent() + "\n")
+        myFixture.configureByText(ScriptType, code.trimIndent() + "\n")
         myFixture.checkHighlighting()
     }
 

@@ -1,4 +1,4 @@
-package gdscript.lang
+package gdscript.parser
 
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
@@ -10,10 +10,10 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import gdscript.GDScriptResourceLexer
 import gdscript.GDScriptResourceParser
-import gdscript.lang.token.ResourceTokenSet.LINE_COMMENTS
-import gdscript.lang.token.ResourceTokenSet.STRINGS
-import gdscript.lang.token.ResourceTokenSet.WHITESPACES
-import gdscript.lang.psi.file.ResourcePsiFile
+import gdscript.token.ResourceTokenSet.LINE_COMMENTS
+import gdscript.token.ResourceTokenSet.STRINGS
+import gdscript.token.ResourceTokenSet.WHITESPACES
+import gdscript.file.ResourceFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
@@ -45,7 +45,7 @@ class ResourceParserDefinition : ParserDefinition {
 
     override fun getFileNodeType() = IFileElementType(ResourceLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) = ResourcePsiFile(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) = ResourceFile(viewProvider)
 
     override fun createElement(node: ASTNode) = ANTLRPsiNode(node)
 

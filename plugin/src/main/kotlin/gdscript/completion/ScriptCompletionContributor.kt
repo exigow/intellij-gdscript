@@ -9,9 +9,9 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
 import gdscript.completion.lookups.*
-import gdscript.lang.psi.InvokeRule
-import gdscript.lang.psi.TypeRule
-import gdscript.lang.psi.ValueRule
+import gdscript.psi.InvokeRule
+import gdscript.psi.TypeRule
+import gdscript.psi.ValueRule
 
 
 class ScriptCompletionContributor : CompletionContributor() {

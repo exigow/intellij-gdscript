@@ -1,7 +1,7 @@
 package gdscript
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ResourceFileType
+import gdscript.file.ResourceType
 
 class ResourceErrorHighlightingTest : BasePlatformTestCase() {
 
@@ -75,7 +75,7 @@ class ResourceErrorHighlightingTest : BasePlatformTestCase() {
         assertValid("[sub_resource type=\"AudioEffectAmplify\"]")
 
     private fun assertValid(code: String) {
-        myFixture.configureByText(ResourceFileType, code)
+        myFixture.configureByText(ResourceType, code)
         myFixture.checkHighlighting()
     }
 

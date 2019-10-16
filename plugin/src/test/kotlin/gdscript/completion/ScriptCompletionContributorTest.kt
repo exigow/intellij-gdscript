@@ -1,7 +1,7 @@
 package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ScriptFileType
+import gdscript.file.ScriptType
 
 class ScriptCompletionContributorTest : BasePlatformTestCase() {
 
@@ -83,7 +83,7 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     }
 
     private fun configureEditor(code: String) {
-        myFixture.configureByText(ScriptFileType, code)
+        myFixture.configureByText(ScriptType, code)
         myFixture.completeBasic()
     }
 

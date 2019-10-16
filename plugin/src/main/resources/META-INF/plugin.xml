@@ -9,21 +9,21 @@
     ]]></description>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.parserDefinition implementationClass="gdscript.lang.ScriptParserDefinition" language="GDScript"/>
-		<lang.parserDefinition implementationClass="gdscript.lang.ResourceParserDefinition" language="GDScript resource"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.files.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.files.ResourceHighlighterFactory" language="GDScript resource"/>
+		<lang.parserDefinition implementationClass="gdscript.parser.ScriptParserDefinition" language="GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.parser.ResourceParserDefinition" language="GDScript resource"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.ScriptHighlighterFactory" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.ResourceHighlighterFactory" language="GDScript resource"/>
 		<completion.contributor implementationClass="gdscript.completion.ScriptCompletionContributor" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ScriptAnnotator" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.typing.ScriptQuoteHandler" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.options.ColorSettingsPage"/>
-		<fileType implementationClass="gdscript.files.ScriptFileType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
-		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="godot" name="Project file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="import" name="Import file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tres" name="Text resource file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.files.ResourceFileType" extensions="tscn" name="Text scene file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.file.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
+		<fileType implementationClass="gdscript.file.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.file.ResourceType" extensions="import" name="Import file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.file.ResourceType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.file.ResourceType" extensions="tres" name="Text resource file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.file.ResourceType" extensions="tscn" name="Text scene file" language="GDScript resource"/>
 	</extensions>
 </idea-plugin>

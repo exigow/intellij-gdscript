@@ -3,16 +3,16 @@ package gdscript.options
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import gdscript.files.ScriptFileType
-import gdscript.files.ScriptHighlighterFactory
-import gdscript.lang.ScriptLanguage
+import gdscript.file.ScriptType
+import gdscript.highlight.ScriptHighlighterFactory
+import gdscript.parser.ScriptLanguage
 import gdscript.options.ColorTextAttributeKey.*
 
 class ColorSettingsPage : ColorSettingsPage {
 
     override fun getDisplayName() = ScriptLanguage.displayName
 
-    override fun getIcon() = ScriptFileType.icon
+    override fun getIcon() = ScriptType.icon
 
     override fun getHighlighter() = ScriptHighlighterFactory.SyntaxHighlighter
 

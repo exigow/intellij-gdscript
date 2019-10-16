@@ -1,4 +1,4 @@
-package gdscript.lang.psi
+package gdscript.psi
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement

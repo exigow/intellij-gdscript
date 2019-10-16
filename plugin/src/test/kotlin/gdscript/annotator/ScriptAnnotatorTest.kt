@@ -1,7 +1,7 @@
 package gdscript.annotator
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.files.ScriptFileType
+import gdscript.file.ScriptType
 
 class ScriptAnnotatorTest : BasePlatformTestCase() {
 
@@ -36,7 +36,7 @@ class ScriptAnnotatorTest : BasePlatformTestCase() {
         assertInfoHighlighting("static func ${info("add")}():")
 
     private fun assertInfoHighlighting(code: String) {
-        myFixture.configureByText(ScriptFileType, code + "\n")
+        myFixture.configureByText(ScriptType, code + "\n")
         myFixture.checkHighlighting(false, true, false)
     }
 

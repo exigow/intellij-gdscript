@@ -1,4 +1,4 @@
-package gdscript.files
+package gdscript.highlight
 
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
@@ -6,8 +6,8 @@ import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import gdscript.GDScriptResourceLexer
-import gdscript.lang.ResourceLanguage
-import gdscript.lang.token.ResourceTokenSet
+import gdscript.parser.ResourceLanguage
+import gdscript.token.ResourceTokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 
 class ResourceHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {

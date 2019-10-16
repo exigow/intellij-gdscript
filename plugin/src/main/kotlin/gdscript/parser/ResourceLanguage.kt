@@ -1,4 +1,4 @@
-package gdscript.lang
+package gdscript.parser
 
 import com.intellij.lang.Language
 

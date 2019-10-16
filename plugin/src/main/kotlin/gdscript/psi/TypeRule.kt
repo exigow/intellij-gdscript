@@ -1,4 +1,4 @@
-package gdscript.lang.psi
+package gdscript.psi
 
 import GodotApi.PRIMITIVE_CLASSES
 import com.intellij.lang.ASTNode

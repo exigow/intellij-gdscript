@@ -5,10 +5,13 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import gdscript.lang.psi.FunctionRule
-import gdscript.lang.psi.InvokeRule
-import gdscript.lang.psi.TypeRule
+import gdscript.GDScriptLexer
+import gdscript.options.ColorTextAttributeKey
 import gdscript.options.ColorTextAttributeKey.*
+import gdscript.psi.FunctionRule
+import gdscript.psi.InvokeRule
+import gdscript.psi.TypeRule
+import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
 class ScriptAnnotator : Annotator {
 
@@ -42,7 +45,17 @@ class ScriptAnnotator : Annotator {
             holder.createColorAnnotation(element, CLASS_NAME)
     }
 
-    private fun isConstantCase(text: String) = text.length >= 2 && text.all { (it.isLetter() && it.isUpperCase()) || it == '_' }
+    private fun isConstantCase(text: String) =
+        text.length >= 2 && text.all { (it.isLetter() && it.isUpperCase()) || it == '_' }
+
+    private fun AnnotationHolder.createColorAnnotation(element: PsiElement, color: ColorTextAttributeKey) =
+        createInfoAnnotation(element, null).also { it.textAttributes = color.key }!!
+
+    private fun PsiElement.isIdentifier() =
+        isToken(GDScriptLexer.IDENTIFIER)
+
+    private fun PsiElement.isToken(expected: Int) =
+        ((this as? LeafPsiElement)?.elementType as? TokenIElementType)?.antlrTokenType == expected
 
     companion object {
 
