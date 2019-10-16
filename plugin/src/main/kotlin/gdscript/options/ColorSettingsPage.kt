@@ -39,6 +39,7 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
+    // todo use external names from TextAttributeKeys like GDSCRIPT_LINE_COMMENT
     override fun getAdditionalHighlightingTagToDescriptorMap() = mapOf(
         "KEYWORD_FUNCTION_CALL" to KEYWORD_FUNCTION_CALL,
         "STATIC_METHOD" to STATIC_METHOD,
