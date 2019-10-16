@@ -4,7 +4,8 @@ import junit.framework.TestCase
 
 class ColorTextAttributeKeyTest : TestCase() {
 
-    fun `test GODOT_SCRIPT_LINE_COMMENT external name`() {
-        assertEquals(ColorTextAttributeKey.LINE_COMMENT.key.externalName, "GODOT_SCRIPT_LINE_COMMENT")
+    fun `test external name to ensure backwards compatibility`() {
+        assertEquals(ColorTextAttributeKey.LINE_COMMENT.key.externalName, "GDSCRIPT_LINE_COMMENT")
     }
+
 }
