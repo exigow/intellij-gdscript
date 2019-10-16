@@ -178,14 +178,23 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test signal`() =
         assertNoErrors("signal health_depleted")
 
-    fun `test multiline string`() =
-        assertNoErrors("message = \"\"\"Hello!\"\"\"")
+    fun `test string double quotation mark`() =
+        assertNoErrors("text = \"Hello!\"")
 
-    fun `test multiline string comment-like`() =
-        assertNoErrors("\"\"\"this is comment\"\"\"")
+    fun `test string apostrophe `() =
+        assertNoErrors("text = \'Hello!\'")
+
+    fun `test string multiline`() =
+        assertNoErrors("text = \"\"\"Hello!\"\"\"")
 
     fun `test comment`() =
+        assertNoErrors("# comment")
+
+    fun `test comment after statement`() =
         assertNoErrors("var x = 1 # initialize")
+
+    fun `test comment multiline`() =
+        assertNoErrors("\"\"\"this is comment\"\"\"")
 
     fun `test negate`() =
         assertNoErrors("negated = -value")

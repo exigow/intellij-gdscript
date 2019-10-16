@@ -10,9 +10,9 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import gdscript.GDScriptLexer
 import gdscript.GDScriptParser
-import gdscript.lang.ScriptTokenSet.LINE_COMMENT
-import gdscript.lang.ScriptTokenSet.STRING
-import gdscript.lang.ScriptTokenSet.WHITESPACE
+import gdscript.lang.ScriptTokenSet.LINE_COMMENTS
+import gdscript.lang.ScriptTokenSet.STRINGS
+import gdscript.lang.ScriptTokenSet.WHITESPACES
 import gdscript.lang.psi.file.ScriptPsiFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
@@ -37,11 +37,11 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
                 (parser as GDScriptParser).file()
         }
 
-    override fun getWhitespaceTokens(): TokenSet = WHITESPACE
+    override fun getWhitespaceTokens(): TokenSet = WHITESPACES
 
-    override fun getCommentTokens(): TokenSet = LINE_COMMENT
+    override fun getCommentTokens(): TokenSet = LINE_COMMENTS
 
-    override fun getStringLiteralElements(): TokenSet = STRING
+    override fun getStringLiteralElements(): TokenSet = STRINGS
 
     override fun getFileNodeType() = IFileElementType(ScriptLanguage)
 

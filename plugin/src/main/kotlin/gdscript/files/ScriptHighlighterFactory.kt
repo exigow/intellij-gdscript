@@ -7,7 +7,7 @@ import com.intellij.psi.tree.IElementType
 import gdscript.GDScriptLexer
 import gdscript.lang.ScriptLanguage
 import gdscript.lang.ScriptTokenSet
-import gdscript.options.ColorTextAttributeKey
+import gdscript.options.ColorTextAttributeKey.*
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 
 class ScriptHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
@@ -17,23 +17,23 @@ class ScriptHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
     companion object SyntaxHighlighter : SyntaxHighlighterBase() {
 
         override fun getTokenHighlights(element: IElementType?): Array<TextAttributesKey> =
-            pack(matchingToColor(element))
+            pack(matchingToColor(element)?.key)
 
         override fun getHighlightingLexer() = ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
 
         private fun matchingToColor(element: IElementType?) = when (element) {
-            in ScriptTokenSet.LINE_COMMENT -> ColorTextAttributeKey.LINE_COMMENT.key
-            in ScriptTokenSet.STRING -> ColorTextAttributeKey.STRING.key
-            in ScriptTokenSet.NUMBER -> ColorTextAttributeKey.NUMBER.key
-            in ScriptTokenSet.KEYWORD -> ColorTextAttributeKey.KEYWORD.key
-            in ScriptTokenSet.NODE -> ColorTextAttributeKey.NODE.key
-            in ScriptTokenSet.IDENTIFIER -> ColorTextAttributeKey.IDENTIFIER.key
-            in ScriptTokenSet.OPERATION_SIGN -> ColorTextAttributeKey.OPERATION_SIGN.key
-            in ScriptTokenSet.COMMA -> ColorTextAttributeKey.COMMA.key
-            in ScriptTokenSet.DOT -> ColorTextAttributeKey.DOT.key
-            in ScriptTokenSet.BRACES -> ColorTextAttributeKey.BRACES.key
-            in ScriptTokenSet.PARENTHESES -> ColorTextAttributeKey.PARENTHESES.key
-            in ScriptTokenSet.BRACKETS -> ColorTextAttributeKey.BRACKETS.key
+            in ScriptTokenSet.LINE_COMMENTS -> LINE_COMMENT
+            in ScriptTokenSet.STRINGS -> STRING
+            in ScriptTokenSet.NUMBERS -> NUMBER
+            in ScriptTokenSet.KEYWORDS -> KEYWORD
+            in ScriptTokenSet.NODES -> NODE
+            in ScriptTokenSet.IDENTIFIERS -> IDENTIFIER
+            in ScriptTokenSet.OPERATION_SIGNS -> OPERATION_SIGN
+            in ScriptTokenSet.COMMAS -> COMMA
+            in ScriptTokenSet.DOTS -> DOT
+            in ScriptTokenSet.BRACES -> BRACES
+            in ScriptTokenSet.PARENTHESES -> PARENTHESES
+            in ScriptTokenSet.BRACKETS -> BRACKETS
             else -> null
         }
 
