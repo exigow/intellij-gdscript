@@ -41,7 +41,6 @@ class ColorSettingsPage : ColorSettingsPage {
     override fun getAdditionalHighlightingTagToDescriptorMap() =
         values()
         .map { it.key.externalName to it.key }
-        .map { (key, color) -> key to color }
         .toMap()
 
     override fun getDemoText() = """
