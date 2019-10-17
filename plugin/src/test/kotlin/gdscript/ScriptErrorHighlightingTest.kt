@@ -1,5 +1,6 @@
 package gdscript
 
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.file.ScriptType
 
@@ -199,7 +200,7 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test string double quotation mark`() =
         assertNoErrors("""text = "Hello!"""")
 
-    fun `test string apostrophe `() =
+    fun `test string apostrophe`() =
         assertNoErrors("text = 'Hello!'")
 
     fun `test string multiline`() =
@@ -253,16 +254,16 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test extends resource class`() =
         assertNoErrors("""extends "Some.gd"""")
 
-    fun `test extends resource inner class `() =
+    fun `test extends resource inner class`() =
         assertNoErrors("""extends "Some.gd".SomeInnerClass""")
 
-    fun `test extends resource inner-inner class `() =
+    fun `test extends resource inner-inner class`() =
         assertNoErrors("""extends "Some.gd".First.Second""")
 
-    fun `test error on two statements in one line`() {
+    fun `test error on two statements in one line (sanity check)`() {
         myFixture.configureByText(ScriptType, "var x var")
-        val high = myFixture.doHighlighting()
-        assertTrue(high[0].description.contains("mismatched input 'var'"))
+        val errors = myFixture.doHighlighting()
+        assertTrue(errors[0].severity == HighlightSeverity.ERROR)
     }
 
     private fun assertNoErrors(code: String) {

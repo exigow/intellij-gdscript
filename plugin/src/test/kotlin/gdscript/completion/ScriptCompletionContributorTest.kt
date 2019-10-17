@@ -15,6 +15,9 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
         assertLookupsContains("extends No<caret>", "Node")
 
     fun `test function return class type`() =
+        assertLookupsContains("func get_name() -> <caret>:", "String")
+
+    fun `test function return class type with missing colon`() =
         assertLookupsContains("func get_name() -> <caret>", "String")
 
     fun `test function argument type`() =
