@@ -119,25 +119,25 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("""export(String, FILE, "*.txt") var f""")
 
     fun `test export number`() =
-        assertNoErrors("""export(float, -10, 20, 0.2) var k""")
+        assertNoErrors("export(float, -10, 20, 0.2) var k")
 
     fun `test number base 10 integer`() =
-        assertNoErrors("""number = 45""")
+        assertNoErrors("number = 45")
 
     fun `test number base 16 (hexadecimal) integer`() =
-        assertNoErrors("""hexadecimal = 0x8F51""")
+        assertNoErrors("hexadecimal = 0x8F51")
 
     fun `test number base 2 (binary) integer`() =
-        assertNoErrors("""binary = 0b101010""")
+        assertNoErrors("binary = 0b101010")
 
     fun `test number floating-point`() =
-        assertNoErrors("""floating = 3.14""")
+        assertNoErrors("floating = 3.14")
 
     fun `test number floating-point scientific notation`() =
-        assertNoErrors("""scientific = 58.1e-10""")
+        assertNoErrors("scientific = 58.1e-10")
 
     fun `test number floating-point scientific alternative notation`() =
-        assertNoErrors("""scientific = 1e10""")
+        assertNoErrors("scientific = 1e10")
 
     fun `test export strings`() =
         assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
@@ -197,10 +197,10 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("signal health_depleted")
 
     fun `test string double quotation mark`() =
-        assertNoErrors("text = \"Hello!\"")
+        assertNoErrors("""text = "Hello!"""")
 
     fun `test string apostrophe `() =
-        assertNoErrors("text = \'Hello!\'")
+        assertNoErrors("text = 'Hello!'")
 
     fun `test string multiline`() =
         assertNoErrors("text = \"\"\"Hello!\"\"\"")
@@ -251,13 +251,13 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("extends SomeClass")
 
     fun `test extends resource class`() =
-        assertNoErrors("extends \"somefile.gd\"")
+        assertNoErrors("""extends "Some.gd"""")
 
     fun `test extends resource inner class `() =
-        assertNoErrors("extends \"somefile.gd\".SomeInnerClass")
+        assertNoErrors("""extends "Some.gd".SomeInnerClass""")
 
     fun `test extends resource inner-inner class `() =
-        assertNoErrors("extends \"somefile.gd\".First.Second")
+        assertNoErrors("""extends "Some.gd".First.Second""")
 
     fun `test error on two statements in one line`() {
         myFixture.configureByText(ScriptType, "var x var")
