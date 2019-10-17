@@ -73,6 +73,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test const typed`() =
         assertNoErrors("const MAX_HP: int = 100")
 
+    fun `test const with member expression as value`() =
+        assertNoErrors("const POSITION = Vector2(20, 30).x")
+
     fun `test dictionary`() =
         assertNoErrors("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
 
@@ -241,6 +244,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test var type assignment`() =
         assertNoErrors("var hp: int = 73")
+
+    fun `test var inferred type`() =
+        assertNoErrors("var my_node := Sprite.new()")
 
     fun `test as primitive type operator`() =
         assertNoErrors("x = number as int")

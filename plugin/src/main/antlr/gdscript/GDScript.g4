@@ -22,7 +22,7 @@ elif_statement: ELIF expression COLON statement?;
 else_statement: ELSE COLON statement?;
 return_statement: RETURN expression;
 signal_statement: SIGNAL IDENTIFIER;
-assign_statement: expression (ASSIGN | ASSIGN_SPECIAL) expression;
+assign_statement: expression (ASSIGN) expression;
 match_statement: MATCH expression COLON;
 match_entry_statement: expression COLON;
 
@@ -65,8 +65,7 @@ TOOL: 'tool';
 SIGNAL: 'signal';
 BREAK: 'break';
 CONTINUE: 'continue';
-ASSIGN_SPECIAL: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
-ASSIGN: '=';
+ASSIGN: '=' | ':='| '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 OPERATION_SIGN: '~' | '*' | '/' | '%' | '+' | '<<' | '>>' | '&' | '^' | '|' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '&&' | '||';
 NEGATE: '!';

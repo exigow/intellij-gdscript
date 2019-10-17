@@ -66,7 +66,6 @@ object ScriptTokenSet {
         ARROW,
         MINUS,
         ASSIGN,
-        ASSIGN_SPECIAL,
         OPERATION_SIGN
     )
     val BRACES = create(
