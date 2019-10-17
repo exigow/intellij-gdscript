@@ -2,6 +2,8 @@ package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.file.ScriptType
+import uitlities.assertContains
+import uitlities.assertNotContains
 
 class ScriptCompletionContributorTest : BasePlatformTestCase() {
 
@@ -53,9 +55,6 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test function in dictionary`() =
         assertLookupsContains("dict = {A = 1, B = si<caret>}", "sin")
 
-    fun `test function is case-sensitive`() =
-        assertLookupsNotContains("x = Si<caret>()", "sin")
-
     fun `test range function`() =
         assertLookupsContains("for i in rang<caret>(3):", "range")
 
@@ -68,28 +67,25 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test edit existing constructor`() =
         assertLookupsContains("position = Vec<caret>()", "Vector2")
 
+    fun `test function is case-sensitive`() =
+        assertLookupsNotContains("x = Si<caret>()", "sin")
+
     fun `test constructor call is case-sensitive`() =
         assertLookupsNotContains("position = vec<caret>()", "Vector2")
 
-    private fun assertLookupsContains(code: String, expectedLookup: String) {
+    private fun assertLookupsContains(code: String, expected: String) {
         configureEditor(code)
-        val lookups = getEditorLookups()
-        if (!lookups.contains<String>(expectedLookup))
-            fail("Expected element `$expectedLookup` not found, list: $lookups")
+        assertContains(myFixture.lookupElementStrings, expected)
     }
 
-    private fun assertLookupsNotContains(code: String, unwantedLookup: String) {
+    private fun assertLookupsNotContains(code: String, unwanted: String) {
         configureEditor(code)
-        val list = getEditorLookups()
-        if (list.contains<String>(unwantedLookup))
-            fail("Unwanted element `$unwantedLookup` found in list: $list")
+        assertNotContains(myFixture.lookupElementStrings, unwanted)
     }
 
     private fun configureEditor(code: String) {
         myFixture.configureByText(ScriptType, code)
         myFixture.completeBasic()
     }
-
-    private fun getEditorLookups() = myFixture.lookupElementStrings.orEmpty()
 
 }
