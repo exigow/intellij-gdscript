@@ -19,7 +19,7 @@ class ScriptAnnotator : Annotator {
         annotateMethod(element, holder)
         annotateClass(element, holder)
         annotateConstant(element, holder)
-        annotateFunctionCall(element, holder)
+        annotateKeyword(element, holder)
     }
 
     private fun annotateMethod(element: PsiElement, holder: AnnotationHolder) {
@@ -35,9 +35,9 @@ class ScriptAnnotator : Annotator {
         if (element is LeafPsiElement && isConstantCase(element.text))
             holder.createColorAnnotation(element, CONSTANT)
     }
-    private fun annotateFunctionCall(element: PsiElement, holder: AnnotationHolder) {
+    private fun annotateKeyword(element: PsiElement, holder: AnnotationHolder) {
         if (element.parent is InvokeRule && element.isIdentifier() && element.text in LANGUAGE_FUNCTION_NAMES)
-            holder.createColorAnnotation(element, KEYWORD_FUNCTION_CALL)
+            holder.createColorAnnotation(element, KEYWORD)
     }
 
     private fun annotateClass(element: PsiElement, holder: AnnotationHolder) {
