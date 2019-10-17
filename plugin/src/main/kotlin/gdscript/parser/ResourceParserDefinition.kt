@@ -37,16 +37,22 @@ class ResourceParserDefinition : ParserDefinition {
                 (parser as GDScriptResourceParser).file()
         }
 
-    override fun getWhitespaceTokens() = WHITESPACES
+    override fun getWhitespaceTokens() =
+        WHITESPACES
 
-    override fun getCommentTokens() = LINE_COMMENTS
+    override fun getCommentTokens() =
+        LINE_COMMENTS
 
-    override fun getStringLiteralElements() = STRINGS
+    override fun getStringLiteralElements() =
+        STRINGS
 
-    override fun getFileNodeType() = IFileElementType(ResourceLanguage)
+    override fun getFileNodeType() =
+        IFileElementType(ResourceLanguage)
 
-    override fun createFile(viewProvider: FileViewProvider) = ResourceFile(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider) =
+        ResourceFile(viewProvider)
 
-    override fun createElement(node: ASTNode) = ANTLRPsiNode(node)
+    override fun createElement(node: ASTNode) =
+        ANTLRPsiNode(node)
 
 }

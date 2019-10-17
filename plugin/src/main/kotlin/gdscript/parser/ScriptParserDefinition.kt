@@ -38,16 +38,22 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
                 (parser as GDScriptParser).file()
         }
 
-    override fun getWhitespaceTokens(): TokenSet = WHITESPACES
+    override fun getWhitespaceTokens(): TokenSet =
+        WHITESPACES
 
-    override fun getCommentTokens(): TokenSet = LINE_COMMENTS
+    override fun getCommentTokens(): TokenSet =
+        LINE_COMMENTS
 
-    override fun getStringLiteralElements(): TokenSet = STRINGS
+    override fun getStringLiteralElements(): TokenSet =
+        STRINGS
 
-    override fun getFileNodeType() = IFileElementType(ScriptLanguage)
+    override fun getFileNodeType() =
+        IFileElementType(ScriptLanguage)
 
-    override fun createFile(view: FileViewProvider) = ScriptFile(view)
+    override fun createFile(view: FileViewProvider) =
+        ScriptFile(view)
 
-    override fun createElement(node: ASTNode) = RuleFactory.createPsiElement(node)
+    override fun createElement(node: ASTNode) =
+        RuleFactory.createPsiElement(node)
 
 }
