@@ -8,11 +8,15 @@ object ScriptTokenSet {
 
     val WHITESPACES = create(WHITESPACE)
     val LINE_COMMENTS = create(LINE_COMMENT)
-    val NUMBERS = create(NUMBER)
     val IDENTIFIERS = create(IDENTIFIER)
     val NODES = create(NODE)
     val COMMAS = create(COMMA)
     val DOTS = create(DOT)
+    val NUMBERS = create(
+        NUMBER_FLOATING,
+        NUMBER_HEXADECIMAL,
+        NUMBER_BINARY
+    )
     val STRINGS = create(
         STRING,
         STRING_APHOSTROPHE,

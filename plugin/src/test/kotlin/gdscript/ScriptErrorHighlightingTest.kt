@@ -121,6 +121,24 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test export number`() =
         assertNoErrors("""export(float, -10, 20, 0.2) var k""")
 
+    fun `test number base 10 integer`() =
+        assertNoErrors("""number = 45""")
+
+    fun `test number base 16 (hexadecimal) integer`() =
+        assertNoErrors("""hexadecimal = 0x8F51""")
+
+    fun `test number base 2 (binary) integer`() =
+        assertNoErrors("""binary = 0b101010""")
+
+    fun `test number floating-point`() =
+        assertNoErrors("""floating = 3.14""")
+
+    fun `test number floating-point scientific notation`() =
+        assertNoErrors("""scientific = 58.1e-10""")
+
+    fun `test number floating-point scientific alternative notation`() =
+        assertNoErrors("""scientific = 1e10""")
+
     fun `test export strings`() =
         assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
 
