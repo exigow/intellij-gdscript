@@ -38,25 +38,21 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
-    // todo use external names from TextAttributeKeys like GDSCRIPT_LINE_COMMENT
-    override fun getAdditionalHighlightingTagToDescriptorMap() = mapOf(
-        "KEYWORD" to KEYWORD,
-        "STATIC_METHOD" to STATIC_METHOD,
-        "FUNCTION_DECLARATION" to INSTANCE_METHOD,
-        "CLASS_NAME" to CLASS_NAME,
-        "CONSTANT" to CONSTANT)
-        .map { (key, color) -> key to color.key }
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        values()
+        .map { it.key.externalName to it.key }
+        .map { (key, color) -> key to color }
         .toMap()
 
     override fun getDemoText() = """
-        extends <CLASS_NAME>BaseClass</CLASS_NAME>
-        const MyScript = <KEYWORD>preload</KEYWORD>("res://my_script.gd")
-        export(<CLASS_NAME>String</CLASS_NAME>, FILE, "*.txt") var file
-        const <CONSTANT>CONSTANT</CONSTANT> = 42 # line comment
-        enum Named {<CONSTANT>ONE</CONSTANT> = 1, <CONSTANT>ONE</CONSTANT> = 2}
-        func <FUNCTION_DECLARATION>instance_method</FUNCTION_DECLARATION>():
+        extends <GDSCRIPT_CLASS_NAME>BaseClass</GDSCRIPT_CLASS_NAME>
+        const MyScript = <GDSCRIPT_KEYWORD>preload</GDSCRIPT_KEYWORD>("res://my_script.gd")
+        export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>, FILE, "*.txt") var file
+        const <GDSCRIPT_CONSTANT>CONSTANT</GDSCRIPT_CONSTANT> = 42 # line comment
+        enum Named {<GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 1, <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 2}
+        func <GDSCRIPT_INSTANCE_METHOD>instance_method</GDSCRIPT_INSTANCE_METHOD>():
             return 1.0
-        static func <STATIC_METHOD>static_method</STATIC_METHOD>(parameter1: int, parameter2: <CLASS_NAME>SomeClass</CLASS_NAME>) -> bool:
+        static func <GDSCRIPT_STATIC_METHOD>static_method</GDSCRIPT_STATIC_METHOD>(parameter1: int, parameter2: <GDSCRIPT_CLASS_NAME>SomeClass</GDSCRIPT_CLASS_NAME>) -> bool:
             ${'$'}Path/To/Node
             if !condition == false:
                 var dict = {1: 2, "key": "Hello World"}
@@ -64,7 +60,7 @@ class ColorSettingsPage : ColorSettingsPage {
                 var lua_dict = {key1 = 1, key2 = 2}
             else:
                 var array = [1.0, true, "text", [1, 2, 3]]
-            <KEYWORD>print</KEYWORD>(dict["key"])
+            <GDSCRIPT_KEYWORD>print</GDSCRIPT_KEYWORD>(dict["key"])
             return false
         """.trimIndent()
 
