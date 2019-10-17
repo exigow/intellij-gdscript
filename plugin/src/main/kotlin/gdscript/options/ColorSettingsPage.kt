@@ -4,9 +4,9 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import gdscript.file.ScriptType
-import gdscript.highlight.ScriptHighlighterFactory
-import gdscript.parser.ScriptLanguage
+import gdscript.highlight.ScriptHighlighter
 import gdscript.options.ColorTextAttributeKey.*
+import gdscript.parser.ScriptLanguage
 
 class ColorSettingsPage : ColorSettingsPage {
 
@@ -14,7 +14,7 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getIcon() = ScriptType.icon
 
-    override fun getHighlighter() = ScriptHighlighterFactory.SyntaxHighlighter
+    override fun getHighlighter() = ScriptHighlighter()
 
     override fun getAttributeDescriptors() = mapOf(
         LINE_COMMENT to "Line comment",

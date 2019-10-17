@@ -11,8 +11,8 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<lang.parserDefinition implementationClass="gdscript.parser.ScriptParserDefinition" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.parser.ResourceParserDefinition" language="GDScript resource"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.ResourceHighlighterFactory" language="GDScript resource"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ScriptHighlighterFactory" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ResourceHighlighterFactory" language="GDScript resource"/>
 		<completion.contributor implementationClass="gdscript.completion.ScriptCompletionContributor" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ScriptAnnotator" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
