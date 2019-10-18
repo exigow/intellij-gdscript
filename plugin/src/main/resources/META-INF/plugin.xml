@@ -18,6 +18,7 @@
 		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.typing.ScriptQuoteHandler" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
+		<lang.commenter implementationClass="gdscript.commenter.ResourceCommenter" language="GDScript resource"/>
 		<colorSettingsPage implementation="gdscript.options.ColorSettingsPage"/>
 		<fileType implementationClass="gdscript.file.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
 		<fileType implementationClass="gdscript.file.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>

@@ -2,7 +2,6 @@ package gdscript.commenter
 
 class ScriptCommenter : NullCommenter() {
 
-    // todo resource commenter
     override fun getLineCommentPrefix() = "#"
 
     override fun getBlockCommentPrefix() = MULTILINE_STRING_MARKER
