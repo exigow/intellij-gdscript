@@ -73,6 +73,12 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test constructor call is case-sensitive`() =
         assertLookupsNotContains("position = vec<caret>()", "Vector2")
 
+    fun `test values are not present after DOT operator`() {
+        assertLookupsNotContains("vector.fa<caret>", "false")
+        assertLookupsNotContains("Input.deg<caret>", "deg2rad")
+        assertLookupsNotContains("Camera.Vec<caret>", "Vector2")
+    }
+
     private fun assertLookupsContains(code: String, expected: String) {
         configureEditor(code)
         assertContains(myFixture.lookupElementStrings, expected)
