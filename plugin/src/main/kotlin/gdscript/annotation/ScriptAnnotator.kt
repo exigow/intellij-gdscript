@@ -16,10 +16,16 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 class ScriptAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
+        annotateInstanceField(element, holder)
         annotateMethod(element, holder)
         annotateClass(element, holder)
         annotateConstant(element, holder)
         annotateKeyword(element, holder)
+    }
+
+    private fun annotateInstanceField(element: PsiElement, holder: AnnotationHolder) {
+        if (element is LeafPsiElement && element.parent?.prevSibling?.text == ".")
+            holder.createColorAnnotation(element, INSTANCE_FIELD)
     }
 
     private fun annotateMethod(element: PsiElement, holder: AnnotationHolder) {
@@ -35,6 +41,7 @@ class ScriptAnnotator : Annotator {
         if (element is LeafPsiElement && isConstantCase(element.text))
             holder.createColorAnnotation(element, CONSTANT)
     }
+
     private fun annotateKeyword(element: PsiElement, holder: AnnotationHolder) {
         if (element.parent is InvokeRule && element.isIdentifier() && element.text in LANGUAGE_FUNCTION_NAMES)
             holder.createColorAnnotation(element, KEYWORD)

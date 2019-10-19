@@ -31,6 +31,7 @@ class ColorSettingsPage : ColorSettingsPage {
         BRACKETS to group(OPERATORS, "Brackets"),
         STATIC_METHOD to group(CLASSES, "Static method"),
         INSTANCE_METHOD to group(CLASSES, "Instance method"),
+        INSTANCE_FIELD to group(CLASSES, "Instance field"),
         CLASS_NAME to group(CLASSES, "Class name"),
         CONSTANT to group(IDENTIFIERS, "Constant"))
         .map { (color, label) -> AttributesDescriptor(label, color.key) }
@@ -55,6 +56,7 @@ class ColorSettingsPage : ColorSettingsPage {
             ${'$'}Path/To/Node
             if !condition == false:
                 var dict = {1: 2, "key": "Hello World"}
+                var test = some.<GDSCRIPT_INSTANCE_FIELD>instance_field</GDSCRIPT_INSTANCE_FIELD> * 58.1e-10
             elif true:
                 var lua_dict = {key1 = 1, key2 = 2}
             else:

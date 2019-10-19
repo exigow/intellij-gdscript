@@ -20,6 +20,7 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     PARENTHESES(Default.PARENTHESES),
     BRACKETS(Default.BRACKETS),
     STATIC_METHOD(Default.STATIC_METHOD),
+    INSTANCE_FIELD(Default.INSTANCE_FIELD),
     INSTANCE_METHOD(Default.INSTANCE_METHOD),
     CLASS_NAME(Default.CLASS_NAME),
     CONSTANT(Default.CONSTANT);
