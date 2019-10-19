@@ -113,6 +113,11 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test ternary-if with variable definition statement`() =
         assertNoErrors("var x = value if expression else value")
 
+    fun `test return`() {
+        assertNoErrors("return x")
+        assertNoErrors("return")
+    }
+
     fun `test ternary-if with assign and add statement`() =
         assertNoErrors("y += 3 if y < 10 else -1")
 
@@ -278,6 +283,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test negate`() =
         assertNoErrors("negated = -value")
+
+    fun `test minus with no whitespace`() =
+        assertNoErrors("""x = y -1""")
 
     fun `test subscribe array`() =
         assertNoErrors("items[7] = 0")
