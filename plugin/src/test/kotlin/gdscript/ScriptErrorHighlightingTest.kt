@@ -6,6 +6,12 @@ import gdscript.file.ScriptType
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
+    fun `test super method invocation`() =
+        assertNoErrors("""
+            func _change_state(state_name):
+                ._change_state(state_name)
+        """)
+
     fun `test semicolon`() {
         assertNoErrors("var x = 1; y = 2;; z = 3;;;")
     }
