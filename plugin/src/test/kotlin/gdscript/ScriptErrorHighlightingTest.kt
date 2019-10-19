@@ -277,6 +277,12 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test signal`() =
         assertNoErrors("signal health_depleted")
 
+    fun `test signal arguments`() =
+        assertNoErrors("signal candidate_received(id, mid, index, sdp)")
+
+    fun `test signal arguments empty`() =
+        assertNoErrors("signal disconnected()")
+
     fun `test string double quotation mark`() =
         assertNoErrors("""text = "Hello!"""")
 
@@ -330,6 +336,12 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test var inferred type`() =
         assertNoErrors("var my_node := Sprite.new()")
+
+    fun `test class`() =
+        assertNoErrors("class Lobby extends Reference:")
+
+    fun `test class extends`() =
+        assertNoErrors("class Coin:")
 
     fun `test extends class`() =
         assertNoErrors("extends SomeClass")
