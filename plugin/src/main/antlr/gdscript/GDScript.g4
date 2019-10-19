@@ -2,7 +2,7 @@ grammar GDScript;
 
 @header {package gdscript;}
 
-file: NL* statement? (NL+ statement)* NL* EOF;
+file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 
 statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;
 var_statement: (EXPORT (PARENTHES_LEFT export_argument? (COMMA export_argument)* PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
@@ -90,6 +90,7 @@ NOT_BOOLEAN: '!';
 COMMA: ',';
 DOT: '.';
 COLON: ':';
+SEMICOLON: ';';
 PARENTHES_LEFT: '(';
 PARENTHES_RIGHT: ')';
 BRACKET_LEFT: '[';
@@ -105,11 +106,11 @@ STRING: '"' (~["\n])* '"';
 STRING_APHOSTROPHE: '\'' (~['\n])* '\'';
 STRING_MULTILINE: '"""' .*? '"""';
 LINE_COMMENT: '#' ~[\n]*;
+NL: '\n';
 fragment IDENTIFIER_START: LOWER_CASE | UPPER_CASE | '_';
 fragment LOWER_CASE: 'a'..'z';
 fragment UPPER_CASE: 'A'..'Z';
 fragment DIGIT: '0'..'9';
 
-NL: '\n';
 WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);

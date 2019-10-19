@@ -6,6 +6,10 @@ import gdscript.file.ScriptType
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
+    fun `test semicolon`() {
+        assertNoErrors("var x = 1; y = 2;; z = 3;;;")
+    }
+
     fun `test operator`() {
         assertNoErrors("x - y")
         assertNoErrors("x + y")

@@ -25,6 +25,7 @@ class ColorSettingsPage : ColorSettingsPage {
         NODE to group(IDENTIFIERS, "Node path"),
         OPERATION_SIGN to group(OPERATORS, "Operation sign"),
         COMMA to group(OPERATORS, "Comma"),
+        SEMICOLON to group(OPERATORS, "Semicolon"),
         DOT to group(OPERATORS, "Dot"),
         BRACES to group(OPERATORS, "Braces"),
         PARENTHESES to group(OPERATORS, "Parentheses"),
@@ -54,6 +55,7 @@ class ColorSettingsPage : ColorSettingsPage {
             return 1.0
         static func <GDSCRIPT_STATIC_METHOD>static_method</GDSCRIPT_STATIC_METHOD>(parameter1: int, parameter2: <GDSCRIPT_CLASS_NAME>SomeClass</GDSCRIPT_CLASS_NAME>) -> bool:
             ${'$'}Path/To/Node
+            var x = 1; y = 2; z = 3;
             if !condition == false:
                 var dict = {1: 2, "key": "Hello World"}
                 var test = some.<GDSCRIPT_INSTANCE_FIELD>instance_field</GDSCRIPT_INSTANCE_FIELD> * 58.1e-10

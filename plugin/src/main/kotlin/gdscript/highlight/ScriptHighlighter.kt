@@ -27,6 +27,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         in ScriptTokenSet.IDENTIFIERS -> ColorTextAttributeKey.IDENTIFIER
         in ScriptTokenSet.OPERATION_SIGNS -> ColorTextAttributeKey.OPERATION_SIGN
         in ScriptTokenSet.COMMAS -> ColorTextAttributeKey.COMMA
+        in ScriptTokenSet.SEMICOLONS -> ColorTextAttributeKey.SEMICOLON
         in ScriptTokenSet.DOTS -> ColorTextAttributeKey.DOT
         in ScriptTokenSet.BRACES -> ColorTextAttributeKey.BRACES
         in ScriptTokenSet.PARENTHESES -> ColorTextAttributeKey.PARENTHESES
