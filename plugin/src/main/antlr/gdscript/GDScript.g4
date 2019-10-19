@@ -28,15 +28,15 @@ match_entry_statement: expression COLON;
 expression: value (operator value)*;
 operator: MINUS | OTHER_OPERATORS | COMPARE | AND | OR | IN | IS | AS | DOT | IF | ELSE;
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | number | string | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
-
-array: BRACKET_LEFT NL* expression? (COMMA NL* expression)* NL* BRACKET_RIGHT;
+array: BRACKET_LEFT multiline_comma_expressions BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
 dictionary_entry: (string | number) COLON expression NL*;
 dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
 dictionary_lua_entry: IDENTIFIER ASSIGN expression NL*;
-invoke: (IDENTIFIER | primitive) PARENTHES_LEFT expression? (COMMA expression)* PARENTHES_RIGHT;
+invoke: (IDENTIFIER | primitive) PARENTHES_LEFT multiline_comma_expressions PARENTHES_RIGHT;
 subscribe: IDENTIFIER BRACKET_LEFT expression BRACKET_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
+multiline_comma_expressions: NL* expression? NL* (COMMA NL* expression)* NL*;
 type: IDENTIFIER | primitive;
 string: STRING | STRING_MULTILINE | STRING_APHOSTROPHE;
 primitive: BOOL | INT | FLOAT | VOID;

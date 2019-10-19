@@ -99,6 +99,14 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
                     print("It's not 1 or 2. I don't care tbh.")
         """)
 
+    fun `test constructor multiline`() =
+        assertNoErrors("""
+            x = Vector2(
+                1,
+                2
+            )
+        """)
+
     fun `test array multiline`() =
         assertNoErrors("""
             x = [
