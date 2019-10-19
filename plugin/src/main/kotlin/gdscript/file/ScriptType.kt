@@ -6,7 +6,7 @@ import gdscript.parser.ScriptLanguage
 
 object ScriptType : LanguageFileType(ScriptLanguage) {
 
-    override fun getIcon() = IconLoader.getIcon("/file_icon.png")
+    override fun getIcon() = IconLoader.getIcon("/fileIcon.png")
 
     override fun getName() = "GDScript"
 
