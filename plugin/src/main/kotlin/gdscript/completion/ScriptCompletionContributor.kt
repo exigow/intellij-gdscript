@@ -66,9 +66,9 @@ class ScriptCompletionContributor : CompletionContributor() {
 
     private companion object {
 
-        private val INSIDE_TYPE = psiElement().inside(TypeRule::class.java)
-        private val INSIDE_INVOKE = psiElement().inside(InvokeRule::class.java)
-        private val INSIDE_VALUE = psiElement().inside(ValueRule::class.java).andNot(psiElement().afterLeaf("."))
+        private val INSIDE_TYPE = psiElement().withParent(TypeRule::class.java)
+        private val INSIDE_INVOKE = psiElement().withParent(InvokeRule::class.java)
+        private val INSIDE_VALUE = psiElement().withParent(ValueRule::class.java).andNot(psiElement().afterLeaf("."))
         private val AFTER_NEWLINE = psiElement().afterLeaf("\n")
         private val AFTER_EXPORT_KEYWORD = psiElement().afterLeaf("export")
         private val AFTER_STATIC_KEYWORD = psiElement().afterLeaf("static")

@@ -10,8 +10,8 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test variable definition Vector2 type`() =
         assertLookupsContains("var position: Vec<caret>", "Vector2")
 
-    fun `test accept lower case`() =
-        assertLookupsContains("var position: vec<caret>", "Vector2")
+    fun `test class type is case-sensitive`() =
+        assertLookupsNotContains("var position: vec<caret>", "Vector2")
 
     fun `test extends with Node class`() =
         assertLookupsContains("extends No<caret>", "Node")
@@ -31,17 +31,11 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test true completion`() =
         assertLookupsContains("x = tr<caret>", "true")
 
-    fun `test variable definition type`() =
-        assertLookupsContains("var hp: flo<caret>", "float")
+    fun `test primitive type is case-sensitive`() =
+        assertLookupsNotContains("var hp: Flo<caret>", "float")
 
-    fun `test recognize object-like Float with upper case character as float primitive type`() =
-        assertLookupsContains("var hp: Flo<caret>", "float")
-
-    fun `test extends primitive type`() =
-        assertLookupsContains("extends fl<caret>", "float")
-
-    fun `test function return type`() =
-        assertLookupsContains("func get() -> in<caret>:", "int")
+    fun `test extends Vector2 class`() =
+        assertLookupsContains("extends Vec<caret>", "Vector2")
 
     fun `test function as statement`() =
         assertLookupsContains("pr<caret>", "print")

@@ -8,5 +8,4 @@ val PRIMITIVE_TYPES = PRIMITIVE_CLASSES
     .map { it.toPrimitiveLookup() }
 
 private fun GodotApi.Class.toPrimitiveLookup() = create(name)
-    .withCaseSensitivity(false)
     .bold()

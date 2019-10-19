@@ -10,7 +10,6 @@ val OBJECT_TYPES = OBJECT_CLASSES
 
 private fun GodotApi.Class.toObjectLookup() = create(name)
     .withTypeText(extends)
-    .withCaseSensitivity(false)
     .withIcon(CLASS_ICON)
 
 
