@@ -8,11 +8,9 @@ plugins {
 dependencies {
     compile(project(":api"))
     antlr("org.antlr:antlr4:4.7.2")
-    implementation("com.yuvalshavit:antlr-denter:1.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
     implementation("org.antlr:antlr4-intellij-adaptor:0.1")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.50")
 }
 
 intellij {
