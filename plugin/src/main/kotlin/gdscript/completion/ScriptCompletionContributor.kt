@@ -7,6 +7,8 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.patterns.PlatformPatterns.psiElement
+import com.intellij.patterns.PsiElementPattern
+import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
 import gdscript.completion.lookups.*
 import gdscript.psi.InvokeRule
@@ -69,11 +71,17 @@ class ScriptCompletionContributor : CompletionContributor() {
     private companion object {
 
         private val INSIDE_TYPE = psiElement().withParent(TypeRule::class.java)
-        private val INSIDE_INVOKE = psiElement().withParent(InvokeRule::class.java).andNot(psiElement().afterLeaf("."))
-        private val INSIDE_VALUE = psiElement().withParent(ValueRule::class.java).andNot(psiElement().afterLeaf("."))
+        private val INSIDE_INVOKE = psiElement().withParent(InvokeRule::class.java).andNotAfterDot().andNotBeforeDot()
+        private val INSIDE_VALUE = psiElement().withParent(ValueRule::class.java).andNotAfterDot().andNotBeforeDot()
         private val AFTER_NEWLINE = psiElement().afterLeaf("\n")
         private val AFTER_EXPORT_KEYWORD = psiElement().afterLeaf("export")
         private val AFTER_STATIC_KEYWORD = psiElement().afterLeaf("static")
+
+        private fun PsiElementPattern.Capture<PsiElement>.andNotAfterDot() =
+            andNot(psiElement().afterLeaf("."))
+
+        private fun PsiElementPattern.Capture<PsiElement>.andNotBeforeDot() =
+            andNot(psiElement().beforeLeaf("."))
 
     }
 
