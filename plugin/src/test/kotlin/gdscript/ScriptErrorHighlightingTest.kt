@@ -238,6 +238,12 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function master`() =
         assertNoErrors("master func exploded(by_who):")
 
+    fun `test function default arguments`() {
+        assertNoErrors("""func _closed(was_clean = false):""")
+        assertNoErrors("""func _disconnected(id, was_clean = false):""")
+        assertNoErrors("""func _connected(proto = ""):""")
+    }
+
     fun `test negated condition`() =
         assertNoErrors("if !list.empty():")
 

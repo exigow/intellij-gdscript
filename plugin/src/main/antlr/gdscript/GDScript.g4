@@ -8,7 +8,7 @@ statement: (var_statement | const_statement | func_statement | for_statement | w
 var_statement: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT expression? (COMMA expression)* PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
 func_statement: (STATIC | PUPPET | MASTER)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
-func_argument: IDENTIFIER (COLON type)?;
+func_argument: IDENTIFIER (COLON type)? (ASSIGN expression)?;
 for_statement: FOR expression COLON;
 while_statement: WHILE expression COLON;
 class_statement: CLASS IDENTIFIER COLON;
