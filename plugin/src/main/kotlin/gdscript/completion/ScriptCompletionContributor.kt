@@ -40,6 +40,8 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(BASIC, AFTER_NEWLINE, provide(FUNC))
         extend(BASIC, AFTER_NEWLINE, provide(EXPORT))
         extend(BASIC, AFTER_NEWLINE, provide(STATIC))
+        extend(BASIC, AFTER_NEWLINE, provide(PUPPET))
+        extend(BASIC, AFTER_NEWLINE, provide(MASTER))
         extend(BASIC, AFTER_NEWLINE, provide(ENUM))
         extend(BASIC, AFTER_NEWLINE, provide(SIGNAL))
         extend(BASIC, AFTER_NEWLINE, provide(CLASS))

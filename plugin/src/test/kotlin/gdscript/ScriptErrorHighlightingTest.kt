@@ -211,6 +211,12 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function void`() =
         assertNoErrors("func some() -> void:")
 
+    fun `test function puppet`() =
+        assertNoErrors("puppet func do_explosion():")
+
+    fun `test function master`() =
+        assertNoErrors("master func exploded(by_who):")
+
     fun `test negated condition`() =
         assertNoErrors("if !list.empty():")
 
@@ -273,6 +279,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test var`() =
         assertNoErrors("var hp")
+
+    fun `test var puppet`() =
+        assertNoErrors("puppet var x")
 
     fun `test var assignment`() =
         assertNoErrors("var hp = 73")

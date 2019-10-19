@@ -33,6 +33,8 @@ object ScriptTokenSet {
         SETGET,
         CONST,
         STATIC,
+        PUPPET,
+        MASTER,
         FUNC,
         FOR,
         WHILE,
