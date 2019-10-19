@@ -26,6 +26,9 @@ class ScriptAnnotatorTest : BasePlatformTestCase() {
     fun `test deg2rad function`() =
         assertInfoHighlighting("radians = ${info("deg2rad")}(147)")
 
+    fun `test Vector2 x property`() =
+        assertInfoHighlighting("dir.x")
+
     fun `test cosh function`() =
         assertInfoHighlighting("x = ${info("cosh")}(0.13)")
 
