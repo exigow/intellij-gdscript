@@ -62,11 +62,13 @@ object ScriptTokenSet {
         TOOL
     )
     val OPERATION_SIGNS = create(
-        NEGATE,
+        ASSIGN,
         ARROW,
         MINUS,
-        ASSIGN,
-        OPERATION_SIGN
+        OTHER_OPERATORS,
+        COMPARE,
+        NOT_BITWISE,
+        NOT_BOOLEAN
     )
     val BRACES = create(
         BRACE_LEFT,

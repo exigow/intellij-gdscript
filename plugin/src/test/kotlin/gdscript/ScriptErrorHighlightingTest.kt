@@ -6,6 +6,46 @@ import gdscript.file.ScriptType
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
+    fun `test operator`() {
+        assertNoErrors("x - y")
+        assertNoErrors("x + y")
+        assertNoErrors("x * y")
+        assertNoErrors("x / y")
+        assertNoErrors("x % y")
+        assertNoErrors("x << y")
+        assertNoErrors("x >> y")
+        assertNoErrors("x ^ y")
+        assertNoErrors("x | y")
+        assertNoErrors("x && y")
+        assertNoErrors("x || y")
+    }
+
+    fun `test operator assign`() {
+        assertNoErrors("x = y")
+        assertNoErrors("x := y")
+        assertNoErrors("x += y")
+        assertNoErrors("x -= y")
+        assertNoErrors("x *= y")
+        assertNoErrors("x /= y")
+        assertNoErrors("x %= y")
+        assertNoErrors("x &= y")
+        assertNoErrors("x |= y")
+    }
+
+    fun `test operator negate`() {
+        assertNoErrors("x = !y")
+        assertNoErrors("x = ~y")
+        assertNoErrors("x = -y")
+    }
+
+    fun `test operator keyword`() {
+        assertNoErrors("x and y")
+        assertNoErrors("x or y")
+        assertNoErrors("x in y")
+        assertNoErrors("x as y")
+        assertNoErrors("x = not y")
+    }
+
     fun `test continue`() =
         assertNoErrors("continue")
 
@@ -247,12 +287,6 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test var inferred type`() =
         assertNoErrors("var my_node := Sprite.new()")
-
-    fun `test as primitive type operator`() =
-        assertNoErrors("x = number as int")
-
-    fun `test as type operator`() =
-        assertNoErrors("my_sprite = sprite as Sprite")
 
     fun `test extends class`() =
         assertNoErrors("extends SomeClass")
