@@ -28,10 +28,9 @@ sourceSets["main"].java.srcDir("build/generated-src/antlr/main")
 tasks {
     compileKotlin {
         dependsOn(generateGrammarSource)
-    }
-    compileJava {
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
     generateGrammarSource {
         arguments = listOf("-no-listener", "-no-visitor")
