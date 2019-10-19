@@ -283,6 +283,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test node path with digit`() =
         assertNoErrors("node = \$CollisionShape2D")
 
+    fun `test node path string`() =
+        assertNoErrors("rect_position = \$\"../BodyPivot\".position")
+
     fun `test signal`() =
         assertNoErrors("signal health_depleted")
 
