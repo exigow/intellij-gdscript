@@ -7,7 +7,7 @@ file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;
 var_statement: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
-func_statement: (STATIC | PUPPET | MASTER)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
+func_statement: (STATIC | PUPPET | MASTER | SYNC)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
 func_argument: IDENTIFIER (COLON type)? (ASSIGN expression)?;
 for_statement: FOR expression COLON;
 while_statement: WHILE expression COLON;
@@ -42,6 +42,7 @@ string: STRING | STRING_MULTILINE | STRING_APHOSTROPHE;
 primitive: BOOL | INT | FLOAT | VOID;
 number: NUMBER_FLOATING | NUMBER_BINARY | NUMBER_HEXADECIMAL;
 
+SYNC: 'sync';
 PUPPET: 'puppet';
 MASTER: 'master';
 MATCH: 'match';

@@ -31,6 +31,7 @@ class ScriptCompletionContributor : CompletionContributor() {
         extend(BASIC, INSIDE_VALUE, provideAll(CONSTANTS))
         extend(BASIC, INSIDE_VALUE, provideAll(KEYWORD_FUNCTION_CALLS))
         extend(BASIC, INSIDE_VALUE, provideAll(CONSTRUCTOR_CALLS))
+        extend(BASIC, AFTER_NEWLINE, provide(SYNC))
         extend(BASIC, AFTER_NEWLINE, provide(VAR))
         extend(BASIC, AFTER_NEWLINE, provide(CONST))
         extend(BASIC, AFTER_NEWLINE, provide(FOR))

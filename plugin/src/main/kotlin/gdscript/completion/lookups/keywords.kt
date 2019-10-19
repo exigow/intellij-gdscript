@@ -2,6 +2,7 @@ package gdscript.completion.lookups
 
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 
+val SYNC = create("sync").bold().withSpaceInsertHandler()
 val VAR = create("var").bold().withSpaceInsertHandler()
 val CONST = create("const").bold().withSpaceInsertHandler()
 val FUNC = create("func").bold().withSpaceInsertHandler()

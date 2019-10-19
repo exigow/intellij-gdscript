@@ -238,6 +238,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test function master`() =
         assertNoErrors("master func exploded(by_who):")
 
+    fun `test function sync`() =
+        assertNoErrors("sync func update_score(add_to_left):")
+
     fun `test function default arguments`() {
         assertNoErrors("""func _closed(was_clean = false):""")
         assertNoErrors("""func _disconnected(id, was_clean = false):""")
