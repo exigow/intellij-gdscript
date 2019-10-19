@@ -1,7 +1,7 @@
 <idea-plugin>
 	<id>gdscript</id>
 	<name>Godot GDScript</name>
-	<version>0.15</version>
+	<version>0.16</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for the Godot GDScript language.</p>
