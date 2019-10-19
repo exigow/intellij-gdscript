@@ -307,7 +307,7 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     }
 
     private fun assertNoErrors(code: String) {
-        myFixture.configureByText(ScriptType, code.trimIndent() + "\n")
+        myFixture.configureByText(ScriptType, code)
         myFixture.checkHighlighting()
     }
 

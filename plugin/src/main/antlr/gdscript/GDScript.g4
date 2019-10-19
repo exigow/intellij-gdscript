@@ -2,9 +2,9 @@ grammar GDScript;
 
 @header {package gdscript;}
 
-file: NL* (statement NL+)* EOF;
+file: NL* statement? (NL+ statement)* NL* EOF;
 
-statement: var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT;
+statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;
 var_statement: (EXPORT (PARENTHES_LEFT export_argument? (COMMA export_argument)* PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 export_argument: IDENTIFIER | number | string | type;
 const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
@@ -104,7 +104,7 @@ NUMBER_HEXADECIMAL: '0x' (DIGIT | 'A'..'F')+;
 STRING: '"' (~["\n])* '"';
 STRING_APHOSTROPHE: '\'' (~['\n])* '\'';
 STRING_MULTILINE: '"""' .*? '"""';
-LINE_COMMENT: '#' ~[\r\n\f]*;
+LINE_COMMENT: '#' ~[\n]*;
 fragment IDENTIFIER_START: LOWER_CASE | UPPER_CASE | '_';
 fragment LOWER_CASE: 'a'..'z';
 fragment UPPER_CASE: 'A'..'Z';
