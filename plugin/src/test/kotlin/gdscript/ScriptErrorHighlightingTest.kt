@@ -99,6 +99,14 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
                     print("It's not 1 or 2. I don't care tbh.")
         """)
 
+    fun `test array multiline`() =
+        assertNoErrors("""
+            x = [
+                1,
+                2
+            ]
+        """)
+
     fun `test if-short with statement on the same line`() =
         assertNoErrors("if 1 + 1 == 2: return 2 + 2")
 

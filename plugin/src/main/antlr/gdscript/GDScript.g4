@@ -30,7 +30,7 @@ expression: value (operator value)*;
 operator: MINUS | OTHER_OPERATORS | COMPARE | AND | OR | IN | IS | AS | DOT | IF | ELSE;
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | number | string | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 
-array: BRACKET_LEFT expression? (COMMA expression)* BRACKET_RIGHT;
+array: BRACKET_LEFT NL* expression? (COMMA NL* expression)* NL* BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
 dictionary_entry: (string | number) COLON expression NL*;
 dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
