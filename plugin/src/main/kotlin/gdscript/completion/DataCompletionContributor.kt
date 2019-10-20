@@ -17,10 +17,11 @@ import java.util.*
 class DataCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (parameters.position.parent is StringRule) {
-            val allFiles = visitFiles(parameters.file().parent)
-            for (file in allFiles) {
-                val relative = VfsUtilCore.findRelativePath(parameters.file(), file, '/')!!
+        val project = searchForClosestProjectParent(parameters.file(), maxSearchDepth = 3)
+        if (parameters.position.parent is StringRule && project != null) {
+            val projectFiles = collectFiles(project.parent)
+            for (file in projectFiles) {
+                val relative = VfsUtilCore.findRelativePath(project, file, '/')!!
                 val lookup = create("res://$relative")
                 result.addElement(when (file.extension) {
                     "gd" ->
@@ -37,7 +38,7 @@ class DataCompletionContributor : CompletionContributor() {
     private fun CompletionParameters.file() =
         originalFile.virtualFile
 
-    private fun visitFiles(start: VirtualFile): Collection<VirtualFile> {
+    private fun collectFiles(start: VirtualFile): Collection<VirtualFile> {
         val list = ArrayList<VirtualFile>()
         VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
             override fun visitFile(file: VirtualFile): Boolean {
@@ -47,6 +48,15 @@ class DataCompletionContributor : CompletionContributor() {
             }
         })
         return list
+    }
+
+    private tailrec fun searchForClosestProjectParent(start: VirtualFile, maxSearchDepth: Int): VirtualFile? {
+        val project = start.children.find { it.name == "project.godot" }
+        if (project != null)
+            return project
+        if (maxSearchDepth < 0 || start.parent == null)
+            return null
+        return searchForClosestProjectParent(start.parent, maxSearchDepth - 1)
     }
 
 }

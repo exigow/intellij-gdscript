@@ -2,7 +2,9 @@
 
 [![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]][license-url]
 
-![Example Image](https://i.imgur.com/V2SOu3X.png)
+![Class Completion](https://i.imgur.com/V2SOu3X.png)
+
+![Resource Completion](https://i.imgur.com/32ivyMw.png)
 
 Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion*, ...).
 
