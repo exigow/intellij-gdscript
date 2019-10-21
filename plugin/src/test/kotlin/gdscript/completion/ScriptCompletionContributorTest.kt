@@ -10,6 +10,12 @@ class ScriptCompletionContributorTest : BasePlatformTestCase() {
     fun `test variable definition Vector2 type`() =
         assertLookupsContains("var position: Vec<caret>", "Vector2")
 
+    fun `test type AS completion`() =
+        assertLookupsContains("platform as Kinem<caret>", "KinematicBody2D")
+
+    fun `test type IS completion`() =
+        assertLookupsContains("image is Spri<caret>", "Sprite")
+
     fun `test class type is case-sensitive`() =
         assertLookupsNotContains("var position: vec<caret>", "Vector2")
 

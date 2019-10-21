@@ -25,8 +25,9 @@ assign_statement: expression (ASSIGN) expression;
 match_statement: MATCH expression COLON;
 match_entry_statement: expression COLON;
 
-expression: value (operator value)*;
-operator: MINUS | OTHER_OPERATORS | COMPARE | AND | OR | IN | IS | AS | DOT | IF | ELSE;
+expression: value ((operator value) | (type_operator type))*;
+operator: MINUS | OTHER_OPERATORS | COMPARE | AND | OR | IN | DOT | IF | ELSE;
+type_operator: AS | IS;
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | number | string | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
