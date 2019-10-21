@@ -24,6 +24,7 @@ object ScriptTokenSet {
         STRING_MULTILINE
     )
     val KEYWORDS = create(
+        REMOTE,
         SYNC,
         CONTINUE,
         BREAK,
