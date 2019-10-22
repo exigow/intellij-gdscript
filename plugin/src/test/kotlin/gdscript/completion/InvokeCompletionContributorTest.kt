@@ -5,43 +5,13 @@ import gdscript.file.ScriptType
 import uitlities.assertContains
 import uitlities.assertNotContains
 
-class ScriptCompletionContributorTest : BasePlatformTestCase() {
-
-    fun `test variable definition Vector2 type`() =
-        assertLookupsContains("var position: Vec<caret>", "Vector2")
-
-    fun `test type AS completion`() =
-        assertLookupsContains("platform as Kinem<caret>", "KinematicBody2D")
-
-    fun `test type IS completion`() =
-        assertLookupsContains("image is Spri<caret>", "Sprite")
-
-    fun `test class type is case-sensitive`() =
-        assertLookupsNotContains("var position: vec<caret>", "Vector2")
-
-    fun `test extends with Node class`() =
-        assertLookupsContains("extends No<caret>", "Node")
-
-    fun `test function return class type`() =
-        assertLookupsContains("func get_name() -> <caret>:", "String")
-
-    fun `test function return class type with missing colon`() =
-        assertLookupsContains("func get_name() -> <caret>", "String")
-
-    fun `test function argument type`() =
-        assertLookupsContains("func draw_quad(geometry: <caret>):", "ImmediateGeometry")
+class InvokeCompletionContributorTest : BasePlatformTestCase() {
 
     fun `test self completion`() =
         assertLookupsContains("x = se<caret>", "self")
 
     fun `test true completion`() =
         assertLookupsContains("x = tr<caret>", "true")
-
-    fun `test primitive type is case-sensitive`() =
-        assertLookupsNotContains("var hp: Flo<caret>", "float")
-
-    fun `test extends Vector2 class`() =
-        assertLookupsContains("extends Vec<caret>", "Vector2")
 
     fun `test function as statement`() =
         assertLookupsContains("pr<caret>", "print")

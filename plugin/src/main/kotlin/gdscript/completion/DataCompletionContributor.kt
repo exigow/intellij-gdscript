@@ -16,6 +16,9 @@ import java.util.*
 
 class DataCompletionContributor : CompletionContributor() {
 
+    // todo: check FilePathCompletionContributor : CompletionContributor
+    // todo dont override method, use extend(...)
+
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val project = searchForClosestProjectParent(parameters.file(), maxSearchDepth = 3)
         if (parameters.position.parent is StringRule && project != null) {
