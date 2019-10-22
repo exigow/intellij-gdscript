@@ -25,7 +25,12 @@ object ScriptTokenSet {
     )
     val KEYWORDS = create(
         REMOTE,
+        PUPPET,
+        MASTER,
         SYNC,
+        REMOTESYNC,
+        MASTERSYNC,
+        PUPPETSYNC,
         CONTINUE,
         BREAK,
         MATCH,

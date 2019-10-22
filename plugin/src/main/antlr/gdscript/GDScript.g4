@@ -44,9 +44,12 @@ primitive: BOOL | INT | FLOAT | VOID;
 number: NUMBER_FLOATING | NUMBER_BINARY | NUMBER_HEXADECIMAL;
 
 REMOTE: 'remote';
-SYNC: 'sync';
 PUPPET: 'puppet';
 MASTER: 'master';
+SYNC: 'sync';
+REMOTESYNC: 'remotesync';
+MASTERSYNC: 'mastersync';
+PUPPETSYNC: 'puppetsync';
 MATCH: 'match';
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -70,6 +73,7 @@ TOOL: 'tool';
 SIGNAL: 'signal';
 BREAK: 'break';
 CONTINUE: 'continue';
+
 NOT: 'not';
 AND: 'and';
 OR: 'or';
@@ -84,6 +88,7 @@ BOOL: 'bool';
 INT: 'int';
 FLOAT: 'float';
 VOID: 'void';
+
 ASSIGN: '=' | ':='| '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 MINUS: '-';
