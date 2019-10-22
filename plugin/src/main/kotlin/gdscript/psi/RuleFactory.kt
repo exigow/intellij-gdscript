@@ -21,7 +21,6 @@ object RuleFactory {
             RULE_value -> ValueRule(node)
             RULE_invoke -> InvokeRule(node)
             RULE_func_statement -> FunctionRule(node)
-            RULE_string -> StringRule(node)
             else -> ANTLRPsiNode(node)
         }
 

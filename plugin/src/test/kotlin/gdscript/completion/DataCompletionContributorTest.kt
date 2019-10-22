@@ -12,7 +12,6 @@ class DataCompletionContributorTest : BasePlatformTestCase() {
         myFixture.addFileToProject("enemy.gd", "extends Node")
         myFixture.addFileToProject("project.godot", "")
         myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings, "res://player.gd")
         assertContains(myFixture.lookupElementStrings, "res://enemy.gd")
     }
 
