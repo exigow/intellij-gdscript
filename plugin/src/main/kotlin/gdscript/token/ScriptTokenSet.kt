@@ -1,11 +1,13 @@
 package gdscript.token
 
+import com.intellij.psi.tree.TokenSet
 import gdscript.GDScriptLexer.*
 import gdscript.parser.ScriptLanguage
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ScriptTokenSet {
 
+    val KEYWORDS = createKeywords()
     val WHITESPACES = create(WHITESPACE)
     val LINE_COMMENTS = create(LINE_COMMENT)
     val IDENTIFIERS = create(IDENTIFIER)
@@ -22,54 +24,6 @@ object ScriptTokenSet {
         STRING,
         STRING_APHOSTROPHE,
         STRING_MULTILINE
-    )
-    val KEYWORDS = create(
-        REMOTE,
-        PUPPET,
-        MASTER,
-        SYNC,
-        REMOTESYNC,
-        MASTERSYNC,
-        PUPPETSYNC,
-        CONTINUE,
-        BREAK,
-        MATCH,
-        EXPORT,
-        ONREADY,
-        VAR,
-        SETGET,
-        CONST,
-        STATIC,
-        PUPPET,
-        MASTER,
-        FUNC,
-        FOR,
-        WHILE,
-        CLASS,
-        EXTENDS,
-        CLASS_NAME,
-        ENUM,
-        IF,
-        ELIF,
-        ELSE,
-        RETURN,
-        PASS,
-        SIGNAL,
-        AND,
-        OR,
-        IN,
-        IS,
-        AS,
-        NOT,
-        TRUE,
-        FALSE,
-        SELF,
-        NULL,
-        BOOL,
-        INT,
-        FLOAT,
-        VOID,
-        TOOL
     )
     val OPERATION_SIGNS = create(
         ASSIGN,
@@ -95,5 +49,12 @@ object ScriptTokenSet {
 
     private fun create(vararg token: Int) =
         createTokenSet(ScriptLanguage, *token)!!
+
+    private fun createKeywords(): TokenSet {
+        val allTokens = (0..VOCABULARY.maxTokenType)
+            .filter { VOCABULARY.getDisplayName(it).removeSurrounding("\'").matches("[a-z_]+".toRegex()) }
+            .toIntArray()
+        return createTokenSet(ScriptLanguage, *allTokens)
+    }
 
 }
