@@ -12,13 +12,17 @@ object FileUtil {
         val list = ArrayList<VirtualFile>()
         VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
             override fun visitFile(file: VirtualFile): Boolean {
-                if (!file.isDirectory)
+                if (file.isHidden())
+                    return false
+                if (!file.isDirectory && file.extension != "import")
                     list.add(file)
                 return super.visitFile(file)
             }
         })
         return list
     }
+
+    private fun VirtualFile.isHidden() = name.startsWith(".")
 
     tailrec fun findProjectFile(start: VirtualFile, maxSearchDepth: Int = 3): VirtualFile? {
         val project = start.children.find { it.name == "project.godot" }

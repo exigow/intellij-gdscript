@@ -29,4 +29,24 @@ class DataCompletionContributorTest : BasePlatformTestCase() {
         assertNotContains(myFixture.lookupElementStrings, "res://player.gd")
     }
 
+    fun `test hide all dot-prefixed files`() {
+        myFixture.addFileToProject("project.godot", "")
+        myFixture.addFileToProject("util.gd", "")
+        myFixture.addFileToProject(".import/file.gd", "")
+        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
+        myFixture.completeBasic()
+        assertNotContains(myFixture.lookupElementStrings, "res://.import/file.gd")
+        assertContains(myFixture.lookupElementStrings, "res://util.gd")
+    }
+
+    fun `test hide "import" extension files`() {
+        myFixture.addFileToProject("project.godot", "")
+        myFixture.addFileToProject("util.gd", "")
+        myFixture.addFileToProject("file.import", "")
+        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
+        myFixture.completeBasic()
+        assertNotContains(myFixture.lookupElementStrings, "res://file.import")
+        assertContains(myFixture.lookupElementStrings, "res://util.gd")
+    }
+
 }
