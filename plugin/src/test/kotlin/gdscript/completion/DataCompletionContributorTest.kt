@@ -1,52 +1,64 @@
 package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import junit.framework.TestCase
 import uitlities.assertContains
 import uitlities.assertNotContains
 
 class DataCompletionContributorTest : BasePlatformTestCase() {
 
     fun `test sibling files completion`() {
-        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
-        myFixture.addFileToProject("enemy.gd", "extends Node")
-        myFixture.addFileToProject("project.godot", "")
+        addFile("project.godot")
+        addFile("util.gd")
+        addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings, "res://enemy.gd")
+        assertContains(lookups(), "res://util.gd")
     }
 
     fun `test sub directory files completion`() {
-        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
-        myFixture.addFileToProject("inner/inner/enemy.gd", "extends Node")
-        myFixture.addFileToProject("project.godot", "")
+        addFile("project.godot")
+        addFile("dir/util.gd")
+        addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings, "res://inner/inner/enemy.gd")
+        assertContains(lookups(), "res://dir/util.gd")
     }
 
     fun `test do not complete on missing project`() {
-        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
+        addCode("main.gd", """const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
-        assertNotContains(myFixture.lookupElementStrings, "res://player.gd")
+        assertNotContains(lookups(), "res://main.gd")
     }
 
     fun `test hide all dot-prefixed files`() {
-        myFixture.addFileToProject("project.godot", "")
-        myFixture.addFileToProject("util.gd", "")
-        myFixture.addFileToProject(".import/file.gd", "")
-        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
+        addFile("project.godot")
+        addFile("util.gd")
+        addFile(".import/file.gd")
+        addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
-        assertNotContains(myFixture.lookupElementStrings, "res://.import/file.gd")
-        assertContains(myFixture.lookupElementStrings, "res://util.gd")
+        assertNotContains(lookups(), "res://.import/file.gd")
+        assertContains(lookups(), "res://util.gd")
     }
 
     fun `test hide "import" extension files`() {
-        myFixture.addFileToProject("project.godot", "")
-        myFixture.addFileToProject("util.gd", "")
-        myFixture.addFileToProject("file.import", "")
-        myFixture.configureByText("player.gd", """x = preload("res://<caret>")""")
+        addFile("project.godot")
+        addFile("util.gd")
+        addFile("file.import")
+        addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
-        assertNotContains(myFixture.lookupElementStrings, "res://file.import")
-        assertContains(myFixture.lookupElementStrings, "res://util.gd")
+        assertNotContains(lookups(), "res://file.import")
+        assertContains(lookups(), "res://util.gd")
     }
+
+    private fun lookups(): MutableList<String>? =
+        myFixture.lookupElementStrings
+
+    private fun addFile(filename: String) =
+        myFixture.addFileToProject(filename, "bla bla")
+
+    private fun addCode(content: String) =
+        myFixture.configureByText("main.gd", content)
+
+    private fun addCode(filename: String, content: String) =
+        myFixture.configureByText(filename, content)
+
 
 }
