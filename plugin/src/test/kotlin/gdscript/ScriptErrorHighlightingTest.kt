@@ -367,6 +367,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
     fun `test extends resource inner-inner class`() =
         assertNoErrors("""extends "Some.gd".First.Second""")
 
+    fun `test "is" operator with pre-loaded class type`() =
+        assertNoErrors("""body is preload("res://player.gd"):""")
+
     fun `test error on two statements in one line (sanity check)`() {
         myFixture.configureByText(ScriptType, "var x var")
         val errors = myFixture.doHighlighting()
