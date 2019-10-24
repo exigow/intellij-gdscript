@@ -1,6 +1,6 @@
 package gdscript.annotation
 
-import gdscript.completion.sources.CompletionData.GLOBAL_SCOPE_CLASSES
+import gdscript.completion.sources.COMPLETION_DATA
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
@@ -48,7 +48,7 @@ class ScriptAnnotator : Annotator {
     }
 
     private fun annotateClass(element: PsiElement, holder: AnnotationHolder) {
-        if (element is TypeRule && element.isNotPrimitive())
+        if (element is TypeRule)
             holder.createColorAnnotation(element, CLASS_NAME)
     }
 
@@ -66,9 +66,7 @@ class ScriptAnnotator : Annotator {
 
     companion object {
 
-        private val LANGUAGE_FUNCTION_NAMES = GLOBAL_SCOPE_CLASSES
-            .flatMap { it.methods }
-            .map { it.name }
+        private val LANGUAGE_FUNCTION_NAMES = COMPLETION_DATA.functions.map { it.name }
 
     }
 

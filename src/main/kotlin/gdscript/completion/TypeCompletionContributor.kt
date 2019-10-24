@@ -1,6 +1,6 @@
 package gdscript.completion
 
-import gdscript.completion.sources.CompletionData.OBJECT_CLASSES
+import gdscript.completion.sources.COMPLETION_DATA
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.patterns.PlatformPatterns.psiElement
@@ -20,7 +20,7 @@ class TypeCompletionContributor : CompletionContributor() {
     private companion object {
         val PRIMITIVES = listOf("bool", "float", "void", "int")
             .map { createKeyword(it) }
-        val CLASSES = OBJECT_CLASSES
+        val CLASSES = COMPLETION_DATA.classes
             .map { createClass(it.name, it.extends) }
     }
 
