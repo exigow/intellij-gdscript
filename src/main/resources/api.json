@@ -1,20 +1,68 @@
 {
   "constants": [
     {
-      "name": "MARGIN_LEFT",
-      "value": "0"
-    },
-    {
-      "name": "MARGIN_TOP",
+      "name": "BUTTON_LEFT",
       "value": "1"
     },
     {
-      "name": "MARGIN_RIGHT",
+      "name": "BUTTON_MASK_LEFT",
+      "value": "1"
+    },
+    {
+      "name": "BUTTON_MASK_MIDDLE",
+      "value": "4"
+    },
+    {
+      "name": "BUTTON_MASK_RIGHT",
       "value": "2"
     },
     {
-      "name": "MARGIN_BOTTOM",
+      "name": "BUTTON_MASK_XBUTTON1",
+      "value": "128"
+    },
+    {
+      "name": "BUTTON_MASK_XBUTTON2",
+      "value": "256"
+    },
+    {
+      "name": "BUTTON_MIDDLE",
       "value": "3"
+    },
+    {
+      "name": "BUTTON_RIGHT",
+      "value": "2"
+    },
+    {
+      "name": "BUTTON_WHEEL_DOWN",
+      "value": "5"
+    },
+    {
+      "name": "BUTTON_WHEEL_LEFT",
+      "value": "6"
+    },
+    {
+      "name": "BUTTON_WHEEL_RIGHT",
+      "value": "7"
+    },
+    {
+      "name": "BUTTON_WHEEL_UP",
+      "value": "4"
+    },
+    {
+      "name": "BUTTON_XBUTTON1",
+      "value": "8"
+    },
+    {
+      "name": "BUTTON_XBUTTON2",
+      "value": "9"
+    },
+    {
+      "name": "CORNER_BOTTOM_LEFT",
+      "value": "3"
+    },
+    {
+      "name": "CORNER_BOTTOM_RIGHT",
+      "value": "2"
     },
     {
       "name": "CORNER_TOP_LEFT",
@@ -25,160 +73,820 @@
       "value": "1"
     },
     {
-      "name": "CORNER_BOTTOM_RIGHT",
+      "name": "ERR_ALREADY_EXISTS",
+      "value": "32"
+    },
+    {
+      "name": "ERR_ALREADY_IN_USE",
+      "value": "22"
+    },
+    {
+      "name": "ERR_BUG",
+      "value": "47"
+    },
+    {
+      "name": "ERR_BUSY",
+      "value": "44"
+    },
+    {
+      "name": "ERR_CANT_ACQUIRE_RESOURCE",
+      "value": "28"
+    },
+    {
+      "name": "ERR_CANT_CONNECT",
+      "value": "25"
+    },
+    {
+      "name": "ERR_CANT_CREATE",
+      "value": "20"
+    },
+    {
+      "name": "ERR_CANT_FORK",
+      "value": "29"
+    },
+    {
+      "name": "ERR_CANT_OPEN",
+      "value": "19"
+    },
+    {
+      "name": "ERR_CANT_RESOLVE",
+      "value": "26"
+    },
+    {
+      "name": "ERR_COMPILATION_FAILED",
+      "value": "36"
+    },
+    {
+      "name": "ERR_CONNECTION_ERROR",
+      "value": "27"
+    },
+    {
+      "name": "ERR_CYCLIC_LINK",
+      "value": "40"
+    },
+    {
+      "name": "ERR_DATABASE_CANT_READ",
+      "value": "34"
+    },
+    {
+      "name": "ERR_DATABASE_CANT_WRITE",
+      "value": "35"
+    },
+    {
+      "name": "ERR_DOES_NOT_EXIST",
+      "value": "33"
+    },
+    {
+      "name": "ERR_DUPLICATE_SYMBOL",
+      "value": "42"
+    },
+    {
+      "name": "ERR_FILE_ALREADY_IN_USE",
+      "value": "11"
+    },
+    {
+      "name": "ERR_FILE_BAD_DRIVE",
+      "value": "8"
+    },
+    {
+      "name": "ERR_FILE_BAD_PATH",
+      "value": "9"
+    },
+    {
+      "name": "ERR_FILE_CANT_OPEN",
+      "value": "12"
+    },
+    {
+      "name": "ERR_FILE_CANT_READ",
+      "value": "14"
+    },
+    {
+      "name": "ERR_FILE_CANT_WRITE",
+      "value": "13"
+    },
+    {
+      "name": "ERR_FILE_CORRUPT",
+      "value": "16"
+    },
+    {
+      "name": "ERR_FILE_EOF",
+      "value": "18"
+    },
+    {
+      "name": "ERR_FILE_MISSING_DEPENDENCIES",
+      "value": "17"
+    },
+    {
+      "name": "ERR_FILE_NOT_FOUND",
+      "value": "7"
+    },
+    {
+      "name": "ERR_FILE_NO_PERMISSION",
+      "value": "10"
+    },
+    {
+      "name": "ERR_FILE_UNRECOGNIZED",
+      "value": "15"
+    },
+    {
+      "name": "ERR_HELP",
+      "value": "46"
+    },
+    {
+      "name": "ERR_INVALID_DATA",
+      "value": "30"
+    },
+    {
+      "name": "ERR_INVALID_DECLARATION",
+      "value": "41"
+    },
+    {
+      "name": "ERR_INVALID_PARAMETER",
+      "value": "31"
+    },
+    {
+      "name": "ERR_LINK_FAILED",
+      "value": "38"
+    },
+    {
+      "name": "ERR_LOCKED",
+      "value": "23"
+    },
+    {
+      "name": "ERR_METHOD_NOT_FOUND",
+      "value": "37"
+    },
+    {
+      "name": "ERR_OUT_OF_MEMORY",
+      "value": "6"
+    },
+    {
+      "name": "ERR_PARAMETER_RANGE_ERROR",
+      "value": "5"
+    },
+    {
+      "name": "ERR_PARSE_ERROR",
+      "value": "43"
+    },
+    {
+      "name": "ERR_PRINTER_ON_FIRE",
+      "value": "48"
+    },
+    {
+      "name": "ERR_QUERY_FAILED",
+      "value": "21"
+    },
+    {
+      "name": "ERR_SCRIPT_FAILED",
+      "value": "39"
+    },
+    {
+      "name": "ERR_SKIP",
+      "value": "45"
+    },
+    {
+      "name": "ERR_TIMEOUT",
+      "value": "24"
+    },
+    {
+      "name": "ERR_UNAUTHORIZED",
+      "value": "4"
+    },
+    {
+      "name": "ERR_UNAVAILABLE",
       "value": "2"
     },
     {
-      "name": "CORNER_BOTTOM_LEFT",
+      "name": "ERR_UNCONFIGURED",
       "value": "3"
     },
     {
-      "name": "VERTICAL",
+      "name": "FAILED",
       "value": "1"
-    },
-    {
-      "name": "HORIZONTAL",
-      "value": "0"
-    },
-    {
-      "name": "HALIGN_LEFT",
-      "value": "0"
     },
     {
       "name": "HALIGN_CENTER",
       "value": "1"
     },
     {
+      "name": "HALIGN_LEFT",
+      "value": "0"
+    },
+    {
       "name": "HALIGN_RIGHT",
       "value": "2"
     },
     {
-      "name": "VALIGN_TOP",
+      "name": "HORIZONTAL",
       "value": "0"
     },
     {
-      "name": "VALIGN_CENTER",
+      "name": "INF",
+      "value": "inf"
+    },
+    {
+      "name": "JOY_ANALOG_L2",
+      "value": "6"
+    },
+    {
+      "name": "JOY_ANALOG_LX",
+      "value": "0"
+    },
+    {
+      "name": "JOY_ANALOG_LY",
       "value": "1"
     },
     {
-      "name": "VALIGN_BOTTOM",
+      "name": "JOY_ANALOG_R2",
+      "value": "7"
+    },
+    {
+      "name": "JOY_ANALOG_RX",
       "value": "2"
     },
     {
-      "name": "SPKEY",
-      "value": "16777216"
+      "name": "JOY_ANALOG_RY",
+      "value": "3"
     },
     {
-      "name": "KEY_ESCAPE",
-      "value": "16777217"
+      "name": "JOY_AXIS_0",
+      "value": "0"
     },
     {
-      "name": "KEY_TAB",
-      "value": "16777218"
+      "name": "JOY_AXIS_1",
+      "value": "1"
     },
     {
-      "name": "KEY_BACKTAB",
-      "value": "16777219"
+      "name": "JOY_AXIS_2",
+      "value": "2"
     },
     {
-      "name": "KEY_BACKSPACE",
-      "value": "16777220"
+      "name": "JOY_AXIS_3",
+      "value": "3"
     },
     {
-      "name": "KEY_ENTER",
-      "value": "16777221"
+      "name": "JOY_AXIS_4",
+      "value": "4"
     },
     {
-      "name": "KEY_KP_ENTER",
-      "value": "16777222"
+      "name": "JOY_AXIS_5",
+      "value": "5"
     },
     {
-      "name": "KEY_INSERT",
-      "value": "16777223"
+      "name": "JOY_AXIS_6",
+      "value": "6"
     },
     {
-      "name": "KEY_DELETE",
-      "value": "16777224"
+      "name": "JOY_AXIS_7",
+      "value": "7"
     },
     {
-      "name": "KEY_PAUSE",
-      "value": "16777225"
+      "name": "JOY_AXIS_8",
+      "value": "8"
     },
     {
-      "name": "KEY_PRINT",
-      "value": "16777226"
+      "name": "JOY_AXIS_9",
+      "value": "9"
     },
     {
-      "name": "KEY_SYSREQ",
-      "value": "16777227"
+      "name": "JOY_AXIS_MAX",
+      "value": "10"
     },
     {
-      "name": "KEY_CLEAR",
-      "value": "16777228"
+      "name": "JOY_BUTTON_0",
+      "value": "0"
     },
     {
-      "name": "KEY_HOME",
-      "value": "16777229"
+      "name": "JOY_BUTTON_1",
+      "value": "1"
     },
     {
-      "name": "KEY_END",
-      "value": "16777230"
+      "name": "JOY_BUTTON_10",
+      "value": "10"
     },
     {
-      "name": "KEY_LEFT",
-      "value": "16777231"
+      "name": "JOY_BUTTON_11",
+      "value": "11"
     },
     {
-      "name": "KEY_UP",
-      "value": "16777232"
+      "name": "JOY_BUTTON_12",
+      "value": "12"
     },
     {
-      "name": "KEY_RIGHT",
-      "value": "16777233"
+      "name": "JOY_BUTTON_13",
+      "value": "13"
     },
     {
-      "name": "KEY_DOWN",
-      "value": "16777234"
+      "name": "JOY_BUTTON_14",
+      "value": "14"
     },
     {
-      "name": "KEY_PAGEUP",
-      "value": "16777235"
+      "name": "JOY_BUTTON_15",
+      "value": "15"
     },
     {
-      "name": "KEY_PAGEDOWN",
-      "value": "16777236"
+      "name": "JOY_BUTTON_2",
+      "value": "2"
     },
     {
-      "name": "KEY_SHIFT",
-      "value": "16777237"
+      "name": "JOY_BUTTON_3",
+      "value": "3"
     },
     {
-      "name": "KEY_CONTROL",
-      "value": "16777238"
+      "name": "JOY_BUTTON_4",
+      "value": "4"
     },
     {
-      "name": "KEY_META",
-      "value": "16777239"
+      "name": "JOY_BUTTON_5",
+      "value": "5"
+    },
+    {
+      "name": "JOY_BUTTON_6",
+      "value": "6"
+    },
+    {
+      "name": "JOY_BUTTON_7",
+      "value": "7"
+    },
+    {
+      "name": "JOY_BUTTON_8",
+      "value": "8"
+    },
+    {
+      "name": "JOY_BUTTON_9",
+      "value": "9"
+    },
+    {
+      "name": "JOY_BUTTON_MAX",
+      "value": "16"
+    },
+    {
+      "name": "JOY_DPAD_DOWN",
+      "value": "13"
+    },
+    {
+      "name": "JOY_DPAD_LEFT",
+      "value": "14"
+    },
+    {
+      "name": "JOY_DPAD_RIGHT",
+      "value": "15"
+    },
+    {
+      "name": "JOY_DPAD_UP",
+      "value": "12"
+    },
+    {
+      "name": "JOY_DS_A",
+      "value": "1"
+    },
+    {
+      "name": "JOY_DS_B",
+      "value": "0"
+    },
+    {
+      "name": "JOY_DS_X",
+      "value": "3"
+    },
+    {
+      "name": "JOY_DS_Y",
+      "value": "2"
+    },
+    {
+      "name": "JOY_L",
+      "value": "4"
+    },
+    {
+      "name": "JOY_L2",
+      "value": "6"
+    },
+    {
+      "name": "JOY_L3",
+      "value": "8"
+    },
+    {
+      "name": "JOY_OCULUS_AX",
+      "value": "7"
+    },
+    {
+      "name": "JOY_OCULUS_BY",
+      "value": "1"
+    },
+    {
+      "name": "JOY_OCULUS_MENU",
+      "value": "3"
+    },
+    {
+      "name": "JOY_OPENVR_MENU",
+      "value": "1"
+    },
+    {
+      "name": "JOY_OPENVR_TOUCHPADX",
+      "value": "0"
+    },
+    {
+      "name": "JOY_OPENVR_TOUCHPADY",
+      "value": "1"
+    },
+    {
+      "name": "JOY_R",
+      "value": "5"
+    },
+    {
+      "name": "JOY_R2",
+      "value": "7"
+    },
+    {
+      "name": "JOY_R3",
+      "value": "9"
+    },
+    {
+      "name": "JOY_SELECT",
+      "value": "10"
+    },
+    {
+      "name": "JOY_SONY_CIRCLE",
+      "value": "1"
+    },
+    {
+      "name": "JOY_SONY_SQUARE",
+      "value": "2"
+    },
+    {
+      "name": "JOY_SONY_TRIANGLE",
+      "value": "3"
+    },
+    {
+      "name": "JOY_SONY_X",
+      "value": "0"
+    },
+    {
+      "name": "JOY_START",
+      "value": "11"
+    },
+    {
+      "name": "JOY_VR_ANALOG_GRIP",
+      "value": "4"
+    },
+    {
+      "name": "JOY_VR_ANALOG_TRIGGER",
+      "value": "2"
+    },
+    {
+      "name": "JOY_VR_GRIP",
+      "value": "2"
+    },
+    {
+      "name": "JOY_VR_PAD",
+      "value": "14"
+    },
+    {
+      "name": "JOY_VR_TRIGGER",
+      "value": "15"
+    },
+    {
+      "name": "JOY_XBOX_A",
+      "value": "0"
+    },
+    {
+      "name": "JOY_XBOX_B",
+      "value": "1"
+    },
+    {
+      "name": "JOY_XBOX_X",
+      "value": "2"
+    },
+    {
+      "name": "JOY_XBOX_Y",
+      "value": "3"
+    },
+    {
+      "name": "KEY_0",
+      "value": "48"
+    },
+    {
+      "name": "KEY_1",
+      "value": "49"
+    },
+    {
+      "name": "KEY_2",
+      "value": "50"
+    },
+    {
+      "name": "KEY_3",
+      "value": "51"
+    },
+    {
+      "name": "KEY_4",
+      "value": "52"
+    },
+    {
+      "name": "KEY_5",
+      "value": "53"
+    },
+    {
+      "name": "KEY_6",
+      "value": "54"
+    },
+    {
+      "name": "KEY_7",
+      "value": "55"
+    },
+    {
+      "name": "KEY_8",
+      "value": "56"
+    },
+    {
+      "name": "KEY_9",
+      "value": "57"
+    },
+    {
+      "name": "KEY_A",
+      "value": "65"
+    },
+    {
+      "name": "KEY_AACUTE",
+      "value": "193"
+    },
+    {
+      "name": "KEY_ACIRCUMFLEX",
+      "value": "194"
+    },
+    {
+      "name": "KEY_ACUTE",
+      "value": "180"
+    },
+    {
+      "name": "KEY_ADIAERESIS",
+      "value": "196"
+    },
+    {
+      "name": "KEY_AE",
+      "value": "198"
+    },
+    {
+      "name": "KEY_AGRAVE",
+      "value": "192"
     },
     {
       "name": "KEY_ALT",
       "value": "16777240"
     },
     {
+      "name": "KEY_AMPERSAND",
+      "value": "38"
+    },
+    {
+      "name": "KEY_APOSTROPHE",
+      "value": "39"
+    },
+    {
+      "name": "KEY_ARING",
+      "value": "197"
+    },
+    {
+      "name": "KEY_ASCIICIRCUM",
+      "value": "94"
+    },
+    {
+      "name": "KEY_ASCIITILDE",
+      "value": "126"
+    },
+    {
+      "name": "KEY_ASTERISK",
+      "value": "42"
+    },
+    {
+      "name": "KEY_AT",
+      "value": "64"
+    },
+    {
+      "name": "KEY_ATILDE",
+      "value": "195"
+    },
+    {
+      "name": "KEY_B",
+      "value": "66"
+    },
+    {
+      "name": "KEY_BACK",
+      "value": "16777280"
+    },
+    {
+      "name": "KEY_BACKSLASH",
+      "value": "92"
+    },
+    {
+      "name": "KEY_BACKSPACE",
+      "value": "16777220"
+    },
+    {
+      "name": "KEY_BACKTAB",
+      "value": "16777219"
+    },
+    {
+      "name": "KEY_BAR",
+      "value": "124"
+    },
+    {
+      "name": "KEY_BASSBOOST",
+      "value": "16777287"
+    },
+    {
+      "name": "KEY_BASSDOWN",
+      "value": "16777289"
+    },
+    {
+      "name": "KEY_BASSUP",
+      "value": "16777288"
+    },
+    {
+      "name": "KEY_BRACELEFT",
+      "value": "123"
+    },
+    {
+      "name": "KEY_BRACERIGHT",
+      "value": "125"
+    },
+    {
+      "name": "KEY_BRACKETLEFT",
+      "value": "91"
+    },
+    {
+      "name": "KEY_BRACKETRIGHT",
+      "value": "93"
+    },
+    {
+      "name": "KEY_BROKENBAR",
+      "value": "166"
+    },
+    {
+      "name": "KEY_C",
+      "value": "67"
+    },
+    {
       "name": "KEY_CAPSLOCK",
       "value": "16777241"
     },
     {
-      "name": "KEY_NUMLOCK",
-      "value": "16777242"
+      "name": "KEY_CCEDILLA",
+      "value": "199"
     },
     {
-      "name": "KEY_SCROLLLOCK",
-      "value": "16777243"
+      "name": "KEY_CEDILLA",
+      "value": "184"
+    },
+    {
+      "name": "KEY_CENT",
+      "value": "162"
+    },
+    {
+      "name": "KEY_CLEAR",
+      "value": "16777228"
+    },
+    {
+      "name": "KEY_CODE_MASK",
+      "value": "33554431"
+    },
+    {
+      "name": "KEY_COLON",
+      "value": "58"
+    },
+    {
+      "name": "KEY_COMMA",
+      "value": "44"
+    },
+    {
+      "name": "KEY_CONTROL",
+      "value": "16777238"
+    },
+    {
+      "name": "KEY_COPYRIGHT",
+      "value": "169"
+    },
+    {
+      "name": "KEY_CURRENCY",
+      "value": "164"
+    },
+    {
+      "name": "KEY_D",
+      "value": "68"
+    },
+    {
+      "name": "KEY_DEGREE",
+      "value": "176"
+    },
+    {
+      "name": "KEY_DELETE",
+      "value": "16777224"
+    },
+    {
+      "name": "KEY_DIAERESIS",
+      "value": "168"
+    },
+    {
+      "name": "KEY_DIRECTION_L",
+      "value": "16777266"
+    },
+    {
+      "name": "KEY_DIRECTION_R",
+      "value": "16777267"
+    },
+    {
+      "name": "KEY_DIVISION",
+      "value": "247"
+    },
+    {
+      "name": "KEY_DOLLAR",
+      "value": "36"
+    },
+    {
+      "name": "KEY_DOWN",
+      "value": "16777234"
+    },
+    {
+      "name": "KEY_E",
+      "value": "69"
+    },
+    {
+      "name": "KEY_EACUTE",
+      "value": "201"
+    },
+    {
+      "name": "KEY_ECIRCUMFLEX",
+      "value": "202"
+    },
+    {
+      "name": "KEY_EDIAERESIS",
+      "value": "203"
+    },
+    {
+      "name": "KEY_EGRAVE",
+      "value": "200"
+    },
+    {
+      "name": "KEY_END",
+      "value": "16777230"
+    },
+    {
+      "name": "KEY_ENTER",
+      "value": "16777221"
+    },
+    {
+      "name": "KEY_EQUAL",
+      "value": "61"
+    },
+    {
+      "name": "KEY_ESCAPE",
+      "value": "16777217"
+    },
+    {
+      "name": "KEY_ETH",
+      "value": "208"
+    },
+    {
+      "name": "KEY_EXCLAM",
+      "value": "33"
+    },
+    {
+      "name": "KEY_EXCLAMDOWN",
+      "value": "161"
+    },
+    {
+      "name": "KEY_F",
+      "value": "70"
     },
     {
       "name": "KEY_F1",
       "value": "16777244"
+    },
+    {
+      "name": "KEY_F10",
+      "value": "16777253"
+    },
+    {
+      "name": "KEY_F11",
+      "value": "16777254"
+    },
+    {
+      "name": "KEY_F12",
+      "value": "16777255"
+    },
+    {
+      "name": "KEY_F13",
+      "value": "16777256"
+    },
+    {
+      "name": "KEY_F14",
+      "value": "16777257"
+    },
+    {
+      "name": "KEY_F15",
+      "value": "16777258"
+    },
+    {
+      "name": "KEY_F16",
+      "value": "16777259"
     },
     {
       "name": "KEY_F2",
@@ -213,52 +921,88 @@
       "value": "16777252"
     },
     {
-      "name": "KEY_F10",
-      "value": "16777253"
+      "name": "KEY_FAVORITES",
+      "value": "16777298"
     },
     {
-      "name": "KEY_F11",
-      "value": "16777254"
+      "name": "KEY_FORWARD",
+      "value": "16777281"
     },
     {
-      "name": "KEY_F12",
-      "value": "16777255"
+      "name": "KEY_G",
+      "value": "71"
     },
     {
-      "name": "KEY_F13",
-      "value": "16777256"
+      "name": "KEY_GREATER",
+      "value": "62"
     },
     {
-      "name": "KEY_F14",
-      "value": "16777257"
+      "name": "KEY_GUILLEMOTLEFT",
+      "value": "171"
     },
     {
-      "name": "KEY_F15",
-      "value": "16777258"
+      "name": "KEY_GUILLEMOTRIGHT",
+      "value": "187"
     },
     {
-      "name": "KEY_F16",
-      "value": "16777259"
+      "name": "KEY_H",
+      "value": "72"
     },
     {
-      "name": "KEY_KP_MULTIPLY",
-      "value": "16777345"
+      "name": "KEY_HELP",
+      "value": "16777265"
     },
     {
-      "name": "KEY_KP_DIVIDE",
-      "value": "16777346"
+      "name": "KEY_HOME",
+      "value": "16777229"
     },
     {
-      "name": "KEY_KP_SUBTRACT",
-      "value": "16777347"
+      "name": "KEY_HOMEPAGE",
+      "value": "16777297"
     },
     {
-      "name": "KEY_KP_PERIOD",
-      "value": "16777348"
+      "name": "KEY_HYPER_L",
+      "value": "16777263"
     },
     {
-      "name": "KEY_KP_ADD",
-      "value": "16777349"
+      "name": "KEY_HYPER_R",
+      "value": "16777264"
+    },
+    {
+      "name": "KEY_HYPHEN",
+      "value": "173"
+    },
+    {
+      "name": "KEY_I",
+      "value": "73"
+    },
+    {
+      "name": "KEY_IACUTE",
+      "value": "205"
+    },
+    {
+      "name": "KEY_ICIRCUMFLEX",
+      "value": "206"
+    },
+    {
+      "name": "KEY_IDIAERESIS",
+      "value": "207"
+    },
+    {
+      "name": "KEY_IGRAVE",
+      "value": "204"
+    },
+    {
+      "name": "KEY_INSERT",
+      "value": "16777223"
+    },
+    {
+      "name": "KEY_J",
+      "value": "74"
+    },
+    {
+      "name": "KEY_K",
+      "value": "75"
     },
     {
       "name": "KEY_KP_0",
@@ -301,132 +1045,32 @@
       "value": "16777359"
     },
     {
-      "name": "KEY_SUPER_L",
-      "value": "16777260"
+      "name": "KEY_KP_ADD",
+      "value": "16777349"
     },
     {
-      "name": "KEY_SUPER_R",
-      "value": "16777261"
+      "name": "KEY_KP_DIVIDE",
+      "value": "16777346"
     },
     {
-      "name": "KEY_MENU",
-      "value": "16777262"
+      "name": "KEY_KP_ENTER",
+      "value": "16777222"
     },
     {
-      "name": "KEY_HYPER_L",
-      "value": "16777263"
+      "name": "KEY_KP_MULTIPLY",
+      "value": "16777345"
     },
     {
-      "name": "KEY_HYPER_R",
-      "value": "16777264"
+      "name": "KEY_KP_PERIOD",
+      "value": "16777348"
     },
     {
-      "name": "KEY_HELP",
-      "value": "16777265"
+      "name": "KEY_KP_SUBTRACT",
+      "value": "16777347"
     },
     {
-      "name": "KEY_DIRECTION_L",
-      "value": "16777266"
-    },
-    {
-      "name": "KEY_DIRECTION_R",
-      "value": "16777267"
-    },
-    {
-      "name": "KEY_BACK",
-      "value": "16777280"
-    },
-    {
-      "name": "KEY_FORWARD",
-      "value": "16777281"
-    },
-    {
-      "name": "KEY_STOP",
-      "value": "16777282"
-    },
-    {
-      "name": "KEY_REFRESH",
-      "value": "16777283"
-    },
-    {
-      "name": "KEY_VOLUMEDOWN",
-      "value": "16777284"
-    },
-    {
-      "name": "KEY_VOLUMEMUTE",
-      "value": "16777285"
-    },
-    {
-      "name": "KEY_VOLUMEUP",
-      "value": "16777286"
-    },
-    {
-      "name": "KEY_BASSBOOST",
-      "value": "16777287"
-    },
-    {
-      "name": "KEY_BASSUP",
-      "value": "16777288"
-    },
-    {
-      "name": "KEY_BASSDOWN",
-      "value": "16777289"
-    },
-    {
-      "name": "KEY_TREBLEUP",
-      "value": "16777290"
-    },
-    {
-      "name": "KEY_TREBLEDOWN",
-      "value": "16777291"
-    },
-    {
-      "name": "KEY_MEDIAPLAY",
-      "value": "16777292"
-    },
-    {
-      "name": "KEY_MEDIASTOP",
-      "value": "16777293"
-    },
-    {
-      "name": "KEY_MEDIAPREVIOUS",
-      "value": "16777294"
-    },
-    {
-      "name": "KEY_MEDIANEXT",
-      "value": "16777295"
-    },
-    {
-      "name": "KEY_MEDIARECORD",
-      "value": "16777296"
-    },
-    {
-      "name": "KEY_HOMEPAGE",
-      "value": "16777297"
-    },
-    {
-      "name": "KEY_FAVORITES",
-      "value": "16777298"
-    },
-    {
-      "name": "KEY_SEARCH",
-      "value": "16777299"
-    },
-    {
-      "name": "KEY_STANDBY",
-      "value": "16777300"
-    },
-    {
-      "name": "KEY_OPENURL",
-      "value": "16777301"
-    },
-    {
-      "name": "KEY_LAUNCHMAIL",
-      "value": "16777302"
-    },
-    {
-      "name": "KEY_LAUNCHMEDIA",
-      "value": "16777303"
+      "name": "KEY_L",
+      "value": "76"
     },
     {
       "name": "KEY_LAUNCH0",
@@ -493,488 +1137,132 @@
       "value": "16777319"
     },
     {
-      "name": "KEY_UNKNOWN",
-      "value": "33554431"
+      "name": "KEY_LAUNCHMAIL",
+      "value": "16777302"
     },
     {
-      "name": "KEY_SPACE",
-      "value": "32"
+      "name": "KEY_LAUNCHMEDIA",
+      "value": "16777303"
     },
     {
-      "name": "KEY_EXCLAM",
-      "value": "33"
-    },
-    {
-      "name": "KEY_QUOTEDBL",
-      "value": "34"
-    },
-    {
-      "name": "KEY_NUMBERSIGN",
-      "value": "35"
-    },
-    {
-      "name": "KEY_DOLLAR",
-      "value": "36"
-    },
-    {
-      "name": "KEY_PERCENT",
-      "value": "37"
-    },
-    {
-      "name": "KEY_AMPERSAND",
-      "value": "38"
-    },
-    {
-      "name": "KEY_APOSTROPHE",
-      "value": "39"
-    },
-    {
-      "name": "KEY_PARENLEFT",
-      "value": "40"
-    },
-    {
-      "name": "KEY_PARENRIGHT",
-      "value": "41"
-    },
-    {
-      "name": "KEY_ASTERISK",
-      "value": "42"
-    },
-    {
-      "name": "KEY_PLUS",
-      "value": "43"
-    },
-    {
-      "name": "KEY_COMMA",
-      "value": "44"
-    },
-    {
-      "name": "KEY_MINUS",
-      "value": "45"
-    },
-    {
-      "name": "KEY_PERIOD",
-      "value": "46"
-    },
-    {
-      "name": "KEY_SLASH",
-      "value": "47"
-    },
-    {
-      "name": "KEY_0",
-      "value": "48"
-    },
-    {
-      "name": "KEY_1",
-      "value": "49"
-    },
-    {
-      "name": "KEY_2",
-      "value": "50"
-    },
-    {
-      "name": "KEY_3",
-      "value": "51"
-    },
-    {
-      "name": "KEY_4",
-      "value": "52"
-    },
-    {
-      "name": "KEY_5",
-      "value": "53"
-    },
-    {
-      "name": "KEY_6",
-      "value": "54"
-    },
-    {
-      "name": "KEY_7",
-      "value": "55"
-    },
-    {
-      "name": "KEY_8",
-      "value": "56"
-    },
-    {
-      "name": "KEY_9",
-      "value": "57"
-    },
-    {
-      "name": "KEY_COLON",
-      "value": "58"
-    },
-    {
-      "name": "KEY_SEMICOLON",
-      "value": "59"
+      "name": "KEY_LEFT",
+      "value": "16777231"
     },
     {
       "name": "KEY_LESS",
       "value": "60"
     },
     {
-      "name": "KEY_EQUAL",
-      "value": "61"
-    },
-    {
-      "name": "KEY_GREATER",
-      "value": "62"
-    },
-    {
-      "name": "KEY_QUESTION",
-      "value": "63"
-    },
-    {
-      "name": "KEY_AT",
-      "value": "64"
-    },
-    {
-      "name": "KEY_A",
-      "value": "65"
-    },
-    {
-      "name": "KEY_B",
-      "value": "66"
-    },
-    {
-      "name": "KEY_C",
-      "value": "67"
-    },
-    {
-      "name": "KEY_D",
-      "value": "68"
-    },
-    {
-      "name": "KEY_E",
-      "value": "69"
-    },
-    {
-      "name": "KEY_F",
-      "value": "70"
-    },
-    {
-      "name": "KEY_G",
-      "value": "71"
-    },
-    {
-      "name": "KEY_H",
-      "value": "72"
-    },
-    {
-      "name": "KEY_I",
-      "value": "73"
-    },
-    {
-      "name": "KEY_J",
-      "value": "74"
-    },
-    {
-      "name": "KEY_K",
-      "value": "75"
-    },
-    {
-      "name": "KEY_L",
-      "value": "76"
-    },
-    {
       "name": "KEY_M",
       "value": "77"
-    },
-    {
-      "name": "KEY_N",
-      "value": "78"
-    },
-    {
-      "name": "KEY_O",
-      "value": "79"
-    },
-    {
-      "name": "KEY_P",
-      "value": "80"
-    },
-    {
-      "name": "KEY_Q",
-      "value": "81"
-    },
-    {
-      "name": "KEY_R",
-      "value": "82"
-    },
-    {
-      "name": "KEY_S",
-      "value": "83"
-    },
-    {
-      "name": "KEY_T",
-      "value": "84"
-    },
-    {
-      "name": "KEY_U",
-      "value": "85"
-    },
-    {
-      "name": "KEY_V",
-      "value": "86"
-    },
-    {
-      "name": "KEY_W",
-      "value": "87"
-    },
-    {
-      "name": "KEY_X",
-      "value": "88"
-    },
-    {
-      "name": "KEY_Y",
-      "value": "89"
-    },
-    {
-      "name": "KEY_Z",
-      "value": "90"
-    },
-    {
-      "name": "KEY_BRACKETLEFT",
-      "value": "91"
-    },
-    {
-      "name": "KEY_BACKSLASH",
-      "value": "92"
-    },
-    {
-      "name": "KEY_BRACKETRIGHT",
-      "value": "93"
-    },
-    {
-      "name": "KEY_ASCIICIRCUM",
-      "value": "94"
-    },
-    {
-      "name": "KEY_UNDERSCORE",
-      "value": "95"
-    },
-    {
-      "name": "KEY_QUOTELEFT",
-      "value": "96"
-    },
-    {
-      "name": "KEY_BRACELEFT",
-      "value": "123"
-    },
-    {
-      "name": "KEY_BAR",
-      "value": "124"
-    },
-    {
-      "name": "KEY_BRACERIGHT",
-      "value": "125"
-    },
-    {
-      "name": "KEY_ASCIITILDE",
-      "value": "126"
-    },
-    {
-      "name": "KEY_NOBREAKSPACE",
-      "value": "160"
-    },
-    {
-      "name": "KEY_EXCLAMDOWN",
-      "value": "161"
-    },
-    {
-      "name": "KEY_CENT",
-      "value": "162"
-    },
-    {
-      "name": "KEY_STERLING",
-      "value": "163"
-    },
-    {
-      "name": "KEY_CURRENCY",
-      "value": "164"
-    },
-    {
-      "name": "KEY_YEN",
-      "value": "165"
-    },
-    {
-      "name": "KEY_BROKENBAR",
-      "value": "166"
-    },
-    {
-      "name": "KEY_SECTION",
-      "value": "167"
-    },
-    {
-      "name": "KEY_DIAERESIS",
-      "value": "168"
-    },
-    {
-      "name": "KEY_COPYRIGHT",
-      "value": "169"
-    },
-    {
-      "name": "KEY_ORDFEMININE",
-      "value": "170"
-    },
-    {
-      "name": "KEY_GUILLEMOTLEFT",
-      "value": "171"
-    },
-    {
-      "name": "KEY_NOTSIGN",
-      "value": "172"
-    },
-    {
-      "name": "KEY_HYPHEN",
-      "value": "173"
-    },
-    {
-      "name": "KEY_REGISTERED",
-      "value": "174"
     },
     {
       "name": "KEY_MACRON",
       "value": "175"
     },
     {
-      "name": "KEY_DEGREE",
-      "value": "176"
+      "name": "KEY_MASCULINE",
+      "value": "186"
     },
     {
-      "name": "KEY_PLUSMINUS",
-      "value": "177"
+      "name": "KEY_MASK_ALT",
+      "value": "67108864"
     },
     {
-      "name": "KEY_TWOSUPERIOR",
-      "value": "178"
+      "name": "KEY_MASK_CMD",
+      "value": "268435456"
     },
     {
-      "name": "KEY_THREESUPERIOR",
-      "value": "179"
+      "name": "KEY_MASK_CTRL",
+      "value": "268435456"
     },
     {
-      "name": "KEY_ACUTE",
-      "value": "180"
+      "name": "KEY_MASK_GROUP_SWITCH",
+      "value": "1073741824"
+    },
+    {
+      "name": "KEY_MASK_KPAD",
+      "value": "536870912"
+    },
+    {
+      "name": "KEY_MASK_META",
+      "value": "134217728"
+    },
+    {
+      "name": "KEY_MASK_SHIFT",
+      "value": "33554432"
+    },
+    {
+      "name": "KEY_MEDIANEXT",
+      "value": "16777295"
+    },
+    {
+      "name": "KEY_MEDIAPLAY",
+      "value": "16777292"
+    },
+    {
+      "name": "KEY_MEDIAPREVIOUS",
+      "value": "16777294"
+    },
+    {
+      "name": "KEY_MEDIARECORD",
+      "value": "16777296"
+    },
+    {
+      "name": "KEY_MEDIASTOP",
+      "value": "16777293"
+    },
+    {
+      "name": "KEY_MENU",
+      "value": "16777262"
+    },
+    {
+      "name": "KEY_META",
+      "value": "16777239"
+    },
+    {
+      "name": "KEY_MINUS",
+      "value": "45"
+    },
+    {
+      "name": "KEY_MODIFIER_MASK",
+      "value": "-16777216"
     },
     {
       "name": "KEY_MU",
       "value": "181"
     },
     {
-      "name": "KEY_PARAGRAPH",
-      "value": "182"
+      "name": "KEY_MULTIPLY",
+      "value": "215"
     },
     {
-      "name": "KEY_PERIODCENTERED",
-      "value": "183"
+      "name": "KEY_N",
+      "value": "78"
     },
     {
-      "name": "KEY_CEDILLA",
-      "value": "184"
+      "name": "KEY_NOBREAKSPACE",
+      "value": "160"
     },
     {
-      "name": "KEY_ONESUPERIOR",
-      "value": "185"
-    },
-    {
-      "name": "KEY_MASCULINE",
-      "value": "186"
-    },
-    {
-      "name": "KEY_GUILLEMOTRIGHT",
-      "value": "187"
-    },
-    {
-      "name": "KEY_ONEQUARTER",
-      "value": "188"
-    },
-    {
-      "name": "KEY_ONEHALF",
-      "value": "189"
-    },
-    {
-      "name": "KEY_THREEQUARTERS",
-      "value": "190"
-    },
-    {
-      "name": "KEY_QUESTIONDOWN",
-      "value": "191"
-    },
-    {
-      "name": "KEY_AGRAVE",
-      "value": "192"
-    },
-    {
-      "name": "KEY_AACUTE",
-      "value": "193"
-    },
-    {
-      "name": "KEY_ACIRCUMFLEX",
-      "value": "194"
-    },
-    {
-      "name": "KEY_ATILDE",
-      "value": "195"
-    },
-    {
-      "name": "KEY_ADIAERESIS",
-      "value": "196"
-    },
-    {
-      "name": "KEY_ARING",
-      "value": "197"
-    },
-    {
-      "name": "KEY_AE",
-      "value": "198"
-    },
-    {
-      "name": "KEY_CCEDILLA",
-      "value": "199"
-    },
-    {
-      "name": "KEY_EGRAVE",
-      "value": "200"
-    },
-    {
-      "name": "KEY_EACUTE",
-      "value": "201"
-    },
-    {
-      "name": "KEY_ECIRCUMFLEX",
-      "value": "202"
-    },
-    {
-      "name": "KEY_EDIAERESIS",
-      "value": "203"
-    },
-    {
-      "name": "KEY_IGRAVE",
-      "value": "204"
-    },
-    {
-      "name": "KEY_IACUTE",
-      "value": "205"
-    },
-    {
-      "name": "KEY_ICIRCUMFLEX",
-      "value": "206"
-    },
-    {
-      "name": "KEY_IDIAERESIS",
-      "value": "207"
-    },
-    {
-      "name": "KEY_ETH",
-      "value": "208"
+      "name": "KEY_NOTSIGN",
+      "value": "172"
     },
     {
       "name": "KEY_NTILDE",
       "value": "209"
     },
     {
-      "name": "KEY_OGRAVE",
-      "value": "210"
+      "name": "KEY_NUMBERSIGN",
+      "value": "35"
+    },
+    {
+      "name": "KEY_NUMLOCK",
+      "value": "16777242"
+    },
+    {
+      "name": "KEY_O",
+      "value": "79"
     },
     {
       "name": "KEY_OACUTE",
@@ -985,24 +1273,224 @@
       "value": "212"
     },
     {
-      "name": "KEY_OTILDE",
-      "value": "213"
-    },
-    {
       "name": "KEY_ODIAERESIS",
       "value": "214"
     },
     {
-      "name": "KEY_MULTIPLY",
-      "value": "215"
+      "name": "KEY_OGRAVE",
+      "value": "210"
+    },
+    {
+      "name": "KEY_ONEHALF",
+      "value": "189"
+    },
+    {
+      "name": "KEY_ONEQUARTER",
+      "value": "188"
+    },
+    {
+      "name": "KEY_ONESUPERIOR",
+      "value": "185"
     },
     {
       "name": "KEY_OOBLIQUE",
       "value": "216"
     },
     {
-      "name": "KEY_UGRAVE",
-      "value": "217"
+      "name": "KEY_OPENURL",
+      "value": "16777301"
+    },
+    {
+      "name": "KEY_ORDFEMININE",
+      "value": "170"
+    },
+    {
+      "name": "KEY_OTILDE",
+      "value": "213"
+    },
+    {
+      "name": "KEY_P",
+      "value": "80"
+    },
+    {
+      "name": "KEY_PAGEDOWN",
+      "value": "16777236"
+    },
+    {
+      "name": "KEY_PAGEUP",
+      "value": "16777235"
+    },
+    {
+      "name": "KEY_PARAGRAPH",
+      "value": "182"
+    },
+    {
+      "name": "KEY_PARENLEFT",
+      "value": "40"
+    },
+    {
+      "name": "KEY_PARENRIGHT",
+      "value": "41"
+    },
+    {
+      "name": "KEY_PAUSE",
+      "value": "16777225"
+    },
+    {
+      "name": "KEY_PERCENT",
+      "value": "37"
+    },
+    {
+      "name": "KEY_PERIOD",
+      "value": "46"
+    },
+    {
+      "name": "KEY_PERIODCENTERED",
+      "value": "183"
+    },
+    {
+      "name": "KEY_PLUS",
+      "value": "43"
+    },
+    {
+      "name": "KEY_PLUSMINUS",
+      "value": "177"
+    },
+    {
+      "name": "KEY_PRINT",
+      "value": "16777226"
+    },
+    {
+      "name": "KEY_Q",
+      "value": "81"
+    },
+    {
+      "name": "KEY_QUESTION",
+      "value": "63"
+    },
+    {
+      "name": "KEY_QUESTIONDOWN",
+      "value": "191"
+    },
+    {
+      "name": "KEY_QUOTEDBL",
+      "value": "34"
+    },
+    {
+      "name": "KEY_QUOTELEFT",
+      "value": "96"
+    },
+    {
+      "name": "KEY_R",
+      "value": "82"
+    },
+    {
+      "name": "KEY_REFRESH",
+      "value": "16777283"
+    },
+    {
+      "name": "KEY_REGISTERED",
+      "value": "174"
+    },
+    {
+      "name": "KEY_RIGHT",
+      "value": "16777233"
+    },
+    {
+      "name": "KEY_S",
+      "value": "83"
+    },
+    {
+      "name": "KEY_SCROLLLOCK",
+      "value": "16777243"
+    },
+    {
+      "name": "KEY_SEARCH",
+      "value": "16777299"
+    },
+    {
+      "name": "KEY_SECTION",
+      "value": "167"
+    },
+    {
+      "name": "KEY_SEMICOLON",
+      "value": "59"
+    },
+    {
+      "name": "KEY_SHIFT",
+      "value": "16777237"
+    },
+    {
+      "name": "KEY_SLASH",
+      "value": "47"
+    },
+    {
+      "name": "KEY_SPACE",
+      "value": "32"
+    },
+    {
+      "name": "KEY_SSHARP",
+      "value": "223"
+    },
+    {
+      "name": "KEY_STANDBY",
+      "value": "16777300"
+    },
+    {
+      "name": "KEY_STERLING",
+      "value": "163"
+    },
+    {
+      "name": "KEY_STOP",
+      "value": "16777282"
+    },
+    {
+      "name": "KEY_SUPER_L",
+      "value": "16777260"
+    },
+    {
+      "name": "KEY_SUPER_R",
+      "value": "16777261"
+    },
+    {
+      "name": "KEY_SYSREQ",
+      "value": "16777227"
+    },
+    {
+      "name": "KEY_T",
+      "value": "84"
+    },
+    {
+      "name": "KEY_TAB",
+      "value": "16777218"
+    },
+    {
+      "name": "KEY_THORN",
+      "value": "222"
+    },
+    {
+      "name": "KEY_THREEQUARTERS",
+      "value": "190"
+    },
+    {
+      "name": "KEY_THREESUPERIOR",
+      "value": "179"
+    },
+    {
+      "name": "KEY_TREBLEDOWN",
+      "value": "16777291"
+    },
+    {
+      "name": "KEY_TREBLEUP",
+      "value": "16777290"
+    },
+    {
+      "name": "KEY_TWOSUPERIOR",
+      "value": "178"
+    },
+    {
+      "name": "KEY_U",
+      "value": "85"
     },
     {
       "name": "KEY_UACUTE",
@@ -1017,392 +1505,124 @@
       "value": "220"
     },
     {
+      "name": "KEY_UGRAVE",
+      "value": "217"
+    },
+    {
+      "name": "KEY_UNDERSCORE",
+      "value": "95"
+    },
+    {
+      "name": "KEY_UNKNOWN",
+      "value": "33554431"
+    },
+    {
+      "name": "KEY_UP",
+      "value": "16777232"
+    },
+    {
+      "name": "KEY_V",
+      "value": "86"
+    },
+    {
+      "name": "KEY_VOLUMEDOWN",
+      "value": "16777284"
+    },
+    {
+      "name": "KEY_VOLUMEMUTE",
+      "value": "16777285"
+    },
+    {
+      "name": "KEY_VOLUMEUP",
+      "value": "16777286"
+    },
+    {
+      "name": "KEY_W",
+      "value": "87"
+    },
+    {
+      "name": "KEY_X",
+      "value": "88"
+    },
+    {
+      "name": "KEY_Y",
+      "value": "89"
+    },
+    {
       "name": "KEY_YACUTE",
       "value": "221"
-    },
-    {
-      "name": "KEY_THORN",
-      "value": "222"
-    },
-    {
-      "name": "KEY_SSHARP",
-      "value": "223"
-    },
-    {
-      "name": "KEY_DIVISION",
-      "value": "247"
     },
     {
       "name": "KEY_YDIAERESIS",
       "value": "255"
     },
     {
-      "name": "KEY_CODE_MASK",
-      "value": "33554431"
+      "name": "KEY_YEN",
+      "value": "165"
     },
     {
-      "name": "KEY_MODIFIER_MASK",
-      "value": "-16777216"
+      "name": "KEY_Z",
+      "value": "90"
     },
     {
-      "name": "KEY_MASK_SHIFT",
-      "value": "33554432"
-    },
-    {
-      "name": "KEY_MASK_ALT",
-      "value": "67108864"
-    },
-    {
-      "name": "KEY_MASK_META",
-      "value": "134217728"
-    },
-    {
-      "name": "KEY_MASK_CTRL",
-      "value": "268435456"
-    },
-    {
-      "name": "KEY_MASK_CMD",
-      "value": "268435456"
-    },
-    {
-      "name": "KEY_MASK_KPAD",
-      "value": "536870912"
-    },
-    {
-      "name": "KEY_MASK_GROUP_SWITCH",
-      "value": "1073741824"
-    },
-    {
-      "name": "BUTTON_LEFT",
-      "value": "1"
-    },
-    {
-      "name": "BUTTON_RIGHT",
-      "value": "2"
-    },
-    {
-      "name": "BUTTON_MIDDLE",
+      "name": "MARGIN_BOTTOM",
       "value": "3"
     },
     {
-      "name": "BUTTON_XBUTTON1",
-      "value": "8"
-    },
-    {
-      "name": "BUTTON_XBUTTON2",
-      "value": "9"
-    },
-    {
-      "name": "BUTTON_WHEEL_UP",
-      "value": "4"
-    },
-    {
-      "name": "BUTTON_WHEEL_DOWN",
-      "value": "5"
-    },
-    {
-      "name": "BUTTON_WHEEL_LEFT",
-      "value": "6"
-    },
-    {
-      "name": "BUTTON_WHEEL_RIGHT",
-      "value": "7"
-    },
-    {
-      "name": "BUTTON_MASK_LEFT",
-      "value": "1"
-    },
-    {
-      "name": "BUTTON_MASK_RIGHT",
-      "value": "2"
-    },
-    {
-      "name": "BUTTON_MASK_MIDDLE",
-      "value": "4"
-    },
-    {
-      "name": "BUTTON_MASK_XBUTTON1",
-      "value": "128"
-    },
-    {
-      "name": "BUTTON_MASK_XBUTTON2",
-      "value": "256"
-    },
-    {
-      "name": "JOY_BUTTON_0",
+      "name": "MARGIN_LEFT",
       "value": "0"
     },
     {
-      "name": "JOY_BUTTON_1",
-      "value": "1"
-    },
-    {
-      "name": "JOY_BUTTON_2",
+      "name": "MARGIN_RIGHT",
       "value": "2"
     },
     {
-      "name": "JOY_BUTTON_3",
-      "value": "3"
+      "name": "MARGIN_TOP",
+      "value": "1"
     },
     {
-      "name": "JOY_BUTTON_4",
-      "value": "4"
+      "name": "METHOD_FLAGS_DEFAULT",
+      "value": "1"
     },
     {
-      "name": "JOY_BUTTON_5",
-      "value": "5"
-    },
-    {
-      "name": "JOY_BUTTON_6",
-      "value": "6"
-    },
-    {
-      "name": "JOY_BUTTON_7",
-      "value": "7"
-    },
-    {
-      "name": "JOY_BUTTON_8",
+      "name": "METHOD_FLAG_CONST",
       "value": "8"
     },
     {
-      "name": "JOY_BUTTON_9",
-      "value": "9"
+      "name": "METHOD_FLAG_EDITOR",
+      "value": "2"
     },
     {
-      "name": "JOY_BUTTON_10",
-      "value": "10"
+      "name": "METHOD_FLAG_FROM_SCRIPT",
+      "value": "64"
     },
     {
-      "name": "JOY_BUTTON_11",
-      "value": "11"
+      "name": "METHOD_FLAG_NORMAL",
+      "value": "1"
     },
     {
-      "name": "JOY_BUTTON_12",
-      "value": "12"
+      "name": "METHOD_FLAG_NOSCRIPT",
+      "value": "4"
     },
     {
-      "name": "JOY_BUTTON_13",
-      "value": "13"
-    },
-    {
-      "name": "JOY_BUTTON_14",
-      "value": "14"
-    },
-    {
-      "name": "JOY_BUTTON_15",
-      "value": "15"
-    },
-    {
-      "name": "JOY_BUTTON_MAX",
+      "name": "METHOD_FLAG_REVERSE",
       "value": "16"
     },
     {
-      "name": "JOY_SONY_CIRCLE",
-      "value": "1"
+      "name": "METHOD_FLAG_VIRTUAL",
+      "value": "32"
     },
     {
-      "name": "JOY_SONY_X",
-      "value": "0"
-    },
-    {
-      "name": "JOY_SONY_SQUARE",
-      "value": "2"
-    },
-    {
-      "name": "JOY_SONY_TRIANGLE",
-      "value": "3"
-    },
-    {
-      "name": "JOY_XBOX_B",
-      "value": "1"
-    },
-    {
-      "name": "JOY_XBOX_A",
-      "value": "0"
-    },
-    {
-      "name": "JOY_XBOX_X",
-      "value": "2"
-    },
-    {
-      "name": "JOY_XBOX_Y",
-      "value": "3"
-    },
-    {
-      "name": "JOY_DS_A",
-      "value": "1"
-    },
-    {
-      "name": "JOY_DS_B",
-      "value": "0"
-    },
-    {
-      "name": "JOY_DS_X",
-      "value": "3"
-    },
-    {
-      "name": "JOY_DS_Y",
-      "value": "2"
-    },
-    {
-      "name": "JOY_VR_GRIP",
-      "value": "2"
-    },
-    {
-      "name": "JOY_VR_PAD",
-      "value": "14"
-    },
-    {
-      "name": "JOY_VR_TRIGGER",
-      "value": "15"
-    },
-    {
-      "name": "JOY_OCULUS_AX",
-      "value": "7"
-    },
-    {
-      "name": "JOY_OCULUS_BY",
-      "value": "1"
-    },
-    {
-      "name": "JOY_OCULUS_MENU",
-      "value": "3"
-    },
-    {
-      "name": "JOY_OPENVR_MENU",
-      "value": "1"
-    },
-    {
-      "name": "JOY_SELECT",
+      "name": "MIDI_MESSAGE_AFTERTOUCH",
       "value": "10"
     },
     {
-      "name": "JOY_START",
-      "value": "11"
-    },
-    {
-      "name": "JOY_DPAD_UP",
-      "value": "12"
-    },
-    {
-      "name": "JOY_DPAD_DOWN",
+      "name": "MIDI_MESSAGE_CHANNEL_PRESSURE",
       "value": "13"
     },
     {
-      "name": "JOY_DPAD_LEFT",
-      "value": "14"
-    },
-    {
-      "name": "JOY_DPAD_RIGHT",
-      "value": "15"
-    },
-    {
-      "name": "JOY_L",
-      "value": "4"
-    },
-    {
-      "name": "JOY_L2",
-      "value": "6"
-    },
-    {
-      "name": "JOY_L3",
-      "value": "8"
-    },
-    {
-      "name": "JOY_R",
-      "value": "5"
-    },
-    {
-      "name": "JOY_R2",
-      "value": "7"
-    },
-    {
-      "name": "JOY_R3",
-      "value": "9"
-    },
-    {
-      "name": "JOY_AXIS_0",
-      "value": "0"
-    },
-    {
-      "name": "JOY_AXIS_1",
-      "value": "1"
-    },
-    {
-      "name": "JOY_AXIS_2",
-      "value": "2"
-    },
-    {
-      "name": "JOY_AXIS_3",
-      "value": "3"
-    },
-    {
-      "name": "JOY_AXIS_4",
-      "value": "4"
-    },
-    {
-      "name": "JOY_AXIS_5",
-      "value": "5"
-    },
-    {
-      "name": "JOY_AXIS_6",
-      "value": "6"
-    },
-    {
-      "name": "JOY_AXIS_7",
-      "value": "7"
-    },
-    {
-      "name": "JOY_AXIS_8",
-      "value": "8"
-    },
-    {
-      "name": "JOY_AXIS_9",
-      "value": "9"
-    },
-    {
-      "name": "JOY_AXIS_MAX",
-      "value": "10"
-    },
-    {
-      "name": "JOY_ANALOG_LX",
-      "value": "0"
-    },
-    {
-      "name": "JOY_ANALOG_LY",
-      "value": "1"
-    },
-    {
-      "name": "JOY_ANALOG_RX",
-      "value": "2"
-    },
-    {
-      "name": "JOY_ANALOG_RY",
-      "value": "3"
-    },
-    {
-      "name": "JOY_ANALOG_L2",
-      "value": "6"
-    },
-    {
-      "name": "JOY_ANALOG_R2",
-      "value": "7"
-    },
-    {
-      "name": "JOY_VR_ANALOG_TRIGGER",
-      "value": "2"
-    },
-    {
-      "name": "JOY_VR_ANALOG_GRIP",
-      "value": "4"
-    },
-    {
-      "name": "JOY_OPENVR_TOUCHPADX",
-      "value": "0"
-    },
-    {
-      "name": "JOY_OPENVR_TOUCHPADY",
-      "value": "1"
+      "name": "MIDI_MESSAGE_CONTROL_CHANGE",
+      "value": "11"
     },
     {
       "name": "MIDI_MESSAGE_NOTE_OFF",
@@ -1413,232 +1633,136 @@
       "value": "9"
     },
     {
-      "name": "MIDI_MESSAGE_AFTERTOUCH",
-      "value": "10"
-    },
-    {
-      "name": "MIDI_MESSAGE_CONTROL_CHANGE",
-      "value": "11"
+      "name": "MIDI_MESSAGE_PITCH_BEND",
+      "value": "14"
     },
     {
       "name": "MIDI_MESSAGE_PROGRAM_CHANGE",
       "value": "12"
     },
     {
-      "name": "MIDI_MESSAGE_CHANNEL_PRESSURE",
-      "value": "13"
-    },
-    {
-      "name": "MIDI_MESSAGE_PITCH_BEND",
-      "value": "14"
+      "name": "NAN",
+      "value": "nan"
     },
     {
       "name": "OK",
       "value": "0"
     },
     {
-      "name": "FAILED",
-      "value": "1"
-    },
-    {
-      "name": "ERR_UNAVAILABLE",
-      "value": "2"
-    },
-    {
-      "name": "ERR_UNCONFIGURED",
-      "value": "3"
-    },
-    {
-      "name": "ERR_UNAUTHORIZED",
-      "value": "4"
-    },
-    {
-      "name": "ERR_PARAMETER_RANGE_ERROR",
-      "value": "5"
-    },
-    {
-      "name": "ERR_OUT_OF_MEMORY",
+      "name": "OP_ADD",
       "value": "6"
     },
     {
-      "name": "ERR_FILE_NOT_FOUND",
-      "value": "7"
-    },
-    {
-      "name": "ERR_FILE_BAD_DRIVE",
-      "value": "8"
-    },
-    {
-      "name": "ERR_FILE_BAD_PATH",
-      "value": "9"
-    },
-    {
-      "name": "ERR_FILE_NO_PERMISSION",
-      "value": "10"
-    },
-    {
-      "name": "ERR_FILE_ALREADY_IN_USE",
-      "value": "11"
-    },
-    {
-      "name": "ERR_FILE_CANT_OPEN",
-      "value": "12"
-    },
-    {
-      "name": "ERR_FILE_CANT_WRITE",
-      "value": "13"
-    },
-    {
-      "name": "ERR_FILE_CANT_READ",
-      "value": "14"
-    },
-    {
-      "name": "ERR_FILE_UNRECOGNIZED",
-      "value": "15"
-    },
-    {
-      "name": "ERR_FILE_CORRUPT",
-      "value": "16"
-    },
-    {
-      "name": "ERR_FILE_MISSING_DEPENDENCIES",
-      "value": "17"
-    },
-    {
-      "name": "ERR_FILE_EOF",
-      "value": "18"
-    },
-    {
-      "name": "ERR_CANT_OPEN",
-      "value": "19"
-    },
-    {
-      "name": "ERR_CANT_CREATE",
+      "name": "OP_AND",
       "value": "20"
     },
     {
-      "name": "ERR_QUERY_FAILED",
-      "value": "21"
+      "name": "OP_BIT_AND",
+      "value": "16"
     },
     {
-      "name": "ERR_ALREADY_IN_USE",
-      "value": "22"
+      "name": "OP_BIT_NEGATE",
+      "value": "19"
     },
     {
-      "name": "ERR_LOCKED",
-      "value": "23"
+      "name": "OP_BIT_OR",
+      "value": "17"
     },
     {
-      "name": "ERR_TIMEOUT",
-      "value": "24"
+      "name": "OP_BIT_XOR",
+      "value": "18"
     },
     {
-      "name": "ERR_CANT_CONNECT",
-      "value": "25"
+      "name": "OP_DIVIDE",
+      "value": "9"
     },
     {
-      "name": "ERR_CANT_RESOLVE",
-      "value": "26"
-    },
-    {
-      "name": "ERR_CONNECTION_ERROR",
-      "value": "27"
-    },
-    {
-      "name": "ERR_CANT_ACQUIRE_RESOURCE",
-      "value": "28"
-    },
-    {
-      "name": "ERR_CANT_FORK",
-      "value": "29"
-    },
-    {
-      "name": "ERR_INVALID_DATA",
-      "value": "30"
-    },
-    {
-      "name": "ERR_INVALID_PARAMETER",
-      "value": "31"
-    },
-    {
-      "name": "ERR_ALREADY_EXISTS",
-      "value": "32"
-    },
-    {
-      "name": "ERR_DOES_NOT_EXIST",
-      "value": "33"
-    },
-    {
-      "name": "ERR_DATABASE_CANT_READ",
-      "value": "34"
-    },
-    {
-      "name": "ERR_DATABASE_CANT_WRITE",
-      "value": "35"
-    },
-    {
-      "name": "ERR_COMPILATION_FAILED",
-      "value": "36"
-    },
-    {
-      "name": "ERR_METHOD_NOT_FOUND",
-      "value": "37"
-    },
-    {
-      "name": "ERR_LINK_FAILED",
-      "value": "38"
-    },
-    {
-      "name": "ERR_SCRIPT_FAILED",
-      "value": "39"
-    },
-    {
-      "name": "ERR_CYCLIC_LINK",
-      "value": "40"
-    },
-    {
-      "name": "ERR_INVALID_DECLARATION",
-      "value": "41"
-    },
-    {
-      "name": "ERR_DUPLICATE_SYMBOL",
-      "value": "42"
-    },
-    {
-      "name": "ERR_PARSE_ERROR",
-      "value": "43"
-    },
-    {
-      "name": "ERR_BUSY",
-      "value": "44"
-    },
-    {
-      "name": "ERR_SKIP",
-      "value": "45"
-    },
-    {
-      "name": "ERR_HELP",
-      "value": "46"
-    },
-    {
-      "name": "ERR_BUG",
-      "value": "47"
-    },
-    {
-      "name": "ERR_PRINTER_ON_FIRE",
-      "value": "48"
-    },
-    {
-      "name": "PROPERTY_HINT_NONE",
+      "name": "OP_EQUAL",
       "value": "0"
     },
     {
-      "name": "PROPERTY_HINT_RANGE",
+      "name": "OP_GREATER",
+      "value": "4"
+    },
+    {
+      "name": "OP_GREATER_EQUAL",
+      "value": "5"
+    },
+    {
+      "name": "OP_IN",
+      "value": "24"
+    },
+    {
+      "name": "OP_LESS",
+      "value": "2"
+    },
+    {
+      "name": "OP_LESS_EQUAL",
+      "value": "3"
+    },
+    {
+      "name": "OP_MAX",
+      "value": "25"
+    },
+    {
+      "name": "OP_MODULE",
+      "value": "12"
+    },
+    {
+      "name": "OP_MULTIPLY",
+      "value": "8"
+    },
+    {
+      "name": "OP_NEGATE",
+      "value": "10"
+    },
+    {
+      "name": "OP_NOT",
+      "value": "23"
+    },
+    {
+      "name": "OP_NOT_EQUAL",
       "value": "1"
     },
     {
-      "name": "PROPERTY_HINT_EXP_RANGE",
-      "value": "2"
+      "name": "OP_OR",
+      "value": "21"
+    },
+    {
+      "name": "OP_POSITIVE",
+      "value": "11"
+    },
+    {
+      "name": "OP_SHIFT_LEFT",
+      "value": "14"
+    },
+    {
+      "name": "OP_SHIFT_RIGHT",
+      "value": "15"
+    },
+    {
+      "name": "OP_STRING_CONCAT",
+      "value": "13"
+    },
+    {
+      "name": "OP_SUBTRACT",
+      "value": "7"
+    },
+    {
+      "name": "OP_XOR",
+      "value": "22"
+    },
+    {
+      "name": "PI",
+      "value": "3.141593"
+    },
+    {
+      "name": "PROPERTY_HINT_COLOR_NO_ALPHA",
+      "value": "20"
+    },
+    {
+      "name": "PROPERTY_HINT_DIR",
+      "value": "14"
     },
     {
       "name": "PROPERTY_HINT_ENUM",
@@ -1649,88 +1773,80 @@
       "value": "4"
     },
     {
-      "name": "PROPERTY_HINT_LENGTH",
-      "value": "5"
-    },
-    {
-      "name": "PROPERTY_HINT_KEY_ACCEL",
-      "value": "7"
-    },
-    {
-      "name": "PROPERTY_HINT_FLAGS",
-      "value": "8"
-    },
-    {
-      "name": "PROPERTY_HINT_LAYERS_2D_RENDER",
-      "value": "9"
-    },
-    {
-      "name": "PROPERTY_HINT_LAYERS_2D_PHYSICS",
-      "value": "10"
-    },
-    {
-      "name": "PROPERTY_HINT_LAYERS_3D_RENDER",
-      "value": "11"
-    },
-    {
-      "name": "PROPERTY_HINT_LAYERS_3D_PHYSICS",
-      "value": "12"
+      "name": "PROPERTY_HINT_EXP_RANGE",
+      "value": "2"
     },
     {
       "name": "PROPERTY_HINT_FILE",
       "value": "13"
     },
     {
-      "name": "PROPERTY_HINT_DIR",
-      "value": "14"
-    },
-    {
-      "name": "PROPERTY_HINT_GLOBAL_FILE",
-      "value": "15"
+      "name": "PROPERTY_HINT_FLAGS",
+      "value": "8"
     },
     {
       "name": "PROPERTY_HINT_GLOBAL_DIR",
       "value": "16"
     },
     {
-      "name": "PROPERTY_HINT_RESOURCE_TYPE",
-      "value": "17"
-    },
-    {
-      "name": "PROPERTY_HINT_MULTILINE_TEXT",
-      "value": "18"
-    },
-    {
-      "name": "PROPERTY_HINT_PLACEHOLDER_TEXT",
-      "value": "19"
-    },
-    {
-      "name": "PROPERTY_HINT_COLOR_NO_ALPHA",
-      "value": "20"
-    },
-    {
-      "name": "PROPERTY_HINT_IMAGE_COMPRESS_LOSSY",
-      "value": "21"
+      "name": "PROPERTY_HINT_GLOBAL_FILE",
+      "value": "15"
     },
     {
       "name": "PROPERTY_HINT_IMAGE_COMPRESS_LOSSLESS",
       "value": "22"
     },
     {
-      "name": "PROPERTY_USAGE_STORAGE",
+      "name": "PROPERTY_HINT_IMAGE_COMPRESS_LOSSY",
+      "value": "21"
+    },
+    {
+      "name": "PROPERTY_HINT_KEY_ACCEL",
+      "value": "7"
+    },
+    {
+      "name": "PROPERTY_HINT_LAYERS_2D_PHYSICS",
+      "value": "10"
+    },
+    {
+      "name": "PROPERTY_HINT_LAYERS_2D_RENDER",
+      "value": "9"
+    },
+    {
+      "name": "PROPERTY_HINT_LAYERS_3D_PHYSICS",
+      "value": "12"
+    },
+    {
+      "name": "PROPERTY_HINT_LAYERS_3D_RENDER",
+      "value": "11"
+    },
+    {
+      "name": "PROPERTY_HINT_LENGTH",
+      "value": "5"
+    },
+    {
+      "name": "PROPERTY_HINT_MULTILINE_TEXT",
+      "value": "18"
+    },
+    {
+      "name": "PROPERTY_HINT_NONE",
+      "value": "0"
+    },
+    {
+      "name": "PROPERTY_HINT_PLACEHOLDER_TEXT",
+      "value": "19"
+    },
+    {
+      "name": "PROPERTY_HINT_RANGE",
       "value": "1"
     },
     {
-      "name": "PROPERTY_USAGE_EDITOR",
-      "value": "2"
+      "name": "PROPERTY_HINT_RESOURCE_TYPE",
+      "value": "17"
     },
     {
-      "name": "PROPERTY_USAGE_NETWORK",
-      "value": "4"
-    },
-    {
-      "name": "PROPERTY_USAGE_EDITOR_HELPER",
-      "value": "8"
+      "name": "PROPERTY_USAGE_CATEGORY",
+      "value": "256"
     },
     {
       "name": "PROPERTY_USAGE_CHECKABLE",
@@ -1741,16 +1857,36 @@
       "value": "32"
     },
     {
-      "name": "PROPERTY_USAGE_INTERNATIONALIZED",
-      "value": "64"
+      "name": "PROPERTY_USAGE_DEFAULT",
+      "value": "7"
+    },
+    {
+      "name": "PROPERTY_USAGE_DEFAULT_INTL",
+      "value": "71"
+    },
+    {
+      "name": "PROPERTY_USAGE_EDITOR",
+      "value": "2"
+    },
+    {
+      "name": "PROPERTY_USAGE_EDITOR_HELPER",
+      "value": "8"
     },
     {
       "name": "PROPERTY_USAGE_GROUP",
       "value": "128"
     },
     {
-      "name": "PROPERTY_USAGE_CATEGORY",
-      "value": "256"
+      "name": "PROPERTY_USAGE_INTERNATIONALIZED",
+      "value": "64"
+    },
+    {
+      "name": "PROPERTY_USAGE_NETWORK",
+      "value": "4"
+    },
+    {
+      "name": "PROPERTY_USAGE_NOEDITOR",
+      "value": "5"
     },
     {
       "name": "PROPERTY_USAGE_NO_INSTANCE_STATE",
@@ -1765,84 +1901,68 @@
       "value": "8192"
     },
     {
-      "name": "PROPERTY_USAGE_DEFAULT",
-      "value": "7"
-    },
-    {
-      "name": "PROPERTY_USAGE_DEFAULT_INTL",
-      "value": "71"
-    },
-    {
-      "name": "PROPERTY_USAGE_NOEDITOR",
-      "value": "5"
-    },
-    {
-      "name": "METHOD_FLAG_NORMAL",
+      "name": "PROPERTY_USAGE_STORAGE",
       "value": "1"
     },
     {
-      "name": "METHOD_FLAG_EDITOR",
-      "value": "2"
+      "name": "SPKEY",
+      "value": "16777216"
     },
     {
-      "name": "METHOD_FLAG_NOSCRIPT",
-      "value": "4"
+      "name": "TAU",
+      "value": "6.283185"
     },
     {
-      "name": "METHOD_FLAG_CONST",
-      "value": "8"
+      "name": "TYPE_AABB",
+      "value": "11"
     },
     {
-      "name": "METHOD_FLAG_REVERSE",
-      "value": "16"
+      "name": "TYPE_ARRAY",
+      "value": "19"
     },
     {
-      "name": "METHOD_FLAG_VIRTUAL",
-      "value": "32"
-    },
-    {
-      "name": "METHOD_FLAG_FROM_SCRIPT",
-      "value": "64"
-    },
-    {
-      "name": "METHOD_FLAGS_DEFAULT",
-      "value": "1"
-    },
-    {
-      "name": "TYPE_NIL",
-      "value": "0"
+      "name": "TYPE_BASIS",
+      "value": "12"
     },
     {
       "name": "TYPE_BOOL",
       "value": "1"
     },
     {
+      "name": "TYPE_COLOR",
+      "value": "14"
+    },
+    {
+      "name": "TYPE_COLOR_ARRAY",
+      "value": "26"
+    },
+    {
+      "name": "TYPE_DICTIONARY",
+      "value": "18"
+    },
+    {
       "name": "TYPE_INT",
       "value": "2"
     },
     {
-      "name": "TYPE_REAL",
-      "value": "3"
+      "name": "TYPE_INT_ARRAY",
+      "value": "21"
     },
     {
-      "name": "TYPE_STRING",
-      "value": "4"
+      "name": "TYPE_MAX",
+      "value": "27"
     },
     {
-      "name": "TYPE_VECTOR2",
-      "value": "5"
+      "name": "TYPE_NIL",
+      "value": "0"
     },
     {
-      "name": "TYPE_RECT2",
-      "value": "6"
+      "name": "TYPE_NODE_PATH",
+      "value": "15"
     },
     {
-      "name": "TYPE_VECTOR3",
-      "value": "7"
-    },
-    {
-      "name": "TYPE_TRANSFORM2D",
-      "value": "8"
+      "name": "TYPE_OBJECT",
+      "value": "17"
     },
     {
       "name": "TYPE_PLANE",
@@ -1853,192 +1973,72 @@
       "value": "10"
     },
     {
-      "name": "TYPE_AABB",
-      "value": "11"
-    },
-    {
-      "name": "TYPE_BASIS",
-      "value": "12"
-    },
-    {
-      "name": "TYPE_TRANSFORM",
-      "value": "13"
-    },
-    {
-      "name": "TYPE_COLOR",
-      "value": "14"
-    },
-    {
-      "name": "TYPE_NODE_PATH",
-      "value": "15"
-    },
-    {
-      "name": "TYPE_RID",
-      "value": "16"
-    },
-    {
-      "name": "TYPE_OBJECT",
-      "value": "17"
-    },
-    {
-      "name": "TYPE_DICTIONARY",
-      "value": "18"
-    },
-    {
-      "name": "TYPE_ARRAY",
-      "value": "19"
-    },
-    {
       "name": "TYPE_RAW_ARRAY",
       "value": "20"
     },
     {
-      "name": "TYPE_INT_ARRAY",
-      "value": "21"
+      "name": "TYPE_REAL",
+      "value": "3"
     },
     {
       "name": "TYPE_REAL_ARRAY",
       "value": "22"
     },
     {
+      "name": "TYPE_RECT2",
+      "value": "6"
+    },
+    {
+      "name": "TYPE_RID",
+      "value": "16"
+    },
+    {
+      "name": "TYPE_STRING",
+      "value": "4"
+    },
+    {
       "name": "TYPE_STRING_ARRAY",
       "value": "23"
+    },
+    {
+      "name": "TYPE_TRANSFORM",
+      "value": "13"
+    },
+    {
+      "name": "TYPE_TRANSFORM2D",
+      "value": "8"
+    },
+    {
+      "name": "TYPE_VECTOR2",
+      "value": "5"
     },
     {
       "name": "TYPE_VECTOR2_ARRAY",
       "value": "24"
     },
     {
+      "name": "TYPE_VECTOR3",
+      "value": "7"
+    },
+    {
       "name": "TYPE_VECTOR3_ARRAY",
       "value": "25"
     },
     {
-      "name": "TYPE_COLOR_ARRAY",
-      "value": "26"
-    },
-    {
-      "name": "TYPE_MAX",
-      "value": "27"
-    },
-    {
-      "name": "OP_EQUAL",
-      "value": "0"
-    },
-    {
-      "name": "OP_NOT_EQUAL",
-      "value": "1"
-    },
-    {
-      "name": "OP_LESS",
+      "name": "VALIGN_BOTTOM",
       "value": "2"
     },
     {
-      "name": "OP_LESS_EQUAL",
-      "value": "3"
+      "name": "VALIGN_CENTER",
+      "value": "1"
     },
     {
-      "name": "OP_GREATER",
-      "value": "4"
+      "name": "VALIGN_TOP",
+      "value": "0"
     },
     {
-      "name": "OP_GREATER_EQUAL",
-      "value": "5"
-    },
-    {
-      "name": "OP_ADD",
-      "value": "6"
-    },
-    {
-      "name": "OP_SUBTRACT",
-      "value": "7"
-    },
-    {
-      "name": "OP_MULTIPLY",
-      "value": "8"
-    },
-    {
-      "name": "OP_DIVIDE",
-      "value": "9"
-    },
-    {
-      "name": "OP_NEGATE",
-      "value": "10"
-    },
-    {
-      "name": "OP_POSITIVE",
-      "value": "11"
-    },
-    {
-      "name": "OP_MODULE",
-      "value": "12"
-    },
-    {
-      "name": "OP_STRING_CONCAT",
-      "value": "13"
-    },
-    {
-      "name": "OP_SHIFT_LEFT",
-      "value": "14"
-    },
-    {
-      "name": "OP_SHIFT_RIGHT",
-      "value": "15"
-    },
-    {
-      "name": "OP_BIT_AND",
-      "value": "16"
-    },
-    {
-      "name": "OP_BIT_OR",
-      "value": "17"
-    },
-    {
-      "name": "OP_BIT_XOR",
-      "value": "18"
-    },
-    {
-      "name": "OP_BIT_NEGATE",
-      "value": "19"
-    },
-    {
-      "name": "OP_AND",
-      "value": "20"
-    },
-    {
-      "name": "OP_OR",
-      "value": "21"
-    },
-    {
-      "name": "OP_XOR",
-      "value": "22"
-    },
-    {
-      "name": "OP_NOT",
-      "value": "23"
-    },
-    {
-      "name": "OP_IN",
-      "value": "24"
-    },
-    {
-      "name": "OP_MAX",
-      "value": "25"
-    },
-    {
-      "name": "PI",
-      "value": "3.141593"
-    },
-    {
-      "name": "TAU",
-      "value": "6.283185"
-    },
-    {
-      "name": "INF",
-      "value": "inf"
-    },
-    {
-      "name": "NAN",
-      "value": "nan"
+      "name": "VERTICAL",
+      "value": "1"
     }
   ],
   "classes": [
@@ -78727,6 +78727,123 @@
         }
       ],
       "methods": [],
+      "constants": []
+    },
+    {
+      "name": "bool",
+      "extends": "",
+      "description": "Boolean built-in type.",
+      "fields": [],
+      "methods": [
+        {
+          "name": "bool",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "bool",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "bool",
+          "type": "bool",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "String"
+            }
+          ]
+        }
+      ],
+      "constants": []
+    },
+    {
+      "name": "float",
+      "extends": "",
+      "description": "Float built-in type",
+      "fields": [],
+      "methods": [
+        {
+          "name": "float",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "float",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "float",
+          "type": "float",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "String"
+            }
+          ]
+        }
+      ],
+      "constants": []
+    },
+    {
+      "name": "int",
+      "extends": "",
+      "description": "Integer built-in type.",
+      "fields": [],
+      "methods": [
+        {
+          "name": "int",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "int",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "float"
+            }
+          ]
+        },
+        {
+          "name": "int",
+          "type": "int",
+          "arguments": [
+            {
+              "name": "from",
+              "type": "String"
+            }
+          ]
+        }
+      ],
       "constants": []
     }
   ],
