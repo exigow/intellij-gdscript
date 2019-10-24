@@ -1,6 +1,8 @@
+package gdscript.completion.sources
+
 import com.google.gson.Gson
 
-object GodotApi {
+object CompletionData {
 
     val PRIMITIVE_CLASSES: List<Class>
     val OBJECT_CLASSES: List<Class>

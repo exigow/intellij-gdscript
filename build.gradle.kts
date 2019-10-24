@@ -3,6 +3,7 @@ plugins {
 }
 
 allprojects {
+    registerGenerateCompletionDataTask()
     repositories {
         jcenter()
         mavenCentral()

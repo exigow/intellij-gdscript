@@ -1,6 +1,6 @@
 package gdscript.psi
 
-import GodotApi.PRIMITIVE_CLASSES
+import gdscript.completion.sources.CompletionData.PRIMITIVE_CLASSES
 import com.intellij.lang.ASTNode
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 

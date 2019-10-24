@@ -1,6 +1,6 @@
 package gdscript.annotation
 
-import GodotApi.GLOBAL_SCOPE_CLASSES
+import gdscript.completion.sources.CompletionData.GLOBAL_SCOPE_CLASSES
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement

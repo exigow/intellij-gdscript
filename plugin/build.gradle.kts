@@ -6,7 +6,6 @@ plugins {
 }
 
 dependencies {
-    compile(project(":api"))
     antlr("org.antlr:antlr4:4.7.2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")

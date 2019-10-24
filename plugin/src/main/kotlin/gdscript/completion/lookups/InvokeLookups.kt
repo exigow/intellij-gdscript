@@ -1,6 +1,6 @@
 package gdscript.completion.lookups
 
-import GodotApi
+import gdscript.completion.sources.CompletionData
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
@@ -9,20 +9,20 @@ import com.intellij.util.PlatformIcons
 
 object InvokeLookups {
 
-    fun createConstructor(it: GodotApi.Class.Method): LookupElement =
+    fun createConstructor(it: CompletionData.Class.Method): LookupElement =
         create(it.name)
             .withIcon(PlatformIcons.CLASS_ICON)
             .withTypeText(it.type)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
 
-    fun createPrimitiveConstructor(it: GodotApi.Class.Method): LookupElement =
+    fun createPrimitiveConstructor(it: CompletionData.Class.Method): LookupElement =
         create(it.name)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
             .bold()
 
-    fun createFunction(it: GodotApi.Class.Method): LookupElement =
+    fun createFunction(it: CompletionData.Class.Method): LookupElement =
         create(it.name)
             .withIcon(PlatformIcons.FUNCTION_ICON)
             .withTypeText(it.type)
@@ -30,7 +30,7 @@ object InvokeLookups {
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
             .bold()
 
-    private fun LookupElementBuilder.withArgumentsTail(arguments: List<GodotApi.Class.Method.Argument>) =
+    private fun LookupElementBuilder.withArgumentsTail(arguments: List<CompletionData.Class.Method.Argument>) =
         withTailText(arguments.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
 
     private fun LookupElementBuilder.withParenthesesInsertHandler(hasParameters: Boolean): LookupElementBuilder =

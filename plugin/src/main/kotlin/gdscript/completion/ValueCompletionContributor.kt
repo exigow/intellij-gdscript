@@ -1,8 +1,8 @@
 package gdscript.completion
 
-import GodotApi.GLOBAL_SCOPE_CLASSES
-import GodotApi.OBJECT_CLASSES
-import GodotApi.PRIMITIVE_CLASSES
+import gdscript.completion.sources.CompletionData.GLOBAL_SCOPE_CLASSES
+import gdscript.completion.sources.CompletionData.OBJECT_CLASSES
+import gdscript.completion.sources.CompletionData.PRIMITIVE_CLASSES
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.patterns.PlatformPatterns.psiElement

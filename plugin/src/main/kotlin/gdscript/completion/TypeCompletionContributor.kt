@@ -1,6 +1,6 @@
 package gdscript.completion
 
-import GodotApi.OBJECT_CLASSES
+import gdscript.completion.sources.CompletionData.OBJECT_CLASSES
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.patterns.PlatformPatterns.psiElement
