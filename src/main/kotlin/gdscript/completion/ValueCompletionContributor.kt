@@ -8,6 +8,7 @@ import gdscript.completion.lookups.ConstantLookups.createConstant
 import gdscript.completion.lookups.ConstantLookups.createSingleton
 import gdscript.completion.lookups.InvokeLookups.createConstructor
 import gdscript.completion.lookups.InvokeLookups.createFunction
+import gdscript.completion.lookups.InvokeLookups.createPrimitiveConstructor
 import gdscript.completion.lookups.KeywordLookups.createKeyword
 import gdscript.completion.providers.CaseSensitiveLookupProvider
 import gdscript.psi.InvokeRule
@@ -21,7 +22,9 @@ class ValueCompletionContributor : CompletionContributor() {
         extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(CONSTANTS))
         extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(FUNCTIONS))
         extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(CLASSES))
+        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(PRIMITIVES))
         extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(KEYWORDS))
+        extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(PRIMITIVES))
         extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(FUNCTIONS))
         extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(CLASSES))
     }
@@ -43,6 +46,9 @@ class ValueCompletionContributor : CompletionContributor() {
         private val CLASSES = COMPLETION_DATA.classes
             .flatMap { clazz -> clazz.methods.filter { it.name == clazz.name } }
             .map { createConstructor(it) }
+        private val PRIMITIVES = COMPLETION_DATA.primitiveClasses
+            .flatMap { clazz -> clazz.methods.filter { it.name == clazz.name } }
+            .map { createPrimitiveConstructor(it) }
     }
 
 }

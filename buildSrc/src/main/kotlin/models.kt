@@ -1,6 +1,7 @@
 data class Language(
     val constants: List<Constant>,
     val classes: List<Class>,
+    val primitiveClasses: List<Class>,
     val functions: List<Method>,
     val singletons: List<Field>
 )

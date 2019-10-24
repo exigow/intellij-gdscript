@@ -48,7 +48,7 @@ class ScriptAnnotator : Annotator {
     }
 
     private fun annotateClass(element: PsiElement, holder: AnnotationHolder) {
-        if (element is TypeRule)
+        if (element is TypeRule && element.isNotPrimitive())
             holder.createColorAnnotation(element, CLASS_NAME)
     }
 

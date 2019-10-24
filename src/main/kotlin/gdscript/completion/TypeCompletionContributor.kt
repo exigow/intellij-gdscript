@@ -18,8 +18,8 @@ class TypeCompletionContributor : CompletionContributor() {
     }
 
     private companion object {
-        val PRIMITIVES = listOf("bool", "float", "void", "int")
-            .map { createKeyword(it) }
+        val PRIMITIVES = COMPLETION_DATA.primitiveClasses
+            .map { createKeyword(it.name) }
         val CLASSES = COMPLETION_DATA.classes
             .map { createClass(it.name, it.extends) }
     }

@@ -18,16 +18,25 @@ open class GenerateDocumentationTask : DefaultTask() {
         val language = Language(
             constants = files
                 .filter { isLanguageClass(it) }
-                .flatMap { collectConstants(it) },
+                .flatMap { collectConstants(it) }
+                .sortedBy { it.name },
             classes = files
                 .filter { !isLanguageClass(it) }
-                .map { parseClass(it) },
+                .filter { isNotEmptyClass(it) }
+                .map { parseClass(it) }
+                .sortedBy { it.name },
             functions = files
                 .filter { isLanguageClass(it) }
-                .flatMap { parseMethods(it) },
+                .flatMap { parseMethods(it) }
+                .sortedBy { it.name },
             singletons = files
                 .filter { isLanguageClass(it) }
                 .flatMap { parseFields(it) }
+                .sortedBy { it.name },
+            primitiveClasses = files
+                .filter { isPrimitiveClass(it) }
+                .map { parseClass(it) }
+                .sortedBy { it.name }
         )
         serializeToFile(language)
     }

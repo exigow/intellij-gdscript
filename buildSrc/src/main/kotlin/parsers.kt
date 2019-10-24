@@ -5,6 +5,14 @@ fun isLanguageClass(file: Document) = file
     .select("class")
     .attr("name").startsWith("@")
 
+fun isNotEmptyClass(file: Document) = file
+    .select("class")
+    .attr("name").isNotEmpty()
+
+fun isPrimitiveClass(file: Document) = file
+    .select("class")
+    .attr("name") in listOf("bool", "float", "void", "int")
+
 fun collectConstants(file: Document) = file
     .select("constant")
     .map { Constant(it.attr("name"), it.attr("value")) }
