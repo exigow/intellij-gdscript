@@ -44,7 +44,7 @@ open class GenerateDocumentationTask : DefaultTask() {
     }
 
     companion object {
-        const val JSON_LOCATION = "plugin/src/main/resources/api.json"
+        const val JSON_LOCATION = "src/main/resources/api.json"
     }
 
     fun parse(xml: Element) = CompletionData.Class(
