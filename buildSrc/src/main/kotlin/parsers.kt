@@ -18,7 +18,7 @@ fun collectConstants(file: Document) = file
     .map { Constant(it.attr("name"), it.attr("value")) }
 
 fun collectLinks(listPage: Document) =
-    listPage.select("a[title$=.xml]")
+    listPage.select(".files a[title$=.xml]")
         .map { it.absUrl("href") }
         .map { it.replace("blob", "raw") }
 
