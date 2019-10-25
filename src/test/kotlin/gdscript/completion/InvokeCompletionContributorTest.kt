@@ -8,58 +8,78 @@ import uitlities.lookups
 
 class InvokeCompletionContributorTest : BaseTest() {
 
-    fun `test "self" keyword`() =
-        assertLookupsContains("x = se<caret>", "self")
+    fun `test keyword as value`() {
+        environment.openCode("x = <caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "self")
+        assertContains(environment.lookups(), "null")
+        assertContains(environment.lookups(), "false")
+    }
 
-    fun `test "true" keyword`() =
-        assertLookupsContains("x = tr<caret>", "true")
+    fun `test function as statement`() {
+        environment.openCode("pr<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "print")
+    }
 
-    fun `test function as statement`() =
-        assertLookupsContains("pr<caret>", "print")
+    fun `test edit existing function`() {
+        environment.openCode("x = si<caret>()")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "sin")
+    }
 
-    fun `test edit existing function`() =
-        assertLookupsContains("x = si<caret>()", "sin")
+    fun `test function in var statement`() {
+        environment.openCode("var x = si<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "sin")
+    }
 
-    fun `test function in var statement`() =
-        assertLookupsContains("var x = si<caret>", "sin")
+    fun `test function in dictionary`() {
+        environment.openCode("dict = {A = 1, B = si<caret>}")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "sin")
+    }
 
-    fun `test function in dictionary`() =
-        assertLookupsContains("dict = {A = 1, B = si<caret>}", "sin")
+    fun `test range function`() {
+        environment.openCode("for i in rang<caret>(3):")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "range")
+    }
 
-    fun `test range function`() =
-        assertLookupsContains("for i in rang<caret>(3):", "range")
+    fun `test Vector2 constructor`() {
+        environment.openCode("position = Vec<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
 
-    fun `test Vector2 constructor`() =
-        assertLookupsContains("position = Vec<caret>", "Vector2")
+    fun `test primitive float constructor`() {
+        environment.openCode("x = flo<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "float")
+    }
 
-    fun `test primitive float constructor`() =
-        assertLookupsContains("x = flo<caret>", "float")
+    fun `test edit existing constructor`() {
+        environment.openCode("position = Vec<caret>()")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
 
-    fun `test edit existing constructor`() =
-        assertLookupsContains("position = Vec<caret>()", "Vector2")
+    fun `test function is case-sensitive`() {
+        environment.openCode("x = Si<caret>()")
+        environment.completeBasic()
+        assertNotContains(environment.lookups(), "sin")
+    }
 
-    fun `test function is case-sensitive`() =
-        assertLookupsNotContains("x = Si<caret>()", "sin")
-
-    fun `test constructor call is case-sensitive`() =
-        assertLookupsNotContains("position = vec<caret>()", "Vector2")
+    fun `test constructor call is case-sensitive`() {
+        environment.openCode("position = vec<caret>()")
+        environment.completeBasic()
+        assertNotContains(environment.lookups(), "Vector2")
+    }
 
     fun `test values are not present after DOT operator`() {
-        assertLookupsNotContains("vector.fa<caret>", "false")
-        assertLookupsNotContains("Input.deg<caret>", "deg2rad")
-        assertLookupsNotContains("Camera.Vec<caret>", "Vector2")
-    }
-
-    private fun assertLookupsContains(code: String, expected: String) {
-        environment.openCode(code)
+        environment.openCode("vector.fa<caret>")
         environment.completeBasic()
-        assertContains(environment.lookups(), expected)
-    }
-
-    private fun assertLookupsNotContains(code: String, unwanted: String) {
-        environment.openCode(code)
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), unwanted)
+        assertNotContains(environment.lookups(), "false")
     }
 
 }

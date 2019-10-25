@@ -6,19 +6,22 @@ import uitlities.openCode
 
 class ScriptCommenterTest : BaseTest() {
 
-    fun `test comment`() =
-        assertCommentAction("const M<caret>AX = 100", "#const MAX = 100")
-
-    fun `test uncomment`() =
-        assertCommentAction("#size += 1<caret>", "size += 1")
-
-    fun `test override existing comment with new comment`() =
-        assertCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
-
-    private fun assertCommentAction(before: String, after: String) {
-        environment.openCode(before)
+    fun `test comment`() {
+        environment.openCode("const M<caret>AX = 100")
         environment.doCommentAction()
-        environment.checkResult(after)
+        environment.checkResult("#const MAX = 100")
+    }
+
+    fun `test uncomment`() {
+        environment.openCode("#size += 1<caret>")
+        environment.doCommentAction()
+        environment.checkResult("size += 1")
+    }
+
+    fun `test override existing comment with new comment`() {
+        environment.openCode("var size#: Vector2<caret>")
+        environment.doCommentAction()
+        environment.checkResult("#var size#: Vector2")
     }
 
 }

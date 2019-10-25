@@ -14,8 +14,7 @@ class ScriptBraceMatcherTest : BaseTest() {
     fun `test square braces`() {
         environment.openCode("x = <caret>")
         environment.type('[')
-        environment.checkResult("x = [<caret>]"
-        )
+        environment.checkResult("x = [<caret>]")
     }
 
     fun `test round braces`() {

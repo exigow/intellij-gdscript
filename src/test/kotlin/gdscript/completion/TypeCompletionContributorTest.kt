@@ -7,31 +7,46 @@ import uitlities.lookups
 
 class TypeCompletionContributorTest : BaseTest() {
 
-    fun `test accept lower-case classes`() =
-        assertLookupsContains("var p: vec<caret>", "Vector2")
-
-    fun `test accept upper-case primitives`() =
-        assertLookupsContains("var p: Flo<caret>", "float")
-
-    fun `test "as"`() =
-        assertLookupsContains("p as Vec<caret>", "Vector2")
-
-    fun `test "is"`() =
-        assertLookupsContains("p is Vec<caret>", "Vector2")
-
-    fun `test "extends"`() =
-        assertLookupsContains("extends Vec<caret>", "Vector2")
-
-    fun `test "func" with argument`() =
-        assertLookupsContains("func draw_quad(position: <caret>):", "Vector2")
-
-    fun `test "func" with colon after caret`() =
-        assertLookupsContains("func get_name() -> <caret>:", "Vector2")
-
-    private fun assertLookupsContains(code: String, expected: String) {
-        environment.openCode(code)
+    fun `test accept lower-case classes`() {
+        environment.openCode("var p: vec<caret>")
         environment.completeBasic()
-        assertContains(environment.lookups(), expected)
+        assertContains(environment.lookups(), "Vector2")
+    }
+
+    fun `test accept upper-case primitives`() {
+        environment.openCode("var p: Flo<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "float")
+    }
+
+    fun `test "as"`() {
+        environment.openCode("p as Vec<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
+
+    fun `test "is"`() {
+        environment.openCode("p is Vec<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
+
+    fun `test "extends"`() {
+        environment.openCode("extends Vec<caret>")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
+
+    fun `test "func" with argument`() {
+        environment.openCode("func draw_quad(position: <caret>):")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
+    }
+
+    fun `test "func" with colon after caret`() {
+        environment.openCode("func get_name() -> <caret>:")
+        environment.completeBasic()
+        assertContains(environment.lookups(), "Vector2")
     }
 
 }
