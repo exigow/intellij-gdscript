@@ -1,10 +1,7 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.openCode
-import uitlities.addFile
-import uitlities.assertContains
-import uitlities.assertNotContains
+import uitlities.*
 
 class DataCompletionContributorTest : BaseTest() {
 
@@ -13,7 +10,7 @@ class DataCompletionContributorTest : BaseTest() {
         environment.addFile("util.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertContains(lookups(), "res://util.gd")
+        assertContains(environment.lookups(), "res://util.gd")
     }
 
     fun `test sub directory files completion`() {
@@ -21,13 +18,13 @@ class DataCompletionContributorTest : BaseTest() {
         environment.addFile("dir/util.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertContains(lookups(), "res://dir/util.gd")
+        assertContains(environment.lookups(), "res://dir/util.gd")
     }
 
     fun `test do not complete on missing project`() {
         environment.openCode("main.gd", """const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertNotContains(lookups(), "res://main.gd")
+        assertNotContains(environment.lookups(), "res://main.gd")
     }
 
     fun `test hide all dot-prefixed files`() {
@@ -36,8 +33,8 @@ class DataCompletionContributorTest : BaseTest() {
         environment.addFile(".import/file.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertNotContains(lookups(), "res://.import/file.gd")
-        assertContains(lookups(), "res://util.gd")
+        assertNotContains(environment.lookups(), "res://.import/file.gd")
+        assertContains(environment.lookups(), "res://util.gd")
     }
 
     fun `test hide "import" extension files`() {
@@ -46,11 +43,8 @@ class DataCompletionContributorTest : BaseTest() {
         environment.addFile("file.import")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertNotContains(lookups(), "res://file.import")
-        assertContains(lookups(), "res://util.gd")
+        assertNotContains(environment.lookups(), "res://file.import")
+        assertContains(environment.lookups(), "res://util.gd")
     }
-
-    private fun lookups(): MutableList<String>? =
-        environment.lookupElementStrings
 
 }

@@ -29,3 +29,4 @@ fun CodeInsightTestFixture.checkInfoHighlighting() {
 fun CodeInsightTestFixture.doCommentAction() =
     performEditorAction(IdeActions.ACTION_COMMENT_LINE)
 
+fun CodeInsightTestFixture.lookups() = lookupElementStrings.orEmpty()

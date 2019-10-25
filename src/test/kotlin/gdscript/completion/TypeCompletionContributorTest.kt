@@ -3,35 +3,35 @@ package gdscript.completion
 import gdscript.BaseTest
 import uitlities.openCode
 import uitlities.assertContains
+import uitlities.lookups
 
 class TypeCompletionContributorTest : BaseTest() {
 
-    fun `test var`() {
-        assertLookupsContains("var p: Vec<caret>", "Vector2")
+    fun `test accept lower-case classes`() =
         assertLookupsContains("var p: vec<caret>", "Vector2")
+
+    fun `test accept upper-case primitives`() =
         assertLookupsContains("var p: Flo<caret>", "float")
-        assertLookupsContains("var p: flo<caret>", "float")
-    }
 
-    fun `test as operator`() =
-        assertLookupsContains("platform as Kinem<caret>", "KinematicBody2D")
+    fun `test "as"`() =
+        assertLookupsContains("p as Vec<caret>", "Vector2")
 
-    fun `test is operator`() =
-        assertLookupsContains("image is Spri<caret>", "Sprite")
+    fun `test "is"`() =
+        assertLookupsContains("p is Vec<caret>", "Vector2")
 
-    fun `test extends object`() =
+    fun `test "extends"`() =
         assertLookupsContains("extends Vec<caret>", "Vector2")
 
-    fun `test function argument`() =
-        assertLookupsContains("func draw_quad(geometry: <caret>):", "ImmediateGeometry")
+    fun `test "func" with argument`() =
+        assertLookupsContains("func draw_quad(position: <caret>):", "Vector2")
 
-    fun `test function with colon`() =
-        assertLookupsContains("func get_name() -> <caret>:", "String")
+    fun `test "func" with colon after caret`() =
+        assertLookupsContains("func get_name() -> <caret>:", "Vector2")
 
     private fun assertLookupsContains(code: String, expected: String) {
         environment.openCode(code)
         environment.completeBasic()
-        assertContains(environment.lookupElementStrings, expected)
+        assertContains(environment.lookups(), expected)
     }
 
 }

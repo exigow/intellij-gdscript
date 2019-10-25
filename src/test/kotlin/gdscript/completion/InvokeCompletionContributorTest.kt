@@ -4,13 +4,14 @@ import gdscript.BaseTest
 import uitlities.openCode
 import uitlities.assertContains
 import uitlities.assertNotContains
+import uitlities.lookups
 
 class InvokeCompletionContributorTest : BaseTest() {
 
-    fun `test self completion`() =
+    fun `test "self" keyword`() =
         assertLookupsContains("x = se<caret>", "self")
 
-    fun `test true completion`() =
+    fun `test "true" keyword`() =
         assertLookupsContains("x = tr<caret>", "true")
 
     fun `test function as statement`() =
@@ -52,13 +53,13 @@ class InvokeCompletionContributorTest : BaseTest() {
     private fun assertLookupsContains(code: String, expected: String) {
         environment.openCode(code)
         environment.completeBasic()
-        assertContains(environment.lookupElementStrings, expected)
+        assertContains(environment.lookups(), expected)
     }
 
     private fun assertLookupsNotContains(code: String, unwanted: String) {
         environment.openCode(code)
         environment.completeBasic()
-        assertNotContains(environment.lookupElementStrings, unwanted)
+        assertNotContains(environment.lookups(), unwanted)
     }
 
 }
