@@ -1,7 +1,7 @@
 package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
+import uitlities.addCode
 import uitlities.assertContains
 
 class TypeCompletionContributorTest : BasePlatformTestCase() {
@@ -29,13 +29,9 @@ class TypeCompletionContributorTest : BasePlatformTestCase() {
         assertLookupsContains("func get_name() -> <caret>:", "String")
 
     private fun assertLookupsContains(code: String, expected: String) {
-        configureEditor(code)
-        assertContains(myFixture.lookupElementStrings, expected)
-    }
-
-    private fun configureEditor(code: String) {
-        myFixture.configureByText(ScriptType, code)
+        myFixture.addCode(code)
         myFixture.completeBasic()
+        assertContains(myFixture.lookupElementStrings, expected)
     }
 
 }

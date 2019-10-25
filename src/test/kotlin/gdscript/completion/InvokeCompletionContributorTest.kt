@@ -1,7 +1,7 @@
 package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
+import uitlities.addCode
 import uitlities.assertContains
 import uitlities.assertNotContains
 
@@ -50,18 +50,15 @@ class InvokeCompletionContributorTest : BasePlatformTestCase() {
     }
 
     private fun assertLookupsContains(code: String, expected: String) {
-        configureEditor(code)
+        myFixture.addCode(code)
+        myFixture.completeBasic()
         assertContains(myFixture.lookupElementStrings, expected)
     }
 
     private fun assertLookupsNotContains(code: String, unwanted: String) {
-        configureEditor(code)
-        assertNotContains(myFixture.lookupElementStrings, unwanted)
-    }
-
-    private fun configureEditor(code: String) {
-        myFixture.configureByText(ScriptType, code)
+        myFixture.addCode(code)
         myFixture.completeBasic()
+        assertNotContains(myFixture.lookupElementStrings, unwanted)
     }
 
 }

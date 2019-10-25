@@ -3,6 +3,7 @@ package gdscript
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import gdscript.file.ScriptType
+import uitlities.addCode
 
 class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
@@ -373,13 +374,13 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("""body is preload("res://player.gd"):""")
 
     fun `test error on two statements in one line (sanity check)`() {
-        myFixture.configureByText(ScriptType, "var x var")
+        myFixture.addCode("var x var")
         val errors = myFixture.doHighlighting()
         assertTrue(errors[0].severity == HighlightSeverity.ERROR)
     }
 
     private fun assertNoErrors(code: String) {
-        myFixture.configureByText(ScriptType, code)
+        myFixture.addCode(code)
         myFixture.checkHighlighting()
     }
 

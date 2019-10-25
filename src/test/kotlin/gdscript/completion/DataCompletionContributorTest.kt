@@ -1,48 +1,50 @@
 package gdscript.completion
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import uitlities.addCode
+import uitlities.addFile
 import uitlities.assertContains
 import uitlities.assertNotContains
 
 class DataCompletionContributorTest : BasePlatformTestCase() {
 
     fun `test sibling files completion`() {
-        addFile("project.godot")
-        addFile("util.gd")
-        addCode("""const Util = preload("res://<caret>")""")
+        myFixture.addFile("project.godot")
+        myFixture.addFile("util.gd")
+        myFixture.addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
         assertContains(lookups(), "res://util.gd")
     }
 
     fun `test sub directory files completion`() {
-        addFile("project.godot")
-        addFile("dir/util.gd")
-        addCode("""const Util = preload("res://<caret>")""")
+        myFixture.addFile("project.godot")
+        myFixture.addFile("dir/util.gd")
+        myFixture.addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
         assertContains(lookups(), "res://dir/util.gd")
     }
 
     fun `test do not complete on missing project`() {
-        addCode("main.gd", """const Util = preload("res://<caret>")""")
+        myFixture.addCode("main.gd", """const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
         assertNotContains(lookups(), "res://main.gd")
     }
 
     fun `test hide all dot-prefixed files`() {
-        addFile("project.godot")
-        addFile("util.gd")
-        addFile(".import/file.gd")
-        addCode("""const Util = preload("res://<caret>")""")
+        myFixture.addFile("project.godot")
+        myFixture.addFile("util.gd")
+        myFixture.addFile(".import/file.gd")
+        myFixture.addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
         assertNotContains(lookups(), "res://.import/file.gd")
         assertContains(lookups(), "res://util.gd")
     }
 
     fun `test hide "import" extension files`() {
-        addFile("project.godot")
-        addFile("util.gd")
-        addFile("file.import")
-        addCode("""const Util = preload("res://<caret>")""")
+        myFixture.addFile("project.godot")
+        myFixture.addFile("util.gd")
+        myFixture.addFile("file.import")
+        myFixture.addCode("""const Util = preload("res://<caret>")""")
         myFixture.completeBasic()
         assertNotContains(lookups(), "res://file.import")
         assertContains(lookups(), "res://util.gd")
@@ -50,15 +52,5 @@ class DataCompletionContributorTest : BasePlatformTestCase() {
 
     private fun lookups(): MutableList<String>? =
         myFixture.lookupElementStrings
-
-    private fun addFile(filename: String) =
-        myFixture.addFileToProject(filename, "bla bla")
-
-    private fun addCode(content: String) =
-        myFixture.configureByText("main.gd", content)
-
-    private fun addCode(filename: String, content: String) =
-        myFixture.configureByText(filename, content)
-
 
 }
