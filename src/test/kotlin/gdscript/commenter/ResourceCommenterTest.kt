@@ -2,17 +2,17 @@ package gdscript.commenter
 
 import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import uitlities.addResource
+import gdscript.BaseTest
+import uitlities.openResource
 
-class ResourceCommenterTest : BasePlatformTestCase() {
+class ResourceCommenterTest : BaseTest() {
 
     fun `test comment then uncomment`() {
-        myFixture.addResource("test<caret>")
+        environment.openResource("test<caret>")
         invokeNamedAction(ACTION_COMMENT_LINE)
-        myFixture.checkResult(";test<caret>")
+        environment.checkResult(";test<caret>")
         invokeNamedAction(ACTION_COMMENT_LINE)
-        myFixture.checkResult("test<caret>")
+        environment.checkResult("test<caret>")
     }
 
 }

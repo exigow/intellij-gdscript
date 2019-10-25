@@ -1,10 +1,10 @@
 package gdscript.completion
 
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import uitlities.addCode
+import gdscript.BaseTest
+import uitlities.openCode
 import uitlities.assertContains
 
-class TypeCompletionContributorTest : BasePlatformTestCase() {
+class TypeCompletionContributorTest : BaseTest() {
 
     fun `test var`() {
         assertLookupsContains("var p: Vec<caret>", "Vector2")
@@ -29,9 +29,9 @@ class TypeCompletionContributorTest : BasePlatformTestCase() {
         assertLookupsContains("func get_name() -> <caret>:", "String")
 
     private fun assertLookupsContains(code: String, expected: String) {
-        myFixture.addCode(code)
-        myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings, expected)
+        environment.openCode(code)
+        environment.completeBasic()
+        assertContains(environment.lookupElementStrings, expected)
     }
 
 }

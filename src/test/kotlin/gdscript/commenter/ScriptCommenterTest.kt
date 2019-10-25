@@ -2,11 +2,10 @@ package gdscript.commenter
 
 import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
 import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
-import uitlities.addCode
+import gdscript.BaseTest
+import uitlities.openCode
 
-class ScriptCommenterTest : BasePlatformTestCase() {
+class ScriptCommenterTest : BaseTest() {
 
     fun `test comment`() =
         assertCommentAction("const M<caret>AX = 100", "#const MAX = 100")
@@ -18,9 +17,9 @@ class ScriptCommenterTest : BasePlatformTestCase() {
         assertCommentAction("var size#: Vector2<caret>", "#var size#: Vector2")
 
     private fun assertCommentAction(before: String, after: String) {
-        myFixture.addCode(before)
+        environment.openCode(before)
         invokeNamedAction(ACTION_COMMENT_LINE)
-        myFixture.checkResult(after)
+        environment.checkResult(after)
     }
 
 }

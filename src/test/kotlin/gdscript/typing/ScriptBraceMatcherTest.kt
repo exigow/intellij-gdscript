@@ -1,28 +1,27 @@
 package gdscript.typing
 
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
-import uitlities.addCode
+import gdscript.BaseTest
+import uitlities.openCode
 
-class ScriptBraceMatcherTest : BasePlatformTestCase() {
+class ScriptBraceMatcherTest : BaseTest() {
 
     fun `test curly braces`() {
-        myFixture.addCode("x = <caret>")
-        myFixture.type('{')
-        myFixture.checkResult("x = {<caret>}")
+        environment.openCode("x = <caret>")
+        environment.type('{')
+        environment.checkResult("x = {<caret>}")
     }
 
     fun `test square braces`() {
-        myFixture.addCode("x = <caret>")
-        myFixture.type('[')
-        myFixture.checkResult("x = [<caret>]"
+        environment.openCode("x = <caret>")
+        environment.type('[')
+        environment.checkResult("x = [<caret>]"
         )
     }
 
     fun `test round braces`() {
-        myFixture.addCode("x = <caret>")
-        myFixture.type('(')
-        myFixture.checkResult("x = (<caret>)")
+        environment.openCode("x = <caret>")
+        environment.type('(')
+        environment.checkResult("x = (<caret>)")
     }
 
 }

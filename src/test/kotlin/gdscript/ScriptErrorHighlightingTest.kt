@@ -1,11 +1,9 @@
 package gdscript
 
 import com.intellij.lang.annotation.HighlightSeverity
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
-import uitlities.addCode
+import uitlities.openCode
 
-class ScriptErrorHighlightingTest : BasePlatformTestCase() {
+class ScriptErrorHighlightingTest : BaseTest() {
 
     fun `test super method invocation`() =
         assertNoErrors("""
@@ -374,14 +372,14 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
         assertNoErrors("""body is preload("res://player.gd"):""")
 
     fun `test error on two statements in one line (sanity check)`() {
-        myFixture.addCode("var x var")
-        val errors = myFixture.doHighlighting()
+        environment.openCode("var x var")
+        val errors = environment.doHighlighting()
         assertTrue(errors[0].severity == HighlightSeverity.ERROR)
     }
 
     private fun assertNoErrors(code: String) {
-        myFixture.addCode(code)
-        myFixture.checkHighlighting()
+        environment.openCode(code)
+        environment.checkHighlighting()
     }
 
 }

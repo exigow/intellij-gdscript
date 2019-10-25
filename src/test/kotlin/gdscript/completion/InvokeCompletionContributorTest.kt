@@ -1,11 +1,11 @@
 package gdscript.completion
 
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import uitlities.addCode
+import gdscript.BaseTest
+import uitlities.openCode
 import uitlities.assertContains
 import uitlities.assertNotContains
 
-class InvokeCompletionContributorTest : BasePlatformTestCase() {
+class InvokeCompletionContributorTest : BaseTest() {
 
     fun `test self completion`() =
         assertLookupsContains("x = se<caret>", "self")
@@ -50,15 +50,15 @@ class InvokeCompletionContributorTest : BasePlatformTestCase() {
     }
 
     private fun assertLookupsContains(code: String, expected: String) {
-        myFixture.addCode(code)
-        myFixture.completeBasic()
-        assertContains(myFixture.lookupElementStrings, expected)
+        environment.openCode(code)
+        environment.completeBasic()
+        assertContains(environment.lookupElementStrings, expected)
     }
 
     private fun assertLookupsNotContains(code: String, unwanted: String) {
-        myFixture.addCode(code)
-        myFixture.completeBasic()
-        assertNotContains(myFixture.lookupElementStrings, unwanted)
+        environment.openCode(code)
+        environment.completeBasic()
+        assertNotContains(environment.lookupElementStrings, unwanted)
     }
 
 }

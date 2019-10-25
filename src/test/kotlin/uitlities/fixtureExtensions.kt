@@ -5,15 +5,15 @@ import gdscript.file.ResourceType
 import gdscript.file.ScriptType
 
 
-fun CodeInsightTestFixture.addCode(content: String) {
+fun CodeInsightTestFixture.openCode(content: String) {
     configureByText(ScriptType, content)
 }
 
-fun CodeInsightTestFixture.addResource(content: String) {
+fun CodeInsightTestFixture.openResource(content: String) {
     configureByText(ResourceType, content)
 }
 
-fun CodeInsightTestFixture.addCode(filename: String, content: String) {
+fun CodeInsightTestFixture.openCode(filename: String, content: String) {
     configureByText(filename, content)
 }
 

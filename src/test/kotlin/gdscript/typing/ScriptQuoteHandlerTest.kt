@@ -1,21 +1,20 @@
 package gdscript.typing
 
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import gdscript.file.ScriptType
-import uitlities.addCode
+import gdscript.BaseTest
+import uitlities.openCode
 
-class ScriptQuoteHandlerTest : BasePlatformTestCase() {
+class ScriptQuoteHandlerTest : BaseTest() {
 
     fun `test add double-quotes on new string and move caret inside`() {
-        myFixture.addCode("x = <caret>")
-        myFixture.type('"')
-        myFixture.checkResult("x = \"<caret>\"")
+        environment.openCode("x = <caret>")
+        environment.type('"')
+        environment.checkResult("x = \"<caret>\"")
     }
 
     fun `test remove double-quotes on BACKSPACE`() {
-        myFixture.addCode("x = \"<caret>\"")
-        myFixture.type('\b') // backslash
-        myFixture.checkResult("x = <caret>")
+        environment.openCode("x = \"<caret>\"")
+        environment.type('\b') // backslash
+        environment.checkResult("x = <caret>")
     }
 
 }
