@@ -12,9 +12,8 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
                 ._change_state(state_name)
         """)
 
-    fun `test semicolon`() {
+    fun `test semicolon`() =
         assertNoErrors("var x = 1; y = 2;; z = 3;;;")
-    }
 
     fun `test operator`() {
         assertNoErrors("x - y")
@@ -321,6 +320,9 @@ class ScriptErrorHighlightingTest : BasePlatformTestCase() {
 
     fun `test subscribe array`() =
         assertNoErrors("items[7] = 0")
+
+    fun `test subscribe 2d array`() =
+        assertNoErrors("""json_dict["albedo_color"]["r"] = albedo_color.r""")
 
     fun `test subscribe dictionary`() =
         assertNoErrors("""dict["Hi!"] = 0""")
