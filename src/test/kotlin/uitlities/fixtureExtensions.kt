@@ -1,5 +1,6 @@
 package uitlities
 
+import com.intellij.openapi.actionSystem.IdeActions
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture
 import gdscript.file.ResourceType
 import gdscript.file.ScriptType
@@ -24,3 +25,7 @@ fun CodeInsightTestFixture.addFile(filename: String) {
 fun CodeInsightTestFixture.checkInfoHighlighting() {
     checkHighlighting(false, true, false)
 }
+
+fun CodeInsightTestFixture.doCommentAction() =
+    performEditorAction(IdeActions.ACTION_COMMENT_LINE)
+

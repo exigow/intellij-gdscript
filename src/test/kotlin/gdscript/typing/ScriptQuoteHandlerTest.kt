@@ -11,9 +11,9 @@ class ScriptQuoteHandlerTest : BaseTest() {
         environment.checkResult("x = \"<caret>\"")
     }
 
-    fun `test remove double-quotes on BACKSPACE`() {
+    fun `test remove double-quotes on Backspace`() {
         environment.openCode("x = \"<caret>\"")
-        environment.type('\b') // backslash
+        environment.type('\b')
         environment.checkResult("x = <caret>")
     }
 

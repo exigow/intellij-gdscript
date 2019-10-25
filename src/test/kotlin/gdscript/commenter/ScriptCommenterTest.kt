@@ -1,8 +1,7 @@
 package gdscript.commenter
 
-import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
-import com.intellij.testFramework.PlatformTestUtil.invokeNamedAction
 import gdscript.BaseTest
+import uitlities.doCommentAction
 import uitlities.openCode
 
 class ScriptCommenterTest : BaseTest() {
@@ -18,7 +17,7 @@ class ScriptCommenterTest : BaseTest() {
 
     private fun assertCommentAction(before: String, after: String) {
         environment.openCode(before)
-        invokeNamedAction(ACTION_COMMENT_LINE)
+        environment.doCommentAction()
         environment.checkResult(after)
     }
 
