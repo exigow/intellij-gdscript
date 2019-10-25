@@ -17,6 +17,7 @@ class ScriptAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         annotateInstanceField(element, holder)
+        annotateStaticMethod(element, holder)
         annotateMethod(element, holder)
         annotateClass(element, holder)
         annotateConstant(element, holder)
@@ -28,13 +29,16 @@ class ScriptAnnotator : Annotator {
             holder.createColorAnnotation(element, INSTANCE_FIELD)
     }
 
+    private fun annotateStaticMethod(element: PsiElement, holder: AnnotationHolder) {
+        val parent = element.parent
+        if (element.isIdentifier() && parent is FunctionRule && parent.isStatic())
+            holder.createColorAnnotation(element, STATIC_METHOD)
+    }
+
     private fun annotateMethod(element: PsiElement, holder: AnnotationHolder) {
         val parent = element.parent
-        if (element.isIdentifier() && parent is FunctionRule)
-            if (parent.isStatic())
-                holder.createColorAnnotation(element, STATIC_METHOD)
-            else
-                holder.createColorAnnotation(element, INSTANCE_METHOD)
+        if (element.isIdentifier() && parent is FunctionRule && !parent.isStatic())
+            holder.createColorAnnotation(element, INSTANCE_METHOD)
     }
 
     private fun annotateConstant(element: PsiElement, holder: AnnotationHolder) {
