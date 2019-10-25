@@ -1,5 +1,6 @@
-package gdscript
+package gdscript.highlight
 
+import gdscript.BaseTest
 import uitlities.openResource
 
 class ResourceErrorHighlightingTest : BaseTest() {

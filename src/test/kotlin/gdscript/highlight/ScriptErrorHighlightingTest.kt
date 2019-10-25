@@ -1,6 +1,7 @@
-package gdscript
+package gdscript.highlight
 
 import com.intellij.lang.annotation.HighlightSeverity
+import gdscript.BaseTest
 import uitlities.openCode
 
 class ScriptErrorHighlightingTest : BaseTest() {
