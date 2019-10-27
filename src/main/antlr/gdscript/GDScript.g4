@@ -1,7 +1,5 @@
 grammar GDScript;
 
-@header {package gdscript;}
-
 file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 
 statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;

@@ -1,7 +1,5 @@
 grammar GDScriptResource;
 
-@header {package gdscript;}
-
 file: (section | entry | LINE_COMMENT)*;
 
 section: '[' (IDENTIFIER | entry)+ ']';
