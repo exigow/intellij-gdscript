@@ -8,8 +8,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
-import GDScriptResourceLexer
-import GDScriptResourceParser
+import ResourceLexer
+import ResourceParser
 import gdscript.token.ResourceTokenSet.LINE_COMMENTS
 import gdscript.token.ResourceTokenSet.STRINGS
 import gdscript.token.ResourceTokenSet.WHITESPACES
@@ -25,16 +25,16 @@ class ResourceParserDefinition : ParserDefinition {
 
     init {
         @Suppress("DEPRECATION")
-        PSIElementTypeFactory.defineLanguageIElementTypes(ResourceLanguage, GDScriptResourceParser.tokenNames, GDScriptResourceParser.ruleNames)
+        PSIElementTypeFactory.defineLanguageIElementTypes(ResourceLanguage, ResourceParser.tokenNames, ResourceParser.ruleNames)
     }
 
     override fun createLexer(project: Project): Lexer =
-        ANTLRLexerAdaptor(ResourceLanguage, GDScriptResourceLexer(null))
+        ANTLRLexerAdaptor(ResourceLanguage, ResourceLexer(null))
 
     override fun createParser(project: Project): PsiParser =
-        object : ANTLRParserAdaptor(ResourceLanguage, GDScriptResourceParser(null)) {
+        object : ANTLRParserAdaptor(ResourceLanguage, ResourceParser(null)) {
             override fun parse(parser: Parser, root: IElementType): ParseTree =
-                (parser as GDScriptResourceParser).file()
+                (parser as ResourceParser).file()
         }
 
     override fun getWhitespaceTokens() =

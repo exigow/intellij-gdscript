@@ -1,4 +1,4 @@
-grammar GDScriptResource;
+grammar Resource;
 
 file: (section | entry | LINE_COMMENT)*;
 

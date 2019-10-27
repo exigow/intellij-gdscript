@@ -1,4 +1,4 @@
-grammar GDScript;
+grammar Script;
 
 file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 

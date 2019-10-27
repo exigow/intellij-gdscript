@@ -4,7 +4,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import GDScriptResourceLexer
+import ResourceLexer
 import gdscript.parser.ResourceLanguage
 import gdscript.token.ResourceTokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
@@ -15,7 +15,7 @@ class ResourceHighlighter : SyntaxHighlighterBase() {
         pack(matchingToColor(element))
 
     override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(ResourceLanguage, GDScriptResourceLexer(null))
+        ANTLRLexerAdaptor(ResourceLanguage, ResourceLexer(null))
 
     private fun matchingToColor(element: IElementType) = when (element) {
         in ResourceTokenSet.KEYWORDS -> DefaultLanguageHighlighterColors.KEYWORD

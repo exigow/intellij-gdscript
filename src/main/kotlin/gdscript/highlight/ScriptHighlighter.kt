@@ -3,7 +3,7 @@ package gdscript.highlight
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import GDScriptLexer
+import ScriptLexer
 import gdscript.options.ColorTextAttributeKey
 import gdscript.parser.ScriptLanguage
 import gdscript.token.ScriptTokenSet
@@ -16,7 +16,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         pack(matchingToColor(element)?.key)
 
     override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
+        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun matchingToColor(element: IElementType?) = when (element) {
         in ScriptTokenSet.LINE_COMMENTS -> ColorTextAttributeKey.LINE_COMMENT

@@ -1,6 +1,6 @@
 package gdscript.token
 
-import GDScriptLexer.*
+import ScriptLexer.*
 import gdscript.parser.ScriptLanguage
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 

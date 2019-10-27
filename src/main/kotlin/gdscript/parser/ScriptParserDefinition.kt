@@ -8,8 +8,8 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import GDScriptLexer
-import GDScriptParser
+import ScriptLexer
+import ScriptParser
 import gdscript.token.ScriptTokenSet.LINE_COMMENTS
 import gdscript.token.ScriptTokenSet.STRINGS
 import gdscript.token.ScriptTokenSet.WHITESPACES
@@ -26,16 +26,16 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
 
     init {
         @Suppress("DEPRECATION")
-        PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, GDScriptParser.tokenNames, GDScriptParser.ruleNames)
+        PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
     }
 
     override fun createLexer(project: Project): Lexer =
-        ANTLRLexerAdaptor(ScriptLanguage, GDScriptLexer(null))
+        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     override fun createParser(project: Project): PsiParser =
-        object : ANTLRParserAdaptor(ScriptLanguage, GDScriptParser(null)) {
+        object : ANTLRParserAdaptor(ScriptLanguage, ScriptParser(null)) {
             override fun parse(parser: Parser, root: IElementType): ParseTree =
-                (parser as GDScriptParser).file()
+                (parser as ScriptParser).file()
         }
 
     override fun getWhitespaceTokens(): TokenSet =
