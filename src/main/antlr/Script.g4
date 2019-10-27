@@ -1,5 +1,7 @@
 grammar Script;
 
+import Core;
+
 file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 
 statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;
@@ -113,11 +115,5 @@ STRING: '"' (~["\n])* '"';
 STRING_APHOSTROPHE: '\'' (~['\n])* '\'';
 STRING_MULTILINE: '"""' .*? '"""';
 LINE_COMMENT: '#' ~[\n]*;
-NL: '\n';
-fragment IDENTIFIER_START: LOWER_CASE | UPPER_CASE | '_';
-fragment LOWER_CASE: 'a'..'z';
-fragment UPPER_CASE: 'A'..'Z';
-fragment DIGIT: '0'..'9';
+IDENTIFIER_START: LOWER_CASE | UPPER_CASE | '_';
 
-WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
-ERRCHAR: . -> channel(HIDDEN);

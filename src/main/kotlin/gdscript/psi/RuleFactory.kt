@@ -2,7 +2,7 @@ package gdscript.psi
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import gdscript.GDScriptParser.*
+import ScriptParser.*
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
