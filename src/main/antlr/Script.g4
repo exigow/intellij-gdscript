@@ -26,7 +26,7 @@ match_statement: MATCH expression COLON;
 match_entry_statement: expression COLON;
 
 expression: value ((operator value) | (type_operator (type | invoke)))*;
-operator: MINUS | OTHER_OPERATORS | COMPARE | AND | OR | IN | DOT | IF | ELSE;
+operator: MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | DOT | IF | ELSE;
 type_operator: AS | IS;
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
@@ -90,12 +90,11 @@ VOID: 'void';
 ASSIGN: '=' | ':='| '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 MINUS: '-';
-OTHER_OPERATORS: '+' | '*' | '/' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||';
+OTHER_OPERATORS: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||';
 COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
-SEMICOLON: ';';
-NODE: '$' ((LOWER_CASE | UPPER_CASE | DIGIT | '/')* | STRING);
+NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING);
 LINE_COMMENT: '#' ~[\n]*;
 
 

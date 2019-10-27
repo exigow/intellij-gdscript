@@ -1,5 +1,7 @@
 lexer grammar Core;
 
+SEMICOLON: ';';
+SLASH: '/';
 COLON: ':';
 COMMA: ',';
 DOT: '.';

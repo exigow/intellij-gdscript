@@ -5,7 +5,7 @@ import Core;
 file: (statement | NL)* EOF;
 statement: section | entry | LINE_COMMENT;
 section: BRACKET_LEFT (section_id | entry)+ BRACKET_RIGHT;
-entry: id ('/' id)* '=' value;
+entry: id (SLASH id)* '=' value;
 section_id: id (DOT id)*;
 value: STRING | NUMBER | KEYWORD | constructor | list | dictionary;
 constructor: IDENTIFIER PARENTHES_LEFT value? (COMMA value)* PARENTHES_RIGHT;
@@ -15,4 +15,4 @@ dictionary_entry: STRING COLON value;
 id: IDENTIFIER | NUMBER;
 
 KEYWORD: 'true' | 'false';
-LINE_COMMENT: ';' ~[\n]*;
+LINE_COMMENT: SEMICOLON ~[\n]*;
