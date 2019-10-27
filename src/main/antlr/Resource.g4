@@ -16,5 +16,4 @@ id: IDENTIFIER | NUMBER;
 
 KEYWORD: 'true' | 'false';
 STRING: '"' .*? '"';
-NUMBER: DIGIT+ DOT? (DIGIT+)? ('e' '-'? DIGIT+)?;
 LINE_COMMENT: ';' ~[\n]*;

@@ -14,11 +14,7 @@ object ScriptTokenSet {
     val COMMAS = create(COMMA)
     val SEMICOLONS = create(SEMICOLON)
     val DOTS = create(DOT)
-    val NUMBERS = create(
-        NUMBER_FLOATING,
-        NUMBER_HEXADECIMAL,
-        NUMBER_BINARY
-    )
+    val NUMBERS = create(NUMBER)
     val STRINGS = create(
         STRING,
         STRING_APHOSTROPHE,
