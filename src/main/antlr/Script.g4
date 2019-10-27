@@ -96,24 +96,14 @@ OTHER_OPERATORS: '+' | '*' | '/' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | 
 COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
-COMMA: ',';
-DOT: '.';
-COLON: ':';
 SEMICOLON: ';';
-PARENTHES_LEFT: '(';
-PARENTHES_RIGHT: ')';
-BRACKET_LEFT: '[';
-BRACKET_RIGHT: ']';
-BRACE_LEFT: '{';
-BRACE_RIGHT: '}';
-IDENTIFIER: IDENTIFIER_START (IDENTIFIER_START | DIGIT)*;
 NODE: '$' ((LOWER_CASE | UPPER_CASE | DIGIT | '/')* | STRING);
-NUMBER_FLOATING: DIGIT+ '.'? (DIGIT+)? ('e' '-'? DIGIT+)?;
+NUMBER_FLOATING: DIGIT+ DOT? (DIGIT+)? ('e' '-'? DIGIT+)?;
 NUMBER_BINARY: '0b' ('0' | '1')+;
 NUMBER_HEXADECIMAL: '0x' (DIGIT | 'A'..'F')+;
 STRING: '"' (~["\n])* '"';
 STRING_APHOSTROPHE: '\'' (~['\n])* '\'';
 STRING_MULTILINE: '"""' .*? '"""';
 LINE_COMMENT: '#' ~[\n]*;
-IDENTIFIER_START: LOWER_CASE | UPPER_CASE | '_';
+
 
