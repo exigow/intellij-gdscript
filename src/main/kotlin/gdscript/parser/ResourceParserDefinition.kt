@@ -8,8 +8,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
-import gdscript.GDScriptResourceLexer
-import gdscript.GDScriptResourceParser
+import GDScriptResourceLexer
+import GDScriptResourceParser
 import gdscript.token.ResourceTokenSet.LINE_COMMENTS
 import gdscript.token.ResourceTokenSet.STRINGS
 import gdscript.token.ResourceTokenSet.WHITESPACES

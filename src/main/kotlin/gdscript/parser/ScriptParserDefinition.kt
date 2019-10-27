@@ -8,8 +8,8 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import gdscript.GDScriptLexer
-import gdscript.GDScriptParser
+import GDScriptLexer
+import GDScriptParser
 import gdscript.token.ScriptTokenSet.LINE_COMMENTS
 import gdscript.token.ScriptTokenSet.STRINGS
 import gdscript.token.ScriptTokenSet.WHITESPACES

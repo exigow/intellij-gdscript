@@ -3,7 +3,7 @@ package gdscript.highlight
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import gdscript.GDScriptLexer
+import GDScriptLexer
 import gdscript.options.ColorTextAttributeKey
 import gdscript.parser.ScriptLanguage
 import gdscript.token.ScriptTokenSet
