@@ -10,9 +10,12 @@ import gdscript.psi.InvokeRule
 class KeywordAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.parent is InvokeRule && element.isIdentifier() && element.text in LANGUAGE_FUNCTION_NAMES)
+        if (element.parent is InvokeRule && element.isIdentifier() && element.hasFunctionText())
             holder.createColorAnnotation(element, KEYWORD)
     }
+
+    private fun PsiElement.hasFunctionText() =
+        text in LANGUAGE_FUNCTION_NAMES
 
     companion object {
 
