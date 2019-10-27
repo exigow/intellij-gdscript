@@ -22,5 +22,10 @@ fragment UPPER_CASE: 'A'..'Z';
 fragment UNDERSCORE: '_';
 fragment DIGIT: '0'..'9';
 
+STRING: STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | STRING_MULTILINE;
+fragment STRING_DOUBLE_QUOTE: '"' (~["\n])* '"';
+fragment STRING_APHOSTROPHE: '\'' (~['\n])* '\'';
+fragment STRING_MULTILINE: '"""' .*? '"""';
+
 WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);

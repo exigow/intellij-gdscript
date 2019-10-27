@@ -15,11 +15,7 @@ object ScriptTokenSet {
     val SEMICOLONS = create(SEMICOLON)
     val DOTS = create(DOT)
     val NUMBERS = create(NUMBER)
-    val STRINGS = create(
-        STRING,
-        STRING_APHOSTROPHE,
-        STRING_MULTILINE
-    )
+    val STRINGS = create(STRING)
     val OPERATION_SIGNS = create(
         ASSIGN,
         ARROW,

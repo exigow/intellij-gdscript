@@ -15,5 +15,4 @@ dictionary_entry: STRING COLON value;
 id: IDENTIFIER | NUMBER;
 
 KEYWORD: 'true' | 'false';
-STRING: '"' .*? '"';
 LINE_COMMENT: ';' ~[\n]*;
