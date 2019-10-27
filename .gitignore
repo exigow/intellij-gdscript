@@ -2,7 +2,3 @@
 .idea/
 out/
 build/
-
-# antlr4
-*.tokens
-*.interp
