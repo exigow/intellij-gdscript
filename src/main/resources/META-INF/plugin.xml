@@ -17,7 +17,11 @@
 		<completion.contributor implementationClass="gdscript.completion.ValueCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.DataCompletionContributor" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.ScriptAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ClassAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.InstanceFieldAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.KeywordAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.UpperCaseConstantAnnotator" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.typing.ScriptQuoteHandler" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
