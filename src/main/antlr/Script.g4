@@ -1,6 +1,6 @@
 grammar Script;
 
-import Core;
+import Keyword, Core;
 
 file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
 
@@ -41,52 +41,6 @@ arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
 type: IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
 
-REMOTE: 'remote';
-PUPPET: 'puppet';
-MASTER: 'master';
-SYNC: 'sync';
-REMOTESYNC: 'remotesync';
-MASTERSYNC: 'mastersync';
-PUPPETSYNC: 'puppetsync';
-MATCH: 'match';
-EXPORT: 'export';
-ONREADY: 'onready';
-VAR: 'var';
-SETGET: 'setget';
-CONST: 'const';
-STATIC: 'static';
-FUNC: 'func';
-FOR: 'for';
-WHILE: 'while';
-CLASS: 'class';
-EXTENDS: 'extends';
-CLASS_NAME: 'class_name';
-ENUM: 'enum';
-IF: 'if';
-ELIF: 'elif';
-ELSE: 'else';
-RETURN: 'return';
-PASS: 'pass';
-TOOL: 'tool';
-SIGNAL: 'signal';
-BREAK: 'break';
-CONTINUE: 'continue';
-
-NOT: 'not';
-AND: 'and';
-OR: 'or';
-IN: 'in';
-IS: 'is';
-AS: 'as';
-SELF: 'self';
-NULL: 'null';
-TRUE: 'true';
-FALSE: 'false';
-BOOL: 'bool';
-INT: 'int';
-FLOAT: 'float';
-VOID: 'void';
-
 ASSIGN: '=' | ':='| '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
 MINUS: '-';
@@ -96,5 +50,3 @@ NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
 NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING);
 LINE_COMMENT: '#' ~[\n]*;
-
-

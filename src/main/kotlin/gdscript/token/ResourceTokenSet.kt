@@ -7,7 +7,7 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 object ResourceTokenSet {
 
     val WHITESPACES = create(WHITESPACE)
-    val KEYWORDS = create(KEYWORD)
+    val KEYWORDS = create(TRUE, FALSE)
     val IDENTIFIERS = create(IDENTIFIER)
     val NUMBERS = create(NUMBER)
     val STRINGS = create(STRING)
