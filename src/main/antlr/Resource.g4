@@ -3,15 +3,15 @@ grammar Resource;
 import Keyword, Core;
 
 file: (statement | NL)* EOF;
-statement: section | entry | LINE_COMMENT;
-section: BRACKET_LEFT (section_id | entry)+ BRACKET_RIGHT;
-entry: id (SLASH id)* '=' value;
+statement: section | property | LINE_COMMENT;
+section: BRACKET_LEFT (section_id | property)+ BRACKET_RIGHT;
+property: id (SLASH id)* '=' value;
 section_id: id (DOT id)*;
-value: STRING | NUMBER | TRUE | FALSE | constructor | list | dictionary;
+value: IDENTIFIER | STRING | NUMBER | TRUE | FALSE | NULL | constructor | list | dictionary | entry;
 constructor: IDENTIFIER PARENTHES_LEFT NL* value? (COMMA NL* value)* NL* PARENTHES_RIGHT;
 list: BRACKET_LEFT NL* value? (COMMA NL* value)* NL* BRACKET_RIGHT;
-dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* NL* BRACE_RIGHT;
-dictionary_entry: STRING COLON value;
+dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* NL* BRACE_RIGHT;
+entry: STRING COLON value;
 id: IDENTIFIER | NUMBER;
 
 LINE_COMMENT: SEMICOLON ~[\n]*;
