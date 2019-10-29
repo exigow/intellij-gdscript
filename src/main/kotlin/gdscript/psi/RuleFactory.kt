@@ -20,7 +20,7 @@ object RuleFactory {
             RULE_type -> TypeRule(node)
             RULE_value -> ValueRule(node)
             RULE_invoke -> InvokeRule(node)
-            RULE_func_statement -> FunctionRule(node)
+            RULE_func_line -> FunctionRule(node)
             else -> ANTLRPsiNode(node)
         }
 

@@ -121,7 +121,7 @@ class ScriptErrorHighlightingTest : BaseTest() {
         """)
 
     fun `test if-short with statement on the same line`() =
-        assertNoErrors("if 1 + 1 == 2: return 2 + 2")
+        assertNoErrors("y += 3 if y < 10 else -1")
 
     fun `test ternary-if with variable definition statement`() =
         assertNoErrors("var x = value if expression else value")

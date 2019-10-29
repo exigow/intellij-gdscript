@@ -2,32 +2,58 @@ grammar Script;
 
 import Keyword, Core;
 
-file: NL* statement? ((NL | SEMICOLON)+ statement)* (NL | SEMICOLON)* EOF;
+file: separator* (line (separator+ line?)*)? EOF;
 
-statement: (var_statement | const_statement | func_statement | for_statement | while_statement | class_statement | extends_statement | class_name_statement | enum_statement | if_statement | elif_statement | else_statement | return_statement | signal_statement | assign_statement | match_statement | match_entry_statement | expression | PASS | BREAK | CONTINUE | TOOL | LINE_COMMENT) LINE_COMMENT?;
-var_statement: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
-const_statement: CONST IDENTIFIER (COLON type)? ASSIGN expression;
-func_statement: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
+separator: NL | SEMICOLON;
+
+line: var_line
+    | const_line
+    | func_line
+    | for_line
+    | while_line
+    | class_line
+    | extends_line
+    | class_name_line
+    | enum_line
+    | if_line
+    | elif_line
+    | else_line
+    | return_line
+    | signal_line
+    | match_line
+    | match_entry_line
+    | pass_line
+    | break_line
+    | continue_line
+    | tool_line
+    | expression_line;
+
+var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? (ASSIGN expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+const_line: CONST IDENTIFIER (COLON type)? ASSIGN expression;
+func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
 func_argument: IDENTIFIER (COLON type)? (ASSIGN expression)?;
-for_statement: FOR expression COLON;
-while_statement: WHILE expression COLON;
-class_statement: CLASS IDENTIFIER (EXTENDS type)? COLON;
-extends_statement: EXTENDS (type | STRING) (DOT type)*;
-class_name_statement: CLASS_NAME IDENTIFIER;
-enum_statement: ENUM IDENTIFIER? BRACE_LEFT NL* enum_entry (COMMA NL* enum_entry)* BRACE_RIGHT;
-enum_entry: IDENTIFIER (ASSIGN NUMBER)? NL*;
-if_statement: IF expression COLON statement?;
-elif_statement: ELIF expression COLON statement?;
-else_statement: ELSE COLON statement?;
-return_statement: RETURN expression?;
-signal_statement: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
-assign_statement: expression (ASSIGN) expression;
-match_statement: MATCH expression COLON;
-match_entry_statement: expression COLON;
+class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
+extends_line: EXTENDS (type | STRING) (DOT type)*;
+enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
+signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
+enum_argument: IDENTIFIER (ASSIGN NUMBER)? NL*;
+while_line: WHILE expression COLON;
+for_line: FOR expression COLON;
+if_line: IF expression COLON expression?;
+elif_line: ELIF expression COLON expression?;
+else_line: ELSE COLON expression?;
+return_line: RETURN expression?;
+match_line: MATCH expression COLON;
+match_entry_line: expression COLON;
+expression_line: expression;
+class_name_line: CLASS_NAME IDENTIFIER;
+pass_line: PASS;
+break_line: BREAK;
+continue_line: CONTINUE;
+tool_line: TOOL;
 
-expression: value ((operator value) | (type_operator (type | invoke)))*;
-operator: MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | DOT | IF | ELSE;
-type_operator: AS | IS;
+expression: value (operator value)*;
+operator: AS | IS | ASSIGN | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | DOT | IF | ELSE;
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
@@ -49,4 +75,4 @@ COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
 NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING);
-LINE_COMMENT: '#' ~[\n]*;
+LINE_COMMENT: '#' ~[\n]* -> channel(HIDDEN);
