@@ -40,12 +40,23 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() =
-        values()
-        .map { it.key.externalName to it.key }
+    override fun getAdditionalHighlightingTagToDescriptorMap() = ColorTextAttributeKey.keys()
+        .filter { it.externalName in DEMO_TEXT }
+        .map { it.externalName to it }
         .toMap()
 
-    override fun getDemoText() = """
+    override fun getDemoText() =
+        DEMO_TEXT
+
+    private fun group(vararg elements: String) =
+        elements.joinToString("//")
+
+    companion object {
+
+        const val OPERATORS = "Braces and operators"
+        const val CLASSES = "Classes"
+        const val IDENTIFIERS = "Identifiers"
+        val DEMO_TEXT = """
         extends <GDSCRIPT_CLASS_NAME>BaseClass</GDSCRIPT_CLASS_NAME>
         const MyScript = preload("res://my_script.gd")
         export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>, FILE, "*.txt") var file
@@ -66,15 +77,6 @@ class ColorSettingsPage : ColorSettingsPage {
             print(dict["key"])
             return false
         """.trimIndent()
-
-    private fun group(vararg elements: String) = elements.joinToString("//")
-
-    companion object {
-
-        const val OPERATORS = "Braces and operators"
-        const val CLASSES = "Classes"
-        const val IDENTIFIERS = "Identifiers"
-
 
     }
 

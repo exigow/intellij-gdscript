@@ -32,4 +32,11 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     private fun renameKey(copied: String) =
         copied.replace("DEFAULT", "GDSCRIPT")
 
+    companion object {
+
+        fun keys() =
+            values().map { it.key }
+
+    }
+
 }
