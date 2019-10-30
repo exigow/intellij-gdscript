@@ -1,6 +1,6 @@
 grammar Script;
 
-import Keyword, Constants, Core;
+import Keyword, Constant, Core;
 
 file: separator* (line (separator+ line?)*)? EOF;
 

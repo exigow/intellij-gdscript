@@ -1,4 +1,4 @@
-lexer grammar Constants;
+lexer grammar Constant;
 
 CONSTANT
     : 'BUTTON_LEFT'
