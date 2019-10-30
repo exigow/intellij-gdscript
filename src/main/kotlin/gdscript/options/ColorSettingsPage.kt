@@ -47,7 +47,7 @@ class ColorSettingsPage : ColorSettingsPage {
 
     override fun getDemoText() = """
         extends <GDSCRIPT_CLASS_NAME>BaseClass</GDSCRIPT_CLASS_NAME>
-        const MyScript = <GDSCRIPT_KEYWORD>preload</GDSCRIPT_KEYWORD>("res://my_script.gd")
+        const MyScript = preload("res://my_script.gd")
         export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>, FILE, "*.txt") var file
         const <GDSCRIPT_CONSTANT>CONSTANT</GDSCRIPT_CONSTANT> = 42 # line comment
         enum Named {<GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 1, <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 2}
@@ -63,7 +63,7 @@ class ColorSettingsPage : ColorSettingsPage {
                 var lua_dict = {key1 = 1, key2 = 2}
             else:
                 var array = [1.0, true, "text", [1, 2, 3]]
-            <GDSCRIPT_KEYWORD>print</GDSCRIPT_KEYWORD>(dict["key"])
+            print(dict["key"])
             return false
         """.trimIndent()
 
