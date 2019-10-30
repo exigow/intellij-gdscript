@@ -28,6 +28,9 @@ class ResourceErrorHighlightingTest : BaseTest() {
     fun `test entry boolean true`() =
         assertValid("stretch_2d = true")
 
+    fun `test entry with dot`() =
+        assertValid("quality/intended_usage/framebuffer_allocation.mobile = 1")
+
     fun `test entry boolean false`() =
         assertValid("force/mono = false")
 
