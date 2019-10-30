@@ -49,6 +49,9 @@ class ResourceErrorHighlightingTest : BaseTest() {
     fun `test entry dictionary empty`() =
         assertValid("empty = {}")
 
+    fun `test entry started with number`() =
+        assertValid("2d/default_gravity = 700")
+
     fun `test entry dictionary single value`() =
         assertValid("player = {\"hp\": 100.0}")
 
