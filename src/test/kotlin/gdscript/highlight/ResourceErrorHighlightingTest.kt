@@ -65,6 +65,16 @@ class ResourceErrorHighlightingTest : BaseTest() {
         }
         """)
 
+    fun `test entry with not properly formatted colons`() =
+        assertValid("""
+        x = [
+            1,
+            2, 3 
+            ,4,
+            5
+        ]
+        """)
+
     fun `test section`() =
         assertValid("[input]")
 
