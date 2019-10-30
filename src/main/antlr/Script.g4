@@ -1,6 +1,6 @@
 grammar Script;
 
-import Keyword, Core;
+import Keyword, Constants, Core;
 
 file: separator* (line (separator+ line?)*)? EOF;
 
@@ -54,7 +54,7 @@ tool_line: TOOL;
 
 expression: value (operator value)*;
 operator: AS | IS | ASSIGN | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | DOT | IF | ELSE;
-value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
+value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
 dictionary_entry: (STRING | NUMBER) COLON expression NL*;

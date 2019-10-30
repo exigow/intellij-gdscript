@@ -16,9 +16,4 @@ class UpperCaseConstantAnnotatorTest : BaseTest() {
         environment.checkInfoHighlighting()
     }
 
-    fun `test PI language-level constant`() {
-        environment.openCode("rad = ${info("PI")}")
-        environment.checkInfoHighlighting()
-    }
-
 }

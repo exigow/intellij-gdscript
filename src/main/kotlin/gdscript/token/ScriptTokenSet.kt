@@ -16,6 +16,7 @@ object ScriptTokenSet {
     val DOTS = create(DOT)
     val NUMBERS = create(NUMBER)
     val STRINGS = create(STRING)
+    val CONSTANTS = create(CONSTANT)
     val OPERATION_SIGNS = create(
         ASSIGN,
         ARROW,
