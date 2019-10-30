@@ -5,7 +5,7 @@ import KeywordLexer, CoreLexer;
 file: (statement | NL)* EOF;
 statement: section | property | LINE_COMMENT;
 section: BRACKET_LEFT (section_id | property)+ BRACKET_RIGHT;
-property: key '=' value;
+property: key EQUALS value;
 key: id ((SLASH | DOT) id)*;
 section_id: id (DOT id)*;
 value: MINUS? (IDENTIFIER | STRING | NUMBER | TRUE | FALSE | NULL | constructor | list | dictionary | entry);

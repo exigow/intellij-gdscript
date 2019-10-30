@@ -318,6 +318,9 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test minus with no whitespace`() =
         assertNoErrors("""x = y -1""")
 
+    fun `test inferred type operator with variable`() =
+        assertNoErrors("var x := y")
+
     fun `test subscribe array`() =
         assertNoErrors("items[7] = 0")
 

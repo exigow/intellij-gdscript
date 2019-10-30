@@ -1,5 +1,6 @@
 lexer grammar CoreLexer;
 
+EQUALS: '=';
 MINUS: '-';
 SEMICOLON: ';';
 SLASH: '/';
