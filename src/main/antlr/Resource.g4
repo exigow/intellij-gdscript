@@ -1,6 +1,6 @@
 grammar Resource;
 
-import Keyword, Core;
+import KeywordLexer, CoreLexer;
 
 file: (statement | NL)* EOF;
 statement: section | property | LINE_COMMENT;

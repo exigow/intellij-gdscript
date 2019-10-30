@@ -1,6 +1,6 @@
 grammar Script;
 
-import Keyword, Constant, Function, Core;
+import KeywordLexer, ConstantLexer, FunctionLexer, CoreLexer;
 
 file: separator* (line (separator+ line?)*)? EOF;
 

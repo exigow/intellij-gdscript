@@ -1,4 +1,4 @@
-lexer grammar Core;
+lexer grammar CoreLexer;
 
 MINUS: '-';
 SEMICOLON: ';';

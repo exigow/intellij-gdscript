@@ -1,4 +1,4 @@
-lexer grammar Function;
+lexer grammar FunctionLexer;
 
 FUNCTION
     : 'abs'

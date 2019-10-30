@@ -1,4 +1,4 @@
-lexer grammar Keyword;
+lexer grammar KeywordLexer;
 
 REMOTE: 'remote';
 PUPPET: 'puppet';
