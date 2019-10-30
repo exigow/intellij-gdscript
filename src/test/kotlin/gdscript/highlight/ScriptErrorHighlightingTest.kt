@@ -232,7 +232,7 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("func hit() -> float:")
 
     fun `test function static`() =
-        assertNoErrors("static func max(a, b):")
+        assertNoErrors("static func add(a, b):")
 
     fun `test function void`() =
         assertNoErrors("func some() -> void:")

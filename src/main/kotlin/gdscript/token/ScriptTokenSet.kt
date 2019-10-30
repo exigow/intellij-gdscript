@@ -6,7 +6,7 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ScriptTokenSet {
 
-    val KEYWORDS = create(*generateKeywordSet())
+    val KEYWORDS = create(*generateKeywordSet(), FUNCTION)
     val WHITESPACES = create(WHITESPACE)
     val LINE_COMMENTS = create(LINE_COMMENT)
     val IDENTIFIERS = create(IDENTIFIER)

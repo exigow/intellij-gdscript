@@ -19,7 +19,6 @@
 		<completion.contributor implementationClass="gdscript.completion.DataCompletionContributor" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ClassAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.InstanceFieldAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.KeywordAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.UpperCaseConstantAnnotator" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>

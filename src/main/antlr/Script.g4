@@ -1,6 +1,6 @@
 grammar Script;
 
-import Keyword, Constant, Core;
+import Keyword, Constant, Function, Core;
 
 file: separator* (line (separator+ line?)*)? EOF;
 
@@ -60,7 +60,7 @@ dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE
 dictionary_entry: (STRING | NUMBER) COLON expression NL*;
 dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
 dictionary_lua_entry: IDENTIFIER ASSIGN expression NL*;
-invoke: DOT? (IDENTIFIER | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
+invoke: DOT? (IDENTIFIER | FUNCTION | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
 subscribe: IDENTIFIER (BRACKET_LEFT expression BRACKET_RIGHT)+;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
