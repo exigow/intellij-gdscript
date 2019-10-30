@@ -20,7 +20,7 @@ class DataCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
         val projectDir = findProjectFile(current.file())?.parent
-        if (current.isString() && projectDir != null) {
+        if (current.isString() && current.startsWithResourceText() && projectDir != null) {
             val projectFiles = collectAllFiles(projectDir)
             for (file in projectFiles - current.file()) {
                 val path = findRelativePath(projectDir, file, '/')!!
@@ -48,6 +48,9 @@ class DataCompletionContributor : CompletionContributor() {
 
     private fun CompletionParameters.isString() =
         (position as LeafPsiElement).elementType in ScriptTokenSet.STRINGS
+
+    private fun CompletionParameters.startsWithResourceText() =
+        position.text.startsWith("\"res://")
 
 }
 
