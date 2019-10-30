@@ -1,5 +1,6 @@
 lexer grammar Core;
 
+MINUS: '-';
 SEMICOLON: ';';
 SLASH: '/';
 COLON: ':';

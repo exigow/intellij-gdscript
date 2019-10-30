@@ -69,7 +69,6 @@ primitive: BOOL | INT | FLOAT | VOID;
 
 ASSIGN: '=' | ':='| '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 ARROW: '->';
-MINUS: '-';
 OTHER_OPERATORS: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||';
 COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
 NOT_BITWISE: '~';
