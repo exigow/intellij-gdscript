@@ -67,7 +67,7 @@ class ColorSettingsPage : ColorSettingsPage {
             return false
         """.trimIndent()
 
-    private fun group(vararg asd: String) = asd.joinToString("//")
+    private fun group(vararg elements: String) = elements.joinToString("//")
 
     companion object {
 
