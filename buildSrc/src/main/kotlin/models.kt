@@ -3,7 +3,7 @@ data class Language(
     val classes: List<Class>,
     val primitiveClasses: List<Class>,
     val functions: List<Method>,
-    val singletons: List<Field>
+    val singletons: List<Class>
 )
 
 data class Class(

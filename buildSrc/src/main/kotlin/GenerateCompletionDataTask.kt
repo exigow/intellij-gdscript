@@ -15,6 +15,10 @@ open class GenerateDocumentationTask : DefaultTask() {
         val languageLink = "https://github.com/godotengine/godot/raw/master/modules/gdscript/doc_classes/@GDScript.xml"
         val links = collectLinks(directory) + languageLink
         val files = links.map { fetch(it) }
+        val singletonNames = files
+            .filter { isLanguageClass(it) }
+            .flatMap { parseFields(it) }
+            .map { it.name }
         val language = Language(
             constants = files
                 .filter { isLanguageClass(it) }
@@ -22,6 +26,7 @@ open class GenerateDocumentationTask : DefaultTask() {
                 .sortedBy { it.name },
             classes = files
                 .filter { !isLanguageClass(it) }
+                .filter { it.select("class").attr("name") !in singletonNames }
                 .filter { isNotEmptyClass(it) }
                 .map { parseClass(it) }
                 .sortedBy { it.name },
@@ -30,9 +35,8 @@ open class GenerateDocumentationTask : DefaultTask() {
                 .flatMap { parseMethods(it) }
                 .sortedBy { it.name },
             singletons = files
-                .filter { isLanguageClass(it) }
-                .flatMap { parseFields(it) }
-                .sortedBy { it.name },
+                .filter { it.select("class").attr("name") in singletonNames }
+                .map { parseClass(it) },
             primitiveClasses = files
                 .filter { isPrimitiveClass(it) }
                 .map { parseClass(it) }

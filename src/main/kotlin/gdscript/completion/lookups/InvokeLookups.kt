@@ -16,6 +16,14 @@ object InvokeLookups {
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
 
+    fun createStaticMethod(it: Method): LookupElement =
+        create(it.name)
+            .withIcon(PlatformIcons.METHOD_ICON)
+            .withArgumentsTail(it.arguments)
+            .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+            .withTypeText(it.type)
+            .bold()
+
     fun createPrimitiveConstructor(it: Method): LookupElement =
         create(it.name)
             .withArgumentsTail(it.arguments)
