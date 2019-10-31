@@ -30,7 +30,7 @@ class DataCompletionContributor : CompletionContributor() {
     }
 
     private fun createFileLookup(file: VirtualFile, path: String): LookupElement {
-        val completedText = "res://$path"
+        val completedText = "$RESOURCE_PREFIX$path"
         return when (file.extension) {
             "gd" ->
                 withExplicitProximity(createClass(file.nameWithoutExtension, path, completedText), 3)
@@ -50,7 +50,11 @@ class DataCompletionContributor : CompletionContributor() {
         (position as LeafPsiElement).elementType in ScriptTokenSet.STRINGS
 
     private fun CompletionParameters.startsWithResourceText() =
-        position.text.startsWith("\"res://")
+        position.text.startsWith("\"$RESOURCE_PREFIX")
+
+    companion object {
+        const val RESOURCE_PREFIX = "res://"
+    }
 
 }
 
