@@ -13,7 +13,6 @@ object InvokeLookups {
     fun createConstructor(it: Method): LookupElement =
         create(it.name)
             .withIcon(PlatformIcons.CLASS_ICON)
-            .withTypeText(it.type)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
 

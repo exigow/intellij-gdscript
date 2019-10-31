@@ -38,7 +38,7 @@ class ValueCompletionContributor : CompletionContributor() {
         private val KEYWORDS = listOf("self", "true", "false", "null")
             .map { createKeyword(it) }
         private val SINGLETONS = COMPLETION_DATA.singletons
-            .map { createSingleton(it.name, it.type) }
+            .map { createSingleton(it.name) }
         private val CONSTANTS = COMPLETION_DATA.constants
             .map { createConstant(it.name, it.value) }
         private val FUNCTIONS = COMPLETION_DATA.functions

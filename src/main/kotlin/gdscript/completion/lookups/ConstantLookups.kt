@@ -11,10 +11,9 @@ object ConstantLookups {
             .withIcon(PlatformIcons.VARIABLE_ICON)
             .withTailText(" = $value")
 
-    fun createSingleton(name: String, type: String): LookupElement =
+    fun createSingleton(name: String): LookupElement =
         create(name)
             .withIcon(PlatformIcons.CLASS_ICON)
-            .withTypeText(type)
             .withItemTextItalic(true)
 
     fun createClass(name: String, extends: String): LookupElement =
