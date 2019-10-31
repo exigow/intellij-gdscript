@@ -15,15 +15,17 @@ class StaticCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val dot = PsiTreeUtil.prevLeaf(parameters.position)
-        if (dot != null) {
-            val id = PsiTreeUtil.prevLeaf(dot)
-            if (id as? LeafPsiElement != null) {
-                val clazz = findClass(id.text)
-                if (clazz != null) {
-                    val constants = createConstantLookups(clazz)
-                    result.caseInsensitive().addAllElements(constants)
-                    if (clazz in COMPLETION_DATA.singletons)
-                        result.caseInsensitive().addAllElements(createStaticMethodLookups(clazz))
+        if (dot as? LeafPsiElement != null) {
+            if (dot.text == ".") {
+                val id = PsiTreeUtil.prevLeaf(dot)
+                if (id as? LeafPsiElement != null) {
+                    val clazz = findClass(id.text)
+                    if (clazz != null) {
+                        val constants = createConstantLookups(clazz)
+                        result.caseInsensitive().addAllElements(constants)
+                        if (clazz in COMPLETION_DATA.singletons)
+                            result.caseInsensitive().addAllElements(createStaticMethodLookups(clazz))
+                    }
                 }
             }
         }
