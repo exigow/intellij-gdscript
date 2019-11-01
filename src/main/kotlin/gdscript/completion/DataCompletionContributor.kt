@@ -6,15 +6,15 @@ import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.PrioritizedLookupElement.withExplicitProximity
 import com.intellij.codeInsight.lookup.LookupElement
-import com.intellij.openapi.vfs.VfsUtilCore.findRelativeFile
+import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VfsUtilCore.findRelativePath
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import gdscript.completion.lookups.DataLookups.createClass
-import gdscript.completion.lookups.DataLookups.createFile
 import gdscript.completion.utilities.FileUtil.collectUsefulFiles
 import gdscript.completion.utilities.FileUtil.findProjectFile
+import gdscript.icons.IconCatalog
 import gdscript.token.ScriptTokenSet
+import javax.swing.Icon
 
 
 class DataCompletionContributor : CompletionContributor() {
@@ -32,16 +32,27 @@ class DataCompletionContributor : CompletionContributor() {
 
     private fun createFileLookup(file: VirtualFile, path: String): LookupElement {
         val completedText = RESOURCE_PREFIX + path
-        return when (file.extension) {
-            "gd" ->
-                withExplicitProximity(createClass(file.nameWithoutExtension, path, completedText), 3)
-            "tscn" ->
-                withExplicitProximity(createFile(path, completedText), 2)
-            "import", "godot" ->
-                withExplicitProximity(createFile(path, completedText), 0)
-            else ->
-                withExplicitProximity(createFile(path, completedText), 1)
-        }
+        val icon = matchIcon(file.extension)
+        val importance = matchImportance(file.extension)
+        val lookup = create(completedText)
+            .withPresentableText(file.name)
+            .withTypeText(path)
+            .withIcon(icon)
+        return withExplicitProximity(lookup, importance)
+    }
+
+    private fun matchIcon(extension: String?): Icon? = when (extension) {
+        "gd" -> IconCatalog.GODOT_FILE
+        "tscn" -> IconCatalog.RESOURCE_FILE
+        "json" -> IconCatalog.JSON_FILE
+        else -> IconCatalog.ANY_FILE
+    }
+
+    private fun matchImportance(extension: String?): Int = when (extension) {
+        "gd" -> 3
+        "tscn" -> 2
+        "import", "godot" -> 0
+        else -> 1
     }
 
     private fun CompletionParameters.file() =

@@ -10,6 +10,8 @@ object IconCatalog {
 
     val GODOT_FILE = IconLoader.getIcon("/fileIcon.png")
     val RESOURCE_FILE: Icon = FileTypes.Config
+    val JSON_FILE: Icon = FileTypes.Json
+    val ANY_FILE: Icon = FileTypes.Any_type
     val CLASS: Icon = Nodes.Class
     val STATIC_CLASS: Icon = LayeredIcon(Nodes.Class, Nodes.StaticMark)
     val STATIC_METHOD: Icon = LayeredIcon(Nodes.Method, Nodes.StaticMark)
