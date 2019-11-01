@@ -72,6 +72,11 @@ class ResourceErrorHighlightingTest : BaseTest() {
     fun `test negated number`() =
         assertValid("x = -1")
 
+    fun `test section key with signal key`() =
+        assertValid("""
+            [connection signal="button_up"]
+        """)
+
     fun `test entry with not properly formatted colons`() =
         assertValid("""
         x = [

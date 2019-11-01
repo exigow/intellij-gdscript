@@ -1,6 +1,6 @@
 grammar Resource;
 
-import KeywordLexer, CoreLexer;
+import CoreLexer;
 
 file: (statement | NL)* EOF;
 statement: section | property | LINE_COMMENT;
@@ -15,4 +15,7 @@ dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry NL*)* NL* BRACE_RIGHT;
 entry: STRING COLON value;
 id: IDENTIFIER | NUMBER;
 
+TRUE: 'true';
+FALSE: 'false';
+NULL: 'null';
 LINE_COMMENT: SEMICOLON ~[\n]*;
