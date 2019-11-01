@@ -52,8 +52,12 @@ break_line: BREAK;
 continue_line: CONTINUE;
 tool_line: TOOL;
 
-expression: value (operator value)*;
-operator: AS | IS | EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | DOT | IF | ELSE;
+expression: value (instance_field_expression | instance_method_expression | type_operator_expression | operator_expression)*;
+instance_field_expression: DOT IDENTIFIER;
+instance_method_expression: DOT invoke;
+type_operator_expression: (AS | IS) value;
+operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) value;
+
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
