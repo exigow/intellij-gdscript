@@ -52,20 +52,20 @@ break_line: BREAK;
 continue_line: CONTINUE;
 tool_line: TOOL;
 
-expression: value (instance_field_expression | instance_method_expression | type_operator_expression | operator_expression)*;
+expression: value (instance_field_expression | instance_method_expression | type_operator_expression | subscribe_expression | operator_expression)*;
 instance_field_expression: DOT IDENTIFIER;
 instance_method_expression: DOT invoke;
 type_operator_expression: (AS | IS) value;
+subscribe_expression: (BRACKET_LEFT expression BRACKET_RIGHT)+;
 operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) value;
 
-value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | subscribe | in_braces | type);
+value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | STRING | array | dictionary | dictionary_lua | invoke | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
 dictionary_entry: (STRING | NUMBER) COLON expression NL*;
 dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
 dictionary_lua_entry: IDENTIFIER EQUALS expression NL*;
 invoke: DOT? (IDENTIFIER | FUNCTION | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
-subscribe: IDENTIFIER (BRACKET_LEFT expression BRACKET_RIGHT)+;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
 type: IDENTIFIER | primitive;

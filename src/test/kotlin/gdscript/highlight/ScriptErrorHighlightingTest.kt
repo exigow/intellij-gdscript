@@ -120,6 +120,11 @@ class ScriptErrorHighlightingTest : BaseTest() {
             )
         """)
 
+    fun `test array get directly after invoke statement`() =
+        assertNoErrors("""
+            var x = some_function()[0]
+        """)
+
     fun `test array multiline`() =
         assertNoErrors("""
             x = [
