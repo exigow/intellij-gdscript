@@ -14,6 +14,7 @@ import com.intellij.openapi.vfs.VirtualFileVisitor
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import gdscript.icons.IconCatalog
 import gdscript.token.ScriptTokenSet
+import gdscript.utilities.ProjectFileFinder
 import java.util.*
 import javax.swing.Icon
 
@@ -21,7 +22,8 @@ import javax.swing.Icon
 class DataCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
-        val projectDir = findProjectFile(current.file())?.parent
+        val projectFile = ProjectFileFinder.findProject(current.file())
+        val projectDir = projectFile?.parent
         if (current.isString() && current.startsWithResourceText() && projectDir != null) {
             val projectFiles = collectUsefulFiles(projectDir)
             for (file in projectFiles - current.file()) {
@@ -81,15 +83,6 @@ class DataCompletionContributor : CompletionContributor() {
 
     private fun VirtualFile.isHidden() =
         name.startsWith(".")
-
-    private tailrec fun findProjectFile(start: VirtualFile, maxSearchDepth: Int = 3): VirtualFile? {
-        val project = start.children.find { it.name == "project.godot" }
-        if (project != null)
-            return project
-        if (maxSearchDepth < 0 || start.parent == null)
-            return null
-        return findProjectFile(start.parent, maxSearchDepth - 1)
-    }
 
     companion object {
         const val RESOURCE_PREFIX = "res://"
