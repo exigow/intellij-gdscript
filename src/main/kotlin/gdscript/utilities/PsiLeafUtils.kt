@@ -10,8 +10,14 @@ object PsiLeafUtils {
     fun PsiElement.isAfterText(text: String) =
         prevLeaf()?.text == text
 
+    fun PsiElement.isBeforeText(text: String) =
+        nextLeaf()?.text == text
+
     fun PsiElement.prevLeaf() =
         PsiTreeUtil.prevLeaf(this)?.asLeaf()
+
+    fun PsiElement.nextLeaf() =
+        PsiTreeUtil.nextLeaf(this)?.asLeaf()
 
     fun PsiElement.isIdentifier() =
         isToken(ScriptLexer.IDENTIFIER)
