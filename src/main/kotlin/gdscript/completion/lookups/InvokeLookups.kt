@@ -4,21 +4,21 @@ import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
-import com.intellij.util.PlatformIcons
 import gdscript.completion.sources.Argument
 import gdscript.completion.sources.Method
+import gdscript.icons.IconCatalog
 
 object InvokeLookups {
 
     fun createConstructor(it: Method): LookupElement =
         create(it.name)
-            .withIcon(PlatformIcons.CLASS_ICON)
+            .withIcon(IconCatalog.CLASS)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
 
     fun createStaticMethod(it: Method): LookupElement =
         create(it.name)
-            .withIcon(PlatformIcons.METHOD_ICON)
+            .withIcon(IconCatalog.STATIC_METHOD)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())
             .withTypeText(it.type)
@@ -32,7 +32,7 @@ object InvokeLookups {
 
     fun createFunction(it: Method): LookupElement =
         create(it.name)
-            .withIcon(PlatformIcons.FUNCTION_ICON)
+            .withIcon(IconCatalog.FUNCTION)
             .withTypeText(it.type)
             .withArgumentsTail(it.arguments)
             .withParenthesesInsertHandler(it.arguments.isNotEmpty())

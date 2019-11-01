@@ -8,7 +8,7 @@ import java.util.ArrayList
 
 object FileUtil {
 
-    fun collectAllFiles(start: VirtualFile): Collection<VirtualFile> {
+    fun collectUsefulFiles(start: VirtualFile): Collection<VirtualFile> {
         val list = ArrayList<VirtualFile>()
         VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
             override fun visitFile(file: VirtualFile): Boolean {
