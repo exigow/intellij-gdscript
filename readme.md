@@ -2,11 +2,16 @@
 
 [![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]][license-url]
 
-![Class Completion](https://i.imgur.com/V2SOu3X.png)
-
-![Resource Completion](https://i.imgur.com/32ivyMw.png)
+![Type completion](https://i.imgur.com/502twEt.png)
 
 Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, *Android Studio*, *PyCharm*, *CLion*, ...).
+
+## Installation
+
+1. Run `./gradlew buildPlugin` or [download plugin][plugin-url].
+2. Start IntelliJ, open `Preferences`, section `Plugins`, :gear:, option `Install plugin from disk...`.
+4. Open `build/distributions/plugin.zip` archive.
+3. Restart IntelliJ.
 
 ## Usage & Development
 
@@ -15,12 +20,12 @@ Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, 
 * `./gradlew generateGrammarSource` - generate lexer/parser from ANTLR grammar sources.
 * `./gradlew generateCompletion` - generate completion data.
 
-## Manual installation
+## Screenshots
 
-1. Run `./gradlew buildPlugin` or [download plugin][plugin-url].
-2. Start IntelliJ, open `Preferences`, section `Plugins`, :gear:, option `Install plugin from disk...`.
-4. Open `build/distributions/plugin.zip` archive.
-3. Restart IntelliJ.
+![Class file completion](https://i.imgur.com/y5HJXxS.png)
+![Global constant completion](https://i.imgur.com/i2UYKFc.png)
+![Class constant completion](https://i.imgur.com/UQG7NoZ.png)
+![JSON file completion](https://i.imgur.com/vDtcev8.png)
 
 [plugin-url]: https://plugins.jetbrains.com/plugin/13107
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
