@@ -8,6 +8,9 @@ class ResourceErrorHighlightingTest : BaseTest() {
     fun `test empty file is still valid`() =
         assertValid("")
 
+    fun `test entry with number and constructor value`() =
+        assertValid("0/region = Rect2(28, 92, 132, 84)")
+
     fun `test entry name path`() =
         assertValid("screen/orientation = 0")
 
