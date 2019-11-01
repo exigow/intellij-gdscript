@@ -21,13 +21,13 @@ class DataCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "res://dir/util.gd")
     }
 
-    fun `test do not complete on missing project`() {
+    fun `test don't complete when project file is missing`() {
         environment.openCode("main.gd", """const Util = preload("res://<caret>")""")
         environment.completeBasic()
         assertNotContains(environment.lookups(), "res://main.gd")
     }
 
-    fun `test hide all dot-prefixed files`() {
+    fun `test hide all DOT-prefixed "import" files`() {
         environment.addFile("project.godot")
         environment.addFile("util.gd")
         environment.addFile(".import/file.gd")
