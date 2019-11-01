@@ -7,7 +7,7 @@ import gdscript.completion.lookups.ConstantLookups.createConstant
 import gdscript.completion.lookups.InvokeLookups.createStaticMethod
 import gdscript.completion.sources.COMPLETION_DATA
 import gdscript.completion.sources.Class
-import gdscript.completion.utilities.PsiElementUtil.prevLeaf
+import gdscript.utilities.PsiLeafUtils.prevLeaf
 
 class StaticCompletionContributor : CompletionContributor() {
 

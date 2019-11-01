@@ -7,13 +7,14 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.completion.PrioritizedLookupElement.withExplicitProximity
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VfsUtilCore.findRelativePath
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.vfs.VirtualFileVisitor
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import gdscript.completion.utilities.FileUtil.collectUsefulFiles
-import gdscript.completion.utilities.FileUtil.findProjectFile
 import gdscript.icons.IconCatalog
 import gdscript.token.ScriptTokenSet
+import java.util.*
 import javax.swing.Icon
 
 
@@ -63,6 +64,32 @@ class DataCompletionContributor : CompletionContributor() {
 
     private fun CompletionParameters.startsWithResourceText() =
         position.text.startsWith('"' + RESOURCE_PREFIX)
+
+    private  fun collectUsefulFiles(start: VirtualFile): Collection<VirtualFile> {
+        val list = ArrayList<VirtualFile>()
+        VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
+            override fun visitFile(file: VirtualFile): Boolean {
+                if (file.isHidden())
+                    return false
+                if (!file.isDirectory && file.extension != "import")
+                    list.add(file)
+                return super.visitFile(file)
+            }
+        })
+        return list
+    }
+
+    private fun VirtualFile.isHidden() =
+        name.startsWith(".")
+
+    private tailrec fun findProjectFile(start: VirtualFile, maxSearchDepth: Int = 3): VirtualFile? {
+        val project = start.children.find { it.name == "project.godot" }
+        if (project != null)
+            return project
+        if (maxSearchDepth < 0 || start.parent == null)
+            return null
+        return findProjectFile(start.parent, maxSearchDepth - 1)
+    }
 
     companion object {
         const val RESOURCE_PREFIX = "res://"

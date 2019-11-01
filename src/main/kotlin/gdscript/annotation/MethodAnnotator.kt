@@ -6,6 +6,7 @@ import com.intellij.psi.PsiElement
 import gdscript.options.ColorTextAttributeKey.INSTANCE_METHOD
 import gdscript.options.ColorTextAttributeKey.STATIC_METHOD
 import gdscript.psi.FunctionRule
+import gdscript.utilities.PsiLeafUtils.isIdentifier
 
 class MethodAnnotator : Annotator {
 
