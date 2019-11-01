@@ -131,6 +131,11 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test ternary-if with variable definition statement`() =
         assertNoErrors("var x = value if expression else value")
 
+    fun `test enum with negated value`() =
+        assertNoErrors("""
+            enum Named { NEGATED = -1}
+        """)
+
     fun `test return`() {
         assertNoErrors("return x")
         assertNoErrors("return")

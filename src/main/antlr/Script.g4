@@ -36,7 +36,7 @@ class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
 extends_line: EXTENDS (type | STRING) (DOT type)*;
 enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
 signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
-enum_argument: IDENTIFIER (EQUALS NUMBER)? NL*;
+enum_argument: IDENTIFIER (EQUALS expression)? NL*;
 while_line: WHILE expression COLON;
 for_line: FOR expression COLON;
 if_line: IF expression COLON expression?;
