@@ -54,8 +54,13 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("x and y")
         assertNoErrors("x or y")
         assertNoErrors("x in y")
-        assertNoErrors("x as y")
         assertNoErrors("x = not y")
+    }
+
+    fun `test as-is type keyword operators`() {
+        assertNoErrors("x as y")
+        assertNoErrors("x is y")
+        assertNoErrors(""" "123" as int""")
     }
 
     fun `test continue`() =
@@ -146,7 +151,7 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test const typed`() =
         assertNoErrors("const MAX_HP: int = 100")
 
-    fun `test const with member expression as value`() =
+    fun `test const with member expression value`() =
         assertNoErrors("const POSITION = Vector2(20, 30).x")
 
     fun `test dictionary`() =
