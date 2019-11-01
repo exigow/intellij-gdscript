@@ -11,6 +11,7 @@ object ResourceTokenSet {
     val IDENTIFIERS = create(IDENTIFIER)
     val NUMBERS = create(NUMBER)
     val STRINGS = create(STRING)
+    val RESOURCES = create(RESOURCE)
     val LINE_COMMENTS = create(LINE_COMMENT)
 
     private fun create(vararg token: Int) =

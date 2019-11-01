@@ -8,7 +8,7 @@ section: BRACKET_LEFT (section_id | property)+ BRACKET_RIGHT;
 property: key EQUALS value;
 key: id ((SLASH | DOT) id)*;
 section_id: id (DOT id)*;
-value: MINUS? (IDENTIFIER | STRING | NUMBER | TRUE | FALSE | NULL | constructor | list | dictionary | entry);
+value: MINUS? (IDENTIFIER | STRING | RESOURCE | NUMBER | TRUE | FALSE | NULL | constructor | list | dictionary | entry);
 constructor: IDENTIFIER PARENTHES_LEFT NL* value? NL* (COMMA NL* value NL*)* NL* PARENTHES_RIGHT;
 list: BRACKET_LEFT NL* value? NL* (COMMA NL* value NL*)* NL* BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry NL*)* NL* BRACE_RIGHT;

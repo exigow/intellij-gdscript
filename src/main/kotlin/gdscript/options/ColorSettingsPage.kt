@@ -34,7 +34,8 @@ class ColorSettingsPage : ColorSettingsPage {
         INSTANCE_METHOD to group(CLASSES, "Instance method"),
         INSTANCE_FIELD to group(CLASSES, "Instance field"),
         CLASS_NAME to group(CLASSES, "Class name"),
-        CONSTANT to group(IDENTIFIERS, "Constant"))
+        CONSTANT to group(IDENTIFIERS, "Constant"),
+        RESOURCE to "Resource text")
         .map { (color, label) -> AttributesDescriptor(label, color.key) }
         .toTypedArray()
 

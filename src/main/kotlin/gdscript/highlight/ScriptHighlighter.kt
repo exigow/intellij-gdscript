@@ -21,6 +21,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
     private fun matchingToColor(element: IElementType?) = when (element) {
         in ScriptTokenSet.LINE_COMMENTS -> ColorTextAttributeKey.LINE_COMMENT
         in ScriptTokenSet.STRINGS -> ColorTextAttributeKey.STRING
+        in ScriptTokenSet.RESOURCES -> ColorTextAttributeKey.RESOURCE
         in ScriptTokenSet.NUMBERS -> ColorTextAttributeKey.NUMBER
         in ScriptTokenSet.KEYWORDS -> ColorTextAttributeKey.KEYWORD
         in ScriptTokenSet.NODES -> ColorTextAttributeKey.NODE

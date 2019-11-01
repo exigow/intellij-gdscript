@@ -82,4 +82,10 @@ class InvokeCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "false")
     }
 
+    fun `test do not complete inside string`() {
+        environment.openCode("""x = "flo<caret>" """)
+        environment.completeBasic()
+        assertNotContains(environment.lookups(), "float")
+    }
+
 }

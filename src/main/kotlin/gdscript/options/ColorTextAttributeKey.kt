@@ -24,7 +24,8 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     INSTANCE_FIELD(Default.INSTANCE_FIELD),
     INSTANCE_METHOD(Default.INSTANCE_METHOD),
     CLASS_NAME(Default.CLASS_NAME),
-    CONSTANT(Default.CONSTANT);
+    CONSTANT(Default.CONSTANT),
+    RESOURCE(Default.DOC_COMMENT);
 
     val key: TextAttributesKey =
         createTextAttributesKey(renameKey(copied.externalName), copied)
