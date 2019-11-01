@@ -6,6 +6,9 @@ import uitlities.openCode
 
 class ScriptErrorHighlightingTest : BaseTest() {
 
+    fun `test empty file is still valid`() =
+        assertNoErrors("")
+
     fun `test super method invocation`() =
         assertNoErrors("""
             func _change_state(state_name):
