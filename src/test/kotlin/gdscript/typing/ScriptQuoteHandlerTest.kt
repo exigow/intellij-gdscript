@@ -5,16 +5,32 @@ import uitlities.openCode
 
 class ScriptQuoteHandlerTest : BaseTest() {
 
-    fun `test add double-quotes on new string and move caret inside`() {
+    fun `test Double-Quote completion`() {
         environment.openCode("x = <caret>")
         environment.type('"')
         environment.checkResult("x = \"<caret>\"")
     }
 
-    fun `test remove double-quotes on Backspace`() {
+    fun `test Apostrophe completion`() {
+        environment.openCode("x = <caret>")
+        environment.type('\'')
+        environment.checkResult("x = \'<caret>\'")
+    }
+
+    fun `test remove Double-Quote on Backspace`() {
         environment.openCode("x = \"<caret>\"")
-        environment.type('\b')
+        environment.type(BACKSPACE)
         environment.checkResult("x = <caret>")
+    }
+
+    fun `test remove Apostrophe on Backspace`() {
+        environment.openCode("x = \'<caret>\'")
+        environment.type(BACKSPACE)
+        environment.checkResult("x = <caret>")
+    }
+
+    companion object {
+        const val BACKSPACE = '\b'
     }
 
 }

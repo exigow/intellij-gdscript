@@ -1,21 +1,29 @@
 package gdscript.typing
 
 
+import ScriptLexer.STRING_APHOSTROPHE
+import ScriptLexer.STRING_DOUBLE_QUOTE
 import com.intellij.codeInsight.editorActions.MultiCharQuoteHandler
-import com.intellij.openapi.editor.Editor
+import com.intellij.codeInsight.editorActions.SimpleTokenSetQuoteHandler
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
+import gdscript.token.ScriptTokenSet
+import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
 
-class ScriptQuoteHandler : MultiCharQuoteHandler {
+class ScriptQuoteHandler : SimpleTokenSetQuoteHandler(ScriptTokenSet.STRINGS), MultiCharQuoteHandler {
 
-    override fun isClosingQuote(iter: HighlighterIterator, offset: Int) = false
+    override fun getClosingQuote(iterator: HighlighterIterator, offset: Int): CharSequence? {
+        val token = recognizeTokenOnPosition(iterator)
+        return matchClosingCharacter(token)
+    }
 
-    override fun isOpeningQuote(iter: HighlighterIterator, offset: Int) = true
+    private fun matchClosingCharacter(token: Int?) = when (token) {
+        STRING_DOUBLE_QUOTE -> "\""
+        STRING_APHOSTROPHE -> "\'"
+        else -> null
+    }
 
-    override fun hasNonClosedLiteral(editor: Editor, iter: HighlighterIterator, offset: Int) = true
-
-    override fun isInsideLiteral(iter: HighlighterIterator) = true
-
-    override fun getClosingQuote(iter: HighlighterIterator, offset: Int) = "\""
+    private fun recognizeTokenOnPosition(iterator: HighlighterIterator) =
+        (iterator.tokenType as? TokenIElementType)?.antlrTokenType
 
 }

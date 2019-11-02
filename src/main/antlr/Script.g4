@@ -67,7 +67,7 @@ in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
 type: IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
-string: STRING | RESOURCE;
+string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE;
 
 ASSIGN: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 INFER: ':=';
@@ -76,5 +76,5 @@ OTHER_OPERATORS: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||';
 COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
-NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING);
+NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING_DOUBLE_QUOTE);
 LINE_COMMENT: '#' ~[\n]* -> channel(HIDDEN);

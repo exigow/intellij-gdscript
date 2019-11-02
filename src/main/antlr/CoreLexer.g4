@@ -29,10 +29,9 @@ fragment DIGIT: '0'..'9';
 
 RESOURCE: '"' ('res' | 'user') '://' .*? '"';
 
-STRING: STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | STRING_MULTILINE;
-fragment STRING_DOUBLE_QUOTE: '"' .*? '"';
-fragment STRING_APHOSTROPHE: '\'' .*? '\'';
-fragment STRING_MULTILINE: '"""' .*? '"""';
+STRING_MULTILINE: '"""' .*? '"""';
+STRING_DOUBLE_QUOTE: '"' .*? ('"' | NL | EOF);
+STRING_APHOSTROPHE: '\'' .*? ('\'' | NL | EOF);
 
 WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
 ERRCHAR: . -> channel(HIDDEN);

@@ -336,7 +336,10 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("var x = 1 # initialize")
 
     fun `test comment multiline`() =
-        assertNoErrors("\"\"\"this is comment\"\"\"")
+        assertNoErrors("\"\"\"\ncomment\n\"\"\"")
+
+    fun `test comment multiline but single line`() =
+        assertNoErrors("\"\"\"comment\"\"\"")
 
     fun `test negate`() =
         assertNoErrors("negated = -value")
