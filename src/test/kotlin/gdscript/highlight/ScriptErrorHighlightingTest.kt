@@ -186,6 +186,12 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test enum`() =
         assertNoErrors("enum {RED, GREEN, BLUE}")
 
+    fun `test if then return in same line`() =
+        assertNoErrors("if condition: return true")
+
+    fun `test function then return in same line`() =
+        assertNoErrors("func test() -> bool: return false")
+
     fun `test enum multiline`() =
         assertNoErrors("""
             enum {

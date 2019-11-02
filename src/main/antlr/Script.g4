@@ -4,49 +4,46 @@ import KeywordLexer, ConstantLexer, FunctionLexer, CoreLexer;
 
 file: separator* (line (separator+ line?)*)? EOF;
 
-separator: NL | SEMICOLON;
+separator: NL | SEMICOLON | COLON;
 
 line: var_line
     | const_line
     | func_line
-    | for_line
-    | while_line
-    | class_line
-    | extends_line
-    | class_name_line
     | enum_line
+    | signal_line
+    | extends_line
+    | class_line
+    | class_name_line
+    | while_line
+    | for_line
     | if_line
     | elif_line
-    | else_line
-    | return_line
-    | signal_line
     | match_line
-    | match_entry_line
+    | return_line
+    | else_line
     | pass_line
     | break_line
     | continue_line
     | tool_line
-    | expression_line;
+    | expression;
 
 var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_line: CONST IDENTIFIER (COLON type)? (EQUALS | INFER) expression;
-func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
+func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)?;
 func_argument: IDENTIFIER (COLON type)? (EQUALS expression)?;
-class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
-extends_line: EXTENDS (type | string) (DOT type)*;
 enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
-signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
 enum_argument: IDENTIFIER (EQUALS expression)? NL*;
-while_line: WHILE expression COLON;
-for_line: FOR expression COLON;
-if_line: IF expression COLON expression?;
-elif_line: ELIF expression COLON expression?;
-else_line: ELSE COLON expression?;
-return_line: RETURN expression?;
-match_line: MATCH expression COLON;
-match_entry_line: expression COLON;
-expression_line: expression;
+signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
+extends_line: EXTENDS (type | string) (DOT type)*;
+class_line: CLASS IDENTIFIER (EXTENDS type)?;
 class_name_line: CLASS_NAME IDENTIFIER;
+while_line: WHILE expression;
+for_line: FOR expression;
+if_line: IF expression;
+elif_line: ELIF expression;
+match_line: MATCH expression;
+return_line: RETURN expression?;
+else_line: ELSE;
 pass_line: PASS;
 break_line: BREAK;
 continue_line: CONTINUE;
