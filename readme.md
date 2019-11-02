@@ -10,7 +10,7 @@ Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, 
 
 1. Run `./gradlew buildPlugin` or [download plugin][plugin-url].
 2. Start IntelliJ, open `Preferences`, section `Plugins`, :gear:, option `Install plugin from disk...`.
-4. Open `build/distributions/plugin.zip` archive.
+4. Open `build/distributions/intellij-gdscript.zip` archive.
 3. Restart IntelliJ.
 
 ## Usage & Development
