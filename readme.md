@@ -23,6 +23,7 @@ Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, 
 ## Screenshots
 
 ![Class file completion](https://i.imgur.com/y5HJXxS.png)
+![Language-level functions completion](https://i.imgur.com/rD7deeO.png)
 ![Global constant completion](https://i.imgur.com/i2UYKFc.png)
 ![Class constant completion](https://i.imgur.com/UQG7NoZ.png)
 ![JSON file completion](https://i.imgur.com/vDtcev8.png)
