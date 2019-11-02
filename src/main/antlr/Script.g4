@@ -53,7 +53,7 @@ expression: value (instance_field_expression | instance_method_expression | type
 instance_field_expression: DOT IDENTIFIER;
 instance_method_expression: DOT invoke;
 type_operator_expression: (AS | IS) value;
-subscribe_expression: (BRACKET_LEFT expression BRACKET_RIGHT)+;
+subscribe_expression: BRACKET_LEFT expression BRACKET_RIGHT;
 operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) value;
 
 value: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | dictionary_lua | invoke | in_braces | type);
