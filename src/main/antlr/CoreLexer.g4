@@ -16,7 +16,7 @@ BRACE_RIGHT: '}';
 NL: '\n';
 
 NUMBER: NUMBER_FLOATING | NUMBER_BINARY | NUMBER_HEXADECIMAL;
-fragment NUMBER_FLOATING: DIGIT+ DOT? (DIGIT+)? ('e' '-'? DIGIT+)?;
+fragment NUMBER_FLOATING: DIGIT+ DOT? (DIGIT+)? ('e' ('-' | '+')? DIGIT+)?;
 fragment NUMBER_BINARY: '0b' ('0' | '1')+;
 fragment NUMBER_HEXADECIMAL: '0x' (DIGIT | 'A'..'F')+;
 

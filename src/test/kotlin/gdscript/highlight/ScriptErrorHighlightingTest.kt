@@ -231,6 +231,11 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test number floating-point scientific notation`() =
         assertNoErrors("scientific = 58.1e-10")
 
+    fun `test number floating-point scientific notation with plus`() {
+        assertNoErrors("x = -1.53049e+009")
+        assertNoErrors("x = 1e+008")
+    }
+
     fun `test number floating-point scientific alternative notation`() =
         assertNoErrors("scientific = 1e10")
 
