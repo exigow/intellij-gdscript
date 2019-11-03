@@ -239,6 +239,9 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test number floating-point scientific alternative notation`() =
         assertNoErrors("scientific = 1e10")
 
+    fun `test number floating point with missing zero`() =
+        assertNoErrors("acceleration_radians = .3")
+
     fun `test export strings`() =
         assertNoErrors("""export(int, "Warrior", "Magician", "Thief") var character_class""")
 
