@@ -8,10 +8,9 @@ Plugin is compatible with all products developed by JetBrains (*IntelliJ IDEA*, 
 
 ## Installation
 
-1. Run `./gradlew buildPlugin` or [download plugin][plugin-url].
-2. Start IntelliJ, open `Preferences`, section `Plugins`, :gear:, option `Install plugin from disk...`.
-4. Open `build/distributions/intellij-gdscript.zip` archive.
-3. Restart IntelliJ.
+1. Run `./gradlew buildPlugin`.
+2. Start *IntelliJ*, *Settings* | *Plugins* | :gear: | *Install plugin from disk...*.
+3. Find `build/distributions/intellij-gdscript.zip` and restart.
 
 ## Usage & Development
 
