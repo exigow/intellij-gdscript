@@ -3,10 +3,15 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import gdscript.completion.lookups.ConstantLookups.createConstant
-import gdscript.completion.lookups.InvokeLookups.createStaticMethod
-import gdscript.completion.sources.COMPLETION_DATA
+import com.intellij.codeInsight.lookup.LookupElement
+import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.Class
+import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.Method
+import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
+import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
+import gdscript.icons.IconCatalog
+import gdscript.icons.IconCatalog.STATIC_VARIABLE
 import gdscript.utilities.PsiLeafUtils.prevLeaf
 
 class StaticCompletionContributor : CompletionContributor() {
@@ -15,22 +20,23 @@ class StaticCompletionContributor : CompletionContributor() {
         val dot = parameters.position.prevLeaf()
         if (dot?.text == ".") {
             val id = dot.prevLeaf()
-            val clazz = findClass(id?.text)
+            val clazz = CompletionUtils.findClass(id?.text)
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
                 result.caseInsensitive().addAllElements(constants)
-                if (clazz in COMPLETION_DATA.singletons)
+                if (clazz in CompletionUtils.singletons())
                     result.caseInsensitive().addAllElements(createStaticMethodLookups(clazz))
             }
         }
     }
 
-    private fun findClass(name: String?) = (COMPLETION_DATA.classes + COMPLETION_DATA.singletons)
-        .find { it.name == name }
-
     private fun createConstantLookups(clazz: Class) = clazz
         .constants
-        .map { createConstant(it.name, formatSpaces(it.value)) }
+        .map {
+            create(it.name)
+                .withIcon(STATIC_VARIABLE)
+                .withTailText(" = ${formatSpaces(it.value)}")
+        }
 
     private fun createStaticMethodLookups(clazz: Class) = clazz
         .methods
@@ -39,5 +45,13 @@ class StaticCompletionContributor : CompletionContributor() {
     private fun formatSpaces(value: String) = value
         .replace(" ", "")
         .replace(",", ", ")
+
+    private fun createStaticMethod(it: Method): LookupElement =
+        create(it.name)
+            .withIcon(IconCatalog.STATIC_METHOD)
+            .withArgumentsTail(it.arguments)
+            .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+            .withTypeText(it.type)
+            .bold()
 
 }

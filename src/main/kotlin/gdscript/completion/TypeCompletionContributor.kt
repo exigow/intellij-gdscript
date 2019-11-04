@@ -1,27 +1,35 @@
 package gdscript.completion
 
-import gdscript.completion.sources.COMPLETION_DATA
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
+import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
-import gdscript.completion.lookups.ConstantLookups.createClass
-import gdscript.completion.lookups.KeywordLookups.createKeyword
-import gdscript.completion.providers.CaseInsensitiveLookupProvider
+import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.utils.CaseInsensitiveLookupProvider
+import gdscript.icons.IconCatalog.CLASS
 import gdscript.psi.TypeRule
 
 
 class TypeCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, psiElement().withParent(TypeRule::class.java), CaseInsensitiveLookupProvider(PRIMITIVES))
-        extend(BASIC, psiElement().withParent(TypeRule::class.java), CaseInsensitiveLookupProvider(CLASSES))
+        extend(BASIC, WITH_TYPE_PARENT, CaseInsensitiveLookupProvider(PRIMITIVES))
+        extend(BASIC, WITH_TYPE_PARENT, CaseInsensitiveLookupProvider(CLASSES))
     }
 
     private companion object {
-        val PRIMITIVES = COMPLETION_DATA.primitiveClasses
-            .map { createKeyword(it.name) }
-        val CLASSES = COMPLETION_DATA.classes
-            .map { createClass(it.name, it.extends) }
+
+        val WITH_TYPE_PARENT =
+            psiElement().withParent(TypeRule::class.java)!!
+
+        val PRIMITIVES =
+            CompletionUtils.primitives()
+                .map { create(it.name).bold() }
+
+        val CLASSES =
+            CompletionUtils.classes()
+                .map { create(it.name).withTypeText(it.extends).withIcon(CLASS) }
+
     }
 
 }

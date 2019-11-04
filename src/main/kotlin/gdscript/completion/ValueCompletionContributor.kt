@@ -1,16 +1,16 @@
 package gdscript.completion
 
-import gdscript.completion.sources.COMPLETION_DATA
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
+import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
-import gdscript.completion.lookups.ConstantLookups.createConstant
-import gdscript.completion.lookups.ConstantLookups.createSingleton
-import gdscript.completion.lookups.InvokeLookups.createConstructor
-import gdscript.completion.lookups.InvokeLookups.createFunction
-import gdscript.completion.lookups.InvokeLookups.createPrimitiveConstructor
-import gdscript.completion.lookups.KeywordLookups.createKeyword
-import gdscript.completion.providers.CaseSensitiveLookupProvider
+import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.utils.CaseSensitiveLookupProvider
+import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
+import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
+import gdscript.icons.IconCatalog
+import gdscript.icons.IconCatalog.STATIC_CLASS
+import gdscript.icons.IconCatalog.STATIC_VARIABLE
 import gdscript.psi.InvokeRule
 import gdscript.psi.ValueRule
 
@@ -18,37 +18,71 @@ import gdscript.psi.ValueRule
 class ValueCompletionContributor : CompletionContributor() {
 
     init {
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(SINGLETONS))
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(CONSTANTS))
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(FUNCTIONS))
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(CLASSES))
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(PRIMITIVES))
-        extend(BASIC, INSIDE_VALUE, CaseSensitiveLookupProvider(KEYWORDS))
-        extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(PRIMITIVES))
-        extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(FUNCTIONS))
-        extend(BASIC, INSIDE_INVOKE, CaseSensitiveLookupProvider(CLASSES))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(SINGLETON_NAMES))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(CONSTANT_VALUES))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(FUNCTIONS))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(CLASS_CONSTRUCTORS))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(PRIMITIVE_CONSTRUCTORS))
+        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(KEYWORD_VARIABLES))
+        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(PRIMITIVE_CONSTRUCTORS))
+        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(FUNCTIONS))
+        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(CLASS_CONSTRUCTORS))
     }
 
-    companion object {
-        private val INSIDE_VALUE = psiElement()
-            .withParent(ValueRule::class.java)
+    companion object Lookups {
+
+        private val WITH_VALUE_PARENT =
+            psiElement().withParent(ValueRule::class.java)
             .andNot(psiElement().afterLeaf(".")).andNot(psiElement().beforeLeaf("."))
-        private val INSIDE_INVOKE = psiElement()
-            .withParent(InvokeRule::class.java)
-        private val KEYWORDS = listOf("self", "true", "false", "null")
-            .map { createKeyword(it) }
-        private val SINGLETONS = COMPLETION_DATA.singletons
-            .map { createSingleton(it.name) }
-        private val CONSTANTS = COMPLETION_DATA.constants
-            .map { createConstant(it.name, it.value) }
-        private val FUNCTIONS = COMPLETION_DATA.functions
-            .map { createFunction(it) }
-        private val CLASSES = COMPLETION_DATA.classes
-            .flatMap { clazz -> clazz.methods.filter { it.name == clazz.name } }
-            .map { createConstructor(it) }
-        private val PRIMITIVES = COMPLETION_DATA.primitiveClasses
-            .flatMap { clazz -> clazz.methods.filter { it.name == clazz.name } }
-            .map { createPrimitiveConstructor(it) }
+
+        private val WITH_INVOKE_PARENT =
+            psiElement().withParent(InvokeRule::class.java)
+
+        private val KEYWORD_VARIABLES =
+            CompletionUtils.keywordVariables()
+                .map { create(it).bold() }
+
+        private val SINGLETON_NAMES =
+            CompletionUtils.singletons()
+                .map { create(it.name).withIcon(STATIC_CLASS) }
+
+        private val CONSTANT_VALUES =
+            CompletionUtils.constants()
+                .map {
+                    create(it.name)
+                        .withIcon(STATIC_VARIABLE)
+                        .withTailText(" = ${it.value}")
+                }
+
+        private val FUNCTIONS =
+            CompletionUtils.functions()
+                .map {
+                    create(it.name)
+                        .withIcon(IconCatalog.FUNCTION)
+                        .withTypeText(it.type)
+                        .withArgumentsTail(it.arguments)
+                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+                        .bold()
+                }
+
+        private val CLASS_CONSTRUCTORS =
+            CompletionUtils.classConstructors()
+                .map {
+                    create(it.name)
+                        .withIcon(IconCatalog.CLASS)
+                        .withArgumentsTail(it.arguments)
+                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+                }
+
+        private val PRIMITIVE_CONSTRUCTORS =
+            CompletionUtils.primitiveConstructors()
+                .map {
+                    create(it.name)
+                        .withArgumentsTail(it.arguments)
+                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+                        .bold()
+                }
+
     }
 
 }
