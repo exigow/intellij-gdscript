@@ -3,11 +3,9 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.Class
 import gdscript.completion.sources.CompletionUtils
-import gdscript.completion.sources.Method
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
 import gdscript.icons.IconCatalog
@@ -40,18 +38,17 @@ class StaticCompletionContributor : CompletionContributor() {
 
     private fun createStaticMethodLookups(clazz: Class) = clazz
         .methods
-        .map { createStaticMethod(it) }
+        .map {
+            create(it.name)
+                .withIcon(IconCatalog.STATIC_METHOD)
+                .withArgumentsTail(it.arguments)
+                .withParenthesesInsertHandler(it.arguments.isNotEmpty())
+                .withTypeText(it.type)
+                .bold()
+        }
 
     private fun formatSpaces(value: String) = value
         .replace(" ", "")
         .replace(",", ", ")
-
-    private fun createStaticMethod(it: Method): LookupElement =
-        create(it.name)
-            .withIcon(IconCatalog.STATIC_METHOD)
-            .withArgumentsTail(it.arguments)
-            .withParenthesesInsertHandler(it.arguments.isNotEmpty())
-            .withTypeText(it.type)
-            .bold()
 
 }

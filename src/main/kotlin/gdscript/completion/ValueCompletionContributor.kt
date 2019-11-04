@@ -6,6 +6,8 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.CaseSensitiveLookupProvider
+import gdscript.completion.utils.CommonPatterns.WITH_INVOKE_PARENT
+import gdscript.completion.utils.CommonPatterns.WITH_VALUE_PARENT
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
 import gdscript.icons.IconCatalog
@@ -30,13 +32,6 @@ class ValueCompletionContributor : CompletionContributor() {
     }
 
     companion object Lookups {
-
-        private val WITH_VALUE_PARENT =
-            psiElement().withParent(ValueRule::class.java)
-            .andNot(psiElement().afterLeaf(".")).andNot(psiElement().beforeLeaf("."))
-
-        private val WITH_INVOKE_PARENT =
-            psiElement().withParent(InvokeRule::class.java)
 
         private val KEYWORD_VARIABLES =
             CompletionUtils.keywordVariables()

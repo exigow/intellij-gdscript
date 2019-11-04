@@ -4,31 +4,28 @@ import com.intellij.codeInsight.completion.AddSpaceInsertHandler.INSTANCE_WITH_A
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType.BASIC
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
-import com.intellij.patterns.PlatformPatterns.psiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.CaseSensitiveLookupProvider
+import gdscript.completion.utils.CommonPatterns.AFTER_EXPORT
+import gdscript.completion.utils.CommonPatterns.AFTER_NEWLINE
+import gdscript.completion.utils.CommonPatterns.AFTER_STATIC
 
 
 class KeywordCompletionContributor : CompletionContributor() {
 
     init {
         extend(BASIC, AFTER_NEWLINE, CaseSensitiveLookupProvider(STATEMENT_LOOKUPS))
-        extend(BASIC, AFTER_EXPORT, CaseSensitiveLookupProvider(createKeywordSpaced("var")))
-        extend(BASIC, AFTER_STATIC, CaseSensitiveLookupProvider(createKeywordSpaced("func")))
+        extend(BASIC, AFTER_EXPORT, CaseSensitiveLookupProvider(VAR_LOOKUP))
+        extend(BASIC, AFTER_STATIC, CaseSensitiveLookupProvider(FUNC_LOOKUP))
     }
 
     private companion object {
 
-        val AFTER_NEWLINE =
-            psiElement().afterLeaf("\n")
+        private val VAR_LOOKUP = createKeywordSpaced("var")
 
-        val AFTER_EXPORT =
-            psiElement().afterLeaf("export")
+        private val FUNC_LOOKUP = createKeywordSpaced("func")
 
-        val AFTER_STATIC =
-            psiElement().afterLeaf("static")
-
-        val STATEMENT_LOOKUPS =
+        private val STATEMENT_LOOKUPS =
             CompletionUtils.keywordsStatements()
                 .map { createKeywordSpaced(it) }
 

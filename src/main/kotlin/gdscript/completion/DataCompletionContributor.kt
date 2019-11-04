@@ -82,7 +82,9 @@ class DataCompletionContributor : CompletionContributor() {
         name.startsWith(".")
 
     companion object {
-        const val RESOURCE_PREFIX = "res://"
+
+        private const val RESOURCE_PREFIX = "res://"
+
     }
 
 }
