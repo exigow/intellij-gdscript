@@ -7,7 +7,7 @@
 ## Installation
 
 1. Run `./gradlew buildPlugin`.
-2. Start IntelliJ, `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
+2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
 3. Find `build/distributions/intellij-gdscript.zip` and restart.
 
 Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
