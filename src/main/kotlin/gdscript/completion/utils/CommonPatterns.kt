@@ -1,6 +1,6 @@
 package gdscript.completion.utils
 
-import com.intellij.patterns.PlatformPatterns
+import com.intellij.patterns.PlatformPatterns.psiElement
 import gdscript.psi.InvokeRule
 import gdscript.psi.TypeRule
 import gdscript.psi.ValueRule
@@ -8,22 +8,22 @@ import gdscript.psi.ValueRule
 object CommonPatterns {
 
     val AFTER_NEWLINE =
-        PlatformPatterns.psiElement().afterLeaf("\n")
+        psiElement().afterLeaf("\n")
 
     val AFTER_EXPORT =
-        PlatformPatterns.psiElement().afterLeaf("export")
+        psiElement().afterLeaf("export")
 
     val AFTER_STATIC =
-        PlatformPatterns.psiElement().afterLeaf("static")
+        psiElement().afterLeaf("static")
 
     val WITH_TYPE_PARENT =
-        PlatformPatterns.psiElement().withParent(TypeRule::class.java)!!
+        psiElement().withParent(TypeRule::class.java)!!
 
     val WITH_VALUE_PARENT =
-        PlatformPatterns.psiElement().withParent(ValueRule::class.java)
-            .andNot(PlatformPatterns.psiElement().afterLeaf(".")).andNot(PlatformPatterns.psiElement().beforeLeaf("."))
+        psiElement().withParent(ValueRule::class.java)
+            .andNot(psiElement().afterLeaf(".")).andNot(psiElement().beforeLeaf("."))
 
     val WITH_INVOKE_PARENT =
-        PlatformPatterns.psiElement().withParent(InvokeRule::class.java)!!
+        psiElement().withParent(InvokeRule::class.java)!!
 
 }
