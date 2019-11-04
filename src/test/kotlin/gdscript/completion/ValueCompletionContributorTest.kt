@@ -6,7 +6,7 @@ import uitlities.assertContains
 import uitlities.assertNotContains
 import uitlities.lookups
 
-class InvokeCompletionContributorTest : BaseTest() {
+class ValueCompletionContributorTest : BaseTest() {
 
     fun `test keyword as value`() {
         environment.openCode("x = <caret>")
