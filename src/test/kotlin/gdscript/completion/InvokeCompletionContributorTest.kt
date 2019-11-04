@@ -88,4 +88,10 @@ class InvokeCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "float")
     }
 
+    fun `test variable completion in argument default value`() {
+        environment.openCode("func f(arg=nul<caret>):")
+        environment.completeBasic()
+        assertNotContains(environment.lookups(), "null")
+    }
+
 }
