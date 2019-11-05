@@ -12,7 +12,7 @@ import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsert
 import gdscript.icons.IconCatalog
 import gdscript.icons.IconCatalog.STATIC_CLASS
 import gdscript.icons.IconCatalog.STATIC_VARIABLE
-import gdscript.utilities.RuleUtils.rule
+import gdscript.utilities.PsiElementUtils.rule
 
 class PrimaryCompletionContributor : CompletionContributor() {
 

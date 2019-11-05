@@ -5,7 +5,7 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
-import gdscript.utilities.RuleUtils.rule
+import gdscript.utilities.PsiElementUtils.rule
 import gdscript.options.ColorTextAttributeKey.CLASS_NAME
 
 class ClassAnnotator : Annotator {

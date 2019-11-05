@@ -6,7 +6,7 @@ import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.CompletionUtils
-import gdscript.utilities.RuleUtils.rule
+import gdscript.utilities.PsiElementUtils.rule
 
 
 class InvokeCompletionContributor : CompletionContributor() {

@@ -4,13 +4,15 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.psi.PsiElement
+import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.psi.util.PsiTreeUtil
 import gdscript.completion.sources.Class
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
 import gdscript.icons.IconCatalog
 import gdscript.icons.IconCatalog.STATIC_VARIABLE
-import gdscript.utilities.PsiLeafUtils.prevLeaf
 
 class StaticCompletionContributor : CompletionContributor() {
 
@@ -50,5 +52,8 @@ class StaticCompletionContributor : CompletionContributor() {
     private fun formatSpaces(value: String) = value
         .replace(" ", "")
         .replace(",", ", ")
+
+    private fun PsiElement.prevLeaf() =
+        PsiTreeUtil.prevLeaf(this) as? LeafPsiElement
 
 }
