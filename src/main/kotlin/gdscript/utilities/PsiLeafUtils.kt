@@ -8,6 +8,8 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
 object PsiLeafUtils {
 
+    // todo remove this class, join with RuleUtils, couple with lexer tokens (#isToken)
+
     fun PsiElement.prevLeaf() =
         PsiTreeUtil.prevLeaf(this)?.asLeaf()
 

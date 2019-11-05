@@ -1,17 +1,19 @@
 package gdscript.completion
 
+import ScriptParser.RULE_invoke
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.CompletionUtils
-import gdscript.psi.InvokeRule
+import gdscript.utilities.RuleUtils.rule
 
 
 class InvokeCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (parameters.position.parent is InvokeRule)
+        val isInsideInvoke = parameters.position.parent.rule() == RULE_invoke
+        if (isInsideInvoke)
             result.caseInsensitive()
                 .addAllElements(ALL_NAMES)
     }

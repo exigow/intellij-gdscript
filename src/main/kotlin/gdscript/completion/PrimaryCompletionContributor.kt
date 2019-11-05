@@ -1,5 +1,6 @@
 package gdscript.completion
 
+import ScriptParser.RULE_primary
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -11,14 +12,14 @@ import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsert
 import gdscript.icons.IconCatalog
 import gdscript.icons.IconCatalog.STATIC_CLASS
 import gdscript.icons.IconCatalog.STATIC_VARIABLE
-import gdscript.psi.PrimaryRule
-
+import gdscript.utilities.RuleUtils.rule
 
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (element.parent is PrimaryRule && hasNotDigitPrefix(element)) {
+        val isInsideParent = element.parent.rule() == RULE_primary
+        if (isInsideParent && hasNotDigitPrefix(element)) {
             val all = listOf(
                 SINGLETON_NAMES,
                 CONSTANT_VALUES,

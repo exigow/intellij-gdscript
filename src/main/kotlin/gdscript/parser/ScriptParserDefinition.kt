@@ -13,11 +13,11 @@ import ScriptParser
 import gdscript.token.ScriptTokenSet.LINE_COMMENTS
 import gdscript.token.ScriptTokenSet.STRINGS
 import gdscript.token.ScriptTokenSet.WHITESPACES
-import gdscript.psi.RuleFactory
 import gdscript.file.ScriptFile
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
+import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 
@@ -54,6 +54,6 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
         ScriptFile(view)
 
     override fun createElement(node: ASTNode) =
-        RuleFactory.createPsiElement(node)
+        ANTLRPsiNode(node)
 
 }

@@ -1,16 +1,18 @@
 package gdscript.annotation
 
+import ScriptParser.RULE_type
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
+import gdscript.utilities.RuleUtils.rule
 import gdscript.options.ColorTextAttributeKey.CLASS_NAME
-import gdscript.psi.TypeRule
 
 class ClassAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element is TypeRule && hasClassName(element))
+        val isType = element.rule() == RULE_type
+        if (isType && hasClassName(element))
             holder.createColorAnnotation(element, CLASS_NAME)
     }
 
