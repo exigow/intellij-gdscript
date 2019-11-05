@@ -2,21 +2,22 @@ package gdscript.completion
 
 import com.intellij.codeInsight.completion.AddSpaceInsertHandler.INSTANCE_WITH_AUTO_POPUP
 import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionType.BASIC
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.psi.util.PsiTreeUtil
 import gdscript.completion.sources.CompletionUtils
-import gdscript.completion.utils.CaseSensitiveLookupProvider
-import gdscript.completion.utils.CommonPatterns.AFTER_EXPORT
-import gdscript.completion.utils.CommonPatterns.AFTER_NEWLINE
-import gdscript.completion.utils.CommonPatterns.AFTER_STATIC
 
 
 class KeywordCompletionContributor : CompletionContributor() {
 
-    init {
-        extend(BASIC, AFTER_NEWLINE, CaseSensitiveLookupProvider(STATEMENT_LOOKUPS))
-        extend(BASIC, AFTER_EXPORT, CaseSensitiveLookupProvider(VAR_LOOKUP))
-        extend(BASIC, AFTER_STATIC, CaseSensitiveLookupProvider(FUNC_LOOKUP))
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        val prevLeaf = PsiTreeUtil.prevLeaf(parameters.position)
+        when (prevLeaf?.text) {
+            "\n" -> result.addAllElements(STATEMENT_LOOKUPS)
+            "export" -> result.addElement(VAR_LOOKUP)
+            "static" -> result.addElement(FUNC_LOOKUP)
+        }
     }
 
     private companion object {

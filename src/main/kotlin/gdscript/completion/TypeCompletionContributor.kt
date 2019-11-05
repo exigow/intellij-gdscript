@@ -1,19 +1,22 @@
 package gdscript.completion
 
 import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionType.BASIC
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.CompletionUtils
-import gdscript.completion.utils.CaseInsensitiveLookupProvider
-import gdscript.completion.utils.CommonPatterns.WITH_TYPE_PARENT
 import gdscript.icons.IconCatalog.CLASS
+import gdscript.psi.TypeRule
 
 
 class TypeCompletionContributor : CompletionContributor() {
 
-    init {
-        extend(BASIC, WITH_TYPE_PARENT, CaseInsensitiveLookupProvider(PRIMITIVE_NAMES))
-        extend(BASIC, WITH_TYPE_PARENT, CaseInsensitiveLookupProvider(CLASS_NAMES))
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        if (parameters.position.parent is TypeRule) {
+            val all = PRIMITIVE_NAMES + CLASS_NAMES
+            result.caseInsensitive()
+                .addAllElements(all)
+        }
     }
 
     private companion object {
