@@ -6,7 +6,7 @@ import uitlities.assertContains
 import uitlities.assertNotContains
 import uitlities.lookups
 
-class ValueCompletionContributorTest : BaseTest() {
+class PrimaryCompletionContributorTest : BaseTest() {
 
     fun `test keyword as value`() {
         environment.openCode("x = <caret>")
@@ -22,12 +22,6 @@ class ValueCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "print")
     }
 
-    fun `test edit existing function`() {
-        environment.openCode("x = si<caret>()")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "sin")
-    }
-
     fun `test function in var statement`() {
         environment.openCode("var x = si<caret>")
         environment.completeBasic()
@@ -40,12 +34,6 @@ class ValueCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "sin")
     }
 
-    fun `test range function`() {
-        environment.openCode("for i in rang<caret>(3):")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "range")
-    }
-
     fun `test Vector2 constructor`() {
         environment.openCode("position = Vec<caret>")
         environment.completeBasic()
@@ -56,12 +44,6 @@ class ValueCompletionContributorTest : BaseTest() {
         environment.openCode("x = flo<caret>")
         environment.completeBasic()
         assertContains(environment.lookups(), "float")
-    }
-
-    fun `test edit existing constructor`() {
-        environment.openCode("position = Vec<caret>()")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "Vector2")
     }
 
     fun `test function is case-sensitive`() {

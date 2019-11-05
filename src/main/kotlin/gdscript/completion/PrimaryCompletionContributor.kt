@@ -1,37 +1,35 @@
 package gdscript.completion
 
 import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionType.BASIC
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
-import com.intellij.patterns.PlatformPatterns.psiElement
 import gdscript.completion.sources.CompletionUtils
-import gdscript.completion.utils.CaseSensitiveLookupProvider
-import gdscript.completion.utils.CommonPatterns.WITH_INVOKE_PARENT
-import gdscript.completion.utils.CommonPatterns.WITH_VALUE_PARENT
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
 import gdscript.icons.IconCatalog
 import gdscript.icons.IconCatalog.STATIC_CLASS
 import gdscript.icons.IconCatalog.STATIC_VARIABLE
-import gdscript.psi.InvokeRule
-import gdscript.psi.ValueRule
+import gdscript.psi.PrimaryRule
 
 
-class ValueCompletionContributor : CompletionContributor() {
+class PrimaryCompletionContributor : CompletionContributor() {
 
-    init {
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(SINGLETON_NAMES))
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(CONSTANT_VALUES))
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(FUNCTIONS))
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(CLASS_CONSTRUCTORS))
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(PRIMITIVE_CONSTRUCTORS))
-        extend(BASIC, WITH_VALUE_PARENT, CaseSensitiveLookupProvider(KEYWORD_VARIABLES))
-        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(PRIMITIVE_CONSTRUCTORS))
-        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(FUNCTIONS))
-        extend(BASIC, WITH_INVOKE_PARENT, CaseSensitiveLookupProvider(CLASS_CONSTRUCTORS))
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        if (parameters.position.parent is PrimaryRule) {
+            val all = listOf(
+                SINGLETON_NAMES,
+                CONSTANT_VALUES,
+                FUNCTIONS,
+                CLASS_CONSTRUCTORS,
+                PRIMITIVE_CONSTRUCTORS,
+                KEYWORD_VARIABLES
+            )
+            result.addAllElements(all.flatten())
+        }
     }
 
-    companion object Lookups {
+    companion object {
 
         private val KEYWORD_VARIABLES =
             CompletionUtils.keywordVariables()
