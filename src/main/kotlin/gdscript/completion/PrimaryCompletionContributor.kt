@@ -4,6 +4,7 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
@@ -16,7 +17,8 @@ import gdscript.psi.PrimaryRule
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (parameters.position.parent is PrimaryRule) {
+        val element = parameters.position
+        if (element.parent is PrimaryRule && hasNotDigitPrefix(element)) {
             val all = listOf(
                 SINGLETON_NAMES,
                 CONSTANT_VALUES,
@@ -28,6 +30,9 @@ class PrimaryCompletionContributor : CompletionContributor() {
             result.addAllElements(all.flatten())
         }
     }
+
+    private fun hasNotDigitPrefix(element: PsiElement) =
+        !element.text.first().isDigit()
 
     companion object {
 

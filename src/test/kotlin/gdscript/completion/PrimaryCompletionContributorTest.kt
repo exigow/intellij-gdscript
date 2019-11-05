@@ -76,4 +76,10 @@ class PrimaryCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "null")
     }
 
+    fun `test typing numbers doesn't invokes constants with numbers in names`() {
+        environment.openCode("x = 1<caret>")
+        environment.completeBasic()
+        assertEmpty(environment.lookups())
+    }
+
 }
