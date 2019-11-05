@@ -46,18 +46,6 @@ class PrimaryCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "float")
     }
 
-    fun `test function is case-sensitive`() {
-        environment.openCode("x = Si<caret>()")
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), "sin")
-    }
-
-    fun `test constructor call is case-sensitive`() {
-        environment.openCode("position = vec<caret>()")
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), "Vector2")
-    }
-
     fun `test values are not present after DOT operator`() {
         environment.openCode("vector.fa<caret>")
         environment.completeBasic()

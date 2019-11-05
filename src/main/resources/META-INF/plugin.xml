@@ -14,6 +14,7 @@
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ResourceHighlighterFactory" language="GDScript resource"/>
 		<completion.contributor implementationClass="gdscript.completion.DataCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>

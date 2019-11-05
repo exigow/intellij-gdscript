@@ -19,6 +19,7 @@ object RuleFactory {
         when(index) {
             RULE_type -> TypeRule(node)
             RULE_primary -> PrimaryRule(node)
+            RULE_invoke -> InvokeRule(node)
             RULE_func_line -> FunctionRule(node)
             RULE_instance_field_expression -> InstanceFieldRule(node)
             else -> ANTLRPsiNode(node)
