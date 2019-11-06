@@ -16,7 +16,7 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     OPERATION_SIGN(Default.OPERATION_SIGN),
     COMMA(Default.COMMA),
     SEMICOLON(Default.SEMICOLON),
-    COLON(Default.SEMICOLON),
+    COLON(Default.OPERATION_SIGN),
     ARROW(Default.OPERATION_SIGN),
     DOT(Default.DOT),
     BRACES(Default.BRACES),
