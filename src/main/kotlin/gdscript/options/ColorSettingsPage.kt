@@ -64,14 +64,14 @@ class ColorSettingsPage : ColorSettingsPage {
             extends <GDSCRIPT_CLASS_NAME>Node</GDSCRIPT_CLASS_NAME>
             const MyScript = preload("res://scripts/MyScript.gd")
             enum MyEnum { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = -1 }
-            
+            export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>) var my_field
             func <GDSCRIPT_INSTANCE_METHOD>_init</GDSCRIPT_INSTANCE_METHOD>(): # line comment
                 print("My text");
                 if Input.is_action_pressed("my_action"):
                     ${'$'}Path/To/MyNode.<GDSCRIPT_INSTANCE_FIELD>my_field</GDSCRIPT_INSTANCE_FIELD> = {"one": 1, "two": 2}
                     my_field += <GDSCRIPT_CONSTANT>MY_CONSTANT</GDSCRIPT_CONSTANT>
             
-            static func <GDSCRIPT_STATIC_METHOD>my_function</GDSCRIPT_STATIC_METHOD>(my_argument: <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME> = null) -> bool
+            static func <GDSCRIPT_STATIC_METHOD>my_function</GDSCRIPT_STATIC_METHOD>(my_param: <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME> = null) -> bool
                 return true
             """.trimIndent()
 
