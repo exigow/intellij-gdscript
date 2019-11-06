@@ -26,6 +26,7 @@ Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 ![Global constant completion](https://i.imgur.com/i2UYKFc.png)
 ![Class constant completion](https://i.imgur.com/UQG7NoZ.png)
 ![JSON file completion](https://i.imgur.com/vDtcev8.png)
+![Dictionary key highlighting](https://i.imgur.com/oAifVEr.png)
 
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
 [build-url]: https://travis-ci.org/exigow/intellij-gdscript?branch=master

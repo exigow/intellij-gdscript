@@ -20,6 +20,7 @@
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ClassAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.EntryKeyAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.InstanceFieldAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.UpperCaseConstantAnnotator" language="GDScript"/>

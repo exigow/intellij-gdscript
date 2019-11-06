@@ -56,12 +56,12 @@ type_operator_expression: (AS | IS) primary;
 subscribe_expression: BRACKET_LEFT expression BRACKET_RIGHT;
 operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) primary;
 
-primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | dictionary_lua | invoke | in_braces | type);
+primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
-dictionary: BRACE_LEFT NL* dictionary_entry? (COMMA NL* dictionary_entry)* BRACE_RIGHT;
-dictionary_entry: (string | NUMBER) COLON expression NL*;
-dictionary_lua: BRACE_LEFT NL* dictionary_lua_entry? (COMMA NL* dictionary_lua_entry)* BRACE_RIGHT;
-dictionary_lua_entry: IDENTIFIER EQUALS expression NL*;
+dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* BRACE_RIGHT;
+entry: entry_key (COLON | EQUALS) entry_value NL*;
+entry_key: IDENTIFIER | NUMBER | string;
+entry_value: expression;
 invoke: DOT? (IDENTIFIER | FUNCTION | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
