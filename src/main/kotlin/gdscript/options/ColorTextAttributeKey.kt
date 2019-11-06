@@ -16,6 +16,8 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     OPERATION_SIGN(Default.OPERATION_SIGN),
     COMMA(Default.COMMA),
     SEMICOLON(Default.SEMICOLON),
+    COLON(Default.SEMICOLON),
+    ARROW(Default.OPERATION_SIGN),
     DOT(Default.DOT),
     BRACES(Default.BRACES),
     PARENTHESES(Default.PARENTHESES),
@@ -28,10 +30,7 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     RESOURCE(Default.DOC_COMMENT);
 
     val key: TextAttributesKey =
-        createTextAttributesKey(renameKey(copied.externalName), copied)
-
-    private fun renameKey(copied: String) =
-        copied.replace("DEFAULT", "GDSCRIPT")
+        createTextAttributesKey("GDSCRIPT_$name", copied)
 
     companion object {
 

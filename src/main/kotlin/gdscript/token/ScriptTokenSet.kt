@@ -13,6 +13,8 @@ object ScriptTokenSet {
     val NODES = create(NODE)
     val COMMAS = create(COMMA)
     val SEMICOLONS = create(SEMICOLON)
+    val COLONS = create(COLON)
+    val ARROWS = create(ARROW)
     val DOTS = create(DOT)
     val NUMBERS = create(NUMBER)
     val STRINGS = create(STRING_DOUBLE_QUOTE, STRING_APHOSTROPHE, STRING_MULTILINE)
@@ -20,7 +22,6 @@ object ScriptTokenSet {
     val CONSTANTS = create(CONSTANT)
     val OPERATION_SIGNS = create(
         ASSIGN,
-        ARROW,
         MINUS,
         OTHER_OPERATORS,
         COMPARE,

@@ -26,6 +26,8 @@ class ColorSettingsPage : ColorSettingsPage {
         OPERATION_SIGN to group(OPERATORS, "Operation sign"),
         COMMA to group(OPERATORS, "Comma"),
         SEMICOLON to group(OPERATORS, "Semicolon"),
+        COLON to group(OPERATORS, "Colon"),
+        ARROW to group(OPERATORS, "Arrow"),
         DOT to group(OPERATORS, "Dot"),
         BRACES to group(OPERATORS, "Braces"),
         PARENTHESES to group(OPERATORS, "Parentheses"),
@@ -58,26 +60,20 @@ class ColorSettingsPage : ColorSettingsPage {
         const val CLASSES = "Classes"
         const val IDENTIFIERS = "Identifiers"
         val DEMO_TEXT = """
-        extends <GDSCRIPT_CLASS_NAME>BaseClass</GDSCRIPT_CLASS_NAME>
-        const MyScript = preload("res://my_script.gd")
-        export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>, FILE, "*.txt") var file
-        const <GDSCRIPT_CONSTANT>CONSTANT</GDSCRIPT_CONSTANT> = 42 # line comment
-        enum Named {<GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 1, <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT> = 2}
-        func <GDSCRIPT_INSTANCE_METHOD>instance_method</GDSCRIPT_INSTANCE_METHOD>():
-            return 1.0
-        static func <GDSCRIPT_STATIC_METHOD>static_method</GDSCRIPT_STATIC_METHOD>(parameter1: int, parameter2: <GDSCRIPT_CLASS_NAME>SomeClass</GDSCRIPT_CLASS_NAME>) -> bool:
-            ${'$'}Path/To/Node
-            var x = 1; y = 2; z = 3;
-            if !condition == false:
-                var dict = {1: 2, "key": "Hello World"}
-                var test = some.<GDSCRIPT_INSTANCE_FIELD>instance_field</GDSCRIPT_INSTANCE_FIELD> * 58.1e-10
-            elif true:
-                var lua_dict = {key1 = 1, key2 = 2}
-            else:
-                var array = [1.0, true, "text", [1, 2, 3]]
-            print(dict["key"])
-            return false
-        """.trimIndent()
+            class_name <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME>
+            extends <GDSCRIPT_CLASS_NAME>Node</GDSCRIPT_CLASS_NAME>
+            const MyScript = preload("res://scripts/MyScript.gd")
+            enum MyEnum { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = -1 }
+            
+            func <GDSCRIPT_INSTANCE_METHOD>_init</GDSCRIPT_INSTANCE_METHOD>(): # line comment
+                print("My text");
+                if Input.is_action_pressed("my_action"):
+                    ${'$'}Path/To/MyNode.<GDSCRIPT_INSTANCE_FIELD>my_field</GDSCRIPT_INSTANCE_FIELD> = {"one": 1, "two": 2}
+                    my_field += <GDSCRIPT_CONSTANT>MY_CONSTANT</GDSCRIPT_CONSTANT>
+            
+            static func <GDSCRIPT_STATIC_METHOD>my_function</GDSCRIPT_STATIC_METHOD>(my_argument: <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME> = null) -> bool
+                return true
+            """.trimIndent()
 
     }
 
