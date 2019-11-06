@@ -1,5 +1,6 @@
 package gdscript.options
 
+import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
@@ -27,7 +28,7 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     INSTANCE_METHOD(Default.INSTANCE_METHOD),
     CLASS_NAME(Default.CLASS_NAME),
     CONSTANT(Default.CONSTANT),
-    RESOURCE(Default.DOC_COMMENT);
+    RESOURCE(EditorColors.INJECTED_LANGUAGE_FRAGMENT);
 
     val key: TextAttributesKey =
         createTextAttributesKey("GDSCRIPT_$name", copied)
