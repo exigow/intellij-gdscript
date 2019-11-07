@@ -1,22 +1,22 @@
-# GDScript plugin for IntelliJ IDEA
+## GDScript plugin for IntelliJ IDEA
 
 [![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]][license-url] 
 
-Plugin that implements GDScript (`.gd`) and Godot project files (`.tscn`) support for IntelliJ Platform, featuring:
+Plugin that implements GDScript `.gd` and Godot project files `.tscn` support for IntelliJ Platform, featuring:
 
 * Type completion
 
 ![](https://i.imgur.com/hhhZFAl.png)
 
-* Project File completion
+* Project file completion
 
 ![](https://i.imgur.com/i6u0KAD.png)
 
-* Language Built-In Keywords, Functions and Classes completion 
+* Built-in keyword, function and class completion
 
 ![](https://i.imgur.com/NsQ3QWI.png)
 
-# Installation
+### Installation
 
 1. Run task `./gradlew buildPlugin` or [download plugin][plugin-url].
 2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
@@ -24,7 +24,7 @@ Plugin that implements GDScript (`.gd`) and Godot project files (`.tscn`) suppor
 
 Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 
-## Usage & Development
+### Usage & Development
 
 Contributions are welcome!
 
