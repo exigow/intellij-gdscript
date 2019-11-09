@@ -8,7 +8,6 @@ import com.intellij.codeInsight.completion.PrioritizedLookupElement.withExplicit
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VfsUtilCore
-import com.intellij.openapi.vfs.VfsUtilCore.findRelativePath
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileVisitor
 import com.intellij.psi.impl.source.tree.LeafPsiElement
@@ -27,7 +26,7 @@ class DataCompletionContributor : CompletionContributor() {
         if (current.isResource() && projectDir != null) {
             val projectFiles = collectUsefulFiles(projectDir)
             for (file in projectFiles - current.file()) {
-                val path = findRelativePath(projectDir, file, '/')!!
+                val path = VfsUtilCore.findRelativePath(projectDir, file, '/')!!
                 result.addElement(createFileLookup(file, path))
             }
         }
