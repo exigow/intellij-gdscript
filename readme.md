@@ -10,14 +10,19 @@
 
 * **Syntax highlighting**
     GDScript and scene files highlighting. Paired brackets highlighting.
+    
 * **Code completion**
     Godot Engine built-in classes, functions and static methods completion.
+    
 * **Import file completion**
-    Path to class or project file completion.
+    Path to class or project file completion. 
+    
 * **Code folding**
     Auto-insertion of braces, brackets and quotes.
+    
 * **Code commenting**
     `Ctrl+/` to comment or uncomment selection.
+    
 * **Code selection**
     Syntax-aware selection. `Ctrl+W` to expand, `Ctrl+Shift+W` to shrink.
 
