@@ -1,26 +1,31 @@
 ## GDScript plugin for IntelliJ IDEA
 
-[![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]][license-url] 
+[![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]](license) 
 
-Plugin that implements GDScript `.gd` and Godot project files `.tscn` support for IntelliJ Platform, featuring:
+![Type completion](https://i.imgur.com/hhhZFAl.png)
+![File completion](https://i.imgur.com/i6u0KAD.png)
+![Null keyword completion](https://i.imgur.com/NsQ3QWI.png)
 
-* Type completion
+### Features
 
-![](https://i.imgur.com/hhhZFAl.png)
-
-* Project file completion
-
-![](https://i.imgur.com/i6u0KAD.png)
-
-* Built-in keyword, function and class completion
-
-![](https://i.imgur.com/NsQ3QWI.png)
+* **Syntax highlighting**
+  GDScript and scene files highlighting. Paired brackets highlighting.
+* **Code completion**
+  Godot Engine built-in classes, functions and static methods completion.
+* **Import file completion**
+  Path to class or project file completion.
+* **Code folding**
+  Auto-insertion of braces, brackets and quotes.
+* **Code commenting**
+  `Ctrl+/` to comment or uncomment selection.
+* **Code selection**
+  Syntax-aware selection. `Ctrl+W` to expand, `Ctrl+Shift+W` to shrink.
 
 ### Installation
 
-1. Run task `./gradlew buildPlugin` or [download plugin][plugin-url].
+1. Run `./gradlew buildPlugin` or [download latest release][plugin-url].
 2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
-3. Find `build/distributions/intellij-gdscript.zip` (or downloaded) and restart.
+3. Find `build/distributions/intellij-gdscript.zip` (or downloaded file) and restart.
 
 Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 
@@ -37,4 +42,3 @@ Contributions are welcome!
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
 [build-url]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
 [license-badge]: https://img.shields.io/github/license/exigow/intellij-gdscript?branch=master
-[license-url]: https://github.com/exigow/intellij-gdscript/blob/master/license
