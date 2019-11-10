@@ -4,6 +4,7 @@
 
 ![Type completion](https://i.imgur.com/hhhZFAl.png)
 ![File completion](https://i.imgur.com/i6u0KAD.png)
+![Missing file warning](https://i.imgur.com/OKM93A9.png)
 ![Null keyword completion](https://i.imgur.com/NsQ3QWI.png)
 
 ### Features
