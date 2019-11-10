@@ -14,6 +14,8 @@ class InvalidImportAnnotator : Annotator {
         if (element.token() == RESOURCE) {
             val path = extractPath(element.text)
             val foundPaths = collectProjectFiles(element).keys
+            if (foundPaths.isEmpty())
+                return
             if (path !in foundPaths)
                 holder.createWarningAnnotation(element, "Resource '$path' doesn't exist.")
         }
