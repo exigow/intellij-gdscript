@@ -12,14 +12,14 @@ class ClassAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         val isType = element.rule() == RULE_type
-        if (isType && hasClassName(element))
+        if (isType && isNotPrimitive(element))
             holder.createInfoAnnotation(element, null)
                 .also { it.textAttributes = ColorTextAttributeKey.CLASS_NAME.key }
     }
 
-    private fun hasClassName(element: PsiElement): Boolean {
+    private fun isNotPrimitive(element: PsiElement): Boolean {
         val name = element.node.text
-        return CompletionUtils.isClass(name)
+        return !CompletionUtils.isPrimitive(name)
     }
 
 

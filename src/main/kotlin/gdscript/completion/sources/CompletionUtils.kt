@@ -68,8 +68,8 @@ object CompletionUtils {
         COMPLETION_DATA.primitiveClasses
             .flatMap { it.methods.filter { method -> method.name == it.name } }
 
-    fun isClass(name: String?) =
-        COMPLETION_DATA.classes
+    fun isPrimitive(name: String?) =
+        COMPLETION_DATA.primitiveClasses
             .map { it.name }
             .contains(name)
 

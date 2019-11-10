@@ -16,8 +16,18 @@ class ClassAnnotatorTest : BaseTest() {
         environment.checkInfoHighlighting()
     }
 
+    fun `test non built-in class name`() {
+        environment.openCode("var x: ${info("SomeClass")}")
+        environment.checkInfoHighlighting()
+    }
+
     fun `test extends Node type`() {
         environment.openCode("extends ${info("Node")}")
+        environment.checkInfoHighlighting()
+    }
+
+    fun `test primitive classes are not highlighted`() {
+        environment.openCode("var x: float")
         environment.checkInfoHighlighting()
     }
 
