@@ -9,12 +9,13 @@
 
 ### Features
 
-* **Syntax highlighting** - `.gd` and `.tres` files highlighting. Paired brackets highlighting.
-* **Code completion** - Godot Engine built-in classes, functions and static methods completion.
-* **Import file completion** - Autocomplete path to external script or resource.
-* **Code folding** - Auto-insertion of braces, brackets and quotes.
-* **Code commenting** - `Ctrl+/` to comment or uncomment selection.
-* **Code selection** - Syntax-aware selection support. `Ctrl+W` to expand, `Ctrl+Shift+W` to shrink.
+* Syntax highlighting (`.gd`, `.tres`) 
+* Code completion of Godot Engine built-in classes, functions and static methods
+* Path to file completion/validation 
+* Auto-insertion of braces, brackets and quotes
+* Code commenting (`Ctrl+/`)
+* Syntax-aware code selection (`Ctrl+W` / `Ctrl+Shift+W`)
+* Paired brackets highlighting
 
 ### Installation
 
