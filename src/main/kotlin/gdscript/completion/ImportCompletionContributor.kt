@@ -19,7 +19,7 @@ class ImportCompletionContributor : CompletionContributor() {
     override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
         if (current.position.token() == RESOURCE) {
             val currentFile = current.originalFile.virtualFile
-            val files = collectUsefulProjectFiles(currentFile)
+            val files = collectUsefulFiles(currentFile)
             for ((path, file) in files) {
                 val lookup = createFileLookup(path, file)
                 val importance = matchImportance(file.extension)
@@ -29,10 +29,19 @@ class ImportCompletionContributor : CompletionContributor() {
         }
     }
 
-    private fun collectUsefulProjectFiles(currentFile: VirtualFile) =
-        FileUtils.collectPathsToProjectFiles(currentFile)
-            .filterNot { (path, _) -> path.contains(".import/") }
-            .filterNot { (path, _) -> path.endsWith(".import") }
+    private fun collectUsefulFiles(currentFile: VirtualFile) =
+        FileUtils.collectPathsToProjectFiles(currentFile) { file ->
+            isHiddenFile(file) || isProjectFile(file) || isImportFile(file)
+        }
+
+    private fun isHiddenFile(file: VirtualFile) =
+        file.name.startsWith(".")
+
+    private fun isProjectFile(file: VirtualFile) =
+        file.name == "project.godot"
+
+    private fun isImportFile(file: VirtualFile) =
+        file.name.endsWith(".import")
 
     private fun createFileLookup(fileRelativePath: String, file: VirtualFile): LookupElement =
         create("res://$fileRelativePath")

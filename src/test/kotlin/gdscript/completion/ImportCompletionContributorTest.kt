@@ -48,4 +48,13 @@ class ImportCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "res://util.gd")
     }
 
+    fun `test hide all dot-prefixed directories and files`() {
+        environment.addProjectFile()
+        environment.addFile(".git/objects/f8/0ad0ab9163ad8ac5c83e5c5de7d309b146c59a")
+        environment.addFile(".gitignore")
+        environment.openCode("""const Util = preload("res://<caret>")""")
+        environment.completeBasic()
+        assertEmpty(environment.lookups())
+    }
+
 }
