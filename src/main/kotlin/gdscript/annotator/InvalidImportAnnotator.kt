@@ -17,7 +17,7 @@ class InvalidImportAnnotator : Annotator {
             if (foundPaths.isEmpty())
                 return
             if (path !in foundPaths)
-                holder.createWarningAnnotation(element, "Resource '$path' doesn't exist.")
+                holder.createWeakWarningAnnotation(element, """Cannot resolve resource "$path"""")
         }
     }
 
