@@ -4,7 +4,7 @@ import com.intellij.testFramework.fixtures.CodeInsightTestFixture
 import gdscript.BaseTest
 import uitlities.*
 
-class DataCompletionContributorTest : BaseTest() {
+class ImportCompletionContributorTest : BaseTest() {
 
     fun `test sibling file completion`() {
         environment.addProjectFile()

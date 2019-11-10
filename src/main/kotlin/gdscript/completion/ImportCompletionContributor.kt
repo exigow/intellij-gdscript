@@ -19,7 +19,7 @@ import java.util.*
 import javax.swing.Icon
 
 
-class DataCompletionContributor : CompletionContributor() {
+class ImportCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
         val currentFile = current.originalFile.virtualFile
