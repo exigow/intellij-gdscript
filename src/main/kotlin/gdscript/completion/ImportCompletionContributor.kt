@@ -12,9 +12,9 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileVisitor
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import gdscript.icons.IconCatalog
-import gdscript.token.ScriptTokenSet
-import gdscript.utilities.ProjectFileFinder
+import gdscript.lang.IconCatalog
+import gdscript.lang.ScriptTokenSet
+import gdscript.completion.utils.ProjectFileFinder
 import java.util.*
 import javax.swing.Icon
 

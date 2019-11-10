@@ -6,8 +6,8 @@ import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import gdscript.completion.sources.CompletionUtils
-import gdscript.utilities.PsiElementUtils.rule
-import gdscript.icons.IconCatalog.CLASS
+import gdscript.lang.psi.PsiElementUtils.rule
+import gdscript.lang.IconCatalog.CLASS
 
 class TypeCompletionContributor : CompletionContributor() {
 

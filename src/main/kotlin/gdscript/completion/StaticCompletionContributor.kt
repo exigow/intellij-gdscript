@@ -11,8 +11,8 @@ import gdscript.completion.sources.Class
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
-import gdscript.icons.IconCatalog
-import gdscript.icons.IconCatalog.STATIC_VARIABLE
+import gdscript.lang.IconCatalog
+import gdscript.lang.IconCatalog.STATIC_VARIABLE
 
 class StaticCompletionContributor : CompletionContributor() {
 

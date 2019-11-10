@@ -3,7 +3,6 @@ package gdscript.completion
 import gdscript.BaseTest
 import uitlities.openCode
 import uitlities.assertContains
-import uitlities.assertNotContains
 import uitlities.lookups
 
 class InvokeCompletionContributorTest : BaseTest() {

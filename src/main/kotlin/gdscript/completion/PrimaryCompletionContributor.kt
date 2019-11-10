@@ -9,10 +9,10 @@ import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
 import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
-import gdscript.icons.IconCatalog
-import gdscript.icons.IconCatalog.STATIC_CLASS
-import gdscript.icons.IconCatalog.STATIC_VARIABLE
-import gdscript.utilities.PsiElementUtils.rule
+import gdscript.lang.IconCatalog
+import gdscript.lang.IconCatalog.STATIC_CLASS
+import gdscript.lang.IconCatalog.STATIC_VARIABLE
+import gdscript.lang.psi.PsiElementUtils.rule
 
 class PrimaryCompletionContributor : CompletionContributor() {
 

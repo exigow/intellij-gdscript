@@ -9,31 +9,31 @@
     ]]></description>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.parserDefinition implementationClass="gdscript.parser.ScriptParserDefinition" language="GDScript"/>
-		<lang.parserDefinition implementationClass="gdscript.parser.ResourceParserDefinition" language="GDScript resource"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.highlight.factories.ResourceHighlighterFactory" language="GDScript resource"/>
+		<annotator implementationClass="gdscript.annotator.ClassAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotator.EntryKeyAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotator.InstanceFieldAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotator.MethodAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotator.ConstantAnnotator" language="GDScript"/>
+		<colorSettingsPage implementation="gdscript.colorSettingsPage.ColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ImportCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.ClassAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.EntryKeyAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.InstanceFieldAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.UpperCaseConstantAnnotator" language="GDScript"/>
-		<lang.braceMatcher implementationClass="gdscript.typing.ScriptBraceMatcher" language="GDScript"/>
-		<lang.quoteHandler implementationClass="gdscript.typing.ScriptQuoteHandler" language="GDScript"/>
-		<lang.commenter implementationClass="gdscript.commenter.ScriptCommenter" language="GDScript"/>
-		<lang.commenter implementationClass="gdscript.commenter.ResourceCommenter" language="GDScript resource"/>
-		<colorSettingsPage implementation="gdscript.options.ColorSettingsPage"/>
-		<fileType implementationClass="gdscript.file.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
-		<fileType implementationClass="gdscript.file.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.file.ResourceType" extensions="import" name="Import file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.file.ResourceType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.file.ResourceType" extensions="tres" name="Text resource file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.file.ResourceType" extensions="tscn" name="Text scene file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="import" name="Import file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="tres" name="Resource tree file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="tscn" name="Scene tree file" language="GDScript resource"/>
+		<lang.commenter implementationClass="gdscript.lang.commenter.ResourceCommenter" language="GDScript resource"/>
+		<lang.commenter implementationClass="gdscript.lang.commenter.ScriptCommenter" language="GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.lang.parserDefinition.ResourceParserDefinition" language="GDScript resource"/>
+		<lang.parserDefinition implementationClass="gdscript.lang.parserDefinition.ScriptParserDefinition" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ResourceHighlighterFactory" language="GDScript resource"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ScriptHighlighterFactory" language="GDScript"/>
+		<lang.braceMatcher implementationClass="gdscript.lang.typing.ScriptBraceMatcher" language="GDScript"/>
+		<lang.quoteHandler implementationClass="gdscript.lang.typing.ScriptQuoteHandler" language="GDScript"/>
 	</extensions>
 </idea-plugin>

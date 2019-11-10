@@ -2,8 +2,8 @@ package uitlities
 
 import com.intellij.openapi.actionSystem.IdeActions
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture
-import gdscript.file.ResourceType
-import gdscript.file.ScriptType
+import gdscript.fileType.ResourceType
+import gdscript.fileType.ScriptType
 
 
 fun CodeInsightTestFixture.openCode(content: String) {
