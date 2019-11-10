@@ -27,12 +27,12 @@ Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 
 ### Usage & Development
 
-Contributions are welcome!
-
 * `./gradlew runIde` - run sandbox with installed plugin. First run may take a while.
 * `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required to update changes in ANTLR sources (`src/main/antlr/*.g4`).
 * `./gradlew generateCompletion` - download & generate completion  `src/main/resources/completion.json`.
 * `./gradlew test` - run all tests.
+
+Contributions are welcome!
 
 [plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
