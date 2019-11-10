@@ -34,7 +34,7 @@ Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 
 Contributions are welcome!
 
-[plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
+[plugin-url]: https://github.com/exigow/intellij-gdscript/releases
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
 [build-url]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
 [license-badge]: https://img.shields.io/github/license/exigow/intellij-gdscript?branch=master
