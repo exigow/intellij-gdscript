@@ -1,6 +1,5 @@
 package gdscript.completion
 
-import com.intellij.testFramework.fixtures.CodeInsightTestFixture
 import gdscript.BaseTest
 import uitlities.*
 
@@ -29,7 +28,7 @@ class ImportCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "res://util.gd")
     }
 
-    fun `test hide dot-prefixed 'import' file`() {
+    fun `test hide dot-'import' directory`() {
         environment.addProjectFile()
         environment.addFile("util.gd")
         environment.addFile(".import/file.gd")
@@ -48,8 +47,5 @@ class ImportCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "res://file.import")
         assertContains(environment.lookups(), "res://util.gd")
     }
-
-    private fun CodeInsightTestFixture.addProjectFile() =
-        addFile("project.godot")
 
 }

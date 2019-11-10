@@ -13,6 +13,7 @@
 		<annotator implementationClass="gdscript.annotator.EntryKeyAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotator.InstanceFieldAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotator.MethodAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotator.InvalidImportAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotator.ConstantAnnotator" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.colorSettingsPage.ColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ImportCompletionContributor" language="GDScript"/>

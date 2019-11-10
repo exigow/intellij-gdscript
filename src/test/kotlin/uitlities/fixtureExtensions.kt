@@ -22,9 +22,11 @@ fun CodeInsightTestFixture.addFile(filename: String) {
     addFileToProject(filename, "bla bla")
 }
 
-fun CodeInsightTestFixture.checkInfoHighlighting() {
+fun CodeInsightTestFixture.addProjectFile() =
+    addFile("project.godot")
+
+fun CodeInsightTestFixture.checkInfoHighlighting() =
     checkHighlighting(false, true, false)
-}
 
 fun CodeInsightTestFixture.doCommentAction() =
     performEditorAction(IdeActions.ACTION_COMMENT_LINE)
