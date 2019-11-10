@@ -1,34 +1,36 @@
 package gdscript.completion
 
+import com.intellij.testFramework.fixtures.CodeInsightTestFixture
 import gdscript.BaseTest
 import uitlities.*
 
 class DataCompletionContributorTest : BaseTest() {
 
-    fun `test sibling files completion`() {
-        environment.addFile("project.godot")
+    fun `test sibling file completion`() {
+        environment.addProjectFile()
         environment.addFile("util.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
         assertContains(environment.lookups(), "res://util.gd")
     }
 
-    fun `test sub directory files completion`() {
-        environment.addFile("project.godot")
+    fun `test directory completion`() {
+        environment.addProjectFile()
         environment.addFile("dir/util.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
         assertContains(environment.lookups(), "res://dir/util.gd")
     }
 
-    fun `test don't complete when project file is missing`() {
-        environment.openCode("main.gd", """const Util = preload("res://<caret>")""")
+    fun `test disable completion on missing project file`() {
+        environment.addFile("util.gd")
+        environment.openCode("""const Util = preload("res://<caret>")""")
         environment.completeBasic()
-        assertNotContains(environment.lookups(), "res://main.gd")
+        assertNotContains(environment.lookups(), "res://util.gd")
     }
 
-    fun `test hide all DOT-prefixed "import" files`() {
-        environment.addFile("project.godot")
+    fun `test hide dot-prefixed 'import' file`() {
+        environment.addProjectFile()
         environment.addFile("util.gd")
         environment.addFile(".import/file.gd")
         environment.openCode("""const Util = preload("res://<caret>")""")
@@ -37,8 +39,8 @@ class DataCompletionContributorTest : BaseTest() {
         assertContains(environment.lookups(), "res://util.gd")
     }
 
-    fun `test hide "import" extension files`() {
-        environment.addFile("project.godot")
+    fun `test hide 'import' extension files`() {
+        environment.addProjectFile()
         environment.addFile("util.gd")
         environment.addFile("file.import")
         environment.openCode("""const Util = preload("res://<caret>")""")
@@ -46,5 +48,8 @@ class DataCompletionContributorTest : BaseTest() {
         assertNotContains(environment.lookups(), "res://file.import")
         assertContains(environment.lookups(), "res://util.gd")
     }
+
+    private fun CodeInsightTestFixture.addProjectFile() =
+        addFile("project.godot")
 
 }

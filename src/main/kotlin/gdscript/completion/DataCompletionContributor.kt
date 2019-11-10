@@ -4,12 +4,13 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.completion.PrioritizedLookupElement.withExplicitProximity
+import com.intellij.codeInsight.completion.PrioritizedLookupElement
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileVisitor
+import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import gdscript.icons.IconCatalog
 import gdscript.token.ScriptTokenSet
@@ -21,53 +22,50 @@ import javax.swing.Icon
 class DataCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
-        val projectFile = ProjectFileFinder.findProject(current.file())
-        val projectDir = projectFile?.parent
-        if (current.isResource() && projectDir != null) {
-            val projectFiles = collectUsefulFiles(projectDir)
-            for (file in projectFiles - current.file()) {
-                val path = VfsUtilCore.findRelativePath(projectDir, file, '/')!!
-                result.addElement(createFileLookup(file, path))
+        val currentFile = current.originalFile.virtualFile
+        val projectFile = ProjectFileFinder.findProject(currentFile)
+            ?: return
+        if (isResourceLeaf(current.position)) {
+            val files = collectUsefulFiles(projectFile.parent) - currentFile
+            val lookups = files.map { file ->
+                val path = VfsUtilCore.findRelativePath(projectFile, file, '/')!!
+                val lookup = createFileLookup(file, path)
+                val importance = calculateImportance(file)
+                PrioritizedLookupElement.withExplicitProximity(lookup, importance)
             }
+            result.addAllElements(lookups)
         }
     }
 
-    private fun createFileLookup(file: VirtualFile, path: String): LookupElement {
-        val completedText = RESOURCE_PREFIX + path
-        val icon = matchIcon(file.extension)
-        val importance = matchImportance(file.extension)
-        val lookup = create(completedText)
-            .withPresentableText(file.name)
-            .withTypeText(path)
-            .withIcon(icon)
-        return withExplicitProximity(lookup, importance)
-    }
-
-    private fun matchIcon(extension: String?): Icon? = when (extension) {
-        "gd" -> IconCatalog.GODOT_FILE
-        "tscn" -> IconCatalog.RESOURCE_FILE
-        "json" -> IconCatalog.JSON_FILE
-        else -> IconCatalog.ANY_FILE
-    }
-
-    private fun matchImportance(extension: String?): Int = when (extension) {
-        "gd" -> 3
-        "tscn" -> 2
-        "import", "godot" -> 0
-        else -> 1
-    }
-
-    private fun CompletionParameters.file() =
-        originalFile.virtualFile
-
-    private fun CompletionParameters.isResource() =
+    private fun isResourceLeaf(position: PsiElement) =
         (position as LeafPsiElement).elementType in ScriptTokenSet.RESOURCES
 
-    private  fun collectUsefulFiles(start: VirtualFile): Collection<VirtualFile> {
+    private fun createFileLookup(file: VirtualFile, fileRelativePath: String): LookupElement =
+        create("res://$fileRelativePath")
+            .withPresentableText(file.name)
+            .withTypeText(fileRelativePath)
+            .withIcon(matchIcon(file))
+
+    private fun calculateImportance(file: VirtualFile): Int =
+        when (file.extension) {
+            "gd" -> 2
+            "tscn" -> 1
+            else -> 0
+        }
+
+    private fun matchIcon(file: VirtualFile): Icon? =
+        when (file.extension) {
+            "gd" -> IconCatalog.GODOT_FILE
+            "tscn", "tres" -> IconCatalog.RESOURCE_FILE
+            "json" -> IconCatalog.JSON_FILE
+            else -> IconCatalog.ANY_FILE
+        }
+
+    private fun collectUsefulFiles(start: VirtualFile): Collection<VirtualFile> {
         val list = ArrayList<VirtualFile>()
         VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
             override fun visitFile(file: VirtualFile): Boolean {
-                if (file.isHidden())
+                if (file.name.startsWith("."))
                     return false
                 if (!file.isDirectory && file.extension != "import")
                     list.add(file)
@@ -75,15 +73,6 @@ class DataCompletionContributor : CompletionContributor() {
             }
         })
         return list
-    }
-
-    private fun VirtualFile.isHidden() =
-        name.startsWith(".")
-
-    companion object {
-
-        private const val RESOURCE_PREFIX = "res://"
-
     }
 
 }
