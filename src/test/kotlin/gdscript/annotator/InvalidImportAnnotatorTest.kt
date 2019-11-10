@@ -21,7 +21,7 @@ class InvalidImportAnnotatorTest : BaseTest() {
     fun `test warning on missing file`() {
         environment.addProjectFile()
         environment.addFile("util.gd")
-        environment.openCode("""x = preload(<weak_warning descr="Resource 'missing.gd' doesn't exist.">"res://missing.gd"</weak_warning>)""")
+        environment.openCode("""x = preload(<weak_warning descr="Cannot resolve resource 'missing.gd'">"res://missing.gd"</weak_warning>)""")
         environment.checkHighlighting()
     }
 
