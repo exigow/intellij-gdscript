@@ -7,6 +7,7 @@
 ![Missing file warning](https://i.imgur.com/OKM93A9.png)
 ![Null keyword completion](https://i.imgur.com/NsQ3QWI.png)
 ![Constant value lookups like PI](https://i.imgur.com/2x7MrNl.png)
+![Class name completion](https://i.imgur.com/5j9MzWO.png)
 
 ### Features
 
