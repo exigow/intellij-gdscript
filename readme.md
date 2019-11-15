@@ -29,14 +29,25 @@ Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 
 ### Usage & Development
 
+**Contributions are welcome!**
+
 * `./gradlew runIde` - run sandbox with installed plugin. First run may take a while.
 * `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required to update changes in ANTLR sources (`src/main/antlr/*.g4`).
 * `./gradlew generateCompletion` - download & generate completion  `src/main/resources/completion.json`.
 * `./gradlew test` - run all tests.
-* `./gradlew publishPlugin` - publish plugin to JetBrains repository (token required in `gradle.properties`).
 
-Contributions are welcome!
+#### Publishing
 
+You have to [obtain authentication token][obtain-token] in order to push distribution into JetBrains plugin repository.
+Token is located in `gradle.properties` file with `publishPluginToken` key (empty value by default).
+
+```shell script
+./gradlew publishPlugin
+```
+
+NOTE: To ignore changes in `gradle.properties` use `git update-index --assume-unchanged gradle.properties`.
+
+[obtain-token]: https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html
 [plugin-url]: https://github.com/exigow/intellij-gdscript/releases
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
 [build-url]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
