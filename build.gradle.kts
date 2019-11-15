@@ -1,7 +1,7 @@
 plugins {
     java
     antlr
-    kotlin("jvm") version "1.3.50"
+    kotlin("jvm") version "1.3.41"
     id("org.jetbrains.intellij").version("0.4.9")
 }
 
