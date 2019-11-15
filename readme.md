@@ -33,6 +33,7 @@ Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
 * `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required to update changes in ANTLR sources (`src/main/antlr/*.g4`).
 * `./gradlew generateCompletion` - download & generate completion  `src/main/resources/completion.json`.
 * `./gradlew test` - run all tests.
+* `./gradlew publishPlugin` - publish plugin to JetBrains repository (token required in `gradle.properties`).
 
 Contributions are welcome!
 

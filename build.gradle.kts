@@ -24,6 +24,10 @@ intellij {
 
 registerGenerateCompletionDataTask()
 tasks {
+    publishPlugin {
+        token(project.property("publishPluginToken"))
+        channels("beta")
+    }
     compileKotlin {
         dependsOn(generateGrammarSource)
         kotlinOptions {
