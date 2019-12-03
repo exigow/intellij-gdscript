@@ -11,12 +11,18 @@ class ConstantAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         val isIdentifier = element.token() == IDENTIFIER
-        if (isIdentifier && isUpperCase(element.text))
-            holder.createInfoAnnotation(element, null)
-                .also { it.textAttributes = ColorTextAttributeKey.CONSTANT.key }
+        val text = element.text
+        if (isIdentifier && isConstantCase(text) && isLongEnough(text))
+            holder.colorize(element, ColorTextAttributeKey.CONSTANT)
     }
 
-    private fun isUpperCase(text: String) =
-        text.length >= 2 && text.all { (it.isLetter() && it.isUpperCase()) || it == '_' }
+    private fun isConstantCase(text: String) =
+        text.all { it.isUpperCaseLetter() || it == '_' }
+
+    private fun Char.isUpperCaseLetter() =
+        isLetter() && isUpperCase()
+
+    private fun isLongEnough(text: String) =
+        text.length >= 2
 
 }

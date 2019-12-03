@@ -15,8 +15,7 @@ class InstanceFieldAnnotator : Annotator {
         val isIdentifier = element.token() == IDENTIFIER
         val isInsideInstanceField = element.parent.rule() == RULE_instance_field_expression
         if (isIdentifier && isInsideInstanceField)
-            holder.createInfoAnnotation(element, null)
-                .also { it.textAttributes = ColorTextAttributeKey.INSTANCE_FIELD.key }
+            holder.colorize(element, ColorTextAttributeKey.INSTANCE_FIELD)
     }
 
 }

@@ -11,8 +11,7 @@ class EntryKeyAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.rule() == RULE_entry_key)
-            holder.createInfoAnnotation(element, null)
-                .also { it.textAttributes = ColorTextAttributeKey.INSTANCE_FIELD.key }
+            holder.colorize(element, ColorTextAttributeKey.INSTANCE_FIELD)
     }
 
 }

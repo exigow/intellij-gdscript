@@ -15,8 +15,7 @@ class MethodAnnotator : Annotator {
         val isIdentifier = element.token() == IDENTIFIER
         val isInsideFunc = element.parent.rule() == RULE_func_line
         if (isIdentifier && isInsideFunc)
-            holder.createInfoAnnotation(element, null)
-                .also { it.textAttributes = ColorTextAttributeKey.INSTANCE_METHOD.key }
+            holder.colorize(element, ColorTextAttributeKey.INSTANCE_METHOD)
     }
 
 }
