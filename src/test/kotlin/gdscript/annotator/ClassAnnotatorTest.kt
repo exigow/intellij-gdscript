@@ -1,34 +1,33 @@
 package gdscript.annotator
 
 import gdscript.BaseTest
-import uitlities.openCode
-import uitlities.checkInfoHighlighting
+import uitlities.*
 
 class ClassAnnotatorTest : BaseTest() {
 
-    fun `test variable Vector2 type`() {
-        environment.openCode("var position: ${info("Vector2")}")
-        environment.checkInfoHighlighting()
+    fun `test Vector2 variable`() {
+        environment.openCode("var position: Vector2")
+        assertTrue("Vector2" in environment.highlightedTexts())
     }
 
-    fun `test variable String type`() {
-        environment.openCode("var name: ${info("String")}")
-        environment.checkInfoHighlighting()
+    fun `test String variable`() {
+        environment.openCode("var name: String")
+        assertTrue("String" in environment.highlightedTexts())
     }
 
-    fun `test non built-in class name`() {
-        environment.openCode("var x: ${info("SomeClass")}")
-        environment.checkInfoHighlighting()
+    fun `test custom class variable`() {
+        environment.openCode("var x: MyClass")
+        assertTrue("MyClass" in environment.highlightedTexts())
     }
 
-    fun `test extends Node type`() {
-        environment.openCode("extends ${info("Node")}")
-        environment.checkInfoHighlighting()
+    fun `test extends Node`() {
+        environment.openCode("extends Node")
+        assertTrue("Node" in environment.highlightedTexts())
     }
 
     fun `test primitive classes are not highlighted`() {
         environment.openCode("var x: float")
-        environment.checkInfoHighlighting()
+        assertEmpty(environment.highlightedTexts())
     }
 
 }

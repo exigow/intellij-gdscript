@@ -1,19 +1,19 @@
 package gdscript.annotator
 
 import gdscript.BaseTest
+import uitlities.highlightedTexts
 import uitlities.openCode
-import uitlities.checkInfoHighlighting
 
 class MethodAnnotatorTest : BaseTest() {
 
     fun `test function declaration`() {
-        environment.openCode("func ${info("_init")}():")
-        environment.checkInfoHighlighting()
+        environment.openCode("func _init():")
+        assertTrue("_init" in environment.highlightedTexts())
     }
 
     fun `test static function declaration`() {
-        environment.openCode("static func ${info("add")}():")
-        environment.checkInfoHighlighting()
+        environment.openCode("static func add():")
+        assertTrue("add" in environment.highlightedTexts())
     }
 
 }

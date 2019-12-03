@@ -1,73 +1,61 @@
 package gdscript.completion
 
 import gdscript.BaseTest
+import uitlities.lookupTexts
 import uitlities.openCode
-import uitlities.assertContains
-import uitlities.assertNotContains
-import uitlities.lookups
 
 class PrimaryCompletionContributorTest : BaseTest() {
 
     fun `test keyword as value`() {
         environment.openCode("x = <caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "self")
-        assertContains(environment.lookups(), "null")
-        assertContains(environment.lookups(), "false")
+        assertTrue("self" in environment.lookupTexts())
+        assertTrue("null" in environment.lookupTexts())
+        assertTrue("false" in environment.lookupTexts())
     }
 
     fun `test function as statement`() {
         environment.openCode("pr<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "print")
+        assertTrue("print" in environment.lookupTexts())
     }
 
     fun `test function in var statement`() {
         environment.openCode("var x = si<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "sin")
+        assertTrue("sin" in environment.lookupTexts())
     }
 
     fun `test function in dictionary`() {
         environment.openCode("dict = {A = 1, B = si<caret>}")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "sin")
+        assertTrue("sin" in environment.lookupTexts())
     }
 
     fun `test Vector2 constructor`() {
         environment.openCode("position = Vec<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "Vector2")
+        assertTrue("Vector2" in environment.lookupTexts())
     }
 
     fun `test primitive float constructor`() {
         environment.openCode("x = flo<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "float")
+        assertTrue("float" in environment.lookupTexts())
     }
 
     fun `test values are not present after DOT operator`() {
         environment.openCode("vector.fa<caret>")
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), "false")
+        assertFalse("false" in environment.lookupTexts())
     }
 
     fun `test do not complete inside string`() {
         environment.openCode("""x = "flo<caret>" """)
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), "float")
+        assertFalse("float" in environment.lookupTexts())
     }
 
     fun `test variable completion in argument default value`() {
         environment.openCode("func f(arg=nul<caret>):")
-        environment.completeBasic()
-        assertNotContains(environment.lookups(), "null")
+        assertEmpty(environment.lookupTexts())
     }
 
     fun `test typing numbers doesn't invokes constants with numbers in names`() {
         environment.openCode("x = 1<caret>")
-        environment.completeBasic()
-        assertEmpty(environment.lookups())
+        assertEmpty(environment.lookupTexts())
     }
 
 }

@@ -1,19 +1,18 @@
 package gdscript.annotator
 
 import gdscript.BaseTest
-import uitlities.openCode
-import uitlities.checkInfoHighlighting
+import uitlities.*
 
 class EntryKeyAnnotatorTest : BaseTest() {
 
-    fun `test dictionary entry key highlighting`() {
-        environment.openCode("dict = {${info("key")} = value}")
-        environment.checkInfoHighlighting()
+    fun `test Lua-style entry`() {
+        environment.openCode("dict = {key = value}")
+        assertTrue("key" in environment.highlightedTexts())
     }
 
-    fun `test dictionary entry string key highlighting`() {
-        environment.openCode("dict = {${info("\"key\"")} = value}")
-        environment.checkInfoHighlighting()
+    fun `test String entry`() {
+        environment.openCode("""dict = {"key" = value}""")
+        assertTrue("\"key\"" in environment.highlightedTexts())
     }
 
 }

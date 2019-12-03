@@ -1,20 +1,19 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.*
+import uitlities.lookupTexts
+import uitlities.openCode
 
 class KeywordCompletionContributorTest : BaseTest() {
 
     fun `test complete "var" keyword after new line"`() {
         environment.openCode("\nva<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "var")
+        assertTrue("var" in environment.lookupTexts())
     }
 
     fun `test complete "static" keyword after new line`() {
         environment.openCode("\nsta<caret>")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "static")
+        assertTrue("static" in environment.lookupTexts())
     }
 
 }

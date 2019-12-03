@@ -1,34 +1,29 @@
 package gdscript.completion
 
 import gdscript.BaseTest
+import uitlities.lookupTexts
 import uitlities.openCode
-import uitlities.assertContains
-import uitlities.lookups
 
 class InvokeCompletionContributorTest : BaseTest() {
 
     fun `test edit existing function`() {
         environment.openCode("si<caret>(1)")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "sin")
+        assertTrue("sin" in environment.lookupTexts())
     }
 
     fun `test edit existing range function in for statement`() {
         environment.openCode("for i in rang<caret>(1, 2):")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "range")
+        assertTrue("range" in environment.lookupTexts())
     }
 
     fun `test edit existing constructor`() {
         environment.openCode("Vec<caret>(1, 2)")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "Vector2")
+        assertTrue("Vector2" in environment.lookupTexts())
     }
 
-    fun `test edit is case-insensitive`() {
+    fun `test edit existing constructor is case-insensitive`() {
         environment.openCode("vec<caret>(1, 2)")
-        environment.completeBasic()
-        assertContains(environment.lookups(), "Vector2")
+        assertTrue("Vector2" in environment.lookupTexts())
     }
 
 }

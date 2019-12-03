@@ -5,24 +5,24 @@ import uitlities.*
 
 class InvalidImportAnnotatorTest : BaseTest() {
 
-    fun `test no warning when file is valid`() {
+    fun `test warning on missing file`() {
+        environment.openCode("""x = preload("res://missing.gd")""")
         environment.addProjectFile()
-        environment.addFile("util.gd")
+        assertTrue("\"res://missing.gd\"" in environment.highlightedTexts())
+        assertTrue("Cannot resolve resource 'missing.gd'" in environment.highlightedDescriptions())
+    }
+
+    fun `test no warning when file is valid`() {
         environment.openCode("""x = preload("res://util.gd")""")
-        environment.checkHighlighting()
+        environment.addFile("util.gd")
+        environment.addProjectFile()
+        assertEmpty(environment.highlightedTexts())
     }
 
     fun `test no warning when project file is missing`() {
-        environment.addFile("util.gd")
         environment.openCode("""x = preload("res://util.gd")""")
-        environment.checkHighlighting()
-    }
-
-    fun `test warning on missing file`() {
-        environment.addProjectFile()
         environment.addFile("util.gd")
-        environment.openCode("""x = preload(<weak_warning descr="Cannot resolve resource 'missing.gd'">"res://missing.gd"</weak_warning>)""")
-        environment.checkHighlighting()
+        assertEmpty(environment.highlightedTexts())
     }
 
 }

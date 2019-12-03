@@ -25,10 +25,17 @@ fun CodeInsightTestFixture.addFile(filename: String) {
 fun CodeInsightTestFixture.addProjectFile() =
     addFile("project.godot")
 
-fun CodeInsightTestFixture.checkInfoHighlighting() =
-    checkHighlighting(false, true, false)
-
-fun CodeInsightTestFixture.doCommentAction() =
+fun CodeInsightTestFixture.doCommentAction() {
     performEditorAction(IdeActions.ACTION_COMMENT_LINE)
+}
 
-fun CodeInsightTestFixture.lookups() = lookupElementStrings.orEmpty()
+fun CodeInsightTestFixture.lookupTexts(): Collection<String> {
+    completeBasic()
+    return lookupElementStrings.orEmpty()
+}
+
+fun CodeInsightTestFixture.highlightedTexts(): Collection<String> =
+    doHighlighting().map { it.text }
+
+fun CodeInsightTestFixture.highlightedDescriptions(): Collection<String> =
+    doHighlighting().mapNotNull { it.description }
