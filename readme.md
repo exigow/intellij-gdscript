@@ -4,6 +4,10 @@
 
 ![Type completion](https://i.imgur.com/hhhZFAl.png)
 
+![File completion](https://i.imgur.com/i6u0KAD.png)
+
+[(screenshots)](https://exigow.imgur.com/all)
+
 ### Features
 
 * Syntax highlighting (`.gd`, `.tres`) 
@@ -41,20 +45,6 @@ Token is located in `gradle.properties` file with `publishPluginToken` key (empt
 ```
 
 NOTE: To ignore changes in `gradle.properties` use `git update-index --assume-unchanged gradle.properties`.
-
-### Screenshots
-
-![File completion](https://i.imgur.com/i6u0KAD.png)
-
-![Missing file warning](https://i.imgur.com/OKM93A9.png)
-
-![Null keyword completion](https://i.imgur.com/NsQ3QWI.png)
-
-![Constant value lookups like PI](https://i.imgur.com/aFmZW8B.png)
-
-![Class name completion](https://i.imgur.com/5j9MzWO.png)
-
-More screenshots can be found [on imgur](https://exigow.imgur.com/all).
 
 [obtain-token]: https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html
 [plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
