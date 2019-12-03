@@ -48,11 +48,6 @@ class PrimaryCompletionContributorTest : BaseTest() {
         assertFalse("float" in environment.lookupTexts())
     }
 
-    fun `test variable completion in argument default value`() {
-        environment.openCode("func f(arg=nul<caret>):")
-        assertEmpty(environment.lookupTexts())
-    }
-
     fun `test typing numbers doesn't invokes constants with numbers in names`() {
         environment.openCode("x = 1<caret>")
         assertEmpty(environment.lookupTexts())
