@@ -57,7 +57,7 @@ NOTE: To ignore changes in `gradle.properties` use `git update-index --assume-un
 More screenshots can be found [on imgur](https://exigow.imgur.com/all).
 
 [obtain-token]: https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html
-[plugin-url]: https://github.com/exigow/intellij-gdscript/releases
+[plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
 [build-url]: https://travis-ci.org/exigow/intellij-gdscript?branch=master
 [license-badge]: https://img.shields.io/github/license/exigow/intellij-gdscript?branch=master
