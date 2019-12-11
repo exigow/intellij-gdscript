@@ -12,18 +12,24 @@ import gdscript.completion.sources.CompletionUtils
 class KeywordCompletionContributor : CompletionContributor() {
 
     init {
-        extend(CompletionType.BASIC, psiElement().afterLeaf("\n"), KeywordCompletionProvider(CompletionUtils.keywordsStatements()))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("export"), KeywordCompletionProvider(listOf("var")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("onready"), KeywordCompletionProvider(listOf("var")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("master"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("master"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("mastersync"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("puppet"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("puppetsync"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("remote"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("remotesync"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("sync"), KeywordCompletionProvider(listOf("var", "func")))
-        extend(CompletionType.BASIC, psiElement().afterLeaf("static"), KeywordCompletionProvider(listOf("func")))
+        extendKeyword("\n", CompletionUtils.keywordsStatements())
+        extendKeyword("export", listOf("var"))
+        extendKeyword("onready", listOf("var"))
+        extendKeyword("master", listOf("var", "func"))
+        extendKeyword("master", listOf("var", "func"))
+        extendKeyword("mastersync", listOf("var", "func"))
+        extendKeyword("puppet", listOf("var", "func"))
+        extendKeyword("puppetsync", listOf("var", "func"))
+        extendKeyword("remote", listOf("var", "func"))
+        extendKeyword("remotesync", listOf("var", "func"))
+        extendKeyword("sync", listOf("var", "func"))
+        extendKeyword("static", listOf("func"))
+    }
+
+    private fun extendKeyword(trigger: String, nextKeywords: List<String>) {
+        val rule = psiElement().afterLeaf(trigger)
+        val provider = KeywordCompletionProvider(nextKeywords)
+        extend(CompletionType.BASIC, rule, provider)
     }
 
     class KeywordCompletionProvider(private val texts: List<String>) : CompletionProvider<CompletionParameters>() {
