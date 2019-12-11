@@ -16,7 +16,7 @@ class ColorTextAttributeKeyTest : TestCase() {
         val keys = values().map { it.key }
         val actualSize = keys.toList().size
         val uniqueSize = keys.toSet().size
-        assertTrue(actualSize == uniqueSize)
+        assertEquals(actualSize, uniqueSize)
     }
 
 }

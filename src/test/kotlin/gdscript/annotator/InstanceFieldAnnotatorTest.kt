@@ -1,20 +1,19 @@
 package gdscript.annotator
 
 import gdscript.BaseTest
-import uitlities.highlightedTexts
-import uitlities.openCode
+import uitlities.highlights
+import uitlities.openScript
 
 class InstanceFieldAnnotatorTest : BaseTest() {
 
-    fun `test field`() {
-        environment.openCode("hero.left_hand")
-        assertTrue("left_hand" in environment.highlightedTexts())
+    fun `test highlight instance field`() {
+        environment.openScript("hero.left_hand")
+        assertContainsElements(environment.highlights(), "left_hand")
     }
 
-    fun `test field of field`() {
-        environment.openCode("hero.left_hand.item")
-        assertTrue("left_hand" in environment.highlightedTexts())
-        assertTrue("item" in environment.highlightedTexts())
+    fun `test highlight instance field of instance field`() {
+        environment.openScript("hero.left_hand.item")
+        assertContainsElements(environment.highlights(), "left_hand", "item")
     }
 
 }

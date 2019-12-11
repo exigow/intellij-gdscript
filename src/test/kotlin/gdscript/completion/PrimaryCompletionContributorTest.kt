@@ -1,56 +1,63 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.lookupTexts
-import uitlities.openCode
+import uitlities.lookups
+import uitlities.openScript
 
 class PrimaryCompletionContributorTest : BaseTest() {
 
-    fun `test keyword as value`() {
-        environment.openCode("x = <caret>")
-        assertTrue("self" in environment.lookupTexts())
-        assertTrue("null" in environment.lookupTexts())
-        assertTrue("false" in environment.lookupTexts())
+    fun `test keyword-like variables in expression values`() {
+        environment.openScript("x = <caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "self", "null", "false")
     }
 
-    fun `test function as statement`() {
-        environment.openCode("pr<caret>")
-        assertTrue("print" in environment.lookupTexts())
+    fun `test function invocation as first statement`() {
+        environment.openScript("pr<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "print")
     }
 
-    fun `test function in var statement`() {
-        environment.openCode("var x = si<caret>")
-        assertTrue("sin" in environment.lookupTexts())
+    fun `test function invocation`() {
+        environment.openScript("var x = si<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "sin")
     }
 
-    fun `test function in dictionary`() {
-        environment.openCode("dict = {A = 1, B = si<caret>}")
-        assertTrue("sin" in environment.lookupTexts())
+    fun `test function invocation in dictionary entry value`() {
+        environment.openScript("dict = {A = 1, B = si<caret>}")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "sin")
     }
 
-    fun `test Vector2 constructor`() {
-        environment.openCode("position = Vec<caret>")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class constructor in value expression`() {
+        environment.openScript("position = Vec<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test primitive float constructor`() {
-        environment.openCode("x = flo<caret>")
-        assertTrue("float" in environment.lookupTexts())
+    fun `test primitive class constructor`() {
+        environment.openScript("x = flo<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "float")
     }
 
-    fun `test values are not present after DOT operator`() {
-        environment.openCode("vector.fa<caret>")
-        assertFalse("false" in environment.lookupTexts())
+    fun `test completion is not invoked after dot operator expression`() {
+        environment.openScript("vector.flo<caret>")
+        environment.completeBasic()
+        assertEmpty(environment.lookups())
     }
 
-    fun `test do not complete inside string`() {
-        environment.openCode("""x = "flo<caret>" """)
-        assertFalse("float" in environment.lookupTexts())
+    fun `test completion is not invoked inside string expression`() {
+        environment.openScript("""x = "flo<caret>" """)
+        environment.completeBasic()
+        assertEmpty(environment.lookups())
     }
 
-    fun `test typing numbers doesn't invokes constants with numbers in names`() {
-        environment.openCode("x = 1<caret>")
-        assertEmpty(environment.lookupTexts())
+    fun `test completion is not invoked while typing numbers`() {
+        environment.openScript("x = 1<caret>")
+        environment.completeBasic()
+        assertEmpty(environment.lookups())
     }
 
 }

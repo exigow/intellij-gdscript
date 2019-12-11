@@ -2,7 +2,7 @@ package gdscript.lang
 
 import com.intellij.lang.annotation.HighlightSeverity
 import gdscript.BaseTest
-import uitlities.openCode
+import uitlities.openScript
 
 class ScriptErrorHighlightingTest : BaseTest() {
 
@@ -405,13 +405,13 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("""extends "Some.gd".First.Second""")
 
     fun `test error on two statements in one line (sanity check)`() {
-        environment.openCode("var x var")
+        environment.openScript("var x var")
         val errors = environment.doHighlighting()
-        assertTrue(errors[0].severity == HighlightSeverity.ERROR)
+        assertEquals(errors[0].severity, HighlightSeverity.ERROR)
     }
 
     private fun assertNoErrors(code: String) {
-        environment.openCode(code)
+        environment.openScript(code)
         environment.checkHighlighting()
     }
 

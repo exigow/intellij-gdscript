@@ -1,44 +1,58 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.lookupTexts
-import uitlities.openCode
+import uitlities.lookups
+import uitlities.openScript
 
 class TypeCompletionContributorTest : BaseTest() {
 
-    fun `test accept lower-case classes`() {
-        environment.openCode("var p: vec<caret>")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test lower-case class name in type expression invokes class name`() {
+        environment.openScript("var p: vec<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test accept upper-case primitives`() {
-        environment.openCode("var p: Flo<caret>")
-        assertTrue("float" in environment.lookupTexts())
+    fun `test upper-case primitive name in type expression invokes primitive name`() {
+        environment.openScript("var p: Flo<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "float")
     }
 
-    fun `test "as"`() {
-        environment.openCode("p as Vec<caret>")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class type completion after "as" operator`() {
+        environment.openScript("p as Vec<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test "is"`() {
-        environment.openCode("p is Vec<caret>")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class type completion after "is" operator`() {
+        environment.openScript("p is Vec<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test "extends"`() {
-        environment.openCode("extends Vec<caret>")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class type completion after "extends" operator`() {
+        environment.openScript("extends No<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Node")
     }
 
-    fun `test "func" with argument`() {
-        environment.openCode("func draw_quad(position: <caret>):")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class type completion in function argument`() {
+        environment.openScript("func draw_circle(center: <caret>):")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test "func" with colon after caret`() {
-        environment.openCode("func get_name() -> <caret>:")
-        assertTrue("Vector2" in environment.lookupTexts())
+    fun `test class type completion in function returned type`() {
+        environment.openScript("func get_position() -> <caret>:")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "Vector2")
     }
+
+    fun `test primitive type completion in function returned type`() {
+        environment.openScript("func get_length() -> <caret>:")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "float")
+    }
+
 
 }

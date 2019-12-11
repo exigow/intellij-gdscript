@@ -5,14 +5,14 @@ import uitlities.*
 
 class EntryKeyAnnotatorTest : BaseTest() {
 
-    fun `test Lua-style entry`() {
-        environment.openCode("dict = {key = value}")
-        assertTrue("key" in environment.highlightedTexts())
+    fun `test highlight Lua-style entry key name`() {
+        environment.openScript("dict = {key = value}")
+        assertContainsElements(environment.highlights(), "key")
     }
 
-    fun `test String entry`() {
-        environment.openCode("""dict = {"key" = value}""")
-        assertTrue("\"key\"" in environment.highlightedTexts())
+    fun `test highlight String entry key name`() {
+        environment.openScript("""dict = {"key" = value}""")
+        assertContainsElements(environment.highlights(), "\"key\"")
     }
 
 }

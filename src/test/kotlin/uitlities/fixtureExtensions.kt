@@ -6,16 +6,16 @@ import gdscript.fileType.ResourceType
 import gdscript.fileType.ScriptType
 
 
-fun CodeInsightTestFixture.openCode(content: String) {
+fun CodeInsightTestFixture.openScript(filename: String, content: String) {
+    configureByText(filename, content)
+}
+
+fun CodeInsightTestFixture.openScript(content: String) {
     configureByText(ScriptType, content)
 }
 
 fun CodeInsightTestFixture.openResource(content: String) {
     configureByText(ResourceType, content)
-}
-
-fun CodeInsightTestFixture.openCode(filename: String, content: String) {
-    configureByText(filename, content)
 }
 
 fun CodeInsightTestFixture.addFile(filename: String) {
@@ -25,17 +25,12 @@ fun CodeInsightTestFixture.addFile(filename: String) {
 fun CodeInsightTestFixture.addProjectFile() =
     addFile("project.godot")
 
-fun CodeInsightTestFixture.doCommentAction() {
+fun CodeInsightTestFixture.doCommentLineAction() {
     performEditorAction(IdeActions.ACTION_COMMENT_LINE)
 }
 
-fun CodeInsightTestFixture.lookupTexts(): Collection<String> {
-    completeBasic()
-    return lookupElementStrings.orEmpty()
-}
+fun CodeInsightTestFixture.lookups(): Collection<String> =
+    lookupElementStrings.orEmpty()
 
-fun CodeInsightTestFixture.highlightedTexts(): Collection<String> =
+fun CodeInsightTestFixture.highlights(): Collection<String> =
     doHighlighting().map { it.text }
-
-fun CodeInsightTestFixture.highlightedDescriptions(): Collection<String> =
-    doHighlighting().mapNotNull { it.description }

@@ -1,16 +1,16 @@
 package gdscript.lang.commenter
 
 import gdscript.BaseTest
-import uitlities.doCommentAction
+import uitlities.doCommentLineAction
 import uitlities.openResource
 
 class ResourceCommenterTest : BaseTest() {
 
     fun `test comment then uncomment`() {
         environment.openResource("test<caret>")
-        environment.doCommentAction()
+        environment.doCommentLineAction()
         environment.checkResult(";test<caret>")
-        environment.doCommentAction()
+        environment.doCommentLineAction()
         environment.checkResult("test<caret>")
     }
 

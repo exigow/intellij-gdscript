@@ -1,24 +1,27 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.lookupTexts
-import uitlities.openCode
+import uitlities.lookups
+import uitlities.openScript
 
 class StaticCompletionContributorTest : BaseTest() {
 
-    fun `test Vector2 class constant`() {
-        environment.openCode("one = Vector2.<caret>")
-        assertTrue("ONE" in environment.lookupTexts())
+    fun `test Vector2 constant`() {
+        environment.openScript("one = Vector2.<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "ONE")
     }
 
-    fun `test Input singleton constant`() {
-        environment.openCode("is_hidden = Input.<caret>")
-        assertTrue("MOUSE_MODE_HIDDEN" in environment.lookupTexts())
+    fun `test Input constant`() {
+        environment.openScript("is_hidden = Input.<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "MOUSE_MODE_HIDDEN")
     }
 
-    fun `test Input singleton method`() {
-        environment.openCode("is_hidden = Input.<caret>")
-        assertTrue("is_key_pressed" in environment.lookupTexts())
+    fun `test Input method`() {
+        environment.openScript("is_hidden = Input.<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "is_key_pressed")
     }
 
 }

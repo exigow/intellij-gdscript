@@ -1,29 +1,33 @@
 package gdscript.completion
 
 import gdscript.BaseTest
-import uitlities.lookupTexts
-import uitlities.openCode
+import uitlities.lookups
+import uitlities.openScript
 
 class KeywordCompletionContributorTest : BaseTest() {
 
-    fun `test newline var`() {
-        environment.openCode("\nva<caret>")
-        assertTrue("var" in environment.lookupTexts())
+    fun `test "var" keyword completion after newline`() {
+        environment.openScript("\nva<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "var")
     }
 
-    fun `test newline const`() {
-        environment.openCode("\ncon<caret>")
-        assertTrue("const" in environment.lookupTexts())
+    fun `test "const" keyword completion after newline`() {
+        environment.openScript("\ncon<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "const")
     }
 
-    fun `test newline static`() {
-        environment.openCode("\nsta<caret>")
-        assertTrue("static" in environment.lookupTexts())
+    fun `test "static" keyword completion after newline`() {
+        environment.openScript("\nsta<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "static")
     }
 
-    fun `test newline class_name`() {
-        environment.openCode("\nclas<caret>")
-        assertTrue("class_name" in environment.lookupTexts())
+    fun `test "class_name" keyword completion after newline`() {
+        environment.openScript("\nclas<caret>")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "class_name")
     }
 
 }

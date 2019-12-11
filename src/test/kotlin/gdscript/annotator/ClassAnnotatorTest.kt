@@ -5,29 +5,24 @@ import uitlities.*
 
 class ClassAnnotatorTest : BaseTest() {
 
-    fun `test Vector2 variable`() {
-        environment.openCode("var position: Vector2")
-        assertTrue("Vector2" in environment.highlightedTexts())
+    fun `test highlight class name as variable type`() {
+        environment.openScript("var position: Vector2")
+        assertContainsElements(environment.highlights(), "Vector2")
     }
 
-    fun `test String variable`() {
-        environment.openCode("var name: String")
-        assertTrue("String" in environment.highlightedTexts())
+    fun `test highlight custom class as variable type`() {
+        environment.openScript("var x: MyClass")
+        assertContainsElements(environment.highlights(), "MyClass")
     }
 
-    fun `test custom class variable`() {
-        environment.openCode("var x: MyClass")
-        assertTrue("MyClass" in environment.highlightedTexts())
+    fun `test highlight Node after "extends" keyword`() {
+        environment.openScript("extends Node")
+        assertContainsElements(environment.highlights(), "Node")
     }
 
-    fun `test extends Node`() {
-        environment.openCode("extends Node")
-        assertTrue("Node" in environment.highlightedTexts())
-    }
-
-    fun `test primitive classes are not highlighted`() {
-        environment.openCode("var x: float")
-        assertEmpty(environment.highlightedTexts())
+    fun `test don't highlight primitive classes`() {
+        environment.openScript("var x: float")
+        assertEmpty(environment.highlights())
     }
 
 }
