@@ -9,8 +9,7 @@ import com.intellij.testFramework.fixtures.impl.LightTempDirTestFixtureImpl
 
 abstract class BaseTest : UsefulTestCase() {
 
-    val environment: CodeInsightTestFixture = getFixtureFactory()
-        .createCodeInsightFixture(createFixture(), createTempDir())
+    val environment: CodeInsightTestFixture = configureFixture()
 
     override fun setUp() =
         environment.setUp()
@@ -18,14 +17,21 @@ abstract class BaseTest : UsefulTestCase() {
     override fun tearDown() =
         environment.tearDown()
 
-    private fun createFixture() = getFixtureFactory()
-        .createLightFixtureBuilder()
-        .fixture
+    private companion object {
 
-    private fun createTempDir(): TempDirTestFixture {
-        val policy = IdeaTestExecutionPolicy.current()
-        return policy?.createTempDirTestFixture()
-            ?: LightTempDirTestFixtureImpl(true)
+        private fun configureFixture() = getFixtureFactory()
+            .createCodeInsightFixture(createFixture(), createTempDir())
+
+        private fun createFixture() = getFixtureFactory()
+            .createLightFixtureBuilder()
+            .fixture
+
+        private fun createTempDir(): TempDirTestFixture {
+            val policy = IdeaTestExecutionPolicy.current()
+            return policy?.createTempDirTestFixture()
+                ?: LightTempDirTestFixtureImpl(true)
+        }
+
     }
 
 }
