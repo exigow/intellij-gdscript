@@ -1,12 +1,8 @@
-## GDScript plugin for IntelliJ IDEA
-
-[![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]](license) 
+## GDScript plugin for IntelliJ IDEA [![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]](license)
 
 ![Type completion](https://i.imgur.com/hhhZFAl.png)
 
 ![File completion](https://i.imgur.com/i6u0KAD.png)
-
-[(screenshots)](https://exigow.imgur.com/all)
 
 ### Features
 
@@ -18,33 +14,24 @@
 * Syntax-aware code selection (`Ctrl+W` / `Ctrl+Shift+W`)
 * Paired brackets highlighting
 
-### Installation
-
-1. Run `./gradlew buildPlugin` or [download latest release][plugin-url].
-2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
-3. Find `build/distributions/intellij-gdscript.zip` (or downloaded file) and restart.
-
-Plugin is compatible with all IntelliJ-based IDEs starting from v2019.2.
+Works with all IntelliJ-based IDEs starting from v2019.2.
 
 ### Usage & Development
 
-**Contributions are welcome!**
-
-* `./gradlew runIde` - run sandbox with installed plugin. First run may take a while.
-* `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required to update changes in ANTLR sources (`src/main/antlr/*.g4`).
-* `./gradlew generateCompletion` - download & generate completion  `src/main/resources/completion.json`.
+* `./gradlew runIde` - run sandbox IDE with installed plugin. First run may take a while.
+* `./gradlew buildPlugin` - build plugin. Outputs `build/distributions/intellij-gdscript.zip`.
+* `./gradlew publishPlugin` - publish plugin. Requires JetBrains Permanent Token located in `gradle.properties`.
+* `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required after changing ANTLR sources.
+* `./gradlew generateCompletion` - download & generate completion. Outputs `src/main/resources/completion.json`.
 * `./gradlew test` - run all tests.
 
-#### Publishing
+### Manual Installation
 
-You have to [obtain authentication token][obtain-token] in order to push distribution into JetBrains plugin repository.
-Token is located in `gradle.properties` file with `publishPluginToken` key (empty value by default).
+1. Run `./gradlew buildPlugin` or [download][plugin-url].
+2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
+3. Find `build/distributions/intellij-gdscript.zip` (or downloaded file) and restart IDE.
 
-```shell script
-./gradlew publishPlugin
-```
-
-NOTE: To ignore changes in `gradle.properties` use `git update-index --assume-unchanged gradle.properties`.
+**Contributions are welcome!**
 
 [obtain-token]: https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html
 [plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
