@@ -60,4 +60,11 @@ class PrimaryCompletionContributorTest : BaseTest() {
         assertEmpty(environment.lookups())
     }
 
+    fun `test move caret automatically after parentheses when function has no arguments`() {
+        environment.openScript("prin<caret>")
+        environment.completeBasic()
+        environment.finishLookup('\r')
+        environment.checkResult("print()<caret>")
+    }
+
 }

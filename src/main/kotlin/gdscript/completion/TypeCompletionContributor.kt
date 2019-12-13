@@ -4,31 +4,27 @@ import ScriptParser.RULE_type
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.utils.LookupFactory
 import gdscript.lang.psi.PsiElementUtils.rule
-import gdscript.lang.IconCatalog.CLASS
 
 class TypeCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        val isInsideType = parameters.position.parent.rule() == RULE_type
-        if (isInsideType) {
-            val all = PRIMITIVE_NAMES + CLASS_NAMES
-            result.caseInsensitive()
-                .addAllElements(all)
-        }
+        if (isInsideType(parameters.position))
+            result.caseInsensitive().addAllElements(ALL_TYPE_LOOKUPS)
     }
+
+    private fun isInsideType(element: PsiElement) =
+        element.parent.rule() == RULE_type
 
     private companion object {
 
-        private val PRIMITIVE_NAMES =
-            CompletionUtils.primitives()
-                .map { create(it.name).bold() }
-
-        private val CLASS_NAMES =
-            CompletionUtils.classes()
-                .map { create(it.name).withTypeText(it.extends).withIcon(CLASS) }
+        private val ALL_TYPE_LOOKUPS = listOf(
+            CompletionUtils.primitives().map { LookupFactory.createKeyword(it.name) },
+            CompletionUtils.classes().map { LookupFactory.createClass(it) }
+        ).flatten()
 
     }
 

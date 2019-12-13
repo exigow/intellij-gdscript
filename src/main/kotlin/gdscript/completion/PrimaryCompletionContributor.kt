@@ -4,83 +4,35 @@ import ScriptParser.RULE_primary
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
-import gdscript.completion.utils.LookupElementBuilderUtils.withArgumentsTail
-import gdscript.completion.utils.LookupElementBuilderUtils.withParenthesesInsertHandler
-import gdscript.lang.IconCatalog
-import gdscript.lang.IconCatalog.STATIC_CLASS
-import gdscript.lang.IconCatalog.STATIC_VARIABLE
+import gdscript.completion.utils.LookupFactory
 import gdscript.lang.psi.PsiElementUtils.rule
 
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        val isInsideParent = element.parent.rule() == RULE_primary
-        if (isInsideParent && hasNotDigitPrefix(element)) {
-            val all = listOf(
-                SINGLETON_NAMES,
-                CONSTANT_VALUES,
-                FUNCTIONS,
-                CLASS_CONSTRUCTORS,
-                PRIMITIVE_CONSTRUCTORS,
-                KEYWORD_VARIABLES
-            )
-            result.addAllElements(all.flatten())
-        }
+        if (isInsidePrimary(element) && hasNotDigitPrefix(element))
+            result.addAllElements(ALL_PRIMARY_LOOKUPS)
     }
+
+    private fun isInsidePrimary(element: PsiElement) =
+        element.parent.rule() == RULE_primary
 
     private fun hasNotDigitPrefix(element: PsiElement) =
         !element.text.first().isDigit()
 
-    companion object {
+    private companion object {
 
-        private val KEYWORD_VARIABLES =
-            CompletionUtils.keywordVariables()
-                .map { create(it).bold() }
-
-        private val SINGLETON_NAMES =
-            CompletionUtils.singletons()
-                .map { create(it.name).withIcon(STATIC_CLASS) }
-
-        private val CONSTANT_VALUES =
-            CompletionUtils.constants()
-                .map {
-                    create(it.name)
-                        .withIcon(STATIC_VARIABLE)
-                        .withTailText(" = ${it.value}")
-                }
-
-        private val FUNCTIONS =
-            CompletionUtils.functions()
-                .map {
-                    create(it.name)
-                        .withIcon(IconCatalog.FUNCTION)
-                        .withTypeText(it.type)
-                        .withArgumentsTail(it.arguments)
-                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
-                        .bold()
-                }
-
-        private val CLASS_CONSTRUCTORS =
-            CompletionUtils.classConstructors()
-                .map {
-                    create(it.name)
-                        .withIcon(IconCatalog.CLASS)
-                        .withArgumentsTail(it.arguments)
-                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
-                }
-
-        private val PRIMITIVE_CONSTRUCTORS =
-            CompletionUtils.primitiveConstructors()
-                .map {
-                    create(it.name)
-                        .withArgumentsTail(it.arguments)
-                        .withParenthesesInsertHandler(it.arguments.isNotEmpty())
-                        .bold()
-                }
+        val ALL_PRIMARY_LOOKUPS = listOf(
+            CompletionUtils.singletons().map { LookupFactory.createSingleton(it) },
+            CompletionUtils.constants().map { LookupFactory.createConstant(it) },
+            CompletionUtils.functions().map { LookupFactory.createFunction(it) },
+            CompletionUtils.classConstructors().map { LookupFactory.createConstructor(it) },
+            CompletionUtils.primitiveConstructors().map { LookupFactory.createPrimitiveConstructor(it) },
+            CompletionUtils.keywordVariables().map { LookupFactory.createKeyword(it) }
+        ).flatten()
 
     }
 

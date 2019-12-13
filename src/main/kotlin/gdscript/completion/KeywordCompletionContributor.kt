@@ -1,12 +1,10 @@
 package gdscript.completion
 
 import com.intellij.codeInsight.completion.*
-import com.intellij.codeInsight.completion.AddSpaceInsertHandler.INSTANCE_WITH_AUTO_POPUP
-import com.intellij.codeInsight.lookup.AutoCompletionPolicy
-import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
 import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.utils.LookupFactory
 
 
 class KeywordCompletionContributor : CompletionContributor() {
@@ -32,19 +30,14 @@ class KeywordCompletionContributor : CompletionContributor() {
         extend(CompletionType.BASIC, rule, provider)
     }
 
-    class KeywordCompletionProvider(private val texts: List<String>) : CompletionProvider<CompletionParameters>() {
+    private class KeywordCompletionProvider(private val texts: List<String>)
+        : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            val lookups = createLookups()
+            val lookups = texts.map { LookupFactory.createKeywordWithSpace(it) }
             result.addAllElements(lookups)
         }
 
-        private fun createLookups() = texts.map {
-            create(it)
-                .withInsertHandler(INSTANCE_WITH_AUTO_POPUP)
-                .bold()
-                .withAutoCompletionPolicy(AutoCompletionPolicy.ALWAYS_AUTOCOMPLETE)
-        }
     }
 
 }

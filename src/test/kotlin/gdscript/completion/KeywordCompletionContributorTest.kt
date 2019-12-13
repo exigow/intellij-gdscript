@@ -30,4 +30,11 @@ class KeywordCompletionContributorTest : BaseTest() {
         assertContainsElements(environment.lookups(), "class_name")
     }
 
+    fun `test "func" keyword completion should add automatically space`() {
+        environment.openScript("\nfun<caret>")
+        environment.completeBasic()
+        environment.finishLookup('\r')
+        environment.checkResult("\nfunc <caret>")
+    }
+
 }
