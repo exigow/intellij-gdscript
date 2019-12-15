@@ -18,29 +18,27 @@ class CommandLineConfigurationPanel(private val project: Project) : JPanel() {
     private val parametersEditor = RawCommandLineEditor()
 
     init {
-        layout = VerticalFlowLayout(VerticalFlowLayout.MIDDLE, 0, 5, true, false)
-        addLabeledComponent("Godot executable:", executablePathChooser)
-        addLabeledComponent("Working directory:", workingDirectoryChooser)
-        addLabeledComponent("Parameters:", parametersEditor)
+        layout = VerticalFlowLayout()
+        add(createEntry("Godot executable:", executablePathChooser))
+        add(createEntry("Working directory:", workingDirectoryChooser))
+        add(createEntry("Parameters:", parametersEditor))
     }
 
-    fun reset(config: CommandLineRunConfiguration) {
+    fun resetEditorFrom(config: CommandLineRunConfiguration) {
         executablePathChooser.text = PathUtil.toSystemDependentName(config.executablePath)
         workingDirectoryChooser.text = PathUtil.toSystemDependentName(config.workingDirectory)
         parametersEditor.text = config.parameters.joinToString(" ")
     }
 
-    fun applyTo(config: CommandLineRunConfiguration) {
+    fun applyEditorTo(config: CommandLineRunConfiguration) {
         config.executablePath = executablePathChooser.text
         config.workingDirectory = workingDirectoryChooser.text
         config.parameters = parametersEditor.text.split(" ")
     }
 
-    private fun addLabeledComponent(label: String, component: JComponent) {
-        val labeled = LabeledComponent.create(component, label)
-        labeled.labelLocation = BorderLayout.WEST
-        add(labeled)
-    }
+    private fun createEntry(label: String, component: JComponent) =
+        LabeledComponent.create(component, label)
+            .also { it.labelLocation = BorderLayout.WEST }
 
     private fun createFileChooser(): MacroComboBoxWithBrowseButton {
         val fileChooser = FileChooserDescriptorFactory.createSingleFolderDescriptor()

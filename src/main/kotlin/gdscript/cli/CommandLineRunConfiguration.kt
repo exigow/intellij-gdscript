@@ -33,10 +33,10 @@ class CommandLineRunConfiguration(project: Project, factory: ConfigurationFactor
         override fun createEditor() = panel
 
         override fun resetEditorFrom(config: CommandLineRunConfiguration) =
-            panel.reset(config)
+            panel.resetEditorFrom(config)
 
         override fun applyEditorTo(config: CommandLineRunConfiguration) =
-            panel.applyTo(config)
+            panel.applyEditorTo(config)
 
     }
 
