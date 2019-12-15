@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>Godot GDScript</name>
-	<version>0.20</version>
+	<version>0.21</version>
 	<vendor>Jakub Błach</vendor>
 	<description>This plugin adds support for the Godot GDScript language.</description>
 	<depends>com.intellij.modules.lang</depends>
