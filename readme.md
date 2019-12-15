@@ -2,17 +2,17 @@
 
 ![Type completion](https://i.imgur.com/hhhZFAl.png)
 
-![File completion](https://i.imgur.com/i6u0KAD.png)
+### Key Features
 
-### Features
-
-* Syntax highlighting (`.gd`, `.tres`) 
-* Code completion of Godot Engine built-in classes, functions and static methods
-* Path to file completion/validation 
-* Auto-insertion of braces, brackets and quotes
-* Code commenting (`Ctrl+/`)
-* Syntax-aware code selection (`Ctrl+W` / `Ctrl+Shift+W`)
-* Paired brackets highlighting
+* Run scene / project
+* Syntax highlighting
+* Code completion
+  * Godot Engine built-in classes, functions, constants and static methods
+  * Path to file completion
+* Code folding (auto-insertion)
+* Paired symbols highlighting
+* Commenting
+* Syntax-aware code selection
 
 Works with all IntelliJ-based IDEs starting from v2019.2.
 
