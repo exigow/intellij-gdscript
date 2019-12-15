@@ -28,8 +28,8 @@ Works with all IntelliJ-based IDEs starting from v2019.2.
 ### Manual Installation
 
 1. Run `./gradlew buildPlugin` or [download][plugin-url].
-2. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
-3. Find `build/distributions/intellij-gdscript.zip` (or downloaded file) and restart IDE.
+1. Start IntelliJ, open `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
+1. Find `build/distributions/intellij-gdscript.zip` (or downloaded file) and restart IDE.
 
 **Contributions are welcome!**
 
