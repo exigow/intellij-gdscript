@@ -20,7 +20,7 @@ class RunSceneFileProducer : LazyRunConfigurationProducer<CommandLineRunConfigur
             ?: return false
         if (file.extension != "tscn")
             return false
-        configuration.name = "Scene " + file.name
+        configuration.name = file.name
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = file.parent?.path.orEmpty()
         configuration.parameters = listOf(file.name)

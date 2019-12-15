@@ -20,7 +20,7 @@ class RunProjectFileProducer : LazyRunConfigurationProducer<CommandLineRunConfig
             ?: return false
         if (file.name != "project.godot")
             return false
-        configuration.name = "Project " + file.parent.name
+        configuration.name = file.parent.name
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = file.parent?.path.orEmpty()
         return true

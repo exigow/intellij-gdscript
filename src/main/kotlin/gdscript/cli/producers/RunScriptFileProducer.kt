@@ -20,7 +20,7 @@ class RunScriptFileProducer : LazyRunConfigurationProducer<CommandLineRunConfigu
             ?: return false
         if (file.extension != "gd")
             return false
-        configuration.name = "Script " + file.name
+        configuration.name = file.name
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = file.parent?.path.orEmpty()
         configuration.parameters = listOf("--script", file.name)
