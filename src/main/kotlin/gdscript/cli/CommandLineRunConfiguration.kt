@@ -20,10 +20,10 @@ class CommandLineRunConfiguration(project: Project, factory: ConfigurationFactor
         CommandLineState(this, environment)
 
     override fun checkConfiguration() {
-        if (workingDirectory.isEmpty())
-            throw RuntimeConfigurationException("Working directory path is empty.")
         if (executablePath.isEmpty())
             throw RuntimeConfigurationException("Executable path is empty.")
+        if (workingDirectory.isEmpty())
+            throw RuntimeConfigurationException("Working directory is empty.")
     }
 
 }
