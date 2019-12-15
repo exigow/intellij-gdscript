@@ -1,4 +1,4 @@
-<idea-plugin>
+<idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>Godot GDScript</name>
 	<version>0.20</version>
