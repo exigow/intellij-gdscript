@@ -23,7 +23,7 @@ class RunScriptFileProducer : LazyRunConfigurationProducer<CommandLineRunConfigu
         configuration.name = "Script " + file.name
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = file.parent?.path.orEmpty()
-        configuration.programParameters = "--script ${file.name}"
+        configuration.parameters = listOf("--script", file.name)
         return true
     }
 

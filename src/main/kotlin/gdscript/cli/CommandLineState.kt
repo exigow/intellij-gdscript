@@ -13,14 +13,10 @@ internal class CommandLineState(config: CommandLineRunConfiguration, environment
     private val command = GeneralCommandLine()
         .withExePath(config.executablePath)
         .withWorkDirectory(config.workingDirectory)
-        .withParameters(decodeParameters(config.programParameters))
-        .withEnvironment(config.envs)
+        .withParameters(config.parameters)
 
     override fun startProcess(): ProcessHandler =
         KillableColoredProcessHandler(command)
             .also { ProcessTerminatedListener.attach(it, environment.project) }
-
-    private fun decodeParameters(params: String) =
-        params.split(" ").filterNot { it.isBlank() }
 
 }

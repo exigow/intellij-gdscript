@@ -23,7 +23,7 @@ class RunSceneFileProducer : LazyRunConfigurationProducer<CommandLineRunConfigur
         configuration.name = "Scene " + file.name
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = file.parent?.path.orEmpty()
-        configuration.programParameters = file.name
+        configuration.parameters = listOf(file.name)
         return true
     }
 
