@@ -18,7 +18,7 @@ Works with all IntelliJ-based IDEs starting from v2019.2.
 
 ### Usage & Development
 
-* `./gradlew runIde` - run sandbox IDE with installed plugin. First run may take a while.
+* `./gradlew runIde` - run sandbox with installed plugin. First run may take a while.
 * `./gradlew buildPlugin` - build plugin. Outputs `build/distributions/intellij-gdscript.zip`.
 * `./gradlew publishPlugin` - publish plugin. Requires JetBrains Permanent Token located in `gradle.properties`.
 * `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required after changing ANTLR sources.
