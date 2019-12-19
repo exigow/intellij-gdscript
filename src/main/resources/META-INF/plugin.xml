@@ -3,7 +3,7 @@
 	<name>GDScript</name>
 	<version>0.22.0</version>
 	<vendor>Jakub Błach</vendor>
-	<description>This plugin adds support for the Godot GDScript language.</description>
+	<description>Adds support for the Godot GDScript language.</description>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<annotator implementationClass="gdscript.annotator.ClassAnnotator" language="GDScript"/>
