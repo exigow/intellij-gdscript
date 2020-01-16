@@ -1,14 +1,17 @@
 package uitlities
 
 import junit.framework.TestCase.fail
+import kotlin.test.assertEquals
 
-inline fun <reified ExpectedException : Exception> assertExceptionThrown(invoke: () -> Unit) {
+inline fun <reified ExpectedException : Exception> assertExceptionThrown(invoke: () -> Unit, expectedMessage: String) {
     try {
         invoke()
-    } catch (exc: Exception) {
-        if (exc is ExpectedException)
+    } catch (exception: Exception) {
+        if (exception is ExpectedException) {
+            assertEquals(expectedMessage, exception.message)
             return
-        throw exc
+        }
+        throw exception
     }
-    fail("No ${ExpectedException::class.java} was thrown during the test")
+    fail("Expected exception ${ExpectedException::class.java} not thrown")
 }

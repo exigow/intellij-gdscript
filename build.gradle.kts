@@ -11,6 +11,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
     implementation("org.antlr:antlr4-intellij-adaptor:0.1")
     implementation("net.pearx.kasechange:kasechange-jvm:1.1.0")
+    testImplementation("io.mockk:mockk:1.9.3")
 }
 
 repositories {

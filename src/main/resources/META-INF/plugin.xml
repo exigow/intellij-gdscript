@@ -20,7 +20,7 @@
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassNameCompletionContributor" language="GDScript"/>
-		<configurationType implementation="gdscript.cli.CommandLineConfigurationType"/>
+		<configurationType implementation="gdscript.cli.RunConfigurationType"/>
 		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
 		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>
 		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="import" name="Import file" language="GDScript resource"/>
@@ -35,8 +35,8 @@
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.lang.typing.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.lang.typing.ScriptQuoteHandler" language="GDScript"/>
-		<runConfigurationProducer implementation="gdscript.cli.producers.RunProjectFileProducer"/>
-		<runConfigurationProducer implementation="gdscript.cli.producers.RunSceneFileProducer"/>
-		<runConfigurationProducer implementation="gdscript.cli.producers.RunScriptFileProducer"/>
+		<runConfigurationProducer implementation="gdscript.cli.producers.RunProjectProducer"/>
+		<runConfigurationProducer implementation="gdscript.cli.producers.RunSceneProducer"/>
+		<runConfigurationProducer implementation="gdscript.cli.producers.RunScriptProducer"/>
 	</extensions>
 </idea-plugin>

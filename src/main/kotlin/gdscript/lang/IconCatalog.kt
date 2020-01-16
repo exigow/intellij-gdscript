@@ -17,5 +17,6 @@ object IconCatalog {
     val STATIC_METHOD: Icon = LayeredIcon(Nodes.Method, Nodes.StaticMark)
     val STATIC_VARIABLE: Icon = LayeredIcon(Nodes.Variable, Nodes.StaticMark)
     val FUNCTION: Icon = Nodes.Function
+    val RUN: Icon = LayeredIcon(GODOT_FILE, Nodes.RunnableMark)
 
 }
