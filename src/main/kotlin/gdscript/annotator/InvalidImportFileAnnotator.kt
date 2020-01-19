@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement
 import gdscript.completion.utils.FileUtils
 import gdscript.lang.psi.PsiElementUtils.isToken
 
-class InvalidImportAnnotator : Annotator {
+class InvalidImportFileAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element.isToken(RESOURCE)) {

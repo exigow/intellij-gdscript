@@ -6,7 +6,7 @@ import uitlities.addProjectFile
 import uitlities.highlights
 import uitlities.openScript
 
-class InvalidImportAnnotatorTest : BaseTest() {
+class InvalidImportFileAnnotatorTest : BaseTest() {
 
     fun `test warning when file doesn't exist`() {
         environment.openScript("""x = preload("res://missing.gd")""")
