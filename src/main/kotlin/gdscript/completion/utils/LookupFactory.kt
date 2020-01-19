@@ -48,6 +48,10 @@ object LookupFactory {
             .withTypeText(it.extends)
             .withIcon(CLASS)
 
+    fun createClassname(name: String): LookupElement =
+        create(name)
+            .bold()
+
     fun createSingleton(clazz: Class): LookupElement =
         create(clazz.name)
             .withIcon(STATIC_CLASS)

@@ -7,18 +7,15 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupFactory
-import gdscript.lang.psi.PsiElementUtils.rule
+import gdscript.lang.psi.PsiElementUtils.hasParent
 
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (isInsidePrimary(element) && hasNotDigitPrefix(element))
+        if (element.hasParent(RULE_primary) && hasNotDigitPrefix(element))
             result.addAllElements(ALL_PRIMARY_LOOKUPS)
     }
-
-    private fun isInsidePrimary(element: PsiElement) =
-        element.parent.rule() == RULE_primary
 
     private fun hasNotDigitPrefix(element: PsiElement) =
         !element.text.first().isDigit()

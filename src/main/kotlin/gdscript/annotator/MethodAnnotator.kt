@@ -5,17 +5,15 @@ import ScriptParser.RULE_func_line
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import gdscript.colorSettingsPage.ColorTextAttributeKey
-import gdscript.lang.psi.PsiElementUtils.rule
-import gdscript.lang.psi.PsiElementUtils.token
+import gdscript.colorSettingsPage.ColorTextAttributeKey.INSTANCE_METHOD
+import gdscript.lang.psi.PsiElementUtils.hasParent
+import gdscript.lang.psi.PsiElementUtils.isToken
 
 class MethodAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        val isIdentifier = element.token() == IDENTIFIER
-        val isInsideFunc = element.parent.rule() == RULE_func_line
-        if (isIdentifier && isInsideFunc)
-            holder.colorize(element, ColorTextAttributeKey.INSTANCE_METHOD)
+        if (element.isToken(IDENTIFIER) && element.hasParent(RULE_func_line))
+            holder.colorize(element, INSTANCE_METHOD)
     }
 
 }

@@ -19,7 +19,7 @@
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.ClassNameCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<configurationType implementation="gdscript.cli.RunConfigurationType"/>
 		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
 		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>

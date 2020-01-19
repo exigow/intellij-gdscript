@@ -5,12 +5,12 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import gdscript.completion.utils.FileUtils
-import gdscript.lang.psi.PsiElementUtils.token
+import gdscript.lang.psi.PsiElementUtils.isToken
 
 class InvalidImportAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.token() == RESOURCE) {
+        if (element.isToken(RESOURCE)) {
             val filenames = collectProjectFilenames(element)
             if (filenames.isEmpty())
                 return

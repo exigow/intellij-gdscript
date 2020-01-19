@@ -11,19 +11,20 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VirtualFile
 import gdscript.completion.utils.FileUtils
 import gdscript.lang.IconCatalog
-import gdscript.lang.psi.PsiElementUtils.token
+import gdscript.lang.psi.PsiElementUtils.isToken
 import javax.swing.Icon
 
 class ImportCompletionContributor : CompletionContributor() {
 
-    override fun fillCompletionVariants(current: CompletionParameters, result: CompletionResultSet) {
-        if (current.position.token() == RESOURCE) {
-            val currentFile = current.originalFile.virtualFile
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        val element = parameters.position
+        if (element.isToken(RESOURCE)) {
+            val currentFile = parameters.originalFile.virtualFile
             val files = collectUsefulFiles(currentFile)
             for ((path, file) in files) {
                 val lookup = createFileLookup(path, file)
-                val importance = matchImportance(file.extension)
-                val prioritized = PrioritizedLookupElement.withExplicitProximity(lookup, importance)
+                val priority = prioritizeBy(file.extension)
+                val prioritized = PrioritizedLookupElement.withExplicitProximity(lookup, priority)
                 result.addElement(prioritized)
             }
         }
@@ -47,21 +48,21 @@ class ImportCompletionContributor : CompletionContributor() {
         create("res://$fileRelativePath")
             .withPresentableText(file.name)
             .withTypeText(fileRelativePath)
-            .withIcon(matchIcon(file.extension))
+            .withIcon(findIcon(file.extension))
 
-    private fun matchImportance(extension: String?): Int =
-        when (extension) {
-            "gd" -> 2
-            "tscn" -> 1
-            else -> 0
-        }
-
-    private fun matchIcon(extension: String?): Icon? =
+    private fun findIcon(extension: String?): Icon =
         when (extension) {
             "gd" -> IconCatalog.GODOT_FILE
             "tscn", "tres" -> IconCatalog.RESOURCE_FILE
             "json" -> IconCatalog.JSON_FILE
             else -> IconCatalog.ANY_FILE
+        }
+
+    private fun prioritizeBy(extension: String?): Int =
+        when (extension) {
+            "gd" -> 2
+            "tscn" -> 1
+            else -> 0
         }
 
 }

@@ -4,21 +4,16 @@ import ScriptParser.RULE_invoke
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.psi.PsiElement
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupFactory
-import gdscript.lang.psi.PsiElementUtils.rule
-
+import gdscript.lang.psi.PsiElementUtils.hasParent
 
 class InvokeCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (isInsideInvoke(parameters.position))
+        if (parameters.position.hasParent(RULE_invoke))
             result.caseInsensitive().addAllElements(ALL_INVOKE_LOOKUPS)
     }
-
-    private fun isInsideInvoke(element: PsiElement) =
-        element.parent.rule() == RULE_invoke
 
     companion object {
 

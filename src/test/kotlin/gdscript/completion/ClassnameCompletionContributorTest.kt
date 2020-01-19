@@ -4,7 +4,7 @@ import gdscript.BaseTest
 import uitlities.lookups
 import uitlities.openScript
 
-class ClassNameCompletionContributorTest : BaseTest() {
+class ClassnameCompletionContributorTest : BaseTest() {
 
     fun `test name completion from filename`() {
         environment.openScript("Main.gd", "\nclass_name <caret>")
