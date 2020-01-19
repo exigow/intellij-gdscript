@@ -7,6 +7,7 @@ import com.intellij.execution.process.ProcessHandler
 import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
+import com.intellij.util.execution.ParametersListUtil
 import org.jdom.Element
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
@@ -33,16 +34,10 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
                 val cmd = GeneralCommandLine()
                     .withExePath(executablePath)
                     .withWorkDirectory(workingDirectory)
-                    .withParameters(tokenizeParameters(parameters))
+                    .withParameters(ParametersListUtil.parse(parameters))
                 return KillableColoredProcessHandler(cmd)
                     .also { ProcessTerminatedListener.attach(it, environment.project) }
             }
-
-            private fun tokenizeParameters(str: String) =
-                if (str.isBlank())
-                    emptyList()
-                else
-                    str.split(" ")
 
         }
 
