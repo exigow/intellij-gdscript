@@ -1,7 +1,8 @@
 package gdscript.annotator
 
 import gdscript.BaseTest
-import uitlities.*
+import uitlities.highlights
+import uitlities.openScript
 
 class ClassAnnotatorTest : BaseTest() {
 
@@ -22,6 +23,11 @@ class ClassAnnotatorTest : BaseTest() {
 
     fun `test don't highlight primitive classes`() {
         environment.openScript("var x: float")
+        assertEmpty(environment.highlights())
+    }
+
+    fun `test don't highlight void`() {
+        environment.openScript("var x: void")
         assertEmpty(environment.highlights())
     }
 

@@ -62903,6 +62903,11 @@
   ],
   "primitiveClasses": [
     {
+      "name": "void",
+      "methods": [],
+      "constants": []
+    },
+    {
       "name": "bool",
       "extends": "",
       "description": "Boolean built-in type.",
