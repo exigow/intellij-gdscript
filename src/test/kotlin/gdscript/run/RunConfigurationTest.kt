@@ -1,4 +1,4 @@
-package gdscript.cli
+package gdscript.run
 
 import com.intellij.execution.configurations.RuntimeConfigurationException
 import gdscript.BaseTest

@@ -1,19 +1,20 @@
-package gdscript.cli.producers
+package gdscript.run.producers
 
 
 import com.intellij.openapi.vfs.VirtualFile
-import gdscript.cli.RunConfiguration
+import gdscript.run.RunConfiguration
 
 
-class RunProjectProducer : RunFileProducer() {
+class RunSceneProducer : RunFileProducer() {
 
     override fun isApplicable(file: VirtualFile) =
-        file.name == "project.godot"
+        file.extension == "tscn"
 
     override fun setupConfiguration(configuration: RunConfiguration, contextFile: VirtualFile) {
-        configuration.name = contextFile.parent.nameWithoutExtension
+        configuration.name = contextFile.nameWithoutExtension
         configuration.executablePath = "/usr/bin/godot"
         configuration.workingDirectory = contextFile.parent.path
+        configuration.parameters = contextFile.name
     }
 
 }

@@ -1,12 +1,12 @@
-package gdscript.cli.producers
+package gdscript.run.producers
 
 import com.intellij.execution.actions.ConfigurationContext
 import com.intellij.execution.actions.LazyRunConfigurationProducer
 import com.intellij.openapi.util.Ref
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiElement
-import gdscript.cli.RunConfiguration
-import gdscript.cli.RunConfigurationType
+import gdscript.run.RunConfiguration
+import gdscript.run.RunConfigurationType
 
 abstract class RunFileProducer : LazyRunConfigurationProducer<RunConfiguration>() {
 
