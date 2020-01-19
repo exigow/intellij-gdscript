@@ -9,7 +9,8 @@ import com.intellij.testFramework.fixtures.impl.LightTempDirTestFixtureImpl
 
 abstract class BaseTest : UsefulTestCase() {
 
-    val environment: CodeInsightTestFixture = configureFixture()
+    val environment: CodeInsightTestFixture =
+        configureFixture()
 
     override fun setUp() =
         environment.setUp()

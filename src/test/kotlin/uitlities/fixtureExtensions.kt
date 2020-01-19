@@ -1,36 +1,36 @@
 package uitlities
 
 import com.intellij.openapi.actionSystem.IdeActions
-import com.intellij.testFramework.fixtures.CodeInsightTestFixture
 import gdscript.fileType.ResourceType
 import gdscript.fileType.ScriptType
+import com.intellij.testFramework.fixtures.CodeInsightTestFixture as Fixture
 
 
-fun CodeInsightTestFixture.openScript(filename: String, content: String) {
+fun Fixture.openScript(filename: String, content: String) {
     configureByText(filename, content)
 }
 
-fun CodeInsightTestFixture.openScript(content: String) {
+fun Fixture.openScript(content: String) {
     configureByText(ScriptType, content)
 }
 
-fun CodeInsightTestFixture.openResource(content: String) {
+fun Fixture.openResource(content: String) {
     configureByText(ResourceType, content)
 }
 
-fun CodeInsightTestFixture.addFile(filename: String) {
+fun Fixture.addFile(filename: String) {
     addFileToProject(filename, "bla bla")
 }
 
-fun CodeInsightTestFixture.addProjectFile() =
+fun Fixture.addProjectFile() =
     addFile("project.godot")
 
-fun CodeInsightTestFixture.doCommentLineAction() {
+fun Fixture.doCommentLineAction() {
     performEditorAction(IdeActions.ACTION_COMMENT_LINE)
 }
 
-fun CodeInsightTestFixture.lookups(): Collection<String> =
+fun Fixture.lookups() =
     lookupElementStrings.orEmpty()
 
-fun CodeInsightTestFixture.highlights(): Collection<String> =
+fun Fixture.highlights() =
     doHighlighting().map { it.text }
