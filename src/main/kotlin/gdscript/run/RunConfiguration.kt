@@ -8,7 +8,9 @@ import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
 import com.intellij.util.execution.ParametersListUtil
+import com.intellij.util.io.exists
 import org.jdom.Element
+import java.nio.file.Paths
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
     : LocatableConfigurationBase<RunProfileState>(project, factory) {
@@ -22,6 +24,8 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
             throw RuntimeConfigurationException("Executable path is empty.")
         if (workingDirectory.isEmpty())
             throw RuntimeConfigurationException("Working directory is empty.")
+        if (!Paths.get(executablePath).exists())
+            throw RuntimeConfigurationException("Executable path don't exist.")
     }
 
     override fun getConfigurationEditor() =
