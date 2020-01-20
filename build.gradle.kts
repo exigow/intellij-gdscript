@@ -21,6 +21,7 @@ repositories {
 
 intellij {
     version = "2019.2"
+    updateSinceUntilBuild = false
 }
 
 registerGenerateCompletionDataTask()

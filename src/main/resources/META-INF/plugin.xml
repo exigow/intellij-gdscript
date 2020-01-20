@@ -4,6 +4,7 @@
 	<version>0.22.0</version>
 	<vendor>Jakub Błach</vendor>
 	<description>Adds support for the Godot GDScript language.</description>
+	<idea-version since-build="192"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<annotator implementationClass="gdscript.annotator.ClassAnnotator" language="GDScript"/>
