@@ -59,7 +59,7 @@ class RunConfigurationProducer : LazyRunConfigurationProducer<RunConfiguration>(
 
     private fun getDefaultExecutableBySystem() = when {
         SystemInfo.isLinux -> "/usr/bin/godot"
-        SystemInfo.isWindows -> "godot.exe"
+        SystemInfo.isWindows -> "C:\\Godot.exe"
         else -> ""
     }
 
