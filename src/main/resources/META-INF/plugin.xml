@@ -36,8 +36,6 @@
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.lang.typing.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.lang.typing.ScriptQuoteHandler" language="GDScript"/>
-		<runConfigurationProducer implementation="gdscript.run.producers.RunProjectProducer"/>
-		<runConfigurationProducer implementation="gdscript.run.producers.RunSceneProducer"/>
-		<runConfigurationProducer implementation="gdscript.run.producers.RunScriptProducer"/>
+		<runConfigurationProducer implementation="gdscript.run.RunConfigurationProducer"/>
 	</extensions>
 </idea-plugin>

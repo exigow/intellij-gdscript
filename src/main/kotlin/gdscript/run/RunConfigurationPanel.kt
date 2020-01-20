@@ -21,19 +21,19 @@ class RunConfigurationPanel(project: Project) : SettingsEditor<RunConfiguration>
     override fun createEditor() =
         JPanel().apply {
             layout = VerticalFlowLayout()
-            add(newComponent("Godot executable:", executableComponent))
+            add(newComponent("Godot executable file:", executableComponent))
             add(newComponent("Working directory:", workingDirectoryComponent))
-            add(newComponent("Executable parameters:", parametersComponent))
+            add(newComponent("Parameters:", parametersComponent))
         }
 
     override fun applyEditorTo(config: RunConfiguration) {
-        config.executablePath = executableComponent.text
+        config.executable = executableComponent.text
         config.workingDirectory = workingDirectoryComponent.text
         config.parameters = parametersComponent.text
     }
 
     override fun resetEditorFrom(config: RunConfiguration) {
-        executableComponent.text = config.executablePath
+        executableComponent.text = config.executable
         workingDirectoryComponent.text = config.workingDirectory
         parametersComponent.text = config.parameters
     }
