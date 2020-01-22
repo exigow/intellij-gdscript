@@ -24,8 +24,8 @@ intellij {
     updateSinceUntilBuild = false
 }
 
-registerGenerateCompletionDataTask()
 tasks {
+    registerAdditionalTasks()
     publishPlugin {
         token(project.property("publishPluginToken"))
         channels("beta")
