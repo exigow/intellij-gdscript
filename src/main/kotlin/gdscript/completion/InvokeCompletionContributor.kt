@@ -18,9 +18,9 @@ class InvokeCompletionContributor : CompletionContributor() {
     companion object {
 
         private val ALL_INVOKE_LOOKUPS = listOf(
-            CompletionUtils.functions().map { LookupFactory.createFunction(it) },
-            CompletionUtils.classConstructors().map { LookupFactory.createConstructor(it) },
-            CompletionUtils.primitiveConstructors().map { LookupFactory.createPrimitiveConstructor(it) }
+            CompletionUtils.FUNCTIONS.map { LookupFactory.createFunction(it) },
+            CompletionUtils.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
+            CompletionUtils.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) }
         ).flatten()
 
     }

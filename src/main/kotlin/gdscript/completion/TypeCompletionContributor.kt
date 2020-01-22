@@ -18,8 +18,8 @@ class TypeCompletionContributor : CompletionContributor() {
     private companion object {
 
         private val ALL_TYPE_LOOKUPS = listOf(
-            CompletionUtils.primitives().map { LookupFactory.createKeyword(it.name) },
-            CompletionUtils.classes().map { LookupFactory.createClass(it) }
+            CompletionUtils.PRIMITIVES.map { LookupFactory.createKeyword(it.name) },
+            CompletionUtils.CLASSES.map { LookupFactory.createClass(it) }
         ).flatten()
 
     }

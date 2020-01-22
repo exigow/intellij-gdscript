@@ -20,7 +20,7 @@ class StaticCompletionContributor : CompletionContributor() {
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
                 result.caseInsensitive().addAllElements(constants)
-                if (clazz in CompletionUtils.singletons()) {
+                if (clazz in CompletionUtils.SINGLETONS) {
                     val staticMethods = createStaticMethodLookups(clazz)
                     result.caseInsensitive().addAllElements(staticMethods)
                 }

@@ -10,7 +10,7 @@ import gdscript.completion.utils.LookupFactory
 class KeywordCompletionContributor : CompletionContributor() {
 
     init {
-        extendKeyword("\n", CompletionUtils.keywordsStatements())
+        extendKeyword("\n", CompletionUtils.STATEMENT_KEYWORDS)
         extendKeyword("export", listOf("var"))
         extendKeyword("onready", listOf("var"))
         extendKeyword("master", listOf("var", "func"))

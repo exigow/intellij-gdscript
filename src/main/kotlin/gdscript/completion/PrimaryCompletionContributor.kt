@@ -23,12 +23,12 @@ class PrimaryCompletionContributor : CompletionContributor() {
     private companion object {
 
         val ALL_PRIMARY_LOOKUPS = listOf(
-            CompletionUtils.singletons().map { LookupFactory.createSingleton(it) },
-            CompletionUtils.constants().map { LookupFactory.createConstant(it) },
-            CompletionUtils.functions().map { LookupFactory.createFunction(it) },
-            CompletionUtils.classConstructors().map { LookupFactory.createConstructor(it) },
-            CompletionUtils.primitiveConstructors().map { LookupFactory.createPrimitiveConstructor(it) },
-            CompletionUtils.keywordVariables().map { LookupFactory.createKeyword(it) }
+            CompletionUtils.SINGLETONS.map { LookupFactory.createSingleton(it) },
+            CompletionUtils.LANGUAGE_CONSTANTS.map { LookupFactory.createConstant(it) },
+            CompletionUtils.FUNCTIONS.map { LookupFactory.createFunction(it) },
+            CompletionUtils.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
+            CompletionUtils.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) },
+            CompletionUtils.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
         ).flatten()
 
     }
