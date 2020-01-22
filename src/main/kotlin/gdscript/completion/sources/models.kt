@@ -11,9 +11,9 @@ data class Language(
 data class Class(
     val name: String,
     val extends: String,
-    val fields: List<Field>,
-    val methods: List<Method>,
-    val constants: List<Constant>
+    val fields: List<Field>?,
+    val methods: List<Method>?,
+    val constants: List<Constant>?
 )
 
 data class Constant(
@@ -37,5 +37,5 @@ data class Argument(
 data class Method(
     val name: String,
     val type: String,
-    val arguments: List<Argument>
+    val arguments: List<Argument>?
 )

@@ -73,15 +73,15 @@ object LookupFactory {
             .withTypeText(method.type)
             .bold()
 
-    private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>): LookupElementBuilder {
-        val formatted = args.joinToString(", ", "(", ")") {
+    private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>?): LookupElementBuilder {
+        val formatted = args?.joinToString(", ", "(", ")") {
             "${it.name}: ${it.type}"
         }
         return withTailText(formatted)
     }
 
-    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>): LookupElementBuilder =
-        if (args.isEmpty())
+    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>?): LookupElementBuilder =
+        if (args?.isEmpty() == true)
             withInsertHandler(NO_PARAMETERS)
         else
             withInsertHandler(WITH_PARAMETERS)

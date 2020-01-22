@@ -62,11 +62,11 @@ object CompletionUtils {
 
     fun classConstructors(): List<Method> =
         COMPLETION_DATA.classes
-            .flatMap { it.methods.filter { method -> method.name == it.name } }
+            .flatMap { it.methods?.filter { method -> method.name == it.name }.orEmpty() }
 
     fun primitiveConstructors(): List<Method> =
         COMPLETION_DATA.primitiveClasses
-            .flatMap { it.methods.filter { method -> method.name == it.name } }
+            .flatMap { it.methods?.filter { method -> method.name == it.name }.orEmpty() }
 
     fun isPrimitive(name: String?) =
         COMPLETION_DATA.primitiveClasses

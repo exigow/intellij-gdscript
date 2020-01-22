@@ -29,10 +29,10 @@ class StaticCompletionContributor : CompletionContributor() {
     }
 
     private fun createConstantLookups(clazz: Class) =
-        clazz.constants.map { LookupFactory.createConstant(it) }
+        clazz.constants?.map { LookupFactory.createConstant(it) }.orEmpty()
 
     private fun createStaticMethodLookups(clazz: Class) =
-        clazz.methods.map { LookupFactory.createStaticMethod(it) }
+        clazz.methods?.map { LookupFactory.createStaticMethod(it) }.orEmpty()
 
     private fun PsiElement.prevLeaf() =
         PsiTreeUtil.prevLeaf(this) as? LeafPsiElement
