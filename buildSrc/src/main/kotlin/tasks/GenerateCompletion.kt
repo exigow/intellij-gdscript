@@ -45,7 +45,7 @@ open class GenerateCompletion : DefaultTask() {
     }
 
     private fun createVoid() =
-        Class("void", "", "", emptyList(), emptyList(), emptyList())
+        Class("void", "", emptyList(), emptyList(), emptyList())
 
     private fun isLanguageClass(file: Document) = file
         .select("class")
@@ -66,7 +66,6 @@ open class GenerateCompletion : DefaultTask() {
     private fun parseClass(file: Document) = Class(
         name = file.select("class").attr("name"),
         extends = file.select("class").attr("inherits"),
-        description = file.select("brief_description").text().trimIndent().trim(),
         fields = parseFields(file),
         methods = parseMethods(file),
         constants = collectConstants(file)

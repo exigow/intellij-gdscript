@@ -2045,7 +2045,6 @@
     {
       "name": "AABB",
       "extends": "",
-      "description": "Axis-Aligned Bounding Box.",
       "fields": [
         {
           "name": "end",
@@ -2259,7 +2258,6 @@
     {
       "name": "ARVRAnchor",
       "extends": "Spatial",
-      "description": "An anchor point in AR space.",
       "fields": [
         {
           "name": "anchor_id",
@@ -2301,7 +2299,6 @@
     {
       "name": "ARVRCamera",
       "extends": "Camera",
-      "description": "A camera node with a few overrules for AR/VR applied, such as location tracking.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -2309,7 +2306,6 @@
     {
       "name": "ARVRController",
       "extends": "Spatial",
-      "description": "A spatial node representing a spatially-tracked controller.",
       "fields": [
         {
           "name": "controller_id",
@@ -2378,7 +2374,6 @@
     {
       "name": "ARVRInterface",
       "extends": "Reference",
-      "description": "Base class for an AR/VR interface implementation.",
       "fields": [
         {
           "name": "ar_is_anchor_detection_enabled",
@@ -2502,7 +2497,6 @@
     {
       "name": "ARVROrigin",
       "extends": "Spatial",
-      "description": "The origin point in AR/VR.",
       "fields": [
         {
           "name": "world_scale",
@@ -2518,7 +2512,6 @@
     {
       "name": "ARVRPositionalTracker",
       "extends": "Object",
-      "description": "A tracked object.",
       "fields": [
         {
           "name": "rumble",
@@ -2603,7 +2596,6 @@
     {
       "name": "AStar",
       "extends": "Reference",
-      "description": "An implementation of A* to find shortest paths among connected points in space.",
       "fields": [],
       "methods": [
         {
@@ -2901,7 +2893,6 @@
     {
       "name": "AStar2D",
       "extends": "Reference",
-      "description": "AStar class representation that uses 2d-vectors as edges.",
       "fields": [],
       "methods": [
         {
@@ -3163,7 +3154,6 @@
     {
       "name": "AcceptDialog",
       "extends": "WindowDialog",
-      "description": "Base dialog for user notification.",
       "fields": [
         {
           "name": "dialog_autowrap",
@@ -3249,7 +3239,6 @@
     {
       "name": "AnimatedSprite",
       "extends": "Node2D",
-      "description": "Sprite node that can use multiple textures for animation.",
       "fields": [
         {
           "name": "animation",
@@ -3346,7 +3335,6 @@
     {
       "name": "AnimatedSprite3D",
       "extends": "SpriteBase3D",
-      "description": "2D sprite node in 3D world, that can use multiple 2D textures for animation.",
       "fields": [
         {
           "name": "animation",
@@ -3404,7 +3392,6 @@
     {
       "name": "AnimatedTexture",
       "extends": "Texture",
-      "description": "Proxy texture for simple frame-based animations.",
       "fields": [
         {
           "name": "flags",
@@ -3488,7 +3475,6 @@
     {
       "name": "Animation",
       "extends": "Resource",
-      "description": "Contains data used to animate everything in the engine.",
       "fields": [
         {
           "name": "length",
@@ -4418,7 +4404,6 @@
     {
       "name": "AnimationNode",
       "extends": "Resource",
-      "description": "Base resource for [AnimationTree] nodes.",
       "fields": [
         {
           "name": "filter_enabled",
@@ -4679,7 +4664,6 @@
     {
       "name": "AnimationNodeAdd2",
       "extends": "AnimationNode",
-      "description": "Blends two animations additively inside of an [AnimationNodeBlendTree].",
       "fields": [
         {
           "name": "sync",
@@ -4695,7 +4679,6 @@
     {
       "name": "AnimationNodeAdd3",
       "extends": "AnimationNode",
-      "description": "Blends two of three animations additively inside of an [AnimationNodeBlendTree].",
       "fields": [
         {
           "name": "sync",
@@ -4711,7 +4694,6 @@
     {
       "name": "AnimationNodeAnimation",
       "extends": "AnimationRootNode",
-      "description": "Input animation to use in an [AnimationNodeBlendTree].",
       "fields": [
         {
           "name": "animation",
@@ -4727,7 +4709,6 @@
     {
       "name": "AnimationNodeBlend2",
       "extends": "AnimationNode",
-      "description": "Blends two animations linearly inside of an [AnimationNodeBlendTree].",
       "fields": [
         {
           "name": "sync",
@@ -4743,7 +4724,6 @@
     {
       "name": "AnimationNodeBlend3",
       "extends": "AnimationNode",
-      "description": "Blends two of three animations linearly inside of an [AnimationNodeBlendTree].",
       "fields": [
         {
           "name": "sync",
@@ -4759,7 +4739,6 @@
     {
       "name": "AnimationNodeBlendSpace1D",
       "extends": "AnimationRootNode",
-      "description": "Blends linearly between two of any number of [AnimationNode] of any type placed on a virtual axis.",
       "fields": [
         {
           "name": "max_space",
@@ -4878,7 +4857,6 @@
     {
       "name": "AnimationNodeBlendSpace2D",
       "extends": "AnimationRootNode",
-      "description": "Blends linearly between three [AnimationNode] of any type placed in a 2d space.",
       "fields": [
         {
           "name": "auto_triangles",
@@ -5082,7 +5060,6 @@
     {
       "name": "AnimationNodeBlendTree",
       "extends": "AnimationRootNode",
-      "description": "",
       "fields": [
         {
           "name": "graph_offset",
@@ -5242,7 +5219,6 @@
     {
       "name": "AnimationNodeOneShot",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [
         {
           "name": "autorestart",
@@ -5318,7 +5294,6 @@
     {
       "name": "AnimationNodeOutput",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -5326,7 +5301,6 @@
     {
       "name": "AnimationNodeStateMachine",
       "extends": "AnimationRootNode",
-      "description": "State machine for control of animations.",
       "fields": [],
       "methods": [
         {
@@ -5567,7 +5541,6 @@
     {
       "name": "AnimationNodeStateMachinePlayback",
       "extends": "Resource",
-      "description": "Playback control for AnimationNodeStateMachine.",
       "fields": [
         {
           "name": "resource_local_to_scene",
@@ -5624,7 +5597,6 @@
     {
       "name": "AnimationNodeStateMachineTransition",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "advance_condition",
@@ -5688,7 +5660,6 @@
     {
       "name": "AnimationNodeTimeScale",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -5696,7 +5667,6 @@
     {
       "name": "AnimationNodeTimeSeek",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -5704,7 +5674,6 @@
     {
       "name": "AnimationNodeTransition",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [
         {
           "name": "input_0/auto_advance",
@@ -6224,7 +6193,6 @@
     {
       "name": "AnimationPlayer",
       "extends": "Node",
-      "description": "Container and player of [Animation] resources.",
       "fields": [
         {
           "name": "assigned_animation",
@@ -6566,7 +6534,6 @@
     {
       "name": "AnimationRootNode",
       "extends": "AnimationNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -6574,7 +6541,6 @@
     {
       "name": "AnimationTrackEditPlugin",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -6582,7 +6548,6 @@
     {
       "name": "AnimationTree",
       "extends": "Node",
-      "description": "",
       "fields": [
         {
           "name": "active",
@@ -6669,7 +6634,6 @@
     {
       "name": "AnimationTreePlayer",
       "extends": "Node",
-      "description": "Animation Player that uses a node graph for blending Animations.",
       "fields": [
         {
           "name": "active",
@@ -7451,7 +7415,6 @@
     {
       "name": "Area",
       "extends": "CollisionObject",
-      "description": "General-purpose area node for detection and 3D physics influence.",
       "fields": [
         {
           "name": "angular_damp",
@@ -7686,7 +7649,6 @@
     {
       "name": "Area2D",
       "extends": "CollisionObject2D",
-      "description": "2D area for detection and 2D physics influence.",
       "fields": [
         {
           "name": "angular_damp",
@@ -7893,7 +7855,6 @@
     {
       "name": "Array",
       "extends": "",
-      "description": "Generic array datatype.",
       "fields": [],
       "methods": [
         {
@@ -8251,7 +8212,6 @@
     {
       "name": "ArrayMesh",
       "extends": "Mesh",
-      "description": "[Mesh] type that provides utility for constructing a surface from arrays.",
       "fields": [
         {
           "name": "blend_shape_mode",
@@ -8533,7 +8493,6 @@
     {
       "name": "AtlasTexture",
       "extends": "Texture",
-      "description": "Packs multiple small textures in a single, bigger one. Helps to optimize video memory costs and render calls.",
       "fields": [
         {
           "name": "atlas",
@@ -8577,7 +8536,6 @@
     {
       "name": "AudioBusLayout",
       "extends": "Resource",
-      "description": "Stores information about the audio buses.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -8585,7 +8543,6 @@
     {
       "name": "AudioEffect",
       "extends": "Resource",
-      "description": "Audio effect for audio.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -8593,7 +8550,6 @@
     {
       "name": "AudioEffectAmplify",
       "extends": "AudioEffect",
-      "description": "Adds an amplifying audio effect to an audio bus. Increases or decreases the volume of the selected audio bus.",
       "fields": [
         {
           "name": "volume_db",
@@ -8609,7 +8565,6 @@
     {
       "name": "AudioEffectBandLimitFilter",
       "extends": "AudioEffectFilter",
-      "description": "Adds a band limit filter to the audio bus.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -8617,7 +8572,6 @@
     {
       "name": "AudioEffectBandPassFilter",
       "extends": "AudioEffectFilter",
-      "description": "Adds a band pass filter to the audio bus.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -8625,7 +8579,6 @@
     {
       "name": "AudioEffectChorus",
       "extends": "AudioEffect",
-      "description": "Adds a chorus audio effect.",
       "fields": [
         {
           "name": "dry",
@@ -8968,7 +8921,6 @@
     {
       "name": "AudioEffectCompressor",
       "extends": "AudioEffect",
-      "description": "Adds a compressor audio effect to an audio bus. Reduces sounds that exceed a certain threshold level, smooths out the dynamics and increases the overall volume.",
       "fields": [
         {
           "name": "attack_us",
@@ -9026,7 +8978,6 @@
     {
       "name": "AudioEffectDelay",
       "extends": "AudioEffect",
-      "description": "Adds a delay audio effect to an audio bus. Plays input signal back after a period of time. Two tap delay and feedback options.",
       "fields": [
         {
           "name": "dry",
@@ -9126,7 +9077,6 @@
     {
       "name": "AudioEffectDistortion",
       "extends": "AudioEffect",
-      "description": "Adds a distortion audio effect to an Audio bus. Modify the sound to make it dirty.",
       "fields": [
         {
           "name": "drive",
@@ -9191,7 +9141,6 @@
     {
       "name": "AudioEffectEQ",
       "extends": "AudioEffect",
-      "description": "Base class for audio equalizers. Gives you control over frequencies. Use it to create a custom equalizer if [AudioEffectEQ6], [AudioEffectEQ10] or [AudioEffectEQ21] don\u0027t fit your needs.",
       "fields": [],
       "methods": [
         {
@@ -9229,7 +9178,6 @@
     {
       "name": "AudioEffectEQ10",
       "extends": "AudioEffectEQ",
-      "description": "Adds a 10-band equalizer audio effect to an Audio bus. Gives you control over frequencies from 31 Hz to 16000 Hz. Each frequency can be modulated between -60/+24 dB.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9237,7 +9185,6 @@
     {
       "name": "AudioEffectEQ21",
       "extends": "AudioEffectEQ",
-      "description": "Adds a 21-band equalizer audio effect to an Audio bus. Gives you control over frequencies from 22 Hz to 22000 Hz. Each frequency can be modulated between -60/+24 dB.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9245,7 +9192,6 @@
     {
       "name": "AudioEffectEQ6",
       "extends": "AudioEffectEQ",
-      "description": "Adds a 6-band equalizer audio effect to an Audio bus. Gives you control over frequencies from 32 Hz to 10000 Hz. Each frequency can be modulated between -60/+24 dB.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9253,7 +9199,6 @@
     {
       "name": "AudioEffectFilter",
       "extends": "AudioEffect",
-      "description": "Adds a filter to the audio bus.",
       "fields": [
         {
           "name": "cutoff_hz",
@@ -9307,7 +9252,6 @@
     {
       "name": "AudioEffectHighPassFilter",
       "extends": "AudioEffectFilter",
-      "description": "Adds a high-pass filter to the Audio Bus.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9315,7 +9259,6 @@
     {
       "name": "AudioEffectHighShelfFilter",
       "extends": "AudioEffectFilter",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9323,7 +9266,6 @@
     {
       "name": "AudioEffectInstance",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9331,7 +9273,6 @@
     {
       "name": "AudioEffectLimiter",
       "extends": "AudioEffect",
-      "description": "Adds a soft-clip limiter audio effect to an Audio bus.",
       "fields": [
         {
           "name": "ceiling_db",
@@ -9368,7 +9309,6 @@
     {
       "name": "AudioEffectLowPassFilter",
       "extends": "AudioEffectFilter",
-      "description": "Adds a low-pass filter to the Audio bus.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9376,7 +9316,6 @@
     {
       "name": "AudioEffectLowShelfFilter",
       "extends": "AudioEffectFilter",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9384,7 +9323,6 @@
     {
       "name": "AudioEffectNotchFilter",
       "extends": "AudioEffectFilter",
-      "description": "Adds a notch filter to the Audio bus.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9392,7 +9330,6 @@
     {
       "name": "AudioEffectPanner",
       "extends": "AudioEffect",
-      "description": "Adds a panner audio effect to an Audio bus. Pans sound left or right.",
       "fields": [
         {
           "name": "pan",
@@ -9408,7 +9345,6 @@
     {
       "name": "AudioEffectPhaser",
       "extends": "AudioEffect",
-      "description": "Adds a phaser audio effect to an Audio bus. Combines the original signal with a copy that is slightly out of phase with the original.",
       "fields": [
         {
           "name": "depth",
@@ -9452,7 +9388,6 @@
     {
       "name": "AudioEffectPitchShift",
       "extends": "AudioEffect",
-      "description": "Adds a pitch-shifting audio effect to an Audio bus. Raises or lowers the pitch of original sound.",
       "fields": [
         {
           "name": "fft_size",
@@ -9507,7 +9442,6 @@
     {
       "name": "AudioEffectRecord",
       "extends": "AudioEffect",
-      "description": "",
       "fields": [
         {
           "name": "format",
@@ -9544,7 +9478,6 @@
     {
       "name": "AudioEffectReverb",
       "extends": "AudioEffect",
-      "description": "Adds a reverberation audio effect to an Audio bus. Simulates the sound of acoustic environments such as rooms, concert halls, caverns, or an open spaces.",
       "fields": [
         {
           "name": "damping",
@@ -9609,7 +9542,6 @@
     {
       "name": "AudioEffectSpectrumAnalyzer",
       "extends": "AudioEffect",
-      "description": "",
       "fields": [
         {
           "name": "buffer_length",
@@ -9664,7 +9596,6 @@
     {
       "name": "AudioEffectSpectrumAnalyzerInstance",
       "extends": "AudioEffectInstance",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -9700,7 +9631,6 @@
     {
       "name": "AudioEffectStereoEnhance",
       "extends": "AudioEffect",
-      "description": "",
       "fields": [
         {
           "name": "pan_pullout",
@@ -9730,7 +9660,6 @@
     {
       "name": "AudioStream",
       "extends": "Resource",
-      "description": "Base class for audio streams.",
       "fields": [],
       "methods": [
         {
@@ -9744,7 +9673,6 @@
     {
       "name": "AudioStreamGenerator",
       "extends": "AudioStream",
-      "description": "",
       "fields": [
         {
           "name": "buffer_length",
@@ -9767,7 +9695,6 @@
     {
       "name": "AudioStreamGeneratorPlayback",
       "extends": "AudioStreamPlaybackResampled",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -9821,7 +9748,6 @@
     {
       "name": "AudioStreamMicrophone",
       "extends": "AudioStream",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9829,7 +9755,6 @@
     {
       "name": "AudioStreamPlayback",
       "extends": "Reference",
-      "description": "Meta class for playing back audio.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9837,7 +9762,6 @@
     {
       "name": "AudioStreamPlaybackResampled",
       "extends": "AudioStreamPlayback",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -9845,7 +9769,6 @@
     {
       "name": "AudioStreamPlayer",
       "extends": "Node",
-      "description": "Plays back audio non-positionally.",
       "fields": [
         {
           "name": "autoplay",
@@ -9959,7 +9882,6 @@
     {
       "name": "AudioStreamPlayer2D",
       "extends": "Node2D",
-      "description": "Plays audio in 2D.",
       "fields": [
         {
           "name": "area_mask",
@@ -10074,7 +9996,6 @@
     {
       "name": "AudioStreamPlayer3D",
       "extends": "Spatial",
-      "description": "Plays 3D sound in 3D space.",
       "fields": [
         {
           "name": "area_mask",
@@ -10289,7 +10210,6 @@
     {
       "name": "AudioStreamRandomPitch",
       "extends": "AudioStream",
-      "description": "Plays audio with random pitch shifting.",
       "fields": [
         {
           "name": "audio_stream",
@@ -10312,7 +10232,6 @@
     {
       "name": "AudioStreamSample",
       "extends": "AudioStream",
-      "description": "Stores audio data loaded from WAV files.",
       "fields": [
         {
           "name": "data",
@@ -10410,7 +10329,6 @@
     {
       "name": "BackBufferCopy",
       "extends": "Node2D",
-      "description": "Copies a region of the screen (or the whole screen) to a buffer so it can be accessed in your shader scripts through the [code]texture(SCREEN_TEXTURE, ...)[/code] function.",
       "fields": [
         {
           "name": "copy_mode",
@@ -10446,7 +10364,6 @@
     {
       "name": "BakedLightmap",
       "extends": "VisualInstance",
-      "description": "Prerendered indirect light map for a scene.",
       "fields": [
         {
           "name": "bake_cell_size",
@@ -10593,7 +10510,6 @@
     {
       "name": "BakedLightmapData",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "bounds",
@@ -10686,7 +10602,6 @@
     {
       "name": "BaseButton",
       "extends": "Control",
-      "description": "Base class for different kinds of buttons.",
       "fields": [
         {
           "name": "action_mode",
@@ -10827,7 +10742,6 @@
     {
       "name": "Basis",
       "extends": "",
-      "description": "3×3 matrix datatype.",
       "fields": [
         {
           "name": "x",
@@ -11069,7 +10983,6 @@
     {
       "name": "BitMap",
       "extends": "Resource",
-      "description": "Boolean matrix.",
       "fields": [],
       "methods": [
         {
@@ -11178,7 +11091,6 @@
     {
       "name": "BitmapFont",
       "extends": "Font",
-      "description": "Renders text using fonts under the [url\u003dhttps://www.angelcode.com/products/bmfont/]BMFont[/url] format. Handles files with the [code].fnt[/code] extension",
       "fields": [
         {
           "name": "ascent",
@@ -11328,7 +11240,6 @@
     {
       "name": "Bone2D",
       "extends": "Node2D",
-      "description": "Joint used with [Skeleton2D] to control and animate other nodes.",
       "fields": [
         {
           "name": "default_length",
@@ -11367,7 +11278,6 @@
     {
       "name": "BoneAttachment",
       "extends": "Spatial",
-      "description": "A node that will attach to a bone.",
       "fields": [
         {
           "name": "bone_name",
@@ -11383,7 +11293,6 @@
     {
       "name": "BoxContainer",
       "extends": "Container",
-      "description": "Base class for box containers.",
       "fields": [
         {
           "name": "alignment",
@@ -11430,7 +11339,6 @@
     {
       "name": "BoxShape",
       "extends": "Shape",
-      "description": "Box shape resource.",
       "fields": [
         {
           "name": "extents",
@@ -11446,7 +11354,6 @@
     {
       "name": "Button",
       "extends": "BaseButton",
-      "description": "Standard themed Button.",
       "fields": [
         {
           "name": "align",
@@ -11510,7 +11417,6 @@
     {
       "name": "ButtonGroup",
       "extends": "Resource",
-      "description": "Group of Buttons.",
       "fields": [
         {
           "name": "resource_local_to_scene",
@@ -11537,7 +11443,6 @@
     {
       "name": "CPUParticles",
       "extends": "GeometryInstance",
-      "description": "CPU-based 3D particle emitter.",
       "fields": [
         {
           "name": "amount",
@@ -12211,7 +12116,6 @@
     {
       "name": "CPUParticles2D",
       "extends": "Node2D",
-      "description": "CPU-based 2D particle emitter.",
       "fields": [
         {
           "name": "amount",
@@ -12874,7 +12778,6 @@
     {
       "name": "Camera",
       "extends": "Spatial",
-      "description": "Camera node, displays from a point of view.",
       "fields": [
         {
           "name": "cull_mask",
@@ -13184,7 +13087,6 @@
     {
       "name": "Camera2D",
       "extends": "Node2D",
-      "description": "Camera node for 2D scenes.",
       "fields": [
         {
           "name": "anchor_mode",
@@ -13469,7 +13371,6 @@
     {
       "name": "CameraFeed",
       "extends": "Reference",
-      "description": "A camera feed gives you access to a single physical camera attached to your device.",
       "fields": [
         {
           "name": "feed_is_active",
@@ -13537,7 +13438,6 @@
     {
       "name": "CameraTexture",
       "extends": "Texture",
-      "description": "This texture gives access to the camera texture provided by a [CameraFeed]. [b]Note:[/b] Many cameras supply YCbCr images which need to be converted in a shader.",
       "fields": [
         {
           "name": "camera_feed_id",
@@ -13574,7 +13474,6 @@
     {
       "name": "CanvasItem",
       "extends": "Node",
-      "description": "Base class of anything 2D.",
       "fields": [
         {
           "name": "light_mask",
@@ -14345,7 +14244,6 @@
     {
       "name": "CanvasItemMaterial",
       "extends": "Material",
-      "description": "A material for [CanvasItem]s.",
       "fields": [
         {
           "name": "blend_mode",
@@ -14429,7 +14327,6 @@
     {
       "name": "CanvasLayer",
       "extends": "Node",
-      "description": "Canvas drawing layer.",
       "fields": [
         {
           "name": "custom_viewport",
@@ -14507,7 +14404,6 @@
     {
       "name": "CanvasModulate",
       "extends": "Node2D",
-      "description": "Tint the entire canvas.",
       "fields": [
         {
           "name": "color",
@@ -14523,7 +14419,6 @@
     {
       "name": "CapsuleMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a capsule-shaped [PrimitiveMesh].",
       "fields": [
         {
           "name": "mid_height",
@@ -14560,7 +14455,6 @@
     {
       "name": "CapsuleShape",
       "extends": "Shape",
-      "description": "Capsule shape for collisions.",
       "fields": [
         {
           "name": "height",
@@ -14583,7 +14477,6 @@
     {
       "name": "CapsuleShape2D",
       "extends": "Shape2D",
-      "description": "Capsule shape for 2D collisions.",
       "fields": [
         {
           "name": "height",
@@ -14606,7 +14499,6 @@
     {
       "name": "CenterContainer",
       "extends": "Container",
-      "description": "Keeps children controls centered.",
       "fields": [
         {
           "name": "use_top_left",
@@ -14622,7 +14514,6 @@
     {
       "name": "CharFXTransform",
       "extends": "Reference",
-      "description": "Controls how an individual character will be displayed in a [RichTextEffect].",
       "fields": [
         {
           "name": "absolute_index",
@@ -14687,7 +14578,6 @@
     {
       "name": "CheckBox",
       "extends": "Button",
-      "description": "Binary choice user interface widget.",
       "fields": [
         {
           "name": "align",
@@ -14710,7 +14600,6 @@
     {
       "name": "CheckButton",
       "extends": "Button",
-      "description": "Checkable button.",
       "fields": [
         {
           "name": "align",
@@ -14733,7 +14622,6 @@
     {
       "name": "CircleShape2D",
       "extends": "Shape2D",
-      "description": "Circular shape for 2D collisions.",
       "fields": [
         {
           "name": "radius",
@@ -14749,7 +14637,6 @@
     {
       "name": "ClippedCamera",
       "extends": "Camera",
-      "description": "A [Camera] that includes collision.",
       "fields": [
         {
           "name": "clip_to_areas",
@@ -14877,7 +14764,6 @@
     {
       "name": "CollisionObject",
       "extends": "Spatial",
-      "description": "Base node for collision objects.",
       "fields": [
         {
           "name": "input_capture_on_drag",
@@ -15101,7 +14987,6 @@
     {
       "name": "CollisionObject2D",
       "extends": "Node2D",
-      "description": "Base node for 2D collision objects.",
       "fields": [
         {
           "name": "input_pickable",
@@ -15358,7 +15243,6 @@
     {
       "name": "CollisionPolygon",
       "extends": "Spatial",
-      "description": "Editor-only class for defining a collision polygon in 3D space.",
       "fields": [
         {
           "name": "depth",
@@ -15388,7 +15272,6 @@
     {
       "name": "CollisionPolygon2D",
       "extends": "Node2D",
-      "description": "Defines a 2D collision polygon.",
       "fields": [
         {
           "name": "build_mode",
@@ -15441,7 +15324,6 @@
     {
       "name": "CollisionShape",
       "extends": "Spatial",
-      "description": "Node that represents collision shape data in 3D space.",
       "fields": [
         {
           "name": "disabled",
@@ -15480,7 +15362,6 @@
     {
       "name": "CollisionShape2D",
       "extends": "Node2D",
-      "description": "Node that represents collision shape data in 2D space.",
       "fields": [
         {
           "name": "disabled",
@@ -15517,7 +15398,6 @@
     {
       "name": "Color",
       "extends": "",
-      "description": "Color in RGBA format with some support for ARGB format.",
       "fields": [
         {
           "name": "a",
@@ -16380,7 +16260,6 @@
     {
       "name": "ColorPicker",
       "extends": "BoxContainer",
-      "description": "Color picker control.",
       "fields": [
         {
           "name": "color",
@@ -16464,7 +16343,6 @@
     {
       "name": "ColorPickerButton",
       "extends": "Button",
-      "description": "Button that pops out a [ColorPicker].",
       "fields": [
         {
           "name": "color",
@@ -16505,7 +16383,6 @@
     {
       "name": "ColorRect",
       "extends": "Control",
-      "description": "Colored rectangle.",
       "fields": [
         {
           "name": "color",
@@ -16521,7 +16398,6 @@
     {
       "name": "ConcavePolygonShape",
       "extends": "Shape",
-      "description": "Concave polygon shape.",
       "fields": [],
       "methods": [
         {
@@ -16545,7 +16421,6 @@
     {
       "name": "ConcavePolygonShape2D",
       "extends": "Shape2D",
-      "description": "Concave polygon 2D shape resource for physics.",
       "fields": [
         {
           "name": "segments",
@@ -16561,7 +16436,6 @@
     {
       "name": "ConeTwistJoint",
       "extends": "Joint",
-      "description": "A twist joint between two 3D bodies.",
       "fields": [
         {
           "name": "bias",
@@ -16655,7 +16529,6 @@
     {
       "name": "ConfigFile",
       "extends": "Reference",
-      "description": "Helper class to handle INI-style files.",
       "fields": [],
       "methods": [
         {
@@ -16839,7 +16712,6 @@
     {
       "name": "ConfirmationDialog",
       "extends": "AcceptDialog",
-      "description": "Dialog for confirmation of actions.",
       "fields": [
         {
           "name": "rect_min_size",
@@ -16868,7 +16740,6 @@
     {
       "name": "Container",
       "extends": "Control",
-      "description": "Base node for containers.",
       "fields": [],
       "methods": [
         {
@@ -16901,7 +16772,6 @@
     {
       "name": "Control",
       "extends": "CanvasItem",
-      "description": "All user interface nodes inherit from Control. A control\u0027s anchors and margins adapt its position and size relative to its parent.",
       "fields": [
         {
           "name": "anchor_bottom",
@@ -18124,7 +17994,6 @@
     {
       "name": "ConvexPolygonShape",
       "extends": "Shape",
-      "description": "Convex polygon shape for 3D physics.",
       "fields": [
         {
           "name": "points",
@@ -18140,7 +18009,6 @@
     {
       "name": "ConvexPolygonShape2D",
       "extends": "Shape2D",
-      "description": "Convex polygon shape for 2D physics.",
       "fields": [
         {
           "name": "points",
@@ -18167,7 +18035,6 @@
     {
       "name": "Crypto",
       "extends": "Reference",
-      "description": "Access to advanced cryptographic functionalities.",
       "fields": [],
       "methods": [
         {
@@ -18218,7 +18085,6 @@
     {
       "name": "CryptoKey",
       "extends": "Resource",
-      "description": "A cryptographic key (RSA).",
       "fields": [],
       "methods": [
         {
@@ -18247,7 +18113,6 @@
     {
       "name": "CubeMap",
       "extends": "Resource",
-      "description": "A CubeMap is a 6-sided 3D texture.",
       "fields": [
         {
           "name": "flags",
@@ -18365,7 +18230,6 @@
     {
       "name": "CubeMesh",
       "extends": "PrimitiveMesh",
-      "description": "Generate an axis-aligned cuboid [PrimitiveMesh].",
       "fields": [
         {
           "name": "size",
@@ -18402,7 +18266,6 @@
     {
       "name": "Curve",
       "extends": "Resource",
-      "description": "A mathematic curve.",
       "fields": [
         {
           "name": "bake_resolution",
@@ -18656,7 +18519,6 @@
     {
       "name": "Curve2D",
       "extends": "Resource",
-      "description": "Describes a Bézier curve in 2D space.",
       "fields": [
         {
           "name": "bake_interval",
@@ -18869,7 +18731,6 @@
     {
       "name": "Curve3D",
       "extends": "Resource",
-      "description": "Describes a Bézier curve in 3D space.",
       "fields": [
         {
           "name": "bake_interval",
@@ -19137,7 +18998,6 @@
     {
       "name": "CurveTexture",
       "extends": "Texture",
-      "description": "A texture that shows a curve.",
       "fields": [
         {
           "name": "curve",
@@ -19160,7 +19020,6 @@
     {
       "name": "CylinderMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a cylindrical [PrimitiveMesh].",
       "fields": [
         {
           "name": "bottom_radius",
@@ -19204,7 +19063,6 @@
     {
       "name": "CylinderShape",
       "extends": "Shape",
-      "description": "Cylinder shape for collisions.",
       "fields": [
         {
           "name": "height",
@@ -19227,7 +19085,6 @@
     {
       "name": "DampedSpringJoint2D",
       "extends": "Joint2D",
-      "description": "Damped spring constraint for 2D physics.",
       "fields": [
         {
           "name": "damping",
@@ -19264,7 +19121,6 @@
     {
       "name": "Dictionary",
       "extends": "",
-      "description": "Dictionary type.",
       "fields": [],
       "methods": [
         {
@@ -19357,7 +19213,6 @@
     {
       "name": "DirectionalLight",
       "extends": "Light",
-      "description": "Directional light from a distance, as from the Sun.",
       "fields": [
         {
           "name": "directional_shadow_bias_split_scale",
@@ -19457,7 +19312,6 @@
     {
       "name": "Directory",
       "extends": "Reference",
-      "description": "Type used to handle the filesystem.",
       "fields": [],
       "methods": [
         {
@@ -19623,7 +19477,6 @@
     {
       "name": "DynamicFont",
       "extends": "Font",
-      "description": "DynamicFont renders vector font files at runtime.",
       "fields": [
         {
           "name": "extra_spacing_bottom",
@@ -19793,7 +19646,6 @@
     {
       "name": "DynamicFontData",
       "extends": "Resource",
-      "description": "Used with [DynamicFont] to describe the location of a font file.",
       "fields": [
         {
           "name": "antialiased",
@@ -19836,7 +19688,6 @@
     {
       "name": "EditorExportPlugin",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -19977,7 +19828,6 @@
     {
       "name": "EditorFeatureProfile",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -20153,7 +20003,6 @@
     {
       "name": "EditorFileDialog",
       "extends": "ConfirmationDialog",
-      "description": "",
       "fields": [
         {
           "name": "access",
@@ -20306,7 +20155,6 @@
     {
       "name": "EditorFileSystem",
       "extends": "Node",
-      "description": "Resource filesystem, as the editor sees it.",
       "fields": [],
       "methods": [
         {
@@ -20375,7 +20223,6 @@
     {
       "name": "EditorFileSystemDirectory",
       "extends": "Object",
-      "description": "A directory for the resource filesystem.",
       "fields": [],
       "methods": [
         {
@@ -20499,7 +20346,6 @@
     {
       "name": "EditorImportPlugin",
       "extends": "ResourceImporter",
-      "description": "Registers a custom resource importer in the editor. Use the class to parse any file and import it as a new resource type.",
       "fields": [],
       "methods": [
         {
@@ -20608,7 +20454,6 @@
     {
       "name": "EditorInspector",
       "extends": "ScrollContainer",
-      "description": "",
       "fields": [
         {
           "name": "scroll_horizontal_enabled",
@@ -20630,7 +20475,6 @@
     {
       "name": "EditorInspectorPlugin",
       "extends": "Reference",
-      "description": "Plugin for adding custom property editors on inspector.",
       "fields": [],
       "methods": [
         {
@@ -20750,7 +20594,6 @@
     {
       "name": "EditorInterface",
       "extends": "Node",
-      "description": "Godot editor\u0027s interface.",
       "fields": [],
       "methods": [
         {
@@ -20950,7 +20793,6 @@
     {
       "name": "EditorNavigationMeshGenerator",
       "extends": "Object",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -20983,7 +20825,6 @@
     {
       "name": "EditorPlugin",
       "extends": "Node",
-      "description": "Used by the editor to extend its functionality.",
       "fields": [],
       "methods": [
         {
@@ -21564,7 +21405,6 @@
     {
       "name": "EditorProperty",
       "extends": "Container",
-      "description": "Custom control to edit properties for adding into the inspector.",
       "fields": [
         {
           "name": "checkable",
@@ -21678,7 +21518,6 @@
     {
       "name": "EditorResourceConversionPlugin",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -21702,7 +21541,6 @@
     {
       "name": "EditorResourcePreview",
       "extends": "Node",
-      "description": "Helper to generate previews of resources or files.",
       "fields": [],
       "methods": [
         {
@@ -21785,7 +21623,6 @@
     {
       "name": "EditorResourcePreviewGenerator",
       "extends": "Reference",
-      "description": "Custom generator of previews.",
       "fields": [],
       "methods": [
         {
@@ -21842,7 +21679,6 @@
     {
       "name": "EditorSceneImporter",
       "extends": "Reference",
-      "description": "Imports scenes from third-parties\u0027 3D files.",
       "fields": [],
       "methods": [
         {
@@ -21974,7 +21810,6 @@
     {
       "name": "EditorSceneImporterAssimp",
       "extends": "EditorSceneImporter",
-      "description": "Multi-format 3D asset importer based on [url\u003dhttp://assimp.org/]Assimp[/url].",
       "fields": [],
       "methods": [],
       "constants": []
@@ -21982,7 +21817,6 @@
     {
       "name": "EditorScenePostImport",
       "extends": "Reference",
-      "description": "Post-processes scenes after import.",
       "fields": [],
       "methods": [
         {
@@ -22011,7 +21845,6 @@
     {
       "name": "EditorScript",
       "extends": "Reference",
-      "description": "Base script that can be used to add extension functions to the editor.",
       "fields": [],
       "methods": [
         {
@@ -22045,7 +21878,6 @@
     {
       "name": "EditorSelection",
       "extends": "Object",
-      "description": "Manages the SceneTree selection in the editor.",
       "fields": [],
       "methods": [
         {
@@ -22089,7 +21921,6 @@
     {
       "name": "EditorSettings",
       "extends": "Resource",
-      "description": "Object that holds the project-independent editor settings.",
       "fields": [],
       "methods": [
         {
@@ -22271,7 +22102,6 @@
     {
       "name": "EditorSpatialGizmo",
       "extends": "SpatialGizmo",
-      "description": "Custom gizmo for editing Spatial objects.",
       "fields": [],
       "methods": [
         {
@@ -22490,7 +22320,6 @@
     {
       "name": "EditorSpatialGizmoPlugin",
       "extends": "Resource",
-      "description": "Used by the editor to define Spatial gizmo types.",
       "fields": [],
       "methods": [
         {
@@ -22725,7 +22554,6 @@
     {
       "name": "EditorSpinSlider",
       "extends": "Range",
-      "description": "",
       "fields": [
         {
           "name": "flat",
@@ -22762,7 +22590,6 @@
     {
       "name": "EditorVCSInterface",
       "extends": "Object",
-      "description": "Version Control System (VCS) interface which reads and writes to the local VCS in use.",
       "fields": [],
       "methods": [
         {
@@ -22851,7 +22678,6 @@
     {
       "name": "EncodedObjectAsID",
       "extends": "Reference",
-      "description": "Holds a reference to an [Object]\u0027s instance ID.",
       "fields": [
         {
           "name": "object_id",
@@ -22867,7 +22693,6 @@
     {
       "name": "Environment",
       "extends": "Resource",
-      "description": "Resource for environment nodes (like [WorldEnvironment]) that define multiple rendering options.",
       "fields": [
         {
           "name": "adjustment_brightness",
@@ -23594,7 +23419,6 @@
     {
       "name": "Expression",
       "extends": "Reference",
-      "description": "A class that stores an expression you can execute.",
       "fields": [],
       "methods": [
         {
@@ -23645,7 +23469,6 @@
     {
       "name": "File",
       "extends": "Reference",
-      "description": "Type to handle file reading and writing operations.",
       "fields": [
         {
           "name": "endian_swap",
@@ -24081,7 +23904,6 @@
     {
       "name": "FileDialog",
       "extends": "ConfirmationDialog",
-      "description": "Dialog for selecting files or directories in the filesystem.",
       "fields": [
         {
           "name": "access",
@@ -24229,7 +24051,6 @@
     {
       "name": "Font",
       "extends": "Resource",
-      "description": "Internationalized font and text drawing support.",
       "fields": [],
       "methods": [
         {
@@ -24352,7 +24173,6 @@
     {
       "name": "FuncRef",
       "extends": "Reference",
-      "description": "Reference to a function in an object.",
       "fields": [],
       "methods": [
         {
@@ -24401,7 +24221,6 @@
     {
       "name": "GIProbe",
       "extends": "VisualInstance",
-      "description": "",
       "fields": [
         {
           "name": "bias",
@@ -24521,7 +24340,6 @@
     {
       "name": "GIProbeData",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "bias",
@@ -24607,7 +24425,6 @@
     {
       "name": "Generic6DOFJoint",
       "extends": "Joint",
-      "description": "The generic 6-degrees-of-freedom joint can implement a variety of joint types by locking certain axes\u0027 rotation or translation.",
       "fields": [
         {
           "name": "angular_limit_x/damping",
@@ -25453,7 +25270,6 @@
     {
       "name": "GeometryInstance",
       "extends": "VisualInstance",
-      "description": "Base node for geometry-based visual instances.",
       "fields": [
         {
           "name": "cast_shadow",
@@ -25582,7 +25398,6 @@
     {
       "name": "Gradient",
       "extends": "Resource",
-      "description": "A color interpolator resource which can be used to generate colors between user-defined color points.",
       "fields": [
         {
           "name": "colors",
@@ -25693,7 +25508,6 @@
     {
       "name": "GradientTexture",
       "extends": "Texture",
-      "description": "Gradient-filled texture.",
       "fields": [
         {
           "name": "gradient",
@@ -25716,7 +25530,6 @@
     {
       "name": "GraphEdit",
       "extends": "Control",
-      "description": "GraphEdit is an area capable of showing various GraphNodes. It manages connection events between them.",
       "fields": [
         {
           "name": "focus_mode",
@@ -25974,7 +25787,6 @@
     {
       "name": "GraphNode",
       "extends": "Container",
-      "description": "A GraphNode is a container with potentially several input and output slots allowing connections between GraphNodes. Slots can have different, incompatible types.",
       "fields": [
         {
           "name": "comment",
@@ -26233,7 +26045,6 @@
     {
       "name": "GridContainer",
       "extends": "Container",
-      "description": "Grid container used to arrange elements in a grid like layout.",
       "fields": [
         {
           "name": "columns",
@@ -26256,7 +26067,6 @@
     {
       "name": "GrooveJoint2D",
       "extends": "Joint2D",
-      "description": "Groove constraint for 2D physics.",
       "fields": [
         {
           "name": "initial_offset",
@@ -26279,7 +26089,6 @@
     {
       "name": "HBoxContainer",
       "extends": "BoxContainer",
-      "description": "Horizontal box container.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -26287,7 +26096,6 @@
     {
       "name": "HScrollBar",
       "extends": "ScrollBar",
-      "description": "Horizontal scroll bar.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -26295,7 +26103,6 @@
     {
       "name": "HSeparator",
       "extends": "Separator",
-      "description": "Horizontal separator.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -26303,7 +26110,6 @@
     {
       "name": "HSlider",
       "extends": "Slider",
-      "description": "Horizontal slider.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -26311,7 +26117,6 @@
     {
       "name": "HSplitContainer",
       "extends": "SplitContainer",
-      "description": "Horizontal split container.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -26319,7 +26124,6 @@
     {
       "name": "HTTPClient",
       "extends": "Reference",
-      "description": "Hyper-text transfer protocol client.",
       "fields": [
         {
           "name": "blocking_mode_enabled",
@@ -26801,7 +26605,6 @@
     {
       "name": "HTTPRequest",
       "extends": "Node",
-      "description": "A node with the ability to send HTTP(S) requests.",
       "fields": [
         {
           "name": "body_size_limit",
@@ -26952,7 +26755,6 @@
     {
       "name": "HashingContext",
       "extends": "Reference",
-      "description": "Context to compute cryptographic hashes over multiple iterations.",
       "fields": [],
       "methods": [
         {
@@ -26999,7 +26801,6 @@
     {
       "name": "HeightMapShape",
       "extends": "Shape",
-      "description": "Height map shape for 3D physics (Bullet only).",
       "fields": [
         {
           "name": "map_data",
@@ -27029,7 +26830,6 @@
     {
       "name": "HingeJoint",
       "extends": "Joint",
-      "description": "A hinge between two 3D bodies.",
       "fields": [
         {
           "name": "angular_limit/bias",
@@ -27206,7 +27006,6 @@
     {
       "name": "IP_Unix",
       "extends": "IP",
-      "description": "UNIX IP support. See [IP].",
       "fields": [],
       "methods": [],
       "constants": []
@@ -27214,7 +27013,6 @@
     {
       "name": "Image",
       "extends": "Resource",
-      "description": "Image datatype.",
       "fields": [
         {
           "name": "data",
@@ -27954,7 +27752,6 @@
     {
       "name": "ImageTexture",
       "extends": "Texture",
-      "description": "A [Texture] based on an [Image].",
       "fields": [
         {
           "name": "flags",
@@ -28069,7 +27866,6 @@
     {
       "name": "ImmediateGeometry",
       "extends": "GeometryInstance",
-      "description": "Draws simple geometry from code.",
       "fields": [],
       "methods": [
         {
@@ -28184,7 +27980,6 @@
     {
       "name": "InputDefault",
       "extends": "Input",
-      "description": "Default implementation of the [Input] class.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -28192,7 +27987,6 @@
     {
       "name": "InputEvent",
       "extends": "Resource",
-      "description": "Generic input event",
       "fields": [
         {
           "name": "device",
@@ -28307,7 +28101,6 @@
     {
       "name": "InputEventAction",
       "extends": "InputEvent",
-      "description": "Input event type for actions.",
       "fields": [
         {
           "name": "action",
@@ -28337,7 +28130,6 @@
     {
       "name": "InputEventGesture",
       "extends": "InputEventWithModifiers",
-      "description": "",
       "fields": [
         {
           "name": "position",
@@ -28353,7 +28145,6 @@
     {
       "name": "InputEventJoypadButton",
       "extends": "InputEvent",
-      "description": "Input event for gamepad buttons.",
       "fields": [
         {
           "name": "button_index",
@@ -28383,7 +28174,6 @@
     {
       "name": "InputEventJoypadMotion",
       "extends": "InputEvent",
-      "description": "Input event type for gamepad joysticks and other motions. For buttons, see [code]InputEventJoypadButton[/code].",
       "fields": [
         {
           "name": "axis",
@@ -28406,7 +28196,6 @@
     {
       "name": "InputEventKey",
       "extends": "InputEventWithModifiers",
-      "description": "Input event type for keyboard events.",
       "fields": [
         {
           "name": "echo",
@@ -28449,7 +28238,6 @@
     {
       "name": "InputEventMIDI",
       "extends": "InputEvent",
-      "description": "",
       "fields": [
         {
           "name": "channel",
@@ -28514,7 +28302,6 @@
     {
       "name": "InputEventMagnifyGesture",
       "extends": "InputEventGesture",
-      "description": "",
       "fields": [
         {
           "name": "factor",
@@ -28530,7 +28317,6 @@
     {
       "name": "InputEventMouse",
       "extends": "InputEventWithModifiers",
-      "description": "Base input event type for mouse events.",
       "fields": [
         {
           "name": "button_mask",
@@ -28560,7 +28346,6 @@
     {
       "name": "InputEventMouseButton",
       "extends": "InputEventMouse",
-      "description": "Input event type for mouse button events.",
       "fields": [
         {
           "name": "button_index",
@@ -28597,7 +28382,6 @@
     {
       "name": "InputEventMouseMotion",
       "extends": "InputEventMouse",
-      "description": "Input event type for mouse motion events.",
       "fields": [
         {
           "name": "pressure",
@@ -28634,7 +28418,6 @@
     {
       "name": "InputEventPanGesture",
       "extends": "InputEventGesture",
-      "description": "",
       "fields": [
         {
           "name": "delta",
@@ -28650,7 +28433,6 @@
     {
       "name": "InputEventScreenDrag",
       "extends": "InputEvent",
-      "description": "Input event type for screen drag events. Only available on mobile devices.",
       "fields": [
         {
           "name": "index",
@@ -28687,7 +28469,6 @@
     {
       "name": "InputEventScreenTouch",
       "extends": "InputEvent",
-      "description": "Input event type for screen touch events. (only available on mobile devices)",
       "fields": [
         {
           "name": "index",
@@ -28717,7 +28498,6 @@
     {
       "name": "InputEventWithModifiers",
       "extends": "InputEvent",
-      "description": "Base class for keys events with modifiers.",
       "fields": [
         {
           "name": "alt",
@@ -28761,7 +28541,6 @@
     {
       "name": "InstancePlaceholder",
       "extends": "Node",
-      "description": "Placeholder for the root [Node] of a [PackedScene].",
       "fields": [],
       "methods": [
         {
@@ -28809,7 +28588,6 @@
     {
       "name": "InterpolatedCamera",
       "extends": "Camera",
-      "description": "Camera which moves toward another node.",
       "fields": [
         {
           "name": "enabled",
@@ -28850,7 +28628,6 @@
     {
       "name": "ItemList",
       "extends": "Control",
-      "description": "Control that provides a list of selectable items (and/or icons) in a single column, or optionally in multiple columns.",
       "fields": [
         {
           "name": "allow_reselect",
@@ -29400,7 +29177,6 @@
     {
       "name": "JSONParseResult",
       "extends": "Reference",
-      "description": "Data class wrapper for decoded JSON.",
       "fields": [
         {
           "name": "error",
@@ -29437,7 +29213,6 @@
     {
       "name": "JSONRPC",
       "extends": "Object",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -29569,7 +29344,6 @@
     {
       "name": "JavaClass",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -29577,7 +29351,6 @@
     {
       "name": "Joint",
       "extends": "Spatial",
-      "description": "Base class for all 3D joints.",
       "fields": [
         {
           "name": "collision/exclude_nodes",
@@ -29614,7 +29387,6 @@
     {
       "name": "Joint2D",
       "extends": "Node2D",
-      "description": "Base node for all joint constraints in 2D physics.",
       "fields": [
         {
           "name": "bias",
@@ -29651,7 +29423,6 @@
     {
       "name": "KinematicBody",
       "extends": "PhysicsBody",
-      "description": "Kinematic body 3D node.",
       "fields": [
         {
           "name": "collision/safe_margin",
@@ -29857,7 +29628,6 @@
     {
       "name": "KinematicBody2D",
       "extends": "PhysicsBody2D",
-      "description": "Kinematic body 2D node.",
       "fields": [
         {
           "name": "collision/safe_margin",
@@ -30025,7 +29795,6 @@
     {
       "name": "KinematicCollision",
       "extends": "Reference",
-      "description": "Collision data for [KinematicBody] collisions.",
       "fields": [
         {
           "name": "collider",
@@ -30111,7 +29880,6 @@
     {
       "name": "KinematicCollision2D",
       "extends": "Reference",
-      "description": "Collision data for [KinematicBody2D] collisions.",
       "fields": [
         {
           "name": "collider",
@@ -30197,7 +29965,6 @@
     {
       "name": "Label",
       "extends": "Control",
-      "description": "Displays plain text in a line or wrapped inside a rectangle. For formatted text, use [RichTextLabel].",
       "fields": [
         {
           "name": "align",
@@ -30344,7 +30111,6 @@
     {
       "name": "LargeTexture",
       "extends": "Texture",
-      "description": "A [Texture] capable of storing many smaller textures with offsets.",
       "fields": [
         {
           "name": "flags",
@@ -30443,7 +30209,6 @@
     {
       "name": "Light",
       "extends": "VisualInstance",
-      "description": "Provides a base class for different kinds of light nodes.",
       "fields": [
         {
           "name": "editor_only",
@@ -30645,7 +30410,6 @@
     {
       "name": "Light2D",
       "extends": "Node2D",
-      "description": "Casts light in a 2D environment.",
       "fields": [
         {
           "name": "color",
@@ -30842,7 +30606,6 @@
     {
       "name": "LightOccluder2D",
       "extends": "Node2D",
-      "description": "Occludes light cast by a Light2D, casting shadows.",
       "fields": [
         {
           "name": "light_mask",
@@ -30865,7 +30628,6 @@
     {
       "name": "Line2D",
       "extends": "Node2D",
-      "description": "A 2D line.",
       "fields": [
         {
           "name": "antialiased",
@@ -31061,7 +30823,6 @@
     {
       "name": "LineEdit",
       "extends": "Control",
-      "description": "Control that provides single-line string editing.",
       "fields": [
         {
           "name": "align",
@@ -31307,7 +31068,6 @@
     {
       "name": "LineShape2D",
       "extends": "Shape2D",
-      "description": "Line shape for 2D collisions.",
       "fields": [
         {
           "name": "d",
@@ -31330,7 +31090,6 @@
     {
       "name": "LinkButton",
       "extends": "BaseButton",
-      "description": "Simple button used to represent a link to some resource.",
       "fields": [
         {
           "name": "enabled_focus_mode",
@@ -31387,7 +31146,6 @@
     {
       "name": "Listener",
       "extends": "Spatial",
-      "description": "Overrides the location sounds are heard from.",
       "fields": [],
       "methods": [
         {
@@ -31416,7 +31174,6 @@
     {
       "name": "MainLoop",
       "extends": "Object",
-      "description": "Abstract base class for the game\u0027s main loop.",
       "fields": [],
       "methods": [
         {
@@ -31610,7 +31367,6 @@
     {
       "name": "MarginContainer",
       "extends": "Container",
-      "description": "Simple margin container.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -31618,7 +31374,6 @@
     {
       "name": "Material",
       "extends": "Resource",
-      "description": "Abstract base [Resource] for coloring and shading geometry.",
       "fields": [
         {
           "name": "next_pass",
@@ -31650,7 +31405,6 @@
     {
       "name": "MenuButton",
       "extends": "Button",
-      "description": "Special button that brings up a [PopupMenu] when clicked.",
       "fields": [
         {
           "name": "action_mode",
@@ -31717,7 +31471,6 @@
     {
       "name": "Mesh",
       "extends": "Resource",
-      "description": "A [Resource] that contains vertex array-based geometry.",
       "fields": [
         {
           "name": "lightmap_size_hint",
@@ -31983,7 +31736,6 @@
     {
       "name": "MeshDataTool",
       "extends": "Reference",
-      "description": "Helper tool to access and edit [Mesh] data.",
       "fields": [],
       "methods": [
         {
@@ -32402,7 +32154,6 @@
     {
       "name": "MeshInstance",
       "extends": "GeometryInstance",
-      "description": "Node that instances meshes into a scenario.",
       "fields": [
         {
           "name": "mesh",
@@ -32477,7 +32228,6 @@
     {
       "name": "MeshInstance2D",
       "extends": "Node2D",
-      "description": "Node used for displaying a [Mesh] in 2D.",
       "fields": [
         {
           "name": "mesh",
@@ -32507,7 +32257,6 @@
     {
       "name": "MeshLibrary",
       "extends": "Resource",
-      "description": "Library of meshes.",
       "fields": [],
       "methods": [
         {
@@ -32705,7 +32454,6 @@
     {
       "name": "MeshTexture",
       "extends": "Texture",
-      "description": "Simple texture that uses a mesh to draw itself.",
       "fields": [
         {
           "name": "base_texture",
@@ -32742,7 +32490,6 @@
     {
       "name": "MultiMesh",
       "extends": "Resource",
-      "description": "Provides high-performance mesh instancing.",
       "fields": [
         {
           "name": "color_format",
@@ -32938,7 +32685,6 @@
     {
       "name": "MultiMeshInstance",
       "extends": "GeometryInstance",
-      "description": "Node that instances a [MultiMesh].",
       "fields": [
         {
           "name": "multimesh",
@@ -32954,7 +32700,6 @@
     {
       "name": "MultiMeshInstance2D",
       "extends": "Node2D",
-      "description": "Node that instances a [MultiMesh] in 2D.",
       "fields": [
         {
           "name": "multimesh",
@@ -32984,7 +32729,6 @@
     {
       "name": "MultiplayerAPI",
       "extends": "Reference",
-      "description": "High-level multiplayer API.",
       "fields": [
         {
           "name": "allow_object_decoding",
@@ -33115,7 +32859,6 @@
     {
       "name": "Mutex",
       "extends": "Reference",
-      "description": "A synchronization mutex (mutual exclusion).",
       "fields": [],
       "methods": [
         {
@@ -33139,7 +32882,6 @@
     {
       "name": "Navigation",
       "extends": "Spatial",
-      "description": "Mesh-based navigation and pathfinding node.",
       "fields": [
         {
           "name": "up_vector",
@@ -33264,7 +33006,6 @@
     {
       "name": "Navigation2D",
       "extends": "Node2D",
-      "description": "2D navigation and pathfinding node.",
       "fields": [],
       "methods": [
         {
@@ -33353,7 +33094,6 @@
     {
       "name": "NavigationMesh",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "agent/height",
@@ -33614,7 +33354,6 @@
     {
       "name": "NavigationMeshInstance",
       "extends": "Spatial",
-      "description": "",
       "fields": [
         {
           "name": "enabled",
@@ -33637,7 +33376,6 @@
     {
       "name": "NavigationPolygon",
       "extends": "Resource",
-      "description": "A node that has methods to draw outlines or use indices of vertices to create navigation polygons.",
       "fields": [],
       "methods": [
         {
@@ -33764,7 +33502,6 @@
     {
       "name": "NavigationPolygonInstance",
       "extends": "Node2D",
-      "description": "",
       "fields": [
         {
           "name": "enabled",
@@ -33787,7 +33524,6 @@
     {
       "name": "NetworkedMultiplayerPeer",
       "extends": "PacketPeer",
-      "description": "A high-level network interface to simplify multiplayer interactions.",
       "fields": [
         {
           "name": "refuse_new_connections",
@@ -33874,7 +33610,6 @@
     {
       "name": "Nil",
       "extends": "",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -34143,7 +33878,6 @@
     {
       "name": "NinePatchRect",
       "extends": "Control",
-      "description": "Scalable texture-based frame that tiles the texture\u0027s centers and sides, but keeps the corners\u0027 original size. Perfect for panels and dialog boxes.",
       "fields": [
         {
           "name": "axis_stretch_horizontal",
@@ -34260,7 +33994,6 @@
     {
       "name": "Node",
       "extends": "Object",
-      "description": "Base class for all [i]scene[/i] objects.",
       "fields": [
         {
           "name": "custom_multiplayer",
@@ -35202,7 +34935,6 @@
     {
       "name": "Node2D",
       "extends": "CanvasItem",
-      "description": "A 2D game object, inherited by all 2D-related nodes. Has a position, rotation, scale, and Z index.",
       "fields": [
         {
           "name": "global_position",
@@ -35414,7 +35146,6 @@
     {
       "name": "NodePath",
       "extends": "",
-      "description": "Pre-parsed scene tree path.",
       "fields": [],
       "methods": [
         {
@@ -35483,7 +35214,6 @@
     {
       "name": "Object",
       "extends": "",
-      "description": "Base class for all non built-in types.",
       "fields": [],
       "methods": [
         {
@@ -35956,7 +35686,6 @@
     {
       "name": "OccluderPolygon2D",
       "extends": "Resource",
-      "description": "Defines a 2D polygon for LightOccluder2D.",
       "fields": [
         {
           "name": "closed",
@@ -35999,7 +35728,6 @@
     {
       "name": "OmniLight",
       "extends": "Light",
-      "description": "Omnidirectional light, such as a light bulb or a candle.",
       "fields": [
         {
           "name": "omni_attenuation",
@@ -36053,7 +35781,6 @@
     {
       "name": "OptionButton",
       "extends": "Button",
-      "description": "Button control that provides selectable options when pressed.",
       "fields": [
         {
           "name": "action_mode",
@@ -36303,7 +36030,6 @@
     {
       "name": "PCKPacker",
       "extends": "Reference",
-      "description": "Creates packages that can be loaded into a running project.",
       "fields": [],
       "methods": [
         {
@@ -36350,7 +36076,6 @@
     {
       "name": "PHashTranslation",
       "extends": "Translation",
-      "description": "Optimized translation.",
       "fields": [],
       "methods": [
         {
@@ -36369,7 +36094,6 @@
     {
       "name": "PackedDataContainer",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "__data__",
@@ -36401,7 +36125,6 @@
     {
       "name": "PackedDataContainerRef",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -36415,7 +36138,6 @@
     {
       "name": "PackedScene",
       "extends": "Resource",
-      "description": "An abstraction of a serialized scene.",
       "fields": [
         {
           "name": "_bundled",
@@ -36475,7 +36197,6 @@
     {
       "name": "PacketPeer",
       "extends": "Reference",
-      "description": "Abstraction and base class for packet-based protocols.",
       "fields": [
         {
           "name": "allow_object_decoding",
@@ -36548,7 +36269,6 @@
     {
       "name": "PacketPeerStream",
       "extends": "PacketPeer",
-      "description": "Wrapper to use a PacketPeer over a StreamPeer.",
       "fields": [
         {
           "name": "input_buffer_max_size",
@@ -36578,7 +36298,6 @@
     {
       "name": "PacketPeerUDP",
       "extends": "PacketPeer",
-      "description": "UDP packet peer.",
       "fields": [],
       "methods": [
         {
@@ -36682,7 +36401,6 @@
     {
       "name": "Panel",
       "extends": "Control",
-      "description": "Provides an opaque background for [Control] children.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -36690,7 +36408,6 @@
     {
       "name": "PanelContainer",
       "extends": "Container",
-      "description": "Panel container type.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -36698,7 +36415,6 @@
     {
       "name": "PanoramaSky",
       "extends": "Sky",
-      "description": "A type of [Sky] used to draw a background texture.",
       "fields": [
         {
           "name": "panorama",
@@ -36714,7 +36430,6 @@
     {
       "name": "ParallaxBackground",
       "extends": "CanvasLayer",
-      "description": "A node used to create a parallax scrolling background.",
       "fields": [
         {
           "name": "layer",
@@ -36772,7 +36487,6 @@
     {
       "name": "ParallaxLayer",
       "extends": "Node2D",
-      "description": "A parallax scrolling layer to be used with [ParallaxBackground].",
       "fields": [
         {
           "name": "motion_mirroring",
@@ -36802,7 +36516,6 @@
     {
       "name": "Particles",
       "extends": "GeometryInstance",
-      "description": "3D particle emitter.",
       "fields": [
         {
           "name": "amount",
@@ -36996,7 +36709,6 @@
     {
       "name": "Particles2D",
       "extends": "Node2D",
-      "description": "2D particle emitter.",
       "fields": [
         {
           "name": "amount",
@@ -37137,7 +36849,6 @@
     {
       "name": "ParticlesMaterial",
       "extends": "Material",
-      "description": "Particle properties for [Particles] and [Particles2D] nodes.",
       "fields": [
         {
           "name": "angle",
@@ -37721,7 +37432,6 @@
     {
       "name": "Path",
       "extends": "Spatial",
-      "description": "Contains a [Curve3D] path for [PathFollow] nodes to follow.",
       "fields": [
         {
           "name": "curve",
@@ -37737,7 +37447,6 @@
     {
       "name": "Path2D",
       "extends": "Node2D",
-      "description": "Contains a [Curve2D] path for [PathFollow2D] nodes to follow.",
       "fields": [
         {
           "name": "curve",
@@ -37760,7 +37469,6 @@
     {
       "name": "PathFollow",
       "extends": "Spatial",
-      "description": "Point sampler for a [Path].",
       "fields": [
         {
           "name": "cubic_interp",
@@ -37839,7 +37547,6 @@
     {
       "name": "PathFollow2D",
       "extends": "Node2D",
-      "description": "Point sampler for a [Path2D].",
       "fields": [
         {
           "name": "cubic_interp",
@@ -37904,7 +37611,6 @@
     {
       "name": "PhysicalBone",
       "extends": "PhysicsBody",
-      "description": "",
       "fields": [
         {
           "name": "body_offset",
@@ -38039,7 +37745,6 @@
     {
       "name": "Physics2DDirectBodyState",
       "extends": "Object",
-      "description": "Direct access object to a physics body in the [Physics2DServer].",
       "fields": [
         {
           "name": "angular_velocity",
@@ -38302,7 +38007,6 @@
     {
       "name": "Physics2DDirectBodyStateSW",
       "extends": "Physics2DDirectBodyState",
-      "description": "Software implementation of [Physics2DDirectBodyState].",
       "fields": [],
       "methods": [],
       "constants": []
@@ -38310,7 +38014,6 @@
     {
       "name": "Physics2DDirectSpaceState",
       "extends": "Object",
-      "description": "Direct access object to a space in the [Physics2DServer].",
       "fields": [],
       "methods": [
         {
@@ -38461,7 +38164,6 @@
     {
       "name": "Physics2DServerSW",
       "extends": "Physics2DServer",
-      "description": "Software implementation of [Physics2DServer].",
       "fields": [],
       "methods": [],
       "constants": []
@@ -38469,7 +38171,6 @@
     {
       "name": "Physics2DShapeQueryParameters",
       "extends": "Reference",
-      "description": "Parameters to be sent to a 2D shape physics query.",
       "fields": [
         {
           "name": "collide_with_areas",
@@ -38545,7 +38246,6 @@
     {
       "name": "Physics2DShapeQueryResult",
       "extends": "Reference",
-      "description": "Result of a 2D shape query in [Physics2DServer].",
       "fields": [],
       "methods": [
         {
@@ -38599,7 +38299,6 @@
     {
       "name": "Physics2DTestMotionResult",
       "extends": "Reference",
-      "description": "",
       "fields": [
         {
           "name": "collider",
@@ -38671,7 +38370,6 @@
     {
       "name": "PhysicsBody",
       "extends": "CollisionObject",
-      "description": "Base class for all objects affected by physics in 3D space.",
       "fields": [
         {
           "name": "collision_layer",
@@ -38768,7 +38466,6 @@
     {
       "name": "PhysicsBody2D",
       "extends": "CollisionObject2D",
-      "description": "Base class for all objects affected by physics in 2D space.",
       "fields": [
         {
           "name": "collision_layer",
@@ -38879,7 +38576,6 @@
     {
       "name": "PhysicsDirectBodyState",
       "extends": "Object",
-      "description": "Direct access object to a physics body in the [PhysicsServer].",
       "fields": [
         {
           "name": "angular_velocity",
@@ -39156,7 +38852,6 @@
     {
       "name": "PhysicsDirectSpaceState",
       "extends": "Object",
-      "description": "Direct access object to a space in the [PhysicsServer].",
       "fields": [],
       "methods": [
         {
@@ -39247,7 +38942,6 @@
     {
       "name": "PhysicsMaterial",
       "extends": "Resource",
-      "description": "A material for physics properties.",
       "fields": [
         {
           "name": "absorbent",
@@ -39284,7 +38978,6 @@
     {
       "name": "PhysicsShapeQueryParameters",
       "extends": "Reference",
-      "description": "Parameters to be sent to a 3D shape physics query.",
       "fields": [
         {
           "name": "collide_with_areas",
@@ -39353,7 +39046,6 @@
     {
       "name": "PhysicsShapeQueryResult",
       "extends": "Reference",
-      "description": "Result of a 3D shape query in [PhysicsServer].",
       "fields": [],
       "methods": [
         {
@@ -39407,7 +39099,6 @@
     {
       "name": "PinJoint",
       "extends": "Joint",
-      "description": "Pin joint for 3D shapes.",
       "fields": [
         {
           "name": "params/bias",
@@ -39475,7 +39166,6 @@
     {
       "name": "PinJoint2D",
       "extends": "Joint2D",
-      "description": "Pin Joint for 2D shapes.",
       "fields": [
         {
           "name": "softness",
@@ -39491,7 +39181,6 @@
     {
       "name": "Plane",
       "extends": "",
-      "description": "Plane in hessian form.",
       "fields": [
         {
           "name": "d",
@@ -39714,7 +39403,6 @@
     {
       "name": "PlaneMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a planar [PrimitiveMesh].",
       "fields": [
         {
           "name": "size",
@@ -39744,7 +39432,6 @@
     {
       "name": "PlaneShape",
       "extends": "Shape",
-      "description": "Infinite plane shape for 3D collisions.",
       "fields": [
         {
           "name": "plane",
@@ -39760,7 +39447,6 @@
     {
       "name": "PointMesh",
       "extends": "PrimitiveMesh",
-      "description": "Mesh with a single Point primitive.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -39768,7 +39454,6 @@
     {
       "name": "Polygon2D",
       "extends": "Node2D",
-      "description": "A 2D polygon.",
       "fields": [
         {
           "name": "antialiased",
@@ -39979,7 +39664,6 @@
     {
       "name": "PolygonPathFinder",
       "extends": "Resource",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -40079,7 +39763,6 @@
     {
       "name": "PoolByteArray",
       "extends": "",
-      "description": "A pooled [Array] of bytes.",
       "fields": [],
       "methods": [
         {
@@ -40244,7 +39927,6 @@
     {
       "name": "PoolColorArray",
       "extends": "",
-      "description": "A pooled [Array] of [Color].",
       "fields": [],
       "methods": [
         {
@@ -40356,7 +40038,6 @@
     {
       "name": "PoolIntArray",
       "extends": "",
-      "description": "A pooled [Array] of integers ([int]).",
       "fields": [],
       "methods": [
         {
@@ -40468,7 +40149,6 @@
     {
       "name": "PoolRealArray",
       "extends": "",
-      "description": "A pooled [Array] of reals ([float]).",
       "fields": [],
       "methods": [
         {
@@ -40580,7 +40260,6 @@
     {
       "name": "PoolStringArray",
       "extends": "",
-      "description": "A pooled [Array] of [String].",
       "fields": [],
       "methods": [
         {
@@ -40702,7 +40381,6 @@
     {
       "name": "PoolVector2Array",
       "extends": "",
-      "description": "A pooled [Array] of [Vector2].",
       "fields": [],
       "methods": [
         {
@@ -40814,7 +40492,6 @@
     {
       "name": "PoolVector3Array",
       "extends": "",
-      "description": "A pooled [Array] of [Vector3].",
       "fields": [],
       "methods": [
         {
@@ -40926,7 +40603,6 @@
     {
       "name": "Popup",
       "extends": "Control",
-      "description": "Base container control for popups and dialogs.",
       "fields": [
         {
           "name": "popup_exclusive",
@@ -41018,7 +40694,6 @@
     {
       "name": "PopupDialog",
       "extends": "Popup",
-      "description": "Base class for popup dialogs.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -41026,7 +40701,6 @@
     {
       "name": "PopupMenu",
       "extends": "Popup",
-      "description": "PopupMenu displays a list of options.",
       "fields": [
         {
           "name": "allow_search",
@@ -41791,7 +41465,6 @@
     {
       "name": "PopupPanel",
       "extends": "Popup",
-      "description": "Class for displaying popups with a panel background.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -41799,7 +41472,6 @@
     {
       "name": "Position2D",
       "extends": "Node2D",
-      "description": "Generic 2D position hint for editing.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -41807,7 +41479,6 @@
     {
       "name": "Position3D",
       "extends": "Spatial",
-      "description": "Generic 3D position hint for editing.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -41815,7 +41486,6 @@
     {
       "name": "PrimitiveMesh",
       "extends": "Mesh",
-      "description": "Base class for all primitive meshes. Handles applying a [Material] to a primitive mesh.",
       "fields": [
         {
           "name": "custom_aabb",
@@ -41851,7 +41521,6 @@
     {
       "name": "PrismMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a prism-shaped [PrimitiveMesh].",
       "fields": [
         {
           "name": "left_to_right",
@@ -41895,7 +41564,6 @@
     {
       "name": "ProceduralSky",
       "extends": "Sky",
-      "description": "Type of [Sky] that is generated procedurally based on user input parameters.",
       "fields": [
         {
           "name": "ground_bottom_color",
@@ -42041,7 +41709,6 @@
     {
       "name": "ProgressBar",
       "extends": "Range",
-      "description": "General-purpose progress bar.",
       "fields": [
         {
           "name": "percent_visible",
@@ -42071,7 +41738,6 @@
     {
       "name": "ProximityGroup",
       "extends": "Spatial",
-      "description": "General-purpose proximity detection node.",
       "fields": [
         {
           "name": "dispatch_mode",
@@ -42125,7 +41791,6 @@
     {
       "name": "ProxyTexture",
       "extends": "Texture",
-      "description": "",
       "fields": [
         {
           "name": "base",
@@ -42148,7 +41813,6 @@
     {
       "name": "QuadMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a square mesh.",
       "fields": [
         {
           "name": "size",
@@ -42164,7 +41828,6 @@
     {
       "name": "Quat",
       "extends": "",
-      "description": "Quaternion.",
       "fields": [
         {
           "name": "w",
@@ -42397,7 +42060,6 @@
     {
       "name": "RID",
       "extends": "",
-      "description": "Handle for a [Resource]\u0027s unique ID.",
       "fields": [],
       "methods": [
         {
@@ -42421,7 +42083,6 @@
     {
       "name": "RandomNumberGenerator",
       "extends": "Reference",
-      "description": "A class for generating pseudo-random numbers.",
       "fields": [
         {
           "name": "seed",
@@ -42495,7 +42156,6 @@
     {
       "name": "Range",
       "extends": "Control",
-      "description": "Abstract base class for range-based controls.",
       "fields": [
         {
           "name": "allow_greater",
@@ -42590,7 +42250,6 @@
     {
       "name": "RayCast",
       "extends": "Spatial",
-      "description": "Query the closest object intersecting a ray.",
       "fields": [
         {
           "name": "cast_to",
@@ -42741,7 +42400,6 @@
     {
       "name": "RayCast2D",
       "extends": "Node2D",
-      "description": "Query the closest object intersecting a ray.",
       "fields": [
         {
           "name": "cast_to",
@@ -42892,7 +42550,6 @@
     {
       "name": "RayShape",
       "extends": "Shape",
-      "description": "Ray shape for 3D collisions.",
       "fields": [
         {
           "name": "length",
@@ -42915,7 +42572,6 @@
     {
       "name": "RayShape2D",
       "extends": "Shape2D",
-      "description": "Ray shape for 2D collisions.",
       "fields": [
         {
           "name": "length",
@@ -42938,7 +42594,6 @@
     {
       "name": "Rect2",
       "extends": "",
-      "description": "2D axis-aligned bounding box.",
       "fields": [
         {
           "name": "end",
@@ -43136,7 +42791,6 @@
     {
       "name": "RectangleShape2D",
       "extends": "Shape2D",
-      "description": "Rectangle shape for 2D collisions.",
       "fields": [
         {
           "name": "extents",
@@ -43152,7 +42806,6 @@
     {
       "name": "Reference",
       "extends": "Object",
-      "description": "Base class for reference-counted objects.",
       "fields": [],
       "methods": [
         {
@@ -43176,7 +42829,6 @@
     {
       "name": "ReferenceRect",
       "extends": "Control",
-      "description": "Reference frame for GUI.",
       "fields": [
         {
           "name": "border_color",
@@ -43199,7 +42851,6 @@
     {
       "name": "ReflectionProbe",
       "extends": "VisualInstance",
-      "description": "Captures its surroundings to create reflections.",
       "fields": [
         {
           "name": "box_projection",
@@ -43301,7 +42952,6 @@
     {
       "name": "RemoteTransform",
       "extends": "Spatial",
-      "description": "RemoteTransform pushes its own [Transform] to another [Spatial] derived Node in the scene.",
       "fields": [
         {
           "name": "remote_path",
@@ -43351,7 +43001,6 @@
     {
       "name": "RemoteTransform2D",
       "extends": "Node2D",
-      "description": "RemoteTransform2D pushes its own [Transform2D] to another [CanvasItem] derived Node in the scene.",
       "fields": [
         {
           "name": "remote_path",
@@ -43401,7 +43050,6 @@
     {
       "name": "Resource",
       "extends": "Reference",
-      "description": "Base class for all resources.",
       "fields": [
         {
           "name": "resource_local_to_scene",
@@ -43472,7 +43120,6 @@
     {
       "name": "ResourceFormatLoader",
       "extends": "Reference",
-      "description": "Loads a specific resource type from a file.",
       "fields": [],
       "methods": [
         {
@@ -43548,7 +43195,6 @@
     {
       "name": "ResourceFormatLoaderCrypto",
       "extends": "ResourceFormatLoader",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -43556,7 +43202,6 @@
     {
       "name": "ResourceFormatSaver",
       "extends": "Reference",
-      "description": "Saves a specific resource type to a file.",
       "fields": [],
       "methods": [
         {
@@ -43603,7 +43248,6 @@
     {
       "name": "ResourceFormatSaverCrypto",
       "extends": "ResourceFormatSaver",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -43611,7 +43255,6 @@
     {
       "name": "ResourceImporter",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -43619,7 +43262,6 @@
     {
       "name": "ResourceInteractiveLoader",
       "extends": "Reference",
-      "description": "Interactive [Resource] loader.",
       "fields": [],
       "methods": [
         {
@@ -43653,7 +43295,6 @@
     {
       "name": "ResourcePreloader",
       "extends": "Node",
-      "description": "Resource Preloader Node.",
       "fields": [],
       "methods": [
         {
@@ -43725,7 +43366,6 @@
     {
       "name": "RichTextEffect",
       "extends": "Resource",
-      "description": "A custom effect for use with [RichTextLabel].",
       "fields": [],
       "methods": [
         {
@@ -43744,7 +43384,6 @@
     {
       "name": "RichTextLabel",
       "extends": "Control",
-      "description": "Label that displays rich text.",
       "fields": [
         {
           "name": "bbcode_enabled",
@@ -44206,7 +43845,6 @@
     {
       "name": "RigidBody",
       "extends": "PhysicsBody",
-      "description": "Physics Body whose position is determined through physics simulation in 3D space.",
       "fields": [
         {
           "name": "angular_damp",
@@ -44511,7 +44149,6 @@
     {
       "name": "RigidBody2D",
       "extends": "PhysicsBody2D",
-      "description": "A body that is controlled by the 2D physics engine.",
       "fields": [
         {
           "name": "angular_damp",
@@ -44805,7 +44442,6 @@
     {
       "name": "RootMotionView",
       "extends": "VisualInstance",
-      "description": "",
       "fields": [
         {
           "name": "animation_path",
@@ -44849,7 +44485,6 @@
     {
       "name": "SceneState",
       "extends": "Reference",
-      "description": "A script interface to a scene file\u0027s data.",
       "fields": [],
       "methods": [
         {
@@ -45073,7 +44708,6 @@
     {
       "name": "SceneTree",
       "extends": "MainLoop",
-      "description": "Manages the game loop via a hierarchy of nodes.",
       "fields": [
         {
           "name": "current_scene",
@@ -45479,7 +45113,6 @@
     {
       "name": "SceneTreeTimer",
       "extends": "Reference",
-      "description": "One-shot timer.",
       "fields": [
         {
           "name": "time_left",
@@ -45495,7 +45128,6 @@
     {
       "name": "Script",
       "extends": "Resource",
-      "description": "A class stored as a resource.",
       "fields": [
         {
           "name": "source_code",
@@ -45597,7 +45229,6 @@
     {
       "name": "ScriptCreateDialog",
       "extends": "ConfirmationDialog",
-      "description": "The Editor\u0027s popup dialog for creating new [Script] files.",
       "fields": [
         {
           "name": "dialog_hide_on_ok",
@@ -45664,7 +45295,6 @@
     {
       "name": "ScriptEditor",
       "extends": "PanelContainer",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -45757,7 +45387,6 @@
     {
       "name": "ScrollBar",
       "extends": "Range",
-      "description": "Base class for scroll bars.",
       "fields": [
         {
           "name": "custom_step",
@@ -45787,7 +45416,6 @@
     {
       "name": "ScrollContainer",
       "extends": "Container",
-      "description": "A helper node for displaying scrollable elements such as lists.",
       "fields": [
         {
           "name": "follow_focus",
@@ -45856,7 +45484,6 @@
     {
       "name": "SegmentShape2D",
       "extends": "Shape2D",
-      "description": "Segment shape for 2D collisions.",
       "fields": [
         {
           "name": "a",
@@ -45879,7 +45506,6 @@
     {
       "name": "Semaphore",
       "extends": "Reference",
-      "description": "A synchronization semaphore.",
       "fields": [],
       "methods": [
         {
@@ -45898,7 +45524,6 @@
     {
       "name": "Separator",
       "extends": "Control",
-      "description": "Base class for separators.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -45906,7 +45531,6 @@
     {
       "name": "Shader",
       "extends": "Resource",
-      "description": "A custom shader program.",
       "fields": [
         {
           "name": "code",
@@ -45975,7 +45599,6 @@
     {
       "name": "ShaderMaterial",
       "extends": "Material",
-      "description": "A material that uses a custom [Shader] program.",
       "fields": [
         {
           "name": "shader",
@@ -46036,7 +45659,6 @@
     {
       "name": "Shape",
       "extends": "Resource",
-      "description": "Base class for all 3D shape resources.",
       "fields": [
         {
           "name": "margin",
@@ -46052,7 +45674,6 @@
     {
       "name": "Shape2D",
       "extends": "Resource",
-      "description": "Base class for all 2D shapes.",
       "fields": [
         {
           "name": "custom_solver_bias",
@@ -46157,7 +45778,6 @@
     {
       "name": "ShortCut",
       "extends": "Resource",
-      "description": "A shortcut for binding input.",
       "fields": [
         {
           "name": "shortcut",
@@ -46194,7 +45814,6 @@
     {
       "name": "Skeleton",
       "extends": "Spatial",
-      "description": "Skeleton for characters and animated objects.",
       "fields": [],
       "methods": [
         {
@@ -46498,7 +46117,6 @@
     {
       "name": "Skeleton2D",
       "extends": "Node2D",
-      "description": "Skeleton for 2D characters and animated objects.",
       "fields": [],
       "methods": [
         {
@@ -46527,7 +46145,6 @@
     {
       "name": "SkeletonIK",
       "extends": "Node",
-      "description": "",
       "fields": [
         {
           "name": "interpolation",
@@ -46632,7 +46249,6 @@
     {
       "name": "Skin",
       "extends": "Resource",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -46723,7 +46339,6 @@
     {
       "name": "SkinReference",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -46742,7 +46357,6 @@
     {
       "name": "Sky",
       "extends": "Resource",
-      "description": "The base class for [PanoramaSky] and [ProceduralSky].",
       "fields": [
         {
           "name": "radiance_size",
@@ -46791,7 +46405,6 @@
     {
       "name": "Slider",
       "extends": "Range",
-      "description": "Base class for GUI sliders.",
       "fields": [
         {
           "name": "editable",
@@ -46842,7 +46455,6 @@
     {
       "name": "SliderJoint",
       "extends": "Joint",
-      "description": "Piston kind of slider between two bodies in 3D.",
       "fields": [
         {
           "name": "angular_limit/damping",
@@ -47123,7 +46735,6 @@
     {
       "name": "SoftBody",
       "extends": "MeshInstance",
-      "description": "A soft mesh physics body.",
       "fields": [
         {
           "name": "areaAngular_stiffness",
@@ -47297,7 +46908,6 @@
     {
       "name": "Spatial",
       "extends": "Node",
-      "description": "Most basic 3D game object, parent of all 3D-related nodes.",
       "fields": [
         {
           "name": "gizmo",
@@ -47669,7 +47279,6 @@
     {
       "name": "SpatialGizmo",
       "extends": "Reference",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -47677,7 +47286,6 @@
     {
       "name": "SpatialMaterial",
       "extends": "Material",
-      "description": "Default 3D rendering material.",
       "fields": [
         {
           "name": "albedo_color",
@@ -48819,7 +48427,6 @@
     {
       "name": "SpatialVelocityTracker",
       "extends": "Reference",
-      "description": "",
       "fields": [
         {
           "name": "track_physics_step",
@@ -48861,7 +48468,6 @@
     {
       "name": "SphereMesh",
       "extends": "PrimitiveMesh",
-      "description": "Class representing a spherical [PrimitiveMesh].",
       "fields": [
         {
           "name": "height",
@@ -48905,7 +48511,6 @@
     {
       "name": "SphereShape",
       "extends": "Shape",
-      "description": "Sphere shape for 3D collisions.",
       "fields": [
         {
           "name": "radius",
@@ -48921,7 +48526,6 @@
     {
       "name": "SpinBox",
       "extends": "Range",
-      "description": "Numerical input text field.",
       "fields": [
         {
           "name": "align",
@@ -48969,7 +48573,6 @@
     {
       "name": "SplitContainer",
       "extends": "Container",
-      "description": "Container for splitting and adjusting.",
       "fields": [
         {
           "name": "collapsed",
@@ -49018,7 +48621,6 @@
     {
       "name": "SpotLight",
       "extends": "Light",
-      "description": "A spotlight, such as a reflector spotlight or a lantern.",
       "fields": [
         {
           "name": "spot_angle",
@@ -49055,7 +48657,6 @@
     {
       "name": "SpringArm",
       "extends": "Spatial",
-      "description": "A helper node, mostly used in 3rd person cameras.",
       "fields": [
         {
           "name": "collision_mask",
@@ -49123,7 +48724,6 @@
     {
       "name": "Sprite",
       "extends": "Node2D",
-      "description": "General-purpose sprite node.",
       "fields": [
         {
           "name": "centered",
@@ -49239,7 +48839,6 @@
     {
       "name": "Sprite3D",
       "extends": "SpriteBase3D",
-      "description": "2D sprite node in a 3D world.",
       "fields": [
         {
           "name": "frame",
@@ -49297,7 +48896,6 @@
     {
       "name": "SpriteBase3D",
       "extends": "GeometryInstance",
-      "description": "2D sprite node in 3D environment.",
       "fields": [
         {
           "name": "alpha_cut",
@@ -49461,7 +49059,6 @@
     {
       "name": "SpriteFrames",
       "extends": "Resource",
-      "description": "Sprite frame library for AnimatedSprite.",
       "fields": [
         {
           "name": "frames",
@@ -49664,7 +49261,6 @@
     {
       "name": "StaticBody",
       "extends": "PhysicsBody",
-      "description": "Static body for 3D physics.",
       "fields": [
         {
           "name": "bounce",
@@ -49708,7 +49304,6 @@
     {
       "name": "StaticBody2D",
       "extends": "PhysicsBody2D",
-      "description": "Static body for 2D physics.",
       "fields": [
         {
           "name": "bounce",
@@ -49752,7 +49347,6 @@
     {
       "name": "StreamPeer",
       "extends": "Reference",
-      "description": "Abstraction and base class for stream-based protocols.",
       "fields": [
         {
           "name": "big_endian",
@@ -50028,7 +49622,6 @@
     {
       "name": "StreamPeerBuffer",
       "extends": "StreamPeer",
-      "description": "",
       "fields": [
         {
           "name": "data_array",
@@ -50085,7 +49678,6 @@
     {
       "name": "StreamPeerSSL",
       "extends": "StreamPeer",
-      "description": "SSL stream peer.",
       "fields": [
         {
           "name": "blocking_handshake",
@@ -50182,7 +49774,6 @@
     {
       "name": "StreamPeerTCP",
       "extends": "StreamPeer",
-      "description": "TCP stream peer.",
       "fields": [],
       "methods": [
         {
@@ -50257,7 +49848,6 @@
     {
       "name": "StreamTexture",
       "extends": "Texture",
-      "description": "A [code].stex[/code] texture.",
       "fields": [
         {
           "name": "flags",
@@ -50291,7 +49881,6 @@
     {
       "name": "String",
       "extends": "",
-      "description": "Built-in string class.",
       "fields": [],
       "methods": [
         {
@@ -51215,7 +50804,6 @@
     {
       "name": "StyleBox",
       "extends": "Resource",
-      "description": "Base class for drawing stylized boxes for the UI.",
       "fields": [
         {
           "name": "content_margin_bottom",
@@ -51335,7 +50923,6 @@
     {
       "name": "StyleBoxEmpty",
       "extends": "StyleBox",
-      "description": "Empty stylebox (does not display anything).",
       "fields": [],
       "methods": [],
       "constants": []
@@ -51343,7 +50930,6 @@
     {
       "name": "StyleBoxFlat",
       "extends": "StyleBox",
-      "description": "Customizable [StyleBox] with a given set of parameters (no texture required).",
       "fields": [
         {
           "name": "anti_aliasing",
@@ -51658,7 +51244,6 @@
     {
       "name": "StyleBoxLine",
       "extends": "StyleBox",
-      "description": "[StyleBox] that displays a single line.",
       "fields": [
         {
           "name": "color",
@@ -51702,7 +51287,6 @@
     {
       "name": "StyleBoxTexture",
       "extends": "StyleBox",
-      "description": "Texture-based nine-patch [StyleBox].",
       "fields": [
         {
           "name": "axis_stretch_horizontal",
@@ -51910,7 +51494,6 @@
     {
       "name": "SurfaceTool",
       "extends": "Reference",
-      "description": "Helper tool to create geometry.",
       "fields": [],
       "methods": [
         {
@@ -52168,7 +51751,6 @@
     {
       "name": "TCP_Server",
       "extends": "Reference",
-      "description": "A TCP server.",
       "fields": [],
       "methods": [
         {
@@ -52211,7 +51793,6 @@
     {
       "name": "TabContainer",
       "extends": "Container",
-      "description": "Tabbed container.",
       "fields": [
         {
           "name": "current_tab",
@@ -52396,7 +51977,6 @@
     {
       "name": "Tabs",
       "extends": "Control",
-      "description": "Tabs control.",
       "fields": [
         {
           "name": "current_tab",
@@ -52649,7 +52229,6 @@
     {
       "name": "TextEdit",
       "extends": "Control",
-      "description": "Multiline text editing control.",
       "fields": [
         {
           "name": "breakpoint_gutter",
@@ -53273,7 +52852,6 @@
     {
       "name": "TextFile",
       "extends": "Resource",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -53281,7 +52859,6 @@
     {
       "name": "Texture",
       "extends": "Resource",
-      "description": "Texture for 2D and 3D.",
       "fields": [
         {
           "name": "flags",
@@ -53446,7 +53023,6 @@
     {
       "name": "Texture3D",
       "extends": "TextureLayered",
-      "description": "Texture with 3 dimensions.",
       "fields": [
         {
           "name": "data",
@@ -53462,7 +53038,6 @@
     {
       "name": "TextureArray",
       "extends": "TextureLayered",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -53470,7 +53045,6 @@
     {
       "name": "TextureButton",
       "extends": "BaseButton",
-      "description": "Texture-based button. Supports Pressed, Hover, Disabled and Focused states.",
       "fields": [
         {
           "name": "expand",
@@ -53564,7 +53138,6 @@
     {
       "name": "TextureLayered",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "data",
@@ -53701,7 +53274,6 @@
     {
       "name": "TextureProgress",
       "extends": "Range",
-      "description": "Texture-based progress bar. Useful for loading screens and life or stamina bars.",
       "fields": [
         {
           "name": "fill_mode",
@@ -53884,7 +53456,6 @@
     {
       "name": "TextureRect",
       "extends": "Control",
-      "description": "Control for drawing textures.",
       "fields": [
         {
           "name": "expand",
@@ -53968,7 +53539,6 @@
     {
       "name": "Theme",
       "extends": "Resource",
-      "description": "Theme for controls.",
       "fields": [
         {
           "name": "default_font",
@@ -54370,7 +53940,6 @@
     {
       "name": "Thread",
       "extends": "Reference",
-      "description": "A unit of execution in a process.",
       "fields": [],
       "methods": [
         {
@@ -54429,7 +53998,6 @@
     {
       "name": "TileMap",
       "extends": "Node2D",
-      "description": "Node for 2D tile-based maps.",
       "fields": [
         {
           "name": "cell_clip_uv",
@@ -54885,7 +54453,6 @@
     {
       "name": "TileSet",
       "extends": "Resource",
-      "description": "Tile library for tilemaps.",
       "fields": [],
       "methods": [
         {
@@ -55848,7 +55415,6 @@
     {
       "name": "Timer",
       "extends": "Node",
-      "description": "A countdown timer.",
       "fields": [
         {
           "name": "autostart",
@@ -55929,7 +55495,6 @@
     {
       "name": "ToolButton",
       "extends": "Button",
-      "description": "Flat button helper class.",
       "fields": [
         {
           "name": "flat",
@@ -55945,7 +55510,6 @@
     {
       "name": "TouchScreenButton",
       "extends": "Node2D",
-      "description": "Button for touch screen devices.",
       "fields": [
         {
           "name": "action",
@@ -56032,7 +55596,6 @@
     {
       "name": "Transform",
       "extends": "",
-      "description": "3D transformation (3×4 matrix).",
       "fields": [
         {
           "name": "basis",
@@ -56246,7 +55809,6 @@
     {
       "name": "Transform2D",
       "extends": "",
-      "description": "2D transformation (3×2 matrix).",
       "fields": [
         {
           "name": "origin",
@@ -56456,7 +56018,6 @@
     {
       "name": "Translation",
       "extends": "Resource",
-      "description": "Language Translation.",
       "fields": [
         {
           "name": "locale",
@@ -56517,7 +56078,6 @@
     {
       "name": "Tree",
       "extends": "Control",
-      "description": "Control to show a tree of items.",
       "fields": [
         {
           "name": "allow_reselect",
@@ -56810,7 +56370,6 @@
     {
       "name": "TreeItem",
       "extends": "Object",
-      "description": "Control for a single item inside a [Tree].",
       "fields": [
         {
           "name": "collapsed",
@@ -57588,7 +57147,6 @@
     {
       "name": "TriangleMesh",
       "extends": "Reference",
-      "description": "Internal mesh type.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -57596,7 +57154,6 @@
     {
       "name": "Tween",
       "extends": "Node",
-      "description": "Smoothly animates a node\u0027s properties over time.",
       "fields": [
         {
           "name": "playback_process_mode",
@@ -58132,7 +57689,6 @@
     {
       "name": "UndoRedo",
       "extends": "Object",
-      "description": "Helper to manage undo/redo operations in the editor or custom tools.",
       "fields": [],
       "methods": [
         {
@@ -58302,7 +57858,6 @@
     {
       "name": "VBoxContainer",
       "extends": "BoxContainer",
-      "description": "Vertical box container.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -58310,7 +57865,6 @@
     {
       "name": "VScrollBar",
       "extends": "ScrollBar",
-      "description": "Vertical scroll bar.",
       "fields": [
         {
           "name": "size_flags_horizontal",
@@ -58333,7 +57887,6 @@
     {
       "name": "VSeparator",
       "extends": "Separator",
-      "description": "Vertical version of [Separator].",
       "fields": [],
       "methods": [],
       "constants": []
@@ -58341,7 +57894,6 @@
     {
       "name": "VSlider",
       "extends": "Slider",
-      "description": "Vertical slider.",
       "fields": [
         {
           "name": "size_flags_horizontal",
@@ -58364,7 +57916,6 @@
     {
       "name": "VSplitContainer",
       "extends": "SplitContainer",
-      "description": "Vertical split container.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -58372,7 +57923,6 @@
     {
       "name": "Variant",
       "extends": "",
-      "description": "The most important data type in Godot.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -58380,7 +57930,6 @@
     {
       "name": "Vector2",
       "extends": "",
-      "description": "Vector used for 2D math.",
       "fields": [
         {
           "name": "x",
@@ -58749,7 +58298,6 @@
     {
       "name": "Vector3",
       "extends": "",
-      "description": "Vector used for 3D math.",
       "fields": [
         {
           "name": "x",
@@ -59140,7 +58688,6 @@
     {
       "name": "VehicleBody",
       "extends": "RigidBody",
-      "description": "Physics body that simulates the behavior of a car.",
       "fields": [
         {
           "name": "brake",
@@ -59184,7 +58731,6 @@
     {
       "name": "VehicleWheel",
       "extends": "Spatial",
-      "description": "Physics object that simulates the behavior of a wheel.",
       "fields": [
         {
           "name": "brake",
@@ -59307,7 +58853,6 @@
     {
       "name": "VideoPlayer",
       "extends": "Control",
-      "description": "Control for playing video streams.",
       "fields": [
         {
           "name": "audio_track",
@@ -59412,7 +58957,6 @@
     {
       "name": "VideoStream",
       "extends": "Resource",
-      "description": "Base resource for video streams.",
       "fields": [],
       "methods": [],
       "constants": []
@@ -59420,7 +58964,6 @@
     {
       "name": "Viewport",
       "extends": "Node",
-      "description": "Creates a sub-view into the screen.",
       "fields": [
         {
           "name": "arvr",
@@ -59958,7 +59501,6 @@
     {
       "name": "ViewportContainer",
       "extends": "Container",
-      "description": "Control for holding [Viewport]s.",
       "fields": [
         {
           "name": "stretch",
@@ -59981,7 +59523,6 @@
     {
       "name": "ViewportTexture",
       "extends": "Texture",
-      "description": "Texture which displays the content of a [Viewport].",
       "fields": [
         {
           "name": "flags",
@@ -60011,7 +59552,6 @@
     {
       "name": "VisibilityEnabler",
       "extends": "VisibilityNotifier",
-      "description": "Enables certain nodes only when visible.",
       "fields": [
         {
           "name": "freeze_bodies",
@@ -60072,7 +59612,6 @@
     {
       "name": "VisibilityEnabler2D",
       "extends": "VisibilityNotifier2D",
-      "description": "Enables certain nodes only when visible.",
       "fields": [
         {
           "name": "freeze_bodies",
@@ -60177,7 +59716,6 @@
     {
       "name": "VisibilityNotifier",
       "extends": "Spatial",
-      "description": "Detects when the node is visible on screen.",
       "fields": [
         {
           "name": "aabb",
@@ -60199,7 +59737,6 @@
     {
       "name": "VisibilityNotifier2D",
       "extends": "Node2D",
-      "description": "Detects when the node is visible on screen.",
       "fields": [
         {
           "name": "rect",
@@ -60221,7 +59758,6 @@
     {
       "name": "VisualInstance",
       "extends": "Spatial",
-      "description": "Parent of all visual 3D nodes.",
       "fields": [
         {
           "name": "layers",
@@ -60292,7 +59828,6 @@
     {
       "name": "VisualShader",
       "extends": "Shader",
-      "description": "A custom shader program with a visual editor.",
       "fields": [
         {
           "name": "code",
@@ -60593,7 +60128,6 @@
     {
       "name": "VisualShaderNode",
       "extends": "Resource",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -60666,7 +60200,6 @@
     {
       "name": "VisualShaderNodeBooleanConstant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "constant",
@@ -60689,7 +60222,6 @@
     {
       "name": "VisualShaderNodeBooleanUniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -60697,7 +60229,6 @@
     {
       "name": "VisualShaderNodeColorConstant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "constant",
@@ -60720,7 +60251,6 @@
     {
       "name": "VisualShaderNodeColorFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "function",
@@ -60745,7 +60275,6 @@
     {
       "name": "VisualShaderNodeColorOp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -60805,7 +60334,6 @@
     {
       "name": "VisualShaderNodeColorUniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -60813,7 +60341,6 @@
     {
       "name": "VisualShaderNodeCompare",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "condition",
@@ -60899,7 +60426,6 @@
     {
       "name": "VisualShaderNodeCubeMap",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "cube_map",
@@ -60957,7 +60483,6 @@
     {
       "name": "VisualShaderNodeCubeMapUniform",
       "extends": "VisualShaderNodeTextureUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -60965,7 +60490,6 @@
     {
       "name": "VisualShaderNodeCustom",
       "extends": "VisualShaderNode",
-      "description": "Virtual class to define custom [VisualShaderNode]s for use in the Visual Shader Editor.",
       "fields": [
         {
           "name": "default_input_values",
@@ -61089,7 +60613,6 @@
     {
       "name": "VisualShaderNodeDeterminant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61105,7 +60628,6 @@
     {
       "name": "VisualShaderNodeDotProduct",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61121,7 +60643,6 @@
     {
       "name": "VisualShaderNodeExpression",
       "extends": "VisualShaderNodeGroupBase",
-      "description": "",
       "fields": [
         {
           "name": "editable",
@@ -61150,7 +60671,6 @@
     {
       "name": "VisualShaderNodeFaceForward",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61166,7 +60686,6 @@
     {
       "name": "VisualShaderNodeFresnel",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61182,7 +60701,6 @@
     {
       "name": "VisualShaderNodeGlobalExpression",
       "extends": "VisualShaderNodeExpression",
-      "description": "",
       "fields": [
         {
           "name": "editable",
@@ -61198,7 +60716,6 @@
     {
       "name": "VisualShaderNodeGroupBase",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61463,7 +60980,6 @@
     {
       "name": "VisualShaderNodeIf",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61479,7 +60995,6 @@
     {
       "name": "VisualShaderNodeInput",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61508,7 +61023,6 @@
     {
       "name": "VisualShaderNodeIs",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61540,7 +61054,6 @@
     {
       "name": "VisualShaderNodeOuterProduct",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61556,7 +61069,6 @@
     {
       "name": "VisualShaderNodeOutput",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -61564,7 +61076,6 @@
     {
       "name": "VisualShaderNodeScalarClamp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61580,7 +61091,6 @@
     {
       "name": "VisualShaderNodeScalarConstant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "constant",
@@ -61603,7 +61113,6 @@
     {
       "name": "VisualShaderNodeScalarDerivativeFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61639,7 +61148,6 @@
     {
       "name": "VisualShaderNodeScalarFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61791,7 +61299,6 @@
     {
       "name": "VisualShaderNodeScalarInterp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61807,7 +61314,6 @@
     {
       "name": "VisualShaderNodeScalarOp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61871,7 +61377,6 @@
     {
       "name": "VisualShaderNodeScalarSmoothStep",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61887,7 +61392,6 @@
     {
       "name": "VisualShaderNodeScalarSwitch",
       "extends": "VisualShaderNodeSwitch",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61903,7 +61407,6 @@
     {
       "name": "VisualShaderNodeScalarUniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -61911,7 +61414,6 @@
     {
       "name": "VisualShaderNodeSwitch",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -61927,7 +61429,6 @@
     {
       "name": "VisualShaderNodeTexture",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62001,7 +61502,6 @@
     {
       "name": "VisualShaderNodeTextureUniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [
         {
           "name": "color_default",
@@ -62049,7 +61549,6 @@
     {
       "name": "VisualShaderNodeTextureUniformTriplanar",
       "extends": "VisualShaderNodeTextureUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -62057,7 +61556,6 @@
     {
       "name": "VisualShaderNodeTransformCompose",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62073,7 +61571,6 @@
     {
       "name": "VisualShaderNodeTransformConstant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "constant",
@@ -62096,7 +61593,6 @@
     {
       "name": "VisualShaderNodeTransformDecompose",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62112,7 +61608,6 @@
     {
       "name": "VisualShaderNodeTransformFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62144,7 +61639,6 @@
     {
       "name": "VisualShaderNodeTransformMult",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62184,7 +61678,6 @@
     {
       "name": "VisualShaderNodeTransformUniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -62192,7 +61685,6 @@
     {
       "name": "VisualShaderNodeTransformVecMult",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62232,7 +61724,6 @@
     {
       "name": "VisualShaderNodeUniform",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62255,7 +61746,6 @@
     {
       "name": "VisualShaderNodeVec3Constant",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "constant",
@@ -62278,7 +61768,6 @@
     {
       "name": "VisualShaderNodeVec3Uniform",
       "extends": "VisualShaderNodeUniform",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -62286,7 +61775,6 @@
     {
       "name": "VisualShaderNodeVectorClamp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62302,7 +61790,6 @@
     {
       "name": "VisualShaderNodeVectorCompose",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62318,7 +61805,6 @@
     {
       "name": "VisualShaderNodeVectorDecompose",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -62326,7 +61812,6 @@
     {
       "name": "VisualShaderNodeVectorDerivativeFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "function",
@@ -62355,7 +61840,6 @@
     {
       "name": "VisualShaderNodeVectorDistance",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62371,7 +61855,6 @@
     {
       "name": "VisualShaderNodeVectorFunc",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "function",
@@ -62528,7 +62011,6 @@
     {
       "name": "VisualShaderNodeVectorInterp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62544,7 +62026,6 @@
     {
       "name": "VisualShaderNodeVectorLen",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -62552,7 +62033,6 @@
     {
       "name": "VisualShaderNodeVectorOp",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62624,7 +62104,6 @@
     {
       "name": "VisualShaderNodeVectorRefract",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62640,7 +62119,6 @@
     {
       "name": "VisualShaderNodeVectorScalarMix",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62656,7 +62134,6 @@
     {
       "name": "VisualShaderNodeVectorScalarSmoothStep",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62672,7 +62149,6 @@
     {
       "name": "VisualShaderNodeVectorScalarStep",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62688,7 +62164,6 @@
     {
       "name": "VisualShaderNodeVectorSmoothStep",
       "extends": "VisualShaderNode",
-      "description": "",
       "fields": [
         {
           "name": "default_input_values",
@@ -62704,7 +62179,6 @@
     {
       "name": "WeakRef",
       "extends": "Reference",
-      "description": "Holds an [Object], but does not contribute to the reference count if the object is a reference.",
       "fields": [],
       "methods": [
         {
@@ -62718,7 +62192,6 @@
     {
       "name": "WindowDialog",
       "extends": "Popup",
-      "description": "Base class for window dialogs.",
       "fields": [
         {
           "name": "resizable",
@@ -62747,7 +62220,6 @@
     {
       "name": "World",
       "extends": "Resource",
-      "description": "Class that has everything pertaining to a world.",
       "fields": [
         {
           "name": "direct_space_state",
@@ -62791,7 +62263,6 @@
     {
       "name": "World2D",
       "extends": "Resource",
-      "description": "Class that has everything pertaining to a 2D world.",
       "fields": [
         {
           "name": "canvas",
@@ -62821,7 +62292,6 @@
     {
       "name": "WorldEnvironment",
       "extends": "Node",
-      "description": "Default environment properties for the entire scene (post-processing effects, lighting and background settings).",
       "fields": [
         {
           "name": "environment",
@@ -62837,7 +62307,6 @@
     {
       "name": "X509Certificate",
       "extends": "Resource",
-      "description": "An X509 certificate (e.g. for SSL).",
       "fields": [],
       "methods": [
         {
@@ -62866,7 +62335,6 @@
     {
       "name": "XMLParser",
       "extends": "Reference",
-      "description": "Low-level class for creating parsers for [url\u003dhttps://en.wikipedia.org/wiki/XML]XML[/url] files.",
       "fields": [],
       "methods": [
         {
@@ -63029,7 +62497,6 @@
     {
       "name": "YSort",
       "extends": "Node2D",
-      "description": "Sort all child nodes based on their Y positions.",
       "fields": [
         {
           "name": "sort_enabled",
@@ -63045,7 +62512,6 @@
     {
       "name": "bool",
       "extends": "",
-      "description": "Boolean built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63084,7 +62550,6 @@
     {
       "name": "float",
       "extends": "",
-      "description": "Float built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63123,7 +62588,6 @@
     {
       "name": "int",
       "extends": "",
-      "description": "Integer built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63164,7 +62628,6 @@
     {
       "name": "bool",
       "extends": "",
-      "description": "Boolean built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63203,7 +62666,6 @@
     {
       "name": "float",
       "extends": "",
-      "description": "Float built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63242,7 +62704,6 @@
     {
       "name": "int",
       "extends": "",
-      "description": "Integer built-in type.",
       "fields": [],
       "methods": [
         {
@@ -63281,7 +62742,6 @@
     {
       "name": "void",
       "extends": "",
-      "description": "",
       "fields": [],
       "methods": [],
       "constants": []
@@ -64334,7 +63794,6 @@
     {
       "name": "InputMap",
       "extends": "Object",
-      "description": "Singleton that manages [InputEventAction].",
       "fields": [],
       "methods": [
         {
@@ -64477,7 +63936,6 @@
     {
       "name": "Engine",
       "extends": "Object",
-      "description": "Access to basic engine properties.",
       "fields": [
         {
           "name": "editor_hint",
@@ -64607,7 +64065,6 @@
     {
       "name": "ResourceLoader",
       "extends": "Object",
-      "description": "Singleton used to load resource files.",
       "fields": [],
       "methods": [
         {
@@ -64712,7 +64169,6 @@
     {
       "name": "OS",
       "extends": "Object",
-      "description": "Operating System functions.",
       "fields": [
         {
           "name": "clipboard",
@@ -65778,7 +65234,6 @@
     {
       "name": "Physics2DServer",
       "extends": "Object",
-      "description": "Server interface for low-level 2D physics access.",
       "fields": [],
       "methods": [
         {
@@ -67405,7 +66860,6 @@
     {
       "name": "VisualServer",
       "extends": "Object",
-      "description": "Server for anything visible.",
       "fields": [],
       "methods": [
         {
@@ -73605,7 +73059,6 @@
     {
       "name": "ARVRServer",
       "extends": "Object",
-      "description": "The AR/VR server.",
       "fields": [
         {
           "name": "primary_interface",
@@ -73750,7 +73203,6 @@
     {
       "name": "ResourceSaver",
       "extends": "Object",
-      "description": "Singleton for saving Godot-specific resource types.",
       "fields": [],
       "methods": [
         {
@@ -73816,7 +73268,6 @@
     {
       "name": "JavaClassWrapper",
       "extends": "Object",
-      "description": "",
       "fields": [],
       "methods": [
         {
@@ -73835,7 +73286,6 @@
     {
       "name": "Marshalls",
       "extends": "Reference",
-      "description": "Data transformation (marshalling) and encoding helpers.",
       "fields": [],
       "methods": [
         {
@@ -73912,7 +73362,6 @@
     {
       "name": "PhysicsServer",
       "extends": "Object",
-      "description": "Server interface for low-level physics access.",
       "fields": [],
       "methods": [
         {
@@ -76026,7 +75475,6 @@
     {
       "name": "Performance",
       "extends": "Object",
-      "description": "Exposes performance-related data.",
       "fields": [],
       "methods": [
         {
@@ -76166,7 +75614,6 @@
     {
       "name": "JSON",
       "extends": "Object",
-      "description": "Helper class for parsing JSON data.",
       "fields": [],
       "methods": [
         {
@@ -76203,7 +75650,6 @@
     {
       "name": "Input",
       "extends": "Object",
-      "description": "A Singleton that deals with inputs.",
       "fields": [],
       "methods": [
         {
@@ -76700,7 +76146,6 @@
     {
       "name": "TranslationServer",
       "extends": "Object",
-      "description": "Server that manages all translations.",
       "fields": [],
       "methods": [
         {
@@ -76774,7 +76219,6 @@
     {
       "name": "ProjectSettings",
       "extends": "Object",
-      "description": "Contains global variables accessible from everywhere.",
       "fields": [
         {
           "name": "android/modules",
@@ -78891,7 +78335,6 @@
     {
       "name": "JavaScript",
       "extends": "Object",
-      "description": "Singleton that connects the engine with the browser\u0027s JavaScript context in HTML5 export.",
       "fields": [],
       "methods": [
         {
@@ -78914,7 +78357,6 @@
     {
       "name": "ClassDB",
       "extends": "Object",
-      "description": "Class information repository.",
       "fields": [],
       "methods": [
         {
@@ -79174,7 +78616,6 @@
     {
       "name": "CameraServer",
       "extends": "Object",
-      "description": "The CameraServer keeps track of different cameras accessible in Godot. These are external cameras such as webcams or the cameras on your phone.",
       "fields": [],
       "methods": [
         {
@@ -79240,7 +78681,6 @@
     {
       "name": "IP",
       "extends": "Object",
-      "description": "Internet protocol (IP) support functions such as DNS resolution.",
       "fields": [],
       "methods": [
         {
@@ -79368,7 +78808,6 @@
     {
       "name": "AudioServer",
       "extends": "Object",
-      "description": "Server interface for low-level audio access.",
       "fields": [
         {
           "name": "bus_count",
@@ -79841,7 +79280,6 @@
     {
       "name": "Geometry",
       "extends": "Object",
-      "description": "Helper node to calculate generic geometry operations.",
       "fields": [],
       "methods": [
         {
