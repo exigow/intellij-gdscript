@@ -39,10 +39,13 @@ open class GenerateCompletion : DefaultTask() {
             primitiveClasses = files
                 .filter { isPrimitiveClass(it) }
                 .map { parseClass(it) }
-                .sortedBy { it.name }
+                .sortedBy { it.name } + createVoid()
         )
         serialize(language, "src/main/resources/completion.json")
     }
+
+    private fun createVoid() =
+        Class("void", "", "", emptyList(), emptyList(), emptyList())
 
     private fun isLanguageClass(file: Document) = file
         .select("class")
