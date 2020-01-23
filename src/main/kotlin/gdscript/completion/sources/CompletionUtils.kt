@@ -2,29 +2,38 @@ package gdscript.completion.sources
 
 object CompletionUtils {
 
-    private val COMPLETION_DATA = CompletionDeserializer.deserialize()
-    val SINGLETONS = COMPLETION_DATA.singletons
-    val LANGUAGE_CONSTANTS = COMPLETION_DATA.constants
-    val FUNCTIONS = COMPLETION_DATA.functions
-    val CLASSES = COMPLETION_DATA.classes
-    val PRIMITIVES = COMPLETION_DATA.primitiveClasses
-    val CLASS_CONSTRUCTORS = toConstructors(COMPLETION_DATA.classes)
-    val PRIMITIVE_CONSTRUCTORS = toConstructors(COMPLETION_DATA.primitiveClasses)
-    val VARIABLE_KEYWORDS = listOf("self", "true", "false", "null")
-    val STATEMENT_KEYWORDS = listOf("remote", "sync", "var", "const", "func", "for", "while", "class", "extends", "class_name", "enum", "if", "elif", "else", "return", "signal", "export", "static", "puppet", "master", "match", "tool", "pass", "break", "continue")
+    val CLASSES =
+        CompletionDeserializer.deserialize().classes
+    val SINGLETONS =
+        CLASSES.filter { it.name in collectSingletonNames() }
+    val LANGUAGE_CONSTANTS =
+        CLASSES.filter { isGlobal(it) }.flatMap { it.constants.orEmpty() }
+    val FUNCTIONS =
+        CLASSES.filter { isGlobal(it) }.flatMap { it.methods.orEmpty() }
+    val PRIMITIVES =
+        CLASSES.filter { isPrimitive(it) }
+    val CLASS_CONSTRUCTORS =
+        toConstructors(CLASSES)
+    val PRIMITIVE_CONSTRUCTORS =
+        toConstructors(PRIMITIVES)
+    val VARIABLE_KEYWORDS =
+        listOf("self", "true", "false", "null")
+    val STATEMENT_KEYWORDS =
+        listOf("remote", "sync", "var", "const", "func", "for", "while", "class", "extends", "class_name", "enum", "if", "elif", "else", "return", "signal", "export", "static", "puppet", "master", "match", "tool", "pass", "break", "continue")
+
+    fun findClass(name: String?) =
+        CLASSES.find { it.name == name }
+
+    private fun collectSingletonNames() =
+        CLASSES.filter { isGlobal(it) }.flatMap { it.fields.orEmpty() }.map { it.name }
 
     private fun toConstructors(classes: List<Class>) =
-        classes.flatMap { it.methods?.filter { method -> method.name == it.name }.orEmpty() }
+        classes.flatMap { c -> c.methods?.filter { it -> c.name == it.name }.orEmpty() }
 
-    fun findClass(name: String?): Class? {
-        val allClasses = COMPLETION_DATA.classes + COMPLETION_DATA.singletons
-        return allClasses
-            .find { it.name == name }
-    }
+    private fun isGlobal(clazz: Class) =
+        clazz.name.startsWith("@")
 
-    fun isPrimitive(name: String?) =
-        COMPLETION_DATA.primitiveClasses
-            .map { it.name }
-            .contains(name)
+    private fun isPrimitive(clazz: Class) =
+        clazz.name in listOf("bool", "float", "void", "int")
 
 }

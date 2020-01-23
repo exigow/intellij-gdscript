@@ -11,13 +11,17 @@ import gdscript.lang.psi.PsiElementUtils.isRule
 class ClassAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.isRule(RULE_type) && hasPrimitiveName(element))
+        if (element.isRule(RULE_type) && isNotPrimitive(element))
             holder.colorize(element, CLASS_NAME)
     }
 
-    private fun hasPrimitiveName(element: PsiElement): Boolean {
-        val name = element.node.text
-        return !CompletionUtils.isPrimitive(name)
+    private fun isNotPrimitive(element: PsiElement) =
+        element.node.text !in PRIMITIVE_NAMES
+
+    private companion object {
+
+        val PRIMITIVE_NAMES = CompletionUtils.PRIMITIVES.map { it.name }
+
     }
 
 }
