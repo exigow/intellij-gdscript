@@ -33,5 +33,6 @@ data class Argument(
 data class Method(
     val name: String,
     val type: String,
-    val arguments: List<Argument>?
+    val arguments: List<Argument>?,
+    val vararg: Boolean?
 )

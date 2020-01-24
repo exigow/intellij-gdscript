@@ -4,6 +4,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
+import tasks.serializer.ApiSerializer
 import java.io.File
 
 open class GenerateCompletion : DefaultTask() {
@@ -16,7 +17,7 @@ open class GenerateCompletion : DefaultTask() {
             .filter { hasClassName(it) }
             .map { parseClass(it) } + VOID_CLASS
         val language = Language(parsed.sortedBy { it.name })
-        serialize(language, "src/main/resources/completion.json")
+        ApiSerializer.serialize(language, "src/main/resources/completion.json")
     }
 
     private fun openFiles() =
@@ -49,7 +50,8 @@ open class GenerateCompletion : DefaultTask() {
             method.select("return").attr("type"),
             method.select("argument")
                 .sortedBy { it.attr("index") }
-                .map { Argument(it.attr("name"), it.attr("type")) }
+                .map { Argument(it.attr("name"), it.attr("type")) },
+            method.attr("qualifiers") == "vararg"
         )
 
     private fun parseConstant(constant: Element) =

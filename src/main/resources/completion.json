@@ -650,11 +650,13 @@
         },
         {
           "name": "print",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "print_debug",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "print_stack",
@@ -662,19 +664,23 @@
         },
         {
           "name": "printerr",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "printraw",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "prints",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "printt",
-          "type": "void"
+          "type": "void",
+          "vararg": true
         },
         {
           "name": "push_error",
@@ -744,7 +750,8 @@
         },
         {
           "name": "range",
-          "type": "Array"
+          "type": "Array",
+          "vararg": true
         },
         {
           "name": "range_lerp",
@@ -876,7 +883,8 @@
         },
         {
           "name": "str",
-          "type": "String"
+          "type": "String",
+          "vararg": true
         },
         {
           "name": "str2var",
@@ -25329,7 +25337,8 @@
       "methods": [
         {
           "name": "call_func",
-          "type": "Variant"
+          "type": "Variant",
+          "vararg": true
         },
         {
           "name": "call_funcv",
@@ -36943,7 +36952,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "rpc_config",
@@ -36971,7 +36981,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "rpc_unreliable",
@@ -36981,7 +36992,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "rpc_unreliable_id",
@@ -36995,7 +37007,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "rset",
@@ -38686,7 +38699,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "call_deferred",
@@ -38696,7 +38710,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "callv",
@@ -38768,7 +38783,8 @@
               "name": "signal",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "free",
@@ -54217,7 +54233,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "call_group_flags",
@@ -54235,7 +54252,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "change_scene",
@@ -65600,7 +65618,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "clear_custom_bg_color",
@@ -66857,7 +66876,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "add_do_property",
@@ -66899,7 +66919,8 @@
               "name": "method",
               "type": "String"
             }
-          ]
+          ],
+          "vararg": true
         },
         {
           "name": "add_undo_property",

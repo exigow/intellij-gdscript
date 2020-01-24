@@ -22,20 +22,20 @@ object LookupFactory {
         create(function.name)
             .withIcon(FUNCTION)
             .withTypeText(function.type)
-            .withArgumentsTail(function.arguments)
-            .withParenthesesInsertHandler(function.arguments)
+            .withArgumentsTail(function.arguments, function.vararg)
+            .withParenthesesInsertHandler(function.arguments, function.vararg)
             .bold()
 
     fun createConstructor(constructor: Method): LookupElement =
         create(constructor.name)
             .withIcon(CLASS)
-            .withArgumentsTail(constructor.arguments)
-            .withParenthesesInsertHandler(constructor.arguments)
+            .withArgumentsTail(constructor.arguments, constructor.vararg)
+            .withParenthesesInsertHandler(constructor.arguments, constructor.vararg)
 
     fun createPrimitiveConstructor(constructor: Method): LookupElement =
         create(constructor.name)
-            .withArgumentsTail(constructor.arguments)
-            .withParenthesesInsertHandler(constructor.arguments)
+            .withArgumentsTail(constructor.arguments, constructor.vararg)
+            .withParenthesesInsertHandler(constructor.arguments, constructor.vararg)
             .bold()
 
     fun createConstant(constant: Constant): LookupElement =
@@ -68,18 +68,22 @@ object LookupFactory {
     fun createStaticMethod(method: Method): LookupElement =
         create(method.name)
             .withIcon(STATIC_METHOD)
-            .withArgumentsTail(method.arguments)
-            .withParenthesesInsertHandler(method.arguments)
+            .withArgumentsTail(method.arguments, method.vararg)
+            .withParenthesesInsertHandler(method.arguments, method.vararg)
             .withTypeText(method.type)
             .bold()
 
-    private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>?): LookupElementBuilder {
+    private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>?, vararg: Boolean?): LookupElementBuilder {
+        if (vararg == true)
+            return withTailText("(...)")
         if (args == null || args.isEmpty())
             return withTailText("()")
         return withTailText(args.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
     }
 
-    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>?): LookupElementBuilder {
+    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>?, vararg: Boolean?): LookupElementBuilder {
+        if (vararg == true)
+            return withInsertHandler(WITH_PARAMETERS)
         if (args == null || args.isEmpty())
             return withInsertHandler(NO_PARAMETERS)
         return withInsertHandler(WITH_PARAMETERS)
