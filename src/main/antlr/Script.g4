@@ -59,9 +59,7 @@ operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH 
 primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* BRACE_RIGHT;
-entry: entry_key (COLON | EQUALS) entry_value NL*;
-entry_key: IDENTIFIER | NUMBER | string;
-entry_value: expression;
+entry: expression (COLON | EQUALS) expression NL*;
 invoke: DOT? (IDENTIFIER | FUNCTION | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;

@@ -182,6 +182,8 @@ class ScriptErrorHighlightingTest : BaseTest() {
             }
         """)
 
+    fun `test dictionary with key expressions`() =
+        assertNoErrors("dict = {Some.Inner.Class: 0}")
 
     fun `test enum`() =
         assertNoErrors("enum {RED, GREEN, BLUE}")
