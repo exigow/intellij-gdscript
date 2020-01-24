@@ -28,4 +28,10 @@ class InvalidImportFileAnnotatorTest : BaseTest() {
         assertEmpty(environment.highlights())
     }
 
+    fun `test no warning on user resource`() {
+        environment.openScript("""x = "user://save.txt"""")
+        environment.addProjectFile()
+        assertEmpty(environment.highlights())
+    }
+
 }

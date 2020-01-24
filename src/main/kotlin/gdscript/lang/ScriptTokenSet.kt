@@ -17,7 +17,7 @@ object ScriptTokenSet {
     val DOTS = create(DOT)
     val NUMBERS = create(NUMBER)
     val STRINGS = create(STRING_DOUBLE_QUOTE, STRING_APHOSTROPHE, STRING_MULTILINE)
-    val RESOURCES = create(RESOURCE)
+    val RESOURCES = create(RESOURCE, USER_RESOURCE)
     val CONSTANTS = create(CONSTANT)
     val OPERATION_SIGNS = create(
         ASSIGN,

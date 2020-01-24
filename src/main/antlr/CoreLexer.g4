@@ -28,7 +28,8 @@ fragment UPPER_CASE: 'A'..'Z';
 fragment UNDERSCORE: '_';
 fragment DIGIT: '0'..'9';
 
-RESOURCE: '"' ('res' | 'user') '://' .*? '"';
+RESOURCE: '"res://' .*? '"';
+USER_RESOURCE: '"user://' .*? '"';
 
 STRING_MULTILINE: '"""' .*? '"""';
 STRING_DOUBLE_QUOTE: '"' .*? ('"' | NL | EOF);

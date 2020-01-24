@@ -65,7 +65,7 @@ in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
 type: IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
-string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE;
+string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
 
 ASSIGN: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 INFER: ':=';
