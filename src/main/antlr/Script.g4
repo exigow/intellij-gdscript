@@ -30,7 +30,7 @@ line: var_line
 var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_line: CONST IDENTIFIER (COLON type)? (EQUALS | INFER) expression;
 func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)?;
-func_argument: IDENTIFIER (COLON type)? (EQUALS expression)?;
+func_argument: IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)?;
 enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
 enum_argument: IDENTIFIER (EQUALS expression)? NL*;
 signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
