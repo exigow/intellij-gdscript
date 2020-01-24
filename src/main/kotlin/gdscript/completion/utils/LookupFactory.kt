@@ -74,17 +74,16 @@ object LookupFactory {
             .bold()
 
     private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>?): LookupElementBuilder {
-        val formatted = args?.joinToString(", ", "(", ")") {
-            "${it.name}: ${it.type}"
-        }
-        return withTailText(formatted)
+        if (args == null || args.isEmpty())
+            return withTailText("()")
+        return withTailText(args.joinToString(", ", "(", ")") { "${it.name}: ${it.type}" })
     }
 
-    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>?): LookupElementBuilder =
-        if (args?.isEmpty() == true)
-            withInsertHandler(NO_PARAMETERS)
-        else
-            withInsertHandler(WITH_PARAMETERS)
+    private fun LookupElementBuilder.withParenthesesInsertHandler(args: List<Argument>?): LookupElementBuilder {
+        if (args == null || args.isEmpty())
+            return withInsertHandler(NO_PARAMETERS)
+        return withInsertHandler(WITH_PARAMETERS)
+    }
 
     private fun cleanConstantValue(code: String) = code
         .replace(" ", "")
