@@ -49,12 +49,18 @@ class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
         STRINGS
 
     override fun getFileNodeType() =
-        IFileElementType(ScriptLanguage)
+        FILE
 
     override fun createFile(view: FileViewProvider) =
         ScriptFile(view)
 
     override fun createElement(node: ASTNode) =
         ANTLRPsiNode(node)
+
+    companion object {
+
+        val FILE = IFileElementType(ScriptLanguage)
+
+    }
 
 }
