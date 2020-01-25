@@ -1,6 +1,6 @@
 grammar Script;
 
-import KeywordLexer, ConstantLexer, FunctionLexer, CoreLexer;
+import Constants, Functions, Core;
 
 file: separator* (line (separator+ line?)*)? EOF;
 
@@ -67,6 +67,50 @@ type: IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
 string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
 
+REMOTE: 'remote';
+PUPPET: 'puppet';
+MASTER: 'master';
+SYNC: 'sync';
+REMOTESYNC: 'remotesync';
+MASTERSYNC: 'mastersync';
+PUPPETSYNC: 'puppetsync';
+MATCH: 'match';
+EXPORT: 'export';
+ONREADY: 'onready';
+VAR: 'var';
+SETGET: 'setget';
+CONST: 'const';
+STATIC: 'static';
+FUNC: 'func';
+FOR: 'for';
+WHILE: 'while';
+CLASS: 'class';
+EXTENDS: 'extends';
+CLASS_NAME: 'class_name';
+ENUM: 'enum';
+IF: 'if';
+ELIF: 'elif';
+ELSE: 'else';
+RETURN: 'return';
+PASS: 'pass';
+TOOL: 'tool';
+SIGNAL: 'signal';
+BREAK: 'break';
+CONTINUE: 'continue';
+NOT: 'not';
+AND: 'and';
+OR: 'or';
+IN: 'in';
+IS: 'is';
+AS: 'as';
+SELF: 'self';
+NULL: 'null';
+TRUE: 'true';
+FALSE: 'false';
+BOOL: 'bool';
+INT: 'int';
+FLOAT: 'float';
+VOID: 'void';
 ASSIGN: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
 INFER: ':=';
 ARROW: '->';

@@ -1,6 +1,6 @@
 grammar Resource;
 
-import CoreLexer;
+import Core;
 
 file: (statement | NL)* EOF;
 statement: section | property | LINE_COMMENT;

@@ -1,4 +1,4 @@
-lexer grammar CoreLexer;
+lexer grammar Core;
 
 EQUALS: '=';
 MINUS: '-';
