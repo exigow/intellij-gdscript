@@ -2,7 +2,6 @@
   "classes": [
     {
       "name": "@GDScript",
-      "extends": "",
       "methods": [
         {
           "name": "Color8",
@@ -1062,175 +1061,102 @@
     },
     {
       "name": "@GlobalScope",
-      "extends": "",
       "fields": [
         {
           "name": "ARVRServer",
-          "type": "ARVRServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "ARVRServer"
         },
         {
           "name": "AudioServer",
-          "type": "AudioServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "AudioServer"
         },
         {
           "name": "CameraServer",
-          "type": "CameraServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "CameraServer"
         },
         {
           "name": "ClassDB",
-          "type": "ClassDB",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "ClassDB"
         },
         {
           "name": "Engine",
-          "type": "Engine",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Engine"
         },
         {
           "name": "Geometry",
-          "type": "Geometry",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Geometry"
         },
         {
           "name": "IP",
-          "type": "IP",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "IP"
         },
         {
           "name": "Input",
-          "type": "Input",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Input"
         },
         {
           "name": "InputMap",
-          "type": "InputMap",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "InputMap"
         },
         {
           "name": "JSON",
-          "type": "JSON",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "JSON"
         },
         {
           "name": "JavaClassWrapper",
-          "type": "JavaClassWrapper",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "JavaClassWrapper"
         },
         {
           "name": "JavaScript",
-          "type": "JavaScript",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "JavaScript"
         },
         {
           "name": "Marshalls",
-          "type": "Reference",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Reference"
         },
         {
           "name": "NavigationMeshGenerator",
-          "type": "EditorNavigationMeshGenerator",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "EditorNavigationMeshGenerator"
         },
         {
           "name": "OS",
-          "type": "OS",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "OS"
         },
         {
           "name": "Performance",
-          "type": "Performance",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Performance"
         },
         {
           "name": "Physics2DServer",
-          "type": "Physics2DServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Physics2DServer"
         },
         {
           "name": "PhysicsServer",
-          "type": "PhysicsServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "PhysicsServer"
         },
         {
           "name": "ProjectSettings",
-          "type": "ProjectSettings",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "ProjectSettings"
         },
         {
           "name": "ResourceLoader",
-          "type": "ResourceLoader",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "ResourceLoader"
         },
         {
           "name": "ResourceSaver",
-          "type": "ResourceSaver",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "ResourceSaver"
         },
         {
           "name": "TranslationServer",
-          "type": "TranslationServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "TranslationServer"
         },
         {
           "name": "VisualScriptEditor",
-          "type": "VisualScriptEditor",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "VisualScriptEditor"
         },
         {
           "name": "VisualServer",
-          "type": "VisualServer",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "VisualServer"
         }
       ],
       "constants": [
@@ -3262,27 +3188,20 @@
     },
     {
       "name": "AABB",
-      "extends": "",
       "fields": [
         {
           "name": "end",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "position",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "size",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 0 )"
         }
       ],
@@ -3775,8 +3694,7 @@
           "name": "primary_interface",
           "type": "ARVRInterface",
           "setter": "set_primary_interface",
-          "getter": "get_primary_interface",
-          "default": ""
+          "getter": "get_primary_interface"
         },
         {
           "name": "world_scale",
@@ -4572,8 +4490,7 @@
           "name": "frames",
           "type": "SpriteFrames",
           "setter": "set_sprite_frames",
-          "getter": "get_sprite_frames",
-          "default": ""
+          "getter": "get_sprite_frames"
         },
         {
           "name": "offset",
@@ -4644,8 +4561,7 @@
           "name": "frames",
           "type": "SpriteFrames",
           "setter": "set_sprite_frames",
-          "getter": "get_sprite_frames",
-          "default": ""
+          "getter": "get_sprite_frames"
         },
         {
           "name": "playing",
@@ -5694,8 +5610,7 @@
           "name": "filter_enabled",
           "type": "bool",
           "setter": "set_filter_enabled",
-          "getter": "is_filter_enabled",
-          "default": ""
+          "getter": "is_filter_enabled"
         }
       ],
       "methods": [
@@ -6993,8 +6908,7 @@
           "name": "assigned_animation",
           "type": "String",
           "setter": "set_assigned_animation",
-          "getter": "get_assigned_animation",
-          "default": ""
+          "getter": "get_assigned_animation"
         },
         {
           "name": "autoplay",
@@ -7013,16 +6927,12 @@
         {
           "name": "current_animation_length",
           "type": "float",
-          "setter": "",
-          "getter": "get_current_animation_length",
-          "default": ""
+          "getter": "get_current_animation_length"
         },
         {
           "name": "current_animation_position",
           "type": "float",
-          "setter": "",
-          "getter": "get_current_animation_position",
-          "default": ""
+          "getter": "get_current_animation_position"
         },
         {
           "name": "method_call_mode",
@@ -7035,8 +6945,7 @@
           "name": "playback_active",
           "type": "bool",
           "setter": "set_active",
-          "getter": "is_active",
-          "default": ""
+          "getter": "is_active"
         },
         {
           "name": "playback_default_blend_time",
@@ -7364,8 +7273,7 @@
           "name": "tree_root",
           "type": "AnimationNode",
           "setter": "set_tree_root",
-          "getter": "get_tree_root",
-          "default": ""
+          "getter": "get_tree_root"
         }
       ],
       "methods": [
@@ -8629,7 +8537,6 @@
     },
     {
       "name": "Array",
-      "extends": "",
       "methods": [
         {
           "name": "Array",
@@ -8703,7 +8610,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -8752,8 +8658,7 @@
           ]
         },
         {
-          "name": "clear",
-          "type": ""
+          "name": "clear"
         },
         {
           "name": "count",
@@ -8781,7 +8686,6 @@
         },
         {
           "name": "erase",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -8833,7 +8737,6 @@
         },
         {
           "name": "insert",
-          "type": "",
           "arguments": [
             {
               "name": "position",
@@ -8846,8 +8749,7 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "max",
@@ -8867,7 +8769,6 @@
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -8877,7 +8778,6 @@
         },
         {
           "name": "push_front",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -8887,7 +8787,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "position",
@@ -8897,7 +8796,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "size",
@@ -8920,8 +8818,7 @@
           ]
         },
         {
-          "name": "shuffle",
-          "type": ""
+          "name": "shuffle"
         },
         {
           "name": "size",
@@ -8950,12 +8847,10 @@
           ]
         },
         {
-          "name": "sort",
-          "type": ""
+          "name": "sort"
         },
         {
           "name": "sort_custom",
-          "type": "",
           "arguments": [
             {
               "name": "obj",
@@ -9255,8 +9150,7 @@
           "name": "atlas",
           "type": "Texture",
           "setter": "set_atlas",
-          "getter": "get_atlas",
-          "default": ""
+          "getter": "get_atlas"
         },
         {
           "name": "filter_clip",
@@ -9416,85 +9310,73 @@
           "name": "voice/3/cutoff_hz",
           "type": "float",
           "setter": "set_voice_cutoff_hz",
-          "getter": "get_voice_cutoff_hz",
-          "default": ""
+          "getter": "get_voice_cutoff_hz"
         },
         {
           "name": "voice/3/delay_ms",
           "type": "float",
           "setter": "set_voice_delay_ms",
-          "getter": "get_voice_delay_ms",
-          "default": ""
+          "getter": "get_voice_delay_ms"
         },
         {
           "name": "voice/3/depth_ms",
           "type": "float",
           "setter": "set_voice_depth_ms",
-          "getter": "get_voice_depth_ms",
-          "default": ""
+          "getter": "get_voice_depth_ms"
         },
         {
           "name": "voice/3/level_db",
           "type": "float",
           "setter": "set_voice_level_db",
-          "getter": "get_voice_level_db",
-          "default": ""
+          "getter": "get_voice_level_db"
         },
         {
           "name": "voice/3/pan",
           "type": "float",
           "setter": "set_voice_pan",
-          "getter": "get_voice_pan",
-          "default": ""
+          "getter": "get_voice_pan"
         },
         {
           "name": "voice/3/rate_hz",
           "type": "float",
           "setter": "set_voice_rate_hz",
-          "getter": "get_voice_rate_hz",
-          "default": ""
+          "getter": "get_voice_rate_hz"
         },
         {
           "name": "voice/4/cutoff_hz",
           "type": "float",
           "setter": "set_voice_cutoff_hz",
-          "getter": "get_voice_cutoff_hz",
-          "default": ""
+          "getter": "get_voice_cutoff_hz"
         },
         {
           "name": "voice/4/delay_ms",
           "type": "float",
           "setter": "set_voice_delay_ms",
-          "getter": "get_voice_delay_ms",
-          "default": ""
+          "getter": "get_voice_delay_ms"
         },
         {
           "name": "voice/4/depth_ms",
           "type": "float",
           "setter": "set_voice_depth_ms",
-          "getter": "get_voice_depth_ms",
-          "default": ""
+          "getter": "get_voice_depth_ms"
         },
         {
           "name": "voice/4/level_db",
           "type": "float",
           "setter": "set_voice_level_db",
-          "getter": "get_voice_level_db",
-          "default": ""
+          "getter": "get_voice_level_db"
         },
         {
           "name": "voice/4/pan",
           "type": "float",
           "setter": "set_voice_pan",
-          "getter": "get_voice_pan",
-          "default": ""
+          "getter": "get_voice_pan"
         },
         {
           "name": "voice/4/rate_hz",
           "type": "float",
           "setter": "set_voice_rate_hz",
-          "getter": "get_voice_rate_hz",
-          "default": ""
+          "getter": "get_voice_rate_hz"
         },
         {
           "name": "voice_count",
@@ -10939,8 +10821,7 @@
           "name": "stream",
           "type": "AudioStream",
           "setter": "set_stream",
-          "getter": "get_stream",
-          "default": ""
+          "getter": "get_stream"
         },
         {
           "name": "stream_paused",
@@ -11063,8 +10944,7 @@
           "name": "stream",
           "type": "AudioStream",
           "setter": "set_stream",
-          "getter": "get_stream",
-          "default": ""
+          "getter": "get_stream"
         },
         {
           "name": "stream_paused",
@@ -11229,8 +11109,7 @@
           "name": "stream",
           "type": "AudioStream",
           "setter": "set_stream",
-          "getter": "get_stream",
-          "default": ""
+          "getter": "get_stream"
         },
         {
           "name": "stream_paused",
@@ -11335,8 +11214,7 @@
           "name": "audio_stream",
           "type": "AudioStream",
           "setter": "set_audio_stream",
-          "getter": "get_audio_stream",
-          "default": ""
+          "getter": "get_audio_stream"
         },
         {
           "name": "random_pitch",
@@ -11556,8 +11434,7 @@
           "name": "light_data",
           "type": "BakedLightmapData",
           "setter": "set_light_data",
-          "getter": "get_light_data",
-          "default": ""
+          "getter": "get_light_data"
         }
       ],
       "methods": [
@@ -11755,8 +11632,7 @@
           "name": "group",
           "type": "ButtonGroup",
           "setter": "set_button_group",
-          "getter": "get_button_group",
-          "default": ""
+          "getter": "get_button_group"
         },
         {
           "name": "keep_pressed_outside",
@@ -11776,8 +11652,7 @@
           "name": "shortcut",
           "type": "ShortCut",
           "setter": "set_shortcut",
-          "getter": "get_shortcut",
-          "default": ""
+          "getter": "get_shortcut"
         },
         {
           "name": "shortcut_in_tooltip",
@@ -11851,27 +11726,20 @@
     },
     {
       "name": "Basis",
-      "extends": "",
       "fields": [
         {
           "name": "x",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 1, 0, 0 )"
         },
         {
           "name": "y",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 1, 0 )"
         },
         {
           "name": "z",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 1 )"
         }
       ],
@@ -12208,8 +12076,7 @@
           "name": "fallback",
           "type": "BitmapFont",
           "setter": "set_fallback",
-          "getter": "get_fallback",
-          "default": ""
+          "getter": "get_fallback"
         },
         {
           "name": "height",
@@ -12474,8 +12341,7 @@
           "name": "icon",
           "type": "Texture",
           "setter": "set_button_icon",
-          "getter": "get_button_icon",
-          "default": ""
+          "getter": "get_button_icon"
         },
         {
           "name": "text",
@@ -12545,8 +12411,7 @@
           "name": "angle_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "angle_random",
@@ -12566,8 +12431,7 @@
           "name": "angular_velocity_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "angular_velocity_random",
@@ -12587,8 +12451,7 @@
           "name": "anim_offset_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "anim_offset_random",
@@ -12608,8 +12471,7 @@
           "name": "anim_speed_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "anim_speed_random",
@@ -12629,8 +12491,7 @@
           "name": "color_ramp",
           "type": "Gradient",
           "setter": "set_color_ramp",
-          "getter": "get_color_ramp",
-          "default": ""
+          "getter": "get_color_ramp"
         },
         {
           "name": "damping",
@@ -12643,8 +12504,7 @@
           "name": "damping_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "damping_random",
@@ -12671,8 +12531,7 @@
           "name": "emission_box_extents",
           "type": "Vector3",
           "setter": "set_emission_box_extents",
-          "getter": "get_emission_box_extents",
-          "default": ""
+          "getter": "get_emission_box_extents"
         },
         {
           "name": "emission_colors",
@@ -12685,8 +12544,7 @@
           "name": "emission_normals",
           "type": "PoolVector3Array",
           "setter": "set_emission_normals",
-          "getter": "get_emission_normals",
-          "default": ""
+          "getter": "get_emission_normals"
         },
         {
           "name": "emission_points",
@@ -12706,8 +12564,7 @@
           "name": "emission_sphere_radius",
           "type": "float",
           "setter": "set_emission_sphere_radius",
-          "getter": "get_emission_sphere_radius",
-          "default": ""
+          "getter": "get_emission_sphere_radius"
         },
         {
           "name": "emitting",
@@ -12783,8 +12640,7 @@
           "name": "hue_variation_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "hue_variation_random",
@@ -12832,8 +12688,7 @@
           "name": "linear_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "linear_accel_random",
@@ -12853,8 +12708,7 @@
           "name": "mesh",
           "type": "Mesh",
           "setter": "set_mesh",
-          "getter": "get_mesh",
-          "default": ""
+          "getter": "get_mesh"
         },
         {
           "name": "one_shot",
@@ -12867,22 +12721,19 @@
           "name": "orbit_velocity",
           "type": "float",
           "setter": "set_param",
-          "getter": "get_param",
-          "default": ""
+          "getter": "get_param"
         },
         {
           "name": "orbit_velocity_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "orbit_velocity_random",
           "type": "float",
           "setter": "set_param_randomness",
-          "getter": "get_param_randomness",
-          "default": ""
+          "getter": "get_param_randomness"
         },
         {
           "name": "preprocess",
@@ -12902,8 +12753,7 @@
           "name": "radial_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "radial_accel_random",
@@ -12930,8 +12780,7 @@
           "name": "scale_amount_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "scale_amount_random",
@@ -12965,8 +12814,7 @@
           "name": "tangential_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "tangential_accel_random",
@@ -13217,8 +13065,7 @@
           "name": "angle_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "angle_random",
@@ -13238,8 +13085,7 @@
           "name": "angular_velocity_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "angular_velocity_random",
@@ -13259,8 +13105,7 @@
           "name": "anim_offset_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "anim_offset_random",
@@ -13280,8 +13125,7 @@
           "name": "anim_speed_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "anim_speed_random",
@@ -13301,8 +13145,7 @@
           "name": "color_ramp",
           "type": "Gradient",
           "setter": "set_color_ramp",
-          "getter": "get_color_ramp",
-          "default": ""
+          "getter": "get_color_ramp"
         },
         {
           "name": "damping",
@@ -13315,8 +13158,7 @@
           "name": "damping_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "damping_random",
@@ -13343,29 +13185,25 @@
           "name": "emission_colors",
           "type": "PoolColorArray",
           "setter": "set_emission_colors",
-          "getter": "get_emission_colors",
-          "default": ""
+          "getter": "get_emission_colors"
         },
         {
           "name": "emission_normals",
           "type": "PoolVector2Array",
           "setter": "set_emission_normals",
-          "getter": "get_emission_normals",
-          "default": ""
+          "getter": "get_emission_normals"
         },
         {
           "name": "emission_points",
           "type": "PoolVector2Array",
           "setter": "set_emission_points",
-          "getter": "get_emission_points",
-          "default": ""
+          "getter": "get_emission_points"
         },
         {
           "name": "emission_rect_extents",
           "type": "Vector2",
           "setter": "set_emission_rect_extents",
-          "getter": "get_emission_rect_extents",
-          "default": ""
+          "getter": "get_emission_rect_extents"
         },
         {
           "name": "emission_shape",
@@ -13378,8 +13216,7 @@
           "name": "emission_sphere_radius",
           "type": "float",
           "setter": "set_emission_sphere_radius",
-          "getter": "get_emission_sphere_radius",
-          "default": ""
+          "getter": "get_emission_sphere_radius"
         },
         {
           "name": "emitting",
@@ -13434,8 +13271,7 @@
           "name": "hue_variation_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "hue_variation_random",
@@ -13483,8 +13319,7 @@
           "name": "linear_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "linear_accel_random",
@@ -13504,8 +13339,7 @@
           "name": "normalmap",
           "type": "Texture",
           "setter": "set_normalmap",
-          "getter": "get_normalmap",
-          "default": ""
+          "getter": "get_normalmap"
         },
         {
           "name": "one_shot",
@@ -13525,8 +13359,7 @@
           "name": "orbit_velocity_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "orbit_velocity_random",
@@ -13553,8 +13386,7 @@
           "name": "radial_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "radial_accel_random",
@@ -13581,8 +13413,7 @@
           "name": "scale_amount_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "scale_amount_random",
@@ -13616,8 +13447,7 @@
           "name": "tangential_accel_curve",
           "type": "Curve",
           "setter": "set_param_curve",
-          "getter": "get_param_curve",
-          "default": ""
+          "getter": "get_param_curve"
         },
         {
           "name": "tangential_accel_random",
@@ -13630,8 +13460,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ],
       "methods": [
@@ -13878,8 +13707,7 @@
           "name": "environment",
           "type": "Environment",
           "setter": "set_environment",
-          "getter": "get_environment",
-          "default": ""
+          "getter": "get_environment"
         },
         {
           "name": "far",
@@ -14176,8 +14004,7 @@
           "name": "custom_viewport",
           "type": "Node",
           "setter": "set_custom_viewport",
-          "getter": "get_custom_viewport",
-          "default": ""
+          "getter": "get_custom_viewport"
         },
         {
           "name": "drag_margin_bottom",
@@ -14606,8 +14433,7 @@
           "name": "material",
           "type": "Material",
           "setter": "set_material",
-          "getter": "get_material",
-          "default": ""
+          "getter": "get_material"
         },
         {
           "name": "modulate",
@@ -14634,8 +14460,7 @@
           "name": "show_on_top",
           "type": "bool",
           "setter": "_set_on_top",
-          "getter": "_is_on_top",
-          "default": ""
+          "getter": "_is_on_top"
         },
         {
           "name": "use_parent_material",
@@ -15363,22 +15188,19 @@
           "name": "particles_anim_h_frames",
           "type": "int",
           "setter": "set_particles_anim_h_frames",
-          "getter": "get_particles_anim_h_frames",
-          "default": ""
+          "getter": "get_particles_anim_h_frames"
         },
         {
           "name": "particles_anim_loop",
           "type": "bool",
           "setter": "set_particles_anim_loop",
-          "getter": "get_particles_anim_loop",
-          "default": ""
+          "getter": "get_particles_anim_loop"
         },
         {
           "name": "particles_anim_v_frames",
           "type": "int",
           "setter": "set_particles_anim_v_frames",
-          "getter": "get_particles_anim_v_frames",
-          "default": ""
+          "getter": "get_particles_anim_v_frames"
         },
         {
           "name": "particles_animation",
@@ -15431,8 +15253,7 @@
           "name": "custom_viewport",
           "type": "Node",
           "setter": "set_custom_viewport",
-          "getter": "get_custom_viewport",
-          "default": ""
+          "getter": "get_custom_viewport"
         },
         {
           "name": "follow_viewport_enable",
@@ -16660,8 +16481,7 @@
           "name": "shape",
           "type": "Shape",
           "setter": "set_shape",
-          "getter": "get_shape",
-          "default": ""
+          "getter": "get_shape"
         }
       ],
       "methods": [
@@ -16710,90 +16530,66 @@
           "name": "shape",
           "type": "Shape2D",
           "setter": "set_shape",
-          "getter": "get_shape",
-          "default": ""
+          "getter": "get_shape"
         }
       ]
     },
     {
       "name": "Color",
-      "extends": "",
       "fields": [
         {
           "name": "a",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "1.0"
         },
         {
           "name": "a8",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "255"
         },
         {
           "name": "b",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "b8",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "g",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "g8",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "h",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "r",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "r8",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "s",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "v",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         }
       ],
@@ -18216,8 +18012,7 @@
           "name": "rect_global_position",
           "type": "Vector2",
           "setter": "_set_global_position",
-          "getter": "get_global_position",
-          "default": ""
+          "getter": "get_global_position"
         },
         {
           "name": "rect_min_size",
@@ -18286,8 +18081,7 @@
           "name": "theme",
           "type": "Theme",
           "setter": "set_theme",
-          "getter": "get_theme",
-          "default": ""
+          "getter": "get_theme"
         }
       ],
       "methods": [
@@ -20250,8 +20044,7 @@
           "name": "curve",
           "type": "Curve",
           "setter": "set_curve",
-          "getter": "get_curve",
-          "default": ""
+          "getter": "get_curve"
         },
         {
           "name": "width",
@@ -20359,11 +20152,9 @@
     },
     {
       "name": "Dictionary",
-      "extends": "",
       "methods": [
         {
-          "name": "clear",
-          "type": ""
+          "name": "clear"
         },
         {
           "name": "duplicate",
@@ -20731,8 +20522,7 @@
           "name": "font_data",
           "type": "DynamicFontData",
           "setter": "set_font_data",
-          "getter": "get_font_data",
-          "default": ""
+          "getter": "get_font_data"
         },
         {
           "name": "outline_color",
@@ -23901,8 +23691,7 @@
           "name": "adjustment_color_correction",
           "type": "Texture",
           "setter": "set_adjustment_color_correction",
-          "getter": "get_adjustment_color_correction",
-          "default": ""
+          "getter": "get_adjustment_color_correction"
         },
         {
           "name": "adjustment_contrast",
@@ -24020,8 +23809,7 @@
           "name": "background_sky",
           "type": "Sky",
           "setter": "set_sky",
-          "getter": "get_sky",
-          "default": ""
+          "getter": "get_sky"
         },
         {
           "name": "background_sky_custom_fov",
@@ -25398,8 +25186,7 @@
           "name": "data",
           "type": "GIProbeData",
           "setter": "set_probe_data",
-          "getter": "get_probe_data",
-          "default": ""
+          "getter": "get_probe_data"
         },
         {
           "name": "dynamic_range",
@@ -27134,8 +26921,7 @@
           "name": "material_override",
           "type": "Material",
           "setter": "set_material_override",
-          "getter": "get_material_override",
-          "default": ""
+          "getter": "get_material_override"
         },
         {
           "name": "use_in_baked_light",
@@ -27328,8 +27114,7 @@
           "name": "gradient",
           "type": "Gradient",
           "setter": "set_gradient",
-          "getter": "get_gradient",
-          "default": ""
+          "getter": "get_gradient"
         },
         {
           "name": "width",
@@ -27923,8 +27708,7 @@
           "name": "connection",
           "type": "StreamPeer",
           "setter": "set_connection",
-          "getter": "get_connection",
-          "default": ""
+          "getter": "get_connection"
         },
         {
           "name": "read_chunk_size",
@@ -31653,8 +31437,7 @@
           "name": "error",
           "type": "int",
           "setter": "set_error",
-          "getter": "get_error",
-          "default": ""
+          "getter": "get_error"
         },
         {
           "name": "error_line",
@@ -31674,8 +31457,7 @@
           "name": "result",
           "type": "Variant",
           "setter": "set_result",
-          "getter": "get_result",
-          "default": ""
+          "getter": "get_result"
         }
       ]
     },
@@ -32282,77 +32064,62 @@
         {
           "name": "collider",
           "type": "Object",
-          "setter": "",
-          "getter": "get_collider",
-          "default": ""
+          "getter": "get_collider"
         },
         {
           "name": "collider_id",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_id",
           "default": "0"
         },
         {
           "name": "collider_metadata",
           "type": "Variant",
-          "setter": "",
-          "getter": "get_collider_metadata",
-          "default": ""
+          "getter": "get_collider_metadata"
         },
         {
           "name": "collider_shape",
           "type": "Object",
-          "setter": "",
-          "getter": "get_collider_shape",
-          "default": ""
+          "getter": "get_collider_shape"
         },
         {
           "name": "collider_shape_index",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_shape_index",
           "default": "0"
         },
         {
           "name": "collider_velocity",
           "type": "Vector3",
-          "setter": "",
           "getter": "get_collider_velocity",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "local_shape",
           "type": "Object",
-          "setter": "",
-          "getter": "get_local_shape",
-          "default": ""
+          "getter": "get_local_shape"
         },
         {
           "name": "normal",
           "type": "Vector3",
-          "setter": "",
           "getter": "get_normal",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "position",
           "type": "Vector3",
-          "setter": "",
           "getter": "get_position",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "remainder",
           "type": "Vector3",
-          "setter": "",
           "getter": "get_remainder",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "travel",
           "type": "Vector3",
-          "setter": "",
           "getter": "get_travel",
           "default": "Vector3( 0, 0, 0 )"
         }
@@ -32365,77 +32132,62 @@
         {
           "name": "collider",
           "type": "Object",
-          "setter": "",
-          "getter": "get_collider",
-          "default": ""
+          "getter": "get_collider"
         },
         {
           "name": "collider_id",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_id",
           "default": "0"
         },
         {
           "name": "collider_metadata",
           "type": "Variant",
-          "setter": "",
-          "getter": "get_collider_metadata",
-          "default": ""
+          "getter": "get_collider_metadata"
         },
         {
           "name": "collider_shape",
           "type": "Object",
-          "setter": "",
-          "getter": "get_collider_shape",
-          "default": ""
+          "getter": "get_collider_shape"
         },
         {
           "name": "collider_shape_index",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_shape_index",
           "default": "0"
         },
         {
           "name": "collider_velocity",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_collider_velocity",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "local_shape",
           "type": "Object",
-          "setter": "",
-          "getter": "get_local_shape",
-          "default": ""
+          "getter": "get_local_shape"
         },
         {
           "name": "normal",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_normal",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "position",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_position",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "remainder",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_remainder",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "travel",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_travel",
           "default": "Vector2( 0, 0 )"
         }
@@ -33020,8 +32772,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "texture_scale",
@@ -33089,8 +32840,7 @@
           "name": "occluder",
           "type": "OccluderPolygon2D",
           "setter": "set_occluder_polygon",
-          "getter": "get_occluder_polygon",
-          "default": ""
+          "getter": "get_occluder_polygon"
         }
       ]
     },
@@ -33130,8 +32880,7 @@
           "name": "gradient",
           "type": "Gradient",
           "setter": "set_gradient",
-          "getter": "get_gradient",
-          "default": ""
+          "getter": "get_gradient"
         },
         {
           "name": "joint_mode",
@@ -33165,8 +32914,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "texture_mode",
@@ -33186,8 +32934,7 @@
           "name": "width_curve",
           "type": "Curve",
           "setter": "set_curve",
-          "getter": "get_curve",
-          "default": ""
+          "getter": "get_curve"
         }
       ],
       "methods": [
@@ -33386,8 +33133,7 @@
           "name": "right_icon",
           "type": "Texture",
           "setter": "set_right_icon",
-          "getter": "get_right_icon",
-          "default": ""
+          "getter": "get_right_icon"
         },
         {
           "name": "secret",
@@ -33899,8 +33645,7 @@
           "name": "next_pass",
           "type": "Material",
           "setter": "set_next_pass",
-          "getter": "get_next_pass",
-          "default": ""
+          "getter": "get_next_pass"
         },
         {
           "name": "render_priority",
@@ -34662,8 +34407,7 @@
           "name": "mesh",
           "type": "Mesh",
           "setter": "set_mesh",
-          "getter": "get_mesh",
-          "default": ""
+          "getter": "get_mesh"
         },
         {
           "name": "skeleton",
@@ -34676,8 +34420,7 @@
           "name": "skin",
           "type": "Skin",
           "setter": "set_skin",
-          "getter": "get_skin",
-          "default": ""
+          "getter": "get_skin"
         }
       ],
       "methods": [
@@ -34731,22 +34474,19 @@
           "name": "mesh",
           "type": "Mesh",
           "setter": "set_mesh",
-          "getter": "get_mesh",
-          "default": ""
+          "getter": "get_mesh"
         },
         {
           "name": "normal_map",
           "type": "Texture",
           "setter": "set_normal_map",
-          "getter": "get_normal_map",
-          "default": ""
+          "getter": "get_normal_map"
         },
         {
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ]
     },
@@ -34950,8 +34690,7 @@
           "name": "base_texture",
           "type": "Texture",
           "setter": "set_base_texture",
-          "getter": "get_base_texture",
-          "default": ""
+          "getter": "get_base_texture"
         },
         {
           "name": "flags",
@@ -34971,8 +34710,7 @@
           "name": "mesh",
           "type": "Mesh",
           "setter": "set_mesh",
-          "getter": "get_mesh",
-          "default": ""
+          "getter": "get_mesh"
         }
       ]
     },
@@ -35005,8 +34743,7 @@
           "name": "mesh",
           "type": "Mesh",
           "setter": "set_mesh",
-          "getter": "get_mesh",
-          "default": ""
+          "getter": "get_mesh"
         },
         {
           "name": "transform_format",
@@ -35178,8 +34915,7 @@
           "name": "multimesh",
           "type": "MultiMesh",
           "setter": "set_multimesh",
-          "getter": "get_multimesh",
-          "default": ""
+          "getter": "get_multimesh"
         }
       ]
     },
@@ -35191,22 +34927,19 @@
           "name": "multimesh",
           "type": "MultiMesh",
           "setter": "set_multimesh",
-          "getter": "get_multimesh",
-          "default": ""
+          "getter": "get_multimesh"
         },
         {
           "name": "normal_map",
           "type": "Texture",
           "setter": "set_normal_map",
-          "getter": "get_normal_map",
-          "default": ""
+          "getter": "get_normal_map"
         },
         {
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ]
     },
@@ -35225,8 +34958,7 @@
           "name": "network_peer",
           "type": "NetworkedMultiplayerPeer",
           "setter": "set_network_peer",
-          "getter": "get_network_peer",
-          "default": ""
+          "getter": "get_network_peer"
         },
         {
           "name": "refuse_new_network_connections",
@@ -35659,8 +35391,7 @@
           "name": "geometry/collision_mask",
           "type": "int",
           "setter": "set_collision_mask",
-          "getter": "get_collision_mask",
-          "default": ""
+          "getter": "get_collision_mask"
         },
         {
           "name": "geometry/parsed_geometry_type",
@@ -35680,8 +35411,7 @@
           "name": "geometry/source_group_name",
           "type": "String",
           "setter": "set_source_group_name",
-          "getter": "get_source_group_name",
-          "default": ""
+          "getter": "get_source_group_name"
         },
         {
           "name": "polygon/verts_per_poly",
@@ -35832,8 +35562,7 @@
           "name": "navmesh",
           "type": "NavigationMesh",
           "setter": "set_navigation_mesh",
-          "getter": "get_navigation_mesh",
-          "default": ""
+          "getter": "get_navigation_mesh"
         }
       ]
     },
@@ -35970,8 +35699,7 @@
           "name": "navpoly",
           "type": "NavigationPolygon",
           "setter": "set_navigation_polygon",
-          "getter": "get_navigation_polygon",
-          "default": ""
+          "getter": "get_navigation_polygon"
         }
       ]
     },
@@ -36059,11 +35787,9 @@
     },
     {
       "name": "Nil",
-      "extends": "",
       "methods": [
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36073,7 +35799,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36083,7 +35808,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36093,7 +35817,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36103,7 +35826,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36113,7 +35835,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36123,7 +35844,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36133,7 +35853,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36143,7 +35862,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36153,7 +35871,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36163,7 +35880,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36173,7 +35889,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36183,7 +35898,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36193,7 +35907,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36203,7 +35916,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36213,7 +35925,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36223,7 +35934,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36233,7 +35943,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36243,7 +35952,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36253,7 +35961,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36263,7 +35970,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36273,7 +35979,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36283,7 +35988,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36293,7 +35997,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36303,7 +36006,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36313,7 +36015,6 @@
         },
         {
           "name": "Nil",
-          "type": "",
           "arguments": [
             {
               "name": "from",
@@ -36394,8 +36095,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ],
       "methods": [
@@ -36447,36 +36147,30 @@
           "name": "custom_multiplayer",
           "type": "MultiplayerAPI",
           "setter": "set_custom_multiplayer",
-          "getter": "get_custom_multiplayer",
-          "default": ""
+          "getter": "get_custom_multiplayer"
         },
         {
           "name": "filename",
           "type": "String",
           "setter": "set_filename",
-          "getter": "get_filename",
-          "default": ""
+          "getter": "get_filename"
         },
         {
           "name": "multiplayer",
           "type": "MultiplayerAPI",
-          "setter": "",
-          "getter": "get_multiplayer",
-          "default": ""
+          "getter": "get_multiplayer"
         },
         {
           "name": "name",
           "type": "String",
           "setter": "set_name",
-          "getter": "get_name",
-          "default": ""
+          "getter": "get_name"
         },
         {
           "name": "owner",
           "type": "Node",
           "setter": "set_owner",
-          "getter": "get_owner",
-          "default": ""
+          "getter": "get_owner"
         },
         {
           "name": "pause_mode",
@@ -37356,36 +37050,31 @@
           "name": "global_position",
           "type": "Vector2",
           "setter": "set_global_position",
-          "getter": "get_global_position",
-          "default": ""
+          "getter": "get_global_position"
         },
         {
           "name": "global_rotation",
           "type": "float",
           "setter": "set_global_rotation",
-          "getter": "get_global_rotation",
-          "default": ""
+          "getter": "get_global_rotation"
         },
         {
           "name": "global_rotation_degrees",
           "type": "float",
           "setter": "set_global_rotation_degrees",
-          "getter": "get_global_rotation_degrees",
-          "default": ""
+          "getter": "get_global_rotation_degrees"
         },
         {
           "name": "global_scale",
           "type": "Vector2",
           "setter": "set_global_scale",
-          "getter": "get_global_scale",
-          "default": ""
+          "getter": "get_global_scale"
         },
         {
           "name": "global_transform",
           "type": "Transform2D",
           "setter": "set_global_transform",
-          "getter": "get_global_transform",
-          "default": ""
+          "getter": "get_global_transform"
         },
         {
           "name": "position",
@@ -37419,8 +37108,7 @@
           "name": "transform",
           "type": "Transform2D",
           "setter": "set_transform",
-          "getter": "get_transform",
-          "default": ""
+          "getter": "get_transform"
         },
         {
           "name": "z_as_relative",
@@ -37560,7 +37248,6 @@
     },
     {
       "name": "NodePath",
-      "extends": "",
       "methods": [
         {
           "name": "NodePath",
@@ -38629,7 +38316,6 @@
     },
     {
       "name": "Object",
-      "extends": "",
       "methods": [
         {
           "name": "_get",
@@ -39665,8 +39351,7 @@
           "name": "stream_peer",
           "type": "StreamPeer",
           "setter": "set_stream_peer",
-          "getter": "get_stream_peer",
-          "default": ""
+          "getter": "get_stream_peer"
         }
       ]
     },
@@ -39782,8 +39467,7 @@
           "name": "panorama",
           "type": "Texture",
           "setter": "set_panorama",
-          "getter": "get_panorama",
-          "default": ""
+          "getter": "get_panorama"
         }
       ]
     },
@@ -39891,29 +39575,25 @@
           "name": "draw_pass_1",
           "type": "Mesh",
           "setter": "set_draw_pass_mesh",
-          "getter": "get_draw_pass_mesh",
-          "default": ""
+          "getter": "get_draw_pass_mesh"
         },
         {
           "name": "draw_pass_2",
           "type": "Mesh",
           "setter": "set_draw_pass_mesh",
-          "getter": "get_draw_pass_mesh",
-          "default": ""
+          "getter": "get_draw_pass_mesh"
         },
         {
           "name": "draw_pass_3",
           "type": "Mesh",
           "setter": "set_draw_pass_mesh",
-          "getter": "get_draw_pass_mesh",
-          "default": ""
+          "getter": "get_draw_pass_mesh"
         },
         {
           "name": "draw_pass_4",
           "type": "Mesh",
           "setter": "set_draw_pass_mesh",
-          "getter": "get_draw_pass_mesh",
-          "default": ""
+          "getter": "get_draw_pass_mesh"
         },
         {
           "name": "draw_passes",
@@ -39982,8 +39662,7 @@
           "name": "process_material",
           "type": "Material",
           "setter": "set_process_material",
-          "getter": "get_process_material",
-          "default": ""
+          "getter": "get_process_material"
         },
         {
           "name": "randomness",
@@ -40124,8 +39803,7 @@
           "name": "normal_map",
           "type": "Texture",
           "setter": "set_normal_map",
-          "getter": "get_normal_map",
-          "default": ""
+          "getter": "get_normal_map"
         },
         {
           "name": "one_shot",
@@ -40145,8 +39823,7 @@
           "name": "process_material",
           "type": "Material",
           "setter": "set_process_material",
-          "getter": "get_process_material",
-          "default": ""
+          "getter": "get_process_material"
         },
         {
           "name": "randomness",
@@ -40166,8 +39843,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "visibility_rect",
@@ -40213,8 +39889,7 @@
           "name": "angle_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "angle_random",
@@ -40234,8 +39909,7 @@
           "name": "angular_velocity_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "angular_velocity_random",
@@ -40255,8 +39929,7 @@
           "name": "anim_offset_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "anim_offset_random",
@@ -40276,8 +39949,7 @@
           "name": "anim_speed_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "anim_speed_random",
@@ -40297,8 +39969,7 @@
           "name": "color_ramp",
           "type": "Texture",
           "setter": "set_color_ramp",
-          "getter": "get_color_ramp",
-          "default": ""
+          "getter": "get_color_ramp"
         },
         {
           "name": "damping",
@@ -40311,8 +39982,7 @@
           "name": "damping_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "damping_random",
@@ -40332,36 +40002,31 @@
           "name": "emission_box_extents",
           "type": "Vector3",
           "setter": "set_emission_box_extents",
-          "getter": "get_emission_box_extents",
-          "default": ""
+          "getter": "get_emission_box_extents"
         },
         {
           "name": "emission_color_texture",
           "type": "Texture",
           "setter": "set_emission_color_texture",
-          "getter": "get_emission_color_texture",
-          "default": ""
+          "getter": "get_emission_color_texture"
         },
         {
           "name": "emission_normal_texture",
           "type": "Texture",
           "setter": "set_emission_normal_texture",
-          "getter": "get_emission_normal_texture",
-          "default": ""
+          "getter": "get_emission_normal_texture"
         },
         {
           "name": "emission_point_count",
           "type": "int",
           "setter": "set_emission_point_count",
-          "getter": "get_emission_point_count",
-          "default": ""
+          "getter": "get_emission_point_count"
         },
         {
           "name": "emission_point_texture",
           "type": "Texture",
           "setter": "set_emission_point_texture",
-          "getter": "get_emission_point_texture",
-          "default": ""
+          "getter": "get_emission_point_texture"
         },
         {
           "name": "emission_shape",
@@ -40374,8 +40039,7 @@
           "name": "emission_sphere_radius",
           "type": "float",
           "setter": "set_emission_sphere_radius",
-          "getter": "get_emission_sphere_radius",
-          "default": ""
+          "getter": "get_emission_sphere_radius"
         },
         {
           "name": "flag_align_y",
@@ -40423,8 +40087,7 @@
           "name": "hue_variation_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "hue_variation_random",
@@ -40465,8 +40128,7 @@
           "name": "linear_accel_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "linear_accel_random",
@@ -40479,22 +40141,19 @@
           "name": "orbit_velocity",
           "type": "float",
           "setter": "set_param",
-          "getter": "get_param",
-          "default": ""
+          "getter": "get_param"
         },
         {
           "name": "orbit_velocity_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "orbit_velocity_random",
           "type": "float",
           "setter": "set_param_randomness",
-          "getter": "get_param_randomness",
-          "default": ""
+          "getter": "get_param_randomness"
         },
         {
           "name": "radial_accel",
@@ -40507,8 +40166,7 @@
           "name": "radial_accel_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "radial_accel_random",
@@ -40528,8 +40186,7 @@
           "name": "scale_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "scale_random",
@@ -40556,8 +40213,7 @@
           "name": "tangential_accel_curve",
           "type": "Texture",
           "setter": "set_param_texture",
-          "getter": "get_param_texture",
-          "default": ""
+          "getter": "get_param_texture"
         },
         {
           "name": "tangential_accel_random",
@@ -40570,8 +40226,7 @@
           "name": "trail_color_modifier",
           "type": "GradientTexture",
           "setter": "set_trail_color_modifier",
-          "getter": "get_trail_color_modifier",
-          "default": ""
+          "getter": "get_trail_color_modifier"
         },
         {
           "name": "trail_divisor",
@@ -40584,8 +40239,7 @@
           "name": "trail_size_modifier",
           "type": "CurveTexture",
           "setter": "set_trail_size_modifier",
-          "getter": "get_trail_size_modifier",
-          "default": ""
+          "getter": "get_trail_size_modifier"
         }
       ],
       "methods": [
@@ -40789,8 +40443,7 @@
           "name": "curve",
           "type": "Curve3D",
           "setter": "set_curve",
-          "getter": "get_curve",
-          "default": ""
+          "getter": "get_curve"
         }
       ]
     },
@@ -40802,8 +40455,7 @@
           "name": "curve",
           "type": "Curve2D",
           "setter": "set_curve",
-          "getter": "get_curve",
-          "default": ""
+          "getter": "get_curve"
         },
         {
           "name": "self_modulate",
@@ -41229,71 +40881,55 @@
           "name": "angular_velocity",
           "type": "float",
           "setter": "set_angular_velocity",
-          "getter": "get_angular_velocity",
-          "default": ""
+          "getter": "get_angular_velocity"
         },
         {
           "name": "inverse_inertia",
           "type": "float",
-          "setter": "",
-          "getter": "get_inverse_inertia",
-          "default": ""
+          "getter": "get_inverse_inertia"
         },
         {
           "name": "inverse_mass",
           "type": "float",
-          "setter": "",
-          "getter": "get_inverse_mass",
-          "default": ""
+          "getter": "get_inverse_mass"
         },
         {
           "name": "linear_velocity",
           "type": "Vector2",
           "setter": "set_linear_velocity",
-          "getter": "get_linear_velocity",
-          "default": ""
+          "getter": "get_linear_velocity"
         },
         {
           "name": "sleeping",
           "type": "bool",
           "setter": "set_sleep_state",
-          "getter": "is_sleeping",
-          "default": ""
+          "getter": "is_sleeping"
         },
         {
           "name": "step",
           "type": "float",
-          "setter": "",
-          "getter": "get_step",
-          "default": ""
+          "getter": "get_step"
         },
         {
           "name": "total_angular_damp",
           "type": "float",
-          "setter": "",
-          "getter": "get_total_angular_damp",
-          "default": ""
+          "getter": "get_total_angular_damp"
         },
         {
           "name": "total_gravity",
           "type": "Vector2",
-          "setter": "",
-          "getter": "get_total_gravity",
-          "default": ""
+          "getter": "get_total_gravity"
         },
         {
           "name": "total_linear_damp",
           "type": "float",
-          "setter": "",
-          "getter": "get_total_linear_damp",
-          "default": ""
+          "getter": "get_total_linear_damp"
         },
         {
           "name": "transform",
           "type": "Transform2D",
           "setter": "set_transform",
-          "getter": "get_transform",
-          "default": ""
+          "getter": "get_transform"
         }
       ],
       "methods": [
@@ -43299,8 +42935,7 @@
           "name": "shape_rid",
           "type": "RID",
           "setter": "set_shape_rid",
-          "getter": "get_shape_rid",
-          "default": ""
+          "getter": "get_shape_rid"
         },
         {
           "name": "transform",
@@ -43380,63 +43015,52 @@
         {
           "name": "collider",
           "type": "Object",
-          "setter": "",
-          "getter": "get_collider",
-          "default": ""
+          "getter": "get_collider"
         },
         {
           "name": "collider_id",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_id",
           "default": "0"
         },
         {
           "name": "collider_rid",
           "type": "RID",
-          "setter": "",
-          "getter": "get_collider_rid",
-          "default": ""
+          "getter": "get_collider_rid"
         },
         {
           "name": "collider_shape",
           "type": "int",
-          "setter": "",
           "getter": "get_collider_shape",
           "default": "0"
         },
         {
           "name": "collider_velocity",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_collider_velocity",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "collision_normal",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_collision_normal",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "collision_point",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_collision_point",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "motion",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_motion",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "motion_remainder",
           "type": "Vector2",
-          "setter": "",
           "getter": "get_motion_remainder",
           "default": "Vector2( 0, 0 )"
         }
@@ -43565,8 +43189,7 @@
           "name": "layers",
           "type": "int",
           "setter": "_set_layers",
-          "getter": "_get_layers",
-          "default": ""
+          "getter": "_get_layers"
         }
       ],
       "methods": [
@@ -43652,85 +43275,65 @@
           "name": "angular_velocity",
           "type": "Vector3",
           "setter": "set_angular_velocity",
-          "getter": "get_angular_velocity",
-          "default": ""
+          "getter": "get_angular_velocity"
         },
         {
           "name": "center_of_mass",
           "type": "Vector3",
-          "setter": "",
-          "getter": "get_center_of_mass",
-          "default": ""
+          "getter": "get_center_of_mass"
         },
         {
           "name": "inverse_inertia",
           "type": "Vector3",
-          "setter": "",
-          "getter": "get_inverse_inertia",
-          "default": ""
+          "getter": "get_inverse_inertia"
         },
         {
           "name": "inverse_mass",
           "type": "float",
-          "setter": "",
-          "getter": "get_inverse_mass",
-          "default": ""
+          "getter": "get_inverse_mass"
         },
         {
           "name": "linear_velocity",
           "type": "Vector3",
           "setter": "set_linear_velocity",
-          "getter": "get_linear_velocity",
-          "default": ""
+          "getter": "get_linear_velocity"
         },
         {
           "name": "principal_inertia_axes",
           "type": "Basis",
-          "setter": "",
-          "getter": "get_principal_inertia_axes",
-          "default": ""
+          "getter": "get_principal_inertia_axes"
         },
         {
           "name": "sleeping",
           "type": "bool",
           "setter": "set_sleep_state",
-          "getter": "is_sleeping",
-          "default": ""
+          "getter": "is_sleeping"
         },
         {
           "name": "step",
           "type": "float",
-          "setter": "",
-          "getter": "get_step",
-          "default": ""
+          "getter": "get_step"
         },
         {
           "name": "total_angular_damp",
           "type": "float",
-          "setter": "",
-          "getter": "get_total_angular_damp",
-          "default": ""
+          "getter": "get_total_angular_damp"
         },
         {
           "name": "total_gravity",
           "type": "Vector3",
-          "setter": "",
-          "getter": "get_total_gravity",
-          "default": ""
+          "getter": "get_total_gravity"
         },
         {
           "name": "total_linear_damp",
           "type": "float",
-          "setter": "",
-          "getter": "get_total_linear_damp",
-          "default": ""
+          "getter": "get_total_linear_damp"
         },
         {
           "name": "transform",
           "type": "Transform",
           "setter": "set_transform",
-          "getter": "get_transform",
-          "default": ""
+          "getter": "get_transform"
         }
       ],
       "methods": [
@@ -46191,8 +45794,7 @@
           "name": "shape_rid",
           "type": "RID",
           "setter": "set_shape_rid",
-          "getter": "get_shape_rid",
-          "default": ""
+          "getter": "get_shape_rid"
         },
         {
           "name": "transform",
@@ -46347,41 +45949,30 @@
     },
     {
       "name": "Plane",
-      "extends": "",
       "fields": [
         {
           "name": "d",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "normal",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 0 )"
         },
         {
           "name": "x",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "y",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "z",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         }
       ],
@@ -46686,8 +46277,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "texture_offset",
@@ -46700,8 +46290,7 @@
           "name": "texture_rotation",
           "type": "float",
           "setter": "set_texture_rotation",
-          "getter": "get_texture_rotation",
-          "default": ""
+          "getter": "get_texture_rotation"
         },
         {
           "name": "texture_rotation_degrees",
@@ -46913,7 +46502,6 @@
     },
     {
       "name": "PoolByteArray",
-      "extends": "",
       "methods": [
         {
           "name": "PoolByteArray",
@@ -46927,7 +46515,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "byte",
@@ -46937,7 +46524,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47000,12 +46586,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "byte",
@@ -47015,7 +46599,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47025,7 +46608,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47035,7 +46617,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47069,7 +46650,6 @@
     },
     {
       "name": "PoolColorArray",
-      "extends": "",
       "methods": [
         {
           "name": "PoolColorArray",
@@ -47083,7 +46663,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "color",
@@ -47093,7 +46672,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47120,12 +46698,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "color",
@@ -47135,7 +46711,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47145,7 +46720,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47155,7 +46729,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47175,7 +46748,6 @@
     },
     {
       "name": "PoolIntArray",
-      "extends": "",
       "methods": [
         {
           "name": "PoolIntArray",
@@ -47189,7 +46761,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "integer",
@@ -47199,7 +46770,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47226,12 +46796,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "integer",
@@ -47241,7 +46809,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47251,7 +46818,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47261,7 +46827,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47281,7 +46846,6 @@
     },
     {
       "name": "PoolRealArray",
-      "extends": "",
       "methods": [
         {
           "name": "PoolRealArray",
@@ -47295,7 +46859,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -47305,7 +46868,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47332,12 +46894,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "value",
@@ -47347,7 +46907,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47357,7 +46916,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47367,7 +46925,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47387,7 +46944,6 @@
     },
     {
       "name": "PoolStringArray",
-      "extends": "",
       "methods": [
         {
           "name": "PoolStringArray",
@@ -47401,7 +46957,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "string",
@@ -47411,7 +46966,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47438,8 +46992,7 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "join",
@@ -47453,7 +47006,6 @@
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "string",
@@ -47463,7 +47015,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47473,7 +47024,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47483,7 +47033,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47503,7 +47052,6 @@
     },
     {
       "name": "PoolVector2Array",
-      "extends": "",
       "methods": [
         {
           "name": "PoolVector2Array",
@@ -47517,7 +47065,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "vector2",
@@ -47527,7 +47074,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47554,12 +47100,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "vector2",
@@ -47569,7 +47113,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47579,7 +47122,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47589,7 +47131,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47609,7 +47150,6 @@
     },
     {
       "name": "PoolVector3Array",
-      "extends": "",
       "methods": [
         {
           "name": "PoolVector3Array",
@@ -47623,7 +47163,6 @@
         },
         {
           "name": "append",
-          "type": "",
           "arguments": [
             {
               "name": "vector3",
@@ -47633,7 +47172,6 @@
         },
         {
           "name": "append_array",
-          "type": "",
           "arguments": [
             {
               "name": "array",
@@ -47660,12 +47198,10 @@
           ]
         },
         {
-          "name": "invert",
-          "type": ""
+          "name": "invert"
         },
         {
           "name": "push_back",
-          "type": "",
           "arguments": [
             {
               "name": "vector3",
@@ -47675,7 +47211,6 @@
         },
         {
           "name": "remove",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47685,7 +47220,6 @@
         },
         {
           "name": "resize",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -47695,7 +47229,6 @@
         },
         {
           "name": "set",
-          "type": "",
           "arguments": [
             {
               "name": "idx",
@@ -48601,8 +48134,7 @@
           "name": "material",
           "type": "Material",
           "setter": "set_material",
-          "getter": "get_material",
-          "default": ""
+          "getter": "get_material"
         }
       ],
       "methods": [
@@ -48831,2122 +48363,1503 @@
         {
           "name": "android/modules",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/boot_splash/bg_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 0.14, 0.14, 0.14, 1 )"
         },
         {
           "name": "application/boot_splash/fullsize",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "application/boot_splash/image",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/boot_splash/use_filter",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "application/config/custom_user_dir_name",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/description",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/icon",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/macos_native_icon",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/name",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/project_settings_override",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/config/use_custom_user_dir",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "application/config/windows_native_icon",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "application/run/disable_stderr",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "application/run/disable_stdout",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "application/run/frame_delay_msec",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "application/run/low_processor_mode",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "application/run/low_processor_mode_sleep_usec",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "6900"
         },
         {
           "name": "application/run/main_scene",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "audio/channel_disable_threshold_db",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "-60.0"
         },
         {
           "name": "audio/channel_disable_time",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "2.0"
         },
         {
           "name": "audio/default_bus_layout",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"res://default_bus_layout.tres\""
         },
         {
           "name": "audio/driver",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"PulseAudio\""
         },
         {
           "name": "audio/enable_audio_input",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "audio/mix_rate",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "44100"
         },
         {
           "name": "audio/output_latency",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "15"
         },
         {
           "name": "audio/video_delay_compensation_ms",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "compression/formats/gzip/compression_level",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "-1"
         },
         {
           "name": "compression/formats/zlib/compression_level",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "-1"
         },
         {
           "name": "compression/formats/zstd/compression_level",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "3"
         },
         {
           "name": "compression/formats/zstd/long_distance_matching",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "compression/formats/zstd/window_log_size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "27"
         },
         {
           "name": "debug/gdscript/completion/autocomplete_setters_and_getters",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/constant_used_as_function",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/deprecated_keyword",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/enable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/exclude_addons",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/function_conflicts_constant",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/function_conflicts_variable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/function_may_yield",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/function_used_as_property",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/incompatible_ternary",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/integer_division",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/narrowing_conversion",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/property_used_as_function",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/return_value_discarded",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/shadowed_variable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/standalone_expression",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/standalone_ternary",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/treat_warnings_as_errors",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unassigned_variable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/unassigned_variable_op_assign",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/unreachable_code",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/unsafe_call_argument",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unsafe_cast",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unsafe_method_access",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unsafe_property_access",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unused_argument",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/unused_class_variable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/gdscript/warnings/unused_signal",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/unused_variable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/variable_conflicts_function",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/gdscript/warnings/void_assignment",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "debug/settings/crash_handler/message",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"Please include this when reporting the bug on https://github.com/godotengine/godot/issues\""
         },
         {
           "name": "debug/settings/fps/force_fps",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "debug/settings/gdscript/max_call_stack",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "debug/settings/profiler/max_functions",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "16384"
         },
         {
           "name": "debug/settings/stdout/print_fps",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/settings/stdout/verbose_stdout",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "debug/settings/visual_script/max_call_stack",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "debug/shapes/collision/contact_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 1, 0.2, 0.1, 0.8 )"
         },
         {
           "name": "debug/shapes/collision/max_contacts_displayed",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "10000"
         },
         {
           "name": "debug/shapes/collision/shape_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 0, 0.6, 0.7, 0.5 )"
         },
         {
           "name": "debug/shapes/navigation/disabled_geometry_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 1, 0.7, 0.1, 0.4 )"
         },
         {
           "name": "debug/shapes/navigation/geometry_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 0.1, 1, 0.7, 0.4 )"
         },
         {
           "name": "display/mouse_cursor/custom_image",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "display/mouse_cursor/custom_image_hotspot",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "display/mouse_cursor/tooltip_position_offset",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 10, 10 )"
         },
         {
           "name": "display/window/dpi/allow_hidpi",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/energy_saving/keep_screen_on",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "display/window/handheld/orientation",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"landscape\""
         },
         {
           "name": "display/window/ios/hide_home_indicator",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "display/window/per_pixel_transparency/allowed",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/per_pixel_transparency/enabled",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/size/always_on_top",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/size/borderless",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/size/fullscreen",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "display/window/size/height",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "600"
         },
         {
           "name": "display/window/size/resizable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "display/window/size/test_height",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "display/window/size/test_width",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "display/window/size/width",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "display/window/vsync/use_vsync",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "display/window/vsync/vsync_via_compositor",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "editor/script_templates_search_path",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"res://script_templates\""
         },
         {
           "name": "editor/search_in_file_extensions",
           "type": "PoolStringArray",
-          "setter": "",
-          "getter": "",
           "default": "PoolStringArray( \"gd\", \"shader\" )"
         },
         {
           "name": "gui/common/default_scroll_deadzone",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "gui/common/swap_ok_cancel",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "gui/theme/custom",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "gui/theme/custom_font",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "gui/theme/use_hidpi",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "gui/timers/incremental_search_max_interval_msec",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2000"
         },
         {
           "name": "gui/timers/text_edit_idle_detect_sec",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "3"
         },
         {
           "name": "gui/timers/tooltip_delay_sec",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.5"
         },
         {
           "name": "input/ui_accept",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_cancel",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_down",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_end",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_focus_next",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_focus_prev",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_home",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_left",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_page_down",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_page_up",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_right",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_select",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input/ui_up",
-          "type": "Dictionary",
-          "setter": "",
-          "getter": "",
-          "default": ""
+          "type": "Dictionary"
         },
         {
           "name": "input_devices/pointing/emulate_mouse_from_touch",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "input_devices/pointing/emulate_touch_from_mouse",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "layer_names/2d_physics/layer_1",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_10",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_11",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_12",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_13",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_14",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_15",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_16",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_17",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_18",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_19",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_2",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_20",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_3",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_4",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_5",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_6",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_7",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_8",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_physics/layer_9",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_1",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_10",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_11",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_12",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_13",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_14",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_15",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_16",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_17",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_18",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_19",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_2",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_20",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_3",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_4",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_5",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_6",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_7",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_8",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/2d_render/layer_9",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_1",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_10",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_11",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_12",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_13",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_14",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_15",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_16",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_17",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_18",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_19",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_2",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_20",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_3",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_4",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_5",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_6",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_7",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_8",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_physics/layer_9",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_1",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_10",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_11",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_12",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_13",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_14",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_15",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_16",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_17",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_18",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_19",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_2",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_20",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_3",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_4",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_5",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_6",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_7",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_8",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "layer_names/3d_render/layer_9",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "locale/fallback",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"en\""
         },
         {
           "name": "locale/test",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "logging/file_logging/enable_file_logging",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "logging/file_logging/log_path",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"user://logs/log.txt\""
         },
         {
           "name": "logging/file_logging/max_log_files",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "10"
         },
         {
           "name": "memory/limits/message_queue/max_size_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "memory/limits/multithreaded_server/rid_pool_prealloc",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "60"
         },
         {
           "name": "network/limits/debugger_stdout/max_chars_per_second",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2048"
         },
         {
           "name": "network/limits/debugger_stdout/max_errors_per_second",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "100"
         },
         {
           "name": "network/limits/debugger_stdout/max_messages_per_frame",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "10"
         },
         {
           "name": "network/limits/debugger_stdout/max_warnings_per_second",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "100"
         },
         {
           "name": "network/limits/packet_peer_stream/max_buffer_po2",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "16"
         },
         {
           "name": "network/limits/tcp/connect_timeout_seconds",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "30"
         },
         {
           "name": "network/limits/webrtc/max_channel_in_buffer_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "64"
         },
         {
           "name": "network/limits/websocket_client/max_in_buffer_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "64"
         },
         {
           "name": "network/limits/websocket_client/max_in_packets",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "network/limits/websocket_client/max_out_buffer_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "64"
         },
         {
           "name": "network/limits/websocket_client/max_out_packets",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "network/limits/websocket_server/max_in_buffer_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "64"
         },
         {
           "name": "network/limits/websocket_server/max_in_packets",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "network/limits/websocket_server/max_out_buffer_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "64"
         },
         {
           "name": "network/limits/websocket_server/max_out_packets",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "network/remote_fs/page_read_ahead",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4"
         },
         {
           "name": "network/remote_fs/page_size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "65536"
         },
         {
           "name": "network/ssl/certificates",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "node/name_casing",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "node/name_num_separator",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "physics/2d/bp_hash_table_size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4096"
         },
         {
           "name": "physics/2d/cell_size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "128"
         },
         {
           "name": "physics/2d/default_angular_damp",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "1.0"
         },
         {
           "name": "physics/2d/default_gravity",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "98"
         },
         {
           "name": "physics/2d/default_gravity_vector",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 1 )"
         },
         {
           "name": "physics/2d/default_linear_damp",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.1"
         },
         {
           "name": "physics/2d/large_object_surface_threshold_in_cells",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "512"
         },
         {
           "name": "physics/2d/physics_engine",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"DEFAULT\""
         },
         {
           "name": "physics/2d/sleep_threshold_angular",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.139626"
         },
         {
           "name": "physics/2d/sleep_threshold_linear",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "2.0"
         },
         {
           "name": "physics/2d/thread_model",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1"
         },
         {
           "name": "physics/2d/time_before_sleep",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.5"
         },
         {
           "name": "physics/3d/active_soft_world",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "physics/3d/default_angular_damp",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.1"
         },
         {
           "name": "physics/3d/default_gravity",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "9.8"
         },
         {
           "name": "physics/3d/default_gravity_vector",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, -1, 0 )"
         },
         {
           "name": "physics/3d/default_linear_damp",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.1"
         },
         {
           "name": "physics/3d/physics_engine",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"DEFAULT\""
         },
         {
           "name": "physics/common/enable_object_picking",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "physics/common/physics_fps",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "60"
         },
         {
           "name": "physics/common/physics_jitter_fix",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.5"
         },
         {
           "name": "rendering/environment/default_clear_color",
           "type": "Color",
-          "setter": "",
-          "getter": "",
           "default": "Color( 0.3, 0.3, 0.3, 1 )"
         },
         {
           "name": "rendering/environment/default_environment",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"\""
         },
         {
           "name": "rendering/limits/buffers/blend_shape_max_buffer_size_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4096"
         },
         {
           "name": "rendering/limits/buffers/canvas_polygon_buffer_size_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "128"
         },
         {
           "name": "rendering/limits/buffers/canvas_polygon_index_buffer_size_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "128"
         },
         {
           "name": "rendering/limits/buffers/immediate_buffer_size_kb",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2048"
         },
         {
           "name": "rendering/limits/rendering/max_renderable_elements",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "65536"
         },
         {
           "name": "rendering/limits/rendering/max_renderable_lights",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4096"
         },
         {
           "name": "rendering/limits/rendering/max_renderable_reflections",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1024"
         },
         {
           "name": "rendering/limits/time/time_rollover_secs",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "3600"
         },
         {
           "name": "rendering/quality/2d/gles2_use_nvidia_rect_flicker_workaround",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/2d/use_pixel_snap",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/depth/hdr",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/depth/hdr.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/depth_prepass/disable_for_vendors",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"PowerVR,Mali,Adreno,Apple\""
         },
         {
           "name": "rendering/quality/depth_prepass/enable",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/directional_shadow/size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4096"
         },
         {
           "name": "rendering/quality/directional_shadow/size.mobile",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2048"
         },
         {
           "name": "rendering/quality/driver/driver_name",
           "type": "String",
-          "setter": "",
-          "getter": "",
           "default": "\"GLES3\""
         },
         {
           "name": "rendering/quality/driver/fallback_to_gles2",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/filters/anisotropic_filter_level",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4"
         },
         {
           "name": "rendering/quality/filters/msaa",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "rendering/quality/filters/use_nearest_mipmap_filter",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/intended_usage/framebuffer_allocation",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2"
         },
         {
           "name": "rendering/quality/intended_usage/framebuffer_allocation.mobile",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "3"
         },
         {
           "name": "rendering/quality/reflections/atlas_size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2048"
         },
         {
           "name": "rendering/quality/reflections/atlas_subdiv",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "8"
         },
         {
           "name": "rendering/quality/reflections/high_quality_ggx",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/reflections/high_quality_ggx.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/reflections/texture_array_reflections",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/reflections/texture_array_reflections.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/shading/force_blinn_over_ggx",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/shading/force_blinn_over_ggx.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/shading/force_lambert_over_burley",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/shading/force_lambert_over_burley.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/shading/force_vertex_shading",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/shading/force_vertex_shading.mobile",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/shadow_atlas/quadrant_0_subdiv",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1"
         },
         {
           "name": "rendering/quality/shadow_atlas/quadrant_1_subdiv",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2"
         },
         {
           "name": "rendering/quality/shadow_atlas/quadrant_2_subdiv",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "3"
         },
         {
           "name": "rendering/quality/shadow_atlas/quadrant_3_subdiv",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4"
         },
         {
           "name": "rendering/quality/shadow_atlas/size",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "4096"
         },
         {
           "name": "rendering/quality/shadow_atlas/size.mobile",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "2048"
         },
         {
           "name": "rendering/quality/shadows/filter_mode",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1"
         },
         {
           "name": "rendering/quality/shadows/filter_mode.mobile",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "0"
         },
         {
           "name": "rendering/quality/subsurface_scattering/follow_surface",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/quality/subsurface_scattering/quality",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1"
         },
         {
           "name": "rendering/quality/subsurface_scattering/scale",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1.0"
         },
         {
           "name": "rendering/quality/subsurface_scattering/weight_samples",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/quality/voxel_cone_tracing/high_quality",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/threads/thread_model",
           "type": "int",
-          "setter": "",
-          "getter": "",
           "default": "1"
         },
         {
           "name": "rendering/vram_compression/import_bptc",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/vram_compression/import_etc",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/vram_compression/import_etc2",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         },
         {
           "name": "rendering/vram_compression/import_pvrtc",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "false"
         },
         {
           "name": "rendering/vram_compression/import_s3tc",
           "type": "bool",
-          "setter": "",
-          "getter": "",
           "default": "true"
         }
       ],
@@ -51174,8 +50087,7 @@
           "name": "base",
           "type": "Texture",
           "setter": "set_base",
-          "getter": "get_base",
-          "default": ""
+          "getter": "get_base"
         },
         {
           "name": "flags",
@@ -51201,34 +50113,25 @@
     },
     {
       "name": "Quat",
-      "extends": "",
       "fields": [
         {
           "name": "w",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "1.0"
         },
         {
           "name": "x",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "y",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "z",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         }
       ],
@@ -51357,7 +50260,6 @@
         },
         {
           "name": "set_axis_angle",
-          "type": "",
           "arguments": [
             {
               "name": "axis",
@@ -51371,7 +50273,6 @@
         },
         {
           "name": "set_euler",
-          "type": "",
           "arguments": [
             {
               "name": "euler",
@@ -51427,7 +50328,6 @@
     },
     {
       "name": "RID",
-      "extends": "",
       "methods": [
         {
           "name": "RID",
@@ -51564,8 +50464,7 @@
           "name": "ratio",
           "type": "float",
           "setter": "set_as_ratio",
-          "getter": "get_as_ratio",
-          "default": ""
+          "getter": "get_as_ratio"
         },
         {
           "name": "rounded",
@@ -51932,27 +50831,20 @@
     },
     {
       "name": "Rect2",
-      "extends": "",
       "fields": [
         {
           "name": "end",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "position",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "size",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 0 )"
         }
       ],
@@ -53346,8 +52238,7 @@
           "name": "bounce",
           "type": "float",
           "setter": "set_bounce",
-          "getter": "get_bounce",
-          "default": ""
+          "getter": "get_bounce"
         },
         {
           "name": "can_sleep",
@@ -53388,8 +52279,7 @@
           "name": "friction",
           "type": "float",
           "setter": "set_friction",
-          "getter": "get_friction",
-          "default": ""
+          "getter": "get_friction"
         },
         {
           "name": "gravity_scale",
@@ -53430,8 +52320,7 @@
           "name": "physics_material_override",
           "type": "PhysicsMaterial",
           "setter": "set_physics_material_override",
-          "getter": "get_physics_material_override",
-          "default": ""
+          "getter": "get_physics_material_override"
         },
         {
           "name": "sleeping",
@@ -53621,8 +52510,7 @@
           "name": "bounce",
           "type": "float",
           "setter": "set_bounce",
-          "getter": "get_bounce",
-          "default": ""
+          "getter": "get_bounce"
         },
         {
           "name": "can_sleep",
@@ -53663,8 +52551,7 @@
           "name": "friction",
           "type": "float",
           "setter": "set_friction",
-          "getter": "get_friction",
-          "default": ""
+          "getter": "get_friction"
         },
         {
           "name": "gravity_scale",
@@ -53677,8 +52564,7 @@
           "name": "inertia",
           "type": "float",
           "setter": "set_inertia",
-          "getter": "get_inertia",
-          "default": ""
+          "getter": "get_inertia"
         },
         {
           "name": "linear_damp",
@@ -53712,8 +52598,7 @@
           "name": "physics_material_override",
           "type": "PhysicsMaterial",
           "setter": "set_physics_material_override",
-          "getter": "get_physics_material_override",
-          "default": ""
+          "getter": "get_physics_material_override"
         },
         {
           "name": "sleeping",
@@ -53885,36 +52770,31 @@
           "name": "animation_path",
           "type": "NodePath",
           "setter": "set_animation_path",
-          "getter": "get_animation_path",
-          "default": ""
+          "getter": "get_animation_path"
         },
         {
           "name": "cell_size",
           "type": "float",
           "setter": "set_cell_size",
-          "getter": "get_cell_size",
-          "default": ""
+          "getter": "get_cell_size"
         },
         {
           "name": "color",
           "type": "Color",
           "setter": "set_color",
-          "getter": "get_color",
-          "default": ""
+          "getter": "get_color"
         },
         {
           "name": "radius",
           "type": "float",
           "setter": "set_radius",
-          "getter": "get_radius",
-          "default": ""
+          "getter": "get_radius"
         },
         {
           "name": "zero_y",
           "type": "bool",
           "setter": "set_zero_y",
-          "getter": "get_zero_y",
-          "default": ""
+          "getter": "get_zero_y"
         }
       ]
     },
@@ -54146,8 +53026,7 @@
           "name": "current_scene",
           "type": "Node",
           "setter": "set_current_scene",
-          "getter": "get_current_scene",
-          "default": ""
+          "getter": "get_current_scene"
         },
         {
           "name": "debug_collisions_hint",
@@ -54167,15 +53046,13 @@
           "name": "edited_scene_root",
           "type": "Node",
           "setter": "set_edited_scene_root",
-          "getter": "get_edited_scene_root",
-          "default": ""
+          "getter": "get_edited_scene_root"
         },
         {
           "name": "multiplayer",
           "type": "MultiplayerAPI",
           "setter": "set_multiplayer",
-          "getter": "get_multiplayer",
-          "default": ""
+          "getter": "get_multiplayer"
         },
         {
           "name": "multiplayer_poll",
@@ -54188,8 +53065,7 @@
           "name": "network_peer",
           "type": "NetworkedMultiplayerPeer",
           "setter": "set_network_peer",
-          "getter": "get_network_peer",
-          "default": ""
+          "getter": "get_network_peer"
         },
         {
           "name": "paused",
@@ -54208,9 +53084,7 @@
         {
           "name": "root",
           "type": "Viewport",
-          "setter": "",
-          "getter": "get_root",
-          "default": ""
+          "getter": "get_root"
         },
         {
           "name": "use_font_oversampling",
@@ -54543,8 +53417,7 @@
           "name": "time_left",
           "type": "float",
           "setter": "set_time_left",
-          "getter": "get_time_left",
-          "default": ""
+          "getter": "get_time_left"
         }
       ]
     },
@@ -54556,8 +53429,7 @@
           "name": "source_code",
           "type": "String",
           "setter": "set_source_code",
-          "getter": "get_source_code",
-          "default": ""
+          "getter": "get_source_code"
         }
       ],
       "methods": [
@@ -54997,8 +53869,7 @@
           "name": "shader",
           "type": "Shader",
           "setter": "set_shader",
-          "getter": "get_shader",
-          "default": ""
+          "getter": "get_shader"
         }
       ],
       "methods": [
@@ -55172,8 +54043,7 @@
           "name": "shortcut",
           "type": "InputEvent",
           "setter": "set_shortcut",
-          "getter": "get_shortcut",
-          "default": ""
+          "getter": "get_shortcut"
         }
       ],
       "methods": [
@@ -56273,22 +55143,19 @@
           "name": "gizmo",
           "type": "SpatialGizmo",
           "setter": "set_gizmo",
-          "getter": "get_gizmo",
-          "default": ""
+          "getter": "get_gizmo"
         },
         {
           "name": "global_transform",
           "type": "Transform",
           "setter": "set_global_transform",
-          "getter": "get_global_transform",
-          "default": ""
+          "getter": "get_global_transform"
         },
         {
           "name": "rotation",
           "type": "Vector3",
           "setter": "set_rotation",
-          "getter": "get_rotation",
-          "default": ""
+          "getter": "get_rotation"
         },
         {
           "name": "rotation_degrees",
@@ -56642,15 +55509,13 @@
           "name": "albedo_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "anisotropy",
           "type": "float",
           "setter": "set_anisotropy",
-          "getter": "get_anisotropy",
-          "default": ""
+          "getter": "get_anisotropy"
         },
         {
           "name": "anisotropy_enabled",
@@ -56663,8 +55528,7 @@
           "name": "anisotropy_flowmap",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "ao_enabled",
@@ -56677,36 +55541,31 @@
           "name": "ao_light_affect",
           "type": "float",
           "setter": "set_ao_light_affect",
-          "getter": "get_ao_light_affect",
-          "default": ""
+          "getter": "get_ao_light_affect"
         },
         {
           "name": "ao_on_uv2",
           "type": "bool",
           "setter": "set_flag",
-          "getter": "get_flag",
-          "default": ""
+          "getter": "get_flag"
         },
         {
           "name": "ao_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "ao_texture_channel",
           "type": "int",
           "setter": "set_ao_texture_channel",
-          "getter": "get_ao_texture_channel",
-          "default": ""
+          "getter": "get_ao_texture_channel"
         },
         {
           "name": "clearcoat",
           "type": "float",
           "setter": "set_clearcoat",
-          "getter": "get_clearcoat",
-          "default": ""
+          "getter": "get_clearcoat"
         },
         {
           "name": "clearcoat_enabled",
@@ -56719,22 +55578,19 @@
           "name": "clearcoat_gloss",
           "type": "float",
           "setter": "set_clearcoat_gloss",
-          "getter": "get_clearcoat_gloss",
-          "default": ""
+          "getter": "get_clearcoat_gloss"
         },
         {
           "name": "clearcoat_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "depth_deep_parallax",
           "type": "bool",
           "setter": "set_depth_deep_parallax",
-          "getter": "is_depth_deep_parallax_enabled",
-          "default": ""
+          "getter": "is_depth_deep_parallax_enabled"
         },
         {
           "name": "depth_enabled",
@@ -56747,57 +55603,49 @@
           "name": "depth_flip_binormal",
           "type": "bool",
           "setter": "set_depth_deep_parallax_flip_binormal",
-          "getter": "get_depth_deep_parallax_flip_binormal",
-          "default": ""
+          "getter": "get_depth_deep_parallax_flip_binormal"
         },
         {
           "name": "depth_flip_tangent",
           "type": "bool",
           "setter": "set_depth_deep_parallax_flip_tangent",
-          "getter": "get_depth_deep_parallax_flip_tangent",
-          "default": ""
+          "getter": "get_depth_deep_parallax_flip_tangent"
         },
         {
           "name": "depth_max_layers",
           "type": "int",
           "setter": "set_depth_deep_parallax_max_layers",
-          "getter": "get_depth_deep_parallax_max_layers",
-          "default": ""
+          "getter": "get_depth_deep_parallax_max_layers"
         },
         {
           "name": "depth_min_layers",
           "type": "int",
           "setter": "set_depth_deep_parallax_min_layers",
-          "getter": "get_depth_deep_parallax_min_layers",
-          "default": ""
+          "getter": "get_depth_deep_parallax_min_layers"
         },
         {
           "name": "depth_scale",
           "type": "float",
           "setter": "set_depth_scale",
-          "getter": "get_depth_scale",
-          "default": ""
+          "getter": "get_depth_scale"
         },
         {
           "name": "depth_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "detail_albedo",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "detail_blend_mode",
           "type": "int",
           "setter": "set_detail_blend_mode",
-          "getter": "get_detail_blend_mode",
-          "default": ""
+          "getter": "get_detail_blend_mode"
         },
         {
           "name": "detail_enabled",
@@ -56810,36 +55658,31 @@
           "name": "detail_mask",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "detail_normal",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "detail_uv_layer",
           "type": "int",
           "setter": "set_detail_uv",
-          "getter": "get_detail_uv",
-          "default": ""
+          "getter": "get_detail_uv"
         },
         {
           "name": "distance_fade_max_distance",
           "type": "float",
           "setter": "set_distance_fade_max_distance",
-          "getter": "get_distance_fade_max_distance",
-          "default": ""
+          "getter": "get_distance_fade_max_distance"
         },
         {
           "name": "distance_fade_min_distance",
           "type": "float",
           "setter": "set_distance_fade_min_distance",
-          "getter": "get_distance_fade_min_distance",
-          "default": ""
+          "getter": "get_distance_fade_min_distance"
         },
         {
           "name": "distance_fade_mode",
@@ -56852,8 +55695,7 @@
           "name": "emission",
           "type": "Color",
           "setter": "set_emission",
-          "getter": "get_emission",
-          "default": ""
+          "getter": "get_emission"
         },
         {
           "name": "emission_enabled",
@@ -56866,29 +55708,25 @@
           "name": "emission_energy",
           "type": "float",
           "setter": "set_emission_energy",
-          "getter": "get_emission_energy",
-          "default": ""
+          "getter": "get_emission_energy"
         },
         {
           "name": "emission_on_uv2",
           "type": "bool",
           "setter": "set_flag",
-          "getter": "get_flag",
-          "default": ""
+          "getter": "get_flag"
         },
         {
           "name": "emission_operator",
           "type": "int",
           "setter": "set_emission_operator",
-          "getter": "get_emission_operator",
-          "default": ""
+          "getter": "get_emission_operator"
         },
         {
           "name": "emission_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "flags_albedo_tex_force_srgb",
@@ -56992,8 +55830,7 @@
           "name": "metallic_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "metallic_texture_channel",
@@ -57013,22 +55850,19 @@
           "name": "normal_scale",
           "type": "float",
           "setter": "set_normal_scale",
-          "getter": "get_normal_scale",
-          "default": ""
+          "getter": "get_normal_scale"
         },
         {
           "name": "normal_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "params_alpha_scissor_threshold",
           "type": "float",
           "setter": "set_alpha_scissor_threshold",
-          "getter": "get_alpha_scissor_threshold",
-          "default": ""
+          "getter": "get_alpha_scissor_threshold"
         },
         {
           "name": "params_billboard_keep_scale",
@@ -57083,8 +55917,7 @@
           "name": "params_grow_amount",
           "type": "float",
           "setter": "set_grow",
-          "getter": "get_grow",
-          "default": ""
+          "getter": "get_grow"
         },
         {
           "name": "params_line_width",
@@ -57118,29 +55951,25 @@
           "name": "particles_anim_h_frames",
           "type": "int",
           "setter": "set_particles_anim_h_frames",
-          "getter": "get_particles_anim_h_frames",
-          "default": ""
+          "getter": "get_particles_anim_h_frames"
         },
         {
           "name": "particles_anim_loop",
           "type": "bool",
           "setter": "set_particles_anim_loop",
-          "getter": "get_particles_anim_loop",
-          "default": ""
+          "getter": "get_particles_anim_loop"
         },
         {
           "name": "particles_anim_v_frames",
           "type": "int",
           "setter": "set_particles_anim_v_frames",
-          "getter": "get_particles_anim_v_frames",
-          "default": ""
+          "getter": "get_particles_anim_v_frames"
         },
         {
           "name": "proximity_fade_distance",
           "type": "float",
           "setter": "set_proximity_fade_distance",
-          "getter": "get_proximity_fade_distance",
-          "default": ""
+          "getter": "get_proximity_fade_distance"
         },
         {
           "name": "proximity_fade_enable",
@@ -57160,29 +55989,25 @@
           "name": "refraction_scale",
           "type": "float",
           "setter": "set_refraction",
-          "getter": "get_refraction",
-          "default": ""
+          "getter": "get_refraction"
         },
         {
           "name": "refraction_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "refraction_texture_channel",
           "type": "int",
           "setter": "set_refraction_texture_channel",
-          "getter": "get_refraction_texture_channel",
-          "default": ""
+          "getter": "get_refraction_texture_channel"
         },
         {
           "name": "rim",
           "type": "float",
           "setter": "set_rim",
-          "getter": "get_rim",
-          "default": ""
+          "getter": "get_rim"
         },
         {
           "name": "rim_enabled",
@@ -57195,15 +56020,13 @@
           "name": "rim_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "rim_tint",
           "type": "float",
           "setter": "set_rim_tint",
-          "getter": "get_rim_tint",
-          "default": ""
+          "getter": "get_rim_tint"
         },
         {
           "name": "roughness",
@@ -57216,8 +56039,7 @@
           "name": "roughness_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "roughness_texture_channel",
@@ -57237,22 +56059,19 @@
           "name": "subsurf_scatter_strength",
           "type": "float",
           "setter": "set_subsurface_scattering_strength",
-          "getter": "get_subsurface_scattering_strength",
-          "default": ""
+          "getter": "get_subsurface_scattering_strength"
         },
         {
           "name": "subsurf_scatter_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "transmission",
           "type": "Color",
           "setter": "set_transmission",
-          "getter": "get_transmission",
-          "default": ""
+          "getter": "get_transmission"
         },
         {
           "name": "transmission_enabled",
@@ -57265,8 +56084,7 @@
           "name": "transmission_texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "uv1_offset",
@@ -58008,8 +56826,7 @@
           "name": "shape",
           "type": "Shape",
           "setter": "set_shape",
-          "getter": "get_shape",
-          "default": ""
+          "getter": "get_shape"
         },
         {
           "name": "spring_length",
@@ -58100,8 +56917,7 @@
           "name": "normal_map",
           "type": "Texture",
           "setter": "set_normal_map",
-          "getter": "get_normal_map",
-          "default": ""
+          "getter": "get_normal_map"
         },
         {
           "name": "offset",
@@ -58135,8 +56951,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "vframes",
@@ -58206,8 +57021,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "vframes",
@@ -58387,8 +57201,7 @@
           "name": "frames",
           "type": "Array",
           "setter": "_set_frames",
-          "getter": "_get_frames",
-          "default": ""
+          "getter": "_get_frames"
         }
       ],
       "methods": [
@@ -58586,8 +57399,7 @@
           "name": "bounce",
           "type": "float",
           "setter": "set_bounce",
-          "getter": "get_bounce",
-          "default": ""
+          "getter": "get_bounce"
         },
         {
           "name": "constant_angular_velocity",
@@ -58607,15 +57419,13 @@
           "name": "friction",
           "type": "float",
           "setter": "set_friction",
-          "getter": "get_friction",
-          "default": ""
+          "getter": "get_friction"
         },
         {
           "name": "physics_material_override",
           "type": "PhysicsMaterial",
           "setter": "set_physics_material_override",
-          "getter": "get_physics_material_override",
-          "default": ""
+          "getter": "get_physics_material_override"
         }
       ]
     },
@@ -58627,8 +57437,7 @@
           "name": "bounce",
           "type": "float",
           "setter": "set_bounce",
-          "getter": "get_bounce",
-          "default": ""
+          "getter": "get_bounce"
         },
         {
           "name": "constant_angular_velocity",
@@ -58648,15 +57457,13 @@
           "name": "friction",
           "type": "float",
           "setter": "set_friction",
-          "getter": "get_friction",
-          "default": ""
+          "getter": "get_friction"
         },
         {
           "name": "physics_material_override",
           "type": "PhysicsMaterial",
           "setter": "set_physics_material_override",
-          "getter": "get_physics_material_override",
-          "default": ""
+          "getter": "get_physics_material_override"
         }
       ]
     },
@@ -59169,7 +57976,6 @@
     },
     {
       "name": "String",
-      "extends": "",
       "methods": [
         {
           "name": "String",
@@ -59503,7 +58309,6 @@
         },
         {
           "name": "erase",
-          "type": "",
           "arguments": [
             {
               "name": "position",
@@ -60610,8 +59415,7 @@
           "name": "normal_map",
           "type": "Texture",
           "setter": "set_normal_map",
-          "getter": "get_normal_map",
-          "default": ""
+          "getter": "get_normal_map"
         },
         {
           "name": "region_rect",
@@ -60624,8 +59428,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ],
       "methods": [
@@ -62237,43 +61040,37 @@
           "name": "texture_click_mask",
           "type": "BitMap",
           "setter": "set_click_mask",
-          "getter": "get_click_mask",
-          "default": ""
+          "getter": "get_click_mask"
         },
         {
           "name": "texture_disabled",
           "type": "Texture",
           "setter": "set_disabled_texture",
-          "getter": "get_disabled_texture",
-          "default": ""
+          "getter": "get_disabled_texture"
         },
         {
           "name": "texture_focused",
           "type": "Texture",
           "setter": "set_focused_texture",
-          "getter": "get_focused_texture",
-          "default": ""
+          "getter": "get_focused_texture"
         },
         {
           "name": "texture_hover",
           "type": "Texture",
           "setter": "set_hover_texture",
-          "getter": "get_hover_texture",
-          "default": ""
+          "getter": "get_hover_texture"
         },
         {
           "name": "texture_normal",
           "type": "Texture",
           "setter": "set_normal_texture",
-          "getter": "get_normal_texture",
-          "default": ""
+          "getter": "get_normal_texture"
         },
         {
           "name": "texture_pressed",
           "type": "Texture",
           "setter": "set_pressed_texture",
-          "getter": "get_pressed_texture",
-          "default": ""
+          "getter": "get_pressed_texture"
         }
       ],
       "constants": [
@@ -62517,22 +61314,19 @@
           "name": "texture_over",
           "type": "Texture",
           "setter": "set_over_texture",
-          "getter": "get_over_texture",
-          "default": ""
+          "getter": "get_over_texture"
         },
         {
           "name": "texture_progress",
           "type": "Texture",
           "setter": "set_progress_texture",
-          "getter": "get_progress_texture",
-          "default": ""
+          "getter": "get_progress_texture"
         },
         {
           "name": "texture_under",
           "type": "Texture",
           "setter": "set_under_texture",
-          "getter": "get_under_texture",
-          "default": ""
+          "getter": "get_under_texture"
         },
         {
           "name": "tint_over",
@@ -62664,8 +61458,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         }
       ],
       "constants": [
@@ -62711,8 +61504,7 @@
           "name": "default_font",
           "type": "Font",
           "setter": "set_default_font",
-          "getter": "get_default_font",
-          "default": ""
+          "getter": "get_default_font"
         }
       ],
       "methods": [
@@ -63281,8 +62073,7 @@
           "name": "tile_set",
           "type": "TileSet",
           "setter": "set_tileset",
-          "getter": "get_tileset",
-          "default": ""
+          "getter": "get_tileset"
         }
       ],
       "methods": [
@@ -64584,8 +63375,7 @@
           "name": "paused",
           "type": "bool",
           "setter": "set_paused",
-          "getter": "is_paused",
-          "default": ""
+          "getter": "is_paused"
         },
         {
           "name": "process_mode",
@@ -64597,9 +63387,7 @@
         {
           "name": "time_left",
           "type": "float",
-          "setter": "",
-          "getter": "get_time_left",
-          "default": ""
+          "getter": "get_time_left"
         },
         {
           "name": "wait_time",
@@ -64668,15 +63456,13 @@
           "name": "bitmask",
           "type": "BitMap",
           "setter": "set_bitmask",
-          "getter": "get_bitmask",
-          "default": ""
+          "getter": "get_bitmask"
         },
         {
           "name": "normal",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "passby_press",
@@ -64689,15 +63475,13 @@
           "name": "pressed",
           "type": "Texture",
           "setter": "set_texture_pressed",
-          "getter": "get_texture_pressed",
-          "default": ""
+          "getter": "get_texture_pressed"
         },
         {
           "name": "shape",
           "type": "Shape2D",
           "setter": "set_shape",
-          "getter": "get_shape",
-          "default": ""
+          "getter": "get_shape"
         },
         {
           "name": "shape_centered",
@@ -64740,20 +63524,15 @@
     },
     {
       "name": "Transform",
-      "extends": "",
       "fields": [
         {
           "name": "basis",
           "type": "Basis",
-          "setter": "",
-          "getter": "",
           "default": "Basis( 1, 0, 0, 0, 1, 0, 0, 0, 1 )"
         },
         {
           "name": "origin",
           "type": "Vector3",
-          "setter": "",
-          "getter": "",
           "default": "Vector3( 0, 0, 0 )"
         }
       ],
@@ -64950,27 +63729,20 @@
     },
     {
       "name": "Transform2D",
-      "extends": "",
       "fields": [
         {
           "name": "origin",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 0 )"
         },
         {
           "name": "x",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 1, 0 )"
         },
         {
           "name": "y",
           "type": "Vector2",
-          "setter": "",
-          "getter": "",
           "default": "Vector2( 0, 1 )"
         }
       ],
@@ -65565,22 +64337,19 @@
           "name": "collapsed",
           "type": "bool",
           "setter": "set_collapsed",
-          "getter": "is_collapsed",
-          "default": ""
+          "getter": "is_collapsed"
         },
         {
           "name": "custom_minimum_height",
           "type": "int",
           "setter": "set_custom_minimum_height",
-          "getter": "get_custom_minimum_height",
-          "default": ""
+          "getter": "get_custom_minimum_height"
         },
         {
           "name": "disable_folding",
           "type": "bool",
           "setter": "set_disable_folding",
-          "getter": "is_folding_disabled",
-          "default": ""
+          "getter": "is_folding_disabled"
         }
       ],
       "methods": [
@@ -67075,25 +65844,19 @@
       "extends": "SplitContainer"
     },
     {
-      "name": "Variant",
-      "extends": ""
+      "name": "Variant"
     },
     {
       "name": "Vector2",
-      "extends": "",
       "fields": [
         {
           "name": "x",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "y",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         }
       ],
@@ -67436,27 +66199,20 @@
     },
     {
       "name": "Vector3",
-      "extends": "",
       "fields": [
         {
           "name": "x",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "y",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         },
         {
           "name": "z",
           "type": "float",
-          "setter": "",
-          "getter": "",
           "default": "0.0"
         }
       ],
@@ -68020,22 +66776,19 @@
           "name": "stream",
           "type": "VideoStream",
           "setter": "set_stream",
-          "getter": "get_stream",
-          "default": ""
+          "getter": "get_stream"
         },
         {
           "name": "stream_position",
           "type": "float",
           "setter": "set_stream_position",
-          "getter": "get_stream_position",
-          "default": ""
+          "getter": "get_stream_position"
         },
         {
           "name": "volume",
           "type": "float",
           "setter": "set_volume",
-          "getter": "get_volume",
-          "default": ""
+          "getter": "get_volume"
         },
         {
           "name": "volume_db",
@@ -68101,8 +66854,7 @@
           "name": "canvas_transform",
           "type": "Transform2D",
           "setter": "set_canvas_transform",
-          "getter": "get_canvas_transform",
-          "default": ""
+          "getter": "get_canvas_transform"
         },
         {
           "name": "debug_draw",
@@ -68122,8 +66874,7 @@
           "name": "global_canvas_transform",
           "type": "Transform2D",
           "setter": "set_global_canvas_transform",
-          "getter": "get_global_canvas_transform",
-          "default": ""
+          "getter": "get_global_canvas_transform"
         },
         {
           "name": "gui_disable_input",
@@ -68276,15 +67027,13 @@
           "name": "world",
           "type": "World",
           "setter": "set_world",
-          "getter": "get_world",
-          "default": ""
+          "getter": "get_world"
         },
         {
           "name": "world_2d",
           "type": "World2D",
           "setter": "set_world_2d",
-          "getter": "get_world_2d",
-          "default": ""
+          "getter": "get_world_2d"
         }
       ],
       "methods": [
@@ -75640,8 +74389,7 @@
           "name": "cube_map",
           "type": "CubeMap",
           "setter": "set_cube_map",
-          "getter": "get_cube_map",
-          "default": ""
+          "getter": "get_cube_map"
         },
         {
           "name": "source",
@@ -76424,8 +75172,7 @@
           "name": "texture",
           "type": "Texture",
           "setter": "set_texture",
-          "getter": "get_texture",
-          "default": ""
+          "getter": "get_texture"
         },
         {
           "name": "texture_type",
@@ -76996,37 +75743,29 @@
         {
           "name": "direct_space_state",
           "type": "PhysicsDirectSpaceState",
-          "setter": "",
-          "getter": "get_direct_space_state",
-          "default": ""
+          "getter": "get_direct_space_state"
         },
         {
           "name": "environment",
           "type": "Environment",
           "setter": "set_environment",
-          "getter": "get_environment",
-          "default": ""
+          "getter": "get_environment"
         },
         {
           "name": "fallback_environment",
           "type": "Environment",
           "setter": "set_fallback_environment",
-          "getter": "get_fallback_environment",
-          "default": ""
+          "getter": "get_fallback_environment"
         },
         {
           "name": "scenario",
           "type": "RID",
-          "setter": "",
-          "getter": "get_scenario",
-          "default": ""
+          "getter": "get_scenario"
         },
         {
           "name": "space",
           "type": "RID",
-          "setter": "",
-          "getter": "get_space",
-          "default": ""
+          "getter": "get_space"
         }
       ]
     },
@@ -77037,23 +75776,17 @@
         {
           "name": "canvas",
           "type": "RID",
-          "setter": "",
-          "getter": "get_canvas",
-          "default": ""
+          "getter": "get_canvas"
         },
         {
           "name": "direct_space_state",
           "type": "Physics2DDirectSpaceState",
-          "setter": "",
-          "getter": "get_direct_space_state",
-          "default": ""
+          "getter": "get_direct_space_state"
         },
         {
           "name": "space",
           "type": "RID",
-          "setter": "",
-          "getter": "get_space",
-          "default": ""
+          "getter": "get_space"
         }
       ]
     },
@@ -77065,8 +75798,7 @@
           "name": "environment",
           "type": "Environment",
           "setter": "set_environment",
-          "getter": "get_environment",
-          "default": ""
+          "getter": "get_environment"
         }
       ]
     },
@@ -77263,7 +75995,6 @@
     },
     {
       "name": "bool",
-      "extends": "",
       "methods": [
         {
           "name": "bool",
@@ -77299,7 +76030,6 @@
     },
     {
       "name": "float",
-      "extends": "",
       "methods": [
         {
           "name": "float",
@@ -77335,7 +76065,6 @@
     },
     {
       "name": "int",
-      "extends": "",
       "methods": [
         {
           "name": "int",
@@ -77370,8 +76099,7 @@
       ]
     },
     {
-      "name": "void",
-      "extends": ""
+      "name": "void"
     }
   ]
 }

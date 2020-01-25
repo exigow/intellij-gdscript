@@ -5,7 +5,7 @@ import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
 import java.lang.reflect.Type
 
-class SkipFalseValueAdapter : JsonSerializer<Boolean?> {
+class SkipFalseBooleanAdapter : JsonSerializer<Boolean?> {
 
     override fun serialize(src: Boolean?, typeOfSrc: Type?, context: JsonSerializationContext?) =
         if (src == null || src == false)
