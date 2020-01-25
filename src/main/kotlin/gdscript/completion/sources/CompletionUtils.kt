@@ -3,7 +3,7 @@ package gdscript.completion.sources
 object CompletionUtils {
 
     val CLASSES =
-        CompletionDeserializer.deserialize().classes
+        CompletionDeserializer.deserialize()
     val SINGLETONS =
         CLASSES.filter { it.name in collectSingletonNames() }
     val LANGUAGE_CONSTANTS =
@@ -11,7 +11,7 @@ object CompletionUtils {
     val FUNCTIONS =
         CLASSES.filter { isGlobal(it) }.flatMap { it.methods.orEmpty() }
     val PRIMITIVES =
-        CLASSES.filter { isPrimitive(it) }
+        CLASSES.filter { isPrimitive(it) }.toTypedArray()
     val CLASS_CONSTRUCTORS =
         toConstructors(CLASSES)
     val PRIMITIVE_CONSTRUCTORS =
@@ -27,7 +27,7 @@ object CompletionUtils {
     private fun collectSingletonNames() =
         CLASSES.filter { isGlobal(it) }.flatMap { it.fields.orEmpty() }.map { it.name }
 
-    private fun toConstructors(classes: List<Class>) =
+    private fun toConstructors(classes: Array<Class>) =
         classes.flatMap { c -> c.methods?.filter { it -> c.name == it.name }.orEmpty() }
 
     private fun isGlobal(clazz: Class) =

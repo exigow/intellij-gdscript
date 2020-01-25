@@ -16,8 +16,8 @@ open class GenerateCompletion : DefaultTask() {
         val parsed = files
             .filter { hasClassName(it) }
             .map { parseClass(it) } + VOID_CLASS
-        val language = Language(parsed.sortedBy { it.name })
-        ApiSerializer.serialize(language, "src/main/resources/completion.json")
+        val classes = parsed.sortedBy { it.name }
+        ApiSerializer.serialize(classes, "src/main/resources/completion.json")
     }
 
     private fun openFiles() =
@@ -59,7 +59,7 @@ open class GenerateCompletion : DefaultTask() {
 
     private companion object {
 
-        val VOID_CLASS = Class("void", "", emptyList(), emptyList(), emptyList())
+        val VOID_CLASS = Class("void", null, emptyList(), emptyList(), emptyList())
 
     }
 }

@@ -1,9 +1,5 @@
 package gdscript.completion.sources
 
-data class Language(
-    val classes: List<Class>
-)
-
 data class Class(
     val name: String,
     val extends: String?,
