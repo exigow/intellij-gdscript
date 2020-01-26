@@ -1,10 +1,10 @@
 package gdscript.annotator
 
-import ScriptLexer.IDENTIFIER
-import ScriptParser.RULE_func_line
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
+import gdscript.ScriptLexer.IDENTIFIER
+import gdscript.ScriptParser.RULE_func_line
 import gdscript.colorSettingsPage.ColorTextAttributeKey.INSTANCE_METHOD
 import gdscript.lang.psi.PsiElementUtils.hasParent
 import gdscript.lang.psi.PsiElementUtils.isToken

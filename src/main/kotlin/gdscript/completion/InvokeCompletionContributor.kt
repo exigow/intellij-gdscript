@@ -1,9 +1,9 @@
 package gdscript.completion
 
-import ScriptParser.RULE_invoke
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
+import gdscript.ScriptParser.RULE_invoke
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupFactory
 import gdscript.lang.psi.PsiElementUtils.hasParent

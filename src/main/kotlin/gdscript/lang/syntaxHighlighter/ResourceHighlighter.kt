@@ -1,9 +1,9 @@
 package gdscript.lang.syntaxHighlighter
 
-import ResourceLexer
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
+import gdscript.ResourceLexer
 import gdscript.lang.ResourceLanguage
 import gdscript.lang.ResourceTokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor

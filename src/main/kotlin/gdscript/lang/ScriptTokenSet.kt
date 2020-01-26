@@ -1,6 +1,6 @@
 package gdscript.lang
 
-import ScriptLexer.*
+import gdscript.ScriptLexer.*
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ScriptTokenSet {

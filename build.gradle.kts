@@ -39,7 +39,9 @@ tasks {
     generateGrammarSource {
         arguments = listOf(
             "-no-listener",
-            "-no-visitor"
+            "-no-visitor",
+            "-lib", "src/main/antlr/gdscript",
+            "-package", "gdscript"
         )
     }
 }

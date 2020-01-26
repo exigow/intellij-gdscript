@@ -1,7 +1,5 @@
 package gdscript.lang.parserDefinition
 
-import ResourceLexer
-import ResourceParser
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
@@ -10,6 +8,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
+import gdscript.ResourceLexer
+import gdscript.ResourceParser
 import gdscript.lang.ResourceLanguage
 import gdscript.lang.ResourceTokenSet.LINE_COMMENTS
 import gdscript.lang.ResourceTokenSet.STRINGS

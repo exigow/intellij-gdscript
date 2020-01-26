@@ -1,11 +1,11 @@
 package gdscript.lang.typing
 
 
-import ScriptLexer.STRING_APHOSTROPHE
-import ScriptLexer.STRING_DOUBLE_QUOTE
 import com.intellij.codeInsight.editorActions.MultiCharQuoteHandler
 import com.intellij.codeInsight.editorActions.SimpleTokenSetQuoteHandler
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
+import gdscript.ScriptLexer.STRING_APHOSTROPHE
+import gdscript.ScriptLexer.STRING_DOUBLE_QUOTE
 import gdscript.lang.ScriptTokenSet
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 

@@ -1,9 +1,9 @@
 package gdscript.annotator
 
-import ScriptLexer.RESOURCE
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
+import gdscript.ScriptLexer.RESOURCE
 import gdscript.completion.utils.FileUtils
 import gdscript.lang.psi.PsiElementUtils.isToken
 

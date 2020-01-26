@@ -1,9 +1,9 @@
 package gdscript.annotator
 
-import ScriptParser.RULE_type
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
+import gdscript.ScriptParser.RULE_type
 import gdscript.colorSettingsPage.ColorTextAttributeKey.CLASS_NAME
 import gdscript.completion.sources.CompletionUtils
 import gdscript.lang.psi.PsiElementUtils.isRule

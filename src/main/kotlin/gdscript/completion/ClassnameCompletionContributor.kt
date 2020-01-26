@@ -1,11 +1,11 @@
 package gdscript.completion
 
-import ScriptParser.IDENTIFIER
-import ScriptParser.RULE_class_name_line
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElement
+import gdscript.ScriptParser.IDENTIFIER
+import gdscript.ScriptParser.RULE_class_name_line
 import gdscript.completion.utils.LookupFactory
 import gdscript.lang.psi.PsiElementUtils.hasParent
 import gdscript.lang.psi.PsiElementUtils.isToken

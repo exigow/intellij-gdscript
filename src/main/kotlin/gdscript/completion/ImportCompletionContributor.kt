@@ -1,7 +1,6 @@
 package gdscript.completion
 
 
-import ScriptLexer.RESOURCE
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -9,6 +8,7 @@ import com.intellij.codeInsight.completion.PrioritizedLookupElement
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VirtualFile
+import gdscript.ScriptLexer.RESOURCE
 import gdscript.completion.utils.FileUtils
 import gdscript.lang.IconCatalog
 import gdscript.lang.psi.PsiElementUtils.isToken

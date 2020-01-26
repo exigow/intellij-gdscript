@@ -1,9 +1,9 @@
 package gdscript.lexer
 
-import ScriptLexer
-import ScriptLexer.*
-import ScriptParser
 import com.intellij.testFramework.UsefulTestCase.assertContainsElements
+import gdscript.ScriptLexer
+import gdscript.ScriptLexer.*
+import gdscript.ScriptParser
 import gdscript.lang.ScriptLanguage
 import junit.framework.TestCase
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor

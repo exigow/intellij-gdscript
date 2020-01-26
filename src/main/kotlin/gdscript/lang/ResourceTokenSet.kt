@@ -1,6 +1,6 @@
 package gdscript.lang
 
-import ResourceLexer.*
+import gdscript.ResourceLexer.*
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ResourceTokenSet {

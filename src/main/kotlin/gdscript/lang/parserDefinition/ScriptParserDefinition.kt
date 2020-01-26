@@ -1,7 +1,5 @@
 package gdscript.lang.parserDefinition
 
-import ScriptLexer
-import ScriptParser
 import com.intellij.lang.ASTNode
 import com.intellij.lang.PsiParser
 import com.intellij.lexer.Lexer
@@ -10,6 +8,8 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
+import gdscript.ScriptLexer
+import gdscript.ScriptParser
 import gdscript.lang.ScriptLanguage
 import gdscript.lang.ScriptTokenSet.LINE_COMMENTS
 import gdscript.lang.ScriptTokenSet.STRINGS
