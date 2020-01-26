@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    antlr("org.antlr:antlr4:4.7.2")
+    antlr("org.antlr:antlr4:4.8-1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
     implementation("org.antlr:antlr4-intellij-adaptor:0.1")
