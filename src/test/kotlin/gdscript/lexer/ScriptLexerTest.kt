@@ -24,10 +24,9 @@ class ScriptLexerTest : TestCase() {
         adaptor.start(code)
         val tokens = ArrayList<Token>()
         do {
-            val lastType = adaptor.tokenType
+            val type = adaptor.tokenType as? TokenIElementType
                 ?: return tokens
-            val type = (lastType as TokenIElementType).antlrTokenType
-            tokens.add(Token(type, adaptor.tokenText))
+            tokens.add(Token(type.antlrTokenType, adaptor.tokenText))
             adaptor.advance()
         } while (true)
     }
