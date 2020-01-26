@@ -3,12 +3,8 @@ package gdscript.lexer
 import com.intellij.testFramework.UsefulTestCase.assertContainsElements
 import gdscript.ScriptLexer
 import gdscript.ScriptLexer.*
-import gdscript.ScriptParser
 import gdscript.lang.ScriptLanguage
 import junit.framework.TestCase
-import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
-import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
 class ScriptLexerTest : TestCase() {
 
@@ -40,22 +36,6 @@ class ScriptLexerTest : TestCase() {
         assertHasToken("\$Some/Node", Token(NODE, "\$Some/Node"))
 
     private fun assertHasToken(code: String, expectedToken: Token) =
-        assertContainsElements(tokenize(code), expectedToken)
-
-    private fun tokenize(code: String): List<Token> {
-        @Suppress("DEPRECATION")
-        PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
-        val adaptor = ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
-        adaptor.start(code)
-        val tokens = ArrayList<Token>()
-        do {
-            val type = adaptor.tokenType as? TokenIElementType
-                ?: return tokens
-            tokens.add(Token(type.antlrTokenType, adaptor.tokenText))
-            adaptor.advance()
-        } while (true)
-    }
-
-    private data class Token(val type: Int, val text: String)
+        assertContainsElements(tokenize(ScriptLanguage, ScriptLexer(null), code), expectedToken)
 
 }
