@@ -27,6 +27,9 @@ class ScriptLexerTest : TestCase() {
     fun `test language function`() =
         assertHasToken("x = preload(1)", Token(FUNCTION, "preload"))
 
+    fun `test language constant`() =
+        assertHasToken("x = BUTTON_LEFT", Token(CONSTANT, "BUTTON_LEFT"))
+
     fun `test resource`() =
         assertHasToken("x = \"res://file.gd\"", Token(RESOURCE, "\"res://file.gd\""))
 
