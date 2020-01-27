@@ -30,6 +30,10 @@ tasks {
         token(project.property("publishPluginToken"))
         channels("beta")
     }
+    compileJava {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
     compileKotlin {
         dependsOn(generateGrammarSource)
         kotlinOptions {
