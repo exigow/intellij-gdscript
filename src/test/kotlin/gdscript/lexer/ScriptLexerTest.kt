@@ -11,6 +11,9 @@ class ScriptLexerTest : TestCase() {
     fun `test var keyword`() =
         assertHasToken("var x", Token(VAR, "var"))
 
+    fun `test class_name keyword`() =
+        assertHasToken("class_name Test", Token(CLASS_NAME, "class_name"))
+
     fun `test string`() =
         assertHasToken("x = \"text\"", Token(STRING_DOUBLE_QUOTE, "\"text\""))
 
@@ -22,6 +25,12 @@ class ScriptLexerTest : TestCase() {
 
     fun `test language function`() =
         assertHasToken("x = preload(1)", Token(FUNCTION, "preload"))
+
+    fun `test primitive constructor`() =
+        assertHasToken("number = float(other)", Token(FLOAT, "float"))
+
+    fun `test is operator`() =
+        assertHasToken("a is b", Token(IS, "is"))
 
     fun `test language constant`() =
         assertHasToken("x = BUTTON_LEFT", Token(CONSTANT, "BUTTON_LEFT"))
