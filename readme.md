@@ -1,6 +1,6 @@
-## GDScript plugin for IntelliJ IDEA [![Travis Build Status][build-badge]][build-url] [![GitHub License][license-badge]](license)
+## GDScript plugin for IntelliJ IDEA [![Build Status][build-badge]][build-url] [![License][license-badge]](license)
 
-![Type completion](https://i.imgur.com/hhhZFAl.png)
+![Screenshot][screenshot]
 
 ### Key Features
 
@@ -34,6 +34,7 @@ Works with all IntelliJ-based IDEs starting from v2019.2.
 
 **Contributions are welcome!**
 
+[screenshot]: https://i.imgur.com/WLLXkf4.png
 [obtain-token]: https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html
 [plugin-url]: https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions
 [build-badge]: https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master
