@@ -207,7 +207,7 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("enum {RED = 1, GREEN = 2, BLUE = 3}")
 
     fun `test enum named`() =
-        assertNoErrors("enum Color {RED, GREEN, BLUE}")
+        assertNoErrors("enum MyColor {RED, GREEN, BLUE}")
 
     fun `test export`() =
         assertNoErrors("export var number")

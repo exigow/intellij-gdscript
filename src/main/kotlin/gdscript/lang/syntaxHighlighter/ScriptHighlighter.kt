@@ -27,6 +27,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         in ScriptTokenSet.NODES -> Color.NODE
         in ScriptTokenSet.IDENTIFIERS -> Color.IDENTIFIER
         in ScriptTokenSet.CONSTANTS -> Color.CONSTANT
+        in ScriptTokenSet.CLASSES -> Color.CLASS_NAME
         in ScriptTokenSet.OPERATION_SIGNS -> Color.OPERATION_SIGN
         in ScriptTokenSet.COMMAS -> Color.COMMA
         in ScriptTokenSet.SEMICOLONS -> Color.SEMICOLON

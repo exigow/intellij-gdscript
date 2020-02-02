@@ -56,14 +56,14 @@ type_operator_expression: (AS | IS) primary;
 subscribe_expression: BRACKET_LEFT expression BRACKET_RIGHT;
 operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) primary;
 
-primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (CONSTANT | IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
+primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
 dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* BRACE_RIGHT;
 entry: expression (COLON | EQUALS) expression NL*;
-invoke: DOT? (IDENTIFIER | FUNCTION | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
+invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
 arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
-type: IDENTIFIER | primitive;
+type: IDENTIFIER | CLASS_IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
 string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
 

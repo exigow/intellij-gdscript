@@ -19,8 +19,9 @@ open class GenerateLexer : DefaultTask() {
         // Generated file. Local changes may be overwritten.
         lexer grammar $FILENAME;
         
-        FUNCTION: ${collectFunctions(classes)};
-        CONSTANT: ${collectConstants(classes)};
+        FUNCTION_IDENTIFIER: ${collectFunctions(classes)};
+        CONSTANT_IDENTIFIER: ${collectConstants(classes)};
+        CLASS_IDENTIFIER: ${collectClassNames(classes)};
         
         """.trimIndent()
 
@@ -28,16 +29,22 @@ open class GenerateLexer : DefaultTask() {
         File("${project.buildDir}/downloads").listFiles()!!
             .map { Jsoup.parse(it, "UTF-8") }
 
+    private fun collectFunctions(classes: List<Document>) =
+        classes.first { it.selectName() == "@GDScript" }
+            .select("method")
+            .map { it.attr("name") }
+            .joined()
+
     private fun collectConstants(classes: List<Document>) =
         classes.first { it.selectName() == "@GlobalScope" }
             .select("constant")
             .map { it.attr("name") }
             .joined()
 
-    private fun collectFunctions(classes: List<Document>) =
-        classes.first { it.selectName() == "@GDScript" }
-            .select("method")
-            .map { it.attr("name") }
+    private fun collectClassNames(classes: List<Document>) =
+        classes.map { it.selectName() }
+            .filterNot { it.startsWith("@") }
+            .filterNot { it in listOf("int", "float", "bool", "void") }
             .joined()
 
     private fun Document.selectName() =

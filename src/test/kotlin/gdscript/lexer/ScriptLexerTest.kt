@@ -24,16 +24,19 @@ class ScriptLexerTest : TestCase() {
         assertHasToken("var name = 1", Token(IDENTIFIER, "name"))
 
     fun `test language function`() =
-        assertHasToken("x = preload(1)", Token(FUNCTION, "preload"))
+        assertHasToken("x = preload(1)", Token(FUNCTION_IDENTIFIER, "preload"))
 
     fun `test primitive constructor`() =
         assertHasToken("number = float(other)", Token(FLOAT, "float"))
+
+    fun `test primitive void type`() =
+        assertHasToken("var x: void", Token(VOID, "void"))
 
     fun `test is operator`() =
         assertHasToken("a is b", Token(IS, "is"))
 
     fun `test language constant`() =
-        assertHasToken("x = BUTTON_LEFT", Token(CONSTANT, "BUTTON_LEFT"))
+        assertHasToken("x = BUTTON_LEFT", Token(CONSTANT_IDENTIFIER, "BUTTON_LEFT"))
 
     fun `test resource`() =
         assertHasToken("x = \"res://file.gd\"", Token(RESOURCE, "\"res://file.gd\""))
@@ -43,6 +46,15 @@ class ScriptLexerTest : TestCase() {
 
     fun `test node`() =
         assertHasToken("\$Some/Node", Token(NODE, "\$Some/Node"))
+
+    fun `test class as type`() =
+        assertHasToken("var position: Vector2", Token(CLASS_IDENTIFIER, "Vector2"))
+
+    fun `test class in extends statement`() =
+        assertHasToken("extends Node", Token(CLASS_IDENTIFIER, "Node"))
+
+    fun `test custom class is identifier`() =
+        assertHasToken("var x: MyClass", Token(IDENTIFIER, "MyClass"))
 
     private fun assertHasToken(code: String, expectedToken: Token) =
         assertContainsElements(tokenize(ScriptLanguage, ScriptLexer(null), code), expectedToken)
