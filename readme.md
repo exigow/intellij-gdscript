@@ -22,7 +22,8 @@ Works with all IntelliJ-based IDEs starting from v2019.2.
 * `./gradlew buildPlugin` - build plugin. Outputs `build/distributions/intellij-gdscript.zip`.
 * `./gradlew publishPlugin` - publish plugin. Requires JetBrains Permanent Token located in `gradle.properties`.
 * `./gradlew generateGrammarSource` - re-generate lexer and parser Java code. Required after changing ANTLR sources.
-* `./gradlew generateCompletion` - download & generate completion. Outputs `src/main/resources/completion.json`.
+* `./gradlew generateCompletion` - generate completion JSON. Outputs `src/main/resources/completion.json`.
+* `./gradlew generateLexer` - generate ANTLR lexer with language-level functions.
 * `./gradlew test` - run all tests.
 
 ### Manual Installation
