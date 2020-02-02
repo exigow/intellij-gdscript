@@ -1,5 +1,6 @@
 package gdscript.colorSettingsPage
 
+import com.intellij.ide.highlighter.custom.CustomHighlighterColors
 import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
@@ -26,7 +27,7 @@ enum class ColorTextAttributeKey(copied: TextAttributesKey) {
     STATIC_METHOD(Default.STATIC_METHOD),
     INSTANCE_FIELD(Default.INSTANCE_FIELD),
     INSTANCE_METHOD(Default.INSTANCE_METHOD),
-    CLASS_NAME(Default.CLASS_NAME),
+    CLASS_NAME(CustomHighlighterColors.CUSTOM_KEYWORD3_ATTRIBUTES),
     CONSTANT(Default.CONSTANT),
     RESOURCE(EditorColors.INJECTED_LANGUAGE_FRAGMENT);
 
