@@ -11,14 +11,14 @@ class ConstantAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         val text = element.text
-        if (element.isToken(IDENTIFIER) && isConstantCase(text) && isLong(text))
+        if (element.isToken(IDENTIFIER) && text.matches(CONSTANT_REGEX))
             holder.colorize(element, CONSTANT)
     }
 
-    private fun isLong(text: String) =
-        text.length >= 2
+    private companion object {
 
-    private fun isConstantCase(text: String) =
-        text.all { it.isLetter() && it.isUpperCase() || it == '_' }
+        val CONSTANT_REGEX = "[A-Z][A-Z0-9_]+".toRegex()
+
+    }
 
 }
