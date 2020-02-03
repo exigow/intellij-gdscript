@@ -2,9 +2,7 @@ grammar Script;
 
 import GeneratedLexer, Core;
 
-file: separator* (line (separator+ line?)*)? EOF;
-
-separator: NL | SEMICOLON | COLON;
+file: NL* (line ((NL | SEMICOLON)* line)*)? (NL | SEMICOLON)* EOF;
 
 line: var_line
     | const_line
@@ -20,6 +18,7 @@ line: var_line
     | elif_line
     | match_line
     | return_line
+    | label_line
     | else_line
     | pass_line
     | break_line
@@ -29,21 +28,22 @@ line: var_line
 
 var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_line: CONST IDENTIFIER (COLON type)? (EQUALS | INFER) expression;
-func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)?;
+func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
 func_argument: IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)?;
 enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
 enum_argument: IDENTIFIER (EQUALS expression)? NL*;
 signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
 extends_line: EXTENDS (type | string) (DOT type)*;
-class_line: CLASS IDENTIFIER (EXTENDS type)?;
+class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
 class_name_line: CLASS_NAME IDENTIFIER;
-while_line: WHILE expression;
-for_line: FOR expression;
-if_line: IF expression;
-elif_line: ELIF expression;
-match_line: MATCH expression;
+while_line: WHILE expression COLON;
+for_line: FOR expression COLON;
+if_line: IF expression COLON;
+elif_line: ELIF expression COLON;
+match_line: MATCH expression COLON;
 return_line: RETURN expression?;
-else_line: ELSE;
+label_line: expression COLON;
+else_line: ELSE COLON;
 pass_line: PASS;
 break_line: BREAK;
 continue_line: CONTINUE;
