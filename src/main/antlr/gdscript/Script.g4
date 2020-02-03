@@ -28,9 +28,9 @@ line: var_line
 
 var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
 const_line: CONST IDENTIFIER (COLON type)? (EQUALS | INFER) expression;
-func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* PARENTHES_RIGHT (ARROW type)? COLON;
+func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* COMMA? PARENTHES_RIGHT (ARROW type)? COLON;
 func_argument: IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)?;
-enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* BRACE_RIGHT;
+enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* COMMA? NL* BRACE_RIGHT;
 enum_argument: IDENTIFIER (EQUALS expression)? NL*;
 signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
 extends_line: EXTENDS (type | string) (DOT type)*;
@@ -58,11 +58,11 @@ operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH 
 
 primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
 array: BRACKET_LEFT arguments BRACKET_RIGHT;
-dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* BRACE_RIGHT;
+dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* COMMA? NL* BRACE_RIGHT;
 entry: expression (COLON | EQUALS) expression NL*;
 invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
 in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
-arguments: NL* expression? NL* (COMMA NL* expression)* NL*;
+arguments: NL* expression? NL* (COMMA NL* expression)* COMMA? NL*;
 type: IDENTIFIER | CLASS_IDENTIFIER | primitive;
 primitive: BOOL | INT | FLOAT | VOID;
 string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;

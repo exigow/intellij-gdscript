@@ -164,6 +164,28 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test dictionary`() =
         assertNoErrors("""var dict = {4: 5, "A key": "A value", 28: [1, 2, 3]}""")
 
+    fun `test dictionary with extra comma`() =
+        assertNoErrors("var dict = {a = 1, b = 2,}")
+
+    fun `test dictionary multiline`() =
+        assertNoErrors("""
+             dict = {
+                "key": "value",
+                123: 456
+            }
+        """)
+
+    fun `test dictionary multiline with extra comma`() =
+        assertNoErrors("""
+             dict = {
+                1: 1,
+                2: 2,
+             }
+        """)
+
+    fun `test dictionary with key expressions`() =
+        assertNoErrors("dict = {Some.Inner.Class: 0}")
+
     fun `test dictionary Lua style multiline`() =
         assertNoErrors("""
             dict = {
@@ -174,25 +196,23 @@ class ScriptErrorHighlightingTest : BaseTest() {
             }
         """)
 
-    fun `test dictionary multiline`() =
-        assertNoErrors("""
-             dict = {
-                "key": "value",
-                123: 456
-            }
-        """)
-
-    fun `test dictionary with key expressions`() =
-        assertNoErrors("dict = {Some.Inner.Class: 0}")
-
-    fun `test enum`() =
-        assertNoErrors("enum {RED, GREEN, BLUE}")
-
     fun `test if then return in same line`() =
         assertNoErrors("if condition: return true")
 
     fun `test function then return in same line`() =
         assertNoErrors("func test() -> bool: return false")
+
+    fun `test enum`() =
+        assertNoErrors("enum {RED, GREEN, BLUE}")
+
+    fun `test enum custom values`() =
+        assertNoErrors("enum {RED = 1, GREEN = 2, BLUE = 3}")
+
+    fun `test enum named`() =
+        assertNoErrors("enum MyColor {RED, GREEN, BLUE}")
+
+    fun `test enum with extra comma`() =
+        assertNoErrors("enum MyColor {RED, GREEN,}")
 
     fun `test enum multiline`() =
         assertNoErrors("""
@@ -203,11 +223,13 @@ class ScriptErrorHighlightingTest : BaseTest() {
             }
         """)
 
-    fun `test enum custom values`() =
-        assertNoErrors("enum {RED = 1, GREEN = 2, BLUE = 3}")
-
-    fun `test enum named`() =
-        assertNoErrors("enum MyColor {RED, GREEN, BLUE}")
+    fun `test enum multiline with extra comma`() =
+        assertNoErrors("""
+            enum {
+                RED, 
+                BLUE,
+            }
+        """)
 
     fun `test export`() =
         assertNoErrors("export var number")
@@ -276,6 +298,9 @@ class ScriptErrorHighlightingTest : BaseTest() {
 
     fun `test function sync`() =
         assertNoErrors("sync func update_score(add_to_left):")
+
+    fun `test function arguments with extra comma`() =
+        assertNoErrors("func test(a, b,):")
 
     fun `test function default arguments`() {
         assertNoErrors("""func _closed(was_clean = false):""")
