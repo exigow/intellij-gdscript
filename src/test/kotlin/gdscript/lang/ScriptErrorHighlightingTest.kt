@@ -284,7 +284,7 @@ class ScriptErrorHighlightingTest : BaseTest() {
     }
 
     fun `test function default arguments with infer symbol`() =
-        assertNoErrors("func emit(force := false)")
+        assertNoErrors("func emit(force := false):")
 
     fun `test negated condition`() =
         assertNoErrors("if !list.empty():")
