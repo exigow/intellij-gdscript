@@ -11,8 +11,8 @@ object ResourceType : LanguageFileType(ResourceLanguage) {
 
     override fun getName() = "GDScript resource"
 
-    override fun getDefaultExtension() = "cfg"
+    override fun getDefaultExtension() = "tres"
 
-    override fun getDescription() = "GDScript resource file"
+    override fun getDescription() = name
 
 }

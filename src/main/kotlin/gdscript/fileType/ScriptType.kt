@@ -12,6 +12,6 @@ object ScriptType : LanguageFileType(ScriptLanguage) {
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getDescription() = "GDScript source file"
+    override fun getDescription() = name
 
 }

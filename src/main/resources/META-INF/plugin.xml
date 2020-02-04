@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.23.17</version>
+	<version>0.23.18</version>
 	<vendor>Jakub Błach</vendor>
 	<description>Adds support for the Godot GDScript language.</description>
 	<idea-version since-build="192"/>
@@ -20,12 +20,8 @@
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<configurationType implementation="gdscript.run.RunConfigurationType"/>
-		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="Godot GDScript file" language="GDScript"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot" name="Project file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="import" name="Import file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="cfg" name="Configuration file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="tres" name="Resource tree file" language="GDScript resource"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="tscn" name="Scene tree file" language="GDScript resource"/>
+		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="GDScript" language="GDScript"/>
+		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot;import;cfg;tres;tscn" name="GDScript resource" language="GDScript resource"/>
 		<lang.commenter implementationClass="gdscript.lang.commenter.ResourceCommenter" language="GDScript resource"/>
 		<lang.commenter implementationClass="gdscript.lang.commenter.ScriptCommenter" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.lang.parserDefinition.ResourceParserDefinition" language="GDScript resource"/>
