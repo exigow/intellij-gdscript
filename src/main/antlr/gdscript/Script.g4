@@ -2,6 +2,8 @@ grammar Script;
 
 import GeneratedLexer, Core;
 
+@header {package gdscript;}
+
 file: NL* (line ((NL | SEMICOLON)* line)*)? (NL | SEMICOLON)* EOF;
 
 line: var_line

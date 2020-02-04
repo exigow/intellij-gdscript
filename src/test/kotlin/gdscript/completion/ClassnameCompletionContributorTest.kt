@@ -1,8 +1,8 @@
 package gdscript.completion
 
-import gdscript.BaseTest
-import uitlities.lookups
-import uitlities.openScript
+import BaseTest
+import utils.lookups
+import utils.openScript
 
 class ClassnameCompletionContributorTest : BaseTest() {
 

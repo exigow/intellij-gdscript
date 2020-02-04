@@ -8,10 +8,10 @@ import com.intellij.codeInsight.completion.PrioritizedLookupElement
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VirtualFile
+import common.Icons
+import common.PsiElementUtils.isToken
 import gdscript.ScriptLexer.RESOURCE
 import gdscript.completion.utils.FileUtils
-import gdscript.lang.IconCatalog
-import gdscript.lang.psi.PsiElementUtils.isToken
 import javax.swing.Icon
 
 class ImportCompletionContributor : CompletionContributor() {
@@ -52,10 +52,10 @@ class ImportCompletionContributor : CompletionContributor() {
 
     private fun findIcon(extension: String?): Icon =
         when (extension) {
-            "gd" -> IconCatalog.GODOT_FILE
-            "tscn", "tres" -> IconCatalog.RESOURCE_FILE
-            "json" -> IconCatalog.JSON_FILE
-            else -> IconCatalog.ANY_FILE
+            "gd" -> Icons.GDSCRIPT_FILE
+            "tscn", "tres" -> Icons.SCENE_FILE
+            "json" -> Icons.JSON_FILE
+            else -> Icons.ANY_FILE
         }
 
     private fun prioritizeBy(extension: String?): Int =

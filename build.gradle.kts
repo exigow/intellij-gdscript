@@ -44,8 +44,7 @@ tasks {
         arguments = listOf(
             "-no-listener",
             "-no-visitor",
-            "-lib", "src/main/antlr/gdscript",
-            "-package", "gdscript"
+            "-lib", "src/main/antlr/gdscript"
         )
     }
 }

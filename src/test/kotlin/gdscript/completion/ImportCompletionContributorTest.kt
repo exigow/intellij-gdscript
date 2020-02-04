@@ -1,7 +1,10 @@
 package gdscript.completion
 
-import gdscript.BaseTest
-import uitlities.*
+import BaseTest
+import utils.addFile
+import utils.addProjectFile
+import utils.lookups
+import utils.openScript
 
 class ImportCompletionContributorTest : BaseTest() {
 

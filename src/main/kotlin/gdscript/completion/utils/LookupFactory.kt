@@ -6,15 +6,15 @@ import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler.WITH_PA
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import common.Icons.CLASS
+import common.Icons.FUNCTION
+import common.Icons.STATIC_CLASS
+import common.Icons.STATIC_METHOD
+import common.Icons.STATIC_VARIABLE
 import gdscript.completion.sources.Argument
 import gdscript.completion.sources.Class
 import gdscript.completion.sources.Constant
 import gdscript.completion.sources.Method
-import gdscript.lang.IconCatalog.CLASS
-import gdscript.lang.IconCatalog.FUNCTION
-import gdscript.lang.IconCatalog.STATIC_CLASS
-import gdscript.lang.IconCatalog.STATIC_METHOD
-import gdscript.lang.IconCatalog.STATIC_VARIABLE
 
 object LookupFactory {
 

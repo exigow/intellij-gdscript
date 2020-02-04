@@ -4,10 +4,10 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.psi.PsiElement
+import common.PsiElementUtils.hasParent
 import gdscript.ScriptParser.RULE_primary
 import gdscript.completion.sources.CompletionUtils
 import gdscript.completion.utils.LookupFactory
-import gdscript.lang.psi.PsiElementUtils.hasParent
 
 class PrimaryCompletionContributor : CompletionContributor() {
 

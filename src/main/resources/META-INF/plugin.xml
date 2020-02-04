@@ -7,11 +7,11 @@
 	<idea-version since-build="192"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<annotator implementationClass="gdscript.annotator.MethodAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotator.InvalidImportFileAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotator.InvalidImportSeparatorAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotator.ConstantAnnotator" language="GDScript"/>
-		<colorSettingsPage implementation="gdscript.colorSettingsPage.ColorSettingsPage"/>
+		<!-- GDScript -->
+		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.InvalidImportFileAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.InvalidImportSeparatorAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ImportCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
@@ -19,17 +19,17 @@
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
-		<configurationType implementation="gdscript.run.RunConfigurationType"/>
-		<fileType implementationClass="gdscript.fileType.ScriptType" extensions="gd" name="GDScript" language="GDScript"/>
-		<fileType implementationClass="gdscript.fileType.ResourceType" extensions="godot;import;cfg;tres;tscn" name="GDScript resource" language="GDScript resource"/>
-		<lang.commenter implementationClass="gdscript.lang.commenter.ResourceCommenter" language="GDScript resource"/>
-		<lang.commenter implementationClass="gdscript.lang.commenter.ScriptCommenter" language="GDScript"/>
-		<lang.parserDefinition implementationClass="gdscript.lang.parserDefinition.ResourceParserDefinition" language="GDScript resource"/>
-		<lang.parserDefinition implementationClass="gdscript.lang.parserDefinition.ScriptParserDefinition" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ResourceHighlighterFactory" language="GDScript resource"/>
-		<lang.syntaxHighlighterFactory implementationClass="gdscript.lang.syntaxHighlighter.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.braceMatcher implementationClass="gdscript.lang.typing.ScriptBraceMatcher" language="GDScript"/>
-		<lang.quoteHandler implementationClass="gdscript.lang.typing.ScriptQuoteHandler" language="GDScript"/>
-		<runConfigurationProducer implementation="gdscript.run.RunConfigurationProducer"/>
+		<configurationType implementation="gdscript.execution.RunConfigurationType"/>
+		<fileType implementationClass="gdscript.ScriptType" extensions="gd" name="GDScript" language="GDScript"/>
+		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
+		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
+		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
+		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
+		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
+		<runConfigurationProducer implementation="gdscript.execution.RunConfigurationProducer"/>
+		<!-- Scene -->
+		<lang.parserDefinition implementationClass="scene.ResourceParserDefinition" language="GDScript resource"/>
+		<fileType implementationClass="scene.ResourceType" extensions="godot;import;cfg;tres;tscn" name="GDScript resource" language="GDScript resource"/>
+		<lang.syntaxHighlighterFactory implementationClass="scene.ResourceHighlighterFactory" language="GDScript resource"/>
 	</extensions>
 </idea-plugin>
