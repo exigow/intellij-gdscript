@@ -1,6 +1,6 @@
 package gdscript.completion.sources
 
-object CompletionUtils {
+object CompletionDictionary {
 
     val CLASSES =
         CompletionDeserializer.deserialize()

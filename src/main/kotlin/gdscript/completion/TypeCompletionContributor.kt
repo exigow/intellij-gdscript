@@ -5,7 +5,7 @@ import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import common.PsiElementUtils.hasParent
 import gdscript.ScriptParser.RULE_type
-import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 class TypeCompletionContributor : CompletionContributor() {
@@ -18,8 +18,8 @@ class TypeCompletionContributor : CompletionContributor() {
     private companion object {
 
         private val ALL_TYPE_LOOKUPS = listOf(
-            CompletionUtils.PRIMITIVES.map { LookupFactory.createKeyword(it.name) },
-            CompletionUtils.CLASSES.map { LookupFactory.createClass(it) }
+            CompletionDictionary.PRIMITIVES.map { LookupFactory.createKeyword(it.name) },
+            CompletionDictionary.CLASSES.map { LookupFactory.createClass(it) }
         ).flatten()
 
     }

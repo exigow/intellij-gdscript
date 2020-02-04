@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.23.18</version>
+	<version>0.23.19</version>
 	<vendor>Jakub Błach</vendor>
 	<description>Adds support for the Godot GDScript language.</description>
 	<idea-version since-build="192"/>
@@ -12,7 +12,7 @@
 		<annotator implementationClass="gdscript.annotation.InvalidImportFileAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.InvalidImportSeparatorAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.ImportCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
@@ -28,8 +28,8 @@
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
 		<runConfigurationProducer implementation="gdscript.execution.RunConfigurationProducer"/>
 		<!-- Scene -->
-		<lang.parserDefinition implementationClass="scene.ResourceParserDefinition" language="GDScript resource"/>
-		<fileType implementationClass="scene.ResourceType" extensions="godot;import;cfg;tres;tscn" name="GDScript resource" language="GDScript resource"/>
-		<lang.syntaxHighlighterFactory implementationClass="scene.ResourceHighlighterFactory" language="GDScript resource"/>
+		<lang.parserDefinition implementationClass="scene.SceneParserDefinition" language="Scene"/>
+		<fileType implementationClass="scene.SceneType" extensions="godot;import;cfg;tres;tscn" name="Scene" language="Scene"/>
+		<lang.syntaxHighlighterFactory implementationClass="scene.SceneHighlighterFactory" language="Scene"/>
 	</extensions>
 </idea-plugin>

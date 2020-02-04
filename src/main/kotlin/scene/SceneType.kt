@@ -4,11 +4,11 @@ package scene
 import com.intellij.openapi.fileTypes.LanguageFileType
 import common.Icons
 
-object ResourceType : LanguageFileType(ResourceLanguage) {
+object SceneType : LanguageFileType(SceneLanguage) {
 
     override fun getIcon() = Icons.SCENE_FILE
 
-    override fun getName() = "GDScript resource"
+    override fun getName() = "Scene"
 
     override fun getDefaultExtension() = "tres"
 

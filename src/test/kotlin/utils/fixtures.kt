@@ -2,7 +2,7 @@ package utils
 
 import com.intellij.openapi.actionSystem.IdeActions
 import gdscript.ScriptType
-import scene.ResourceType
+import scene.SceneType
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture as Fixture
 
 
@@ -15,7 +15,7 @@ fun Fixture.openScript(content: String) {
 }
 
 fun Fixture.openResource(content: String) {
-    configureByText(ResourceType, content)
+    configureByText(SceneType, content)
 }
 
 fun Fixture.addFile(filename: String) {

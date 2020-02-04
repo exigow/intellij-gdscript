@@ -1,9 +1,9 @@
 package scene
 
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
-import scene.ResourceLexer.*
+import scene.SceneLexer.*
 
-object ResourceTokenSet {
+object SceneTokenSet {
 
     val WHITESPACES = create(WHITESPACE)
     val KEYWORDS = create(KEYWORD)
@@ -14,6 +14,6 @@ object ResourceTokenSet {
     val LINE_COMMENTS = create(LINE_COMMENT)
 
     private fun create(vararg token: Int) =
-        createTokenSet(ResourceLanguage, *token)!!
+        createTokenSet(SceneLanguage, *token)!!
 
 }

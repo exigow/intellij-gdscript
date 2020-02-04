@@ -5,7 +5,7 @@ import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import common.PsiElementUtils.hasParent
 import gdscript.ScriptParser.RULE_invoke
-import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 class InvokeCompletionContributor : CompletionContributor() {
@@ -18,9 +18,9 @@ class InvokeCompletionContributor : CompletionContributor() {
     companion object {
 
         private val ALL_INVOKE_LOOKUPS = listOf(
-            CompletionUtils.FUNCTIONS.map { LookupFactory.createFunction(it) },
-            CompletionUtils.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
-            CompletionUtils.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) }
+            CompletionDictionary.FUNCTIONS.map { LookupFactory.createFunction(it) },
+            CompletionDictionary.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
+            CompletionDictionary.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) }
         ).flatten()
 
     }

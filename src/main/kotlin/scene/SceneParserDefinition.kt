@@ -14,24 +14,24 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
-import scene.ResourceTokenSet.LINE_COMMENTS
-import scene.ResourceTokenSet.STRINGS
-import scene.ResourceTokenSet.WHITESPACES
+import scene.SceneTokenSet.LINE_COMMENTS
+import scene.SceneTokenSet.STRINGS
+import scene.SceneTokenSet.WHITESPACES
 
-class ResourceParserDefinition : ParserDefinition {
+class SceneParserDefinition : ParserDefinition {
 
     init {
         @Suppress("DEPRECATION")
-        PSIElementTypeFactory.defineLanguageIElementTypes(ResourceLanguage, ResourceParser.tokenNames, ResourceParser.ruleNames)
+        PSIElementTypeFactory.defineLanguageIElementTypes(SceneLanguage, SceneParser.tokenNames, SceneParser.ruleNames)
     }
 
     override fun createLexer(project: Project): Lexer =
-        ANTLRLexerAdaptor(ResourceLanguage, ResourceLexer(null))
+        ANTLRLexerAdaptor(SceneLanguage, SceneLexer(null))
 
     override fun createParser(project: Project): PsiParser =
-        object : ANTLRParserAdaptor(ResourceLanguage, ResourceParser(null)) {
+        object : ANTLRParserAdaptor(SceneLanguage, SceneParser(null)) {
             override fun parse(parser: Parser, root: IElementType): ParseTree =
-                (parser as ResourceParser).file()
+                (parser as SceneParser).file()
         }
 
     override fun getWhitespaceTokens() =
@@ -47,14 +47,14 @@ class ResourceParserDefinition : ParserDefinition {
         FILE
 
     override fun createFile(viewProvider: FileViewProvider) =
-        ResourceFile(viewProvider)
+        SceneFile(viewProvider)
 
     override fun createElement(node: ASTNode) =
         ANTLRPsiNode(node)
 
     companion object {
 
-        val FILE = IFileElementType(ResourceLanguage)
+        val FILE = IFileElementType(SceneLanguage)
 
     }
 

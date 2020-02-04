@@ -6,7 +6,7 @@ import utils.addProjectFile
 import utils.lookups
 import utils.openScript
 
-class ImportCompletionContributorTest : BaseTest() {
+class ResourceCompletionContributorTest : BaseTest() {
 
     fun `test complete sibling filename in string`() {
         environment.openScript("""const Util = preload("res://<caret>")""")

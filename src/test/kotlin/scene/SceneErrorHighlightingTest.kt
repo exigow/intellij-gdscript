@@ -3,7 +3,7 @@ package scene
 import BaseTest
 import utils.openResource
 
-class ResourceErrorHighlightingTest : BaseTest() {
+class SceneErrorHighlightingTest : BaseTest() {
 
     fun `test empty file is still valid`() =
         assertValid("")

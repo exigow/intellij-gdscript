@@ -3,14 +3,14 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.*
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.util.ProcessingContext
-import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 
 class KeywordCompletionContributor : CompletionContributor() {
 
     init {
-        extendKeyword("\n", CompletionUtils.STATEMENT_KEYWORDS)
+        extendKeyword("\n", CompletionDictionary.STATEMENT_KEYWORDS)
         extendKeyword("export", listOf("var"))
         extendKeyword("onready", listOf("var"))
         extendKeyword("master", listOf("var", "func"))

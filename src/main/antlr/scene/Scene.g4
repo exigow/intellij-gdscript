@@ -1,4 +1,4 @@
-grammar Resource;
+grammar Scene;
 
 @header {package scene;}
 

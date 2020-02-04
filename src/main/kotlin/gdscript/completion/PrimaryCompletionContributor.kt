@@ -6,7 +6,7 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.psi.PsiElement
 import common.PsiElementUtils.hasParent
 import gdscript.ScriptParser.RULE_primary
-import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 class PrimaryCompletionContributor : CompletionContributor() {
@@ -23,12 +23,12 @@ class PrimaryCompletionContributor : CompletionContributor() {
     private companion object {
 
         val ALL_PRIMARY_LOOKUPS = listOf(
-            CompletionUtils.SINGLETONS.map { LookupFactory.createSingleton(it) },
-            CompletionUtils.LANGUAGE_CONSTANTS.map { LookupFactory.createConstant(it) },
-            CompletionUtils.FUNCTIONS.map { LookupFactory.createFunction(it) },
-            CompletionUtils.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
-            CompletionUtils.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) },
-            CompletionUtils.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
+            CompletionDictionary.SINGLETONS.map { LookupFactory.createSingleton(it) },
+            CompletionDictionary.LANGUAGE_CONSTANTS.map { LookupFactory.createConstant(it) },
+            CompletionDictionary.FUNCTIONS.map { LookupFactory.createFunction(it) },
+            CompletionDictionary.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
+            CompletionDictionary.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) },
+            CompletionDictionary.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
         ).flatten()
 
     }

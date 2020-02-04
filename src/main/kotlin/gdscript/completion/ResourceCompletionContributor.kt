@@ -14,7 +14,7 @@ import gdscript.ScriptLexer.RESOURCE
 import gdscript.completion.utils.FileUtils
 import javax.swing.Icon
 
-class ImportCompletionContributor : CompletionContributor() {
+class ResourceCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position

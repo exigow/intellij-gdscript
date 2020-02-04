@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import gdscript.completion.sources.Class
-import gdscript.completion.sources.CompletionUtils
+import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 class StaticCompletionContributor : CompletionContributor() {
@@ -16,11 +16,11 @@ class StaticCompletionContributor : CompletionContributor() {
         val dot = parameters.position.prevLeaf()
         if (dot?.text == ".") {
             val id = dot.prevLeaf()
-            val clazz = CompletionUtils.findClass(id?.text)
+            val clazz = CompletionDictionary.findClass(id?.text)
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
                 result.caseInsensitive().addAllElements(constants)
-                if (clazz in CompletionUtils.SINGLETONS) {
+                if (clazz in CompletionDictionary.SINGLETONS) {
                     val staticMethods = createStaticMethodLookups(clazz)
                     result.caseInsensitive().addAllElements(staticMethods)
                 }
