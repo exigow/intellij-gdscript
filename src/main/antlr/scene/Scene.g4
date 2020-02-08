@@ -33,7 +33,7 @@ BRACE_RIGHT: '}';
 NL: '\n';
 NUMBER: DIGIT+ (DOT DIGIT+)?;
 RESOURCE: '"res://' .*? '"';
-STRING: '"' .*? ('"' | NL | EOF);
+STRING: '"' .*? ('"' | EOF);
 IDENTIFIER: DIGIT* LETTER (LETTER | DIGIT)*;
 fragment LETTER: 'a'..'z' | 'A'..'Z' | '_';
 fragment DIGIT: '0'..'9';

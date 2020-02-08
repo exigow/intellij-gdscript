@@ -102,6 +102,25 @@ class SceneErrorHighlightingTest : BaseTest() {
     fun `test section attribute string`() =
         assertValid("[sub_resource type=\"AudioEffectAmplify\"]")
 
+    fun `test shader code`() =
+        assertValid("""
+            code = "shader_type canvas_item;
+            uniform vec4 color : hint_color;
+            void fragment() {
+                COLOR = mix(col, outline_color, maxa - mina);
+            }"
+        """)
+
+    fun `test script code`() =
+        assertValid("""
+            script/source = "extends VBoxContainer
+            func _on_Button_button_down():
+                set_process(true)
+            func _on_Button_button_up():
+                set_process(false)
+            "
+        """)
+
     private fun assertValid(code: String) {
         environment.openResource(code)
         environment.checkHighlighting()
