@@ -1,7 +1,7 @@
 package scene
 
 import BaseTest
-import utils.openResource
+import utils.openScene
 
 class SceneErrorHighlightingTest : BaseTest() {
 
@@ -122,7 +122,7 @@ class SceneErrorHighlightingTest : BaseTest() {
         """)
 
     private fun assertValid(code: String) {
-        environment.openResource(code)
+        environment.openScene(code)
         environment.checkHighlighting()
     }
 

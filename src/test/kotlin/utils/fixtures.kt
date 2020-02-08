@@ -14,7 +14,7 @@ fun Fixture.openScript(content: String) {
     configureByText(ScriptType, content)
 }
 
-fun Fixture.openResource(content: String) {
+fun Fixture.openScene(content: String) {
     configureByText(SceneType, content)
 }
 
