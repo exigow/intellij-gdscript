@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.23.21</version>
+	<version>0.23.22</version>
 	<vendor>Jakub Błach</vendor>
 	<description>Adds support for the Godot GDScript language.</description>
 	<idea-version since-build="192"/>
@@ -15,7 +15,7 @@
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.KeywordContinuationCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>

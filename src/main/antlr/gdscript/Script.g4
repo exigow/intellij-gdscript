@@ -4,7 +4,7 @@ import GeneratedLexer, Core;
 
 @header {package gdscript;}
 
-file: NL* (line ((NL | SEMICOLON)* line)*)? (NL | SEMICOLON)* EOF;
+file: WHITESPACE* (line ((WHITESPACE | SEMICOLON)* line)*)? (WHITESPACE | SEMICOLON)* EOF;
 
 line: var_line
     | const_line
@@ -32,8 +32,8 @@ var_line: SYNC? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? V
 const_line: CONST IDENTIFIER (COLON type)? EQUALS expression;
 func_line: (STATIC | SYNC)? FUNC IDENTIFIER PARENTHES_OPEN func_argument? (COMMA func_argument)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
 func_argument: IDENTIFIER (COLON type)? (EQUALS expression)?;
-enum_line: ENUM IDENTIFIER? BRACE_OPEN NL* enum_argument (COMMA NL* enum_argument)* COMMA? NL* BRACE_CLOSE;
-enum_argument: IDENTIFIER (EQUALS expression)? NL*;
+enum_line: ENUM IDENTIFIER? BRACE_OPEN WHITESPACE* enum_argument (COMMA WHITESPACE* enum_argument)* COMMA? WHITESPACE* BRACE_CLOSE;
+enum_argument: IDENTIFIER (EQUALS expression)? WHITESPACE*;
 signal_line: SIGNAL IDENTIFIER (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
 extends_line: EXTENDS (type | string) (DOT type)*;
 class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
@@ -55,11 +55,11 @@ operator_expression: (EQUALS | MINUS | OPERATOR | IS_AS_IN_AND_OR | IF | ELSE) p
 
 primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE_FALSE_SELF_NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
 array: BRACKET_OPEN arguments BRACKET_CLOSE;
-dictionary: BRACE_OPEN NL* entry? (COMMA NL* entry)* COMMA? NL* BRACE_CLOSE;
-entry: expression (COLON | EQUALS) expression NL*;
+dictionary: BRACE_OPEN WHITESPACE* entry? (COMMA WHITESPACE* entry)* COMMA? WHITESPACE* BRACE_CLOSE;
+entry: expression (COLON | EQUALS) expression WHITESPACE*;
 invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID) PARENTHES_OPEN arguments PARENTHES_CLOSE;
 in_braces: PARENTHES_OPEN expression PARENTHES_CLOSE;
-arguments: NL* expression? NL* (COMMA NL* expression)* COMMA? NL*;
+arguments: WHITESPACE* expression? WHITESPACE* (COMMA WHITESPACE* expression)* COMMA? WHITESPACE*;
 type: IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID;
 string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
 
@@ -69,7 +69,6 @@ USER_RESOURCE: '"user://' .*? '"';
 STRING_MULTILINE: '"""' .*? '"""';
 STRING_DOUBLE_QUOTE: '"' .*? ('"' | '\n' | EOF);
 STRING_APHOSTROPHE: '\'' .*? ('\'' | '\n' | EOF);
-NL: '\n';
 SYNC: 'remote' | 'puppet' | 'master' | 'sync' | 'remotesync' | 'mastersync' | 'puppetsync';
 MATCH: 'match';
 EXPORT: 'export';

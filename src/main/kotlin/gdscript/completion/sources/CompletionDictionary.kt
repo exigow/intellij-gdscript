@@ -18,8 +18,6 @@ object CompletionDictionary {
         toConstructors(PRIMITIVES)
     val VARIABLE_KEYWORDS =
         listOf("self", "true", "false", "null")
-    val STATEMENT_KEYWORDS =
-        listOf("remote", "sync", "var", "const", "func", "for", "while", "class", "extends", "class_name", "enum", "if", "elif", "else", "return", "signal", "export", "static", "puppet", "master", "match", "tool", "pass", "break", "continue")
 
     fun findClass(name: String?) =
         CLASSES.find { it.name == name }
