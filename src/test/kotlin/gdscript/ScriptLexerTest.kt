@@ -27,15 +27,15 @@ class ScriptLexerTest : TestCase() {
         assertHasToken("x = preload(1)", Token(FUNCTION_IDENTIFIER, "preload"))
 
     fun `test primitive constructor`() =
-        assertHasToken("number = float(other)", Token(FLOAT, "float"))
+        assertHasToken("number = float(other)", Token(BOOL_INT_FLOAT_VOID, "float"))
 
     fun `test primitive void type`() =
-        assertHasToken("var x: void", Token(VOID, "void"))
+        assertHasToken("var x: void", Token(BOOL_INT_FLOAT_VOID, "void"))
 
     fun `test is operator`() =
-        assertHasToken("a is b", Token(IS, "is"))
+        assertHasToken("a is b", Token(IS_AS_IN_AND_OR, "is"))
 
-    fun `test language constant`() =
+    fun `test language constant global`() =
         assertHasToken("x = BUTTON_LEFT", Token(CONSTANT_IDENTIFIER, "BUTTON_LEFT"))
 
     fun `test resource`() =

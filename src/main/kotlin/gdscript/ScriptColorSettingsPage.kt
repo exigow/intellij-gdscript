@@ -4,74 +4,49 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import common.Colors
-import common.Colors.*
 import common.Icons
+import net.pearx.kasechange.toTitleCase
 
 class ScriptColorSettingsPage : ColorSettingsPage {
 
-    override fun getDisplayName() = ScriptLanguage.displayName
+    override fun getDisplayName() =
+        ScriptLanguage.displayName
 
-    override fun getIcon() = Icons.GDSCRIPT_FILE
+    override fun getIcon() =
+        Icons.GDSCRIPT_FILE
 
-    override fun getHighlighter() = ScriptHighlighter()
+    override fun getHighlighter() =
+        ScriptHighlighter()
 
-    override fun getAttributeDescriptors() = mapOf(
-        LINE_COMMENT to "Line comment",
-        STRING to "String text",
-        NUMBER to "Number",
-        KEYWORD to "Keyword",
-        IDENTIFIER to group(IDENTIFIERS, "Identifier"),
-        NODE to group(IDENTIFIERS, "Node path"),
-        OPERATION_SIGN to group(OPERATORS, "Operation sign"),
-        COMMA to group(OPERATORS, "Comma"),
-        SEMICOLON to group(OPERATORS, "Semicolon"),
-        COLON to group(OPERATORS, "Colon"),
-        ARROW to group(OPERATORS, "Arrow"),
-        DOT to group(OPERATORS, "Dot"),
-        BRACES to group(OPERATORS, "Braces"),
-        PARENTHESES to group(OPERATORS, "Parentheses"),
-        BRACKETS to group(OPERATORS, "Brackets"),
-        STATIC_METHOD to group(CLASSES, "Static method"),
-        INSTANCE_METHOD to group(CLASSES, "Instance method"),
-        INSTANCE_FIELD to group(CLASSES, "Instance field"),
-        CLASS_NAME to group(CLASSES, "Class name"),
-        CONSTANT to group(IDENTIFIERS, "Constant"),
-        RESOURCE to "Resource text")
-        .map { (color, label) -> AttributesDescriptor(label, color.key) }
-        .toTypedArray()
+    override fun getAttributeDescriptors() =
+        Colors.values()
+            .map { AttributesDescriptor(it.name.toTitleCase(), it.key) }
+            .toTypedArray()
 
-    override fun getColorDescriptors() = emptyArray<ColorDescriptor>()
+    override fun getColorDescriptors() =
+        emptyArray<ColorDescriptor>()
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() = Colors.keys()
-        .filter { it.externalName in DEMO_TEXT }
-        .map { it.externalName to it }
-        .toMap()
+    override fun getAdditionalHighlightingTagToDescriptorMap() =
+        Colors.values()
+            .map { it.key }
+            .filter { it.externalName in DEMO_TEXT }
+            .map { it.toString() to it }
+            .toMap()
 
     override fun getDemoText() =
         DEMO_TEXT
 
-    private fun group(vararg elements: String) =
-        elements.joinToString("//")
-
     companion object {
 
-        const val OPERATORS = "Braces and operators"
-        const val CLASSES = "Classes"
-        const val IDENTIFIERS = "Identifiers"
         val DEMO_TEXT = """
-            class_name <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME>
-            extends <GDSCRIPT_CLASS_NAME>Node</GDSCRIPT_CLASS_NAME>
-            const MyScript = preload("res://scripts/MyScript.gd")
-            enum MyEnum { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = -1 }
-            export(<GDSCRIPT_CLASS_NAME>String</GDSCRIPT_CLASS_NAME>) var my_field
-            func <GDSCRIPT_INSTANCE_METHOD>_init</GDSCRIPT_INSTANCE_METHOD>(): # line comment
-                print("My text");
-                if Input.is_action_pressed("my_action"):
-                    ${'$'}Path/To/MyNode.<GDSCRIPT_INSTANCE_FIELD>my_field</GDSCRIPT_INSTANCE_FIELD> = {"one": 1, "two": 2}
-                    my_field += <GDSCRIPT_CONSTANT>MY_CONSTANT</GDSCRIPT_CONSTANT>
-            
-            static func <GDSCRIPT_STATIC_METHOD>my_function</GDSCRIPT_STATIC_METHOD>(my_param: <GDSCRIPT_CLASS_NAME>MyClass</GDSCRIPT_CLASS_NAME> = null) -> bool
-                return true
+            extends Node
+            const Scene = preload("res://scene.tscn")
+            const <GDSCRIPT_CONSTANT>MAX_HP</GDSCRIPT_CONSTANT> = 100.0
+            var hp: float # comment
+            enum Named { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = "text" } 
+            func <GDSCRIPT_INSTANCE_METHOD>get_key</GDSCRIPT_INSTANCE_METHOD>(arg: Vector2 = Vector2.<GDSCRIPT_CONSTANT>ZERO</GDSCRIPT_CONSTANT>) -> int:
+                ${'$'}Some/Node.items[4] *= 2;
+                return KEY_SPACE
             """.trimIndent()
 
     }

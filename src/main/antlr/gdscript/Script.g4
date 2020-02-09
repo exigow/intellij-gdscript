@@ -22,19 +22,19 @@ line: var_line
     | return_line
     | label_line
     | else_line
-    | pass_line
-    | break_line
-    | continue_line
-    | tool_line
+    | PASS
+    | BREAK
+    | CONTINUE
+    | TOOL
     | expression;
 
-var_line: (PUPPET | MASTER)? (EXPORT (PARENTHES_LEFT arguments PARENTHES_RIGHT)?)? ONREADY? VAR IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
-const_line: CONST IDENTIFIER (COLON type)? (EQUALS | INFER) expression;
-func_line: (STATIC | PUPPET | MASTER | SYNC | REMOTE)? FUNC IDENTIFIER PARENTHES_LEFT func_argument? (COMMA func_argument)* COMMA? PARENTHES_RIGHT (ARROW type)? COLON;
-func_argument: IDENTIFIER (COLON type)? ((EQUALS | INFER) expression)?;
-enum_line: ENUM IDENTIFIER? BRACE_LEFT NL* enum_argument (COMMA NL* enum_argument)* COMMA? NL* BRACE_RIGHT;
+var_line: SYNC? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR IDENTIFIER (COLON type)? (EQUALS expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+const_line: CONST IDENTIFIER (COLON type)? EQUALS expression;
+func_line: (STATIC | SYNC)? FUNC IDENTIFIER PARENTHES_OPEN func_argument? (COMMA func_argument)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
+func_argument: IDENTIFIER (COLON type)? (EQUALS expression)?;
+enum_line: ENUM IDENTIFIER? BRACE_OPEN NL* enum_argument (COMMA NL* enum_argument)* COMMA? NL* BRACE_CLOSE;
 enum_argument: IDENTIFIER (EQUALS expression)? NL*;
-signal_line: SIGNAL IDENTIFIER (PARENTHES_LEFT arguments PARENTHES_RIGHT)?;
+signal_line: SIGNAL IDENTIFIER (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
 extends_line: EXTENDS (type | string) (DOT type)*;
 class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
 class_name_line: CLASS_NAME IDENTIFIER;
@@ -46,27 +46,21 @@ match_line: MATCH expression COLON;
 return_line: RETURN expression?;
 label_line: expression COLON;
 else_line: ELSE COLON;
-pass_line: PASS;
-break_line: BREAK;
-continue_line: CONTINUE;
-tool_line: TOOL;
 
-expression: primary (instance_field_expression | instance_method_expression | type_operator_expression | subscribe_expression | operator_expression)*;
+expression: primary (instance_field_expression | instance_method_expression | subscribe_expression | operator_expression)*;
 instance_field_expression: DOT IDENTIFIER;
 instance_method_expression: DOT invoke;
-type_operator_expression: (AS | IS) primary;
-subscribe_expression: BRACKET_LEFT expression BRACKET_RIGHT;
-operator_expression: (EQUALS | INFER | ASSIGN | MINUS | OTHER_OPERATORS | SLASH | COMPARE | AND | OR | IN | IF | ELSE) primary;
+subscribe_expression: BRACKET_OPEN expression BRACKET_CLOSE;
+operator_expression: (EQUALS | MINUS | OPERATOR | IS_AS_IN_AND_OR | IF | ELSE) primary;
 
-primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE | FALSE | SELF | NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
-array: BRACKET_LEFT arguments BRACKET_RIGHT;
-dictionary: BRACE_LEFT NL* entry? (COMMA NL* entry)* COMMA? NL* BRACE_RIGHT;
+primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE_FALSE_SELF_NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
+array: BRACKET_OPEN arguments BRACKET_CLOSE;
+dictionary: BRACE_OPEN NL* entry? (COMMA NL* entry)* COMMA? NL* BRACE_CLOSE;
 entry: expression (COLON | EQUALS) expression NL*;
-invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | primitive) PARENTHES_LEFT arguments PARENTHES_RIGHT;
-in_braces: PARENTHES_LEFT expression PARENTHES_RIGHT;
+invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID) PARENTHES_OPEN arguments PARENTHES_CLOSE;
+in_braces: PARENTHES_OPEN expression PARENTHES_CLOSE;
 arguments: NL* expression? NL* (COMMA NL* expression)* COMMA? NL*;
-type: IDENTIFIER | CLASS_IDENTIFIER | primitive;
-primitive: BOOL | INT | FLOAT | VOID;
+type: IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID;
 string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
 
 NUMBER: [+-]?([0-9]+([.][0-9]*)?|[.][0-9]+);
@@ -76,13 +70,7 @@ STRING_MULTILINE: '"""' .*? '"""';
 STRING_DOUBLE_QUOTE: '"' .*? ('"' | '\n' | EOF);
 STRING_APHOSTROPHE: '\'' .*? ('\'' | '\n' | EOF);
 NL: '\n';
-REMOTE: 'remote';
-PUPPET: 'puppet';
-MASTER: 'master';
-SYNC: 'sync';
-REMOTESYNC: 'remotesync';
-MASTERSYNC: 'mastersync';
-PUPPETSYNC: 'puppetsync';
+SYNC: 'remote' | 'puppet' | 'master' | 'sync' | 'remotesync' | 'mastersync' | 'puppetsync';
 MATCH: 'match';
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -107,37 +95,23 @@ SIGNAL: 'signal';
 BREAK: 'break';
 CONTINUE: 'continue';
 NOT: 'not';
-AND: 'and';
-OR: 'or';
-IN: 'in';
-IS: 'is';
-AS: 'as';
-SELF: 'self';
-NULL: 'null';
-TRUE: 'true';
-FALSE: 'false';
-BOOL: 'bool';
-INT: 'int';
-FLOAT: 'float';
-VOID: 'void';
-EQUALS: '=';
-MINUS: '-';
+IS_AS_IN_AND_OR: 'is' | 'as' | 'in' | 'and' | 'or';
+TRUE_FALSE_SELF_NULL: 'true' | 'false' | 'self' | 'null';
+BOOL_INT_FLOAT_VOID: 'bool' | 'int' | 'float' | 'void';
+EQUALS: '=' | ':=';
 SEMICOLON: ';';
-SLASH: '/';
 COLON: ':';
 COMMA: ',';
 DOT: '.';
-PARENTHES_LEFT: '(';
-PARENTHES_RIGHT: ')';
-BRACKET_LEFT: '[';
-BRACKET_RIGHT: ']';
-BRACE_LEFT: '{';
-BRACE_RIGHT: '}';
-ASSIGN: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
-INFER: ':=';
+PARENTHES_OPEN: '(';
+PARENTHES_CLOSE: ')';
+BRACKET_OPEN: '[';
+BRACKET_CLOSE: ']';
+BRACE_OPEN: '{';
+BRACE_CLOSE: '}';
 ARROW: '->';
-OTHER_OPERATORS: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||';
-COMPARE: '<' | '>' | '==' | '!=' | '>=' | '<=';
+OPERATOR: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||' | '/' | '<' | '>' | '==' | '!=' | '>=' | '<=' | '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=';
+MINUS: '-';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
-NODE: '$' ((IDENTIFIER (SLASH IDENTIFIER)*) | STRING_DOUBLE_QUOTE);
+NODE: '$' ((IDENTIFIER ('/' IDENTIFIER)*) | STRING_DOUBLE_QUOTE);

@@ -24,6 +24,7 @@ class InvalidImportFileAnnotator : Annotator {
 
     private fun collectProjectFilenames(element: PsiElement): Set<String> {
         val projectDirectory = element.containingFile.virtualFile.parent
+            ?: return emptySet()
         return FileUtils.collectPathsToProjectFiles(projectDirectory).keys
     }
 
