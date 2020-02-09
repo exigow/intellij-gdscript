@@ -5,3 +5,4 @@ build/
 todo.txt
 gradle.properties
 src/main/gen/
+*.tokens
