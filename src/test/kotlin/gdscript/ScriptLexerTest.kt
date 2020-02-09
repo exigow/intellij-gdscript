@@ -29,6 +29,9 @@ class ScriptLexerTest : TestCase() {
     fun `test primitive constructor`() =
         assertHasToken("number = float(other)", Token(BOOL_INT_FLOAT_VOID, "float"))
 
+    fun `test number with minus`() =
+        assertHasToken("x = -42.0", Token(NUMBER, "-42.0"))
+
     fun `test primitive void type`() =
         assertHasToken("var x: void", Token(BOOL_INT_FLOAT_VOID, "void"))
 
@@ -52,6 +55,9 @@ class ScriptLexerTest : TestCase() {
 
     fun `test class in extends statement`() =
         assertHasToken("extends Node", Token(CLASS_IDENTIFIER, "Node"))
+
+    fun `test class OS with constant style`() =
+        assertHasToken("extends OS", Token(CLASS_IDENTIFIER, "OS"))
 
     fun `test custom class is identifier`() =
         assertHasToken("var x: MyClass", Token(IDENTIFIER, "MyClass"))
