@@ -3,8 +3,9 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.psi.PsiElement
 import common.PsiElementUtils.hasParent
+import common.PsiElementUtils.isToken
+import gdscript.ScriptLexer.NUMBER
 import gdscript.ScriptParser.RULE_primary
 import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
@@ -13,12 +14,14 @@ class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (element.hasParent(RULE_primary) && hasNotDigitPrefix(element))
+        if (element.hasParent(RULE_primary) && hasNotDigitPrefix(parameters))
             result.addAllElements(ALL_PRIMARY_LOOKUPS)
     }
 
-    private fun hasNotDigitPrefix(element: PsiElement) =
-        !element.text.first().isDigit()
+    private fun hasNotDigitPrefix(parameters: CompletionParameters): Boolean {
+        val elementBeforeOffset = parameters.position.containingFile.findElementAt(parameters.offset - 1)!!
+        return !elementBeforeOffset.isToken(NUMBER)
+    }
 
     private companion object {
 
