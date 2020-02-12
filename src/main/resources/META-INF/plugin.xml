@@ -3,7 +3,14 @@
 	<name>GDScript</name>
 	<version>0.23.23</version>
 	<vendor>Jakub Błach</vendor>
-	<description>Adds support for the Godot GDScript language.</description>
+	<description><![CDATA[
+		<p>Adds support for Godot Engine and GDScript language.</p>
+		</br>
+	  	<p>
+	  		<img src="https://i.imgur.com/WLLXkf4m.png" alt="Screenshot"/>
+		</p>
+	]]>
+	</description>
 	<idea-version since-build="192"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
