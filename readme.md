@@ -27,5 +27,5 @@ Plugin works with **all** IntelliJ-based IDEs starting from v2019.2.
 * `./gradlew generateGrammarSource` - generate ANTLR lexer and parser Java class.
 * `./gradlew generateCompletion` - update Godot Engine API completion file.
 * `./gradlew generateLexer` - update ANTLR lexer rules with language-level functions, constants and types.
-* `./gradlew downloadDocumentation` - scrape & download documentation XML files from Godot Engine GitHub repository.
+* `./gradlew downloadDocumentation` - scrape & download documentation XML files from Godot Engine GitHub repository (used for completion).
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository. Requires [token](https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html) located in `gradle.properties`.
