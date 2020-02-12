@@ -19,9 +19,9 @@ class TypeCompletionContributorTest : BaseTest() {
     }
 
     fun `test class type completion after "as" operator`() {
-        environment.openScript("p as Vec<caret>")
+        environment.openScript("anim as Animation<caret>")
         environment.completeBasic()
-        assertContainsElements(environment.lookups(), "Vector2")
+        assertContainsElements(environment.lookups(), "AnimationPlayer")
     }
 
     fun `test class type completion after "is" operator`() {

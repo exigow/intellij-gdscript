@@ -44,11 +44,12 @@ returnLine: RETURN expression?;
 labelLine: expression COLON;
 elseLine: ELSE COLON;
 
-expression: primary (instanceField | instanceMethod | subscribe | operator)*;
+expression: primary (subscribe | instanceField | instanceMethod | operator | castOperator)*;
+subscribe: BRACKET_OPEN expression BRACKET_CLOSE;
 instanceField: DOT IDENTIFIER;
 instanceMethod: DOT invoke;
-subscribe: BRACKET_OPEN expression BRACKET_CLOSE;
 operator: (EQUALS | MINUS | OPERATOR | KEYWORD_OPERATOR | IF | ELSE) primary;
+castOperator: CAST_OPERATOR type;
 
 primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | KEYWORD_VALUE | NUMBER | string | array | dictionary | invoke | inBraces | type);
 array: BRACKET_OPEN arguments BRACKET_CLOSE;
@@ -87,7 +88,8 @@ RETURN: 'return';
 SIGNAL: 'signal';
 NOT: 'not';
 KEYWORD_FLOW: 'pass' | 'break' | 'continue' | 'tool';
-KEYWORD_OPERATOR: 'is' | 'as' | 'in' | 'and' | 'or';
+KEYWORD_OPERATOR: 'in' | 'and' | 'or';
+CAST_OPERATOR: 'is' | 'as';
 KEYWORD_VALUE: 'true' | 'false' | 'self' | 'null';
 PRIMITIVE: 'bool' | 'int' | 'float' | 'void';
 EQUALS: '=' | ':=';

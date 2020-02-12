@@ -35,8 +35,11 @@ class ScriptLexerTest : TestCase() {
     fun `test primitive void type`() =
         assertHasToken("var x: void", Token(PRIMITIVE, "void"))
 
-    fun `test is operator`() =
-        assertHasToken("a is b", Token(KEYWORD_OPERATOR, "is"))
+    fun `test as operator`() =
+        assertHasToken("a as Vector2", Token(CAST_OPERATOR, "as"))
+
+    fun `test in content check operator`() =
+        assertHasToken("for x in y:", Token(KEYWORD_OPERATOR, "in"))
 
     fun `test language constant global`() =
         assertHasToken("x = BUTTON_LEFT", Token(CONSTANT_IDENTIFIER, "BUTTON_LEFT"))

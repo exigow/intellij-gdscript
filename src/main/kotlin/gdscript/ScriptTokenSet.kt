@@ -27,6 +27,7 @@ object ScriptTokenSet {
         RETURN,
         SIGNAL,
         NOT,
+        CAST_OPERATOR,
         KEYWORD_OPERATOR,
         KEYWORD_VALUE,
         KEYWORD_FLOW,
