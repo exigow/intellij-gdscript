@@ -5,10 +5,34 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory.createTokenSet
 
 object ScriptTokenSet {
 
-    val KEYWORDS = create(SYNC, MATCH, EXPORT, ONREADY, VAR, SETGET, CONST,
-        STATIC, FUNC, FOR, WHILE, CLASS, EXTENDS, CLASS_NAME, ENUM, IF, ELIF,
-        ELSE, RETURN, PASS, TOOL, SIGNAL, BREAK, CONTINUE, NOT, IS_AS_IN_AND_OR,
-        TRUE_FALSE_SELF_NULL, BOOL_INT_FLOAT_VOID, FUNCTION_IDENTIFIER)
+    val KEYWORDS = create(
+        IF,
+        ELIF,
+        ELSE,
+        NETWORK_MODIFIER,
+        MATCH,
+        EXPORT,
+        ONREADY,
+        VAR,
+        SETGET,
+        CONST,
+        STATIC,
+        FUNC,
+        FOR,
+        WHILE,
+        CLASS,
+        EXTENDS,
+        CLASS_NAME,
+        ENUM,
+        RETURN,
+        SIGNAL,
+        NOT,
+        KEYWORD_OPERATOR,
+        KEYWORD_VALUE,
+        KEYWORD_FLOW,
+        PRIMITIVE,
+        FUNCTION_IDENTIFIER
+    )
     val WHITESPACES = create(WHITESPACE)
     val LINE_COMMENTS = create(LINE_COMMENT)
     val IDENTIFIERS = create(IDENTIFIER)
@@ -18,7 +42,7 @@ object ScriptTokenSet {
     val COLONS = create(COLON)
     val DOTS = create(DOT)
     val NUMBERS = create(NUMBER)
-    val STRINGS = create(STRING_DOUBLE_QUOTE, STRING_APHOSTROPHE, STRING_MULTILINE)
+    val STRINGS = create(STRING)
     val RESOURCES = create(RESOURCE, USER_RESOURCE)
     val CONSTANTS = create(CONSTANT_IDENTIFIER)
     val CLASSES = create(CLASS_IDENTIFIER)

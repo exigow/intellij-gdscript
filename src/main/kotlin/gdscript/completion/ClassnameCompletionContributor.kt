@@ -7,7 +7,7 @@ import com.intellij.codeInsight.lookup.LookupElement
 import common.PsiElementUtils.hasParent
 import common.PsiElementUtils.isToken
 import gdscript.ScriptParser.IDENTIFIER
-import gdscript.ScriptParser.RULE_class_name_line
+import gdscript.ScriptParser.RULE_classnameLine
 import gdscript.completion.utils.LookupFactory
 import net.pearx.kasechange.toPascalCase
 
@@ -15,7 +15,7 @@ class ClassnameCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (element.hasParent(RULE_class_name_line) && element.isToken(IDENTIFIER)) {
+        if (element.hasParent(RULE_classnameLine) && element.isToken(IDENTIFIER)) {
             val lookup = createLookupFromFile(parameters)
             result.caseInsensitive().addElement(lookup)
         }

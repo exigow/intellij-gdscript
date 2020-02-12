@@ -6,70 +6,66 @@ import GeneratedLexer, Core;
 
 file: WHITESPACE* (line ((WHITESPACE | SEMICOLON)* line)*)? (WHITESPACE | SEMICOLON)* EOF;
 
-line: var_line
-    | const_line
-    | func_line
-    | enum_line
-    | signal_line
-    | extends_line
-    | class_line
-    | class_name_line
-    | while_line
-    | for_line
-    | if_line
-    | elif_line
-    | match_line
-    | return_line
-    | label_line
-    | else_line
-    | PASS
-    | BREAK
-    | CONTINUE
-    | TOOL
+line: varLine
+    | constLine
+    | funcLine
+    | enumLine
+    | signalLine
+    | extendsLine
+    | classLine
+    | classnameLine
+    | whileLine
+    | forLine
+    | ifLine
+    | elifLine
+    | matchLine
+    | returnLine
+    | labelLine
+    | elseLine
+    | KEYWORD_FLOW
     | expression;
 
-var_line: SYNC? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR IDENTIFIER (COLON type)? (EQUALS expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
-const_line: CONST IDENTIFIER (COLON type)? EQUALS expression;
-func_line: (STATIC | SYNC)? FUNC IDENTIFIER PARENTHES_OPEN func_argument? (COMMA func_argument)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
-func_argument: IDENTIFIER (COLON type)? (EQUALS expression)?;
-enum_line: ENUM IDENTIFIER? BRACE_OPEN WHITESPACE* enum_argument (COMMA WHITESPACE* enum_argument)* COMMA? WHITESPACE* BRACE_CLOSE;
-enum_argument: IDENTIFIER (EQUALS expression)? WHITESPACE*;
-signal_line: SIGNAL IDENTIFIER (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
-extends_line: EXTENDS (type | string) (DOT type)*;
-class_line: CLASS IDENTIFIER (EXTENDS type)? COLON;
-class_name_line: CLASS_NAME IDENTIFIER;
-while_line: WHILE expression COLON;
-for_line: FOR expression COLON;
-if_line: IF expression COLON;
-elif_line: ELIF expression COLON;
-match_line: MATCH expression COLON;
-return_line: RETURN expression?;
-label_line: expression COLON;
-else_line: ELSE COLON;
+varLine: NETWORK_MODIFIER? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR IDENTIFIER (COLON type)? (EQUALS expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
+constLine: CONST IDENTIFIER (COLON type)? EQUALS expression;
+funcLine: NETWORK_MODIFIER? STATIC? FUNC IDENTIFIER PARENTHES_OPEN funcArg? (COMMA funcArg)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
+funcArg: IDENTIFIER (COLON type)? (EQUALS expression)?;
+enumLine: ENUM IDENTIFIER? BRACE_OPEN WHITESPACE* enumArg (COMMA WHITESPACE* enumArg)* COMMA? WHITESPACE* BRACE_CLOSE;
+enumArg: IDENTIFIER (EQUALS expression)? WHITESPACE*;
+signalLine: SIGNAL IDENTIFIER (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
+extendsLine: EXTENDS (type | string) (DOT type)*;
+classLine: CLASS IDENTIFIER (EXTENDS type)? COLON;
+classnameLine: CLASS_NAME IDENTIFIER;
+whileLine: WHILE expression COLON;
+forLine: FOR expression COLON;
+ifLine: IF expression COLON;
+elifLine: ELIF expression COLON;
+matchLine: MATCH expression COLON;
+returnLine: RETURN expression?;
+labelLine: expression COLON;
+elseLine: ELSE COLON;
 
-expression: primary (instance_field_expression | instance_method_expression | subscribe_expression | operator_expression)*;
-instance_field_expression: DOT IDENTIFIER;
-instance_method_expression: DOT invoke;
-subscribe_expression: BRACKET_OPEN expression BRACKET_CLOSE;
-operator_expression: (EQUALS | MINUS | OPERATOR | IS_AS_IN_AND_OR | IF | ELSE) primary;
+expression: primary (instanceField | instanceMethod | subscribe | operator)*;
+instanceField: DOT IDENTIFIER;
+instanceMethod: DOT invoke;
+subscribe: BRACKET_OPEN expression BRACKET_CLOSE;
+operator: (EQUALS | MINUS | OPERATOR | KEYWORD_OPERATOR | IF | ELSE) primary;
 
-primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | TRUE_FALSE_SELF_NULL | NUMBER | string | array | dictionary | invoke | in_braces | type);
+primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | KEYWORD_VALUE | NUMBER | string | array | dictionary | invoke | inBraces | type);
 array: BRACKET_OPEN arguments BRACKET_CLOSE;
 dictionary: BRACE_OPEN WHITESPACE* entry? (COMMA WHITESPACE* entry)* COMMA? WHITESPACE* BRACE_CLOSE;
 entry: expression (COLON | EQUALS) expression WHITESPACE*;
-invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID) PARENTHES_OPEN arguments PARENTHES_CLOSE;
-in_braces: PARENTHES_OPEN expression PARENTHES_CLOSE;
+invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE) PARENTHES_OPEN arguments PARENTHES_CLOSE;
+inBraces: PARENTHES_OPEN expression PARENTHES_CLOSE;
 arguments: WHITESPACE* expression? WHITESPACE* (COMMA WHITESPACE* expression)* COMMA? WHITESPACE*;
-type: IDENTIFIER | CLASS_IDENTIFIER | BOOL_INT_FLOAT_VOID;
-string: STRING_MULTILINE | STRING_DOUBLE_QUOTE | STRING_APHOSTROPHE | RESOURCE | USER_RESOURCE;
+type: IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE;
+string: STRING | RESOURCE | USER_RESOURCE;
 
 NUMBER: [+-]?([0-9]+([.][0-9]*)?|[.][0-9]+);
 RESOURCE: '"res://' .*? '"';
 USER_RESOURCE: '"user://' .*? '"';
-STRING_MULTILINE: '"""' .*? '"""';
-STRING_DOUBLE_QUOTE: '"' .*? ('"' | '\n' | EOF);
-STRING_APHOSTROPHE: '\'' .*? ('\'' | '\n' | EOF);
-SYNC: 'remote' | 'puppet' | 'master' | 'sync' | 'remotesync' | 'mastersync' | 'puppetsync';
+STRING: ('"""' .*? '"""') | ('"' .*? ('"' | '\n' | EOF)) | ('\'' .*? ('\'' | '\n' | EOF));
+NODE: '$' ((IDENTIFIER ('/' IDENTIFIER)*) | STRING);
+NETWORK_MODIFIER: 'remote' | 'puppet' | 'master' | 'sync' | 'remotesync' | 'mastersync' | 'puppetsync';
 MATCH: 'match';
 EXPORT: 'export';
 ONREADY: 'onready';
@@ -88,15 +84,12 @@ IF: 'if';
 ELIF: 'elif';
 ELSE: 'else';
 RETURN: 'return';
-PASS: 'pass';
-TOOL: 'tool';
 SIGNAL: 'signal';
-BREAK: 'break';
-CONTINUE: 'continue';
 NOT: 'not';
-IS_AS_IN_AND_OR: 'is' | 'as' | 'in' | 'and' | 'or';
-TRUE_FALSE_SELF_NULL: 'true' | 'false' | 'self' | 'null';
-BOOL_INT_FLOAT_VOID: 'bool' | 'int' | 'float' | 'void';
+KEYWORD_FLOW: 'pass' | 'break' | 'continue' | 'tool';
+KEYWORD_OPERATOR: 'is' | 'as' | 'in' | 'and' | 'or';
+KEYWORD_VALUE: 'true' | 'false' | 'self' | 'null';
+PRIMITIVE: 'bool' | 'int' | 'float' | 'void';
 EQUALS: '=' | ':=';
 SEMICOLON: ';';
 COLON: ':';
@@ -113,4 +106,3 @@ OPERATOR: '+' | '*' | '%' | '<<' | '>>' | '&' | '^' | '|' | '&&' | '||' | '/' | 
 MINUS: '-';
 NOT_BITWISE: '~';
 NOT_BOOLEAN: '!';
-NODE: '$' ((IDENTIFIER ('/' IDENTIFIER)*) | STRING_DOUBLE_QUOTE);

@@ -15,10 +15,10 @@ class ScriptLexerTest : TestCase() {
         assertHasToken("class_name Test", Token(CLASS_NAME, "class_name"))
 
     fun `test string`() =
-        assertHasToken("x = \"text\"", Token(STRING_DOUBLE_QUOTE, "\"text\""))
+        assertHasToken("x = \"text\"", Token(STRING, "\"text\""))
 
     fun `test string apostrophe`() =
-        assertHasToken("x = 'text'", Token(STRING_APHOSTROPHE, "'text'"))
+        assertHasToken("x = 'text'", Token(STRING, "'text'"))
 
     fun `test identifier`() =
         assertHasToken("var name = 1", Token(IDENTIFIER, "name"))
@@ -27,16 +27,16 @@ class ScriptLexerTest : TestCase() {
         assertHasToken("x = preload(1)", Token(FUNCTION_IDENTIFIER, "preload"))
 
     fun `test primitive constructor`() =
-        assertHasToken("number = float(other)", Token(BOOL_INT_FLOAT_VOID, "float"))
+        assertHasToken("number = float(other)", Token(PRIMITIVE, "float"))
 
     fun `test number with minus`() =
         assertHasToken("x = -42.0", Token(NUMBER, "-42.0"))
 
     fun `test primitive void type`() =
-        assertHasToken("var x: void", Token(BOOL_INT_FLOAT_VOID, "void"))
+        assertHasToken("var x: void", Token(PRIMITIVE, "void"))
 
     fun `test is operator`() =
-        assertHasToken("a is b", Token(IS_AS_IN_AND_OR, "is"))
+        assertHasToken("a is b", Token(KEYWORD_OPERATOR, "is"))
 
     fun `test language constant global`() =
         assertHasToken("x = BUTTON_LEFT", Token(CONSTANT_IDENTIFIER, "BUTTON_LEFT"))
