@@ -17,6 +17,7 @@ class SceneHighlighter : SyntaxHighlighterBase() {
     private fun matchingToColor(element: IElementType) = when (element) {
         in SceneTokenSet.KEYWORDS -> Color.KEYWORD
         in SceneTokenSet.NUMBERS -> Color.NUMBER
+        in SceneTokenSet.IDENTIFIERS -> Color.IDENTIFIER
         in SceneTokenSet.STRINGS -> Color.STRING
         in SceneTokenSet.RESOURCES -> Color.RESOURCE
         in SceneTokenSet.LINE_COMMENTS -> Color.LINE_COMMENT
