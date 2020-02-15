@@ -3,7 +3,8 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import common.PsiElementUtils.hasParent
+import common.PsiElementUtils.hasAncestors
+import gdscript.ScriptParser.RULE_id
 import gdscript.ScriptParser.RULE_invoke
 import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
@@ -11,7 +12,7 @@ import gdscript.completion.utils.LookupFactory
 class InvokeCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (parameters.position.hasParent(RULE_invoke))
+        if (parameters.position.hasAncestors(RULE_id, RULE_invoke))
             result.caseInsensitive().addAllElements(ALL_INVOKE_LOOKUPS)
     }
 

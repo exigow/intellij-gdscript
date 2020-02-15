@@ -14,10 +14,10 @@ object PsiElementUtils {
         return typeToken?.antlrTokenType ?: 0 == expected
     }
 
-    fun PsiElement.hasParent(expected: Int) =
-        parent.isRule(expected)
+    fun PsiElement.hasAncestors(expectedParent: Int, expectedGrandparent: Int) =
+        parent.isRule(expectedParent) && parent.parent.isRule(expectedGrandparent)
 
-    fun PsiElement.isRule(expected: Int): Boolean {
+    private fun PsiElement.isRule(expected: Int): Boolean {
         val rule = node?.elementType as? RuleIElementType
         return rule?.ruleIndex ?: 0 == expected
     }

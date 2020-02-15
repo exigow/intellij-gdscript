@@ -25,16 +25,16 @@ line: varLine
     | KEYWORD_FLOW
     | expression;
 
-varLine: NETWORK_MODIFIER? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR IDENTIFIER (COLON type)? (EQUALS expression)? (SETGET IDENTIFIER? (COMMA IDENTIFIER)?)?;
-constLine: CONST IDENTIFIER (COLON type)? EQUALS expression;
-funcLine: NETWORK_MODIFIER? STATIC? FUNC IDENTIFIER PARENTHES_OPEN funcArg? (COMMA funcArg)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
-funcArg: IDENTIFIER (COLON type)? (EQUALS expression)?;
-enumLine: ENUM IDENTIFIER? BRACE_OPEN WHITESPACE* enumArg (COMMA WHITESPACE* enumArg)* COMMA? WHITESPACE* BRACE_CLOSE;
-enumArg: IDENTIFIER (EQUALS expression)? WHITESPACE*;
-signalLine: SIGNAL IDENTIFIER (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
+varLine: NETWORK_MODIFIER? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR id (COLON type)? (EQUALS expression)? (SETGET id? (COMMA id)?)?;
+constLine: CONST id (COLON type)? EQUALS expression;
+funcLine: NETWORK_MODIFIER? STATIC? FUNC id PARENTHES_OPEN funcArg? (COMMA funcArg)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
+funcArg: id (COLON type)? (EQUALS expression)?;
+enumLine: ENUM id? BRACE_OPEN WHITESPACE* enumArg (COMMA WHITESPACE* enumArg)* COMMA? WHITESPACE* BRACE_CLOSE;
+enumArg: id (EQUALS expression)? WHITESPACE*;
+signalLine: SIGNAL id (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
 extendsLine: EXTENDS (type | string) (DOT type)*;
-classLine: CLASS IDENTIFIER (EXTENDS type)? COLON;
-classnameLine: CLASS_NAME IDENTIFIER;
+classLine: CLASS id (EXTENDS type)? COLON;
+classnameLine: CLASS_NAME id;
 whileLine: WHILE expression COLON;
 forLine: FOR expression COLON;
 ifLine: IF expression COLON;
@@ -46,19 +46,20 @@ elseLine: ELSE COLON;
 
 expression: primary (subscribe | instanceField | instanceMethod | operator | castOperator)*;
 subscribe: BRACKET_OPEN expression BRACKET_CLOSE;
-instanceField: DOT IDENTIFIER;
+instanceField: DOT id;
 instanceMethod: DOT invoke;
 operator: (EQUALS | MINUS | OPERATOR | KEYWORD_OPERATOR | IF | ELSE) primary;
 castOperator: CAST_OPERATOR type;
 
-primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | NODE | KEYWORD_VALUE | NUMBER | string | array | dictionary | invoke | inBraces | type);
+primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (id | NODE | KEYWORD_VALUE | NUMBER | string | array | dictionary | invoke | inBraces);
 array: BRACKET_OPEN arguments BRACKET_CLOSE;
 dictionary: BRACE_OPEN WHITESPACE* entry? (COMMA WHITESPACE* entry)* COMMA? WHITESPACE* BRACE_CLOSE;
 entry: expression (COLON | EQUALS) expression WHITESPACE*;
-invoke: DOT? (IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE) PARENTHES_OPEN arguments PARENTHES_CLOSE;
+invoke: DOT? id PARENTHES_OPEN arguments PARENTHES_CLOSE;
 inBraces: PARENTHES_OPEN expression PARENTHES_CLOSE;
 arguments: WHITESPACE* expression? WHITESPACE* (COMMA WHITESPACE* expression)* COMMA? WHITESPACE*;
-type: IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE;
+type: id;
+id: IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE;
 string: STRING | RESOURCE | USER_RESOURCE;
 
 NUMBER: [+-]?([0-9]+([.][0-9]*)?|[.][0-9]+);

@@ -450,7 +450,11 @@ class ScriptErrorHighlightingTest : BaseTest() {
         """)
 
     fun `test error on two statements in one line (sanity check)`() {
-        environment.openScript("var x var")
+        environment.openScript("""
+            var x var
+            func x():
+                return
+        """)
         val errors = environment.doHighlighting()
         assertEquals(errors[0].severity, HighlightSeverity.ERROR)
     }
