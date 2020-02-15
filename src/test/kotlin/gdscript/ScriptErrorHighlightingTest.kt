@@ -434,6 +434,21 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test extends resource inner-inner class`() =
         assertNoErrors("""extends "Some.gd".First.Second""")
 
+    fun `test backslash with multiline function`() =
+        assertNoErrors("""
+            func test() -> \
+                Vector2:
+                return Vector2.ZERO
+        """)
+
+    fun `test backslash with multiline variable`() =
+        assertNoErrors("""
+            var f_bool_cases = \
+            [ [true, "true"]
+            , [false, "false"]
+            ]
+        """)
+
     fun `test error on two statements in one line (sanity check)`() {
         environment.openScript("var x var")
         val errors = environment.doHighlighting()
