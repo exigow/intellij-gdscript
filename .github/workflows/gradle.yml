@@ -24,8 +24,13 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew buildPlugin
+    - name: Unzip the distributions before upload
+      uses: DuckSoft/extract-7z-action@v1.0
+      with:
+        pathSource: build/distributions/intellij-gdscript.zip
+        pathTarget: build/distributions/
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: plugin-zip
-        path: build/distributions/intellij-gdscript.zip
+        name: intellij-gdscript
+        path: build/distributions/intellij-gdscript
