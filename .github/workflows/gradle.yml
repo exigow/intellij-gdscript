@@ -28,9 +28,9 @@ jobs:
       uses: DuckSoft/extract-7z-action@v1.0
       with:
         pathSource: build/distributions/intellij-gdscript.zip
-        pathTarget: build/distributions/
+        pathTarget: build/distributions/unpacked
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: intellij-gdscript
-        path: build/distributions/intellij-gdscript
+        path: build/distributions/unpacked
