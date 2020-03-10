@@ -1,4 +1,4 @@
-## GDScript plugin for IntelliJ IDEA [![Build Status](https://travis-ci.org/exigow/intellij-gdscript.svg?branch=master)](https://travis-ci.org/exigow/intellij-gdscript?branch=master)
+## GDScript plugin for IntelliJ IDEA [![Build Plugin](https://github.com/markusmo3/intellij-gdscript/workflows/Build%20Plugin/badge.svg)](https://github.com/markusmo3/intellij-gdscript/actions?query=workflow%3A%22Build+Plugin%22)
 
 ![Screenshot](https://i.imgur.com/WLLXkf4.png)
 
@@ -12,9 +12,9 @@
 
 ### Installation
 
-1. Run `./gradlew buildPlugin`.
+1. Download the latest build artifact from the ["Build Plugin" Github Action](https://github.com/markusmo3/intellij-gdscript/actions?query=workflow%3A%22Build+Plugin%22)
 1. Start IntelliJ, navigate to `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
-1. Find `build/distributions/intellij-gdscript.zip` and restart IDE.
+1. Find the downloaded zip file and restart IDE.
 
 Alternatively, [download](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) latest version from official plugins repository. Release might be outdated so it's not recommended.
 
@@ -22,6 +22,7 @@ Plugin works with **all** IntelliJ-based IDEs starting from v2019.2.
 
 ### Usage & Development
 
+* `./gradlew buildPlugin` - builds the plugin distribution to `build/distributions/intellij-gdscript.zip`
 * `./gradlew runIde` - run sandbox with installed plugin. First run may take a while.
 * `./gradlew test` - run all tests.
 * `./gradlew generateGrammarSource` - generate ANTLR lexer and parser Java class.
