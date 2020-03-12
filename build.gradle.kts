@@ -28,7 +28,7 @@ tasks {
     registerAdditionalTasks()
     publishPlugin {
         token(project.property("publishPluginToken"))
-        channels("beta")
+        channels("stable")
     }
     compileJava {
         sourceCompatibility = "1.8"
