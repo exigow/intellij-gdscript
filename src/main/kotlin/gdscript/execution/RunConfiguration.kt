@@ -9,7 +9,6 @@ import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
 import com.intellij.util.execution.ParametersListUtil
 import org.jdom.Element
-import java.io.File
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
     : LocatableConfigurationBase<RunProfileState>(project, factory) {
@@ -20,13 +19,9 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
 
     override fun checkConfiguration() {
         if (executable.isEmpty())
-            throw RuntimeConfigurationError("Executable is empty")
-        if (!File(executable).exists())
-            throw RuntimeConfigurationError("Executable '$executable' doesn't exist")
-        if (!File(executable).canExecute())
-            throw RuntimeConfigurationError("Executable '$executable' can't be executed")
+            throw RuntimeConfigurationWarning("Executable is empty")
         if (workingDirectory.isEmpty())
-            throw RuntimeConfigurationError("Working directory is empty")
+            throw RuntimeConfigurationWarning("Working directory is empty")
     }
 
     override fun getConfigurationEditor() =

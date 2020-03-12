@@ -21,7 +21,7 @@ class RunConfigurationPanel(project: Project) : SettingsEditor<RunConfiguration>
     override fun createEditor() =
         JPanel().apply {
             layout = VerticalFlowLayout()
-            add(newComponent("Godot executable file:", executableComponent))
+            add(newComponent("Godot Engine executable:", executableComponent))
             add(newComponent("Working directory:", workingDirectoryComponent))
             add(newComponent("Parameters:", parametersComponent))
         }

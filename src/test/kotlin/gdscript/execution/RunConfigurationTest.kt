@@ -1,7 +1,7 @@
 package gdscript.execution
 
 import BaseTest
-import com.intellij.execution.configurations.RuntimeConfigurationError
+import com.intellij.execution.configurations.RuntimeConfigurationWarning
 import io.mockk.mockk
 import io.mockk.verify
 import org.jdom.Element
@@ -19,7 +19,7 @@ class RunConfigurationTest : BaseTest() {
 
     fun `test exception is thrown on empty executable path`() {
         val config = newConfig()
-        assertThrows<RuntimeConfigurationError>(
+        assertThrows<RuntimeConfigurationWarning>(
             { config.checkConfiguration() },
             "Executable is empty"
         )
@@ -28,7 +28,7 @@ class RunConfigurationTest : BaseTest() {
     fun `test exception is thrown on empty working directory`() {
         val config = newConfig()
         config.executable = TEMP_FILE
-        assertThrows<RuntimeConfigurationError>(
+        assertThrows<RuntimeConfigurationWarning>(
             { config.checkConfiguration() },
             "Working directory is empty"
         )
