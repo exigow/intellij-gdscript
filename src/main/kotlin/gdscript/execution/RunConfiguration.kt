@@ -8,6 +8,7 @@ import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
 import com.intellij.util.execution.ParametersListUtil
+import gdscript.execution.filters.LinkFilter
 import org.jdom.Element
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
@@ -39,6 +40,8 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
                     .also { ProcessTerminatedListener.attach(it, environment.project) }
             }
 
+        }.apply {
+            addConsoleFilters(LinkFilter(project, workingDirectory))
         }
 
     override fun readExternal(element: Element) {
