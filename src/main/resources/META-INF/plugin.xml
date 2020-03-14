@@ -1,14 +1,18 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.25.0</version>
+	<version>0.25.1</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
-		</br>
-	  	<p>
-	  		<img src="https://i.imgur.com/WLLXkf4m.png" alt="Screenshot"/>
-		</p>
+		<p>Features:</p>
+		<ul>
+			<li>Syntax highlighting</li>
+			<li>Code completion</li>
+			<li>res:// completion</li>
+			<li>Syntax-aware code selection</li>
+			<li>Run scene</li>
+		</ul>
 	]]>
 	</description>
 	<idea-version since-build="192"/>
