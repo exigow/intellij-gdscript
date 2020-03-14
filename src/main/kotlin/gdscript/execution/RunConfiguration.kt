@@ -3,12 +3,11 @@ package gdscript.execution
 import com.intellij.execution.Executor
 import com.intellij.execution.configurations.*
 import com.intellij.execution.process.KillableColoredProcessHandler
-import com.intellij.execution.process.ProcessHandler
 import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
 import com.intellij.util.execution.ParametersListUtil
-import gdscript.execution.filters.LinkFilter
+import gdscript.execution.links.ConsoleLinkFilter
 import org.jdom.Element
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
@@ -28,20 +27,15 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
     override fun getConfigurationEditor() =
         RunConfigurationPanel(project)
 
-    override fun getState(executor: Executor, environment: ExecutionEnvironment) =
+    override fun getState(executor: Executor, environment: ExecutionEnvironment): RunProfileState =
         object : CommandLineState(environment) {
 
-            override fun startProcess(): ProcessHandler {
-                val cmd = GeneralCommandLine()
-                    .withExePath(executable)
-                    .withWorkDirectory(workingDirectory)
-                    .withParameters(ParametersListUtil.parse(parameters))
-                return KillableColoredProcessHandler(cmd)
+            override fun startProcess() =
+                KillableColoredProcessHandler(buildCommand())
                     .also { ProcessTerminatedListener.attach(it, environment.project) }
-            }
 
         }.apply {
-            addConsoleFilters(LinkFilter(project, workingDirectory))
+            addConsoleFilters(ConsoleLinkFilter(project, workingDirectory))
         }
 
     override fun readExternal(element: Element) {
@@ -55,6 +49,12 @@ class RunConfiguration(project: Project, factory: ConfigurationFactory)
         element.setAttribute(WORKING_DIRECTORY_KEY, workingDirectory)
         element.setAttribute(PARAMETERS_KEY, parameters)
     }
+
+    private fun buildCommand() =
+        GeneralCommandLine()
+            .withExePath(executable)
+            .withWorkDirectory(workingDirectory)
+            .withParameters(ParametersListUtil.parse(parameters))
 
     private companion object {
 
