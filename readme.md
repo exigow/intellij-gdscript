@@ -1,8 +1,8 @@
-## GDScript plugin for IntelliJ IDEA [![Build Plugin](https://github.com/exigow/intellij-gdscript/workflows/Build%20Plugin/badge.svg)](https://github.com/exigow/intellij-gdscript/actions?query=workflow%3A%22Build+Plugin%22) [![Download](https://img.shields.io/jetbrains/plugin/d/13107-gdscript.svg)](https://plugins.jetbrains.com/plugin/13107-gdscript)
+# GDScript plugin for IntelliJ IDEA [![Build Plugin](https://github.com/exigow/intellij-gdscript/workflows/Build%20Plugin/badge.svg)](https://github.com/exigow/intellij-gdscript/actions?query=workflow%3A%22Build+Plugin%22) [![Download](https://img.shields.io/jetbrains/plugin/d/13107-gdscript.svg)](https://plugins.jetbrains.com/plugin/13107-gdscript)
 
 ![Screenshot](https://i.imgur.com/WLLXkf4.png)
 
-### Features
+## Features
 
 * Syntax highlighting
 * Code completion
@@ -12,7 +12,7 @@
 
 Works with all IntelliJ-based IDEs starting from v2019.2.
 
-### Usage & Development
+## Usage & Development
 
 * `./gradlew buildPlugin` - build plugin distribution to `build/distributions/intellij-gdscript.zip`
 * `./gradlew runIde` - run sandbox with installed plugin
@@ -23,10 +23,14 @@ Works with all IntelliJ-based IDEs starting from v2019.2.
 * `./gradlew downloadDocumentation` - scrape documentation XML files from Godot Engine GitHub repository
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository
 
-### Manual Installation
+## Manual Installation
 
 1. Download [official release](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or latest [build artifact](https://github.com/exigow/intellij-gdscript/actions) *(recommended)*.
 1. Start IDE, navigate to `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
 1. Find file and restart IDE.
 
-Issues and pull requests are welcome. :wave:
+## Contributing
+
+Pull requests are welcome. :wave: 
+
+For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
