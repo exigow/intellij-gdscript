@@ -15,7 +15,7 @@
 		</ul>
 	]]>
 	</description>
-	<idea-version since-build="192"/>
+	<idea-version since-build="193"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>

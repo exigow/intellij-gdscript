@@ -10,7 +10,7 @@
 * Syntax-aware code selection
 * Run scene
 
-Works with all IntelliJ-based IDEs starting from v2019.2.
+Works with all IntelliJ-based IDEs starting from v2019.3.
 
 ## Usage & Development
 

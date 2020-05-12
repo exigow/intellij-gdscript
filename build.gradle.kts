@@ -20,7 +20,7 @@ repositories {
 }
 
 intellij {
-    version = "2019.2"
+    version = "2019.3"
     updateSinceUntilBuild = false
 }
 
