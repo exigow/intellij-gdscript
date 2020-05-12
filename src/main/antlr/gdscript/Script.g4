@@ -25,15 +25,15 @@ line: varLine
     | KEYWORD_FLOW
     | expression;
 
-varLine: NETWORK_MODIFIER? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR id (COLON type)? (EQUALS expression)? (SETGET id? (COMMA id)?)?;
-constLine: CONST id (COLON type)? EQUALS expression;
-funcLine: NETWORK_MODIFIER? STATIC? FUNC id PARENTHES_OPEN funcArg? (COMMA funcArg)* COMMA? PARENTHES_CLOSE (ARROW type)? COLON;
-funcArg: id (COLON type)? (EQUALS expression)?;
+varLine: NETWORK_MODIFIER? (EXPORT (PARENTHES_OPEN arguments PARENTHES_CLOSE)?)? ONREADY? VAR id (COLON id)? (EQUALS expression)? (SETGET id? (COMMA id)?)?;
+constLine: CONST id (COLON id)? EQUALS expression;
+funcLine: NETWORK_MODIFIER? STATIC? FUNC id PARENTHES_OPEN funcArg? (COMMA funcArg)* COMMA? PARENTHES_CLOSE (ARROW id)? COLON;
+funcArg: id (COLON id)? (EQUALS expression)?;
 enumLine: ENUM id? BRACE_OPEN WHITESPACE* enumArg (COMMA WHITESPACE* enumArg)* COMMA? WHITESPACE* BRACE_CLOSE;
 enumArg: id (EQUALS expression)? WHITESPACE*;
 signalLine: SIGNAL id (PARENTHES_OPEN arguments PARENTHES_CLOSE)?;
-extendsLine: EXTENDS (type | string) (DOT type)*;
-classLine: CLASS id (EXTENDS type)? COLON;
+extendsLine: EXTENDS (id | string) (DOT id)*;
+classLine: CLASS id (EXTENDS id)? COLON;
 classnameLine: CLASS_NAME id;
 whileLine: WHILE expression COLON;
 forLine: FOR expression COLON;
@@ -44,12 +44,11 @@ returnLine: RETURN expression?;
 labelLine: expression COLON;
 elseLine: ELSE COLON;
 
-expression: primary (subscribe | instanceField | instanceMethod | operator | castOperator)*;
+expression: primary (subscribe | instanceField | instanceMethod | operator)*;
 subscribe: BRACKET_OPEN expression BRACKET_CLOSE;
 instanceField: DOT id;
 instanceMethod: DOT invoke;
-operator: (EQUALS | MINUS | OPERATOR | KEYWORD_OPERATOR | IF | ELSE) primary;
-castOperator: CAST_OPERATOR type;
+operator: (EQUALS | MINUS | OPERATOR | CAST_OPERATOR | KEYWORD_OPERATOR | IF | ELSE) primary;
 
 primary: (MINUS | NOT | NOT_BITWISE | NOT_BOOLEAN)? (id | NODE | KEYWORD_VALUE | NUMBER | string | array | dictionary | invoke | inBraces);
 array: BRACKET_OPEN arguments BRACKET_CLOSE;
@@ -58,7 +57,6 @@ entry: expression (COLON | EQUALS) expression WHITESPACE*;
 invoke: DOT? id PARENTHES_OPEN arguments PARENTHES_CLOSE;
 inBraces: PARENTHES_OPEN expression PARENTHES_CLOSE;
 arguments: WHITESPACE* expression? WHITESPACE* (COMMA WHITESPACE* expression)* COMMA? WHITESPACE*;
-type: id;
 id: IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | PRIMITIVE;
 string: STRING | RESOURCE | USER_RESOURCE;
 
