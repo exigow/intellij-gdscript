@@ -8,12 +8,12 @@ object FileUtils {
 
     fun collectPathsToProjectFiles(
         currentFile: VirtualFile,
-        isNotUseful: (VirtualFile) -> Boolean = { false }
+        isUseful: (VirtualFile) -> Boolean = { true }
     ): Map<String, VirtualFile> {
         val closestProject = findProjectFile(currentFile)
             ?: return emptyMap()
         val projectDirectory = closestProject.parent
-        val files = collectAllSubdirectoryFiles(projectDirectory, isNotUseful)
+        val files = collectAllSubdirectoryFiles(projectDirectory, isUseful)
         return files
             .map { file -> VfsUtilCore.findRelativePath(closestProject, file, '/')!! to file }
             .toMap()
@@ -31,14 +31,14 @@ object FileUtils {
 
     private fun collectAllSubdirectoryFiles(
         start: VirtualFile,
-        isNotUseful: (VirtualFile) -> Boolean
+        isUseful: (VirtualFile) -> Boolean
     ): Collection<VirtualFile> {
         val list = ArrayList<VirtualFile>()
         VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
             override fun visitFile(file: VirtualFile): Boolean {
-                if (file.isDirectory && isNotUseful(file))
+                if (file.isDirectory && !isUseful(file))
                     return false
-                if (!file.isDirectory && !isNotUseful(file))
+                if (!file.isDirectory && isUseful(file))
                     list.add(file)
                 return super.visitFile(file)
             }

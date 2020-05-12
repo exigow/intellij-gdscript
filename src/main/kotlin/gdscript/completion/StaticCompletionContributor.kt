@@ -3,8 +3,6 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.psi.PsiElement
-import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import gdscript.completion.sources.Class
 import gdscript.completion.sources.CompletionDictionary
@@ -13,9 +11,9 @@ import gdscript.completion.utils.LookupFactory
 class StaticCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        val dot = parameters.position.prevLeaf()
-        if (dot?.text == ".") {
-            val id = dot.prevLeaf()
+        val prev = PsiTreeUtil.prevVisibleLeaf(parameters.position)
+        if (prev?.text == ".") {
+            val id = PsiTreeUtil.prevVisibleLeaf(prev)
             val clazz = CompletionDictionary.findClass(id?.text)
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
@@ -33,8 +31,5 @@ class StaticCompletionContributor : CompletionContributor() {
 
     private fun createStaticMethodLookups(clazz: Class) =
         clazz.methods?.map { LookupFactory.createStaticMethod(it) }.orEmpty()
-
-    private fun PsiElement.prevLeaf() =
-        PsiTreeUtil.prevLeaf(this) as? LeafPsiElement
 
 }

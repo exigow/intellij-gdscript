@@ -17,10 +17,9 @@ import javax.swing.Icon
 class ResourceCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        val element = parameters.position
-        if (element.isToken(RESOURCE)) {
+        if (parameters.position.isToken(RESOURCE)) {
             val currentFile = parameters.originalFile.virtualFile
-            val files = collectUsefulFiles(currentFile)
+            val files = FileUtils.collectPathsToProjectFiles(currentFile, ::isUseful)
             for ((path, file) in files) {
                 val lookup = createFileLookup(path, file)
                 val priority = prioritizeBy(file.extension)
@@ -30,19 +29,12 @@ class ResourceCompletionContributor : CompletionContributor() {
         }
     }
 
-    private fun collectUsefulFiles(currentFile: VirtualFile) =
-        FileUtils.collectPathsToProjectFiles(currentFile) { file ->
-            isHiddenFile(file) || isProjectFile(file) || isImportFile(file)
-        }
-
-    private fun isHiddenFile(file: VirtualFile) =
-        file.name.startsWith(".")
-
-    private fun isProjectFile(file: VirtualFile) =
-        file.name == "project.godot"
-
-    private fun isImportFile(file: VirtualFile) =
-        file.name.endsWith(".import")
+    private fun isUseful(file: VirtualFile): Boolean {
+        val name = file.name
+        return !name.startsWith(".")
+            && name != "project.godot"
+            && !name.endsWith(".import")
+    }
 
     private fun createFileLookup(fileRelativePath: String, file: VirtualFile): LookupElement =
         create("res://$fileRelativePath")
