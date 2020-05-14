@@ -15,10 +15,8 @@ class InvalidImportFileAnnotator : Annotator {
             if (filenames.isEmpty())
                 return
             val path = extractPath(element.text)
-            if (path !in filenames) {
-                val message = "Cannot resolve resource '$path'"
-                holder.createWeakWarningAnnotation(element, message)
-            }
+            if (path !in filenames)
+                holder.createWeakWarningAnnotation(element, "Cannot resolve resource '$path'")
         }
     }
 
