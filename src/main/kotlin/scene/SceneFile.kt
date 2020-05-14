@@ -5,6 +5,6 @@ import com.intellij.psi.FileViewProvider
 
 class SceneFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, SceneLanguage) {
 
-    override fun getFileType() = SceneType
+    override fun getFileType() = SceneFileType
 
 }

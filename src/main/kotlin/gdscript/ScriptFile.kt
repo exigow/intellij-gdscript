@@ -5,6 +5,6 @@ import com.intellij.psi.FileViewProvider
 
 class ScriptFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, ScriptLanguage) {
 
-    override fun getFileType() = ScriptType
+    override fun getFileType() = ScriptFileType
 
 }

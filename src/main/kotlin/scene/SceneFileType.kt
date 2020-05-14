@@ -4,7 +4,7 @@ package scene
 import com.intellij.openapi.fileTypes.LanguageFileType
 import common.Icons
 
-object SceneType : LanguageFileType(SceneLanguage) {
+object SceneFileType : LanguageFileType(SceneLanguage) {
 
     override fun getIcon() = Icons.SCENE_FILE
 

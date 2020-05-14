@@ -32,8 +32,8 @@
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<configurationType implementation="gdscript.execution.RunConfigurationType"/>
 		<errorHandler implementation="common.GitHubBugReporter"/>
-		<fileType implementationClass="gdscript.ScriptType" extensions="gd" name="GDScript" language="GDScript"/>
-		<fileType implementationClass="scene.SceneType" extensions="godot;import;cfg;tres;tscn" name="Scene" language="Scene"/>
+		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
+		<fileType implementationClass="scene.SceneFileType" extensions="godot;import;cfg;tres;tscn" name="Scene" language="Scene"/>
 		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
 		<lang.parserDefinition implementationClass="scene.SceneParserDefinition" language="Scene"/>

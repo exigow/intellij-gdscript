@@ -1,8 +1,8 @@
 package utils
 
 import com.intellij.openapi.actionSystem.IdeActions
-import gdscript.ScriptType
-import scene.SceneType
+import gdscript.ScriptFileType
+import scene.SceneFileType
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture as Fixture
 
 
@@ -11,11 +11,11 @@ fun Fixture.openScript(filename: String, content: String) {
 }
 
 fun Fixture.openScript(content: String) {
-    configureByText(ScriptType, content)
+    configureByText(ScriptFileType, content)
 }
 
 fun Fixture.openScene(content: String) {
-    configureByText(SceneType, content)
+    configureByText(SceneFileType, content)
 }
 
 fun Fixture.addFile(filename: String) {
