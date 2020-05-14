@@ -12,7 +12,6 @@ class KeywordContinuationCompletionContributor : CompletionContributor() {
         extendContinuation("export", listOf("var"))
         extendContinuation("onready", listOf("var"))
         extendContinuation("master", listOf("var", "func"))
-        extendContinuation("master", listOf("var", "func"))
         extendContinuation("mastersync", listOf("var", "func"))
         extendContinuation("puppet", listOf("var", "func"))
         extendContinuation("puppetsync", listOf("var", "func"))
