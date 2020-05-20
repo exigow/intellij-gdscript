@@ -8,7 +8,7 @@ import javax.swing.JPanel
 
 class SettingsConfigurable : SearchableConfigurable {
 
-    private val lspCheckbox = createCheckbox()
+    private val lspCheckbox: JCheckBox = createCheckbox()
 
     override fun getDisplayName() = "GDScript"
 
