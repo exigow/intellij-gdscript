@@ -9,6 +9,7 @@
 * `res://` completion
 * Syntax-aware code selection
 * Run scene
+* LSP support (experimental)
 
 Works with all IntelliJ-based IDEs starting from v2019.3.
 
@@ -28,6 +29,12 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 1. Download [official release](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or latest [build artifact](https://github.com/exigow/intellij-gdscript/actions) *(recommended)*.
 1. Start IDE, navigate to `Settings` | `Plugins` | :gear: | `Install plugin from disk...`.
 1. Find file and restart IDE.
+
+## Enabling LSP features
+
+Contextual completion and warnings are **disabled** by default due to experimental status. To enable LSP-based features navigate to `Settings` | `Languages & Frameworks` | `GDScript`.
+
+LSP is supported in Godot Engine since `3.2.2`.
 
 ## Contributing
 
