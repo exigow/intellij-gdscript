@@ -2,6 +2,7 @@ package lsp
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.service
 import com.intellij.openapi.fileEditor.impl.LoadTextUtil
 import com.intellij.openapi.project.Project
@@ -14,7 +15,7 @@ import org.eclipse.lsp4j.*
 import org.eclipse.lsp4j.jsonrpc.services.JsonNotification
 import org.eclipse.lsp4j.launch.LSPLauncher
 import org.eclipse.lsp4j.services.LanguageServer
-import settings.SettingsComponent
+import settings.ApplicationSettings
 import java.io.IOException
 import java.net.Socket
 
@@ -52,7 +53,7 @@ class LanguageServerService(
     }
 
     fun startServer() {
-        if (!SettingsComponent.INSTANCE.settings.lspEnabled) {
+        if (!ServiceManager.getService(ApplicationSettings::class.java).lspEnabled) {
             server = null
             return
         }

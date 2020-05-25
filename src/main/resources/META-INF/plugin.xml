@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.26.1</version>
+	<version>0.26.2</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -47,7 +47,7 @@
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
 		<runConfigurationProducer implementation="gdscript.execution.RunConfigurationProducer"/>
-		<applicationConfigurable instance="settings.SettingsConfigurable" groupId="language"/>
-		<applicationService serviceImplementation="settings.SettingsComponent"/>
+		<applicationConfigurable instance="settings.ApplicationSettingsConfigurable" groupId="language"/>
+		<applicationService serviceImplementation="settings.ApplicationSettings"/>
 	</extensions>
 </idea-plugin>

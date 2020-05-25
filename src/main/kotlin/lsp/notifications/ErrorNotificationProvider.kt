@@ -1,5 +1,6 @@
 package lsp.notifications
 
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.service
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.project.Project
@@ -9,7 +10,7 @@ import com.intellij.ui.EditorNotificationPanel
 import com.intellij.ui.EditorNotifications
 import gdscript.ScriptFileType
 import lsp.LanguageServerService
-import settings.SettingsComponent
+import settings.ApplicationSettings
 
 
 class ErrorNotificationProvider(
@@ -22,7 +23,7 @@ class ErrorNotificationProvider(
     override fun getKey() = PANEL_KEY
 
     override fun createNotificationPanel(file: VirtualFile, editor: FileEditor, project: Project): EditorNotificationPanel? {
-        if (!SettingsComponent.INSTANCE.settings.lspEnabled)
+        if (!ServiceManager.getService(ApplicationSettings::class.java).lspEnabled)
             return null
         if (file.fileType !is ScriptFileType)
             return null
