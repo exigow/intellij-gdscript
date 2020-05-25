@@ -28,8 +28,7 @@ class ReportSubmitter : ErrorReportSubmitter() {
     private fun submitEventsOnGithub(events: Array<IdeaLoggingEvent>) {
         val issue = Report(
             title = discoverStacktraceTitle(events),
-            labels = "bug",
-            text = discoverStacktraceContents(events)
+            body = discoverStacktraceContents(events)
         )
         val githubLink = ReportToGithubLinkConverter.convertToUrl(issue)
         BrowserUtil.browse(githubLink)
