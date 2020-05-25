@@ -1,4 +1,4 @@
-package gdscript.execution
+package run
 
 import com.intellij.execution.ui.MacroComboBoxWithBrowseButton
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor

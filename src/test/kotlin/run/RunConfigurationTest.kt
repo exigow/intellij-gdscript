@@ -1,4 +1,4 @@
-package gdscript.execution
+package run
 
 import BaseTest
 import com.intellij.execution.configurations.RuntimeConfigurationWarning

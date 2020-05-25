@@ -1,4 +1,4 @@
-package gdscript.execution.links
+package run.console
 
 import com.intellij.testFramework.UsefulTestCase.assertContainsElements
 import com.intellij.testFramework.UsefulTestCase.assertEmpty

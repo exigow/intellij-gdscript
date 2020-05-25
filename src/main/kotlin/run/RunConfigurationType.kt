@@ -1,4 +1,4 @@
-package gdscript.execution
+package run
 
 import com.intellij.execution.configurations.ConfigurationType
 import common.Icons

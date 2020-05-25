@@ -1,4 +1,4 @@
-package gdscript.execution.links
+package run.console
 
 object ConsoleLinkParser {
 

@@ -22,8 +22,10 @@
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.InvalidImportFileAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
+		<applicationConfigurable instance="settings.ApplicationSettingsConfigurable" groupId="language"/>
 		<applicationService serviceImplementation="lsp.LanguageServerService"/>
 		<applicationService serviceImplementation="lsp.diagnostics.DiagnosticService"/>
+		<applicationService serviceImplementation="settings.ApplicationSettings"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
@@ -33,7 +35,7 @@
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="lsp.completion.CompletionContributor" language="GDScript"/>
-		<configurationType implementation="gdscript.execution.RunConfigurationType"/>
+		<configurationType implementation="run.RunConfigurationType"/>
 		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
 		<errorHandler implementation="common.GitHubBugReporter"/>
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
@@ -46,8 +48,6 @@
 		<lang.syntaxHighlighterFactory implementationClass="scene.SceneHighlighterFactory" language="Scene"/>
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
-		<runConfigurationProducer implementation="gdscript.execution.RunConfigurationProducer"/>
-		<applicationConfigurable instance="settings.ApplicationSettingsConfigurable" groupId="language"/>
-		<applicationService serviceImplementation="settings.ApplicationSettings"/>
+		<runConfigurationProducer implementation="run.RunConfigurationProducer"/>
 	</extensions>
 </idea-plugin>

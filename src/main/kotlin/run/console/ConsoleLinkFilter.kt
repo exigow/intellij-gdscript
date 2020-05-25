@@ -1,4 +1,4 @@
-package gdscript.execution.links
+package run.console
 
 import com.intellij.execution.filters.Filter
 import com.intellij.execution.filters.Filter.Result

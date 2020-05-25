@@ -1,4 +1,4 @@
-package gdscript.execution
+package run
 
 import com.intellij.execution.Executor
 import com.intellij.execution.configurations.*
@@ -7,8 +7,8 @@ import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.project.Project
 import com.intellij.util.execution.ParametersListUtil
-import gdscript.execution.links.ConsoleLinkFilter
 import org.jdom.Element
+import run.console.ConsoleLinkFilter
 
 class RunConfiguration(project: Project, factory: ConfigurationFactory)
     : LocatableConfigurationBase<RunProfileState>(project, factory) {
