@@ -24,10 +24,9 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
     }
 
     override fun createComponent(): JComponent? {
-        return JPanel().apply {
-            layout = VerticalFlowLayout()
-            add(lspCheckbox)
-        }
+        val panel = JPanel(VerticalFlowLayout())
+        panel.add(lspCheckbox)
+        return panel
     }
 
 }
