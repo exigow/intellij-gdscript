@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.26.2</version>
+	<version>0.26.3</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -37,7 +37,7 @@
 		<completion.contributor implementationClass="lsp.completion.CompletionContributor" language="GDScript"/>
 		<configurationType implementation="run.RunConfigurationType"/>
 		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
-		<errorHandler implementation="common.GitHubBugReporter"/>
+		<errorHandler implementation="report.ReportSubmitter"/>
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
 		<fileType implementationClass="scene.SceneFileType" extensions="godot;import;cfg;tres;tscn" name="Scene" language="Scene"/>

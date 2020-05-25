@@ -1,4 +1,4 @@
-package common
+package report
 
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter
@@ -8,9 +8,8 @@ import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.FAIL
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.NEW_ISSUE
 import com.intellij.util.Consumer
 import java.awt.Component
-import java.net.URLEncoder
 
-class GitHubBugReporter : ErrorReportSubmitter() {
+class ReportSubmitter : ErrorReportSubmitter() {
 
     override fun getReportActionText() =
         "Open GitHub issue"
@@ -27,12 +26,12 @@ class GitHubBugReporter : ErrorReportSubmitter() {
     }
 
     private fun submitEventsOnGithub(events: Array<IdeaLoggingEvent>) {
-        val issue = GitHubIssue(
+        val issue = Report(
             title = discoverStacktraceTitle(events),
             labels = "bug",
             text = discoverStacktraceContents(events)
         )
-        val githubLink = convertToLink(issue)
+        val githubLink = ReportToGithubLinkConverter.convertToUrl(issue)
         BrowserUtil.browse(githubLink)
     }
 
@@ -48,24 +47,5 @@ class GitHubBugReporter : ErrorReportSubmitter() {
         events.map { it.throwableText }
             .filter { it.isNotBlank() }
             .joinToString { "```\n$it\n```\n" }
-
-    private fun convertToLink(issue: GitHubIssue): String {
-        val params = encodeParams(mapOf(
-            "labels" to issue.labels,
-            "title" to issue.title,
-            "body" to issue.text
-        ))
-        return "https://github.com/exigow/intellij-gdscript/issues/new?$params"
-    }
-
-    private fun encodeParams(params: Map<String, String>): String =
-        params.map { (key, value) -> key to URLEncoder.encode(value, "UTF-8") }
-            .joinToString("&") { (key, value) -> "$key=$value" }
-
-    private data class GitHubIssue(
-        val title: String,
-        val labels: String,
-        val text: String
-    )
 
 }
