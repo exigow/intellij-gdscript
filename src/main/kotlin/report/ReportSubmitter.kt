@@ -2,6 +2,7 @@ package report
 
 import com.intellij.ide.BrowserUtil
 import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.openapi.application.ApplicationInfo
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent
 import com.intellij.openapi.diagnostic.SubmittedReportInfo
@@ -41,12 +42,16 @@ class ReportSubmitter : ErrorReportSubmitter() {
         Report(
             title = event.throwableText.lines().first(),
             pluginVersion = discoverPluginVersion(),
+            ideVersion = discoverIdeaVersion(),
             additionalInfo = additionalInfo,
             stacktrace = event.throwableText
         )
 
     private fun discoverPluginVersion() =
         (pluginDescriptor as? IdeaPluginDescriptor)?.version
+
+    private fun discoverIdeaVersion() =
+        ApplicationInfo.getInstance().build.toString()
 
     private fun submitOnGithub(report: Report) {
         val markdown = MarkdownDescriptionBaker.bake(report)

@@ -11,6 +11,7 @@ object MarkdownDescriptionBaker {
 
     private fun createEntries(report: Report) = mapOf(
         "Plugin version" to report.pluginVersion,
+        "IDE version" to report.ideVersion,
         "Additional information" to report.additionalInfo,
         "Exception" to report.title,
         "Stacktrace" to report.stacktrace

@@ -7,10 +7,11 @@ class MarkdownDescriptionBakerTest : TestCase() {
 
     fun `test happy path`() {
         val report = Report(
-            "java.lang.NullPointerException",
-            "0.26.1",
-            null,
-            """
+            title = "java.lang.NullPointerException",
+            pluginVersion = "0.26.1",
+            ideVersion = "IC-193.5233.102",
+            additionalInfo = null,
+            stacktrace = """
             java.lang.NullPointerException: Something bad happened
                 at com.example.Some.handle(Some.java:326)
                 ... 54 more
@@ -19,6 +20,7 @@ class MarkdownDescriptionBakerTest : TestCase() {
         val markdown = MarkdownDescriptionBaker.bake(report)
         val expected = """
             Plugin version: ```0.26.1```
+            IDE version: ```IC-193.5233.102```
             Exception: ```java.lang.NullPointerException```
             Stacktrace:
             ```text
@@ -31,7 +33,7 @@ class MarkdownDescriptionBakerTest : TestCase() {
     }
 
     fun `test empty report should output empty markdown`() {
-        val empty = Report(null, null, null, null)
+        val empty = Report(null, null, null, null, null)
         val emptyMarkdown = MarkdownDescriptionBaker.bake(empty)
         assertEquals("", emptyMarkdown)
     }
