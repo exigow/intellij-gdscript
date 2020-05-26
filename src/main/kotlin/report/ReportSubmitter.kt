@@ -1,12 +1,15 @@
 package report
 
 import com.intellij.ide.BrowserUtil
+import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent
 import com.intellij.openapi.diagnostic.SubmittedReportInfo
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.FAILED
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.NEW_ISSUE
 import com.intellij.util.Consumer
+import report.utils.GithubLinkGenerator
+import report.utils.MarkdownDescriptionBaker
 import java.awt.Component
 
 class ReportSubmitter : ErrorReportSubmitter() {
@@ -14,9 +17,18 @@ class ReportSubmitter : ErrorReportSubmitter() {
     override fun getReportActionText() =
         "Open GitHub issue"
 
-    override fun submit(events: Array<IdeaLoggingEvent>, additionalInfo: String?, parentComponent: Component, consumer: Consumer<SubmittedReportInfo>): Boolean {
+    override fun submit(
+        events: Array<IdeaLoggingEvent>,
+        additionalInfo: String?,
+        parentComponent: Component,
+        consumer: Consumer<SubmittedReportInfo>
+    ): Boolean {
         try {
-            submitEventsOnGithub(events)
+            if (events.isNotEmpty()) {
+                val event = events.first()
+                val issue = collectIssueDetails(event, additionalInfo)
+                submitOnGithub(issue)
+            }
         } catch (e: Exception) {
             consumer.consume(SubmittedReportInfo(FAILED))
             return false
@@ -25,26 +37,22 @@ class ReportSubmitter : ErrorReportSubmitter() {
         return true
     }
 
-    private fun submitEventsOnGithub(events: Array<IdeaLoggingEvent>) {
-        val issue = Report(
-            title = discoverStacktraceTitle(events),
-            body = discoverStacktraceContents(events)
+    private fun collectIssueDetails(event: IdeaLoggingEvent, additionalInfo: String?) =
+        Report(
+            title = event.throwableText.lines().first(),
+            pluginVersion = discoverPluginVersion(),
+            additionalInfo = additionalInfo,
+            stacktrace = event.throwableText
         )
-        val githubLink = ReportToGithubLinkConverter.convertToUrl(issue)
-        BrowserUtil.browse(githubLink)
+
+    private fun discoverPluginVersion() =
+        (pluginDescriptor as? IdeaPluginDescriptor)?.version
+
+    private fun submitOnGithub(report: Report) {
+        val markdown = MarkdownDescriptionBaker.bake(report)
+        val title = report.title ?: "no title"
+        val url = GithubLinkGenerator.generateUrl(title, markdown)
+        BrowserUtil.browse(url)
     }
-
-    private fun discoverStacktraceTitle(events: Array<IdeaLoggingEvent>): String =
-        events.firstOrNull()
-            ?.throwableText
-            ?.lines()
-            ?.first()
-            ?.trim()
-            ?: "Bug"
-
-    private fun discoverStacktraceContents(events: Array<IdeaLoggingEvent>) =
-        events.map { it.throwableText }
-            .filter { it.isNotBlank() }
-            .joinToString { "```\n$it\n```\n" }
 
 }
