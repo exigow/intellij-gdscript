@@ -45,7 +45,7 @@ class ResourceCompletionContributor : CompletionContributor() {
     private fun findIcon(extension: String?): Icon =
         when (extension) {
             "gd" -> Icons.GDSCRIPT_FILE
-            "tscn", "tres" -> Icons.SCENE_FILE
+            "tscn", "tres" -> Icons.TSCN_FILE
             "json" -> Icons.JSON_FILE
             else -> Icons.ANY_FILE
         }

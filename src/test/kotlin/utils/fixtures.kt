@@ -2,9 +2,11 @@ package utils
 
 import com.intellij.openapi.actionSystem.IdeActions
 import gdscript.ScriptFileType
-import scene.SceneFileType
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture as Fixture
 
+fun Fixture.configureEmpty(filename: String) {
+    configureByText(filename, "")
+}
 
 fun Fixture.openScript(filename: String, content: String) {
     configureByText(filename, content)
@@ -12,10 +14,6 @@ fun Fixture.openScript(filename: String, content: String) {
 
 fun Fixture.openScript(content: String) {
     configureByText(ScriptFileType, content)
-}
-
-fun Fixture.openScene(content: String) {
-    configureByText(SceneFileType, content)
 }
 
 fun Fixture.addFile(filename: String) {

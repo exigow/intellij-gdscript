@@ -9,7 +9,7 @@ import javax.swing.Icon
 object Icons {
 
     val GDSCRIPT_FILE = IconLoader.getIcon("/fileIcon.png")
-    val SCENE_FILE: Icon = FileTypes.Config
+    val TSCN_FILE: Icon = FileTypes.Config
     val JSON_FILE: Icon = FileTypes.Json
     val ANY_FILE: Icon = FileTypes.Any_type
     val CLASS: Icon = Nodes.Class

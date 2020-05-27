@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.26.7</version>
+	<version>0.27</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -40,14 +40,18 @@
 		<errorHandler implementation="report.ReportSubmitter"/>
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
-		<fileType implementationClass="scene.SceneFileType" extensions="godot;import;cfg;tres;tscn" name="Scene" language="Scene"/>
 		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
-		<lang.parserDefinition implementationClass="scene.SceneParserDefinition" language="Scene"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
-		<lang.syntaxHighlighterFactory implementationClass="scene.SceneHighlighterFactory" language="Scene"/>
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
 		<runConfigurationProducer implementation="run.RunConfigurationProducer"/>
+
+		<!-- TSCN -->
+		<fileType implementationClass="tscn.TscnFileType" extensions="godot;import;cfg;tres;tscn" name="TSCN" language="TSCN"/>
+		<lang.parserDefinition implementationClass="tscn.TscnParserDefinition" language="TSCN"/>
+		<lang.syntaxHighlighterFactory implementationClass="tscn.TscnHighlighterFactory" language="TSCN"/>
+		<lang.braceMatcher implementationClass="tscn.TscnBraceMatcher" language="TSCN"/>
+		<lang.quoteHandler implementationClass="tscn.TscnQuoteHandler" language="TSCN"/>
 	</extensions>
 </idea-plugin>
