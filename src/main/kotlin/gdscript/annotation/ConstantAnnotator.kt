@@ -3,8 +3,8 @@ package gdscript.annotation
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import common.Colors.CONSTANT
 import common.PsiElementUtils.isToken
+import gdscript.Colors.CONSTANT
 import gdscript.ScriptLexer.IDENTIFIER
 
 class ConstantAnnotator : Annotator {

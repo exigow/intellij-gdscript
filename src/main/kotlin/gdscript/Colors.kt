@@ -1,4 +1,4 @@
-package common
+package gdscript
 
 import com.intellij.ide.highlighter.custom.CustomHighlighterColors
 import com.intellij.openapi.editor.colors.EditorColors

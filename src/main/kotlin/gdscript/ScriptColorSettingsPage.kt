@@ -3,7 +3,6 @@ package gdscript
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import common.Colors
 import common.Icons
 import net.pearx.kasechange.toTitleCase
 

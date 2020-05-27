@@ -1,6 +1,6 @@
-package common
+package gdscript
 
-import common.Colors.*
+import gdscript.Colors.*
 import junit.framework.TestCase
 
 class ColorsTest : TestCase() {

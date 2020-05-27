@@ -4,7 +4,6 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
-import common.Colors as Color
 
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
@@ -16,23 +15,23 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
 
     private fun matchingToColor(element: IElementType?) = when (element) {
-        in ScriptTokenSet.LINE_COMMENTS -> Color.LINE_COMMENT
-        in ScriptTokenSet.STRINGS -> Color.STRING
-        in ScriptTokenSet.RESOURCES -> Color.RESOURCE
-        in ScriptTokenSet.NUMBERS -> Color.NUMBER
-        in ScriptTokenSet.KEYWORDS -> Color.KEYWORD
-        in ScriptTokenSet.NODES -> Color.NODE
-        in ScriptTokenSet.IDENTIFIERS -> Color.IDENTIFIER
-        in ScriptTokenSet.CONSTANTS -> Color.CONSTANT
-        in ScriptTokenSet.CLASSES -> Color.CLASS_NAME
-        in ScriptTokenSet.OPERATION_SIGNS -> Color.OPERATION_SIGN
-        in ScriptTokenSet.COMMAS -> Color.COMMA
-        in ScriptTokenSet.SEMICOLONS -> Color.SEMICOLON
-        in ScriptTokenSet.COLONS -> Color.COLON
-        in ScriptTokenSet.DOTS -> Color.DOT
-        in ScriptTokenSet.BRACES -> Color.BRACES
-        in ScriptTokenSet.PARENTHESES -> Color.PARENTHESES
-        in ScriptTokenSet.BRACKETS -> Color.BRACKETS
+        in ScriptTokenSet.LINE_COMMENTS -> Colors.LINE_COMMENT
+        in ScriptTokenSet.STRINGS -> Colors.STRING
+        in ScriptTokenSet.RESOURCES -> Colors.RESOURCE
+        in ScriptTokenSet.NUMBERS -> Colors.NUMBER
+        in ScriptTokenSet.KEYWORDS -> Colors.KEYWORD
+        in ScriptTokenSet.NODES -> Colors.NODE
+        in ScriptTokenSet.IDENTIFIERS -> Colors.IDENTIFIER
+        in ScriptTokenSet.CONSTANTS -> Colors.CONSTANT
+        in ScriptTokenSet.CLASSES -> Colors.CLASS_NAME
+        in ScriptTokenSet.OPERATION_SIGNS -> Colors.OPERATION_SIGN
+        in ScriptTokenSet.COMMAS -> Colors.COMMA
+        in ScriptTokenSet.SEMICOLONS -> Colors.SEMICOLON
+        in ScriptTokenSet.COLONS -> Colors.COLON
+        in ScriptTokenSet.DOTS -> Colors.DOT
+        in ScriptTokenSet.BRACES -> Colors.BRACES
+        in ScriptTokenSet.PARENTHESES -> Colors.PARENTHESES
+        in ScriptTokenSet.BRACKETS -> Colors.BRACKETS
         else -> null
     }
 
