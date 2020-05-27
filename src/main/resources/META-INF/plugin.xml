@@ -19,13 +19,10 @@
 	<idea-version since-build="193.2252"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
+		<!-- gdscript -->
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.InvalidImportFileAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
-		<applicationConfigurable instance="settings.ApplicationSettingsConfigurable" groupId="language"/>
-		<applicationService serviceImplementation="lsp.LanguageServerService"/>
-		<applicationService serviceImplementation="lsp.diagnostics.DiagnosticService"/>
-		<applicationService serviceImplementation="settings.ApplicationSettings"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
@@ -34,20 +31,27 @@
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="lsp.completion.CompletionContributor" language="GDScript"/>
-		<configurationType implementation="run.RunConfigurationType"/>
-		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
-		<errorHandler implementation="report.ReportSubmitter"/>
-		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
+		<!-- lsp -->
+		<applicationService serviceImplementation="lsp.LanguageServerService"/>
+		<applicationService serviceImplementation="lsp.diagnostics.DiagnosticService"/>
+		<completion.contributor implementationClass="lsp.completion.CompletionContributor" language="GDScript"/>
+		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
+		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
+		<!-- report -->
+		<errorHandler implementation="report.ReportSubmitter"/>
+		<!-- run -->
+		<configurationType implementation="run.RunConfigurationType"/>
 		<runConfigurationProducer implementation="run.RunConfigurationProducer"/>
-
-		<!-- TSCN -->
+		<!-- settings -->
+		<applicationConfigurable instance="settings.ApplicationSettingsConfigurable" groupId="language"/>
+		<applicationService serviceImplementation="settings.ApplicationSettings"/>
+		<!-- tscn -->
 		<fileType implementationClass="tscn.TscnFileType" extensions="godot;import;cfg;tres;tscn" name="TSCN" language="TSCN"/>
 		<lang.parserDefinition implementationClass="tscn.TscnParserDefinition" language="TSCN"/>
 		<lang.syntaxHighlighterFactory implementationClass="tscn.TscnHighlighterFactory" language="TSCN"/>

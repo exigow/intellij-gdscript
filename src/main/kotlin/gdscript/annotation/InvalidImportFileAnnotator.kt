@@ -3,9 +3,9 @@ package gdscript.annotation
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import common.PsiElementUtils.isToken
 import gdscript.ScriptLexer.RESOURCE
-import gdscript.completion.utils.FileUtils
+import gdscript.utils.FileUtils
+import gdscript.utils.PsiElementUtils.isToken
 
 class InvalidImportFileAnnotator : Annotator {
 

@@ -4,9 +4,9 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
-import common.PsiElementUtils.isToken
 import gdscript.Colors.INSTANCE_METHOD
 import gdscript.ScriptLexer.IDENTIFIER
+import gdscript.utils.PsiElementUtils.isToken
 
 class MethodAnnotator : Annotator {
 

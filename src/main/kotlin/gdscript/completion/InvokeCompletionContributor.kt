@@ -3,11 +3,11 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import common.PsiElementUtils.hasAncestors
 import gdscript.ScriptParser.RULE_id
 import gdscript.ScriptParser.RULE_invoke
 import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
+import gdscript.utils.PsiElementUtils.hasAncestors
 
 class InvokeCompletionContributor : CompletionContributor() {
 

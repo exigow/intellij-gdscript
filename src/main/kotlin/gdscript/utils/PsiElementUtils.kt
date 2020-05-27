@@ -1,4 +1,4 @@
-package common
+package gdscript.utils
 
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement

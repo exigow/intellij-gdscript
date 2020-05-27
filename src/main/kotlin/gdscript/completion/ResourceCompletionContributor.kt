@@ -9,9 +9,9 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VirtualFile
 import common.Icons
-import common.PsiElementUtils.isToken
 import gdscript.ScriptLexer.RESOURCE
-import gdscript.completion.utils.FileUtils
+import gdscript.utils.FileUtils
+import gdscript.utils.PsiElementUtils.isToken
 import javax.swing.Icon
 
 class ResourceCompletionContributor : CompletionContributor() {

@@ -1,4 +1,4 @@
-package gdscript.completion.utils
+package gdscript.utils
 
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
