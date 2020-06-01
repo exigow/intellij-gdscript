@@ -61,8 +61,8 @@ id: IDENTIFIER | FUNCTION_IDENTIFIER | CONSTANT_IDENTIFIER | CLASS_IDENTIFIER | 
 string: STRING | RESOURCE | USER_RESOURCE;
 
 NUMBER: [+-]?([0-9]+([.][0-9]*)?|[.][0-9]+);
-RESOURCE: '"res://' .*? '"';
-USER_RESOURCE: '"user://' .*? '"';
+RESOURCE: ('"res://' .*? '"') | ('\'res://' .*? '\'');
+USER_RESOURCE: ('"user://' .*? '"') | ('\'user://' .*? '\'');
 STRING: ('"""' .*? '"""') | ('"' .*? ('"' | '\n' | EOF)) | ('\'' .*? ('\'' | '\n' | EOF));
 NODE: '$' ((IDENTIFIER ('/' IDENTIFIER)*) | STRING);
 NETWORK_MODIFIER: 'remote' | 'puppet' | 'master' | 'sync' | 'remotesync' | 'mastersync' | 'puppetsync';
