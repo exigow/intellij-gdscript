@@ -9,15 +9,16 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
 import com.intellij.openapi.vfs.VirtualFile
 import common.Icons
-import gdscript.ScriptLexer.RESOURCE
 import gdscript.utils.FileUtils
-import gdscript.utils.PsiElementUtils.isToken
+import gdscript.utils.PsiElementUtils.isStringLeaf
+import gdscript.utils.PsiElementUtils.stringText
 import javax.swing.Icon
 
 class ResourceCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
-        if (parameters.position.isToken(RESOURCE)) {
+        val element = parameters.position
+        if (element.isStringLeaf() && element.stringText().startsWith("res://")) {
             val currentFile = parameters.originalFile.virtualFile
             val files = FileUtils.collectPathsToProjectFiles(currentFile, ::isUseful)
             for ((path, file) in files) {

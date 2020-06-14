@@ -39,7 +39,7 @@ class ScriptColorSettingsPage : ColorSettingsPage {
 
         val DEMO_TEXT = """
             extends Node
-            const Scene = preload("res://scene.tscn")
+            const Scene = preload(<GDSCRIPT_RESOURCE>"res://scene.tscn"</GDSCRIPT_RESOURCE>)
             const <GDSCRIPT_CONSTANT>MAX_HP</GDSCRIPT_CONSTANT> = 100.0
             var hp: float # comment
             enum Named { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = "text" } 

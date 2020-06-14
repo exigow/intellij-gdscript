@@ -5,18 +5,18 @@ import junit.framework.TestCase
 
 class ColorsTest : TestCase() {
 
-    fun `test external names to ensure backwards compatibility`() {
+    fun `test keys are not changing`() {
         assertEquals(LINE_COMMENT.key.externalName, "GDSCRIPT_LINE_COMMENT")
         assertEquals(IDENTIFIER.key.externalName, "GDSCRIPT_IDENTIFIER")
         assertEquals(STRING.key.externalName, "GDSCRIPT_STRING")
         assertEquals(DOT.key.externalName, "GDSCRIPT_DOT")
     }
 
-    fun `test external names are unique`() {
+    fun `test keys are unique`() {
         val keys = values().map { it.key }
-        val actualSize = keys.toList().size
-        val uniqueSize = keys.toSet().size
-        assertEquals(actualSize, uniqueSize)
+        val list = keys.toList().size
+        val set = keys.toSet().size
+        assertEquals(list, set)
     }
 
 }

@@ -1,39 +1,36 @@
 package gdscript.completion
 
-import com.intellij.codeInsight.completion.*
-import com.intellij.patterns.PlatformPatterns.psiElement
-import com.intellij.util.ProcessingContext
+import com.intellij.codeInsight.completion.CompletionContributor
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
+import com.intellij.psi.util.PsiTreeUtil
 import gdscript.completion.utils.LookupFactory
 
 
 class KeywordContinuationCompletionContributor : CompletionContributor() {
 
-    init {
-        extendContinuation("export", listOf("var"))
-        extendContinuation("onready", listOf("var"))
-        extendContinuation("master", listOf("var", "func"))
-        extendContinuation("mastersync", listOf("var", "func"))
-        extendContinuation("puppet", listOf("var", "func"))
-        extendContinuation("puppetsync", listOf("var", "func"))
-        extendContinuation("remote", listOf("var", "func"))
-        extendContinuation("remotesync", listOf("var", "func"))
-        extendContinuation("sync", listOf("var", "func"))
-        extendContinuation("static", listOf("func"))
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        val element = parameters.position
+        val previousLeafText = PsiTreeUtil.prevVisibleLeaf(element)?.text.orEmpty()
+        val predicted = KEYWORD_CONTINUATIONS[previousLeafText]
+        val lookups = predicted?.map { LookupFactory.createKeywordWithSpace(it) }.orEmpty()
+        result.addAllElements(lookups)
     }
 
-    private fun extendContinuation(trigger: String, nextKeywords: List<String>) {
-        val rule = psiElement().afterLeaf(trigger)
-        val provider = KeywordCompletionProvider(nextKeywords)
-        extend(CompletionType.BASIC, rule, provider)
-    }
+    private companion object {
 
-    private class KeywordCompletionProvider(private val texts: List<String>)
-        : CompletionProvider<CompletionParameters>() {
-
-        override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
-            val lookups = texts.map { LookupFactory.createKeywordWithSpace(it) }
-            result.addAllElements(lookups)
-        }
+        private val KEYWORD_CONTINUATIONS: Map<String, Set<String>> = mapOf(
+            "export" to setOf("var"),
+            "onready" to setOf("var"),
+            "master" to setOf("var", "func"),
+            "mastersync" to setOf("var", "func"),
+            "puppet" to setOf("var", "func"),
+            "puppetsync" to setOf("var", "func"),
+            "remote" to setOf("var", "func"),
+            "remotesync" to setOf("var", "func"),
+            "sync" to setOf("var", "func"),
+            "static" to setOf("func")
+        )
 
     }
 

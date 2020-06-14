@@ -17,7 +17,7 @@ class ConsoleLinkFilter(
         val links = ConsoleLinkParser.parseText(textLine)
         if (links.isEmpty())
             return null
-        val link = links.first() // todo: use all parsed links
+        val link = links.first() // todo use all
         val file = findFile(link.file)
             ?: return null
         val offset = endPoint - textLine.length

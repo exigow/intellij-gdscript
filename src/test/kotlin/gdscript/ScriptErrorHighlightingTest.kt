@@ -1,7 +1,6 @@
 package gdscript
 
 import BaseTest
-import com.intellij.lang.annotation.HighlightSeverity
 import utils.openScript
 
 class ScriptErrorHighlightingTest : BaseTest() {
@@ -83,33 +82,54 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("""
             match x:
                 1:
-                    print("We are number one!")
+                    print()
                 2:
-                    print("Two are better than one!")
+                    print()
                 "test":
-                    print("Oh snap! It's a string!")
+                    print()
         """)
 
     fun `test match variable pattern`() =
         assertNoErrors("""
             match typeof(x):
                 TYPE_REAL:
-                    print("float")
+                    print()
                 TYPE_STRING:
-                    print("text")
+                    print()
                 TYPE_ARRAY:
-                    print("array")
+                    print()
         """)
 
     fun `test match wildcard pattern`() =
         assertNoErrors("""
             match x:
                 1:
-                    print("It's one!")
+                    print()
                 2:
-                    print("It's one times two!")
+                    print()
                 _:
-                    print("It's not 1 or 2. I don't care tbh.")
+                    print()
+        """)
+
+    fun `test match dictionary pattern`() =
+        assertNoErrors("""
+            match dict:
+                {}:
+                    print()
+                {"k", "v"}:
+                    print()
+                {"k": var v}:
+                    print()
+                {"k": "v", ..}
+        """)
+
+    fun `test match multiple patterns`() =
+        assertNoErrors("""
+            match x:
+                1, 2, 3:
+                    print()
+                "x", "y", "z":
+                    print()
         """)
 
     fun `test constructor multiline`() =
@@ -448,16 +468,6 @@ class ScriptErrorHighlightingTest : BaseTest() {
             , [false, "false"]
             ]
         """)
-
-    fun `test error on two statements in one line (sanity check)`() {
-        environment.openScript("""
-            var x var
-            func x():
-                return
-        """)
-        val errors = environment.doHighlighting()
-        assertEquals(errors[0].severity, HighlightSeverity.ERROR)
-    }
 
     private fun assertNoErrors(code: String) {
         environment.openScript(code)

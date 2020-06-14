@@ -3,16 +3,17 @@ package gdscript.annotation
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import gdscript.Colors.CONSTANT
-import gdscript.ScriptLexer.IDENTIFIER
-import gdscript.utils.PsiElementUtils.isToken
+import gdscript.Colors
+import gdscript.ScriptTokenType.IDENTIFIER
+import gdscript.utils.PsiElementUtils.isLeaf
 
 class ConstantAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        val text = element.text
-        if (element.isToken(IDENTIFIER) && text.matches(CONSTANT_REGEX))
-            holder.colorize(element, CONSTANT)
+        if (element.isLeaf(IDENTIFIER) && element.text.matches(CONSTANT_REGEX)) {
+            val info = holder.createInfoAnnotation(element, null)
+            info.textAttributes = Colors.CONSTANT.key
+        }
     }
 
     private companion object {

@@ -3,8 +3,7 @@ package gdscript
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
-
+import gdscript.lexer.ScriptLexer
 
 class ScriptHighlighter : SyntaxHighlighterBase() {
 
@@ -12,26 +11,24 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         pack(matchingToColor(element)?.key)
 
     override fun getHighlightingLexer() =
-        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
+        ScriptLexer()
 
     private fun matchingToColor(element: IElementType?) = when (element) {
-        in ScriptTokenSet.LINE_COMMENTS -> Colors.LINE_COMMENT
-        in ScriptTokenSet.STRINGS -> Colors.STRING
-        in ScriptTokenSet.RESOURCES -> Colors.RESOURCE
-        in ScriptTokenSet.NUMBERS -> Colors.NUMBER
-        in ScriptTokenSet.KEYWORDS -> Colors.KEYWORD
-        in ScriptTokenSet.NODES -> Colors.NODE
-        in ScriptTokenSet.IDENTIFIERS -> Colors.IDENTIFIER
-        in ScriptTokenSet.CONSTANTS -> Colors.CONSTANT
-        in ScriptTokenSet.CLASSES -> Colors.CLASS_NAME
-        in ScriptTokenSet.OPERATION_SIGNS -> Colors.OPERATION_SIGN
-        in ScriptTokenSet.COMMAS -> Colors.COMMA
-        in ScriptTokenSet.SEMICOLONS -> Colors.SEMICOLON
-        in ScriptTokenSet.COLONS -> Colors.COLON
-        in ScriptTokenSet.DOTS -> Colors.DOT
-        in ScriptTokenSet.BRACES -> Colors.BRACES
-        in ScriptTokenSet.PARENTHESES -> Colors.PARENTHESES
-        in ScriptTokenSet.BRACKETS -> Colors.BRACKETS
+        ScriptTokenType.KEYWORD -> Colors.KEYWORD
+        ScriptTokenType.CLASS_NAME -> Colors.CLASS_NAME
+        ScriptTokenType.DOUBLE_QUOTED_STRING, ScriptTokenType.SINGLE_QUOTED_STRING -> Colors.STRING
+        ScriptTokenType.NUMBER -> Colors.NUMBER
+        ScriptTokenType.IDENTIFIER -> Colors.IDENTIFIER
+        ScriptTokenType.NODE -> Colors.NODE
+        ScriptTokenType.CONSTANT -> Colors.CONSTANT
+        ScriptTokenType.LINE_COMMENT -> Colors.LINE_COMMENT
+        ScriptTokenType.COMMA -> Colors.COMMA
+        ScriptTokenType.COLON -> Colors.COLON
+        ScriptTokenType.SEMICOLON -> Colors.SEMICOLON
+        ScriptTokenType.DOT -> Colors.DOT
+        ScriptTokenType.BRACE_LEFT, ScriptTokenType.BRACE_RIGHT -> Colors.BRACES
+        ScriptTokenType.PARENTH_LEFT, ScriptTokenType.PARENTH_RIGHT -> Colors.PARENTHESES
+        ScriptTokenType.BRACKET_LEFT, ScriptTokenType.BRACKET_RIGHT -> Colors.BRACKETS
         else -> null
     }
 

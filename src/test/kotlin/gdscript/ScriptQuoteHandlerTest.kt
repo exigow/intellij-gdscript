@@ -5,32 +5,40 @@ import utils.openScript
 
 class ScriptQuoteHandlerTest : BaseTest() {
 
-    fun `test Double-Quote completion`() {
+    fun `test add closing double quote`() {
         environment.openScript("x = <caret>")
         environment.type('"')
         environment.checkResult("x = \"<caret>\"")
     }
 
-    fun `test Apostrophe completion`() {
+    fun `test remove closing double quote`() {
+        environment.openScript("x = \"<caret>\"")
+        environment.type('\b')
+        environment.checkResult("x = <caret>")
+    }
+
+    fun `test overwrite closing double quote`() {
+        environment.openScript("x = \"<caret>\"")
+        environment.type('\"')
+        environment.checkResult("x = \"\"<caret>")
+    }
+
+    fun `test add closing single quote`() {
         environment.openScript("x = <caret>")
         environment.type('\'')
         environment.checkResult("x = \'<caret>\'")
     }
 
-    fun `test remove Double-Quote on Backspace`() {
-        environment.openScript("x = \"<caret>\"")
-        environment.type(BACKSPACE)
-        environment.checkResult("x = <caret>")
-    }
-
-    fun `test remove Apostrophe on Backspace`() {
+    fun `test remove closing single quote`() {
         environment.openScript("x = \'<caret>\'")
-        environment.type(BACKSPACE)
+        environment.type('\b')
         environment.checkResult("x = <caret>")
     }
 
-    companion object {
-        const val BACKSPACE = '\b'
+    fun `test overwrite closing single quote`() {
+        environment.openScript("x = \'<caret>\'")
+        environment.type('\'')
+        environment.checkResult("x = \'\'<caret>")
     }
 
 }

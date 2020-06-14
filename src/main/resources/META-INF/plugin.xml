@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.27</version>
+	<version>0.28</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -21,14 +21,13 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- gdscript -->
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.InvalidImportFileAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.InvokeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordContinuationCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
@@ -37,6 +36,7 @@
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
+		<extendWordSelectionHandler implementation="gdscript.ScriptExtendWordHandler"/>
 		<!-- lsp -->
 		<applicationService serviceImplementation="lsp.LanguageServerService"/>
 		<applicationService serviceImplementation="lsp.diagnostics.DiagnosticService"/>

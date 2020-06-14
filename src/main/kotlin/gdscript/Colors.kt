@@ -3,32 +3,29 @@ package gdscript
 import com.intellij.ide.highlighter.custom.CustomHighlighterColors
 import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
-import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors
 
+enum class Colors(fallback: TextAttributesKey) {
 
-enum class Colors(copied: TextAttributesKey) {
-
-    LINE_COMMENT(Default.LINE_COMMENT),
-    STRING(Default.STRING),
-    NUMBER(Default.NUMBER),
-    KEYWORD(Default.KEYWORD),
-    IDENTIFIER(Default.IDENTIFIER),
-    NODE(Default.METADATA),
-    OPERATION_SIGN(Default.OPERATION_SIGN),
-    COMMA(Default.COMMA),
-    SEMICOLON(Default.SEMICOLON),
-    COLON(Default.OPERATION_SIGN),
-    DOT(Default.DOT),
-    BRACES(Default.BRACES),
-    PARENTHESES(Default.PARENTHESES),
-    BRACKETS(Default.BRACKETS),
-    INSTANCE_METHOD(Default.INSTANCE_METHOD),
+    LINE_COMMENT(DefaultColors.LINE_COMMENT),
+    STRING(DefaultColors.STRING),
+    NUMBER(DefaultColors.NUMBER),
+    KEYWORD(DefaultColors.KEYWORD),
+    IDENTIFIER(DefaultColors.IDENTIFIER),
+    NODE(DefaultColors.METADATA),
+    COMMA(DefaultColors.COMMA),
+    SEMICOLON(DefaultColors.SEMICOLON),
+    COLON(DefaultColors.OPERATION_SIGN),
+    DOT(DefaultColors.DOT),
+    BRACES(DefaultColors.BRACES),
+    PARENTHESES(DefaultColors.PARENTHESES),
+    BRACKETS(DefaultColors.BRACKETS),
+    INSTANCE_METHOD(DefaultColors.INSTANCE_METHOD),
     CLASS_NAME(CustomHighlighterColors.CUSTOM_KEYWORD3_ATTRIBUTES),
-    CONSTANT(Default.CONSTANT),
+    CONSTANT(DefaultColors.CONSTANT),
     RESOURCE(EditorColors.INJECTED_LANGUAGE_FRAGMENT);
 
     val key: TextAttributesKey =
-        createTextAttributesKey("GDSCRIPT_$name", copied)
+        TextAttributesKey.createTextAttributesKey("GDSCRIPT_$name", fallback)
 
 }

@@ -8,16 +8,66 @@ object CompletionDictionary {
         CLASSES.filter { it.name in collectSingletonNames() }
     val LANGUAGE_CONSTANTS =
         CLASSES.filter { isGlobal(it) }.flatMap { it.constants.orEmpty() }
+    val LANGUAGE_CONSTANT_NAMES =
+        LANGUAGE_CONSTANTS.map { it.name }.toSet()
     val FUNCTIONS =
         CLASSES.filter { isGlobal(it) }.flatMap { it.methods.orEmpty() }
+    val FUNCTION_NAMES =
+        FUNCTIONS.map { it.name }.toSet()
     val PRIMITIVES =
         CLASSES.filter { isPrimitive(it) }.toTypedArray()
+    val NON_PRIMITIVE_CLASS_NAMES =
+        (CLASSES.toList() - PRIMITIVES).map { it.name }.toSet()
     val CLASS_CONSTRUCTORS =
         toConstructors(CLASSES)
     val PRIMITIVE_CONSTRUCTORS =
         toConstructors(PRIMITIVES)
     val VARIABLE_KEYWORDS =
-        listOf("self", "true", "false", "null")
+        setOf("self", "true", "false", "null")
+    val KEYWORDS =
+        setOf(
+            "remote",
+            "puppet",
+            "master",
+            "sync",
+            "remotesync",
+            "mastersync",
+            "puppetsync",
+            "match",
+            "export",
+            "onready",
+            "var",
+            "setget",
+            "const",
+            "static",
+            "func",
+            "for",
+            "while",
+            "class",
+            "extends",
+            "class_name",
+            "enum",
+            "if",
+            "elif",
+            "else",
+            "return",
+            "signal",
+            "not",
+            "pass",
+            "break",
+            "continue",
+            "tool",
+            "in",
+            "and",
+            "or",
+            "is",
+            "as",
+            "bool",
+            "int",
+            "float",
+            "void"
+        )
+
 
     fun findClass(name: String?) =
         CLASSES.find { it.name == name }

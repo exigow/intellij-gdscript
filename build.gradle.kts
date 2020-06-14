@@ -1,15 +1,12 @@
 plugins {
     java
-    antlr
     kotlin("jvm") version "1.3.41"
     id("org.jetbrains.intellij").version("0.4.9")
 }
 
 dependencies {
-    antlr("org.antlr:antlr4:4.8-1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.9")
-    implementation("org.antlr:antlr4-intellij-adaptor:0.1")
     implementation("net.pearx.kasechange:kasechange-jvm:1.1.0")
     implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.9.0")
     testImplementation("io.mockk:mockk:1.9.3")
@@ -36,16 +33,8 @@ tasks {
         targetCompatibility = "1.8"
     }
     compileKotlin {
-        dependsOn(generateGrammarSource)
         kotlinOptions {
             jvmTarget = "1.8"
         }
-    }
-    generateGrammarSource {
-        arguments = listOf(
-            "-no-listener",
-            "-no-visitor",
-            "-lib", "src/main/antlr/gdscript"
-        )
     }
 }

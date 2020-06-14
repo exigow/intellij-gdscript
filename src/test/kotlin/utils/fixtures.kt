@@ -1,6 +1,5 @@
 package utils
 
-import com.intellij.openapi.actionSystem.IdeActions
 import gdscript.ScriptFileType
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture as Fixture
 
@@ -22,10 +21,6 @@ fun Fixture.addFile(filename: String) {
 
 fun Fixture.addProjectFile() =
     addFile("project.godot")
-
-fun Fixture.doCommentLineAction() {
-    performEditorAction(IdeActions.ACTION_COMMENT_LINE)
-}
 
 fun Fixture.lookups() =
     lookupElementStrings.orEmpty()

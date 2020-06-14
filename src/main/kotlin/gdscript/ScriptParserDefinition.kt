@@ -1,61 +1,49 @@
 package gdscript
 
+import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
+import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
-import com.intellij.psi.tree.IElementType
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import gdscript.ScriptTokenSet.LINE_COMMENTS
-import gdscript.ScriptTokenSet.STRINGS
-import gdscript.ScriptTokenSet.WHITESPACES
-import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
-import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
-import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
-import org.antlr.v4.runtime.Parser
-import org.antlr.v4.runtime.tree.ParseTree
+import gdscript.lexer.ScriptLexer
+import gdscript.parser.ScriptParser
 
 
-class ScriptParserDefinition : com.intellij.lang.ParserDefinition {
-
-    init {
-        @Suppress("DEPRECATION")
-        PSIElementTypeFactory.defineLanguageIElementTypes(ScriptLanguage, ScriptParser.tokenNames, ScriptParser.ruleNames)
-    }
+class ScriptParserDefinition : ParserDefinition {
 
     override fun createLexer(project: Project): Lexer =
-        ANTLRLexerAdaptor(ScriptLanguage, ScriptLexer(null))
+        ScriptLexer()
 
-    override fun createParser(project: Project): PsiParser =
-        object : ANTLRParserAdaptor(ScriptLanguage, ScriptParser(null)) {
-            override fun parse(parser: Parser, root: IElementType): ParseTree =
-                (parser as ScriptParser).file()
-        }
+    override fun createParser(project: Project?): PsiParser? =
+        ScriptParser()
 
     override fun getWhitespaceTokens(): TokenSet =
-        WHITESPACES
+        TokenSet.create(ScriptTokenType.WHITESPACE)
 
-    override fun getCommentTokens(): TokenSet =
-        LINE_COMMENTS
+    override fun getCommentTokens() =
+        TokenSet.create(ScriptTokenType.LINE_COMMENT)
 
-    override fun getStringLiteralElements(): TokenSet =
-        STRINGS
+    override fun getStringLiteralElements() =
+        TokenSet.create(ScriptTokenType.DOUBLE_QUOTED_STRING)
 
     override fun getFileNodeType() =
-        FILE
+        FILE_ELEMENT_TYPE
 
-    override fun createFile(view: FileViewProvider) =
+    override fun createFile(view: FileViewProvider): PsiFile =
         ScriptFile(view)
 
-    override fun createElement(node: ASTNode) =
-        ANTLRPsiNode(node)
+    override fun createElement(node: ASTNode): PsiElement =
+        ASTWrapperPsiElement(node)
 
-    companion object {
+    private companion object {
 
-        val FILE = IFileElementType(ScriptLanguage)
+        private val FILE_ELEMENT_TYPE = IFileElementType(ScriptLanguage)
 
     }
 

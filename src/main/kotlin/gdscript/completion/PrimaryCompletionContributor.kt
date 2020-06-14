@@ -3,25 +3,32 @@ package gdscript.completion
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
-import gdscript.ScriptLexer.NUMBER
-import gdscript.ScriptParser.RULE_id
-import gdscript.ScriptParser.RULE_primary
+import com.intellij.psi.PsiElement
+import com.intellij.psi.util.PsiTreeUtil
+import gdscript.ScriptTokenType.DOT
+import gdscript.ScriptTokenType.NUMBER
 import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
-import gdscript.utils.PsiElementUtils.hasAncestors
-import gdscript.utils.PsiElementUtils.isToken
+import gdscript.utils.PsiElementUtils.isLeaf
+import gdscript.utils.PsiElementUtils.isStringLeaf
 
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (element.hasAncestors(RULE_id, RULE_primary) && hasNotDigitPrefix(parameters))
+        if (isNotAfterDot(element) && !element.isStringLeaf() && hasNotDigitPrefix(parameters))
             result.addAllElements(ALL_PRIMARY_LOOKUPS)
+    }
+
+    private fun isNotAfterDot(element: PsiElement): Boolean {
+        val prev = PsiTreeUtil.prevVisibleLeaf(element)
+            ?: return true
+        return !prev.isLeaf(DOT)
     }
 
     private fun hasNotDigitPrefix(parameters: CompletionParameters): Boolean {
         val elementBeforeOffset = parameters.position.containingFile.findElementAt(parameters.offset - 1)!!
-        return !elementBeforeOffset.isToken(NUMBER)
+        return !elementBeforeOffset.isLeaf(NUMBER)
     }
 
     private companion object {

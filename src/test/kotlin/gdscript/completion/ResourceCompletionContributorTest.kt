@@ -8,8 +8,16 @@ import utils.openScript
 
 class ResourceCompletionContributorTest : BaseTest() {
 
-    fun `test complete sibling filename in string`() {
+    fun `test complete sibling filename in double quote string`() {
         environment.openScript("""const Util = preload("res://<caret>")""")
+        environment.addFile("util.gd")
+        environment.addProjectFile()
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "res://util.gd")
+    }
+
+    fun `test complete sibling filename in single quote string`() {
+        environment.openScript("""const Util = preload('res://<caret>')""")
         environment.addFile("util.gd")
         environment.addProjectFile()
         environment.completeBasic()

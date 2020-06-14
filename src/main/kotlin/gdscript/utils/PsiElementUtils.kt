@@ -2,24 +2,26 @@ package gdscript.utils
 
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import org.antlr.intellij.adaptor.lexer.RuleIElementType
-import org.antlr.intellij.adaptor.lexer.TokenIElementType
+import com.intellij.psi.tree.IElementType
+import gdscript.ScriptTokenType.DOUBLE_QUOTED_STRING
+import gdscript.ScriptTokenType.SINGLE_QUOTED_STRING
 
 object PsiElementUtils {
 
-    fun PsiElement.isToken(expected: Int): Boolean {
+    fun PsiElement.isLeaf(expected: IElementType): Boolean {
         val leaf = this as? LeafPsiElement
-        val token = leaf?.elementType
-        val typeToken = token as? TokenIElementType
-        return typeToken?.antlrTokenType ?: 0 == expected
+        return leaf?.elementType == expected
     }
 
-    fun PsiElement.hasAncestors(expectedParent: Int, expectedGrandparent: Int) =
-        parent.isRule(expectedParent) && parent.parent.isRule(expectedGrandparent)
-
-    private fun PsiElement.isRule(expected: Int): Boolean {
-        val rule = node?.elementType as? RuleIElementType
-        return rule?.ruleIndex ?: 0 == expected
+    fun PsiElement.stringText(): String {
+        if (text.startsWith("\""))
+            return text.removeSurrounding("\"")
+        if (text.startsWith("\'"))
+            return text.removeSurrounding("\'")
+        return text
     }
+
+    fun PsiElement.isStringLeaf() =
+        isLeaf(DOUBLE_QUOTED_STRING) || isLeaf(SINGLE_QUOTED_STRING)
 
 }

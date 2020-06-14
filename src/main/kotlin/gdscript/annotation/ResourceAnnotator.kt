@@ -3,20 +3,25 @@ package gdscript.annotation
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
-import gdscript.ScriptLexer.RESOURCE
+import gdscript.Colors
 import gdscript.utils.FileUtils
-import gdscript.utils.PsiElementUtils.isToken
+import gdscript.utils.PsiElementUtils.isStringLeaf
+import gdscript.utils.PsiElementUtils.stringText
 
-class InvalidImportFileAnnotator : Annotator {
+class ResourceAnnotator : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element.isToken(RESOURCE)) {
+        if (element.isStringLeaf() && element.stringText().startsWith(RESOURCE_PREFIX)) {
             val filenames = collectProjectFilenames(element)
             if (filenames.isEmpty())
                 return
-            val path = extractPath(element.text)
+            val path = element.stringText().removePrefix(RESOURCE_PREFIX)
             if (path !in filenames)
                 holder.createWeakWarningAnnotation(element, "Cannot resolve resource '$path'")
+            else {
+                val colored = holder.createInfoAnnotation(element, null)
+                colored.textAttributes = Colors.RESOURCE.key
+            }
         }
     }
 
@@ -26,8 +31,10 @@ class InvalidImportFileAnnotator : Annotator {
         return FileUtils.collectPathsToProjectFiles(projectDirectory).keys
     }
 
-    private fun extractPath(text: String) = text
-        .removeSurrounding("\"")
-        .removePrefix("res://")
+    private companion object {
+
+        private const val RESOURCE_PREFIX = "res://"
+
+    }
 
 }

@@ -19,13 +19,13 @@ class KeywordContinuationCompletionContributorTest : BaseTest() {
     }
 
     fun `test master func`() {
-        environment.openScript("static <caret>")
+        environment.openScript("master <caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "func")
     }
 
     fun `test continuation should add auto space`() {
-        environment.openScript("static <caret>")
+        environment.openScript("static fu<caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "func")
         environment.finishLookup('\r')

@@ -18,9 +18,7 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 * `./gradlew buildPlugin` - build plugin distribution to `build/distributions/intellij-gdscript.zip`
 * `./gradlew runIde` - run sandbox with installed plugin
 * `./gradlew test` - run all tests
-* `./gradlew generateGrammarSource` - generate lexer and parser Java classes
 * `./gradlew generateCompletion` - generate Godot Engine API completion file
-* `./gradlew generateLexer` - generate ANTLR lexer code with language-level functions, constants and types
 * `./gradlew downloadDocumentation` - scrape documentation XML files from Godot Engine GitHub repository
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository
 
