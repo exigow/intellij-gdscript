@@ -40,10 +40,10 @@ class ScriptColorSettingsPage : ColorSettingsPage {
         val DEMO_TEXT = """
             extends Node
             const Scene = preload(<GDSCRIPT_RESOURCE>"res://scene.tscn"</GDSCRIPT_RESOURCE>)
-            const <GDSCRIPT_CONSTANT>MAX_HP</GDSCRIPT_CONSTANT> = 100.0
+            const MAX_HP = 100.0
             var hp: float # comment
-            enum Named { <GDSCRIPT_CONSTANT>ONE</GDSCRIPT_CONSTANT>, <GDSCRIPT_CONSTANT>TWO</GDSCRIPT_CONSTANT> = "text" } 
-            func <GDSCRIPT_INSTANCE_METHOD>get_key</GDSCRIPT_INSTANCE_METHOD>(arg: Vector2 = Vector2.<GDSCRIPT_CONSTANT>ZERO</GDSCRIPT_CONSTANT>) -> int:
+            enum Named { ONE, TWO = "text" } 
+            func <GDSCRIPT_INSTANCE_METHOD>get_key</GDSCRIPT_INSTANCE_METHOD>(arg: Vector2 = Vector2.ZERO) -> int:
                 ${'$'}Some/Node.items[4] *= 2;
                 return KEY_SPACE
             """.trimIndent()

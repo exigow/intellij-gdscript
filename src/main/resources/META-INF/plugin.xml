@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.28</version>
+	<version>0.28.1</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -22,7 +22,6 @@
 		<!-- gdscript -->
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>
-		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordContinuationCompletionContributor" language="GDScript"/>

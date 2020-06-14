@@ -28,8 +28,18 @@ class IdentifierScanner : TokenScanner {
             in CompletionDictionary.FUNCTION_NAMES -> KEYWORD
             in CompletionDictionary.NON_PRIMITIVE_CLASS_NAMES -> CLASS_NAME
             in CompletionDictionary.LANGUAGE_CONSTANT_NAMES -> CONSTANT
-            else -> IDENTIFIER
+            else -> {
+                if (CONSTANT_REGEX.matches(text))
+                    return CONSTANT
+                return IDENTIFIER
+            }
         }
+    }
+
+    private companion object {
+
+        val CONSTANT_REGEX = "[A-Z][A-Z0-9_]+".toRegex()
+
     }
 
 }
