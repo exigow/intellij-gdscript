@@ -2,6 +2,7 @@ package gdscript.completion
 
 import classes.CompletionDictionary
 import classes.GDScriptGrammar
+import classes.model.Class
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -35,13 +36,17 @@ class PrimaryCompletionContributor : CompletionContributor() {
     private companion object {
 
         val ALL_PRIMARY_LOOKUPS = listOf(
-            CompletionDictionary.SINGLETONS.map { LookupFactory.createSingleton(it) },
-            CompletionDictionary.LANGUAGE_CONSTANTS.map { LookupFactory.createConstant(it) },
-            CompletionDictionary.FUNCTIONS.map { LookupFactory.createFunction(it) },
-            CompletionDictionary.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
-            CompletionDictionary.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) },
+            CompletionDictionary.SINGLETON_CLASSES.map { LookupFactory.createSingleton(it) },
+            CompletionDictionary.GLOBAL_CONSTANTS.map { LookupFactory.createConstant(it) },
+            CompletionDictionary.GLOBAL_METHODS.map { LookupFactory.createFunction(it) },
+            CompletionDictionary.ALL_CLASSES.constructorMethods().map { LookupFactory.createConstructor(it) },
+            CompletionDictionary.PRIMITIVE_CLASSES.constructorMethods().map { LookupFactory.createPrimitiveConstructor(it) },
             GDScriptGrammar.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
         ).flatten()
+
+
+        private fun List<Class>.constructorMethods() =
+            flatMap { c -> c.methods?.filter { it -> c.name == it.name }.orEmpty() }
 
     }
 

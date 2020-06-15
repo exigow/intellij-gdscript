@@ -16,11 +16,11 @@ class StaticCompletionContributor : CompletionContributor() {
         val prev = PsiTreeUtil.prevVisibleLeaf(parameters.position)
         if (prev?.isLeaf(ScriptTokenType.DOT) == true) {
             val id = PsiTreeUtil.prevVisibleLeaf(prev)
-            val clazz = CompletionDictionary.CLASSES.find { it.name == id?.text }
+            val clazz = CompletionDictionary.ALL_CLASSES.find { it.name == id?.text }
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
                 result.caseInsensitive().addAllElements(constants)
-                if (clazz in CompletionDictionary.SINGLETONS) {
+                if (clazz in CompletionDictionary.SINGLETON_CLASSES) {
                     val staticMethods = createStaticMethodLookups(clazz)
                     result.caseInsensitive().addAllElements(staticMethods)
                 }

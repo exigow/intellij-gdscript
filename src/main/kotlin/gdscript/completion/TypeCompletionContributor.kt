@@ -20,8 +20,8 @@ class TypeCompletionContributor : CompletionContributor() {
         private val TYPE_TOKENS = listOf("as", "is", "->", ":", "extends")
 
         private val ALL_TYPE_LOOKUPS = listOf(
-            CompletionDictionary.PRIMITIVES.map { LookupFactory.createKeyword(it.name) },
-            CompletionDictionary.CLASSES.map { LookupFactory.createClass(it) }
+            CompletionDictionary.PRIMITIVE_CLASSES.map { LookupFactory.createKeyword(it.name) },
+            CompletionDictionary.ALL_CLASSES.map { LookupFactory.createClass(it) }
         ).flatten()
 
     }
