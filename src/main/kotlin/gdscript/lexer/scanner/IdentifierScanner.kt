@@ -1,11 +1,12 @@
 package gdscript.lexer.scanner
 
+import classes.CompletionDictionary
+import classes.GDScriptGrammar
 import com.intellij.psi.tree.IElementType
 import gdscript.ScriptTokenType.CLASS_NAME
 import gdscript.ScriptTokenType.CONSTANT
 import gdscript.ScriptTokenType.IDENTIFIER
 import gdscript.ScriptTokenType.KEYWORD
-import gdscript.completion.sources.CompletionDictionary
 import gdscript.lexer.Token
 
 class IdentifierScanner : TokenScanner {
@@ -23,8 +24,9 @@ class IdentifierScanner : TokenScanner {
 
     private fun recognizeType(text: String): IElementType {
         return when (text) {
-            in CompletionDictionary.KEYWORDS,
-            in CompletionDictionary.VARIABLE_KEYWORDS,
+            in GDScriptGrammar.KEYWORDS,
+            in GDScriptGrammar.VARIABLE_KEYWORDS,
+            in GDScriptGrammar.PRIMITIVE_KEYWORDS,
             in CompletionDictionary.FUNCTION_NAMES -> KEYWORD
             in CompletionDictionary.NON_PRIMITIVE_CLASS_NAMES -> CLASS_NAME
             in CompletionDictionary.LANGUAGE_CONSTANT_NAMES -> CONSTANT

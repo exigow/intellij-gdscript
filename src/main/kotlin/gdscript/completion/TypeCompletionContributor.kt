@@ -1,10 +1,10 @@
 package gdscript.completion
 
+import classes.CompletionDictionary
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.psi.util.PsiTreeUtil
-import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 
 class TypeCompletionContributor : CompletionContributor() {

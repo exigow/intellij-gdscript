@@ -1,5 +1,9 @@
 package gdscript.completion.utils
 
+import classes.model.Argument
+import classes.model.Class
+import classes.model.Constant
+import classes.model.Method
 import com.intellij.codeInsight.completion.AddSpaceInsertHandler.INSTANCE_WITH_AUTO_POPUP
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler.NO_PARAMETERS
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler.WITH_PARAMETERS
@@ -11,10 +15,6 @@ import common.Icons.FUNCTION
 import common.Icons.STATIC_CLASS
 import common.Icons.STATIC_METHOD
 import common.Icons.STATIC_VARIABLE
-import gdscript.completion.sources.Argument
-import gdscript.completion.sources.Class
-import gdscript.completion.sources.Constant
-import gdscript.completion.sources.Method
 
 object LookupFactory {
 

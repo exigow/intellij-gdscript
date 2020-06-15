@@ -1,21 +1,22 @@
 package gdscript.completion
 
+import classes.CompletionDictionary
+import classes.model.Class
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.psi.util.PsiTreeUtil
 import gdscript.ScriptTokenType
-import gdscript.completion.sources.Class
-import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 import gdscript.utils.PsiElementUtils.isLeaf
+
 class StaticCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val prev = PsiTreeUtil.prevVisibleLeaf(parameters.position)
         if (prev?.isLeaf(ScriptTokenType.DOT) == true) {
             val id = PsiTreeUtil.prevVisibleLeaf(prev)
-            val clazz = CompletionDictionary.findClass(id?.text)
+            val clazz = CompletionDictionary.CLASSES.find { it.name == id?.text }
             if (clazz != null) {
                 val constants = createConstantLookups(clazz)
                 result.caseInsensitive().addAllElements(constants)

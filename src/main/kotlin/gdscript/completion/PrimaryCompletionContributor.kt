@@ -1,5 +1,7 @@
 package gdscript.completion
 
+import classes.CompletionDictionary
+import classes.GDScriptGrammar
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -7,7 +9,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import gdscript.ScriptTokenType.DOT
 import gdscript.ScriptTokenType.NUMBER
-import gdscript.completion.sources.CompletionDictionary
 import gdscript.completion.utils.LookupFactory
 import gdscript.utils.PsiElementUtils.isLeaf
 import gdscript.utils.PsiElementUtils.isStringLeaf
@@ -39,7 +40,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
             CompletionDictionary.FUNCTIONS.map { LookupFactory.createFunction(it) },
             CompletionDictionary.CLASS_CONSTRUCTORS.map { LookupFactory.createConstructor(it) },
             CompletionDictionary.PRIMITIVE_CONSTRUCTORS.map { LookupFactory.createPrimitiveConstructor(it) },
-            CompletionDictionary.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
+            GDScriptGrammar.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
         ).flatten()
 
     }
