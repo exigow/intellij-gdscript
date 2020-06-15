@@ -28,7 +28,7 @@ class IdentifierScanner : TokenScanner {
             in GDScriptGrammar.VARIABLE_KEYWORDS,
             in GDScriptGrammar.PRIMITIVE_KEYWORDS,
             in CompletionDictionary.GLOBAL_METHODS.map { it.name }.toSet() -> KEYWORD
-            in (CompletionDictionary.ALL_CLASSES.toList() - CompletionDictionary.PRIMITIVE_CLASSES).map { it.name } -> CLASS_NAME
+            in (CompletionDictionary.SINGLETON_CLASSES.toList() + CompletionDictionary.INSTANCED_CLASSES.toList() - CompletionDictionary.PRIMITIVE_CLASSES).map { it.name } -> CLASS_NAME
             in CompletionDictionary.GLOBAL_CONSTANTS.map { it.name } -> CONSTANT
             else -> {
                 if (CONSTANT_REGEX.matches(text))
