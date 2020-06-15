@@ -36,10 +36,10 @@ class PrimaryCompletionContributor : CompletionContributor() {
     private companion object {
 
         val ALL_PRIMARY_LOOKUPS = listOf(
+            CompletionDictionary.SINGLETON_CLASSES.map { LookupFactory.createSingleton(it) },
             CompletionDictionary.GLOBAL_CONSTANTS.map { LookupFactory.createConstant(it) },
             CompletionDictionary.GLOBAL_METHODS.map { LookupFactory.createFunction(it) },
-            CompletionDictionary.SINGLETON_CLASSES.map { LookupFactory.createSingleton(it) },
-            CompletionDictionary.INSTANCED_CLASSES.constructorMethods().map { LookupFactory.createConstructor(it) },
+            CompletionDictionary.ALL_CLASSES.constructorMethods().map { LookupFactory.createConstructor(it) },
             CompletionDictionary.PRIMITIVE_CLASSES.constructorMethods().map { LookupFactory.createPrimitiveConstructor(it) },
             GDScriptGrammar.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
         ).flatten()

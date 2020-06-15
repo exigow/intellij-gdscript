@@ -1,28 +1,38 @@
 package classes
 
-import classes.io.ClassResourceLoader
 import classes.model.Class
 import classes.model.Constant
 import classes.model.Method
+import com.google.gson.Gson
 
 object CompletionDictionary {
 
-    val INSTANCED_CLASSES: List<Class>
+    val ALL_CLASSES: List<Class>
     val SINGLETON_CLASSES: List<Class>
     val PRIMITIVE_CLASSES: List<Class>
     val GLOBAL_CONSTANTS: List<Constant>
     val GLOBAL_METHODS: List<Method>
 
     init {
-        val all = ClassResourceLoader.loadZip("classes/v3.2.zip")
-        val (globals, nonGlobals) = all.partition { it.name.startsWith("@") }
-        val singletonNames = globals.flatMap { it.fields.orEmpty() }.map { it.name }
-        val (singletons, instanced) = nonGlobals.partition { it.name in singletonNames }
-        INSTANCED_CLASSES = instanced
-        SINGLETON_CLASSES = singletons
-        PRIMITIVE_CLASSES = nonGlobals.filter { it.name in GDScriptGrammar.PRIMITIVE_KEYWORDS }
-        GLOBAL_CONSTANTS = globals.flatMap { it.constants.orEmpty() }
-        GLOBAL_METHODS = globals.flatMap { it.methods.orEmpty() }
+        ALL_CLASSES = deserialize()
+        SINGLETON_CLASSES = ALL_CLASSES.filter { it.name in collectSingletonNames() }
+        GLOBAL_CONSTANTS = ALL_CLASSES.filter { isGlobal(it) }.flatMap { it.constants.orEmpty() }
+        GLOBAL_METHODS = ALL_CLASSES.filter { isGlobal(it) }.flatMap { it.methods.orEmpty() }
+        PRIMITIVE_CLASSES = ALL_CLASSES.filter { it.name in GDScriptGrammar.PRIMITIVE_KEYWORDS }
+    }
+
+    private fun collectSingletonNames() =
+        ALL_CLASSES.filter { isGlobal(it) }.flatMap { it.fields.orEmpty() }.map { it.name }
+
+    private fun isGlobal(clazz: Class) =
+        clazz.name.startsWith("@")
+
+    private fun deserialize(): List<Class> {
+        val path = "completion.json"
+        val stream = this::class.java.classLoader.getResourceAsStream(path)!!
+        return Gson()
+            .fromJson<Array<Class>>(stream.reader(), Array<Class>::class.java)
+            .toList()
     }
 
 }

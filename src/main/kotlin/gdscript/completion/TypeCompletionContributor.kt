@@ -21,7 +21,7 @@ class TypeCompletionContributor : CompletionContributor() {
 
         private val ALL_TYPE_LOOKUPS = listOf(
             CompletionDictionary.PRIMITIVE_CLASSES.map { LookupFactory.createKeyword(it.name) },
-            CompletionDictionary.INSTANCED_CLASSES.map { LookupFactory.createClass(it) }
+            CompletionDictionary.ALL_CLASSES.map { LookupFactory.createClass(it) }
         ).flatten()
 
     }
