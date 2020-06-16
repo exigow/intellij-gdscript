@@ -21,7 +21,7 @@ object ClassUnzipper {
         var entry = zip.nextEntry
         while (entry != null) {
             if (isXml(entry)) {
-                val bytes = zip.readAllBytes()
+                val bytes = zip.readBytes()
                 classes += ClassParser.parseXml(ByteArrayInputStream(bytes))
             }
             zip.closeEntry()
