@@ -1,20 +1,20 @@
-package classes
+package api
 
-object GDScriptGrammar {
+object GrammarKeywords {
 
-    val VARIABLE_KEYWORDS = setOf(
+    val VARIABLE_KEYWORDS = listOf(
         "self",
         "true",
         "false",
         "null"
     )
-    val PRIMITIVE_KEYWORDS = setOf(
+    val PRIMITIVE_KEYWORDS = listOf(
         "bool",
         "int",
         "float",
         "void"
     )
-    val KEYWORDS = setOf(
+    val KEYWORDS = listOf(
         "remote",
         "puppet",
         "master",

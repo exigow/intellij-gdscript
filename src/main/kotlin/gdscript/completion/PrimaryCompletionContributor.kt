@@ -1,11 +1,13 @@
 package gdscript.completion
 
-import classes.CompletionDictionary
-import classes.GDScriptGrammar
-import classes.model.Class
+import api.GrammarKeywords
+import api.VersionedClassesService
+import api.model.Class
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
+import com.intellij.codeInsight.lookup.LookupElement
+import com.intellij.openapi.components.service
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import gdscript.ScriptTokenType.DOT
@@ -19,7 +21,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
         if (isNotAfterDot(element) && !element.isStringLeaf() && hasNotDigitPrefix(parameters))
-            result.addAllElements(ALL_PRIMARY_LOOKUPS)
+            result.addAllElements(collectLookups())
     }
 
     private fun isNotAfterDot(element: PsiElement): Boolean {
@@ -33,21 +35,18 @@ class PrimaryCompletionContributor : CompletionContributor() {
         return !elementBeforeOffset.isLeaf(NUMBER)
     }
 
-    private companion object {
-
-        val ALL_PRIMARY_LOOKUPS = listOf(
-            CompletionDictionary.SINGLETON_CLASSES.map { LookupFactory.createSingleton(it) },
-            CompletionDictionary.GLOBAL_CONSTANTS.map { LookupFactory.createConstant(it) },
-            CompletionDictionary.GLOBAL_METHODS.map { LookupFactory.createFunction(it) },
-            CompletionDictionary.ALL_CLASSES.constructorMethods().map { LookupFactory.createConstructor(it) },
-            CompletionDictionary.PRIMITIVE_CLASSES.constructorMethods().map { LookupFactory.createPrimitiveConstructor(it) },
-            GDScriptGrammar.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
-        ).flatten()
-
-
-        private fun List<Class>.constructorMethods() =
-            flatMap { c -> c.methods?.filter { it -> c.name == it.name }.orEmpty() }
-
+    private fun collectLookups(): List<LookupElement> {
+        val api = service<VersionedClassesService>().current()
+        val constants = api.globals.flatMap { it.constants }.map { LookupFactory.createConstant(it) }
+        val functions = api.globals.flatMap { it.methods }.map { LookupFactory.createFunction(it) }
+        val singletons = api.singletons.map { LookupFactory.createSingleton(it) }
+        val constructors = filterConstructors(api.classes).map { LookupFactory.createConstructor(it) }
+        val primitiveConstructors = filterConstructors(api.primitives).map { LookupFactory.createPrimitiveConstructor(it) }
+        val keywords = GrammarKeywords.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
+        return constants + functions + singletons + constructors + primitiveConstructors + keywords
     }
+
+    private fun filterConstructors(e: List<Class>) =
+        e.flatMap { c -> c.methods.filter { c.name == it.name } }
 
 }

@@ -24,7 +24,6 @@ intellij {
 }
 
 tasks {
-    registerAdditionalTasks()
     publishPlugin {
         token(project.property("publishPluginToken"))
         channels("stable")

@@ -37,13 +37,13 @@ class TypeCompletionContributorTest : BaseTest() {
     }
 
     fun `test class type completion in function argument`() {
-        environment.openScript("func draw_circle(center: <caret>):")
+        environment.openScript("func draw_circle(center: V<caret>):")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "Vector2")
     }
 
     fun `test class type completion in function returned type`() {
-        environment.openScript("func get_position() -> <caret>:")
+        environment.openScript("func get_position() -> V<caret>:")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "Vector2")
     }

@@ -1,7 +1,8 @@
 package gdscript.lexer.scanner
 
-import classes.CompletionDictionary
-import classes.GDScriptGrammar
+import api.GrammarKeywords
+import api.VersionedClassesService
+import com.intellij.openapi.components.service
 import com.intellij.psi.tree.IElementType
 import gdscript.ScriptTokenType.CLASS_NAME
 import gdscript.ScriptTokenType.CONSTANT
@@ -24,12 +25,9 @@ class IdentifierScanner : TokenScanner {
 
     private fun recognizeType(text: String): IElementType {
         return when (text) {
-            in GDScriptGrammar.KEYWORDS,
-            in GDScriptGrammar.VARIABLE_KEYWORDS,
-            in GDScriptGrammar.PRIMITIVE_KEYWORDS,
-            in CompletionDictionary.GLOBAL_METHODS.map { it.name }.toSet() -> KEYWORD
-            in (CompletionDictionary.ALL_CLASSES.toList() - CompletionDictionary.PRIMITIVE_CLASSES).map { it.name } -> CLASS_NAME
-            in CompletionDictionary.GLOBAL_CONSTANTS.map { it.name } -> CONSTANT
+            in collectKeywords() -> KEYWORD
+            in collectClasses() -> CLASS_NAME
+            in collectConstants() -> CONSTANT
             else -> {
                 if (CONSTANT_REGEX.matches(text))
                     return CONSTANT
@@ -38,9 +36,26 @@ class IdentifierScanner : TokenScanner {
         }
     }
 
+    private fun collectKeywords(): List<String> {
+        val api = service<VersionedClassesService>().current()
+        return GrammarKeywords.KEYWORDS + GrammarKeywords.VARIABLE_KEYWORDS + GrammarKeywords.PRIMITIVE_KEYWORDS + api.globals.flatMap { it.methods }.map { it.name }
+    }
+
+    private fun collectClasses(): List<String> {
+        val api = service<VersionedClassesService>().current()
+        return (api.singletons.toList() + api.classes.toList() - api.primitives).map { it.name }
+    }
+
+    private fun collectConstants() =
+        service<VersionedClassesService>()
+            .current()
+            .globals.
+            flatMap { it.constants }
+            .map { it.name }
+
     private companion object {
 
-        val CONSTANT_REGEX = "[A-Z][A-Z0-9_]+".toRegex()
+        private val CONSTANT_REGEX = "[A-Z][A-Z0-9_]+".toRegex()
 
     }
 

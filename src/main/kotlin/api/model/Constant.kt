@@ -1,4 +1,4 @@
-package classes.model
+package api.model
 
 data class Constant(
     val name: String,
