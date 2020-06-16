@@ -32,8 +32,12 @@ class ScriptParser : PsiParser {
                         advanceLexer()
                         advanceLexer()
                     }
-                    if (tokenText == "=")
+                    if (tokenText == "=") {
+                        advanceLexer()
+                        val expresion = mark()
                         advanceUntil { eol() || eof() }
+                        expresion.done(EXPRESSION)
+                    }
                 }
                 "static", "func" -> {
                     if (tokenText == "static")

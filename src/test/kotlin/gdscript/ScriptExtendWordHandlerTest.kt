@@ -84,6 +84,14 @@ class ScriptExtendWordHandlerTest : BaseTest() {
         assertSelectionEquals("var y = 2")
     }
 
+    fun `test var value expression`() {
+        environment.openScript("var x: int = 1 + 2<caret> + 3")
+        doExtendWordAction()
+        assertSelectionEquals("2")
+        doExtendWordAction()
+        assertSelectionEquals("1 + 2 + 3")
+    }
+
     private fun doExtendWordAction() =
         environment.performEditorAction(ACTION_EDITOR_SELECT_WORD_AT_CARET)
 
