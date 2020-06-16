@@ -50,8 +50,4 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
         return combo
     }
 
-    private companion object {
-
-    }
-
 }
