@@ -62,7 +62,10 @@ class ScriptParser : PsiParser {
                     advanceLexer()
                 }
                 "return" -> {
+                    advanceLexer()
+                    val expression = mark()
                     advanceUntil { eol() || eof() }
+                    expression.done(EXPRESSION)
                 }
                 else -> {
                     advanceUntil { eol() || eof() }

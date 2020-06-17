@@ -92,6 +92,14 @@ class ScriptExtendWordHandlerTest : BaseTest() {
         assertSelectionEquals("1 + 2 + 3")
     }
 
+    fun `test return expression`() {
+        environment.openScript("return 1<caret> + 2")
+        doExtendWordAction()
+        assertSelectionEquals("1")
+        doExtendWordAction()
+        assertSelectionEquals("1 + 2")
+    }
+
     private fun doExtendWordAction() =
         environment.performEditorAction(ACTION_EDITOR_SELECT_WORD_AT_CARET)
 
