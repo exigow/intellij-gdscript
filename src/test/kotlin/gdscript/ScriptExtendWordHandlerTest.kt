@@ -6,25 +6,25 @@ import utils.openScript
 
 class ScriptExtendWordHandlerTest : BaseTest() {
 
-    fun `test select string content then extend to quotes`() {
-        environment.openScript("text = \"ab<caret>c\"")
-        doExtendWordAction()
-        assertSelectionEquals("abc")
+    fun `test extend string content to string double quotes`() {
+        environment.openScript("x = \"<selection>abc<caret></selection>\"")
         doExtendWordAction()
         assertSelectionEquals("\"abc\"")
     }
 
-    fun `test select if expression then whole statement`() {
-        environment.openScript("if <caret>size > 1:")
+    fun `test extend string content to string single quotes`() {
+        environment.openScript("x = '<selection>abc<caret></selection>'")
         doExtendWordAction()
-        assertSelectionEquals("size")
-        doExtendWordAction()
-        assertSelectionEquals("size > 1")
-        doExtendWordAction()
-        assertSelectionEquals("if size > 1:")
+        assertSelectionEquals("'abc'")
     }
 
-    fun `test select whole arrow operator`() {
+    fun `test extend selection to 'if' condition body`() {
+        environment.openScript("if <selection>size<caret></selection> > 1:")
+        doExtendWordAction()
+        assertSelectionEquals("size > 1")
+    }
+
+    fun `test extend caret after arrow to whole arrow symbol`() {
         environment.openScript("fun x() -><caret> bool:")
         doExtendWordAction()
         assertSelectionEquals("->")
