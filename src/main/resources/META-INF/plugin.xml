@@ -44,6 +44,8 @@
 		<completion.contributor implementationClass="lsp.completion.CompletionContributor" language="GDScript"/>
 		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
+		<!-- projectView -->
+		<projectViewNestingRulesProvider implementation="projectView.ImportFileNestingRulesProvider" />
 		<!-- report -->
 		<errorHandler implementation="report.ReportSubmitter"/>
 		<!-- run -->
