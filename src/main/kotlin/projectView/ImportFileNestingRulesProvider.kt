@@ -1,13 +1,25 @@
 package projectView
 
 import com.intellij.ide.projectView.ProjectViewNestingRulesProvider
+import com.intellij.psi.search.FilenameIndex
 
 object ImportFileNestingRulesProvider : ProjectViewNestingRulesProvider {
-    private val EXTENSIONS: Array<String> = arrayOf(".png", ".wav")
-
     override fun addFileNestingRules(consumer: ProjectViewNestingRulesProvider.Consumer) {
-        for (extension in EXTENSIONS) {
-            consumer.addNestingRule(extension, "$extension.import")
+        val extensions = HashSet<String>()
+
+        for (filename in FilenameIndex.getAllFilenames(null)) {
+            if (filename.endsWith(".import")) {
+                val originalFilename = filename.removeSuffix(".import")
+
+                if (originalFilename.contains(".")) {
+                    val extension = originalFilename.split(".").last()
+                    extensions.add(extension)
+                }
+            }
+        }
+
+        for (extension in extensions) {
+            consumer.addNestingRule(".$extension", ".$extension.import")
         }
     }
 }
