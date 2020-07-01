@@ -45,7 +45,7 @@
 		<editorNotificationProvider implementation="lsp.notifications.ErrorNotificationProvider"/>
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
 		<!-- projectView -->
-		<projectViewNestingRulesProvider implementation="projectView.ImportFileNestingRulesProvider" />
+		<treeStructureProvider implementation="projectView.ImportFileTreeStructureProvider" order="last"/>
 		<!-- report -->
 		<errorHandler implementation="report.ReportSubmitter"/>
 		<!-- run -->
