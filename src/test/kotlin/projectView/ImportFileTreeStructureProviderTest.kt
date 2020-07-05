@@ -1,8 +1,6 @@
 package projectView
 
 import com.intellij.ide.projectView.ProjectView
-import com.intellij.openapi.Disposable
-import com.intellij.openapi.project.Project
 import com.intellij.projectView.TestProjectTreeStructure
 import com.intellij.testFramework.PlatformTestUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
@@ -12,12 +10,7 @@ class ImportFileTreeStructureProviderTest : BasePlatformTestCase() {
 
     fun `test import files are nested by default`() {
         val projectView = ProjectView.getInstance(project)
-        val structure = CustomProjectTreeStructure(
-            project,
-            testRootDisposable,
-            useFileNestingRules = true
-        )
-        val pane = structure.createPane()
+        val pane = configurePane(useNesting = true)
         projectView.addProjectPane(pane)
 
         myFixture.addFile("my_texture.png")
@@ -37,12 +30,7 @@ class ImportFileTreeStructureProviderTest : BasePlatformTestCase() {
 
     fun `test import files are not nested if configured`() {
         val projectView = ProjectView.getInstance(project)
-        val structure = CustomProjectTreeStructure(
-            project,
-            testRootDisposable,
-            useFileNestingRules = false
-        )
-        val pane = structure.createPane()
+        val pane = configurePane(useNesting = false)
         projectView.addProjectPane(pane)
 
         myFixture.addFile("my_texture.png")
@@ -60,14 +48,11 @@ class ImportFileTreeStructureProviderTest : BasePlatformTestCase() {
         PlatformTestUtil.assertTreeEqual(pane.tree, expected)
     }
 
-    private class CustomProjectTreeStructure(
-        project: Project,
-        parentDispoable: Disposable,
-        val useFileNestingRules: Boolean
-    ) : TestProjectTreeStructure(project, parentDispoable) {
+    private fun configurePane(useNesting: Boolean) =
+        object : TestProjectTreeStructure(project, testRootDisposable) {
 
-        override fun isUseFileNestingRules(): Boolean {
-            return useFileNestingRules
-        }
-    }
+            override fun isUseFileNestingRules() = useNesting
+
+        }.createPane()
+
 }
