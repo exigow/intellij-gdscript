@@ -9,6 +9,7 @@ import com.intellij.openapi.vfs.VirtualFileManager
 import lsp.diagnostics.Diagnostic
 import org.eclipse.lsp4j.Position
 import org.eclipse.lsp4j.PublishDiagnosticsParams
+import kotlin.math.min
 import org.eclipse.lsp4j.Diagnostic as Lsp4jDiagnostic
 
 internal object PublishDiagnosticsParamsParser {
@@ -31,9 +32,10 @@ internal object PublishDiagnosticsParamsParser {
     }
 
     private fun convertToOffset(range: Position, file: VirtualFile): Int {
-        val position = LogicalPosition(range.line, range.character)
         val document = FileDocumentManager.getInstance().getDocument(file)!!
-        return document.getLineStartOffset(position.line) + position.column
+        val position = LogicalPosition(range.line, range.character)
+        val line = min(document.lineCount, position.line)
+        return document.getLineStartOffset(line) + position.column
     }
 
     private fun parseSeverity(severity: Int): HighlightSeverity =
