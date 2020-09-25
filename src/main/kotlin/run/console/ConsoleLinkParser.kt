@@ -2,7 +2,7 @@ package run.console
 
 object ConsoleLinkParser {
 
-    private val RESOURCE_REGEX = "(res://[a-zA-Z0-9/.\\-]+(:[0-9]+)?)"
+    private val RESOURCE_REGEX = "(res://[a-zA-Z0-9/._\\-]+(:[0-9]+)?)"
         .toRegex()
 
     fun parseText(line: String): Set<ConsoleLink> =

@@ -12,6 +12,11 @@ class ConsoleLinkParserTest : TestCase() {
         assertContainsElements(links, ConsoleLink(4..21, "paddle.gd", 13))
     }
 
+    fun `test link to image file with underscore and subdirectory`() {
+        val links = ConsoleLinkParser.parseText("Loading resource: res://gfx/asteroid_2.png")
+        assertContainsElements(links, ConsoleLink(18..41, "gfx/asteroid_2.png", 0))
+    }
+
     fun `test link to script error without line`() {
         val links = ConsoleLinkParser.parseText("At: res://main.gd.")
         assertContainsElements(links, ConsoleLink(4..17, "main.gd"))
