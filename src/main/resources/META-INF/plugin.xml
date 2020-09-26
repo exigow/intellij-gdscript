@@ -16,7 +16,7 @@
 		</ul>
 	]]>
 	</description>
-	<idea-version since-build="193.2252"/>
+	<idea-version since-build="193.2252" until-build="201.0"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- api -->
