@@ -20,6 +20,15 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 * `./gradlew test` - run all tests
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository
 
+### Generating completion data from sources
+
+1. Clone and build Godot Engine ([repository](https://github.com/godotengine/godot)).
+1. Dump engine API reference with `godot --doctool` ([instructions](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html)).
+1. Compress generated files to `zip`. Structure is not important.
+1. Put compressed file to project directory, for example: `src/main/resources/api/3.2.2-stable.zip`
+
+Used file name will be displayed as option in settings (`Settings` | `Languages & Frameworks` | `GDScript`).
+
 ## Manual Installation
 
 1. Download [official release](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or latest [build artifact](https://github.com/exigow/intellij-gdscript/actions) *(recommended)*.
