@@ -4,6 +4,7 @@ import api.model.Class
 import api.utils.ClassUnzipper
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
+import gdscript.lexer.ScriptKeywords
 import settings.ApplicationSettings
 
 @Service
@@ -23,7 +24,7 @@ class VersionedClassesService {
 
     private fun loadResource(displayName: String, path: String): VersionedClasses {
         val classes: List<Class> = ClassUnzipper.unzip(path)
-        val (primitives, nonPrimitives) = classes.partition { it.name in GrammarKeywords.PRIMITIVE_KEYWORDS }
+        val (primitives, nonPrimitives) = classes.partition { it.name in ScriptKeywords.PRIMITIVES }
         val (globals, nonGlobals) = nonPrimitives.partition(::isGlobal)
         val singletonNames = globals.flatMap { it.fields }.map { it.name }
         val (singletons, instanced) = nonGlobals.partition { it.name in singletonNames }

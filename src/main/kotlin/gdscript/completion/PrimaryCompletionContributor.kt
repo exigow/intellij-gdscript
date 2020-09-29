@@ -1,6 +1,5 @@
 package gdscript.completion
 
-import api.GrammarKeywords
 import api.VersionedClassesService
 import api.model.Class
 import com.intellij.codeInsight.completion.CompletionContributor
@@ -13,6 +12,7 @@ import com.intellij.psi.util.PsiTreeUtil
 import gdscript.ScriptTokenType.DOT
 import gdscript.ScriptTokenType.NUMBER
 import gdscript.completion.utils.LookupFactory
+import gdscript.lexer.ScriptKeywords
 import gdscript.utils.PsiElementUtils.isLeaf
 import gdscript.utils.PsiElementUtils.isStringLeaf
 
@@ -42,7 +42,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
         val singletons = api.singletons.map { LookupFactory.createSingleton(it) }
         val constructors = filterConstructors(api.classes).map { LookupFactory.createConstructor(it) }
         val primitiveConstructors = filterConstructors(api.primitives).map { LookupFactory.createPrimitiveConstructor(it) }
-        val keywords = GrammarKeywords.VARIABLE_KEYWORDS.map { LookupFactory.createKeyword(it) }
+        val keywords = ScriptKeywords.VALUES.map { LookupFactory.createKeyword(it) }
         return constants + functions + singletons + constructors + primitiveConstructors + keywords
     }
 

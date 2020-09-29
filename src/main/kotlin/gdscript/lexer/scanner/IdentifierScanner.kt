@@ -1,6 +1,5 @@
 package gdscript.lexer.scanner
 
-import api.GrammarKeywords
 import api.VersionedClassesService
 import com.intellij.openapi.components.service
 import com.intellij.psi.tree.IElementType
@@ -8,6 +7,7 @@ import gdscript.ScriptTokenType.CLASS_NAME
 import gdscript.ScriptTokenType.CONSTANT
 import gdscript.ScriptTokenType.IDENTIFIER
 import gdscript.ScriptTokenType.KEYWORD
+import gdscript.lexer.ScriptKeywords
 import gdscript.lexer.Token
 
 class IdentifierScanner : TokenScanner {
@@ -38,7 +38,7 @@ class IdentifierScanner : TokenScanner {
 
     private fun collectKeywords(): List<String> {
         val api = service<VersionedClassesService>().current()
-        return GrammarKeywords.KEYWORDS + GrammarKeywords.VARIABLE_KEYWORDS + GrammarKeywords.PRIMITIVE_KEYWORDS + api.globals.flatMap { it.methods }.map { it.name }
+        return ScriptKeywords.KEYWORDS + ScriptKeywords.VALUES + ScriptKeywords.PRIMITIVES + api.globals.flatMap { it.methods }.map { it.name }
     }
 
     private fun collectClasses(): List<String> {

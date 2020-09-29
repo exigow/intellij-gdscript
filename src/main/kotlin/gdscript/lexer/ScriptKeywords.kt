@@ -1,14 +1,14 @@
-package api
+package gdscript.lexer
 
-object GrammarKeywords {
+object ScriptKeywords {
 
-    val VARIABLE_KEYWORDS = listOf(
+    val VALUES = listOf(
         "self",
         "true",
         "false",
         "null"
     )
-    val PRIMITIVE_KEYWORDS = listOf(
+    val PRIMITIVES = listOf(
         "bool",
         "int",
         "float",
