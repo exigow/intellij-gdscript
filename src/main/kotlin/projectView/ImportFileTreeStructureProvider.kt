@@ -11,14 +11,14 @@ class ImportFileTreeStructureProvider : TreeStructureProvider {
 
     override fun modify(
         parent: AbstractTreeNode<*>,
-        children: MutableCollection<AbstractTreeNode<Any>>,
+        children: MutableCollection<AbstractTreeNode<*>>,
         settings: ViewSettings?
-    ): MutableCollection<AbstractTreeNode<Any>> {
+    ): MutableCollection<AbstractTreeNode<*>> {
         if (settings is ProjectViewSettings && !settings.isUseFileNestingRules) {
             return children
         }
 
-        val newChildren = mutableListOf<AbstractTreeNode<Any>>()
+        val newChildren = mutableListOf<AbstractTreeNode<*>>()
         val nodesByFilename = children
             .mapNotNull { child -> child as? PsiFileNode }
             .associateBy { child -> child.virtualFile?.name }
@@ -46,7 +46,7 @@ class ImportFileTreeStructureProvider : TreeStructureProvider {
             // Replace "x.png" with a nested node containing "x.png.import"
             if (siblingToNest != null) {
                 val nested = NestingTreeNode(child, arrayListOf(siblingToNest))
-                newChildren.add(nested as AbstractTreeNode<Any>)
+                newChildren.add(nested as AbstractTreeNode<*>)
             } else {
                 newChildren.add(child)
             }
