@@ -2,16 +2,17 @@ package tscn
 
 import com.intellij.ide.highlighter.custom.SyntaxTable
 
-internal class TscnSyntaxTable : SyntaxTable() {
+internal object TscnSyntaxTable {
 
-    init {
-        isHasBraces = true
-        isHasBrackets = true
-        isHasParens = true
-        lineComment = ";"
-        keywords1 += listOf("true", "false")
-        keywords3 += listOf("gd_scene", "ext_resource", "sub_resource", "node", "connection")
-        keywords4 += listOf("Resource", "SubResource", "ExtResource")
-    }
+    fun new() = SyntaxTable()
+        .also {
+            it.isHasBraces = true
+            it.isHasBrackets = true
+            it.isHasParens = true
+            it.lineComment = ";"
+            it.keywords1 += listOf("true", "false")
+            it.keywords3 += listOf("gd_scene", "ext_resource", "sub_resource", "node", "connection")
+            it.keywords4 += listOf("Resource", "SubResource", "ExtResource")
+        }
 
 }
