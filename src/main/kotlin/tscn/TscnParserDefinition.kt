@@ -20,7 +20,7 @@ import com.intellij.psi.util.PsiUtilCore
 class TscnParserDefinition : ParserDefinition {
 
     override fun createLexer(project: Project): Lexer =
-        CustomFileTypeLexer(TscnSyntaxTable.new())
+        CustomFileTypeLexer(TscnSyntaxTable.configured())
 
     override fun createParser(project: Project?): PsiParser? =
         null

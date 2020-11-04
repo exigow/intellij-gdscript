@@ -4,14 +4,21 @@ import com.intellij.ide.highlighter.custom.SyntaxTable
 
 internal object TscnSyntaxTable {
 
-    fun new() = SyntaxTable()
+    fun configured() = SyntaxTable()
         .also {
             it.isHasBraces = true
             it.isHasBrackets = true
             it.isHasParens = true
             it.lineComment = ";"
             it.keywords1 += listOf("true", "false")
-            it.keywords3 += listOf("gd_scene", "ext_resource", "sub_resource", "node", "connection")
+            it.keywords3 += listOf(
+                "gd_scene",
+                "resource",
+                "gd_resource",
+                "ext_resource",
+                "sub_resource",
+                "node",
+                "connection")
             it.keywords4 += listOf("Resource", "SubResource", "ExtResource")
         }
 

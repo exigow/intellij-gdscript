@@ -6,6 +6,6 @@ import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory
 class TscnHighlighterFactory : SingleLazyInstanceSyntaxHighlighterFactory() {
 
     override fun createHighlighter() =
-        CustomFileHighlighter(TscnSyntaxTable.new())
+        CustomFileHighlighter(TscnSyntaxTable.configured())
 
 }
