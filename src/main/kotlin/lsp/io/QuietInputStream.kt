@@ -6,7 +6,7 @@ import java.io.InputStream
 
 class QuietInputStream(
     stream: InputStream,
-    private val onException: (IOException) -> Unit
+    private val onException: () -> Unit
 ) : FilterInputStream(stream) {
 
     override fun read(): Int {
@@ -14,7 +14,7 @@ class QuietInputStream(
             super.read()
         } catch (ioe: IOException) {
             super.close()
-            onException(ioe)
+            onException()
             -1
         }
     }

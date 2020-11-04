@@ -74,7 +74,7 @@ class LanguageServerService(
         }
     }
 
-    private fun stopServer(ioe: IOException) {
+    private fun stopServer() {
         server = null
         EditorNotifications.getInstance(project).updateAllNotifications()
     }

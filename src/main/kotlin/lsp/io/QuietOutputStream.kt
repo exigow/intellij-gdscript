@@ -6,7 +6,7 @@ import java.io.OutputStream
 
 class QuietOutputStream(
     stream: OutputStream,
-    private val onException: (IOException) -> Unit
+    private val onException: () -> Unit
 ) : FilterOutputStream(stream) {
 
     override fun write(b: Int) {
@@ -14,7 +14,7 @@ class QuietOutputStream(
             super.write(b)
         } catch (exception: IOException) {
             super.close()
-            onException(exception)
+            onException()
         }
     }
 
