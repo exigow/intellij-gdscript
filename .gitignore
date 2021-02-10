@@ -3,6 +3,5 @@
 out/
 build/
 todo.txt
-gradle.properties
+buildSrc/
 src/main/gen/
-*.tokens

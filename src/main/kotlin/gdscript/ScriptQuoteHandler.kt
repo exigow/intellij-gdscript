@@ -3,8 +3,8 @@ package gdscript
 import com.intellij.codeInsight.editorActions.QuoteHandler
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
-import gdscript.ScriptTokenType.DOUBLE_QUOTED_STRING
-import gdscript.ScriptTokenType.SINGLE_QUOTED_STRING
+import gdscript.psi.ScriptTypes.DOUBLE_QUOTED_STRING
+import gdscript.psi.ScriptTypes.SINGLE_QUOTED_STRING
 
 class ScriptQuoteHandler : QuoteHandler {
 
