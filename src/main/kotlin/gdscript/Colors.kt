@@ -15,7 +15,7 @@ enum class Colors(fallback: TextAttributesKey) {
     NODE(DefaultColors.METADATA),
     COMMA(DefaultColors.COMMA),
     SEMICOLON(DefaultColors.SEMICOLON),
-    COLON(DefaultColors.OPERATION_SIGN),
+    OPERATION_SIGN(DefaultColors.OPERATION_SIGN),
     DOT(DefaultColors.DOT),
     BRACES(DefaultColors.BRACES),
     PARENTHESES(DefaultColors.PARENTHESES),

@@ -18,7 +18,9 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 * `./gradlew buildPlugin` - build plugin distribution to `build/distributions/intellij-gdscript.zip`
 * `./gradlew runIde` - run sandbox with installed plugin
 * `./gradlew test` - run all tests
-* `./gradlew publishPlugin` - publish plugin to official JetBrains repository
+* `./gradlew publishPlugin` - publish plugin on JetBrains repository
+* `./gradlew compileGdscriptLexer` - generate Java lexer manually
+* `./gradlew compileGdscriptParser` -  generate Java parser classes manually
 
 ### Generating completion data from sources
 

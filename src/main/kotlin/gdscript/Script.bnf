@@ -1,0 +1,71 @@
+{
+    generate=[java="8" names="long" visitor-value="R"]
+    parserClass="gdscript.parser.ScriptParser"
+
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="Script"
+    psiImplClassSuffix="Impl"
+    psiPackage="gdscript.psi"
+    psiImplPackage="gdscript.psi.impl"
+
+    elementTypeHolderClass="gdscript.psi.ScriptTypes"
+    elementTypeClass="gdscript.psi.ScriptElementType"
+    tokenTypeClass="gdscript.psi.ScriptTokenType"
+}
+
+file ::= statement*
+private statement ::= var_statement
+    | const_statement
+    | extends_statement
+    | class_statement
+    | class_name_statement
+    | return_statement
+    | while_statement
+    | func_statement
+    | for_statement
+    | if_statement
+    | elif_statement
+    | match_statement
+    | signal_statement
+    | enum_statement
+    | label_statement
+    | else_statement
+    | TOOL_KEYWORD
+    | CONTINUE_KEYWORD
+    | PASS_KEYWORD
+    | BREAK_KEYWORD
+    | LINE_COMMENT
+    | SEMICOLON
+    | expression
+var_statement ::= export? ONREADY_KEYWORD? network_modifier? VAR_KEYWORD identifier (COLON identifier)? (ASSIGN expression)? setget?
+private export ::= EXPORT_KEYWORD brace_list?
+private setget ::= SETGET_KEYWORD identifier? (COMMA identifier)?
+for_statement ::= FOR_KEYWORD expression COLON
+const_statement ::= CONST_KEYWORD identifier (COLON identifier)? ASSIGN expression
+if_statement ::= IF_KEYWORD expression COLON
+elif_statement ::= ELIF_KEYWORD expression COLON
+while_statement ::= WHILE_KEYWORD expression COLON
+else_statement ::= ELSE_KEYWORD COLON
+return_statement ::= RETURN_KEYWORD expression
+class_statement ::= CLASS_KEYWORD expression (EXTENDS_KEYWORD expression)? COLON
+class_name_statement ::= CLASS_NAME_KEYWORD expression
+extends_statement ::= EXTENDS_KEYWORD expression
+func_statement ::= STATIC_KEYWORD? network_modifier? FUNC_KEYWORD identifier brace_list (ARROW identifier)? COLON
+match_statement ::= MATCH_KEYWORD expression COLON
+signal_statement ::= SIGNAL_KEYWORD identifier
+enum_statement ::= ENUM_KEYWORD identifier? parenth_list
+label_statement ::= expression COLON
+expression ::= operator? atom (operator atom)*
+private atom ::= true_false_self | brace_subscribe | bracket_subscribe | brace_list | bracket_list | parenth_list | string | number | identifier
+private network_modifier ::= SYNC_KEYWORD | PUPPETSYNC_KEYWORD | MASTERSYNC_KEYWORD | REMOTE_KEYWORD |  REMOTESYNC_KEYWORD | MASTER_KEYWORD | PUPPET_KEYWORD
+private operator ::= OPERATOR_KEYWORD | OPERATOR | DOT | ASSIGN | COLON
+private bracket_subscribe ::= identifier bracket_list+
+private brace_subscribe ::= identifier brace_list+
+private brace_list ::= BRACE_LEFT expression? (COMMA expression)* COMMA? BRACE_RIGHT
+private bracket_list ::= BRACKET_LEFT expression? (COMMA expression)* COMMA? BRACKET_RIGHT
+private parenth_list ::= PARENTH_LEFT expression? (COMMA expression)* COMMA? PARENTH_RIGHT
+private identifier ::= IDENTIFIER | NODE_IDENTIFIER | CLASS_IDENTIFIER | CONSTANT_IDENTIFIER
+private string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+private number ::= INTEGER_NUMBER | DECIMAL_NUMBER
+private true_false_self ::= TRUE_KEYWORD | FALSE_KEYWORD | SELF_KEYWORD

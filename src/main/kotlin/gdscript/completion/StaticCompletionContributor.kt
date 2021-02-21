@@ -7,15 +7,15 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.openapi.components.service
 import com.intellij.psi.util.PsiTreeUtil
-import gdscript.ScriptTokenType
 import gdscript.completion.utils.LookupFactory
+import gdscript.psi.ScriptTypes
 import gdscript.utils.PsiElementUtils.isLeaf
 
 class StaticCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val prev = PsiTreeUtil.prevVisibleLeaf(parameters.position)
-        if (prev?.isLeaf(ScriptTokenType.DOT) == true) {
+        if (prev?.isLeaf(ScriptTypes.DOT) == true) {
             val id = PsiTreeUtil.prevVisibleLeaf(prev)
             val lookups = findClassLookups(id?.text.orEmpty())
             result.caseInsensitive().addAllElements(lookups)

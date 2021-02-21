@@ -7,10 +7,10 @@ object ScriptFileType : LanguageFileType(ScriptLanguage) {
 
     override fun getIcon() = Icons.GDSCRIPT_FILE
 
-    override fun getName() = "GDScript"
+    override fun getName() = "GDScript file"
 
     override fun getDefaultExtension() = "gd"
 
-    override fun getDescription() = name
+    override fun getDescription() = "GDScript language file"
 
 }

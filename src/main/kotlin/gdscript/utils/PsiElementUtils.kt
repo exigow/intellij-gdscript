@@ -3,8 +3,7 @@ package gdscript.utils
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.tree.IElementType
-import gdscript.ScriptTokenType.DOUBLE_QUOTED_STRING
-import gdscript.ScriptTokenType.SINGLE_QUOTED_STRING
+import gdscript.psi.ScriptTypes
 
 object PsiElementUtils {
 
@@ -22,6 +21,6 @@ object PsiElementUtils {
     }
 
     fun PsiElement.isStringLeaf() =
-        isLeaf(DOUBLE_QUOTED_STRING) || isLeaf(SINGLE_QUOTED_STRING)
+        isLeaf(ScriptTypes.DOUBLE_QUOTED_STRING) || isLeaf(ScriptTypes.SINGLE_QUOTED_STRING)
 
 }

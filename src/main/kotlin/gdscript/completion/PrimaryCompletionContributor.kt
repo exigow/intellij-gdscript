@@ -1,5 +1,6 @@
 package gdscript.completion
 
+//import gdscript.lexer.ScriptKeywords
 import api.VersionedClassesService
 import api.model.Class
 import com.intellij.codeInsight.completion.CompletionContributor
@@ -9,10 +10,8 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.openapi.components.service
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
-import gdscript.ScriptTokenType.DOT
-import gdscript.ScriptTokenType.NUMBER
 import gdscript.completion.utils.LookupFactory
-import gdscript.lexer.ScriptKeywords
+import gdscript.psi.ScriptTypes.*
 import gdscript.utils.PsiElementUtils.isLeaf
 import gdscript.utils.PsiElementUtils.isStringLeaf
 
@@ -32,7 +31,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
 
     private fun hasNotDigitPrefix(parameters: CompletionParameters): Boolean {
         val elementBeforeOffset = parameters.position.containingFile.findElementAt(parameters.offset - 1)!!
-        return !elementBeforeOffset.isLeaf(NUMBER)
+        return !elementBeforeOffset.isLeaf(DECIMAL_NUMBER) && !elementBeforeOffset.isLeaf(INTEGER_NUMBER)
     }
 
     private fun collectLookups(): List<LookupElement> {
@@ -42,8 +41,8 @@ class PrimaryCompletionContributor : CompletionContributor() {
         val singletons = api.singletons.map { LookupFactory.createSingleton(it) }
         val constructors = filterConstructors(api.classes).map { LookupFactory.createConstructor(it) }
         val primitiveConstructors = filterConstructors(api.primitives).map { LookupFactory.createPrimitiveConstructor(it) }
-        val keywords = ScriptKeywords.VALUES.map { LookupFactory.createKeyword(it) }
-        return constants + functions + singletons + constructors + primitiveConstructors + keywords
+        //val keywords = ScriptKeywords.VALUES.map { LookupFactory.createKeyword(it) }
+        return constants + functions + singletons + constructors + primitiveConstructors
     }
 
     private fun filterConstructors(e: List<Class>) =
