@@ -1,5 +1,6 @@
 package gdscript.lexer
 
+import BaseTest
 import com.intellij.psi.tree.IElementType
 import com.intellij.testFramework.LexerTestCase
 import gdscript.ScriptTokenType.CLASS_NAME
@@ -11,9 +12,8 @@ import gdscript.ScriptTokenType.NODE
 import gdscript.ScriptTokenType.NUMBER
 import gdscript.ScriptTokenType.SINGLE_QUOTED_STRING
 import gdscript.ScriptTokenType.UNRECOGNIZED
-import junit.framework.TestCase
 
-class ScriptLexerTest : TestCase() {
+class ScriptLexerTest : BaseTest() {
 
     fun `test unrecognized character`( ) =
         assertHasToken("???", UNRECOGNIZED, "?")
