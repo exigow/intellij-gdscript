@@ -20,14 +20,14 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 * `./gradlew test` - run all tests
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository
 
-### Generating completion data from sources
+### How to update/add completion data
 
-1. Clone and build Godot Engine ([repository](https://github.com/godotengine/godot)).
-1. Dump engine API reference with `godot --doctool` ([instructions](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html)).
-1. Compress generated files to `zip`. Structure is not important.
-1. Put compressed file to project directory, for example: `src/main/resources/api/3.2.2-stable.zip`
+1. Export API with `godot --doctool .`
+1. Compress doc files into single `3.2.2-stable.zip` (example name; structure is not important)
+1. Save file as `src/main/resources/api/3.2.2-stable.zip`
+1. Update [sources](src/main/kotlin/api/VersionedClassesService.kt) 
 
-Used file name will be displayed as option in settings (`Settings` | `Languages & Frameworks` | `GDScript`).
+New API version will be available in `Settings` | `Languages & Frameworks` | `GDScript`
 
 ## Manual Installation
 

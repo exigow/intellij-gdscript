@@ -12,6 +12,7 @@ class VersionedClassesService {
 
     val versions: List<VersionedClasses> = listOf(
         loadResource("3.2.2", "api/3.2.2-rc.zip"),
+        loadResource("3.3.3", "api/3.3.3-rc.zip"),
         loadResource("4.0", "api/4.0.0-dev.zip"),
         VersionedClasses("Disabled", emptyList(), emptyList(), emptyList(), emptyList())
     )
