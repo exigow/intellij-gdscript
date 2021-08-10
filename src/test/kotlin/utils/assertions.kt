@@ -1,7 +1,7 @@
 package utils
 
 import junit.framework.TestCase.fail
-import kotlin.test.assertEquals
+import junit.framework.TestCase.assertEquals
 
 inline fun <reified ExpectedException : Exception> assertThrows(
     invoke: () -> Unit, expectedMessage: String
