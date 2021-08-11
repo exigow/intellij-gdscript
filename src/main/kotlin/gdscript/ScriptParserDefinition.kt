@@ -20,7 +20,7 @@ class ScriptParserDefinition : ParserDefinition {
     override fun createLexer(project: Project): Lexer =
         ScriptLexer()
 
-    override fun createParser(project: Project?): PsiParser? =
+    override fun createParser(project: Project?): PsiParser =
         ScriptParser()
 
     override fun getWhitespaceTokens(): TokenSet =

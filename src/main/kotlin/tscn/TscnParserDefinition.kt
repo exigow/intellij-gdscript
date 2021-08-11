@@ -1,58 +1,47 @@
 package tscn
 
-import com.intellij.extapi.psi.PsiFileBase
-import com.intellij.ide.highlighter.custom.CustomFileTypeLexer
-import com.intellij.lang.ASTFactory
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
+import com.intellij.lexer.FlexAdapter
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.project.Project
-import com.intellij.psi.CustomHighlighterTokenType
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import com.intellij.psi.util.PsiUtilCore
+import tscn.parser.TscnParser
+import tscn.parser._TscnLexer
+import tscn.psi.TscnElementTypes
+import tscn.psi.TscnFile
 
 class TscnParserDefinition : ParserDefinition {
 
     override fun createLexer(project: Project): Lexer =
-        CustomFileTypeLexer(TscnSyntaxTable.configured())
+        FlexAdapter(_TscnLexer(null))
 
-    override fun createParser(project: Project?): PsiParser? =
-        null
+    override fun createParser(project: Project?): PsiParser =
+        TscnParser()
 
-    override fun getCommentTokens() =
-        TokenSet.create(CustomHighlighterTokenType.LINE_COMMENT)
+    override fun getCommentTokens(): TokenSet =
+        TokenSet.create(TscnElementTypes.COMMENT)
 
-    override fun getStringLiteralElements() =
-        TokenSet.create(CustomHighlighterTokenType.STRING)
+    override fun getStringLiteralElements(): TokenSet =
+        TokenSet.create(TscnElementTypes.SINGLE_QUOTED_STRING, TscnElementTypes.DOUBLE_QUOTED_STRING)
 
     override fun getFileNodeType() =
         FILE_ELEMENT_TYPE
 
     override fun createFile(view: FileViewProvider): PsiFile =
-        object : PsiFileBase(view, TscnLanguage) {
-
-            override fun getFileType() = TscnFileType
-
-        }
+        TscnFile(view)
 
     override fun createElement(node: ASTNode): PsiElement =
-        PsiUtilCore.NULL_PSI_ELEMENT
+        TscnElementTypes.Factory.createElement(node)
 
-    private companion object {
+    companion object {
 
-        private val ELEMENT_TYPE = IElementType("TSCN_TEXT", TscnLanguage)
-        private val FILE_ELEMENT_TYPE = object : IFileElementType(TscnLanguage) {
-
-            override fun parseContents(chameleon: ASTNode): ASTNode =
-                ASTFactory.leaf(ELEMENT_TYPE, chameleon.chars)
-
-        }
+        private val FILE_ELEMENT_TYPE = IFileElementType(TscnLanguage)
 
     }
 

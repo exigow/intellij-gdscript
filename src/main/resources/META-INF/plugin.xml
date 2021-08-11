@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.31.1</version>
+	<version>0.32.0</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -56,9 +56,10 @@
 		<applicationService serviceImplementation="settings.ApplicationSettings"/>
 		<!-- tscn -->
 		<fileType implementationClass="tscn.TscnFileType" extensions="godot;import;cfg;tres;tscn" name="TSCN" language="TSCN"/>
+		<lang.commenter implementationClass="tscn.TscnCommenter" language="TSCN"/>
 		<lang.parserDefinition implementationClass="tscn.TscnParserDefinition" language="TSCN"/>
 		<lang.syntaxHighlighterFactory implementationClass="tscn.TscnHighlighterFactory" language="TSCN"/>
 		<lang.braceMatcher implementationClass="tscn.TscnBraceMatcher" language="TSCN"/>
-		<lang.quoteHandler implementationClass="tscn.TscnQuoteHandler" language="TSCN"/>
+		<psi.referenceContributor implementation="tscn.TscnReferenceContributor" language="TSCN"/>
 	</extensions>
 </idea-plugin>

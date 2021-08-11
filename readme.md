@@ -29,6 +29,14 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 
 New API version will be available in `Settings` | `Languages & Frameworks` | `GDScript`
 
+### How to regenerate lexer/parser
+
+Requirements: IDE with installed **Grammar Kit** plugin
+
+1. Right-Click on `TscnParser.bnf` -> `Generate JFlex Lexer`
+1. Right-Click on `TscnParser.bnf` -> `Generate Parser Code` (2x for two-pass generation)
+1. Right-Click on `_TscnParser.flex` -> `Run JFlex Generator`
+
 ## Manual Installation
 
 1. Download [official release](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or latest [build artifact](https://github.com/exigow/intellij-gdscript/actions) *(recommended)*.

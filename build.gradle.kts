@@ -21,6 +21,12 @@ intellij {
     updateSinceUntilBuild.set(false)
 }
 
+sourceSets {
+    main {
+        java.srcDir("gen")
+    }
+}
+
 tasks {
     publishPlugin {
         val publishPluginToken = project.properties["publishPluginToken"] as String

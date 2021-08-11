@@ -1,0 +1,79 @@
+{
+    parserClass="tscn.parser.TscnParser"
+    extends="tscn.psi.TscnBaseElement"
+
+    psiClassPrefix="Tscn"
+    psiImplClassSuffix="Impl"
+    psiPackage="tscn.psi"
+    psiImplPackage="tscn.psi.impl"
+    psiImplUtilClass="tscn.psi.impl.TscnPsiImplUtil"
+
+    elementTypeHolderClass="tscn.psi.TscnElementTypes"
+    elementTypeClass="tscn.psi.TscnElementType"
+
+    tokenTypeClass="tscn.psi.TscnTokenType"
+
+    tokens = [
+        SPACE="regexp:\s+"
+        L_PAREN="("
+        R_PAREN=")"
+        L_BRACKET="["
+        R_BRACKET="]"
+        L_CURLY="{"
+        R_CURLY="}"
+        EQUAL="="
+        SLASH="/"
+        COMMA=","
+        COLON=":"
+        EXT_RESOURCE="ExtResource"
+        SUB_RESOURCE="SubResource"
+        NODE_KEYWORD="node"
+        EXT_RESOURCE_KEYWORD="ext_resource"
+        SUB_RESOURCE_KEYWORD="sub_resource"
+        GD_SCENE_KEYWORD="gd_scene"
+        GD_RESOURCE_KEYWORD="gd_resource"
+        RESOURCE_KEYWORD="resource"
+        TRUE="true"
+        FALSE="false"
+        NULL="null"
+
+        IDENTIFIER="regexp:[A-Za-z_][A-Za-z0-9_]*"
+        NUMBER="regexp:-?[0-9]+(\.[0-9]+)?"
+        SINGLE_QUOTED_RESOURCE_STRING="regexp:\"res://([^\"\\]|\\.)*\""
+        DOUBLE_QUOTED_RESOURCE_STRING="regexp:'res://([^'\\]|\\.)*'"
+        SINGLE_QUOTED_STRING="regexp:'([^'\\]|\\.)*'"
+        DOUBLE_QUOTED_STRING="regexp:\"([^\"\\]|\\.)*\""
+        COMMENT="regexp:;[^\n]*"
+    ]
+}
+
+root ::= (entry | ext_resource_entry | sub_resource_entry)*
+
+// top level
+entry ::= L_BRACKET entry_name attribute* R_BRACKET property*
+ext_resource_entry ::= L_BRACKET EXT_RESOURCE_KEYWORD attribute* R_BRACKET property*
+sub_resource_entry ::= L_BRACKET SUB_RESOURCE_KEYWORD attribute* R_BRACKET property*
+
+entry_name ::= NODE_KEYWORD | GD_SCENE_KEYWORD | GD_RESOURCE_KEYWORD | RESOURCE_KEYWORD | IDENTIFIER
+attribute ::= key EQUAL value
+property ::= key EQUAL value
+key ::= IDENTIFIER (SLASH (IDENTIFIER | NUMBER))*
+value ::= expression
+private expression ::= list | dictionary | function | sub_resource_function | ext_resource_function | resource_string | SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING | NUMBER | TRUE | FALSE | NULL
+private dictionary ::= L_CURLY dictionary_entry? (COMMA dictionary_entry)* R_CURLY
+private dictionary_entry ::= expression COLON expression
+private list ::= L_BRACKET expression? (COMMA expression)* R_BRACKET
+private function ::= IDENTIFIER L_PAREN expression? (COMMA expression)* R_PAREN
+
+sub_resource_function ::= SUB_RESOURCE L_PAREN NUMBER R_PAREN {
+    methods=[getReference]
+}
+
+ext_resource_function ::= EXT_RESOURCE L_PAREN NUMBER R_PAREN {
+    methods=[getReference]
+}
+
+resource_string ::= SINGLE_QUOTED_RESOURCE_STRING | DOUBLE_QUOTED_RESOURCE_STRING {
+    methods=[getReference]
+}
+
