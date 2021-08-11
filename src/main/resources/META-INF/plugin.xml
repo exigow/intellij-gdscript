@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.32.1</version>
+	<version>0.32.2</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -46,8 +46,8 @@
 		<externalAnnotator implementationClass="lsp.diagnostics.DiagnosticAnnotator" language="GDScript"/>
 		<!-- projectView -->
 		<treeStructureProvider implementation="projectView.ImportFileTreeStructureProvider" order="last"/>
-		<!-- report -->
-		<errorHandler implementation="report.ReportSubmitter"/>
+		<!-- error -->
+		<errorHandler implementation="error.ErrorGithubSubmitter"/>
 		<!-- run -->
 		<configurationType implementation="run.RunConfigurationType"/>
 		<runConfigurationProducer implementation="run.RunConfigurationProducer"/>

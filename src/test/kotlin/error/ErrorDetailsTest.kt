@@ -1,12 +1,11 @@
-package report.utils
+package error
 
 import junit.framework.TestCase
-import report.Report
 
-class MarkdownDescriptionBakerTest : TestCase() {
+class ErrorDetailsTest : TestCase() {
 
-    fun `test happy path`() {
-        val report = Report(
+    fun `test error`() {
+        val error = ErrorDetails(
             title = "java.lang.NullPointerException",
             pluginVersion = "0.26.1",
             ideVersion = "IC-193.5233.102",
@@ -17,8 +16,8 @@ class MarkdownDescriptionBakerTest : TestCase() {
                 ... 54 more
             """.trimIndent()
         )
-        val markdown = MarkdownDescriptionBaker.bake(report)
-        val expected = """
+        val markdown = error.toMarkdown()
+        val expectedMarkdown = """
             Plugin version: ```0.26.1```
             IDE version: ```IC-193.5233.102```
             Exception: ```java.lang.NullPointerException```
@@ -29,13 +28,12 @@ class MarkdownDescriptionBakerTest : TestCase() {
                 ... 54 more
             ```
         """.trimIndent()
-        assertEquals(expected, markdown)
+        assertEquals(expectedMarkdown, markdown)
     }
 
-    fun `test empty report should output empty markdown`() {
-        val empty = Report(null, null, null, null, null)
-        val emptyMarkdown = MarkdownDescriptionBaker.bake(empty)
-        assertEquals("", emptyMarkdown)
+    fun `test null report will result empty markdown`() {
+        val markdown = ErrorDetails(null, null, null, null, null).toMarkdown()
+        assertEquals("", markdown)
     }
 
 }

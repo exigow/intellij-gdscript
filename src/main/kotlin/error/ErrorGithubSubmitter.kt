@@ -1,4 +1,4 @@
-package report
+package error
 
 import com.intellij.ide.BrowserUtil
 import com.intellij.ide.plugins.IdeaPluginDescriptor
@@ -9,11 +9,10 @@ import com.intellij.openapi.diagnostic.SubmittedReportInfo
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.FAILED
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus.NEW_ISSUE
 import com.intellij.util.Consumer
-import report.utils.GithubLinkGenerator
-import report.utils.MarkdownDescriptionBaker
 import java.awt.Component
+import java.net.URLEncoder
 
-class ReportSubmitter : ErrorReportSubmitter() {
+class ErrorGithubSubmitter : ErrorReportSubmitter() {
 
     override fun getReportActionText() =
         "Open GitHub issue"
@@ -27,8 +26,9 @@ class ReportSubmitter : ErrorReportSubmitter() {
         try {
             if (events.isNotEmpty()) {
                 val event = events.first()
-                val issue = collectIssueDetails(event, additionalInfo)
-                submitOnGithub(issue)
+                val error = getErrorDetails(event, additionalInfo)
+                val url = encodeIssue(error.title ?: "no title", error.toMarkdown())
+                BrowserUtil.browse(url)
             }
         } catch (e: Exception) {
             consumer.consume(SubmittedReportInfo(FAILED))
@@ -38,26 +38,22 @@ class ReportSubmitter : ErrorReportSubmitter() {
         return true
     }
 
-    private fun collectIssueDetails(event: IdeaLoggingEvent, additionalInfo: String?) =
-        Report(
+    private fun getErrorDetails(event: IdeaLoggingEvent, additionalInfo: String?) =
+        ErrorDetails(
             title = event.throwableText.lines().first(),
-            pluginVersion = discoverPluginVersion(),
-            ideVersion = discoverIdeaVersion(),
+            pluginVersion = (pluginDescriptor as? IdeaPluginDescriptor)?.version,
+            ideVersion = ApplicationInfo.getInstance().build.toString(),
             additionalInfo = additionalInfo,
             stacktrace = event.throwableText
         )
 
-    private fun discoverPluginVersion() =
-        (pluginDescriptor as? IdeaPluginDescriptor)?.version
+    private fun encodeIssue(title: String, body: String): String =
+        "https://github.com/exigow/intellij-gdscript/issues/new" +
+                "?labels=bug" +
+                "&title=${encode(title)}" +
+                "&body=${encode(body)}"
 
-    private fun discoverIdeaVersion() =
-        ApplicationInfo.getInstance().build.toString()
-
-    private fun submitOnGithub(report: Report) {
-        val markdown = MarkdownDescriptionBaker.bake(report)
-        val title = report.title ?: "no title"
-        val url = GithubLinkGenerator.generateUrl(title, markdown)
-        BrowserUtil.browse(url)
-    }
+    private fun encode(text: String) =
+        URLEncoder.encode(text, "UTF-8")
 
 }
