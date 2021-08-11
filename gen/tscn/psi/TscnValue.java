@@ -7,13 +7,31 @@ import com.intellij.psi.PsiElement;
 
 public interface TscnValue extends PsiElement {
 
-  @NotNull
-  List<TscnExtResourceFunction> getExtResourceFunctionList();
+  @Nullable
+  TscnDictionaryExpression getDictionaryExpression();
 
-  @NotNull
-  List<TscnResourceString> getResourceStringList();
+  @Nullable
+  TscnExtExpression getExtExpression();
 
-  @NotNull
-  List<TscnSubResourceFunction> getSubResourceFunctionList();
+  @Nullable
+  TscnFunctionExpression getFunctionExpression();
+
+  @Nullable
+  TscnListExpression getListExpression();
+
+  @Nullable
+  TscnResourceString getResourceString();
+
+  @Nullable
+  TscnSubExpression getSubExpression();
+
+  @Nullable
+  PsiElement getDoubleQuotedString();
+
+  @Nullable
+  PsiElement getNumber();
+
+  @Nullable
+  PsiElement getSingleQuotedString();
 
 }

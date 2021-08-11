@@ -12,14 +12,14 @@ import tscn.psi.TscnBaseElement;
 import tscn.psi.*;
 import com.intellij.psi.PsiReference;
 
-public class TscnSubResourceFunctionImpl extends TscnBaseElement implements TscnSubResourceFunction {
+public class TscnExtExpressionImpl extends TscnBaseElement implements TscnExtExpression {
 
-  public TscnSubResourceFunctionImpl(@NotNull ASTNode node) {
+  public TscnExtExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TscnVisitor visitor) {
-    visitor.visitSubResourceFunction(this);
+    visitor.visitExtExpression(this);
   }
 
   @Override

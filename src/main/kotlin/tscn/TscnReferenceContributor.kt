@@ -20,19 +20,19 @@ class TscnReferenceContributor : PsiReferenceContributor() {
             }
 
         })
-        registrar.registerReferenceProvider(PlatformPatterns.psiElement(TscnExtResourceFunction::class.java), object : PsiReferenceProvider() {
+        registrar.registerReferenceProvider(PlatformPatterns.psiElement(TscnExtExpression::class.java), object : PsiReferenceProvider() {
 
             override fun getReferencesByElement(element: PsiElement, context: ProcessingContext): Array<PsiReference> {
-                if (element is TscnExtResourceFunction)
+                if (element is TscnExtExpression)
                     return arrayOf(TscnResourceExtReference(element))
                 return emptyArray()
             }
 
         })
-        registrar.registerReferenceProvider(PlatformPatterns.psiElement(TscnSubResourceFunction::class.java), object : PsiReferenceProvider() {
+        registrar.registerReferenceProvider(PlatformPatterns.psiElement(TscnSubExpression::class.java), object : PsiReferenceProvider() {
 
             override fun getReferencesByElement(element: PsiElement, context: ProcessingContext): Array<PsiReference> {
-                if (element is TscnSubResourceFunction)
+                if (element is TscnSubExpression)
                     return arrayOf(TscnResourceSubReference(element))
                 return emptyArray()
             }

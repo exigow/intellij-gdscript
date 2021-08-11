@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface TscnExtResourceEntry extends PsiElement {
+public interface TscnSubEntry extends PsiElement {
 
   @NotNull
   List<TscnAttribute> getAttributeList();

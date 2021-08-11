@@ -14,11 +14,11 @@ object TscnPsiImplUtil {
         TscnResourceStringReference(element)
 
     @JvmStatic
-    fun getReference(element: TscnExtResourceFunction): PsiReference =
+    fun getReference(element: TscnExtExpression): PsiReference =
         TscnResourceExtReference(element)
 
     @JvmStatic
-    fun getReference(element: TscnSubResourceFunction): PsiReference =
+    fun getReference(element: TscnSubExpression): PsiReference =
         TscnResourceSubReference(element)
 
 }

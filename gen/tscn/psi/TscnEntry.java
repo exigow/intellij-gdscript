@@ -11,9 +11,9 @@ public interface TscnEntry extends PsiElement {
   List<TscnAttribute> getAttributeList();
 
   @NotNull
-  TscnEntryName getEntryName();
-
-  @NotNull
   List<TscnProperty> getPropertyList();
+
+  @Nullable
+  PsiElement getIdentifier();
 
 }

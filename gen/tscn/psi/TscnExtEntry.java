@@ -5,9 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface TscnEntryName extends PsiElement {
+public interface TscnExtEntry extends PsiElement {
 
-  @Nullable
-  PsiElement getIdentifier();
+  @NotNull
+  List<TscnAttribute> getAttributeList();
+
+  @NotNull
+  List<TscnProperty> getPropertyList();
 
 }

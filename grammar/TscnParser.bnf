@@ -14,7 +14,7 @@
     tokenTypeClass="tscn.psi.TscnTokenType"
 
     tokens = [
-        SPACE="regexp:\s+"
+//        SPACE="regexp:\s+" // uncomment for live edit
         L_PAREN="("
         R_PAREN=")"
         L_BRACKET="["
@@ -47,33 +47,38 @@
     ]
 }
 
-root ::= (entry | ext_resource_entry | sub_resource_entry)*
+root ::= top_level_rule*
 
-// top level
-entry ::= L_BRACKET entry_name attribute* R_BRACKET property*
-ext_resource_entry ::= L_BRACKET EXT_RESOURCE_KEYWORD attribute* R_BRACKET property*
-sub_resource_entry ::= L_BRACKET SUB_RESOURCE_KEYWORD attribute* R_BRACKET property*
-
-entry_name ::= NODE_KEYWORD | GD_SCENE_KEYWORD | GD_RESOURCE_KEYWORD | RESOURCE_KEYWORD | IDENTIFIER
+// top-level rules
+private top_level_rule ::= entry | ext_entry | sub_entry | property
+entry ::= L_BRACKET (NODE_KEYWORD | GD_SCENE_KEYWORD | GD_RESOURCE_KEYWORD | RESOURCE_KEYWORD | IDENTIFIER) attribute* R_BRACKET property*
+ext_entry ::= L_BRACKET EXT_RESOURCE_KEYWORD attribute* R_BRACKET property*
+sub_entry ::= L_BRACKET SUB_RESOURCE_KEYWORD attribute* R_BRACKET property*
 attribute ::= key EQUAL value
 property ::= key EQUAL value
 key ::= IDENTIFIER (SLASH (IDENTIFIER | NUMBER))*
 value ::= expression
-private expression ::= list | dictionary | function | sub_resource_function | ext_resource_function | resource_string | SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING | NUMBER | TRUE | FALSE | NULL
-private dictionary ::= L_CURLY dictionary_entry? (COMMA dictionary_entry)* R_CURLY
-private dictionary_entry ::= expression COLON expression
-private list ::= L_BRACKET expression? (COMMA expression)* R_BRACKET
-private function ::= IDENTIFIER L_PAREN expression? (COMMA expression)* R_PAREN
 
-sub_resource_function ::= SUB_RESOURCE L_PAREN NUMBER R_PAREN {
-    methods=[getReference]
-}
+// expressions
+private expression ::= list_expression
+    | dictionary_expression
+    | function_expression
+    | sub_expression
+    | ext_expression
+    | primitive
+list_expression ::= L_BRACKET expression? (COMMA expression)* R_BRACKET
+dictionary_expression ::= L_CURLY pair_expression? (COMMA pair_expression)* R_CURLY
+pair_expression ::= expression COLON expression
+function_expression ::= IDENTIFIER L_PAREN expression? (COMMA expression)* R_PAREN
+sub_expression ::= SUB_RESOURCE L_PAREN NUMBER R_PAREN {methods=[getReference]}
+ext_expression ::= EXT_RESOURCE L_PAREN NUMBER R_PAREN {methods=[getReference]}
 
-ext_resource_function ::= EXT_RESOURCE L_PAREN NUMBER R_PAREN {
-    methods=[getReference]
-}
-
-resource_string ::= SINGLE_QUOTED_RESOURCE_STRING | DOUBLE_QUOTED_RESOURCE_STRING {
-    methods=[getReference]
-}
-
+// primitives
+private primitive ::= resource_string
+    | string
+    | NULL
+    | TRUE
+    | FALSE
+    | NUMBER
+private string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+resource_string ::= SINGLE_QUOTED_RESOURCE_STRING | DOUBLE_QUOTED_RESOURCE_STRING {methods=[getReference]}

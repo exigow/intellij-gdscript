@@ -11,14 +11,14 @@ import static tscn.psi.TscnElementTypes.*;
 import tscn.psi.TscnBaseElement;
 import tscn.psi.*;
 
-public class TscnSubResourceEntryImpl extends TscnBaseElement implements TscnSubResourceEntry {
+public class TscnExtEntryImpl extends TscnBaseElement implements TscnExtEntry {
 
-  public TscnSubResourceEntryImpl(@NotNull ASTNode node) {
+  public TscnExtEntryImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TscnVisitor visitor) {
-    visitor.visitSubResourceEntry(this);
+    visitor.visitExtEntry(this);
   }
 
   @Override

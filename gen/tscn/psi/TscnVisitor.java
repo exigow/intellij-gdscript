@@ -11,23 +11,35 @@ public class TscnVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitDictionaryExpression(@NotNull TscnDictionaryExpression o) {
+    visitPsiElement(o);
+  }
+
   public void visitEntry(@NotNull TscnEntry o) {
     visitPsiElement(o);
   }
 
-  public void visitEntryName(@NotNull TscnEntryName o) {
+  public void visitExtEntry(@NotNull TscnExtEntry o) {
     visitPsiElement(o);
   }
 
-  public void visitExtResourceEntry(@NotNull TscnExtResourceEntry o) {
+  public void visitExtExpression(@NotNull TscnExtExpression o) {
     visitPsiElement(o);
   }
 
-  public void visitExtResourceFunction(@NotNull TscnExtResourceFunction o) {
+  public void visitFunctionExpression(@NotNull TscnFunctionExpression o) {
     visitPsiElement(o);
   }
 
   public void visitKey(@NotNull TscnKey o) {
+    visitPsiElement(o);
+  }
+
+  public void visitListExpression(@NotNull TscnListExpression o) {
+    visitPsiElement(o);
+  }
+
+  public void visitPairExpression(@NotNull TscnPairExpression o) {
     visitPsiElement(o);
   }
 
@@ -39,11 +51,11 @@ public class TscnVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitSubResourceEntry(@NotNull TscnSubResourceEntry o) {
+  public void visitSubEntry(@NotNull TscnSubEntry o) {
     visitPsiElement(o);
   }
 
-  public void visitSubResourceFunction(@NotNull TscnSubResourceFunction o) {
+  public void visitSubExpression(@NotNull TscnSubExpression o) {
     visitPsiElement(o);
   }
 

@@ -10,15 +10,16 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static tscn.psi.TscnElementTypes.*;
 import tscn.psi.TscnBaseElement;
 import tscn.psi.*;
+import com.intellij.psi.PsiReference;
 
-public class TscnExtResourceEntryImpl extends TscnBaseElement implements TscnExtResourceEntry {
+public class TscnSubExpressionImpl extends TscnBaseElement implements TscnSubExpression {
 
-  public TscnExtResourceEntryImpl(@NotNull ASTNode node) {
+  public TscnSubExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TscnVisitor visitor) {
-    visitor.visitExtResourceEntry(this);
+    visitor.visitSubExpression(this);
   }
 
   @Override
@@ -29,14 +30,14 @@ public class TscnExtResourceEntryImpl extends TscnBaseElement implements TscnExt
 
   @Override
   @NotNull
-  public List<TscnAttribute> getAttributeList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnAttribute.class);
+  public PsiElement getNumber() {
+    return findNotNullChildByType(NUMBER);
   }
 
   @Override
   @NotNull
-  public List<TscnProperty> getPropertyList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnProperty.class);
+  public PsiReference getReference() {
+    return TscnPsiImplUtil.getReference(this);
   }
 
 }

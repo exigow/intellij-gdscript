@@ -35,14 +35,14 @@ public class TscnEntryImpl extends TscnBaseElement implements TscnEntry {
 
   @Override
   @NotNull
-  public TscnEntryName getEntryName() {
-    return findNotNullChildByClass(TscnEntryName.class);
+  public List<TscnProperty> getPropertyList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnProperty.class);
   }
 
   @Override
-  @NotNull
-  public List<TscnProperty> getPropertyList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnProperty.class);
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
   }
 
 }

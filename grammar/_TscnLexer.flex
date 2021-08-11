@@ -25,7 +25,6 @@ import static tscn.psi.TscnElementTypes.*;
 EOL=\R
 WHITE_SPACE=\s+
 
-SPACE=[ \t\n\x0B\f\r]+
 IDENTIFIER=[A-Za-z_][A-Za-z0-9_]*
 NUMBER=-?[0-9]+(\.[0-9]+)?
 SINGLE_QUOTED_RESOURCE_STRING=\"res:"//"([^\"\\]|\\.)*\"
@@ -60,7 +59,6 @@ COMMENT=;[^\n]*
   "false"                              { return FALSE; }
   "null"                               { return NULL; }
 
-  {SPACE}                              { return SPACE; }
   {IDENTIFIER}                         { return IDENTIFIER; }
   {NUMBER}                             { return NUMBER; }
   {SINGLE_QUOTED_RESOURCE_STRING}      { return SINGLE_QUOTED_RESOURCE_STRING; }

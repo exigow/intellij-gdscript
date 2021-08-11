@@ -4,14 +4,10 @@ package tscn.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
 
-public interface TscnSubResourceFunction extends PsiElement {
-
-  @NotNull
-  PsiElement getNumber();
+public interface TscnDictionaryExpression extends PsiElement {
 
   @NotNull
-  PsiReference getReference();
+  List<TscnPairExpression> getPairExpressionList();
 
 }

@@ -11,14 +11,14 @@ import static tscn.psi.TscnElementTypes.*;
 import tscn.psi.TscnBaseElement;
 import tscn.psi.*;
 
-public class TscnEntryNameImpl extends TscnBaseElement implements TscnEntryName {
+public class TscnDictionaryExpressionImpl extends TscnBaseElement implements TscnDictionaryExpression {
 
-  public TscnEntryNameImpl(@NotNull ASTNode node) {
+  public TscnDictionaryExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull TscnVisitor visitor) {
-    visitor.visitEntryName(this);
+    visitor.visitDictionaryExpression(this);
   }
 
   @Override
@@ -28,9 +28,9 @@ public class TscnEntryNameImpl extends TscnBaseElement implements TscnEntryName 
   }
 
   @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  @NotNull
+  public List<TscnPairExpression> getPairExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnPairExpression.class);
   }
 
 }

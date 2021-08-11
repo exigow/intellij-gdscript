@@ -9,15 +9,18 @@ import tscn.psi.impl.*;
 public interface TscnElementTypes {
 
   IElementType ATTRIBUTE = new TscnElementType("ATTRIBUTE");
+  IElementType DICTIONARY_EXPRESSION = new TscnElementType("DICTIONARY_EXPRESSION");
   IElementType ENTRY = new TscnElementType("ENTRY");
-  IElementType ENTRY_NAME = new TscnElementType("ENTRY_NAME");
-  IElementType EXT_RESOURCE_ENTRY = new TscnElementType("EXT_RESOURCE_ENTRY");
-  IElementType EXT_RESOURCE_FUNCTION = new TscnElementType("EXT_RESOURCE_FUNCTION");
+  IElementType EXT_ENTRY = new TscnElementType("EXT_ENTRY");
+  IElementType EXT_EXPRESSION = new TscnElementType("EXT_EXPRESSION");
+  IElementType FUNCTION_EXPRESSION = new TscnElementType("FUNCTION_EXPRESSION");
   IElementType KEY = new TscnElementType("KEY");
+  IElementType LIST_EXPRESSION = new TscnElementType("LIST_EXPRESSION");
+  IElementType PAIR_EXPRESSION = new TscnElementType("PAIR_EXPRESSION");
   IElementType PROPERTY = new TscnElementType("PROPERTY");
   IElementType RESOURCE_STRING = new TscnElementType("RESOURCE_STRING");
-  IElementType SUB_RESOURCE_ENTRY = new TscnElementType("SUB_RESOURCE_ENTRY");
-  IElementType SUB_RESOURCE_FUNCTION = new TscnElementType("SUB_RESOURCE_FUNCTION");
+  IElementType SUB_ENTRY = new TscnElementType("SUB_ENTRY");
+  IElementType SUB_EXPRESSION = new TscnElementType("SUB_EXPRESSION");
   IElementType VALUE = new TscnElementType("VALUE");
 
   IElementType COLON = new TscnTokenType(":");
@@ -55,20 +58,29 @@ public interface TscnElementTypes {
       if (type == ATTRIBUTE) {
         return new TscnAttributeImpl(node);
       }
+      else if (type == DICTIONARY_EXPRESSION) {
+        return new TscnDictionaryExpressionImpl(node);
+      }
       else if (type == ENTRY) {
         return new TscnEntryImpl(node);
       }
-      else if (type == ENTRY_NAME) {
-        return new TscnEntryNameImpl(node);
+      else if (type == EXT_ENTRY) {
+        return new TscnExtEntryImpl(node);
       }
-      else if (type == EXT_RESOURCE_ENTRY) {
-        return new TscnExtResourceEntryImpl(node);
+      else if (type == EXT_EXPRESSION) {
+        return new TscnExtExpressionImpl(node);
       }
-      else if (type == EXT_RESOURCE_FUNCTION) {
-        return new TscnExtResourceFunctionImpl(node);
+      else if (type == FUNCTION_EXPRESSION) {
+        return new TscnFunctionExpressionImpl(node);
       }
       else if (type == KEY) {
         return new TscnKeyImpl(node);
+      }
+      else if (type == LIST_EXPRESSION) {
+        return new TscnListExpressionImpl(node);
+      }
+      else if (type == PAIR_EXPRESSION) {
+        return new TscnPairExpressionImpl(node);
       }
       else if (type == PROPERTY) {
         return new TscnPropertyImpl(node);
@@ -76,11 +88,11 @@ public interface TscnElementTypes {
       else if (type == RESOURCE_STRING) {
         return new TscnResourceStringImpl(node);
       }
-      else if (type == SUB_RESOURCE_ENTRY) {
-        return new TscnSubResourceEntryImpl(node);
+      else if (type == SUB_ENTRY) {
+        return new TscnSubEntryImpl(node);
       }
-      else if (type == SUB_RESOURCE_FUNCTION) {
-        return new TscnSubResourceFunctionImpl(node);
+      else if (type == SUB_EXPRESSION) {
+        return new TscnSubExpressionImpl(node);
       }
       else if (type == VALUE) {
         return new TscnValueImpl(node);

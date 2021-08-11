@@ -28,21 +28,57 @@ public class TscnValueImpl extends TscnBaseElement implements TscnValue {
   }
 
   @Override
-  @NotNull
-  public List<TscnExtResourceFunction> getExtResourceFunctionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnExtResourceFunction.class);
+  @Nullable
+  public TscnDictionaryExpression getDictionaryExpression() {
+    return findChildByClass(TscnDictionaryExpression.class);
   }
 
   @Override
-  @NotNull
-  public List<TscnResourceString> getResourceStringList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnResourceString.class);
+  @Nullable
+  public TscnExtExpression getExtExpression() {
+    return findChildByClass(TscnExtExpression.class);
   }
 
   @Override
-  @NotNull
-  public List<TscnSubResourceFunction> getSubResourceFunctionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, TscnSubResourceFunction.class);
+  @Nullable
+  public TscnFunctionExpression getFunctionExpression() {
+    return findChildByClass(TscnFunctionExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public TscnListExpression getListExpression() {
+    return findChildByClass(TscnListExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public TscnResourceString getResourceString() {
+    return findChildByClass(TscnResourceString.class);
+  }
+
+  @Override
+  @Nullable
+  public TscnSubExpression getSubExpression() {
+    return findChildByClass(TscnSubExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getDoubleQuotedString() {
+    return findChildByType(DOUBLE_QUOTED_STRING);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getNumber() {
+    return findChildByType(NUMBER);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getSingleQuotedString() {
+    return findChildByType(SINGLE_QUOTED_STRING);
   }
 
 }
