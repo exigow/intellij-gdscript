@@ -24,8 +24,8 @@ Works with all IntelliJ-based IDEs starting from v2019.3.
 
 1. Export API with `godot --doctool .`
 1. Compress doc files into single `3.2.2-stable.zip` (example name; structure is not important)
-1. Save file as `src/main/resources/api/3.2.2-stable.zip`
-1. Update [sources](src/main/kotlin/api/VersionedClassesService.kt) 
+1. Save file as `src/main/resources/version/3.2.2-stable.zip`
+1. Update [sources](src/main/kotlin/version/VersionService.kt) 
 
 New API version will be available in `Settings` | `Languages & Frameworks` | `GDScript`
 

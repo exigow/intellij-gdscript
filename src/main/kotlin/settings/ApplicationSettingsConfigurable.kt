@@ -1,6 +1,6 @@
 package settings
 
-import api.VersionedClassesService
+import version.VersionService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.SearchableConfigurable
 import com.intellij.openapi.ui.ComboBox
@@ -15,7 +15,7 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
 
     private val settings = service<ApplicationSettings>()
     private val lspCheckbox = initLspCheckbox()
-    private val versionList = initVersionList()
+    private val versionList = initVersions()
 
     override fun getDisplayName() = "GDScript"
 
@@ -32,7 +32,7 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
         settings.apiVersion = versionList.selectedItem as String
     }
 
-    override fun createComponent(): JComponent? {
+    override fun createComponent(): JComponent {
         val panel = JPanel(VerticalFlowLayout())
         panel.add(LabeledComponent.create(versionList, "API version:").also { it.labelLocation = BorderLayout.WEST })
         panel.add(lspCheckbox)
@@ -42,10 +42,9 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
     private fun initLspCheckbox(): JCheckBox =
         JCheckBox("LSP features (experimental)", settings.lspEnabled)
 
-    private fun initVersionList(): ComboBox<String> {
-        val classesService = service<VersionedClassesService>()
-        val availableVersions = classesService.versions.map { it.name }.toTypedArray()
-        val combo = ComboBox(availableVersions)
+    private fun initVersions(): ComboBox<String> {
+        val allVersions = VersionService.all().map { it.version }.toTypedArray()
+        val combo = ComboBox(allVersions)
         combo.selectedItem = settings.apiVersion
         return combo
     }

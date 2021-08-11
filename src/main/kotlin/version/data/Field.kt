@@ -1,4 +1,4 @@
-package api.model
+package version.data
 
 data class Field(
     val name: String,

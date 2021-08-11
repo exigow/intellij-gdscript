@@ -1,9 +1,9 @@
 package gdscript.completion.utils
 
-import api.model.Argument
-import api.model.Class
-import api.model.Constant
-import api.model.Method
+import version.data.Argument
+import version.data.Class
+import version.data.Constant
+import version.data.Method
 import com.intellij.codeInsight.completion.AddSpaceInsertHandler.INSTANCE_WITH_AUTO_POPUP
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler.NO_PARAMETERS
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler.WITH_PARAMETERS

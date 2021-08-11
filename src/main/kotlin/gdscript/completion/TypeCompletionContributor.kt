@@ -1,6 +1,6 @@
 package gdscript.completion
 
-import api.VersionedClassesService
+import version.VersionService
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -18,7 +18,7 @@ class TypeCompletionContributor : CompletionContributor() {
     }
 
     private fun collectLookups(): List<LookupElement> {
-        val api = service<VersionedClassesService>().current()
+        val api = VersionService.current()
         val primitiveTypes = api.primitives.map { LookupFactory.createKeyword(it.name) }
         val classTypes = api.classes.map { LookupFactory.createClass(it) }
         return primitiveTypes + classTypes

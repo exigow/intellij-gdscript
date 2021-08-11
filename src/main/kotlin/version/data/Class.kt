@@ -1,4 +1,4 @@
-package api.model
+package version.data
 
 data class Class(
     val name: String,

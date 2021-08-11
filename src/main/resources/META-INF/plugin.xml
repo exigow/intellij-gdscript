@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.32.2</version>
+	<version>0.32.3</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -19,8 +19,8 @@
 	<idea-version since-build="193.2252"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<!-- api -->
-		<applicationService serviceImplementation="api.VersionedClassesService"/>
+		<!-- version -->
+		<applicationService serviceImplementation="version.VersionService"/>
 		<!-- gdscript -->
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>

@@ -1,6 +1,6 @@
 package gdscript.completion
 
-import api.VersionedClassesService
+import version.VersionService
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -23,7 +23,7 @@ class StaticCompletionContributor : CompletionContributor() {
     }
 
     private fun findClassLookups(name: String): List<LookupElement> {
-        val api = service<VersionedClassesService>().current()
+        val api = VersionService.current()
         val clazz = (api.classes + api.singletons).find { it.name == name }
             ?: return emptyList()
         val constants = clazz.constants.map { LookupFactory.createConstant(it) }

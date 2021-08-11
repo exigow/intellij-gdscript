@@ -1,7 +1,7 @@
 package gdscript.completion
 
-import api.VersionedClassesService
-import api.model.Class
+import version.VersionService
+import version.data.Class
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
@@ -36,7 +36,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
     }
 
     private fun collectLookups(): List<LookupElement> {
-        val api = service<VersionedClassesService>().current()
+        val api = VersionService.current()
         val constants = api.globals.flatMap { it.constants }.map { LookupFactory.createConstant(it) }
         val functions = api.globals.flatMap { it.methods }.map { LookupFactory.createFunction(it) }
         val singletons = api.singletons.map { LookupFactory.createSingleton(it) }
