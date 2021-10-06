@@ -13,12 +13,18 @@ class RunConfigurationType : ConfigurationType {
         "Godot run configuration"
 
     override fun getId() =
-        "godotConfiguration"
+        ID
 
     override fun getDisplayName() =
         "Godot"
 
     override fun getConfigurationFactories() =
         arrayOf(RunConfigurationFactory(this))
+
+    companion object {
+
+        const val ID = "godotConfiguration"
+
+    }
 
 }

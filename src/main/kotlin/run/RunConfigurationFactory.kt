@@ -13,4 +13,7 @@ class RunConfigurationFactory(type: ConfigurationType) : ConfigurationFactory(ty
     override fun getIcon() =
         Icons.RUN
 
+    override fun getId() =
+        RunConfigurationType.ID
+
 }
