@@ -4,16 +4,15 @@ import BaseTest
 
 class ApplicationSettingsTest : BaseTest() {
 
-    fun `test is LSP disabled by default`() {
+    fun `test default version`() {
         val settings = ApplicationSettings()
-        assertFalse(settings.lspEnabled)
+        assertEquals("3.2.2", settings.apiVersion)
     }
 
-    fun `test loads state from other settings`() {
-        val tested = ApplicationSettings()
-        val other = ApplicationSettings(true)
-        tested.loadState(other)
-        assertTrue(tested.lspEnabled)
+    fun `test version load state`() {
+        val tested = ApplicationSettings("0.0")
+        tested.loadState(ApplicationSettings("1.0"))
+        assertEquals("1.0", tested.apiVersion)
     }
 
 }

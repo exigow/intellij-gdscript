@@ -5,10 +5,10 @@ import com.intellij.openapi.components.ServiceManager
 
 class ApplicationSettingsConfigurableTest : BaseTest() {
 
-    fun `test GUI detects settings component modification`() {
+    fun `test GUI modifies settings`() {
         val gui = ApplicationSettingsConfigurable()
         assertFalse(gui.isModified)
-        ServiceManager.getService(ApplicationSettings::class.java).lspEnabled = true
+        ServiceManager.getService(ApplicationSettings::class.java).apiVersion = "1.2.3"
         assertTrue(gui.isModified)
     }
 

@@ -7,7 +7,6 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(name = "ApplicationSettings", storages = [(Storage("gdscript.xml"))])
 class ApplicationSettings(
-    var lspEnabled: Boolean = false,
     var apiVersion: String = "3.2.2"
 ) : PersistentStateComponent<ApplicationSettings> {
 
