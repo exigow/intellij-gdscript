@@ -6,7 +6,7 @@
 
 * Syntax highlighting
 * Code completion
-* `res://` completion
+* `res://` completion and navigation
 * Syntax-aware code selection
 * Run scene
 

@@ -4,6 +4,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReferenceBase
 import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.util.parentOfType
 import tscn.psi.TscnAttribute
 import tscn.psi.TscnSubEntry
 import tscn.psi.TscnSubExpression
@@ -15,22 +16,11 @@ class TscnResourceSubReference(element: TscnSubExpression) :
     override fun resolve(): PsiElement? {
         val id = element.number.text.toIntOrNull()
             ?: return null
-        return findEntryById(id)
-    }
-
-    private fun findEntryById(id: Int): TscnSubEntry? {
-        val entries = PsiTreeUtil.getChildrenOfType(element.containingFile, TscnSubEntry::class.java).orEmpty()
-        for (entry in entries) {
-            val attributes = PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty()
-            for (attribute in attributes) {
-                if (attribute.key.text == "id") {
-                    val value = attribute.value.text.toIntOrNull()
-                    if (value == id)
-                        return entry
-                }
-            }
-        }
-        return null
+        return PsiTreeUtil.getChildrenOfType(element.containingFile, TscnSubEntry::class.java).orEmpty()
+            .flatMap { entry -> PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty().asIterable() }
+            .filter { attribute -> attribute.key.text == "id" }
+            .find { attribute -> attribute.value.text.toIntOrNull() == id }
+            ?.parentOfType(TscnSubEntry::class)
     }
 
 }

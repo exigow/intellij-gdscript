@@ -12,7 +12,8 @@ enum class Colors(fallback: TextAttributesKey) {
     NUMBER(DefaultColors.NUMBER),
     KEYWORD(DefaultColors.KEYWORD),
     IDENTIFIER(DefaultColors.IDENTIFIER),
-    NODE(DefaultColors.METADATA),
+    NODE_PATH(DefaultColors.METADATA),
+    ANNOTATION(DefaultColors.METADATA),
     COMMA(DefaultColors.COMMA),
     SEMICOLON(DefaultColors.SEMICOLON),
     COLON(DefaultColors.OPERATION_SIGN),
@@ -23,7 +24,7 @@ enum class Colors(fallback: TextAttributesKey) {
     INSTANCE_METHOD(DefaultColors.INSTANCE_METHOD),
     CLASS_NAME(CustomHighlighterColors.CUSTOM_KEYWORD3_ATTRIBUTES),
     CONSTANT(DefaultColors.CONSTANT),
-    RESOURCE(EditorColors.INJECTED_LANGUAGE_FRAGMENT);
+    OPERATION_SIGN(DefaultColors.OPERATION_SIGN);
 
     val key: TextAttributesKey =
         TextAttributesKey.createTextAttributesKey("GDSCRIPT_$name", fallback)

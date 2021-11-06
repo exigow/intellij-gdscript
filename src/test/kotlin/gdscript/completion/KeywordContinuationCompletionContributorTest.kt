@@ -10,26 +10,24 @@ class KeywordContinuationCompletionContributorTest : BaseTest() {
         environment.openScript("export <caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "var")
+        environment.finishLookup('\r')
+        environment.checkResult("export var <caret>")
     }
 
     fun `test static func`() {
         environment.openScript("static <caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "func")
+        environment.finishLookup('\r')
+        environment.checkResult("static func <caret>")
     }
 
     fun `test master func`() {
         environment.openScript("master <caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "func")
-    }
-
-    fun `test continuation should add auto space`() {
-        environment.openScript("static fu<caret>")
-        environment.completeBasic()
-        assertContainsElements(environment.lookups(), "func")
         environment.finishLookup('\r')
-        environment.checkResult("static func <caret>")
+        environment.checkResult("master func <caret>")
     }
 
 }

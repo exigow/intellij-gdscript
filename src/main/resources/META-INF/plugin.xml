@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.33.0</version>
+	<version>0.34.0</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -9,7 +9,7 @@
 		<ul>
 			<li>Syntax highlighting</li>
 			<li>Code completion</li>
-			<li>res:// completion</li>
+			<li>res:// completion and navigation</li>
 			<li>Syntax-aware code selection</li>
 			<li>Run scene</li>
 		</ul>
@@ -21,6 +21,9 @@
 		<!-- version -->
 		<applicationService serviceImplementation="version.VersionService"/>
 		<!-- gdscript -->
+		<annotator implementationClass="gdscript.annotation.ClassnameAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.KeywordAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
@@ -37,6 +40,7 @@
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
 		<extendWordSelectionHandler implementation="gdscript.ScriptExtendWordHandler"/>
+		<psi.referenceContributor implementation="gdscript.ScriptReferenceContributor" language="GDScript"/>
 		<!-- projectView -->
 		<treeStructureProvider implementation="projectView.ImportFileTreeStructureProvider" order="last"/>
 		<!-- error -->

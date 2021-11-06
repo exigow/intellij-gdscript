@@ -1,100 +1,73 @@
 package gdscript.lexer
 
 import BaseTest
-import com.intellij.psi.tree.IElementType
 import com.intellij.testFramework.LexerTestCase
-import gdscript.ScriptTokenType.CLASS_NAME
-import gdscript.ScriptTokenType.CONSTANT
-import gdscript.ScriptTokenType.DOUBLE_QUOTED_STRING
-import gdscript.ScriptTokenType.IDENTIFIER
-import gdscript.ScriptTokenType.KEYWORD
-import gdscript.ScriptTokenType.NODE
-import gdscript.ScriptTokenType.NUMBER
-import gdscript.ScriptTokenType.SINGLE_QUOTED_STRING
-import gdscript.ScriptTokenType.UNRECOGNIZED
 
 class ScriptLexerTest : BaseTest() {
 
-    fun `test unrecognized character`( ) =
-        assertHasToken("???", UNRECOGNIZED, "?")
+    fun `test identifier`() {
+        assertTokenEquals("IDENTIFIER ('_x')", "_x")
+        assertTokenEquals("IDENTIFIER ('position_2')", "position_2")
+        assertTokenEquals("IDENTIFIER ('SomeClass')", "SomeClass")
+        assertTokenEquals("IDENTIFIER ('UPPER_CASE')", "UPPER_CASE")
+    }
 
-    fun `test "var" keyword`() =
-        assertHasToken("var x", KEYWORD, "var")
+    fun `test node path`() {
+        assertTokenEquals("NODE_PATH ('\$MyNode')", "\$MyNode")
+        assertTokenEquals("NODE_PATH ('\$Outer/Inner')", "\$Outer/Inner")
+        assertTokenEquals("NODE_PATH ('\$\"../BodyPivot\"')", "\$\"../BodyPivot\"")
+    }
 
-    fun `test variable when name prefix is also "in" keyword operator`() =
-        assertHasToken("index", IDENTIFIER, "index")
+    fun `test real number`() {
+        assertTokenEquals("REAL_NUMBER ('3.14')", "3.14")
+        assertTokenEquals("REAL_NUMBER ('3.141_592_7')", "3.141_592_7")
+        assertTokenEquals("REAL_NUMBER ('58.1e-10')", "58.1e-10")
+        assertTokenEquals("REAL_NUMBER ('1e10')", "1e10")
+        assertTokenEquals("REAL_NUMBER ('.01')", ".01")
+        assertTokenEquals("REAL_NUMBER ('1.')", "1.")
+    }
 
-    fun `test custom type when name prefix is also "Vector3" class name`() =
-        assertHasToken("Vector3Better", IDENTIFIER, "Vector3Better")
+    fun `test hexadecimal number`() {
+        assertTokenEquals("HEXADECIMAL_NUMBER ('0x')", "0x")
+        assertTokenEquals("HEXADECIMAL_NUMBER ('0x8f51')", "0x8f51")
+        assertTokenEquals("HEXADECIMAL_NUMBER ('0x8080_0000_ffff')", "0x8080_0000_ffff")
+    }
 
-    fun `test "class_name" keyword`() =
-        assertHasToken("class_name Test", KEYWORD, "class_name")
+    fun `test binary number`() {
+        assertTokenEquals("BINARY_NUMBER ('0b')", "0b")
+        assertTokenEquals("BINARY_NUMBER ('0b101010')", "0b101010")
+        assertTokenEquals("BINARY_NUMBER ('0b11_00_11_00')", "0b11_00_11_00")
+    }
 
-    fun `test string`() =
-        assertHasToken("x = \"text\"", DOUBLE_QUOTED_STRING, "\"text\"")
+    fun `test double quoted string`() {
+        assertTokenEquals("DOUBLE_QUOTED_STRING ('\"\"')", "\"\"")
+        assertTokenEquals("DOUBLE_QUOTED_STRING ('\"aaa\"')", "\"aaa\"")
+    }
 
-    fun `test string apostrophe`() =
-        assertHasToken("x = 'text'", SINGLE_QUOTED_STRING, "'text'")
+    fun `test single quoted string`() {
+        assertTokenEquals("SINGLE_QUOTED_STRING ('''')", "''")
+        assertTokenEquals("SINGLE_QUOTED_STRING (''aaa'')", "'aaa'")
+    }
 
-    fun `test identifier`() =
-        assertHasToken("var name", IDENTIFIER, "name")
+    fun `test unfinished string to line break`() {
+        val expected = "DOUBLE_QUOTED_STRING ('\"a')\n" +
+            "LINE_BREAK ('\\n')"
+        assertTokenEquals(expected, "\"a\n")
+    }
 
-    fun `test language-level function`() =
-        assertHasToken("x = preload()", KEYWORD, "preload")
+    fun `test multiline double quoted string`() {
+        assertTokenEquals("MULTILINE_DOUBLE_QUOTED_STRING ('\"\"\"abc\"\"\"')", "\"\"\"abc\"\"\"")
+        assertTokenEquals("MULTILINE_DOUBLE_QUOTED_STRING ('\"\"\"\\nabc\\n\"\"\"')", "\"\"\"\nabc\n\"\"\"")
+    }
 
-    fun `test primitive constructor`() =
-        assertHasToken("number = float(other)", KEYWORD, "float")
+    fun `test multiline single quoted string`() {
+        assertTokenEquals("MULTILINE_SINGLE_QUOTED_STRING ('\'\'\'abc\'\'\'')", "\'\'\'abc\'\'\'")
+        assertTokenEquals("MULTILINE_SINGLE_QUOTED_STRING ('\'\'\'\\nabc\\n\'\'\'')", "\'\'\'\nabc\n\'\'\'")
+    }
 
-    fun `test number`() =
-        assertHasToken("x = 42.0", NUMBER, "42.0")
-
-    fun `test scientific number`() =
-        assertHasToken("x = 123.01e-12", NUMBER, "123.01e-12")
-
-    fun `test primitive "void" type`() =
-        assertHasToken("var x: void", KEYWORD, "void")
-
-    fun `test "as" operator`() =
-        assertHasToken("a as Vector2", KEYWORD, "as")
-
-    fun `test "in" content check operator`() =
-        assertHasToken("for x in y:", KEYWORD, "in")
-
-    fun `test language-level constant`() =
-        assertHasToken("x = BUTTON_LEFT", CONSTANT, "BUTTON_LEFT")
-
-    fun `test resource`() =
-        assertHasToken("x = \"res://file.gd\"", DOUBLE_QUOTED_STRING, "\"res://file.gd\"")
-
-    fun `test user resource`() =
-        assertHasToken("x = \"user://save.txt\"", DOUBLE_QUOTED_STRING, "\"user://save.txt\"")
-
-    fun `test node`() =
-        assertHasToken("\$Some/Node", NODE, "\$Some/Node")
-
-    fun `test class as type`() =
-        assertHasToken("var position: Vector2", CLASS_NAME, "Vector2")
-
-    fun `test class in "extends" statement`() =
-        assertHasToken("extends Node", CLASS_NAME, "Node")
-
-    fun `test class "OS" similar to constant`() =
-        assertHasToken("extends OS", CLASS_NAME, "OS")
-
-    fun `test custom class is identifier`() =
-        assertHasToken("var x: MyClass", IDENTIFIER, "MyClass")
-
-    private fun assertHasToken(code: String, expectedToken: IElementType, expectedTokenText: String) {
-        println(LexerTestCase.printTokens(code, 0, ScriptLexer()))
-        val lexer = ScriptLexer()
-        lexer.start(code, 0, code.length)
-        var currentToken: IElementType?
-        while (lexer.tokenType.also { currentToken = it } != null) {
-            if (currentToken == expectedToken && lexer.tokenText == expectedTokenText)
-                return
-            lexer.advance()
-        }
-        fail("Token $expectedToken not found")
+    private fun assertTokenEquals(expected: String, code: String) {
+        val printed = LexerTestCase.printTokens(code, 0, ScriptLexerAdapter())
+        assertEquals(expected, printed.trim())
     }
 
 }

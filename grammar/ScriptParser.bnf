@@ -1,0 +1,349 @@
+{
+    parserClass = "gdscript.parser.ScriptParser"
+    extends = "gdscript.psi.ScriptBaseElement"
+    psiClassPrefix = "Script"
+    psiImplClassSuffix = "Impl"
+    psiPackage = "gdscript.psi"
+    psiImplPackage = "gdscript.psi.impl"
+    psiImplUtilClass = "gdscript.psi.impl.ScriptPsiImplUtil"
+    elementTypeHolderClass = "gdscript.psi.ScriptElementTypes"
+    elementTypeClass = "gdscript.psi.ScriptElementType"
+    tokenTypeClass = "gdscript.psi.ScriptTokenType"
+    tokens = [
+        IF = "if"
+        EXPORT = "export"
+        ELIF = "elif"
+        ELSE = "else"
+        FOR = "for"
+        WHILE = "while"
+        BREAK = "break"
+        CONTINUE = "continue"
+        PASS = "pass"
+        RETURN = "return"
+        MATCH = "match"
+        ASSERT = "assert"
+        AWAIT = "await"
+        BREAKPOINT = "breakpoint"
+        CLASS = "class"
+        CLASS_NAME = "class_name"
+        CONST = "const"
+        ENUM = "enum"
+        EXTENDS = "extends"
+        FUNC = "func"
+        SELF = "self"
+        SIGNAL = "signal"
+        STATIC = "static"
+        ONREADY = "onready"
+        VAR = "var"
+        SETGET = "setget"
+        YIELD = "yield"
+        TRUE = "true"
+        FALSE = "false"
+        NULL = "null"
+        AND = "and"
+        OR = "or"
+        NOT = "not"
+        INT = "int"
+        FLOAT = "float"
+        BOOL = "bool"
+        VOID = "void"
+        IN = "in"
+        IS = "is"
+        AS = "as"
+        TOOL = "tool"
+        MASTER = "master"
+        PUPPET = "puppet"
+        REMOTE = "remote"
+        SYNC = "SYNC"
+        MASTERSYNC = "mastersync"
+        PUPPETSYNC = "puppetsync"
+        REMOTESYNC = "remotesync"
+
+        AT_ONREADY = "@onready"
+        AT_TOOL = "@tool"
+
+        AT_EXPORT = "@export"
+        AT_EXPORT_ENUM = "@export_enum"
+        AT_EXPORT_FILE = "@export_file"
+        AT_EXPORT_DIR = "@export_dir"
+        AT_EXPORT_GLOBAL_FILE = "@export_global_file"
+        AT_EXPORT_GLOBAL_DIR = "@export_global_dir"
+        AT_EXPORT_MULTILINE = "@export_multiline"
+        AT_EXPORT_PLACEHOLDER = "@export_placeholder"
+        AT_EXPORT_RANGE = "@export_range"
+        AT_EXPORT_EXP_EASING = "@export_exp_easing"
+        AT_EXPORT_COLOR_NO_ALPHA = "@export_color_no_alpha"
+        AT_EXPORT_NODE_PATH = "@export_node_path"
+        AT_EXPORT_FLAGS = "@export_flags"
+        AT_EXPORT_FLAGS_2D_RENDER = "@export_flags_2d_render"
+        AT_EXPORT_FLAGS_2D_PHYSICS = "@export_flags_2d_physics"
+        AT_EXPORT_FLAGS_2D_NAVIGATION = "@export_flags_2d_navigation"
+        AT_EXPORT_FLAGS_3D_RENDER = "@export_flags_3d_render"
+        AT_EXPORT_FLAGS_3D_PHYSICS = "@export_flags_3d_physics"
+        AT_EXPORT_FLAGS_3D_NAVIGATION = "@export_flags_3d_navigation"
+
+        AT_ICON = "@icon"
+        AT_MASTER = "@master"
+        AT_PUPPET = "@puppet"
+        AT_REMOTE = "@remote"
+        AT_MASTERSYNC = "@mastersync"
+        AT_PUPPETSYNC = "@puppetsync"
+        AT_REMOTESYNC = "@remotesync"
+
+        LESS = "<"
+        LESS_EQUAL = "<="
+        GREATER = ">"
+        GREATER_EQUAL = ">="
+        EQUAL_EQUAL = "=="
+        BANG_EQUAL = "!="
+        AMPERSAND_AMPERSAND = "&&"
+        PIPE_PIPE = "||"
+        BANG = "!"
+        AMPERSAND = "&"
+        PIPE = "|"
+        TILDE = "~"
+        CARET = "^"
+        LESS_LESS = "<<"
+        GREATER_GREATER = ">>"
+        PLUS = "+"
+        MINUS = "-"
+        STAR = "*"
+        SLASH = "/"
+        PERCENT = "%"
+        DOT = "."
+        DOT_DOT = ".."
+        EQUAL = "="
+        PLUS_EQUAL = "+="
+        MINUS_EQUAL = "-="
+        STAR_EQUAL = "*="
+        SLASH_EQUAL = "/="
+        PERCENT_EQUAL = "%="
+        LESS_LESS_EQUAL = "<<="
+        GREATER_GREATER_EQUAL = ">>="
+        AMPERSAND_EQUAL = "&="
+        PIPE_EQUAL = "|="
+        CARET_EQUAL = "^="
+        INFER = ":="
+        L_BRACKET = "["
+        R_BRACKET = "]"
+        L_BRACE = "{"
+        R_BRACE = "}"
+        L_PAREN = "("
+        R_PAREN = ")"
+        COMMA = ","
+        SEMICOLON = ";"
+        COLON = ":"
+        ARROW = "->"
+        UNDERSCORE = "_"
+
+        WHITE_SPACE = "regexp:(\s+|\\\n)"
+        LINE_BREAK = "regexp:\n"
+        NODE_PATH = "regexp:\$\"?[A-Za-z0-9_/.]*\"?"
+        IDENTIFIER = "regexp:[A-Za-z_][A-Za-z0-9_]*"
+
+        REAL_NUMBER = "regexp:-?[0-9_]*(\.)?([0-9_]+)?([Ee][-+]?[0-9]+)?"
+        BINARY_NUMBER = "regexp:0b[10_]*"
+        HEXADECIMAL_NUMBER = "regexp:0x[0-9A-Fa-f_]*"
+
+        DOUBLE_QUOTED_STRING = "regexp:\"([^\"\\]|\\.)*\""
+        SINGLE_QUOTED_STRING = "regexp:'([^'\\]|\\.)*'"
+        LINE_COMMENT = "regexp:#[^\n]*"
+    ]
+}
+
+root ::= statement*
+
+private statement ::= (colon_statement LINE_BREAK?) | (non_colon_statement (LINE_BREAK | <<eof>> | SEMICOLON+)) | LINE_BREAK
+private colon_statement ::= func_statement
+    | if_statement
+    | elif_statement
+    | else_statement
+    | for_statement
+    | class_statement
+    | while_statement
+    | match_statement
+    | match_label_statement
+private non_colon_statement ::= var_statement
+    | const_statement
+    | extends_statement
+    | enum_statement
+    | tool_statement
+    | icon_statement
+    | return_statement
+    | signal_statement
+    | classname_statement
+    | assert_statement
+    | await_statement
+    | yield_statement
+    | assign_statement
+    | expression_statement
+    | PASS
+    | BREAK
+    | CONTINUE
+    | BREAKPOINT
+
+var_statement ::= var_export? (ONREADY | AT_ONREADY)? network_modifier? VAR id (COLON type)? ((EQUAL | INFER) expression)?
+    (SETGET var_setter? (COMMA var_getter)?)?
+var_export ::= (EXPORT | export_annotation) (L_PAREN expression? (COMMA expression)* R_PAREN)?
+var_setter ::= id
+var_getter ::= id
+private export_annotation ::= AT_EXPORT
+    | AT_EXPORT_ENUM
+    | AT_EXPORT_FILE
+    | AT_EXPORT_DIR
+    | AT_EXPORT_GLOBAL_FILE
+    | AT_EXPORT_GLOBAL_DIR
+    | AT_EXPORT_MULTILINE
+    | AT_EXPORT_PLACEHOLDER
+    | AT_EXPORT_RANGE
+    | AT_EXPORT_EXP_EASING
+    | AT_EXPORT_COLOR_NO_ALPHA
+    | AT_EXPORT_NODE_PATH
+    | AT_EXPORT_FLAGS
+    | AT_EXPORT_FLAGS_2D_RENDER
+    | AT_EXPORT_FLAGS_2D_PHYSICS
+    | AT_EXPORT_FLAGS_2D_NAVIGATION
+    | AT_EXPORT_FLAGS_3D_RENDER
+    | AT_EXPORT_FLAGS_3D_PHYSICS
+    | AT_EXPORT_FLAGS_3D_NAVIGATION
+
+const_statement ::= CONST id (COLON type)? (EQUAL expression)
+
+extends_statement ::= EXTENDS (type | string) (DOT IDENTIFIER)*
+
+func_statement ::= STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON
+func_argument ::= id (COLON type)? ((EQUAL | INFER) expression)?
+
+enum_statement ::= ENUM id? (L_BRACE LINE_BREAK* enum_entry? LINE_BREAK* (COMMA LINE_BREAK* enum_entry LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACE)?
+enum_entry ::= id (EQUAL expression)?
+
+if_statement ::= IF expression COLON
+
+elif_statement ::= ELIF expression COLON
+
+else_statement ::= ELSE COLON
+
+tool_statement ::= (TOOL | AT_TOOL)
+
+icon_statement ::= AT_ICON L_PAREN string R_PAREN
+
+for_statement ::= FOR id IN expression COLON
+
+return_statement ::= RETURN expression?
+
+signal_statement ::= SIGNAL id (L_PAREN id? (COMMA id)* R_PAREN)?
+
+classname_statement ::= CLASS_NAME id (COMMA string)?
+
+class_statement ::= CLASS id (EXTENDS type)? COLON
+
+while_statement ::= WHILE expression COLON
+
+assert_statement ::= ASSERT expression
+
+await_statement ::= AWAIT expression
+
+yield_statement ::= YIELD expression
+
+match_statement ::= MATCH expression COLON
+
+match_label_statement ::= match_label_argument (COMMA match_label_argument)* COLON
+match_label_argument ::= expression | UNDERSCORE
+
+assign_statement ::= expression assign_operator expression
+private assign_operator ::= EQUAL
+    | PLUS_EQUAL
+    | MINUS_EQUAL
+    | STAR_EQUAL
+    | SLASH_EQUAL
+    | PERCENT_EQUAL
+    | LESS_LESS_EQUAL
+    | GREATER_GREATER_EQUAL
+    | AMPERSAND_EQUAL
+    | PIPE_EQUAL
+    | CARET_EQUAL
+    | INFER
+
+expression_statement ::= expression
+
+expression ::= (operand | operator)+
+private operand ::= array_expression
+    | dictionary_expression
+    | lua_dictionary_expression
+    | invocation_expression
+    | lambda_expression
+    | string
+    | multiline_string
+    | id
+    | REAL_NUMBER
+    | BINARY_NUMBER
+    | HEXADECIMAL_NUMBER
+    | TRUE
+    | FALSE
+    | NULL
+    | SELF
+private operator ::= LESS
+    | LESS_EQUAL
+    | GREATER
+    | GREATER_EQUAL
+    | EQUAL_EQUAL
+    | BANG_EQUAL
+    | AMPERSAND_AMPERSAND
+    | PIPE_PIPE
+    | BANG
+    | AMPERSAND
+    | PIPE
+    | TILDE
+    | CARET
+    | LESS_LESS
+    | GREATER_GREATER
+    | PLUS
+    | MINUS
+    | STAR
+    | SLASH
+    | PERCENT
+    | DOT
+    | DOT_DOT
+    | IS
+    | AS
+    | IN
+    | AND
+    | OR
+    | NOT
+    | IF
+    | ELSE
+
+array_expression ::= id? L_BRACKET LINE_BREAK* array_argument? LINE_BREAK* (COMMA LINE_BREAK* array_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACKET
+array_argument ::= (VAR? expression) | DOT_DOT | UNDERSCORE
+
+dictionary_expression ::= L_BRACE LINE_BREAK* dictionary_entry? LINE_BREAK* (COMMA LINE_BREAK* dictionary_entry LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACE
+dictionary_entry ::= (key LINE_BREAK* (COLON LINE_BREAK* VAR? expression)?) | DOT_DOT
+
+lua_dictionary_expression ::= L_BRACE LINE_BREAK* lua_dictionary_entry? LINE_BREAK* (COMMA LINE_BREAK* lua_dictionary_entry LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACE
+lua_dictionary_entry ::= (key EQUAL expression) | DOT_DOT
+
+invocation_expression ::= id? L_PAREN LINE_BREAK* expression? LINE_BREAK* (COMMA LINE_BREAK* expression LINE_BREAK*)* R_PAREN
+
+lambda_expression ::= FUNC id? L_PAREN id? (COMMA id)* R_PAREN COLON expression
+
+key ::= expression
+type ::= id (L_BRACKET id R_BRACKET)?
+
+id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH
+string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING {methods=[getReference]}
+private multiline_string ::= MULTILINE_SINGLE_QUOTED_STRING | MULTILINE_DOUBLE_QUOTED_STRING
+
+private network_modifier ::= MASTER
+    | SYNC
+    | PUPPET
+    | REMOTE
+    | MASTERSYNC
+    | PUPPETSYNC
+    | REMOTESYNC
+    | AT_MASTER
+    | AT_PUPPET
+    | AT_REMOTE
+    | AT_MASTERSYNC
+    | AT_PUPPETSYNC
+    | AT_REMOTESYNC
+

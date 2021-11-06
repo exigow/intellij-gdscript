@@ -5,6 +5,50 @@ import utils.openScript
 
 class ScriptErrorHighlightingTest : BaseTest() {
 
+    fun `test v4 lambda`() =
+        assertNoErrors("var foo = func(x): bar(x)")
+
+    fun `test v4 named lambda`() =
+        assertNoErrors("var foo = func foo(x): bar(x)")
+
+    fun `test v4 inline lambda`() =
+        assertNoErrors("foo(func(x): bar(x))")
+
+    fun `test v4 typed array`() =
+        assertNoErrors("var foo: Array[int]")
+
+    fun `test v4 export annotation`() {
+        assertNoErrors("@export var foo")
+        assertNoErrors("@export_enum var foo")
+        assertNoErrors("@export_file var foo")
+        assertNoErrors("@export_dir var foo")
+        assertNoErrors("@export_global_file var foo")
+        assertNoErrors("@export_global_dir var foo")
+        assertNoErrors("@export_multiline var foo")
+        assertNoErrors("@export_placeholder var foo")
+        assertNoErrors("@export_range var foo")
+        assertNoErrors("@export_exp_easing var foo")
+        assertNoErrors("@export_color_no_alpha var foo")
+        assertNoErrors("@export_node_path var foo")
+        assertNoErrors("@export_flags var foo")
+        assertNoErrors("@export_flags_2d_render var foo")
+        assertNoErrors("@export_flags_2d_physics var foo")
+        assertNoErrors("@export_flags_2d_navigation var foo")
+        assertNoErrors("@export_flags_3d_render var foo")
+        assertNoErrors("@export_flags_3d_physics var foo")
+        assertNoErrors("@export_flags_3d_navigation var foo")
+    }
+
+    fun `test v4 export annotation arguments`() =
+        assertNoErrors("@export_range(1, 100, 1, \"or_greater\") var foo")
+
+    fun `test if after expression is not operator`() =
+        assertNoErrors("""
+            var foo = true
+            if bar:
+                return
+        """)
+
     fun `test empty file is still valid`() =
         assertNoErrors("")
 
@@ -135,7 +179,9 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test constructor multiline`() =
         assertNoErrors("""
             x = Vector2(
-                1,
+                1
+                ,
+                
                 2
             )
         """)
@@ -149,9 +195,15 @@ class ScriptErrorHighlightingTest : BaseTest() {
         assertNoErrors("""
             x = [
                 1,
+                
                 2
+                ,
+                3
             ]
         """)
+
+    fun `test array extra comma`() =
+        assertNoErrors("x = [1, 2,]")
 
     fun `test ternary-if with variable definition statement`() =
         assertNoErrors("var x = value if expression else value")
@@ -190,8 +242,12 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test dictionary multiline`() =
         assertNoErrors("""
              dict = {
-                "key": "value",
-                123: 456
+                "key": 
+                    "value",
+                    
+                123
+                    : 
+                        456
             }
         """)
 
@@ -330,6 +386,14 @@ class ScriptErrorHighlightingTest : BaseTest() {
 
     fun `test function default arguments with infer symbol`() =
         assertNoErrors("func emit(force := false):")
+
+    fun `test function multiline arguments`() =
+        assertNoErrors("""
+            func foo(x, 
+                y
+                ,
+                z): 
+        """)
 
     fun `test negated condition`() =
         assertNoErrors("if !list.empty():")

@@ -1,11 +1,10 @@
 package version
 
-import version.data.Class
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
-import gdscript.lexer.ScriptKeywords
 import org.jsoup.Jsoup
 import settings.ApplicationSettings
+import version.data.Class
 import version.data.Version
 import java.io.ByteArrayInputStream
 import java.util.zip.ZipInputStream
@@ -22,7 +21,7 @@ class VersionService {
 
     private fun loadResource(displayName: String, path: String): Version {
         val classes: List<Class> = readEntries(path)
-        val (primitives, nonPrimitives) = classes.partition { it.name in ScriptKeywords.PRIMITIVES }
+        val (primitives, nonPrimitives) = classes.partition { it.name in listOf("float", "int", "bool", "void") }
         val (globals, nonGlobals) = nonPrimitives.partition { it.name.startsWith("@") }
         val singletonNames = globals.flatMap { it.fields }.map { it.name }
         val (singletons, instanced) = nonGlobals.partition { it.name in singletonNames }

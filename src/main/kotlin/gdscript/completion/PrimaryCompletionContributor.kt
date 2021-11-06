@@ -1,39 +1,37 @@
 package gdscript.completion
 
-import version.VersionService
-import version.data.Class
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElement
-import com.intellij.openapi.components.service
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
-import gdscript.ScriptTokenType.DOT
-import gdscript.ScriptTokenType.NUMBER
+import com.intellij.psi.util.elementType
 import gdscript.completion.utils.LookupFactory
-import gdscript.lexer.ScriptKeywords
-import gdscript.utils.PsiElementUtils.isLeaf
-import gdscript.utils.PsiElementUtils.isStringLeaf
+import gdscript.psi.ScriptElementTypes
+import gdscript.psi.ScriptElementTypes.*
+import version.VersionService
+import version.data.Class
 
 class PrimaryCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (isNotAfterDot(element) && !element.isStringLeaf() && hasNotDigitPrefix(parameters))
+        if (isIdentifier(element) && isInsideExpression(element) && isNotAfterDot(element) && isNotAfterNumber(element))
             result.addAllElements(collectLookups())
     }
 
-    private fun isNotAfterDot(element: PsiElement): Boolean {
-        val prev = PsiTreeUtil.prevVisibleLeaf(element)
-            ?: return true
-        return !prev.isLeaf(DOT)
-    }
+    private fun isIdentifier(element: PsiElement) =
+        element.elementType == IDENTIFIER
 
-    private fun hasNotDigitPrefix(parameters: CompletionParameters): Boolean {
-        val elementBeforeOffset = parameters.position.containingFile.findElementAt(parameters.offset - 1)!!
-        return !elementBeforeOffset.isLeaf(NUMBER)
-    }
+    private fun isInsideExpression(element: PsiElement) =
+        element.parent?.parent.elementType == EXPRESSION
+
+    private fun isNotAfterDot(element: PsiElement) =
+        PsiTreeUtil.prevVisibleLeaf(element).elementType != DOT
+
+    private fun isNotAfterNumber(element: PsiElement) =
+        PsiTreeUtil.prevVisibleLeaf(element).elementType !in listOf(REAL_NUMBER, BINARY_NUMBER, HEXADECIMAL_NUMBER)
 
     private fun collectLookups(): List<LookupElement> {
         val api = VersionService.current()
@@ -42,7 +40,7 @@ class PrimaryCompletionContributor : CompletionContributor() {
         val singletons = api.singletons.map { LookupFactory.createSingleton(it) }
         val constructors = filterConstructors(api.classes).map { LookupFactory.createConstructor(it) }
         val primitiveConstructors = filterConstructors(api.primitives).map { LookupFactory.createPrimitiveConstructor(it) }
-        val keywords = ScriptKeywords.VALUES.map { LookupFactory.createKeyword(it) }
+        val keywords = listOf("true", "false", "null", "self").map { LookupFactory.createKeyword(it) }
         return constants + functions + singletons + constructors + primitiveConstructors + keywords
     }
 
