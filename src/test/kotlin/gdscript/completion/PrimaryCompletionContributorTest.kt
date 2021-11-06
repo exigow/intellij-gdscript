@@ -12,7 +12,13 @@ class PrimaryCompletionContributorTest : BaseTest() {
         assertContainsElements(environment.lookups(), "self", "null", "false")
     }
 
-    fun `test function invocation as first statement`() {
+    fun `test function with already entered brackets`() {
+        environment.openScript("x = <caret>()")
+        environment.completeBasic()
+        assertContainsElements(environment.lookups(), "sin")
+    }
+
+    fun `test function invocation as top-level statement`() {
         environment.openScript("pr<caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "print")

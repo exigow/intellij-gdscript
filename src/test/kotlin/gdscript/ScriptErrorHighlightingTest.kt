@@ -500,10 +500,10 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test var inferred type`() =
         assertNoErrors("var my_node := Sprite.new()")
 
-    fun `test "class" with "extends"`() =
+    fun `test class with extends`() =
         assertNoErrors("class Lobby extends Reference:")
 
-    fun `test "class"`() =
+    fun `test class`() =
         assertNoErrors("class Coin:")
 
     fun `test extends class`() =

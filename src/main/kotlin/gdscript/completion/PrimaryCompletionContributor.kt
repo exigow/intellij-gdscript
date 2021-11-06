@@ -8,8 +8,8 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.elementType
 import gdscript.completion.utils.LookupFactory
-import gdscript.psi.ScriptElementTypes
 import gdscript.psi.ScriptElementTypes.*
+import gdscript.psi.ScriptExpression
 import version.VersionService
 import version.data.Class
 
@@ -24,8 +24,11 @@ class PrimaryCompletionContributor : CompletionContributor() {
     private fun isIdentifier(element: PsiElement) =
         element.elementType == IDENTIFIER
 
-    private fun isInsideExpression(element: PsiElement) =
-        element.parent?.parent.elementType == EXPRESSION
+    private fun isInsideExpression(element: PsiElement): Boolean {
+        val closestExpression = PsiTreeUtil.getParentOfType(element, ScriptExpression::class.java)
+            ?: return false
+        return PsiTreeUtil.getDepth(element, closestExpression) <= 3
+    }
 
     private fun isNotAfterDot(element: PsiElement) =
         PsiTreeUtil.prevVisibleLeaf(element).elementType != DOT

@@ -35,7 +35,7 @@ class VersionService {
         while (entry != null) {
             if (entry.size > 0 && entry.name.endsWith(".xml")) {
                 val byteStream = ByteArrayInputStream(zip.readBytes())
-                val doc = Jsoup.parse(byteStream, null, "")
+                val doc = Jsoup.parse(byteStream, "UTF-8", "")
                 classes += parseClass(doc)
             }
             zip.closeEntry()
