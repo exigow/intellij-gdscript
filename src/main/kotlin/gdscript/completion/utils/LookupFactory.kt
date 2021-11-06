@@ -24,7 +24,6 @@ object LookupFactory {
             .withTypeText(function.type)
             .withArgumentsTail(function.arguments, function.vararg)
             .withParenthesesInsertHandler(function.arguments, function.vararg)
-            .bold()
 
     fun createConstructor(constructor: Method): LookupElement =
         create(constructor.name)
@@ -36,7 +35,6 @@ object LookupFactory {
         create(constructor.name)
             .withArgumentsTail(constructor.arguments, constructor.vararg)
             .withParenthesesInsertHandler(constructor.arguments, constructor.vararg)
-            .bold()
 
     fun createConstant(constant: Constant): LookupElement =
         create(constant.name)
@@ -50,7 +48,6 @@ object LookupFactory {
 
     fun createClassname(name: String): LookupElement =
         create(name)
-            .bold()
 
     fun createSingleton(clazz: Class): LookupElement =
         create(clazz.name)
@@ -71,7 +68,6 @@ object LookupFactory {
             .withArgumentsTail(method.arguments, method.vararg)
             .withParenthesesInsertHandler(method.arguments, method.vararg)
             .withTypeText(method.type)
-            .bold()
 
     private fun LookupElementBuilder.withArgumentsTail(args: List<Argument>?, vararg: Boolean?): LookupElementBuilder {
         if (vararg == true)
