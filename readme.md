@@ -13,11 +13,14 @@ Works with all IntelliJ-based IDEs starting from **2019.3**. List of available f
 
 ### How to update completion data
 
-1. Install Godot Engine or build from sources
-2. Export XML classes with `godot --doctool .`
-3. Compress these classes into `3.2.2-stable.zip` (example name; structure is not important)
-4. Save file inside `src/main/resources/version/` directory
-5. Update [sources](src/main/kotlin/version/VersionService.kt)
+You need to clone the Godot Engine repository and pack the class definitions into ZIP file. Such file must be placed inside plugin `resources`. ZIP structure is not important.
+
+The following commands describes how to update version `3.4` from project directory perspective:
+
+1. `git clone --branch 3.4 https://github.com/godotengine/godot.git --depth 1`
+2. `zip -r 3.4.zip ./godot/doc/classes/ ./godot/modules/gdscript/doc_classes/@GDScript.xml`
+3. `rm -rf godot/`
+4. `mv -f 3.4.zip src/main/resources/version/`
 
 New API version will be available in *Settings* | *Languages & Frameworks* | *GDScript*
 

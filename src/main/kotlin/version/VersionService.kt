@@ -13,19 +13,20 @@ import java.util.zip.ZipInputStream
 class VersionService {
 
     private val versions: List<Version> = listOf(
-        loadResource("3.2.2", "version/3.2.2-rc.zip"),
-        loadResource("3.3.3", "version/3.3.3-rc.zip"),
-        loadResource("4.0", "version/4.0.0-dev.zip"),
+        loadResource("3.2", "version/3.2.zip"),
+        loadResource("3.3", "version/3.3.zip"),
+        loadResource("3.4", "version/3.4.zip"),
+        loadResource("4.0", "version/4.0.zip"),
         Version("Disabled", emptyList(), emptyList(), emptyList(), emptyList())
     )
 
-    private fun loadResource(displayName: String, path: String): Version {
+    private fun loadResource(versionId: String, path: String): Version {
         val classes: List<Class> = readEntries(path)
         val (primitives, nonPrimitives) = classes.partition { it.name in listOf("float", "int", "bool", "void") }
         val (globals, nonGlobals) = nonPrimitives.partition { it.name.startsWith("@") }
         val singletonNames = globals.flatMap { it.fields }.map { it.name }
         val (singletons, instanced) = nonGlobals.partition { it.name in singletonNames }
-        return Version(displayName, instanced, primitives, singletons, globals)
+        return Version(versionId, instanced, primitives, singletons, globals)
     }
 
     private fun readEntries(path: String): List<Class> {
@@ -48,12 +49,13 @@ class VersionService {
 
         fun current(): Version {
             val versionService = service<VersionService>().versions
-            val name = service<ApplicationSettings>().apiVersion
-            return versionService.find { it.version == name }
+            val settingsVersionId = service<ApplicationSettings>().versionId
+            return versionService.find { it.versionId == settingsVersionId }
                 ?: versionService.first()
         }
 
-        fun all() = service<VersionService>().versions
+        fun all(): List<Version> =
+            service<VersionService>().versions
 
     }
 

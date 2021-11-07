@@ -17,6 +17,8 @@ class ScriptDocumentationProvider : AbstractDocumentationProvider() {
             clazz.name,
             DEFINITION_END,
             CONTENT_START,
+            "<p>${clazz.briefDescription}</p>",
+            "<br/>",
             generateDocList("Properties", clazz.fields.map { it.name + if (it.default != null) " = ${it.default}" else "" }),
             generateDocList("Methods", clazz.methods.map { it.name + "(" + joinArguments(it.arguments) + ")" + if (it.type != "void") " -> ${it.type}" else "" }),
             generateDocList("Constants", clazz.constants.map { it.name + " = " + it.value }),

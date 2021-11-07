@@ -6,6 +6,7 @@ import version.data.*
 
 fun parseClass(doc: Document) = Class(
     name = doc.select("class").attr("name"),
+    briefDescription = doc.select("class > brief_description").text(),
     extends = doc.select("class").attr("inherits"),
     fields = doc.select("member").map { parseField(it) },
     methods = doc.select("method").map { parseMethod(it) },
