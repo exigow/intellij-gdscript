@@ -10,6 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static gdscript.psi.ScriptElementTypes.*;
 import gdscript.psi.ScriptBaseElement;
 import gdscript.psi.*;
+import com.intellij.psi.PsiReference;
 
 public class ScriptIdImpl extends ScriptBaseElement implements ScriptId {
 
@@ -37,6 +38,12 @@ public class ScriptIdImpl extends ScriptBaseElement implements ScriptId {
   @Nullable
   public PsiElement getNodePath() {
     return findChildByType(NODE_PATH);
+  }
+
+  @Override
+  @NotNull
+  public PsiReference getReference() {
+    return ScriptPsiImplUtil.getReference(this);
   }
 
 }

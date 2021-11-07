@@ -5,5 +5,5 @@ data class Field(
     val type: String,
     val setter: String,
     val getter: String,
-    val default: String
+    val default: String?
 )

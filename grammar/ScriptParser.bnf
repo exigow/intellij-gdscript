@@ -329,7 +329,7 @@ lambda_expression ::= FUNC id? L_PAREN id? (COMMA id)* R_PAREN COLON expression
 key ::= expression
 type ::= id (L_BRACKET id R_BRACKET)?
 
-id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH
+id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH {methods=[getReference]}
 string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING {methods=[getReference]}
 private multiline_string ::= MULTILINE_SINGLE_QUOTED_STRING | MULTILINE_DOUBLE_QUOTED_STRING
 

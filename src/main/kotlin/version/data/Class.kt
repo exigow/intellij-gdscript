@@ -5,5 +5,6 @@ data class Class(
     val extends: String?,
     val fields: List<Field>,
     val methods: List<Method>,
-    val constants: List<Constant>
+    val constants: List<Constant>,
+    val signals: List<Signal>
 )

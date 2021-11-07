@@ -9,7 +9,8 @@ fun parseClass(doc: Document) = Class(
     extends = doc.select("class").attr("inherits"),
     fields = doc.select("member").map { parseField(it) },
     methods = doc.select("method").map { parseMethod(it) },
-    constants = doc.select("constant").map { parseConstant(it) }
+    constants = doc.select("constant").map { parseConstant(it) },
+    signals = doc.select("signal").map { parseSignal(it) }
 )
 
 private fun parseField(field: Element) = Field(
@@ -17,7 +18,7 @@ private fun parseField(field: Element) = Field(
     type = field.attr("type"),
     setter = field.attr("setter"),
     getter = field.attr("getter"),
-    default = field.attr("default")
+    default = field.attr("default").ifBlank { null }
 )
 
 private fun parseMethod(method: Element) = Method(
@@ -32,6 +33,12 @@ private fun parseConstant(constant: Element) = Constant(
     value = constant.attr("value")
 )
 
-private fun parseArguments(method: Element) = method.select("argument")
+private fun parseSignal(signal: Element) = Signal(
+    name = signal.attr("name"),
+    arguments = parseArguments(signal)
+)
+
+private fun parseArguments(method: Element) = method
+    .select("argument")
     .sortedBy { it.attr("index") }
     .map { Argument(it.attr("name"), it.attr("type")) }

@@ -27,7 +27,12 @@ class ScriptParserDefinition : ParserDefinition {
         TokenSet.create(LINE_COMMENT)
 
     override fun getStringLiteralElements() =
-        TokenSet.create(DOUBLE_QUOTED_STRING, SINGLE_QUOTED_STRING)
+        TokenSet.create(
+            DOUBLE_QUOTED_STRING,
+            SINGLE_QUOTED_STRING,
+            MULTILINE_DOUBLE_QUOTED_STRING,
+            MULTILINE_SINGLE_QUOTED_STRING
+        )
 
     override fun getFileNodeType() =
         FILE_ELEMENT_TYPE
