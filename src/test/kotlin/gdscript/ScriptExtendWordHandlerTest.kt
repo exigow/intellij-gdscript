@@ -6,6 +6,16 @@ import utils.openScript
 
 class ScriptExtendWordHandlerTest : BaseTest() {
 
+    fun `test extend resource path`() {
+        environment.openScript("""x = "res://dir/abc<caret>.gd"""")
+        doExtendWordAction()
+        assertSelectionEquals("abc")
+        doExtendWordAction()
+        assertSelectionEquals("dir/abc.gd")
+        doExtendWordAction()
+        assertSelectionEquals("\"res://dir/abc.gd\"")
+    }
+
     fun `test extend string content to string double quotes`() {
         environment.openScript("x = \"<selection>abc<caret></selection>\"")
         doExtendWordAction()

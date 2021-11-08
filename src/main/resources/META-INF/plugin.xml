@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/exigow/intellij-gdscript">
 	<id>gdscript</id>
 	<name>GDScript</name>
-	<version>0.33.0</version>
+	<version>0.34.5</version>
 	<vendor>Jakub Błach</vendor>
 	<description><![CDATA[
 		<p>Adds support for Godot Engine and GDScript language.</p>
@@ -9,7 +9,8 @@
 		<ul>
 			<li>Syntax highlighting</li>
 			<li>Code completion</li>
-			<li>res:// completion</li>
+			<li>res:// completion and navigation</li>
+			<li>Documentation</li>
 			<li>Syntax-aware code selection</li>
 			<li>Run scene</li>
 		</ul>
@@ -21,22 +22,28 @@
 		<!-- version -->
 		<applicationService serviceImplementation="version.VersionService"/>
 		<!-- gdscript -->
+		<annotator implementationClass="gdscript.annotation.ClassnameAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
+		<annotator implementationClass="gdscript.annotation.KeywordAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>
+		<applicationService serviceImplementation="gdscript.documentation.ScriptGeneratedSourceFileService"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
-		<completion.contributor implementationClass="gdscript.completion.KeywordContinuationCompletionContributor" language="GDScript"/>
+		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.StaticCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.PrimaryCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.TypeCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.ClassnameCompletionContributor" language="GDScript"/>
 		<fileType implementationClass="gdscript.ScriptFileType" extensions="gd" name="GDScript" language="GDScript"/>
 		<lang.commenter implementationClass="gdscript.ScriptCommenter" language="GDScript"/>
+		<lang.documentationProvider implementationClass="gdscript.documentation.ScriptDocumentationProvider" language="GDScript"/>
 		<lang.parserDefinition implementationClass="gdscript.ScriptParserDefinition" language="GDScript"/>
 		<lang.syntaxHighlighterFactory implementationClass="gdscript.ScriptHighlighterFactory" language="GDScript"/>
 		<lang.braceMatcher implementationClass="gdscript.ScriptBraceMatcher" language="GDScript"/>
 		<lang.quoteHandler implementationClass="gdscript.ScriptQuoteHandler" language="GDScript"/>
 		<extendWordSelectionHandler implementation="gdscript.ScriptExtendWordHandler"/>
+		<psi.referenceContributor implementation="gdscript.ScriptReferenceContributor" language="GDScript"/>
 		<!-- projectView -->
 		<treeStructureProvider implementation="projectView.ImportFileTreeStructureProvider" order="last"/>
 		<!-- error -->

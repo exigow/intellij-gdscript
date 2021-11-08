@@ -7,7 +7,6 @@ import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.LabeledComponent
 import com.intellij.openapi.ui.VerticalFlowLayout
 import java.awt.BorderLayout
-import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
 
@@ -20,13 +19,13 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
         "GDScript"
 
     override fun isModified() =
-        settings.apiVersion != versionList.selectedItem
+        settings.versionId != versionList.selectedItem
 
     override fun getId() =
         "ApplicationSettingsConfigurable"
 
     override fun apply() {
-        settings.apiVersion = versionList.selectedItem as String
+        settings.versionId = versionList.selectedItem as String
     }
 
     override fun createComponent(): JComponent {
@@ -35,9 +34,9 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
         return panel
     }
     private fun initVersions(): ComboBox<String> {
-        val allVersions = VersionService.all().map { it.version }.toTypedArray()
+        val allVersions = VersionService.all().map { it.versionId }.toTypedArray()
         val combo = ComboBox(allVersions)
-        combo.selectedItem = settings.apiVersion
+        combo.selectedItem = settings.versionId
         return combo
     }
 

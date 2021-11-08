@@ -18,19 +18,19 @@ class TypeCompletionContributorTest : BaseTest() {
         assertContainsElements(environment.lookups(), "float")
     }
 
-    fun `test class type completion after "as" operator`() {
+    fun `test class type completion after as operator`() {
         environment.openScript("anim as Animation<caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "AnimationPlayer")
     }
 
-    fun `test class type completion after "is" operator`() {
+    fun `test class type completion after is operator`() {
         environment.openScript("p is Vec<caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "Vector2")
     }
 
-    fun `test class type completion after "extends" operator`() {
+    fun `test class type completion after extends operator`() {
         environment.openScript("extends No<caret>")
         environment.completeBasic()
         assertContainsElements(environment.lookups(), "Node")

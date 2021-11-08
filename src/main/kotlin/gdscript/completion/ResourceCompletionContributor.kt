@@ -1,49 +1,73 @@
 package gdscript.completion
 
 
-import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionParameters
-import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.completion.PrioritizedLookupElement
+import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder.create
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.vfs.VirtualFileVisitor
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFileFactory
+import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.psi.tree.IElementType
+import com.intellij.psi.util.elementType
 import common.Icons
-import gdscript.utils.FileUtils
-import gdscript.utils.PsiElementUtils.isStringLeaf
-import gdscript.utils.PsiElementUtils.stringText
+import common.ResourceUtil
+import gdscript.ScriptFileType
+import gdscript.psi.ScriptElementTypes.DOUBLE_QUOTED_STRING
+import gdscript.psi.ScriptElementTypes.SINGLE_QUOTED_STRING
 import javax.swing.Icon
 
 class ResourceCompletionContributor : CompletionContributor() {
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
         val element = parameters.position
-        if (element.isStringLeaf() && element.stringText().startsWith("res://")) {
-            val currentFile = parameters.originalFile.virtualFile
-            val files = FileUtils.collectPathsToProjectFiles(currentFile, ::isUseful)
-            for ((path, file) in files) {
-                val lookup = createFileLookup(path, file)
-                val priority = prioritizeBy(file.extension)
-                val prioritized = PrioritizedLookupElement.withExplicitProximity(lookup, priority)
-                result.addElement(prioritized)
-            }
+        if (isResourceString(element)) {
+            val projectFile = ResourceUtil.findProject(element)
+                ?: return
+            val lookups = findFiles(projectFile.parent)
+                .filterNot { file -> file.path == parameters.originalFile.virtualFile.path }
+                .map { file -> createLookup(projectFile, file, element.elementType!!) }
+            result.addAllElements(lookups)
         }
     }
 
-    private fun isUseful(file: VirtualFile): Boolean {
-        val name = file.name
-        return !name.startsWith(".")
-            && name != "project.godot"
-            && !name.endsWith(".import")
+    private fun isResourceString(element: PsiElement) =
+        element.elementType in arrayOf(DOUBLE_QUOTED_STRING, SINGLE_QUOTED_STRING)
+            && ResourceUtil.isResource(element.text)
+
+    private fun findFiles(start: VirtualFile): List<VirtualFile> {
+        val result = mutableListOf<VirtualFile>()
+        VfsUtilCore.visitChildrenRecursively(start, object : VirtualFileVisitor<Any>() {
+
+            override fun visitFile(file: VirtualFile): Boolean {
+                val name = file.name
+                if (file.isDirectory && name.startsWith("."))
+                    return false
+                if (!file.isDirectory && !name.startsWith(".") && !name.endsWith(".import") && name != "project.godot")
+                    result.add(file)
+                return true
+            }
+
+        })
+        return result
     }
 
-    private fun createFileLookup(fileRelativePath: String, file: VirtualFile): LookupElement =
-        create("res://$fileRelativePath")
+    private fun createLookup(projectFile: VirtualFile, file: VirtualFile, type: IElementType): LookupElement {
+        val quote = if (type == DOUBLE_QUOTED_STRING) "\"" else "'"
+        val path = VfsUtilCore.findRelativePath(projectFile, file, '/')!!
+        val lookup = create("${quote}res://$path")
             .withPresentableText(file.name)
-            .withTypeText(fileRelativePath)
-            .withIcon(findIcon(file.extension))
+            .withTypeText(path)
+            .withIcon(matchIcon(file.extension))
+            .withInsertHandler(ReplaceHandler("${quote}res://$path$quote"))
+        val priority = prioritizeBy(file.extension)
+        return PrioritizedLookupElement.withExplicitProximity(lookup, priority)
+    }
 
-    private fun findIcon(extension: String?): Icon =
+    private fun matchIcon(extension: String?): Icon =
         when (extension) {
             "gd" -> Icons.GDSCRIPT_FILE
             "tscn", "tres" -> Icons.TSCN_FILE
@@ -57,6 +81,22 @@ class ResourceCompletionContributor : CompletionContributor() {
             "tscn" -> 1
             else -> 0
         }
+
+    private class ReplaceHandler(private val newText: String) : InsertHandler<LookupElement> {
+
+        override fun handleInsert(context: InsertionContext, item: LookupElement) {
+            val old = context.file.findElementAt(context.startOffset)!!
+            val new = createNewLeaf(context.project)
+            old.replace(new)
+        }
+
+        private fun createNewLeaf(project: Project): LeafPsiElement {
+            val dummyFile = PsiFileFactory.getInstance(project)
+                .createFileFromText("dummy.gd", ScriptFileType, newText)
+            return dummyFile.node.findLeafElementAt(0) as LeafPsiElement
+        }
+
+    }
 
 }
 

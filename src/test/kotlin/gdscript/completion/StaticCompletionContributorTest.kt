@@ -24,7 +24,7 @@ class StaticCompletionContributorTest : BaseTest() {
         assertContainsElements(environment.lookups(), "is_key_pressed")
     }
 
-    fun `test non-singleton class "Vector2" has no method lookups like "length()"`() {
+    fun `test non-singleton class Vector2 has no method lookups like length()`() {
         environment.openScript("Vector2.len<caret>>")
         environment.completeBasic()
         assertEmpty(environment.lookups())
