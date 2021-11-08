@@ -24,3 +24,8 @@ fun assertHasHighlight(highlights: List<HighlightInfo>, expectedText: String, ex
     val annotation = highlights.find { it.text == expectedText }!!
     assertEquals(expectedKey, annotation.forcedTextAttributesKey.externalName)
 }
+
+fun assertContains(expectedFragment: String, actual: String) {
+    if (expectedFragment !in actual)
+        fail("Expected fragment: $expectedFragment\nActual: $actual")
+}

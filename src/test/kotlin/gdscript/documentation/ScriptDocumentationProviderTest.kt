@@ -1,14 +1,15 @@
 package gdscript.documentation
 
 import BaseTest
-import com.intellij.codeInsight.documentation.DocumentationManager
-import utils.openScript
+import com.intellij.psi.PsiElement
+import io.mockk.every
+import io.mockk.mockk
+import utils.assertContains
 
 class ScriptDocumentationProviderTest : BaseTest() {
 
     fun `test float primitive`() {
-        environment.openScript("var x: float<caret>")
-        val docs = getDocumentationAtCaret()
+        val docs = getDocumentation("float")
         assertContains("<div class='definition'><pre>float</pre></div>", docs)
         assertContains("<div class='content'>", docs)
         assertContains("<h3>Methods</h3>", docs)
@@ -19,8 +20,7 @@ class ScriptDocumentationProviderTest : BaseTest() {
     }
 
     fun `test RigidBody2D class`() {
-        environment.openScript("var x: RigidBody2D<caret>")
-        val docs = getDocumentationAtCaret()
+        val docs = getDocumentation("RigidBody2D")
         assertContains("<h3>Properties</h3>", docs)
         assertContains("<li><code>applied_torque = 0.0</code></li>", docs)
         assertContains("<h3>Methods</h3>", docs)
@@ -32,21 +32,15 @@ class ScriptDocumentationProviderTest : BaseTest() {
     }
 
     fun `test VisualServer singleton`() {
-        environment.openScript("var x: VisualServer<caret>")
-        val docs = getDocumentationAtCaret()
+        val docs = getDocumentation("VisualServer")
         assertContains("<h3>Methods</h3>", docs)
         assertContains("<li><code>canvas_item_set_material(item: RID, material: RID)</code></li>", docs)
     }
 
-    private fun getDocumentationAtCaret(): String {
-        val element = environment.elementAtCaret
-        return DocumentationManager.getProviderFromElement(element)
-            .generateDoc(element, element)!!
-    }
-
-    private fun assertContains(expectedFragment: String, actual: String) {
-        if (expectedFragment !in actual)
-            fail("Expected fragment: $expectedFragment\nActual: $actual")
+    private fun getDocumentation(psiElementText: String): String {
+        val element = mockk<PsiElement>(relaxed = true)
+        every { element.text } returns psiElementText
+        return ScriptDocumentationProvider().generateDoc(element, element)!!
     }
 
 }
