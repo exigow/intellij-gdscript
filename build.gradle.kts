@@ -30,7 +30,7 @@ tasks {
     publishPlugin {
         val publishPluginToken = project.properties["publishPluginToken"] as String
         token.set(publishPluginToken)
-        channels.set(listOf("beta"))
+        channels.set(listOf("stable"))
     }
     compileJava {
         sourceCompatibility = "1.8"
