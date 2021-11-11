@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface ScriptElifStatement extends PsiElement {
 
   @NotNull
+  ScriptBlock getBlock();
+
+  @NotNull
   ScriptExpression getExpression();
+
+  @Nullable
+  PsiElement getLineBreak();
 
 }

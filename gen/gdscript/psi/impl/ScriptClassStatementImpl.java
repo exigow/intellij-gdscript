@@ -29,6 +29,12 @@ public class ScriptClassStatementImpl extends ScriptBaseElement implements Scrip
 
   @Override
   @NotNull
+  public ScriptBlock getBlock() {
+    return findNotNullChildByClass(ScriptBlock.class);
+  }
+
+  @Override
+  @NotNull
   public ScriptId getId() {
     return findNotNullChildByClass(ScriptId.class);
   }
@@ -37,6 +43,12 @@ public class ScriptClassStatementImpl extends ScriptBaseElement implements Scrip
   @Nullable
   public ScriptType getType() {
     return findChildByClass(ScriptType.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getLineBreak() {
+    return findChildByType(LINE_BREAK);
   }
 
 }

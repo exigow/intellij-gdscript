@@ -29,8 +29,20 @@ public class ScriptMatchLabelStatementImpl extends ScriptBaseElement implements 
 
   @Override
   @NotNull
+  public ScriptBlock getBlock() {
+    return findNotNullChildByClass(ScriptBlock.class);
+  }
+
+  @Override
+  @NotNull
   public List<ScriptMatchLabelArgument> getMatchLabelArgumentList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptMatchLabelArgument.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getLineBreak() {
+    return findChildByType(LINE_BREAK);
   }
 
 }

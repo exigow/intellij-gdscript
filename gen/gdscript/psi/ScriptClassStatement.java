@@ -8,9 +8,15 @@ import com.intellij.psi.PsiElement;
 public interface ScriptClassStatement extends PsiElement {
 
   @NotNull
+  ScriptBlock getBlock();
+
+  @NotNull
   ScriptId getId();
 
   @Nullable
   ScriptType getType();
+
+  @Nullable
+  PsiElement getLineBreak();
 
 }

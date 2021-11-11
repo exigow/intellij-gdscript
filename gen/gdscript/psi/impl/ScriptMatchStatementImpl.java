@@ -29,8 +29,20 @@ public class ScriptMatchStatementImpl extends ScriptBaseElement implements Scrip
 
   @Override
   @NotNull
+  public ScriptBlock getBlock() {
+    return findNotNullChildByClass(ScriptBlock.class);
+  }
+
+  @Override
+  @NotNull
   public ScriptExpression getExpression() {
     return findNotNullChildByClass(ScriptExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getLineBreak() {
+    return findChildByType(LINE_BREAK);
   }
 
 }

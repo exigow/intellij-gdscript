@@ -27,6 +27,10 @@ public class ScriptVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitBlock(@NotNull ScriptBlock o) {
+    visitPsiElement(o);
+  }
+
   public void visitClassStatement(@NotNull ScriptClassStatement o) {
     visitPsiElement(o);
   }

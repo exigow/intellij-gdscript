@@ -211,17 +211,17 @@ const_statement ::= CONST id (COLON type)? (EQUAL expression)
 
 extends_statement ::= EXTENDS (type | string) (DOT IDENTIFIER)*
 
-func_statement ::= STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON
+func_statement ::= STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON LINE_BREAK? block
 func_argument ::= id (COLON type)? ((EQUAL | INFER) expression)?
 
 enum_statement ::= ENUM id? (L_BRACE LINE_BREAK* enum_entry? LINE_BREAK* (COMMA LINE_BREAK* enum_entry LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACE)?
 enum_entry ::= id (EQUAL expression)?
 
-if_statement ::= IF expression COLON
+if_statement ::= IF expression COLON LINE_BREAK? block
 
-elif_statement ::= ELIF expression COLON
+elif_statement ::= ELIF expression COLON LINE_BREAK? block
 
-else_statement ::= ELSE COLON
+else_statement ::= ELSE COLON LINE_BREAK? block
 
 tool_statement ::= (TOOL | AT_TOOL)
 
@@ -235,9 +235,9 @@ signal_statement ::= SIGNAL id (L_PAREN id? (COMMA id)* R_PAREN)?
 
 classname_statement ::= CLASS_NAME id (COMMA string)?
 
-class_statement ::= CLASS id (EXTENDS type)? COLON
+class_statement ::= CLASS id (EXTENDS type)? COLON LINE_BREAK? block
 
-while_statement ::= WHILE expression COLON
+while_statement ::= WHILE expression COLON LINE_BREAK? block
 
 assert_statement ::= ASSERT expression
 
@@ -245,9 +245,9 @@ await_statement ::= AWAIT expression
 
 yield_statement ::= YIELD expression
 
-match_statement ::= MATCH expression COLON
+match_statement ::= MATCH expression COLON LINE_BREAK? block
 
-match_label_statement ::= match_label_argument (COMMA match_label_argument)* COLON
+match_label_statement ::= match_label_argument (COMMA match_label_argument)* COLON LINE_BREAK? block
 match_label_argument ::= expression | UNDERSCORE
 
 assign_statement ::= expression assign_operator expression
@@ -328,6 +328,7 @@ lambda_expression ::= FUNC id? L_PAREN id? (COMMA id)* R_PAREN COLON expression
 
 key ::= expression
 type ::= id (L_BRACKET id R_BRACKET)?
+block ::= INDENT statement+ DEDENT
 
 id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH {methods=[getReference]}
 string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING {methods=[getReference]}

@@ -29,8 +29,20 @@ public class ScriptIfStatementImpl extends ScriptBaseElement implements ScriptIf
 
   @Override
   @NotNull
+  public ScriptBlock getBlock() {
+    return findNotNullChildByClass(ScriptBlock.class);
+  }
+
+  @Override
+  @NotNull
   public ScriptExpression getExpression() {
     return findNotNullChildByClass(ScriptExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getLineBreak() {
+    return findChildByType(LINE_BREAK);
   }
 
 }
