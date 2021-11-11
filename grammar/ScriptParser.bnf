@@ -211,7 +211,7 @@ const_statement ::= CONST id (COLON type)? (EQUAL expression)
 
 extends_statement ::= EXTENDS (type | string) (DOT IDENTIFIER)*
 
-func_statement ::= STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON
+func_statement ::= STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON block?
 func_argument ::= id (COLON type)? ((EQUAL | INFER) expression)?
 
 enum_statement ::= ENUM id? (L_BRACE LINE_BREAK* enum_entry? LINE_BREAK* (COMMA LINE_BREAK* enum_entry LINE_BREAK*)* COMMA? LINE_BREAK* R_BRACE)?
@@ -328,6 +328,7 @@ lambda_expression ::= FUNC id? L_PAREN id? (COMMA id)* R_PAREN COLON expression
 
 key ::= expression
 type ::= id (L_BRACKET id R_BRACKET)?
+block ::= INDENT statement DEDENT
 
 id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH {methods=[getReference]}
 string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING {methods=[getReference]}

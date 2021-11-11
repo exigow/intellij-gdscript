@@ -13,6 +13,7 @@ public interface ScriptElementTypes {
   IElementType ASSERT_STATEMENT = new ScriptElementType("ASSERT_STATEMENT");
   IElementType ASSIGN_STATEMENT = new ScriptElementType("ASSIGN_STATEMENT");
   IElementType AWAIT_STATEMENT = new ScriptElementType("AWAIT_STATEMENT");
+  IElementType BLOCK = new ScriptElementType("BLOCK");
   IElementType CLASSNAME_STATEMENT = new ScriptElementType("CLASSNAME_STATEMENT");
   IElementType CLASS_STATEMENT = new ScriptElementType("CLASS_STATEMENT");
   IElementType CONST_STATEMENT = new ScriptElementType("CONST_STATEMENT");
@@ -101,6 +102,7 @@ public interface ScriptElementTypes {
   IElementType COMMA = new ScriptTokenType(",");
   IElementType CONST = new ScriptTokenType("const");
   IElementType CONTINUE = new ScriptTokenType("continue");
+  IElementType DEDENT = new ScriptTokenType("DEDENT");
   IElementType DOT = new ScriptTokenType(".");
   IElementType DOT_DOT = new ScriptTokenType("..");
   IElementType DOUBLE_QUOTED_STRING = new ScriptTokenType("DOUBLE_QUOTED_STRING");
@@ -123,6 +125,7 @@ public interface ScriptElementTypes {
   IElementType IDENTIFIER = new ScriptTokenType("IDENTIFIER");
   IElementType IF = new ScriptTokenType("if");
   IElementType IN = new ScriptTokenType("in");
+  IElementType INDENT = new ScriptTokenType("INDENT");
   IElementType INFER = new ScriptTokenType(":=");
   IElementType INT = new ScriptTokenType("int");
   IElementType IS = new ScriptTokenType("is");
@@ -201,6 +204,9 @@ public interface ScriptElementTypes {
       }
       else if (type == AWAIT_STATEMENT) {
         return new ScriptAwaitStatementImpl(node);
+      }
+      else if (type == BLOCK) {
+        return new ScriptBlockImpl(node);
       }
       else if (type == CLASSNAME_STATEMENT) {
         return new ScriptClassnameStatementImpl(node);

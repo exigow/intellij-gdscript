@@ -28,6 +28,12 @@ public class ScriptFuncStatementImpl extends ScriptBaseElement implements Script
   }
 
   @Override
+  @Nullable
+  public ScriptBlock getBlock() {
+    return findChildByClass(ScriptBlock.class);
+  }
+
+  @Override
   @NotNull
   public List<ScriptFuncArgument> getFuncArgumentList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptFuncArgument.class);

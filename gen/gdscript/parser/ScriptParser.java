@@ -256,6 +256,20 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // INDENT statement DEDENT
+  public static boolean block(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "block")) return false;
+    if (!nextTokenIs(b, INDENT)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, INDENT);
+    r = r && statement(b, l + 1);
+    r = r && consumeToken(b, DEDENT);
+    exit_section_(b, m, BLOCK, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // CLASS id (EXTENDS type)? COLON
   public static boolean class_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement")) return false;
@@ -968,7 +982,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON
+  // STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON block?
   public static boolean func_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "func_statement")) return false;
     boolean r;
@@ -987,6 +1001,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = r && consumeToken(b, R_PAREN);
     r = r && func_statement_12(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && func_statement_14(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1114,6 +1129,13 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = r && type(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
+  }
+
+  // block?
+  private static boolean func_statement_14(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "func_statement_14")) return false;
+    block(b, l + 1);
+    return true;
   }
 
   /* ********************************************************** */
