@@ -9,11 +9,13 @@ class ScriptIndentLexerTest : TestCase() {
         val lexer = ScriptIndentLexer()
         val code = """
             a
-                b
+            b
                 c
-                    d
-                e
-            f
+                d
+            ${"\t\t"}e
+                    f
+                g
+            h
         """.trimIndent()
         val printed = LexerTestCase.printTokens(code, 0, lexer)
         println(printed)
