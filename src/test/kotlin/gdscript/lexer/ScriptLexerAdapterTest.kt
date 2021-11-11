@@ -3,7 +3,7 @@ package gdscript.lexer
 import BaseTest
 import com.intellij.testFramework.LexerTestCase
 
-class ScriptLexerTest : BaseTest() {
+class ScriptLexerAdapterTest : BaseTest() {
 
     fun `test identifier`() {
         assertTokenEquals("IDENTIFIER ('_x')", "_x")
@@ -66,8 +66,9 @@ class ScriptLexerTest : BaseTest() {
     }
 
     private fun assertTokenEquals(expected: String, code: String) {
-        val printed = LexerTestCase.printTokens(code, 0, ScriptLexerAdapter())
-        assertEquals(expected, printed.trim())
+        val adapter = ScriptLexerAdapter()
+        val printed = LexerTestCase.printTokens(code, 0, adapter).trim()
+        assertEquals(expected, printed)
     }
 
 }
