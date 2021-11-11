@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface ScriptElseStatement extends PsiElement {
 
+  @NotNull
+  ScriptBlock getBlock();
+
+  @Nullable
+  PsiElement getLineBreak();
+
 }

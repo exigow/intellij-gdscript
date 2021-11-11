@@ -11,10 +11,13 @@ class ScriptIndentLexer : LexerBase() {
     private val pending = mutableListOf<IElementType>()
     private var prevEnd = 0
     private var prevToken: IElementType? = null
+    private val depths = mutableListOf<Int>()
+    private var unfinishedIndent = false
+    private var bracesLevel = 0
 
     override fun advance() {
-        prevToken = delegate.tokenType
-        prevEnd = delegate.tokenEnd
+        prevToken = tokenType
+        prevEnd = tokenEnd
         if (pending.isEmpty())
             advanceAndProduce()
         else
@@ -23,11 +26,26 @@ class ScriptIndentLexer : LexerBase() {
 
     private fun advanceAndProduce() {
         delegate.advance()
-        if (prevToken == LINE_BREAK) {
+        updateBraceLevel()
+        if (prevToken == LINE_BREAK && bracesLevel == 0) {
             val depth = calcDepth()
-            println("current $tokenType, prev $prevToken, depth: $depth")
-            pending += INDENT
+            val maxDepth = depths.maxOrNull() ?: 0
+            if (depth > maxDepth) {
+                pending += INDENT
+                depths += depth
+                unfinishedIndent = true
+            } else if (depth < maxDepth) {
+                val iter = depths.iterator()
+                while (iter.hasNext() && iter.next() > depth) {
+                    iter.remove()
+                    pending += DEDENT
+                    unfinishedIndent = false
+                }
+            }
+        }
+        if (tokenEnd == bufferEnd && tokenType == null && unfinishedIndent) {
             pending += DEDENT
+            unfinishedIndent = true
         }
     }
 
@@ -37,6 +55,13 @@ class ScriptIndentLexer : LexerBase() {
                 .map { c -> if (c == '\t') 4 else 1 }
                 .sum()
         return 0
+    }
+
+    private fun updateBraceLevel() {
+        if (tokenType in OPENING_BRACES)
+            bracesLevel += 1
+        if (tokenType in CLOSING_BRACES)
+            bracesLevel -= 1
     }
 
     override fun getTokenType(): IElementType? {
@@ -69,5 +94,12 @@ class ScriptIndentLexer : LexerBase() {
 
     override fun getBufferEnd(): Int =
         delegate.bufferEnd
+
+    private companion object {
+
+        val OPENING_BRACES = listOf(L_BRACE, L_BRACKET, L_PAREN)
+        val CLOSING_BRACES = listOf(R_BRACE, R_BRACKET, R_PAREN)
+
+    }
 
 }

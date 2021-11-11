@@ -7,76 +7,73 @@ import com.intellij.psi.PsiElement;
 
 public interface ScriptBlock extends PsiElement {
 
-  @Nullable
-  ScriptAssertStatement getAssertStatement();
+  @NotNull
+  List<ScriptAssertStatement> getAssertStatementList();
 
-  @Nullable
-  ScriptAssignStatement getAssignStatement();
+  @NotNull
+  List<ScriptAssignStatement> getAssignStatementList();
 
-  @Nullable
-  ScriptAwaitStatement getAwaitStatement();
+  @NotNull
+  List<ScriptAwaitStatement> getAwaitStatementList();
 
-  @Nullable
-  ScriptClassStatement getClassStatement();
+  @NotNull
+  List<ScriptClassStatement> getClassStatementList();
 
-  @Nullable
-  ScriptClassnameStatement getClassnameStatement();
+  @NotNull
+  List<ScriptClassnameStatement> getClassnameStatementList();
 
-  @Nullable
-  ScriptConstStatement getConstStatement();
+  @NotNull
+  List<ScriptConstStatement> getConstStatementList();
 
-  @Nullable
-  ScriptElifStatement getElifStatement();
+  @NotNull
+  List<ScriptElifStatement> getElifStatementList();
 
-  @Nullable
-  ScriptElseStatement getElseStatement();
+  @NotNull
+  List<ScriptElseStatement> getElseStatementList();
 
-  @Nullable
-  ScriptEnumStatement getEnumStatement();
+  @NotNull
+  List<ScriptEnumStatement> getEnumStatementList();
 
-  @Nullable
-  ScriptExpressionStatement getExpressionStatement();
+  @NotNull
+  List<ScriptExpressionStatement> getExpressionStatementList();
 
-  @Nullable
-  ScriptExtendsStatement getExtendsStatement();
+  @NotNull
+  List<ScriptExtendsStatement> getExtendsStatementList();
 
-  @Nullable
-  ScriptForStatement getForStatement();
+  @NotNull
+  List<ScriptForStatement> getForStatementList();
 
-  @Nullable
-  ScriptFuncStatement getFuncStatement();
+  @NotNull
+  List<ScriptFuncStatement> getFuncStatementList();
 
-  @Nullable
-  ScriptIconStatement getIconStatement();
+  @NotNull
+  List<ScriptIconStatement> getIconStatementList();
 
-  @Nullable
-  ScriptIfStatement getIfStatement();
+  @NotNull
+  List<ScriptIfStatement> getIfStatementList();
 
-  @Nullable
-  ScriptMatchLabelStatement getMatchLabelStatement();
+  @NotNull
+  List<ScriptMatchLabelStatement> getMatchLabelStatementList();
 
-  @Nullable
-  ScriptMatchStatement getMatchStatement();
+  @NotNull
+  List<ScriptMatchStatement> getMatchStatementList();
 
-  @Nullable
-  ScriptReturnStatement getReturnStatement();
+  @NotNull
+  List<ScriptReturnStatement> getReturnStatementList();
 
-  @Nullable
-  ScriptSignalStatement getSignalStatement();
+  @NotNull
+  List<ScriptSignalStatement> getSignalStatementList();
 
-  @Nullable
-  ScriptToolStatement getToolStatement();
+  @NotNull
+  List<ScriptToolStatement> getToolStatementList();
 
-  @Nullable
-  ScriptVarStatement getVarStatement();
+  @NotNull
+  List<ScriptVarStatement> getVarStatementList();
 
-  @Nullable
-  ScriptWhileStatement getWhileStatement();
+  @NotNull
+  List<ScriptWhileStatement> getWhileStatementList();
 
-  @Nullable
-  ScriptYieldStatement getYieldStatement();
-
-  @Nullable
-  PsiElement getLineBreak();
+  @NotNull
+  List<ScriptYieldStatement> getYieldStatementList();
 
 }

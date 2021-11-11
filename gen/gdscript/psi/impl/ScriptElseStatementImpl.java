@@ -27,4 +27,16 @@ public class ScriptElseStatementImpl extends ScriptBaseElement implements Script
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public ScriptBlock getBlock() {
+    return findNotNullChildByClass(ScriptBlock.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getLineBreak() {
+    return findChildByType(LINE_BREAK);
+  }
+
 }

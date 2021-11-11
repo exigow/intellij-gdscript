@@ -256,21 +256,36 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // INDENT statement DEDENT
+  // INDENT statement+ DEDENT
   public static boolean block(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "block")) return false;
     if (!nextTokenIs(b, INDENT)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, INDENT);
-    r = r && statement(b, l + 1);
+    r = r && block_1(b, l + 1);
     r = r && consumeToken(b, DEDENT);
     exit_section_(b, m, BLOCK, r);
     return r;
   }
 
+  // statement+
+  private static boolean block_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "block_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = statement(b, l + 1);
+    while (r) {
+      int c = current_position_(b);
+      if (!statement(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "block_1", c)) break;
+    }
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
   /* ********************************************************** */
-  // CLASS id (EXTENDS type)? COLON
+  // CLASS id (EXTENDS type)? COLON LINE_BREAK? block
   public static boolean class_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement")) return false;
     if (!nextTokenIs(b, CLASS)) return false;
@@ -280,6 +295,8 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = r && id(b, l + 1);
     r = r && class_statement_2(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && class_statement_4(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, CLASS_STATEMENT, r);
     return r;
   }
@@ -300,6 +317,13 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = r && type(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
+  }
+
+  // LINE_BREAK?
+  private static boolean class_statement_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_statement_4")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
   }
 
   /* ********************************************************** */
@@ -589,7 +613,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ELIF expression COLON
+  // ELIF expression COLON LINE_BREAK? block
   public static boolean elif_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "elif_statement")) return false;
     if (!nextTokenIs(b, ELIF)) return false;
@@ -598,20 +622,38 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, ELIF);
     r = r && expression(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && elif_statement_3(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, ELIF_STATEMENT, r);
     return r;
   }
 
+  // LINE_BREAK?
+  private static boolean elif_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "elif_statement_3")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
+  }
+
   /* ********************************************************** */
-  // ELSE COLON
+  // ELSE COLON LINE_BREAK? block
   public static boolean else_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "else_statement")) return false;
     if (!nextTokenIs(b, ELSE)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeTokens(b, 0, ELSE, COLON);
+    r = r && else_statement_2(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, ELSE_STATEMENT, r);
     return r;
+  }
+
+  // LINE_BREAK?
+  private static boolean else_statement_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "else_statement_2")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
   }
 
   /* ********************************************************** */
@@ -982,7 +1024,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON block?
+  // STATIC? network_modifier? FUNC id L_PAREN LINE_BREAK* func_argument? LINE_BREAK* (COMMA LINE_BREAK* func_argument LINE_BREAK*)* COMMA? LINE_BREAK* R_PAREN (ARROW type)? COLON LINE_BREAK? block
   public static boolean func_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "func_statement")) return false;
     boolean r;
@@ -1002,6 +1044,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = r && func_statement_12(b, l + 1);
     r = r && consumeToken(b, COLON);
     r = r && func_statement_14(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1131,10 +1174,10 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // block?
+  // LINE_BREAK?
   private static boolean func_statement_14(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "func_statement_14")) return false;
-    block(b, l + 1);
+    consumeToken(b, LINE_BREAK);
     return true;
   }
 
@@ -1169,7 +1212,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // IF expression COLON
+  // IF expression COLON LINE_BREAK? block
   public static boolean if_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "if_statement")) return false;
     if (!nextTokenIs(b, IF)) return false;
@@ -1178,8 +1221,17 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, IF);
     r = r && expression(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && if_statement_3(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, IF_STATEMENT, r);
     return r;
+  }
+
+  // LINE_BREAK?
+  private static boolean if_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "if_statement_3")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
   }
 
   /* ********************************************************** */
@@ -1495,7 +1547,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // match_label_argument (COMMA match_label_argument)* COLON
+  // match_label_argument (COMMA match_label_argument)* COLON LINE_BREAK? block
   public static boolean match_label_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "match_label_statement")) return false;
     boolean r;
@@ -1503,6 +1555,8 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = match_label_argument(b, l + 1);
     r = r && match_label_statement_1(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && match_label_statement_3(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1529,8 +1583,15 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     return r;
   }
 
+  // LINE_BREAK?
+  private static boolean match_label_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "match_label_statement_3")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
+  }
+
   /* ********************************************************** */
-  // MATCH expression COLON
+  // MATCH expression COLON LINE_BREAK? block
   public static boolean match_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "match_statement")) return false;
     if (!nextTokenIs(b, MATCH)) return false;
@@ -1539,8 +1600,17 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, MATCH);
     r = r && expression(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && match_statement_3(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, MATCH_STATEMENT, r);
     return r;
+  }
+
+  // LINE_BREAK?
+  private static boolean match_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "match_statement_3")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
   }
 
   /* ********************************************************** */
@@ -2186,7 +2256,7 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // WHILE expression COLON
+  // WHILE expression COLON LINE_BREAK? block
   public static boolean while_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "while_statement")) return false;
     if (!nextTokenIs(b, WHILE)) return false;
@@ -2195,8 +2265,17 @@ public class ScriptParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, WHILE);
     r = r && expression(b, l + 1);
     r = r && consumeToken(b, COLON);
+    r = r && while_statement_3(b, l + 1);
+    r = r && block(b, l + 1);
     exit_section_(b, m, WHILE_STATEMENT, r);
     return r;
+  }
+
+  // LINE_BREAK?
+  private static boolean while_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "while_statement_3")) return false;
+    consumeToken(b, LINE_BREAK);
+    return true;
   }
 
   /* ********************************************************** */

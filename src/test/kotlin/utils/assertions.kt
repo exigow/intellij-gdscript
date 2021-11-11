@@ -1,11 +1,15 @@
 package utils
 
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
-import junit.framework.TestCase.fail
+import com.intellij.lexer.Lexer
+import com.intellij.testFramework.LexerTestCase
+import gdscript.lexer.ScriptLexerAdapter
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.fail
 
 inline fun <reified ExpectedException : Exception> assertThrows(
-    invoke: () -> Unit, expectedMessage: String
+    invoke: () -> Unit,
+    expectedMessage: String
 ) {
     try {
         invoke()

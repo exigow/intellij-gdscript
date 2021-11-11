@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface ScriptMatchLabelStatement extends PsiElement {
 
   @NotNull
+  ScriptBlock getBlock();
+
+  @NotNull
   List<ScriptMatchLabelArgument> getMatchLabelArgumentList();
+
+  @Nullable
+  PsiElement getLineBreak();
 
 }

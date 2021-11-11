@@ -28,147 +28,141 @@ public class ScriptBlockImpl extends ScriptBaseElement implements ScriptBlock {
   }
 
   @Override
-  @Nullable
-  public ScriptAssertStatement getAssertStatement() {
-    return findChildByClass(ScriptAssertStatement.class);
+  @NotNull
+  public List<ScriptAssertStatement> getAssertStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptAssertStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptAssignStatement getAssignStatement() {
-    return findChildByClass(ScriptAssignStatement.class);
+  @NotNull
+  public List<ScriptAssignStatement> getAssignStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptAssignStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptAwaitStatement getAwaitStatement() {
-    return findChildByClass(ScriptAwaitStatement.class);
+  @NotNull
+  public List<ScriptAwaitStatement> getAwaitStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptAwaitStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptClassStatement getClassStatement() {
-    return findChildByClass(ScriptClassStatement.class);
+  @NotNull
+  public List<ScriptClassStatement> getClassStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptClassStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptClassnameStatement getClassnameStatement() {
-    return findChildByClass(ScriptClassnameStatement.class);
+  @NotNull
+  public List<ScriptClassnameStatement> getClassnameStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptClassnameStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptConstStatement getConstStatement() {
-    return findChildByClass(ScriptConstStatement.class);
+  @NotNull
+  public List<ScriptConstStatement> getConstStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptConstStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptElifStatement getElifStatement() {
-    return findChildByClass(ScriptElifStatement.class);
+  @NotNull
+  public List<ScriptElifStatement> getElifStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptElifStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptElseStatement getElseStatement() {
-    return findChildByClass(ScriptElseStatement.class);
+  @NotNull
+  public List<ScriptElseStatement> getElseStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptElseStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptEnumStatement getEnumStatement() {
-    return findChildByClass(ScriptEnumStatement.class);
+  @NotNull
+  public List<ScriptEnumStatement> getEnumStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptEnumStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptExpressionStatement getExpressionStatement() {
-    return findChildByClass(ScriptExpressionStatement.class);
+  @NotNull
+  public List<ScriptExpressionStatement> getExpressionStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptExpressionStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptExtendsStatement getExtendsStatement() {
-    return findChildByClass(ScriptExtendsStatement.class);
+  @NotNull
+  public List<ScriptExtendsStatement> getExtendsStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptExtendsStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptForStatement getForStatement() {
-    return findChildByClass(ScriptForStatement.class);
+  @NotNull
+  public List<ScriptForStatement> getForStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptForStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptFuncStatement getFuncStatement() {
-    return findChildByClass(ScriptFuncStatement.class);
+  @NotNull
+  public List<ScriptFuncStatement> getFuncStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptFuncStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptIconStatement getIconStatement() {
-    return findChildByClass(ScriptIconStatement.class);
+  @NotNull
+  public List<ScriptIconStatement> getIconStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptIconStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptIfStatement getIfStatement() {
-    return findChildByClass(ScriptIfStatement.class);
+  @NotNull
+  public List<ScriptIfStatement> getIfStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptIfStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptMatchLabelStatement getMatchLabelStatement() {
-    return findChildByClass(ScriptMatchLabelStatement.class);
+  @NotNull
+  public List<ScriptMatchLabelStatement> getMatchLabelStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptMatchLabelStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptMatchStatement getMatchStatement() {
-    return findChildByClass(ScriptMatchStatement.class);
+  @NotNull
+  public List<ScriptMatchStatement> getMatchStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptMatchStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptReturnStatement getReturnStatement() {
-    return findChildByClass(ScriptReturnStatement.class);
+  @NotNull
+  public List<ScriptReturnStatement> getReturnStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptReturnStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptSignalStatement getSignalStatement() {
-    return findChildByClass(ScriptSignalStatement.class);
+  @NotNull
+  public List<ScriptSignalStatement> getSignalStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptSignalStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptToolStatement getToolStatement() {
-    return findChildByClass(ScriptToolStatement.class);
+  @NotNull
+  public List<ScriptToolStatement> getToolStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptToolStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptVarStatement getVarStatement() {
-    return findChildByClass(ScriptVarStatement.class);
+  @NotNull
+  public List<ScriptVarStatement> getVarStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptVarStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptWhileStatement getWhileStatement() {
-    return findChildByClass(ScriptWhileStatement.class);
+  @NotNull
+  public List<ScriptWhileStatement> getWhileStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptWhileStatement.class);
   }
 
   @Override
-  @Nullable
-  public ScriptYieldStatement getYieldStatement() {
-    return findChildByClass(ScriptYieldStatement.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getLineBreak() {
-    return findChildByType(LINE_BREAK);
+  @NotNull
+  public List<ScriptYieldStatement> getYieldStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, ScriptYieldStatement.class);
   }
 
 }

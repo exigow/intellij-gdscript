@@ -28,9 +28,9 @@ public class ScriptFuncStatementImpl extends ScriptBaseElement implements Script
   }
 
   @Override
-  @Nullable
+  @NotNull
   public ScriptBlock getBlock() {
-    return findChildByClass(ScriptBlock.class);
+    return findNotNullChildByClass(ScriptBlock.class);
   }
 
   @Override

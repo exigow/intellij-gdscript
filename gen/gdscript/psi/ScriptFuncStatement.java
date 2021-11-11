@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface ScriptFuncStatement extends PsiElement {
 
-  @Nullable
+  @NotNull
   ScriptBlock getBlock();
 
   @NotNull
