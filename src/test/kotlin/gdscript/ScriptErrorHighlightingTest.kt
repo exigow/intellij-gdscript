@@ -357,8 +357,11 @@ class ScriptErrorHighlightingTest : BaseTest() {
     fun `test function argument type`() =
         assertNoErrors("func hit(damage: int):")
 
-    fun `test function return type`() =
+    fun `test function type`() =
         assertNoErrors("func hit() -> float:")
+
+    fun `test function nested class type`() =
+        assertNoErrors("func foo() -> Foo.Bar:")
 
     fun `test function static`() =
         assertNoErrors("static func add(a, b):")

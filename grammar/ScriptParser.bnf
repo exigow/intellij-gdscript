@@ -327,7 +327,9 @@ invocation_expression ::= id? L_PAREN LINE_BREAK* expression? LINE_BREAK* (COMMA
 lambda_expression ::= FUNC id? L_PAREN id? (COMMA id)* R_PAREN COLON expression
 
 key ::= expression
-type ::= id (L_BRACKET id R_BRACKET)?
+type ::= array_type | nested_type
+private array_type ::= id (L_BRACKET id R_BRACKET)
+private nested_type ::= id (DOT id)*
 
 id ::= IDENTIFIER | INT | FLOAT | BOOL | VOID | NODE_PATH {methods=[getReference]}
 string ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING {methods=[getReference]}

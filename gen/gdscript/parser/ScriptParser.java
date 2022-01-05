@@ -186,6 +186,30 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // id (L_BRACKET id R_BRACKET)
+  static boolean array_type(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "array_type")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = id(b, l + 1);
+    r = r && array_type_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // L_BRACKET id R_BRACKET
+  private static boolean array_type_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "array_type_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, L_BRACKET);
+    r = r && id(b, l + 1);
+    r = r && consumeToken(b, R_BRACKET);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // ASSERT expression
   public static boolean assert_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "assert_statement")) return false;
@@ -1533,6 +1557,40 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // id (DOT id)*
+  static boolean nested_type(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "nested_type")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = id(b, l + 1);
+    r = r && nested_type_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (DOT id)*
+  private static boolean nested_type_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "nested_type_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!nested_type_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "nested_type_1", c)) break;
+    }
+    return true;
+  }
+
+  // DOT id
+  private static boolean nested_type_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "nested_type_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, DOT);
+    r = r && id(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // MASTER
   //     | SYNC
   //     | PUPPET
@@ -1903,33 +1961,14 @@ public class ScriptParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // id (L_BRACKET id R_BRACKET)?
+  // array_type | nested_type
   public static boolean type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE, "<type>");
-    r = id(b, l + 1);
-    r = r && type_1(b, l + 1);
+    r = array_type(b, l + 1);
+    if (!r) r = nested_type(b, l + 1);
     exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // (L_BRACKET id R_BRACKET)?
-  private static boolean type_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_1")) return false;
-    type_1_0(b, l + 1);
-    return true;
-  }
-
-  // L_BRACKET id R_BRACKET
-  private static boolean type_1_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_1_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, L_BRACKET);
-    r = r && id(b, l + 1);
-    r = r && consumeToken(b, R_BRACKET);
-    exit_section_(b, m, null, r);
     return r;
   }
 
