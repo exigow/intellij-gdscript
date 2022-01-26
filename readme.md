@@ -33,3 +33,12 @@ New API version will be available in *Settings* | *Languages & Frameworks* | *GD
 
 1. Build plugin from sources, download [latest stable version](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or any [GitHub Actions artifact](https://github.com/exigow/intellij-gdscript/actions)
 1. Navigate to: *Settings* | *Plugins* | :gear: | *Install plugin from disk...*
+
+### How to fix `Mixed tabs and spaces in indentation` error
+
+To prevent mixing tabs (Godot defaults) with 4-space indents (IDE defaults), add `.editorconfig` file to your project directory:
+
+```editorconfig
+[*.gd]
+indent_style = tab
+```
