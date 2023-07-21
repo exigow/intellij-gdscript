@@ -6,7 +6,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 import com.intellij.psi.PsiReferenceBase
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.util.parentOfType
+import com.intellij.psi.util.parentOfTypes
 import common.ResourceUtil
 import tscn.psi.TscnAttribute
 import tscn.psi.TscnExtEntry
@@ -23,7 +23,7 @@ class TscnResourceExtReference(element: TscnExtExpression) :
             .flatMap { entry -> PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty().asIterable() }
             .filter { attribute -> attribute.key.text == "id" }
             .find { attribute -> attribute.value.text.toIntOrNull() == id }
-            ?.parentOfType(TscnExtEntry::class)
+            ?.parentOfTypes(TscnExtEntry::class)
             ?: return null
         val resourcePath = entry.attributeList.find { it.key.text.equals("path") }?.value?.text
             ?: return null

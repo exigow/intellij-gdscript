@@ -2,6 +2,7 @@ package gdscript.annotation
 
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiElement
@@ -19,7 +20,8 @@ class ResourceAnnotator : Annotator {
             val project: VirtualFile = ResourceUtil.findProject(element) ?: return
             val path: String = ResourceUtil.cleanResource(element.text)
             if (VfsUtilCore.findRelativeFile(path, project) == null)
-                holder.createWeakWarningAnnotation(element, "Cannot resolve resource '$path'")
+                holder.newAnnotation(HighlightSeverity.WEAK_WARNING, "Cannot resolve resource '$path'")
+                        .range(element).create()
         }
     }
 
