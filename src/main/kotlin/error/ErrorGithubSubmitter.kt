@@ -18,10 +18,10 @@ class ErrorGithubSubmitter : ErrorReportSubmitter() {
         "Open GitHub issue"
 
     override fun submit(
-        events: Array<IdeaLoggingEvent>,
+        events: Array<out IdeaLoggingEvent>,
         additionalInfo: String?,
         parentComponent: Component,
-        consumer: Consumer<SubmittedReportInfo>
+        consumer: Consumer<in SubmittedReportInfo>
     ): Boolean {
         try {
             if (events.isNotEmpty()) {
