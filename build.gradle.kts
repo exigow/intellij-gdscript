@@ -15,6 +15,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 intellij {
     version.set("2021.1")
     updateSinceUntilBuild.set(false)
@@ -31,12 +37,5 @@ tasks {
         val publishPluginToken = project.properties["publishPluginToken"] as String
         token.set(publishPluginToken)
         channels.set(listOf("stable"))
-    }
-    compileJava {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
-    }
-    compileKotlin {
-        kotlinOptions.jvmTarget = "11"
     }
 }
