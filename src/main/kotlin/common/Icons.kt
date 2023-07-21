@@ -8,7 +8,8 @@ import javax.swing.Icon
 
 object Icons {
 
-    val GDSCRIPT_FILE = IconLoader.getIcon("/fileIcon.png")
+    @JvmField
+    val GDSCRIPT_FILE = IconLoader.getIcon("/fileIcon.png", javaClass)
     val TSCN_FILE: Icon = FileTypes.Config
     val JSON_FILE: Icon = FileTypes.Json
     val ANY_FILE: Icon = FileTypes.Any_type

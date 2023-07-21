@@ -4,7 +4,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReferenceBase
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.util.parentOfType
+import com.intellij.psi.util.parentOfTypes
 import tscn.psi.TscnAttribute
 import tscn.psi.TscnSubEntry
 import tscn.psi.TscnSubExpression
@@ -20,7 +20,7 @@ class TscnResourceSubReference(element: TscnSubExpression) :
             .flatMap { entry -> PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty().asIterable() }
             .filter { attribute -> attribute.key.text == "id" }
             .find { attribute -> attribute.value.text.toIntOrNull() == id }
-            ?.parentOfType(TscnSubEntry::class)
+            ?.parentOfTypes(TscnSubEntry::class)
     }
 
 }
