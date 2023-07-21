@@ -16,18 +16,15 @@
 		</ul>
 	]]>
 	</description>
-	<idea-version since-build="193.2252"/>
+	<idea-version since-build="211.1777"/>
 	<depends>com.intellij.modules.lang</depends>
 	<extensions defaultExtensionNs="com.intellij">
-		<!-- version -->
-		<applicationService serviceImplementation="version.VersionService"/>
 		<!-- gdscript -->
 		<annotator implementationClass="gdscript.annotation.ClassnameAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ConstantAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.KeywordAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.MethodAnnotator" language="GDScript"/>
 		<annotator implementationClass="gdscript.annotation.ResourceAnnotator" language="GDScript"/>
-		<applicationService serviceImplementation="gdscript.documentation.ScriptGeneratedSourceFileService"/>
 		<colorSettingsPage implementation="gdscript.ScriptColorSettingsPage"/>
 		<completion.contributor implementationClass="gdscript.completion.ResourceCompletionContributor" language="GDScript"/>
 		<completion.contributor implementationClass="gdscript.completion.KeywordCompletionContributor" language="GDScript"/>
