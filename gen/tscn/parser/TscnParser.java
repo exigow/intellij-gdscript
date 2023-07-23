@@ -1,15 +1,15 @@
 // This is a generated file. Not intended for manual editing.
 package tscn.parser;
 
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.LightPsiParser;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import static tscn.psi.TscnElementTypes.*;
-import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.TokenSet;
 import com.intellij.lang.PsiParser;
-import com.intellij.lang.LightPsiParser;
+import com.intellij.psi.tree.IElementType;
+
+import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
+import static tscn.psi.TscnElementTypes.*;
 
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
 public class TscnParser implements PsiParser, LightPsiParser {
@@ -200,13 +200,15 @@ public class TscnParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // EXT_RESOURCE L_PAREN NUMBER R_PAREN
+  // EXT_RESOURCE L_PAREN sub_ext_id R_PAREN
   public static boolean ext_expression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ext_expression")) return false;
     if (!nextTokenIs(b, EXT_RESOURCE)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, EXT_RESOURCE, L_PAREN, NUMBER, R_PAREN);
+    r = consumeTokens(b, 0, EXT_RESOURCE, L_PAREN);
+    r = r && sub_ext_id(b, l + 1);
+    r = r && consumeToken(b, R_PAREN);
     exit_section_(b, m, EXT_EXPRESSION, r);
     return r;
   }
@@ -463,14 +465,26 @@ public class TscnParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // SUB_RESOURCE L_PAREN NUMBER R_PAREN
+  // SUB_RESOURCE L_PAREN sub_ext_id R_PAREN
   public static boolean sub_expression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "sub_expression")) return false;
     if (!nextTokenIs(b, SUB_RESOURCE)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, SUB_RESOURCE, L_PAREN, NUMBER, R_PAREN);
+    r = consumeTokens(b, 0, SUB_RESOURCE, L_PAREN);
+    r = r && sub_ext_id(b, l + 1);
+    r = r && consumeToken(b, R_PAREN);
     exit_section_(b, m, SUB_EXPRESSION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // NUMBER | string
+  static boolean sub_ext_id(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "sub_ext_id")) return false;
+    boolean r;
+    r = consumeToken(b, NUMBER);
+    if (!r) r = string(b, l + 1);
     return r;
   }
 

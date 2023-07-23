@@ -14,12 +14,15 @@ class TscnResourceSubReference(element: TscnSubExpression) :
     PsiReferenceBase<TscnSubExpression>(element, TextRange.from(0, element.textLength)) {
 
     override fun resolve(): PsiElement? {
-        val id = element.number.text.toIntOrNull()
+        val id = element.number
+            ?: element.doubleQuotedString
+            ?: element.singleQuotedString
             ?: return null
-        return PsiTreeUtil.getChildrenOfType(element.containingFile, TscnSubEntry::class.java).orEmpty()
+        return PsiTreeUtil.getChildrenOfType(element.containingFile, TscnSubEntry::class.java)
+            .orEmpty()
             .flatMap { entry -> PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty().asIterable() }
             .filter { attribute -> attribute.key.text == "id" }
-            .find { attribute -> attribute.value.text.toIntOrNull() == id }
+            .find { attribute -> attribute.value.text == id.text }
             ?.parentOfTypes(TscnSubEntry::class)
     }
 
