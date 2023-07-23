@@ -13,15 +13,17 @@ import java.util.zip.ZipInputStream
 class VersionService {
 
     private val versions: List<Version> = listOf(
-        loadResource("3.2", "version/3.2.zip"),
-        loadResource("3.3", "version/3.3.zip"),
-        loadResource("3.4", "version/3.4.zip"),
-        loadResource("4.0", "version/4.0.zip"),
+        loadVersion("3.2", "version/3.2.zip"),
+        loadVersion("3.3", "version/3.3.zip"),
+        loadVersion("3.4", "version/3.4.zip"),
+        loadVersion("3.5", "version/3.5.zip"),
+        loadVersion("4.0", "version/4.0.zip"),
+        loadVersion("4.1", "version/4.1.zip"),
         Version("Disabled", emptyList(), emptyList(), emptyList(), emptyList())
     )
 
-    private fun loadResource(versionId: String, path: String): Version {
-        val classes: List<Class> = readEntries(path)
+    private fun loadVersion(versionId: String, resourcePath: String): Version {
+        val classes: List<Class> = readEntries(resourcePath)
         val (primitives, nonPrimitives) = classes.partition { it.name in listOf("float", "int", "bool", "void") }
         val (globals, nonGlobals) = nonPrimitives.partition { it.name.startsWith("@") }
         val singletonNames = globals.flatMap { it.fields }.map { it.name }
@@ -47,11 +49,13 @@ class VersionService {
 
     companion object {
 
+        const val DEFAULT_VERSION = "4.1"
+
         fun current(): Version {
             val versionService = service<VersionService>().versions
             val settingsVersionId = service<ApplicationSettings>().versionId
             return versionService.find { it.versionId == settingsVersionId }
-                ?: versionService.first()
+                ?: versionService.find { it.versionId == DEFAULT_VERSION }!!
         }
 
         fun all(): List<Version> =

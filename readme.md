@@ -2,27 +2,15 @@
 
 ![Screenshot](https://i.imgur.com/WLLXkf4.png)
 
-Works with all IntelliJ-based IDEs starting from **2019.3**. List of available features is [here](src/main/resources/META-INF/plugin.xml).
+Works with all IntelliJ-based IDEs. List of available features is [here](src/main/resources/META-INF/plugin.xml).
 
 ## Usage & Development
 
 * `./gradlew runIde` - run sandbox with installed plugin
-* `./gradlew test` - run all tests
+* `./gradlew test` - run plugin tests
 * `./gradlew buildPlugin` - build plugin distribution to `build/distributions/intellij-gdscript.zip`
 * `./gradlew publishPlugin` - publish plugin to official JetBrains repository
-
-### How to update completion data
-
-You need to clone the Godot Engine repository and pack the class definitions into ZIP file. Such file must be placed inside plugin `resources`. ZIP structure is not important.
-
-The following commands describes how to update version `3.4` from project directory perspective:
-
-1. `git clone --branch 3.4 https://github.com/godotengine/godot.git --depth 1`
-2. `zip -r 3.4.zip ./godot/doc/classes/ ./godot/modules/gdscript/doc_classes/@GDScript.xml`
-3. `rm -rf godot/`
-4. `mv -f 3.4.zip src/main/resources/version/`
-
-New API version will be available in *Settings* | *Languages & Frameworks* | *GDScript*
+* `./update-api.sh 3.2 3.3 3.4 3.5 4.0 4.1` - update completion data for listed versions
 
 ### How to update grammars with Grammar-Kit plugin
 
@@ -32,7 +20,7 @@ New API version will be available in *Settings* | *Languages & Frameworks* | *GD
 ### How to install plugin manually
 
 1. Build plugin from sources, download [latest stable version](https://plugins.jetbrains.com/plugin/13107-godot-gdscript/versions) or any [GitHub Actions artifact](https://github.com/exigow/intellij-gdscript/actions)
-1. Navigate to: *Settings* | *Plugins* | :gear: | *Install plugin from disk...*
+2. Navigate to: *Settings* | *Plugins* | :gear: | *Install plugin from disk...*
 
 ### How to fix `Mixed tabs and spaces in indentation` error
 

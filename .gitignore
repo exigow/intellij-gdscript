@@ -1,5 +1,6 @@
 .gradle/
 .idea/
+.versions/
 out/
 build/
 todo.txt
