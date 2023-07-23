@@ -11,19 +11,19 @@ class ScriptGeneratedSourceFileServiceTest: BaseTest() {
         assertEquals("GDScript", file.fileType.name)
     }
 
-    fun `test Spatial code`() {
-        val text = getService().getSourceFile("Spatial")!!.text
-        assertContains("class_name Spatial", text)
+    fun `test Node3D code`() {
+        val text = getService().getSourceFile("Node3D")!!.text
+        assertContains("class_name Node3D", text)
         assertContains("extends Node", text)
         assertContains("# Most basic 3D game object, parent of all 3D-related nodes.", text)
         assertContains("signal visibility_changed()", text)
         assertContains("const NOTIFICATION_VISIBILITY_CHANGED = 43", text)
-        assertContains("var translation: Vector3 = Vector3( 0, 0, 0 )", text)
-        assertContains("func get_parent_spatial() -> Spatial:", text)
+        assertContains("var position: Vector3 = Vector3(0, 0, 0)", text)
+        assertContains("func get_parent_node_3d() -> Node3D:", text)
     }
 
     fun `test void methods has no explicit type`() {
-        val text = getService().getSourceFile("Spatial")!!.text
+        val text = getService().getSourceFile("Node3D")!!.text
         assertContains("func show():", text)
     }
 

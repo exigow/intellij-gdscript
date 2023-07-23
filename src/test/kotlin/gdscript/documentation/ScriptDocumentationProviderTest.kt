@@ -22,17 +22,17 @@ class ScriptDocumentationProviderTest : BaseTest() {
     fun `test RigidBody2D class`() {
         val docs = getDocumentation("RigidBody2D")
         assertContains("<h3>Properties</h3>", docs)
-        assertContains("<li><code>applied_torque = 0.0</code></li>", docs)
+        assertContains("<li><code>angular_velocity = 0.0</code></li>", docs)
         assertContains("<h3>Methods</h3>", docs)
-        assertContains("<li><code>get_colliding_bodies() -> Array</code></li>", docs)
+        assertContains("<li><code>get_colliding_bodies() -> Node2D[]</code></li>", docs)
         assertContains("<h3>Constants</h3>", docs)
-        assertContains("<li><code>MODE_KINEMATIC = 3</code></li>", docs)
+        assertContains("<li><code>FREEZE_MODE_KINEMATIC = 1</code></li>", docs)
         assertContains("<h3>Signals</h3", docs)
         assertContains("<li><code>body_entered(body: Node)</code></li>", docs)
     }
 
-    fun `test VisualServer singleton`() {
-        val docs = getDocumentation("VisualServer")
+    fun `test RenderingServer singleton`() {
+        val docs = getDocumentation("RenderingServer")
         assertContains("<h3>Methods</h3>", docs)
         assertContains("<li><code>canvas_item_set_material(item: RID, material: RID)</code></li>", docs)
     }

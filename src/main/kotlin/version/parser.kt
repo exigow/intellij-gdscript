@@ -9,7 +9,7 @@ fun parseClass(doc: Document) = Class(
     briefDescription = doc.select("class > brief_description").text(),
     extends = doc.select("class").attr("inherits"),
     fields = doc.select("member").map { parseField(it) },
-    methods = doc.select("method").map { parseMethod(it) },
+    methods = doc.select("method,constructor").map { parseMethod(it) },
     constants = doc.select("constant").map { parseConstant(it) },
     signals = doc.select("signal").map { parseSignal(it) }
 )
@@ -40,6 +40,6 @@ private fun parseSignal(signal: Element) = Signal(
 )
 
 private fun parseArguments(method: Element) = method
-    .select("argument")
+    .select("argument,param")
     .sortedBy { it.attr("index") }
     .map { Argument(it.attr("name"), it.attr("type")) }

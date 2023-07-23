@@ -6,7 +6,7 @@ class ApplicationSettingsTest : BaseTest() {
 
     fun `test default version`() {
         val settings = ApplicationSettings()
-        assertEquals("3.2", settings.versionId)
+        assertEquals("4.1", settings.versionId)
     }
 
     fun `test version load state`() {
