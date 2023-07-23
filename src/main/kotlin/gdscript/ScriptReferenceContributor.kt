@@ -5,9 +5,8 @@ import com.intellij.psi.*
 import com.intellij.util.ProcessingContext
 import gdscript.psi.ScriptId
 import gdscript.psi.ScriptString
-import gdscript.psi.ScriptType
-import gdscript.psi.reference.ScriptStringReference
 import gdscript.psi.reference.ScriptIdReference
+import gdscript.psi.reference.ScriptStringReference
 
 class ScriptReferenceContributor : PsiReferenceContributor() {
 

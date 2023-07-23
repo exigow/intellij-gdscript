@@ -3,8 +3,8 @@ package gdscript.documentation
 import com.intellij.lang.documentation.AbstractDocumentationProvider
 import com.intellij.lang.documentation.DocumentationMarkup.*
 import com.intellij.psi.PsiElement
-import version.data.Argument
 import version.VersionService
+import version.data.Argument
 import version.data.Class
 
 class ScriptDocumentationProvider : AbstractDocumentationProvider() {
@@ -22,7 +22,7 @@ class ScriptDocumentationProvider : AbstractDocumentationProvider() {
             generateDocList("Properties", clazz.fields.map { it.name + if (it.default != null) " = ${it.default}" else "" }),
             generateDocList("Methods", clazz.methods.map { it.name + "(" + joinArguments(it.arguments) + ")" + if (it.type != "void") " -> ${it.type}" else "" }),
             generateDocList("Constants", clazz.constants.map { it.name + " = " + it.value }),
-            generateDocList("Signals", clazz.signals.map { it.name + if (it.arguments.isNotEmpty()) "(" + joinArguments(it.arguments) + ")" else ""}),
+            generateDocList("Signals", clazz.signals.map { it.name + if (it.arguments.isNotEmpty()) "(" + joinArguments(it.arguments) + ")" else "" }),
             CONTENT_END
         ).joinToString("")
     }

@@ -3,7 +3,7 @@ package gdscript.documentation
 import BaseTest
 import utils.assertContains
 
-class ScriptGeneratedSourceFileServiceTest: BaseTest() {
+class ScriptGeneratedSourceFileServiceTest : BaseTest() {
 
     fun `test GDScript file type with correct extension`() {
         val file = getService().getSourceFile("Vector2")!!

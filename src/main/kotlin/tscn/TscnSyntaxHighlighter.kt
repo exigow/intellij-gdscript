@@ -7,7 +7,6 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import tscn.parser._TscnLexer
-import tscn.psi.TscnElementTypes
 import tscn.psi.TscnElementTypes.*
 
 class TscnSyntaxHighlighter : SyntaxHighlighterBase() {
@@ -23,6 +22,7 @@ class TscnSyntaxHighlighter : SyntaxHighlighterBase() {
         DOUBLE_QUOTED_STRING,
         SINGLE_QUOTED_RESOURCE_STRING,
         DOUBLE_QUOTED_RESOURCE_STRING -> DefaultLanguageHighlighterColors.STRING
+
         NUMBER -> DefaultLanguageHighlighterColors.NUMBER
         TRUE,
         FALSE,
@@ -35,6 +35,7 @@ class TscnSyntaxHighlighter : SyntaxHighlighterBase() {
         SUB_RESOURCE,
         SUB_RESOURCE_KEYWORD,
         EXT_RESOURCE_KEYWORD -> DefaultLanguageHighlighterColors.KEYWORD
+
         else -> null
     }
 

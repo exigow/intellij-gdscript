@@ -3,9 +3,8 @@ package gdscript.psi.impl
 import com.intellij.psi.PsiReference
 import gdscript.psi.ScriptId
 import gdscript.psi.ScriptString
-import gdscript.psi.ScriptType
-import gdscript.psi.reference.ScriptStringReference
 import gdscript.psi.reference.ScriptIdReference
+import gdscript.psi.reference.ScriptStringReference
 
 object ScriptPsiImplUtil {
 

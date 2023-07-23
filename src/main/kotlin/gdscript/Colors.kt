@@ -1,7 +1,6 @@
 package gdscript
 
 import com.intellij.ide.highlighter.custom.CustomHighlighterColors
-import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors
 

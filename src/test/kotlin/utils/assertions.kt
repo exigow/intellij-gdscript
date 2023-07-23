@@ -1,8 +1,8 @@
 package utils
 
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
-import junit.framework.TestCase.fail
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.fail
 
 inline fun <reified ExpectedException : Exception> assertThrows(
     invoke: () -> Unit, expectedMessage: String

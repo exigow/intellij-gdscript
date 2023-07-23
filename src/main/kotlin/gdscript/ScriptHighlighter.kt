@@ -63,6 +63,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         MASTERSYNC,
         PUPPETSYNC,
         REMOTESYNC -> Colors.KEYWORD
+
         LESS,
         LESS_EQUAL,
         GREATER,
@@ -98,13 +99,16 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         INFER,
         ARROW,
         UNDERSCORE -> Colors.OPERATION_SIGN
+
         DOUBLE_QUOTED_STRING,
         SINGLE_QUOTED_STRING,
         MULTILINE_DOUBLE_QUOTED_STRING,
         MULTILINE_SINGLE_QUOTED_STRING -> Colors.STRING
+
         REAL_NUMBER,
         BINARY_NUMBER,
         HEXADECIMAL_NUMBER -> Colors.NUMBER
+
         IDENTIFIER -> Colors.IDENTIFIER
         NODE_PATH -> Colors.NODE_PATH
         AT_ONREADY,
@@ -117,6 +121,7 @@ class ScriptHighlighter : SyntaxHighlighterBase() {
         AT_MASTERSYNC,
         AT_PUPPETSYNC,
         AT_REMOTESYNC -> Colors.ANNOTATION
+
         LINE_COMMENT -> Colors.LINE_COMMENT
         COMMA -> Colors.COMMA
         COLON -> Colors.COLON

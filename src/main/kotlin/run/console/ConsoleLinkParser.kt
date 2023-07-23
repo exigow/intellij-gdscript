@@ -25,6 +25,4 @@ object ConsoleLinkParser {
         .removePrefix("res://")
         .removeSuffix(".")
 
-
-
 }

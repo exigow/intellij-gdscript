@@ -1,11 +1,11 @@
 package settings
 
-import version.VersionService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.SearchableConfigurable
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.LabeledComponent
 import com.intellij.openapi.ui.VerticalFlowLayout
+import version.VersionService
 import java.awt.BorderLayout
 import javax.swing.JComponent
 import javax.swing.JPanel
@@ -33,6 +33,7 @@ class ApplicationSettingsConfigurable : SearchableConfigurable {
         panel.add(LabeledComponent.create(versionList, "API version:").also { it.labelLocation = BorderLayout.WEST })
         return panel
     }
+
     private fun initVersions(): ComboBox<String> {
         val allVersions = VersionService.all().map { it.versionId }.toTypedArray()
         val combo = ComboBox(allVersions)
