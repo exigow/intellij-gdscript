@@ -17,12 +17,14 @@ class TscnResourceExtReference(element: TscnExtExpression) :
     PsiReferenceBase<TscnExtExpression>(element, TextRange.from(0, element.textLength)) {
 
     override fun resolve(): PsiElement? {
-        val id = element.number.text.toIntOrNull()
+        val id = element.number
+            ?: element.doubleQuotedString
+            ?: element.singleQuotedString
             ?: return null
         val entry = PsiTreeUtil.getChildrenOfType(element.containingFile, TscnExtEntry::class.java).orEmpty()
             .flatMap { entry -> PsiTreeUtil.getChildrenOfType(entry, TscnAttribute::class.java).orEmpty().asIterable() }
             .filter { attribute -> attribute.key.text == "id" }
-            .find { attribute -> attribute.value.text.toIntOrNull() == id }
+            .find { attribute -> attribute.value.text == id.text }
             ?.parentOfTypes(TscnExtEntry::class)
             ?: return null
         val resourcePath = entry.attributeList.find { it.key.text.equals("path") }?.value?.text

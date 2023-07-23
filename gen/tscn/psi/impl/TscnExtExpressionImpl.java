@@ -1,16 +1,17 @@
 // This is a generated file. Not intended for manual editing.
 package tscn.psi.impl;
 
-import java.util.List;
-import org.jetbrains.annotations.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
-import static tscn.psi.TscnElementTypes.*;
-import tscn.psi.TscnBaseElement;
-import tscn.psi.*;
 import com.intellij.psi.PsiReference;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tscn.psi.TscnBaseElement;
+import tscn.psi.TscnExtExpression;
+import tscn.psi.TscnVisitor;
+
+import static tscn.psi.TscnElementTypes.*;
 
 public class TscnExtExpressionImpl extends TscnBaseElement implements TscnExtExpression {
 
@@ -29,9 +30,21 @@ public class TscnExtExpressionImpl extends TscnBaseElement implements TscnExtExp
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public PsiElement getDoubleQuotedString() {
+    return findChildByType(DOUBLE_QUOTED_STRING);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getNumber() {
-    return findNotNullChildByType(NUMBER);
+    return findChildByType(NUMBER);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getSingleQuotedString() {
+    return findChildByType(SINGLE_QUOTED_STRING);
   }
 
   @Override

@@ -70,8 +70,9 @@ list_expression ::= L_BRACKET expression? (COMMA expression)* R_BRACKET
 dictionary_expression ::= L_CURLY pair_expression? (COMMA pair_expression)* R_CURLY
 pair_expression ::= expression COLON expression
 function_expression ::= IDENTIFIER L_PAREN expression? (COMMA expression)* R_PAREN
-sub_expression ::= SUB_RESOURCE L_PAREN NUMBER R_PAREN {methods=[getReference]}
-ext_expression ::= EXT_RESOURCE L_PAREN NUMBER R_PAREN {methods=[getReference]}
+sub_expression ::= SUB_RESOURCE L_PAREN sub_ext_id R_PAREN {methods=[getReference]}
+ext_expression ::= EXT_RESOURCE L_PAREN sub_ext_id R_PAREN {methods=[getReference]}
+private sub_ext_id ::= NUMBER | string
 
 // primitives
 private primitive ::= resource_string
