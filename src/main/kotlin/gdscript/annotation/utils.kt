@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement
 
 fun AnnotationHolder.createTextAttributesAnnotation(element: PsiElement, textAttributes: TextAttributesKey) {
     newAnnotation(HighlightSeverity.INFORMATION, "")
-            .range(element)
-            .textAttributes(textAttributes)
-            .create()
+        .range(element)
+        .textAttributes(textAttributes)
+        .create()
 }

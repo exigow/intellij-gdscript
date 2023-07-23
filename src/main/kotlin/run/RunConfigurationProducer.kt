@@ -22,12 +22,14 @@ class RunConfigurationProducer : LazyRunConfigurationProducer<RunConfiguration>(
                 config.parameters = file.name
                 return true
             }
+
             file.extension == "gd" -> {
                 config.name = file.nameWithoutExtension
                 config.workingDirectory = file.parent.path
                 config.parameters = "--script ${file.name}"
                 return true
             }
+
             file.name == "project.godot" -> {
                 config.name = file.parent.name
                 config.workingDirectory = file.parent.path

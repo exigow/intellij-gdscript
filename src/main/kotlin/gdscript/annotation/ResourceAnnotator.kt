@@ -21,7 +21,7 @@ class ResourceAnnotator : Annotator {
             val path: String = ResourceUtil.cleanResource(element.text)
             if (VfsUtilCore.findRelativeFile(path, project) == null)
                 holder.newAnnotation(HighlightSeverity.WEAK_WARNING, "Cannot resolve resource '$path'")
-                        .range(element).create()
+                    .range(element).create()
         }
     }
 

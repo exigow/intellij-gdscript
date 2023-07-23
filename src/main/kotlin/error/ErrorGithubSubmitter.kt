@@ -49,9 +49,9 @@ class ErrorGithubSubmitter : ErrorReportSubmitter() {
 
     private fun encodeIssue(title: String, body: String): String =
         "https://github.com/exigow/intellij-gdscript/issues/new" +
-                "?labels=bug" +
-                "&title=${encode(title)}" +
-                "&body=${encode(body)}"
+            "?labels=bug" +
+            "&title=${encode(title)}" +
+            "&body=${encode(body)}"
 
     private fun encode(text: String) =
         URLEncoder.encode(text, "UTF-8")

@@ -2,7 +2,6 @@ package tscn
 
 import BaseTest
 import com.intellij.openapi.actionSystem.IdeActions.ACTION_COMMENT_LINE
-import utils.openScript
 
 class TscnCommenterTest : BaseTest() {
 
