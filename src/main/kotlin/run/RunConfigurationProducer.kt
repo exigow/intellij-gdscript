@@ -19,7 +19,7 @@ class RunConfigurationProducer : LazyRunConfigurationProducer<RunConfiguration>(
             file.extension == "tscn" -> {
                 config.name = file.nameWithoutExtension
                 config.workingDirectory = file.parent.path
-                config.parameters = file.name
+                config.parameters = "--upwards ${file.name}"
                 return true
             }
 
